@@ -53,7 +53,7 @@ Corpus scale + DOC-6 chunking experiment.
 - Bulk ingest under `scripts/watch_bulk_ingest.ps1` (file-locked, checkpointed)
 - **Qdrant write-timeout mitigation (2026-10-29 afternoon):** upsert chunking + retries/backoff/split; batch size **16**; on restart repaired **321** FAILED write-timeout rows back to ACTIVE
 - **Do not claim ≥50k** until `dataset_counts.json` `meets_data1_50k: true`
-- Measured **2026-10-29 ~17:23 Asia/Tbilisi:** ACTIVE **35,735**, Qdrant **36,878**, FAILED **0**, checkpoint `next_index≈35,612` / 55k, watchdog ~**1.21 rps**, Neon↔Qdrant consistent. Still below 50k ACTIVE.
+- Measured **2026-10-29 ~17:25 Asia/Tbilisi:** ACTIVE **35,879**, Qdrant **37,031**, FAILED **0**, checkpoint `processed≈35,820` / 55k, watchdog ~**1.4 rps** (~85 docs/min), Neon↔Qdrant consistent. Still below 50k ACTIVE (`meets_data1_50k: false`).
 
 ## Phase 7 — Evaluation (2026-10-29) — partial LLM answer coverage
 
@@ -63,10 +63,10 @@ Corpus scale + DOC-6 chunking experiment.
 - Gemini tool round-trip fixed by preserving `thought_signature` / `extra_content`
 - Prod E2E re-verified (lifecycle + UI); query degraded while Groq TPD exhausted
 - Early submission tag `submission-2026-10-29` @ `1ab164d` **preserved unchanged**
-- Submission-ready local commits: `f07b0f1` + `2b3363b` (+ counts refresh); push to `origin/main` required for GitHub/Render
+- Continuation commits on `main` (including counts refresh) pushed to GitHub; early tag `submission-2026-10-29` @ `1ab164d` unchanged
 
 ## Human actions still required before deadline
 
 1. Complete independent-verification checklist in `docs/AI_USAGE_REPORT.md` (do not leave AI-filled claims).
 2. Confirm Render auto-deployed the latest `main` commit (dashboard SHA) after push.
-3. Optional: after Groq TPD resets / ACTIVE≥50k, re-run eval — not required to block submission of current measured evidence.
+3. Optional: leave overnight bulk ingest running toward DATA-1 ≥50k; do not claim 50k until `meets_data1_50k: true`.

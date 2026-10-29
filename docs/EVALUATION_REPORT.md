@@ -136,7 +136,7 @@ Public UI (`/`) returns 200 with Ask/Documents/Evaluation tabs.
 
 ## 9. Limitations and next steps
 
-1. DATA-1 (≥50k ACTIVE) still open — bulk ingest continues (`batch_size=16`, Qdrant upsert retries). Trust `docs/evidence/dataset_counts.json`.
+1. DATA-1 (≥50k ACTIVE) still open — measured ACTIVE **35,879** / Qdrant **37,031** at 2026-10-29T13:24Z (`meets_data1_50k: false`). Bulk ingest continues (`batch_size=16`). Trust `docs/evidence/dataset_counts.json`.
 2. Re-run `--require-active` and full answer eval after Groq TPD resets / ACTIVE grows.
 3. Improve live contradiction/abstention: stronger claim extraction from planted synthetic pairs; stricter sufficiency when no verified claims match the question entity.
 4. Keep reporting **n_total / n_scored / exclusions / provider skips**.

@@ -1,11 +1,11 @@
 {
-  "created_at": "2026-10-29T13:23:12.379280+00:00",
+  "created_at": "2026-10-29T13:24:54.608740+00:00",
   "postgres": {
-    "active_documents": 35735,
-    "non_deleted_documents": 35735,
-    "chunk_rows": 36888,
+    "active_documents": 35879,
+    "non_deleted_documents": 35879,
+    "chunk_rows": 37041,
     "by_status": {
-      "ACTIVE": 35735,
+      "ACTIVE": 35879,
       "DELETED": 5
     }
   },
@@ -13,34 +13,34 @@
     "ok": true,
     "dialect": "postgresql",
     "database": "neondb",
-    "size_bytes": 185237504,
-    "size_mb": 176.656
+    "size_bytes": 185819136,
+    "size_mb": 177.211
   },
   "qdrant": {
     "ok": true,
     "collection": "chunks__structure_aware__bge_small",
-    "points_count": 36878,
+    "points_count": 37031,
     "status": "green",
     "telemetry_available": false,
-    "indexed_vectors_count": 70227,
-    "points_count_info": 36878,
-    "approx_dense_vector_bytes": 56644608,
+    "indexed_vectors_count": 70380,
+    "points_count_info": 37031,
+    "approx_dense_vector_bytes": 56879616,
     "disk_bytes": null,
     "ram_bytes": null,
     "disk_bytes_source": "unavailable",
     "ram_bytes_source": "unavailable",
-    "estimated_disk_bytes_lower_bound": 82459208
+    "estimated_disk_bytes_lower_bound": 82801316
   },
   "consistency": {
     "ok": true,
-    "active_documents": 35735,
-    "qdrant_points": 36878,
+    "active_documents": 35879,
+    "qdrant_points": 37031,
     "notes": []
   },
   "claims": {
     "do_not_claim_50k_without_measurement": true,
-    "measured_active_documents": 35735,
-    "measured_qdrant_points": 36878,
+    "measured_active_documents": 35879,
+    "measured_qdrant_points": 37031,
     "meets_data1_50k": false
   }
 }

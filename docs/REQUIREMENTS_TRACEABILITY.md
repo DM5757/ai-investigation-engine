@@ -31,7 +31,7 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | EVAL-5 | Error analysis | `docs/EVALUATION_REPORT.md` | report §§1,4,5 | Done-verified | Documents unresolved-gold root cause + budget bug |
 | APP-1 | Python backend | FastAPI routes + deps (`documents`/`query`/`stats`) | `test_api_*` + phase5.txt | Done-verified | Thin handlers → lifecycle/engine |
 | APP-2 | Functional UI (docs, ask, sources) | `app/ui/static/` | `test_api_ui_static` + phase5_ui_checklist | Done-verified | textContent-only; admin token in JS memory |
-| DATA-1 | Process ≥50,000 documents/records | HotpotQA corpus + lifecycle ingest | `verify_counts.py` / `dataset_counts.json` | Partial | 55k corpus built; ACTIVE climbing after FAILED repair (~5k+ measured); claim 50k only when measured |
+| DATA-1 | Process ≥50,000 documents/records | HotpotQA corpus + lifecycle ingest | `verify_counts.py` / `dataset_counts.json` | Partial | 55k corpus built; measured ACTIVE ~35.9k / Qdrant ~37.0k (2026-10-29 ~17:25); FAILED 0; claim 50k only when `meets_data1_50k: true` |
 | DATA-2 | Cross-document retrieval; identifiable sources | `hotpotqa:<title>` external_key + citations | pilot/bulk + Phase 4 citations | Partial | Sources keyed; full-corpus retrieval eval is Phase 7 |
 | DATA-3 | Incomplete and contradictory information | `data/manifests/synthetic_truth.json` | synthetic generator | Done-verified | Planted contradictions, incompleteness, injection samples |
 | DATA-4 | Reproducible evaluation / subset justification | `docs/DATASET.md` + manifests | manifests sha256/seed | Done-verified | Seed 42; subset/scale justified in DATASET.md + storage estimate |
@@ -44,7 +44,7 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | TECH-2 | Automated tests; DB/API integration | `tests/` | local pytest 119 passed | Partial | Phase 5 API/UI covered; Render E2E for new routes pending |
 | TECH-3 | Secure env config; technical docs | config + docs | TBD | Partial | Phase 0–1 docs started |
 | TECH-4 | Performance and LLM cost understanding | PERFORMANCE_AND_COST | measured | Partial | Embed RSS/512m bench recorded; LLM cost TBD |
-| SUB-1 | GitHub repo with history | git | `origin/main` + tag `submission-2026-10-29` | Partial | Early tag preserved; continuation commits on main |
+| SUB-1 | GitHub repo with history | git | `origin/main` + tag `submission-2026-10-29` | Done-verified | Early tag @ `1ab164d` preserved; continuation commits pushed to `origin/main` |
 | SUB-2 | Live demo link | README | `phase1_deploy.txt` | Done-verified | https://ai-investigation-engine-scyz.onrender.com |
 | SUB-3 | README | README.md | review | Done-verified | Describes implemented system + honesty rules |
 | SUB-4 | Evaluation report | `docs/EVALUATION_REPORT.md` | evidence paths | Done-verified | Preliminary metrics; owner should re-read |
