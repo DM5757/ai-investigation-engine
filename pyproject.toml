@@ -78,5 +78,5 @@ filterwarnings = ["ignore::DeprecationWarning"]
 markers = [
     "live: requires real LLM API keys",
 ]
-# Default `pytest` collects live tests but they skip without GROQ_API_KEY.
-# Use `make test-live` (or pytest tests/live -m live) for the live suite.
+# Exclude live by default to protect free-tier quotas; use `make test-live`.
+addopts = "-m \"not live\""

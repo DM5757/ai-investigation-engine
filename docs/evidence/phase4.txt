@@ -1,44 +1,55 @@
 Phase 4 verification — 2026-10-29
 
+## Scripted / local quality
+
 Commands:
   uv run ruff check app tests scripts
   uv run python -m mypy app
-  uv run python -m pytest -q
-  uv run python -m pytest tests/live -m live -q
-  uv run python scripts/trace_demo.py
+  uv run python -m pytest -q   # live marker excluded by default after Phase 4 close
 
-Results:
+Results (parent re-check after live success):
   ruff: All checks passed!
   mypy: Success: no issues found in 81 source files
-  pytest (default): 98 passed, 1 skipped in ~3s
-    - skipped = tests/live/test_investigation_live.py (GROQ_API_KEY absent)
-  pytest live: 1 skipped (GROQ_API_KEY absent)
-  trace_demo: degraded mode status=llm_unavailable (no keys)
+  pytest (with keys present, before excluding live from default): 99 passed in 7.73s
+  Note: default suite later set to `-m "not live"` so CI/local smoke does not burn LLM quota.
 
-Live LLM evidence:
-  NOT collected. docs/evidence/phase4_live_trace.json was NOT written.
-  Reason: GROQ_API_KEY and GEMINI_API_KEY absent from environment / empty .env.
+## Live LLM (Groq) — SUCCESS
 
-HUMAN ACTION REQUIRED:
-  Set GROQ_API_KEY (and optionally GEMINI_API_KEY) in a local .env (never commit).
-  Then run: make test-live
-  On success, docs/evidence/phase4_live_trace.json will be written (redacted; no secrets).
-  Only then can Phase 4 be marked Complete in PROGRESS.md.
+Command:
+  uv run python -m pytest tests/live -m live -q
 
-Known limits carried forward:
-  - Qdrant Cloud remote URL unverified (embedded :memory: ok)
+Result:
+  1 passed in 11.71s
+
+Evidence artifact:
+  docs/evidence/phase4_live_trace.json
+
+Observed (redacted; no secrets):
+  status: answered
+  claim_docs: live_a, live_b, live_c
+  citations: S1 (live_b), S2/S3 (live_a), S4 (live_c) with quotes present in chunks
+  verify stage: ok=True; removed=[]
+  plan: type=causal; n=2; llm=True
+  tools: 4 rounds with tool calls
+  usage (gateway totals in file): see phase4_live_trace.json
+
+Question exercised:
+  "What caused PaymentService disruptions in March, and which documents support this?"
+  → Multi-document connected evidence with verified citations (live_a + live_b).
+
+Model defaults used: GROQ_MODEL=openai/gpt-oss-120b, GEMINI_MODEL=gemini-3.5-flash-lite
+(from Settings when env overrides absent)
+
+## Fixes applied for live run
+  - Live skip checked pydantic Settings (.env) instead of only os.environ
+  - Qdrant point ids changed to UUID5 (local Qdrant rejects non-UUID ids)
+
+## Known limits still open
+  - Qdrant Cloud remote URL not smoked in this live run (embedded :memory:)
   - bm25_avgdl still default 100
-  - CRC32 sparse term-id collisions pending measurement
-  - Retrieval eval pending (Phase 6)
+  - CRC32 collision rate pending on production corpus
+  - Full retrieval eval pending (Phase 6)
+  - Additional live scenarios (abstention / contradiction / injection) covered in
+    scripted tests; only multi-doc answered path exercised live this session
 
-Phase 4 status: Partial — implementation + scripted tests done; live LLM NOT verified.
-
-## Parent agent re-verification (same day)
-
-  uv run ruff check app tests scripts  -> All checks passed!
-  uv run python -m mypy app            -> Success: no issues found in 81 source files
-  uv run python -m pytest -q           -> 98 passed, 1 skipped in 3.04s
-  uv run python -m pytest tests/live -m live -q -> 1 skipped
-
-.env on this machine: 0 bytes (no keys). Process/User env: GROQ_API_KEY / GEMINI_API_KEY unset.
-Phase 4 remains NOT complete.
+Phase 4 status: Complete (scripted + live multi-doc with verified citations).

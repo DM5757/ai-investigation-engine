@@ -15,14 +15,14 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | VEC-2 | Real embeddings and semantic search | `FastEmbedProvider` bge-small | dense-rescue integration + Phase 1 RSS | Done-verified | Real FastEmbed in Phase 3 tests; Render startup still gated by `EMBEDDING_ENABLED_AT_STARTUP` |
 | VEC-3 | Hybrid search | `app/retrieval/hybrid.py` + BM25 sparse | sparse/dense rescue + fusion unit tests | Done-verified | Modes: dense/sparse/hybrid_rrf/hybrid_weighted/hybrid_rerank |
 | VEC-4 | ≥1 custom search/ranking component | custom BM25 + custom reranker | `test_bm25` / `test_reranker` hand checks | Done-verified | Explainable linear features + MMR / near-dup / per-doc cap |
-| RAG-1 | ≥1 LLM; RAG architecture | `app/llm/gateway.py` + `InvestigationEngine` | unit/integration; **live pending keys** | Partial | Models verified in docs; live smoke not run |
-| RAG-2 | Combine info from different documents | `engine` + aggregator + synthesizer | `test_investigation_scripted` multi-doc | Partial | Scripted multi-doc ≥2 sources; live pending |
-| RAG-3 | Multi-step complex questions | `planner.py` + tool loop | scripted plan + tool rounds | Partial | Deterministic fallback plan; live multi-hop pending |
-| RAG-4 | Evidence-based answers; citations | synthesizer + verifier + quote check | quote/verifier unit + scripted | Partial | Fabricated citations stripped; live citation quality pending |
-| RAG-5 | Detect contradictory information | `contradictions.py` | unit + scripted conflicting | Partial | Polarity/numeric candidates; LLM adjudicate optional |
-| RAG-6 | Abstain when insufficient | `sufficiency.py` | unit insufficient + scripted | Partial | Clear abstention_reason; live pending |
-| RAG-7 | Handle LLM errors/limits | gateway retry/fallback/budget + degraded | `test_gateway` + degraded path | Partial | Scripted 429/timeout/budget; live rate-limits pending |
-| RAG-8 | Tool-calling / structured tools | `investigation/tools.py` | scripted tool loop + schemas | Partial | 5 read-only tools; live tool quality pending |
+| RAG-1 | ≥1 LLM; RAG architecture | `app/llm/gateway.py` + `InvestigationEngine` | scripted + `phase4_live_trace.json` | Done-verified | Live Groq multi-doc answered 2026-10-29 |
+| RAG-2 | Combine info from different documents | engine + aggregator + synthesizer | live citations live_a+live_b | Done-verified | Live trace cites ≥2 docs |
+| RAG-3 | Multi-step complex questions | planner + tool loop | live plan n=2 + 4 tool rounds | Done-verified | Live plan type=causal; tools used |
+| RAG-4 | Evidence-based answers; citations | synthesizer + verifier + quote check | live verify ok=True | Done-verified | Quotes match chunks; fabricated path unit-tested |
+| RAG-5 | Detect contradictory information | `contradictions.py` | unit + scripted conflicting | Partial | Scripted verified; dedicated live conflict smoke not run |
+| RAG-6 | Abstain when insufficient | `sufficiency.py` | unit + scripted | Partial | Scripted verified; dedicated live abstention smoke not run |
+| RAG-7 | Handle LLM errors/limits | gateway retry/fallback/budget + degraded | `test_gateway` | Partial | Scripted 429/timeout/budget; live rate-limit not forced |
+| RAG-8 | Tool-calling / structured tools | `investigation/tools.py` | live tool rounds + schemas | Done-verified | Live tools_round_0..3 with tool calls |
 
 | EVAL-1 | Automated evaluation harness | `eval/` | TBD | Not started | — |
 | EVAL-2 | ≥40 questions across required types | `eval/questions/` | TBD | Not started | — |

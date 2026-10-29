@@ -1,15 +1,15 @@
-"""Live InvestigationEngine smoke (requires GROQ_API_KEY)."""
+"""Live InvestigationEngine smoke (requires GROQ_API_KEY in .env or environment)."""
 
 from __future__ import annotations
 
 import hashlib
 import json
-import os
+import uuid
 from pathlib import Path
 
 import pytest
 
-from app.config import Settings
+from app.config import Settings, get_settings
 from app.index.qdrant_store import ChunkPoint, QdrantChunkStore
 from app.investigation.engine import InvestigationEngine
 from app.llm.gateway import build_gateway
@@ -31,35 +31,60 @@ CORPUS = {
 }
 
 
-def _has_groq() -> bool:
-    return bool(os.environ.get("GROQ_API_KEY", "").strip())
+def _secret_set(value: object | None) -> bool:
+    if value is None:
+        return False
+    get_secret = getattr(value, "get_secret_value", None)
+    if callable(get_secret):
+        return bool(str(get_secret()).strip())
+    return bool(str(value).strip())
+
+
+def _load_live_settings() -> Settings:
+    """Reload settings from .env (pydantic-settings); do not print secrets."""
+    get_settings.cache_clear()
+    base = get_settings()
+    if not _secret_set(base.groq_api_key):
+        pytest.skip("GROQ_API_KEY absent in .env / environment — live LLM test skipped")
+    return base.model_copy(
+        update={
+            "retrieval_top_k": 5,
+            "max_tool_rounds": 4,
+            "llm_budget_max_calls": 12,
+            "llm_timeout_s": 60.0,
+        }
+    )
 
 
 @pytest.fixture(scope="module")
 def live_engine() -> InvestigationEngine:
-    if not _has_groq():
-        pytest.skip("GROQ_API_KEY absent — live LLM test skipped")
+    settings = _load_live_settings()
     try:
         from app.embeddings.fastembed_provider import FastEmbedProvider
 
-        embedder = FastEmbedProvider()
+        embedder = FastEmbedProvider(model_name=settings.embedding_model)
     except Exception as exc:  # noqa: BLE001
         pytest.skip(f"FastEmbed unavailable for live test: {exc}")
 
-    store = QdrantChunkStore.local(
-        strategy="structure_aware",
-        embedding_short="bge-small",
-        dense_size=embedder.dimensions,
-    )
+    try:
+        store = QdrantChunkStore.local(
+            strategy="structure_aware",
+            embedding_short="bge-small",
+            dense_size=embedder.dimensions,
+        )
+    except Exception as exc:  # noqa: BLE001
+        pytest.skip(f"QdrantChunkStore.local failed: {exc}")
+
     store.ensure_collection()
     bm25 = Bm25Encoder()
     points: list[ChunkPoint] = []
     for doc_id, text in CORPUS.items():
         dense = embedder.embed_documents([text])[0]
         sparse = bm25.encode_document(text)
+        point_id = str(uuid.uuid5(uuid.NAMESPACE_URL, f"live:{doc_id}:0"))
         points.append(
             ChunkPoint(
-                point_id=f"{doc_id}:0",
+                point_id=point_id,
                 doc_id=doc_id,
                 version=1,
                 chunk_index=0,
@@ -72,12 +97,6 @@ def live_engine() -> InvestigationEngine:
             )
         )
     store.upsert_chunks(points)
-    settings = Settings(
-        retrieval_top_k=5,
-        max_tool_rounds=4,
-        llm_budget_max_calls=12,
-        llm_timeout_s=60.0,
-    )
     gateway = build_gateway(settings)
     if not gateway.available:
         pytest.skip("No LLM providers configured despite GROQ_API_KEY check")

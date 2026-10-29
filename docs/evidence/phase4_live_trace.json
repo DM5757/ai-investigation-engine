@@ -1,0 +1,188 @@
+{
+  "status": "answered",
+  "answer": "The March\u202f12 release/deploy of the **auth\u2011gateway** triggered the PaymentService disruptions \u2013 it caused timeouts in checkout and a spike in latency across the payments region\u3010S1\u3011\u3010S2\u3011. The resulting payment\u2011processing outage lasted about six hours\u3010S3\u3011. These details are documented in the change log (live_b) and the incident report (live_a).",
+  "citations": [
+    {
+      "label": "S1",
+      "chunk_id": "0d14fc3a-569d-5a45-bf5d-815389f0e416",
+      "doc_id": "live_b",
+      "quote": "Change log: The March 12 auth-gateway release caused PaymentService timeouts in checkout across the payments region."
+    },
+    {
+      "label": "S2",
+      "chunk_id": "00ffeaf4-549f-5298-b782-1851ae94c3a9",
+      "doc_id": "live_a",
+      "quote": "Incident report: PaymentService latency spiked after the March 12 deploy of auth-gateway."
+    },
+    {
+      "label": "S3",
+      "chunk_id": "00ffeaf4-549f-5298-b782-1851ae94c3a9",
+      "doc_id": "live_a",
+      "quote": "Payment processing disruptions lasted six hours."
+    },
+    {
+      "label": "S4",
+      "chunk_id": "b743a55d-395b-570b-b824-e45c37c111bc",
+      "doc_id": "live_c",
+      "quote": "InventoryService remained healthy throughout March."
+    }
+  ],
+  "claim_docs": [
+    "live_a",
+    "live_b",
+    "live_c"
+  ],
+  "trace": [
+    {
+      "stage": "guard",
+      "inputs_summary": "What caused PaymentService disruptions in March, and which documents support this?",
+      "outputs_summary": "len=82",
+      "latency_ms": 0.001500011421740055,
+      "tokens": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "calls": 0
+      }
+    },
+    {
+      "stage": "plan",
+      "inputs_summary": "What caused PaymentService disruptions in March, and which documents support this?",
+      "outputs_summary": "type=causal; n=2; llm=True",
+      "latency_ms": 0.018300022929906845,
+      "tokens": {
+        "prompt_tokens": 218,
+        "completion_tokens": 225,
+        "total_tokens": 443,
+        "calls": 1
+      }
+    },
+    {
+      "stage": "tools_seed_search",
+      "inputs_summary": "What caused the PaymentService disruptions in March?",
+      "outputs_summary": "results=3",
+      "latency_ms": 0.004500034265220165,
+      "tokens": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "calls": 0
+      }
+    },
+    {
+      "stage": "tools_round_0",
+      "inputs_summary": "round=0",
+      "outputs_summary": "content=False; tools=1",
+      "latency_ms": 0.003100023604929447,
+      "tokens": {
+        "prompt_tokens": 401,
+        "completion_tokens": 58,
+        "total_tokens": 459,
+        "calls": 1
+      }
+    },
+    {
+      "stage": "tools_round_1",
+      "inputs_summary": "round=1",
+      "outputs_summary": "content=False; tools=1",
+      "latency_ms": 0.004799920134246349,
+      "tokens": {
+        "prompt_tokens": 819,
+        "completion_tokens": 102,
+        "total_tokens": 921,
+        "calls": 1
+      }
+    },
+    {
+      "stage": "tools_round_2",
+      "inputs_summary": "round=2",
+      "outputs_summary": "content=False; tools=1",
+      "latency_ms": 0.00500003807246685,
+      "tokens": {
+        "prompt_tokens": 992,
+        "completion_tokens": 80,
+        "total_tokens": 1072,
+        "calls": 1
+      }
+    },
+    {
+      "stage": "tools_round_3",
+      "inputs_summary": "round=3",
+      "outputs_summary": "content=False; tools=1",
+      "latency_ms": 0.004600035026669502,
+      "tokens": {
+        "prompt_tokens": 1164,
+        "completion_tokens": 222,
+        "total_tokens": 1386,
+        "calls": 1
+      }
+    },
+    {
+      "stage": "extract",
+      "inputs_summary": "n_retrieved=6",
+      "outputs_summary": "verified=4",
+      "latency_ms": 0.004300032742321491,
+      "tokens": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "calls": 0
+      }
+    },
+    {
+      "stage": "contradictions",
+      "inputs_summary": "",
+      "outputs_summary": "conflicts=0",
+      "latency_ms": 0.001800013706088066,
+      "tokens": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "calls": 0
+      }
+    },
+    {
+      "stage": "sufficiency",
+      "inputs_summary": "",
+      "outputs_summary": "status=answered",
+      "latency_ms": 0.000800006091594696,
+      "tokens": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "calls": 0
+      }
+    },
+    {
+      "stage": "synthesize",
+      "inputs_summary": "",
+      "outputs_summary": "len=342",
+      "latency_ms": 0.006199930794537067,
+      "tokens": {
+        "prompt_tokens": 381,
+        "completion_tokens": 192,
+        "total_tokens": 573,
+        "calls": 1
+      }
+    },
+    {
+      "stage": "verify",
+      "inputs_summary": "",
+      "outputs_summary": "ok=True; removed=[]",
+      "latency_ms": 0.007200054824352264,
+      "tokens": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "calls": 0
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 599,
+    "completion_tokens": 417,
+    "total_tokens": 1016,
+    "calls": 2
+  },
+  "note": "Redacted live trace; API keys never stored."
+}

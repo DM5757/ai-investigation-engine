@@ -26,8 +26,15 @@
 6. How does the injection scanner interact with `read_chunk_context`?
 7. Why is `ScriptedLLM` sufficient to prove RAG-2..RAG-8 without burning free-tier quota?
 
+## Live evidence (2026-10-29)
+
+- `make test-live` → **1 passed** (Groq `openai/gpt-oss-120b`)
+- Multi-doc PaymentService question → `answered` with verified citations (`live_a`, `live_b`)
+- Artifact: `docs/evidence/phase4_live_trace.json`
+- Default pytest uses `-m "not live"`; use `make test-live` for LLM.
+
 ## Limits
 
-- Live LLM smoke **not** completed this session (keys absent).
+- Dedicated live smokes for abstention / contradiction / injection not re-run on Groq this session (scripted coverage exists).
 - Qdrant Cloud remote unverified; bm25_avgdl default; CRC32 collisions pending; retrieval eval pending.
-- Phase 5 (API/UI) not started.
+- Phase 5 (API/UI) not started until owner reviews Phase 4.
