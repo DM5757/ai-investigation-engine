@@ -29,8 +29,9 @@ Write-Host "logs: $OutLog"
 
 while (-not (Test-BulkDone)) {
     Write-Host "$(Get-Date -Format o) starting bulk_ingest (resume via checkpoint if present)"
+    $env:PYTHONUNBUFFERED = "1"
     $p = Start-Process -FilePath "uv" `
-        -ArgumentList @("run", "python", "scripts/bulk_ingest.py", "--max-docs", "55000", "--checkpoint-every", "50") `
+        -ArgumentList @("run", "python", "-u", "scripts/bulk_ingest.py", "--max-docs", "55000", "--checkpoint-every", "50", "--batch-size", "64") `
         -WorkingDirectory $Root `
         -RedirectStandardOutput $OutLog `
         -RedirectStandardError $ErrLog `

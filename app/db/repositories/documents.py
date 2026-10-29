@@ -27,6 +27,21 @@ class DocumentRepository:
         )
         return self.session.scalars(stmt).first()
 
+    def get_by_external_keys(self, external_keys: list[str]) -> dict[str, Document]:
+        """Bulk lookup non-deleted documents by external_key."""
+        keys = [k for k in external_keys if k]
+        if not keys:
+            return {}
+        stmt = select(Document).where(
+            Document.external_key.in_(keys),
+            Document.status != DocumentStatus.DELETED,
+        )
+        return {
+            str(doc.external_key): doc
+            for doc in self.session.scalars(stmt).all()
+            if doc.external_key
+        }
+
     def find_by_content_hash(
         self,
         content_hash: str,
@@ -40,6 +55,20 @@ class DocumentRepository:
         if exclude_id is not None:
             stmt = stmt.where(Document.id != exclude_id)
         return self.session.scalars(stmt).first()
+
+    def find_by_content_hashes(self, content_hashes: list[str]) -> dict[str, Document]:
+        """Bulk lookup non-deleted/non-failed docs by content_hash (first wins)."""
+        hashes = [h for h in content_hashes if h]
+        if not hashes:
+            return {}
+        stmt = select(Document).where(
+            Document.content_hash.in_(hashes),
+            Document.status.notin_([DocumentStatus.DELETED, DocumentStatus.FAILED]),
+        )
+        out: dict[str, Document] = {}
+        for doc in self.session.scalars(stmt).all():
+            out.setdefault(doc.content_hash, doc)
+        return out
 
     def list_by_status(self, *statuses: str) -> list[Document]:
         stmt = select(Document).where(Document.status.in_(statuses))

@@ -80,12 +80,18 @@ def main() -> None:
     parser.add_argument("--max-docs", type=int, default=50_000)
     parser.add_argument("--throttle", type=float, default=0.0)
     parser.add_argument("--checkpoint-every", type=int, default=50)
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=32,
+        help="Docs per embed/upsert batch (1 = legacy per-doc path)",
+    )
     parser.add_argument("--force", action="store_true", help="Ignore no-go estimate")
     parser.add_argument("--reset-checkpoint", action="store_true")
     parser.add_argument(
         "--check-near-dup",
         action="store_true",
-        help="Enable SimHash near-dup checks (slower; off by default for bulk)",
+        help="Enable SimHash near-dup checks (slower; forces batch_size=1)",
     )
     parser.add_argument(
         "--start-index",
@@ -170,6 +176,7 @@ def main() -> None:
 
     settings = get_settings()
     t0 = time.perf_counter()
+    batch_size = 1 if args.check_near_dup else max(1, args.batch_size)
     result = ingest_records(
         records,
         settings=settings,
@@ -178,6 +185,7 @@ def main() -> None:
         checkpoint_every=args.checkpoint_every,
         start_index=start_index,
         check_near_duplicates=args.check_near_dup,
+        batch_size=batch_size,
     )
     wall = time.perf_counter() - t0
     counts = neon_doc_counts(settings)

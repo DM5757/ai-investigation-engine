@@ -1,0 +1,7 @@
+{
+  "id": "hybrid_rrf",
+  "description": "Hybrid dense+BM25 with RRF fusion",
+  "retrieval_mode": "hybrid_rrf",
+  "pipeline": "retrieval_only",
+  "top_k": 10
+}

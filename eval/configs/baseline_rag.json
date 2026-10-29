@@ -1,0 +1,7 @@
+{
+  "id": "baseline_rag",
+  "description": "Single-shot retrieve + synthesize (no multi-step tool loop)",
+  "retrieval_mode": "hybrid_rrf",
+  "pipeline": "baseline_rag",
+  "top_k": 8
+}

@@ -1,0 +1,7 @@
+{
+  "id": "dense_only",
+  "description": "Dense vector retrieval only (no sparse / fusion)",
+  "retrieval_mode": "dense",
+  "pipeline": "retrieval_only",
+  "top_k": 10
+}

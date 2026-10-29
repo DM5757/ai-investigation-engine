@@ -24,14 +24,14 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | RAG-7 | Handle LLM errors/limits | gateway retry/fallback/budget + degraded | `test_gateway` | Partial | Scripted 429/timeout/budget; live rate-limit not forced |
 | RAG-8 | Tool-calling / structured tools | `investigation/tools.py` | live tool rounds + schemas | Done-verified | Live tools_round_0..3 with tool calls |
 
-| EVAL-1 | Automated evaluation harness | `eval/` | TBD | Not started | — |
-| EVAL-2 | ≥40 questions across required types | `eval/questions/` | TBD | Not started | — |
-| EVAL-3 | Quantitative retrieval + answer metrics | `eval/metrics.py` | TBD | Not started | — |
-| EVAL-4 | Compare ≥2 configurations | `eval/configs/` | TBD | Not started | — |
-| EVAL-5 | Error analysis | EVALUATION_REPORT | TBD | Not started | — |
+| EVAL-1 | Automated evaluation harness | `eval/run_eval.py`, `eval/metrics.py` | `tests/unit/test_eval_metrics.py` + result JSONs | Done-verified | Resumable; preliminary corpus labeled |
+| EVAL-2 | ≥40 questions across required types | `eval/questions/eval_set.json` (75) | manifest type_counts | Done-verified | Hotpot + synthetic; seed 42 |
+| EVAL-3 | Quantitative retrieval + answer metrics | `eval/metrics.py` + runners | `prelim_retrieval_v2`, `prelim_answer_v1` | Done-verified | Many Hotpot golds unresolved until ingest catches titles |
+| EVAL-4 | Compare ≥2 configurations | dense vs hybrid; baseline vs investigation | comparison JSONs | Done-verified | Chunking DOC-6 also compared |
+| EVAL-5 | Error analysis | `docs/EVALUATION_REPORT.md` | report §4 | Done-verified | Honest preliminary limitations |
 | APP-1 | Python backend | FastAPI routes + deps (`documents`/`query`/`stats`) | `test_api_*` + phase5.txt | Done-verified | Thin handlers → lifecycle/engine |
 | APP-2 | Functional UI (docs, ask, sources) | `app/ui/static/` | `test_api_ui_static` + phase5_ui_checklist | Done-verified | textContent-only; admin token in JS memory |
-| DATA-1 | Process ≥50,000 documents/records | HotpotQA corpus + lifecycle ingest | `verify_counts.py` / `dataset_counts.json` | Partial | Corpus built to 55k; indexed count only as measured in evidence — do not claim 50k until ACTIVE≥50k |
+| DATA-1 | Process ≥50,000 documents/records | HotpotQA corpus + lifecycle ingest | `verify_counts.py` / `dataset_counts.json` | Partial | Corpus JSONL 55k built; bulk ingest in progress (batched); claim 50k only when measured ACTIVE≥50k |
 | DATA-2 | Cross-document retrieval; identifiable sources | `hotpotqa:<title>` external_key + citations | pilot/bulk + Phase 4 citations | Partial | Sources keyed; full-corpus retrieval eval is Phase 7 |
 | DATA-3 | Incomplete and contradictory information | `data/manifests/synthetic_truth.json` | synthetic generator | Done-verified | Planted contradictions, incompleteness, injection samples |
 | DATA-4 | Reproducible evaluation / subset justification | `docs/DATASET.md` + manifests | manifests sha256/seed | Done-verified | Seed 42; subset/scale justified in DATASET.md + storage estimate |
@@ -46,7 +46,7 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | TECH-4 | Performance and LLM cost understanding | PERFORMANCE_AND_COST | measured | Partial | Embed RSS/512m bench recorded; LLM cost TBD |
 | SUB-1 | GitHub repo with history | git | `5c4d02c` on origin/main | Partial | History started; more phase commits needed |
 | SUB-2 | Live demo link | README | `phase1_deploy.txt` | Done-verified | https://ai-investigation-engine-scyz.onrender.com |
-| SUB-3 | README | README.md | review | Not started | — |
-| SUB-4 | Evaluation report | EVALUATION_REPORT | evidence | Not started | — |
-| SUB-5 | AI usage report | AI_USAGE_REPORT | owner fill-in | Not started | — |
+| SUB-3 | README | README.md | review | Done-verified | Describes implemented system + honesty rules |
+| SUB-4 | Evaluation report | `docs/EVALUATION_REPORT.md` | evidence paths | Done-verified | Preliminary metrics; owner should re-read |
+| SUB-5 | AI usage report | `docs/AI_USAGE_REPORT.md` | owner fill-in | Partial | AI disclosure written; **candidate must complete independent-verification section** |
 | INT-1 | Interview/docs/exercises | guides + drills | TBD | Not started | — |

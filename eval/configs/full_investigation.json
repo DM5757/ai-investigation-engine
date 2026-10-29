@@ -1,0 +1,7 @@
+{
+  "id": "full_investigation",
+  "description": "Full investigation engine (plan → tools → verify)",
+  "retrieval_mode": "hybrid_rrf",
+  "pipeline": "investigation",
+  "top_k": 8
+}

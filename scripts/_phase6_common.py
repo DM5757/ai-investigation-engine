@@ -388,6 +388,381 @@ def estimate_from_pilot(
     }
 
 
+def _ingest_one(
+    lifecycle: DocumentLifecycle,
+    session: Session,
+    rec: dict[str, Any],
+    *,
+    idx: int,
+    settings: Settings,
+    outcomes: dict[str, int],
+    errors: list[dict[str, str]],
+) -> None:
+    """Single-record lifecycle.add path (fallback / batch_size=1)."""
+    ext = str(rec.get("id") or f"row-{idx}")
+    try:
+        prep = record_to_prepared(
+            rec,
+            chunk_strategy=settings.chunk_strategy,
+            chunk_tokens=settings.chunk_tokens,
+            overlap_tokens=settings.overlap_tokens,
+        )
+        result = lifecycle.add(
+            prep.filename,
+            b"",
+            external_key=ext,
+            prepared=prep,
+        )
+        key = str(result.outcome)
+        outcomes[key] = outcomes.get(key, 0) + 1
+        if key == "failed" and len(errors) < 20:
+            errors.append(
+                {
+                    "id": ext,
+                    "error": (result.message or "lifecycle failed")[:300],
+                }
+            )
+    except Exception as exc:  # noqa: BLE001
+        outcomes["error"] = outcomes.get("error", 0) + 1
+        if len(errors) < 20:
+            errors.append({"id": ext, "error": str(exc)[:300]})
+        session.rollback()
+        session.expire_all()
+
+
+def _ingest_batch(
+    lifecycle: DocumentLifecycle,
+    session: Session,
+    store: ChunkStore,
+    batch: list[tuple[int, dict[str, Any]]],
+    *,
+    settings: Settings,
+    outcomes: dict[str, int],
+    errors: list[dict[str, str]],
+) -> None:
+    """Batched create → embed → Qdrant upsert → ACTIVE (fewer round-trips).
+
+    Preserves external_key / content_hash semantics. Near-dup checks are skipped
+    in this path (bulk default); use batch_size=1 with check_near_duplicates for
+    full lifecycle behavior.
+    """
+    from app.db.models import DocumentStatus
+    from app.index.qdrant_store import ChunkPoint
+
+    prepared: list[tuple[str, Any]] = []
+    for idx, rec in batch:
+        ext = str(rec.get("id") or f"row-{idx}")
+        try:
+            prep = record_to_prepared(
+                rec,
+                chunk_strategy=settings.chunk_strategy,
+                chunk_tokens=settings.chunk_tokens,
+                overlap_tokens=settings.overlap_tokens,
+            )
+            prepared.append((ext, prep))
+        except Exception as exc:  # noqa: BLE001
+            outcomes["error"] = outcomes.get("error", 0) + 1
+            if len(errors) < 20:
+                errors.append({"id": ext, "error": str(exc)[:300]})
+
+    if not prepared:
+        return
+
+    existing_by_key = lifecycle.docs.get_by_external_keys([ext for ext, _ in prepared])
+    hashes = [prep.content_hash for _, prep in prepared]
+    existing_by_hash = lifecycle.docs.find_by_content_hashes(hashes)
+
+    to_create: list[tuple[str, Any]] = []
+    to_finish: list[Any] = []  # INDEXING/PENDING docs that need index completion
+    for ext, prep in prepared:
+        existing = existing_by_key.get(ext)
+        if existing is not None:
+            status = str(existing.status)
+            if existing.content_hash == prep.content_hash:
+                if status in (
+                    DocumentStatus.INDEXING,
+                    DocumentStatus.PENDING,
+                    DocumentStatus.FAILED,
+                ):
+                    # Interrupted batch left a non-ACTIVE row — finish indexing.
+                    to_finish.append(existing)
+                else:
+                    outcomes["unchanged"] = outcomes.get("unchanged", 0) + 1
+            else:
+                # Content changed under same key — fall back to single-doc update.
+                try:
+                    result = lifecycle.update(ext, prep.filename, b"", prepared=prep)
+                    key = str(result.outcome)
+                    outcomes[key] = outcomes.get(key, 0) + 1
+                except Exception as exc:  # noqa: BLE001
+                    outcomes["error"] = outcomes.get("error", 0) + 1
+                    if len(errors) < 20:
+                        errors.append({"id": ext, "error": str(exc)[:300]})
+                    session.rollback()
+                    session.expire_all()
+            continue
+        exact = existing_by_hash.get(prep.content_hash)
+        if exact is not None and exact.external_key != ext:
+            outcomes["exact_duplicate"] = outcomes.get("exact_duplicate", 0) + 1
+            continue
+        to_create.append((ext, prep))
+
+    # Complete interrupted INDEXING/PENDING/FAILED rows (real embeddings, not zeros).
+    for doc in to_finish:
+        try:
+            version = doc.active_version if doc.active_version >= 1 else 1
+            chunk_rows = lifecycle.chunks.list_for_version(doc.id, version)
+            if not chunk_rows:
+                # Version rows may exist under version 1 even if active_version=0
+                chunk_rows = lifecycle.chunks.list_for_version(doc.id, 1)
+                version = 1
+            if not chunk_rows:
+                outcomes["failed"] = outcomes.get("failed", 0) + 1
+                continue
+            lifecycle.docs.set_status(doc, DocumentStatus.INDEXING, clear_error=True)
+            session.commit()
+            texts = [r.text for r in chunk_rows]
+            vectors = lifecycle.embed_fn(texts)
+            points: list[ChunkPoint] = []
+            for row, dense in zip(chunk_rows, vectors, strict=True):
+                sparse_indices: list[int] = []
+                sparse_values: list[float] = []
+                if lifecycle.sparse_encoder is not None:
+                    sparse = lifecycle.sparse_encoder.encode_document(row.text)
+                    sparse_indices = sparse.indices
+                    sparse_values = sparse.values
+                points.append(
+                    ChunkPoint(
+                        point_id=row.qdrant_point_id,
+                        doc_id=doc.id,
+                        version=version,
+                        chunk_index=row.chunk_index,
+                        content_hash=row.content_hash,
+                        text=row.text,
+                        dense_vector=dense,
+                        sparse_indices=sparse_indices,
+                        sparse_values=sparse_values,
+                        payload_extra={
+                            "title": doc.title,
+                            "heading_path": row.heading_path,
+                            "near_duplicate_of": doc.near_duplicate_of,
+                        },
+                    )
+                )
+            store.upsert_chunks(points)
+            lifecycle.docs.set_status(doc, DocumentStatus.ACTIVE, clear_error=True)
+            lifecycle.docs.set_active_version(doc, version)
+            session.commit()
+            outcomes["created"] = outcomes.get("created", 0) + 1
+        except Exception as exc:  # noqa: BLE001
+            session.rollback()
+            outcomes["failed"] = outcomes.get("failed", 0) + 1
+            if len(errors) < 20:
+                errors.append({"id": str(doc.external_key or doc.id), "error": str(exc)[:300]})
+
+    if not to_create:
+        return
+
+    # Dedup within batch by external_key / content_hash.
+    seen_keys: set[str] = set()
+    seen_hashes: set[str] = set()
+    unique_create: list[tuple[str, Any]] = []
+    for ext, prep in to_create:
+        if ext in seen_keys:
+            outcomes["unchanged"] = outcomes.get("unchanged", 0) + 1
+            continue
+        if prep.content_hash in seen_hashes:
+            outcomes["exact_duplicate"] = outcomes.get("exact_duplicate", 0) + 1
+            continue
+        seen_keys.add(ext)
+        seen_hashes.add(prep.content_hash)
+        unique_create.append((ext, prep))
+
+    pending_rows: list[tuple[Any, int, Any, list[Any]]] = []
+    try:
+        for ext, prep in unique_create:
+            doc = lifecycle.docs.create(
+                external_key=ext,
+                filename=prep.filename,
+                title=prep.title,
+                content_hash=prep.content_hash,
+                simhash=f"{prep.simhash:016x}",
+                status=DocumentStatus.PENDING,
+                active_version=0,
+                metadata=prep.metadata,
+            )
+            version = 1
+            lifecycle._persist_version_and_chunks(doc, version, prep)
+            lifecycle.docs.replace_simhash_bands(
+                doc.id,
+                bands=prep.bands,
+                simhash=f"{prep.simhash:016x}",
+                content_hash=prep.content_hash,
+            )
+            lifecycle.docs.set_status(doc, DocumentStatus.INDEXING, clear_error=True)
+            chunk_rows = lifecycle.chunks.list_for_version(doc.id, version)
+            pending_rows.append((doc, version, prep, chunk_rows))
+        session.commit()
+    except Exception as exc:  # noqa: BLE001
+        session.rollback()
+        session.expire_all()
+        # Fall back to single-doc path for this batch to preserve progress.
+        outcomes["batch_fallback"] = outcomes.get("batch_fallback", 0) + 1
+        if len(errors) < 20:
+            errors.append({"id": "batch", "error": f"batch persist failed: {exc}"[:300]})
+        for ext, prep in unique_create:
+            try:
+                result = lifecycle.add(prep.filename, b"", external_key=ext, prepared=prep)
+                key = str(result.outcome)
+                outcomes[key] = outcomes.get(key, 0) + 1
+            except Exception as inner:  # noqa: BLE001
+                outcomes["error"] = outcomes.get("error", 0) + 1
+                if len(errors) < 20:
+                    errors.append({"id": ext, "error": str(inner)[:300]})
+                session.rollback()
+                session.expire_all()
+        return
+
+    all_texts: list[str] = []
+    for _doc, _ver, _prep, chunk_rows in pending_rows:
+        for row in chunk_rows:
+            all_texts.append(row.text)
+
+    try:
+        vectors = lifecycle.embed_fn(all_texts) if all_texts else []
+        if len(vectors) != len(all_texts):
+            raise RuntimeError(
+                f"embed count mismatch: got {len(vectors)} for {len(all_texts)} texts"
+            )
+        points: list[ChunkPoint] = []
+        vec_i = 0
+        for doc, version, _prep, chunk_rows in pending_rows:
+            for row in chunk_rows:
+                dense = vectors[vec_i]
+                vec_i += 1
+                sparse_indices: list[int] = []
+                sparse_values: list[float] = []
+                if lifecycle.sparse_encoder is not None:
+                    sparse = lifecycle.sparse_encoder.encode_document(row.text)
+                    sparse_indices = sparse.indices
+                    sparse_values = sparse.values
+                points.append(
+                    ChunkPoint(
+                        point_id=row.qdrant_point_id,
+                        doc_id=doc.id,
+                        version=version,
+                        chunk_index=row.chunk_index,
+                        content_hash=row.content_hash,
+                        text=row.text,
+                        dense_vector=dense,
+                        sparse_indices=sparse_indices,
+                        sparse_values=sparse_values,
+                        payload_extra={
+                            "title": doc.title,
+                            "heading_path": row.heading_path,
+                            "near_duplicate_of": doc.near_duplicate_of,
+                        },
+                    )
+                )
+        store.upsert_chunks(points)
+        for doc, version, _prep, _rows in pending_rows:
+            lifecycle.docs.set_status(doc, DocumentStatus.ACTIVE, clear_error=True)
+            lifecycle.docs.set_active_version(doc, version)
+        session.commit()
+        outcomes["created"] = outcomes.get("created", 0) + len(pending_rows)
+    except Exception as exc:  # noqa: BLE001
+        session.rollback()
+        for doc, _version, _prep, _rows in pending_rows:
+            try:
+                failed = lifecycle.docs.get(doc.id)
+                if failed is not None:
+                    lifecycle.docs.set_status(
+                        failed, DocumentStatus.FAILED, error_message=str(exc)[:500]
+                    )
+            except Exception:  # noqa: BLE001
+                pass
+        session.commit()
+        outcomes["failed"] = outcomes.get("failed", 0) + len(pending_rows)
+        if len(errors) < 20:
+            errors.append({"id": "batch_index", "error": str(exc)[:300]})
+
+
+def _repair_incomplete_docs(
+    lifecycle: DocumentLifecycle,
+    session: Session,
+    store: ChunkStore,
+    outcomes: dict[str, int],
+    errors: list[dict[str, str]],
+    *,
+    limit: int = 500,
+) -> int:
+    """Finish INDEXING/PENDING docs with real embeddings (not reconcile zero vectors)."""
+    from app.db.models import DocumentStatus
+    from app.index.qdrant_store import ChunkPoint
+
+    docs = lifecycle.docs.list_by_status(
+        DocumentStatus.INDEXING, DocumentStatus.PENDING
+    )[:limit]
+    repaired = 0
+    for doc in docs:
+        try:
+            version = doc.active_version if doc.active_version >= 1 else 1
+            chunk_rows = lifecycle.chunks.list_for_version(doc.id, version)
+            if not chunk_rows:
+                chunk_rows = lifecycle.chunks.list_for_version(doc.id, 1)
+                version = 1
+            if not chunk_rows:
+                lifecycle.docs.set_status(
+                    doc, DocumentStatus.FAILED, error_message="repair: no chunks"
+                )
+                session.commit()
+                outcomes["failed"] = outcomes.get("failed", 0) + 1
+                continue
+            lifecycle.docs.set_status(doc, DocumentStatus.INDEXING, clear_error=True)
+            session.commit()
+            vectors = lifecycle.embed_fn([r.text for r in chunk_rows])
+            points: list[ChunkPoint] = []
+            for row, dense in zip(chunk_rows, vectors, strict=True):
+                sparse_indices: list[int] = []
+                sparse_values: list[float] = []
+                if lifecycle.sparse_encoder is not None:
+                    sparse = lifecycle.sparse_encoder.encode_document(row.text)
+                    sparse_indices = sparse.indices
+                    sparse_values = sparse.values
+                points.append(
+                    ChunkPoint(
+                        point_id=row.qdrant_point_id,
+                        doc_id=doc.id,
+                        version=version,
+                        chunk_index=row.chunk_index,
+                        content_hash=row.content_hash,
+                        text=row.text,
+                        dense_vector=dense,
+                        sparse_indices=sparse_indices,
+                        sparse_values=sparse_values,
+                        payload_extra={
+                            "title": doc.title,
+                            "heading_path": row.heading_path,
+                            "near_duplicate_of": doc.near_duplicate_of,
+                        },
+                    )
+                )
+            store.upsert_chunks(points)
+            lifecycle.docs.set_status(doc, DocumentStatus.ACTIVE, clear_error=True)
+            lifecycle.docs.set_active_version(doc, version)
+            session.commit()
+            outcomes["repaired"] = outcomes.get("repaired", 0) + 1
+            repaired += 1
+        except Exception as exc:  # noqa: BLE001
+            session.rollback()
+            outcomes["failed"] = outcomes.get("failed", 0) + 1
+            if len(errors) < 20:
+                errors.append(
+                    {"id": str(doc.external_key or doc.id), "error": f"repair: {exc}"[:300]}
+                )
+    return repaired
+
+
 def ingest_records(
     records: list[dict[str, Any]],
     *,
@@ -397,63 +772,71 @@ def ingest_records(
     checkpoint_every: int = 50,
     start_index: int = 0,
     check_near_duplicates: bool = True,
+    batch_size: int = 32,
 ) -> dict[str, Any]:
-    """Ingest corpus records via DocumentLifecycle. Resumable via checkpoint."""
+    """Ingest corpus records via DocumentLifecycle. Resumable via checkpoint.
+
+    ``batch_size`` > 1 enables batched DB writes + embedding + Qdrant upserts.
+    Near-duplicate SimHash checks run only when ``batch_size == 1`` and
+    ``check_near_duplicates`` is True (bulk default disables near-dup).
+    """
     settings = settings or get_settings()
     store = build_store(settings)
     session = open_session(settings)
     embedder = FastEmbedProvider(model_name=settings.embedding_model)
+    use_batch = batch_size > 1 and not check_near_duplicates
     lifecycle = make_lifecycle(
         session,
         store,
         settings,
         embedder=embedder,
-        check_near_duplicates=check_near_duplicates,
+        check_near_duplicates=check_near_duplicates and not use_batch,
     )
 
     outcomes: dict[str, int] = {}
     errors: list[dict[str, str]] = []
     t0 = time.perf_counter()
     processed = 0
+    # Repair interrupted INDEXING/PENDING rows left by killed batch runs.
+    repaired = _repair_incomplete_docs(lifecycle, session, store, outcomes, errors)
+    if repaired:
+        print(f"repaired_incomplete_docs={repaired} outcomes={outcomes}", flush=True)
     print(
         f"ingest start records={len(records)} start_index={start_index} "
-        f"embedder={embedder.model_name}",
+        f"embedder={embedder.model_name} batch_size={batch_size if use_batch else 1}",
         flush=True,
     )
     try:
-        for idx in range(start_index, len(records)):
-            rec = records[idx]
-            ext = str(rec.get("id") or f"row-{idx}")
-            try:
-                prep = record_to_prepared(
-                    rec,
-                    chunk_strategy=settings.chunk_strategy,
-                    chunk_tokens=settings.chunk_tokens,
-                    overlap_tokens=settings.overlap_tokens,
+        idx = start_index
+        while idx < len(records):
+            if use_batch:
+                end = min(idx + batch_size, len(records))
+                batch = [(i, records[i]) for i in range(idx, end)]
+                _ingest_batch(
+                    lifecycle,
+                    session,
+                    store,
+                    batch,
+                    settings=settings,
+                    outcomes=outcomes,
+                    errors=errors,
                 )
-                result = lifecycle.add(
-                    prep.filename,
-                    b"",
-                    external_key=ext,
-                    prepared=prep,
+                step = end - idx
+                idx = end
+            else:
+                _ingest_one(
+                    lifecycle,
+                    session,
+                    records[idx],
+                    idx=idx,
+                    settings=settings,
+                    outcomes=outcomes,
+                    errors=errors,
                 )
-                key = str(result.outcome)
-                outcomes[key] = outcomes.get(key, 0) + 1
-                if key == "failed" and len(errors) < 20:
-                    errors.append(
-                        {
-                            "id": ext,
-                            "error": (result.message or "lifecycle failed")[:300],
-                        }
-                    )
-            except Exception as exc:  # noqa: BLE001
-                outcomes["error"] = outcomes.get("error", 0) + 1
-                if len(errors) < 20:
-                    errors.append({"id": ext, "error": str(exc)[:300]})
-                session.rollback()
-                session.expire_all()
-            processed += 1
-            if processed == 1 or processed % 10 == 0:
+                step = 1
+                idx += 1
+            processed += step
+            if processed == step or processed % 10 == 0 or (use_batch and step > 1):
                 elapsed = time.perf_counter() - t0
                 rps = processed / elapsed if elapsed > 0 else 0.0
                 print(
@@ -462,14 +845,19 @@ def ingest_records(
                     flush=True,
                 )
             if throttle_s > 0:
-                time.sleep(throttle_s)
-            if checkpoint_path and processed % checkpoint_every == 0:
+                time.sleep(throttle_s * step)
+            if checkpoint_path and (
+                processed % checkpoint_every == 0
+                or (use_batch and processed % checkpoint_every < step)
+                or idx >= len(records)
+            ):
                 write_json(
                     checkpoint_path,
                     {
-                        "next_index": idx + 1,
+                        "next_index": idx,
                         "processed": start_index + processed,
                         "outcomes": outcomes,
+                        "batch_size": batch_size if use_batch else 1,
                         "updated_at": time.time(),
                     },
                 )
@@ -484,6 +872,7 @@ def ingest_records(
                 "next_index": start_index + processed,
                 "processed": start_index + processed,
                 "outcomes": outcomes,
+                "batch_size": batch_size if use_batch else 1,
                 "done": start_index + processed >= len(records),
                 "updated_at": time.time(),
             },
@@ -495,4 +884,5 @@ def ingest_records(
         "errors_sample": errors,
         "wall_seconds": round(wall, 3),
         "records_per_second": round(processed / wall, 3) if wall > 0 else None,
+        "batch_size": batch_size if use_batch else 1,
     }

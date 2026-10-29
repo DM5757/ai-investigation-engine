@@ -1,0 +1,75 @@
+{
+  "created_at": "2026-10-29T05:10:56.031937+00:00",
+  "run_id": "prelim_answer_v1",
+  "split": "test",
+  "corpus": {
+    "active_documents": 2114,
+    "non_deleted_documents": 2180,
+    "chunk_rows": 2264,
+    "by_status": {
+      "ACTIVE": 2114,
+      "DELETED": 1,
+      "FAILED": 1,
+      "INDEXING": 65
+    }
+  },
+  "preliminary": true,
+  "summaries": [
+    {
+      "config_id": "baseline_rag",
+      "pipeline": "baseline_rag",
+      "retrieval_mode": "hybrid_rrf",
+      "k": 8,
+      "n_questions": 20,
+      "n_errors": 0,
+      "corpus_active_documents": 2114,
+      "retrieval": {
+        "n": 3,
+        "recall_at_k": 0.8333333333333334,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.6666666666666666,
+        "multi_doc_coverage": 0.8333333333333334,
+        "mean_latency_s": 1.2570618000269558
+      },
+      "answer": {
+        "n": 20,
+        "exact_match": 0.0,
+        "token_f1": 0.017247635361064127,
+        "citation_f1": 0.07833333333333334,
+        "correct_abstention_rate": 0.0,
+        "contradiction_detection_rate": 0.0,
+        "mean_latency_s": 6.487772604997735,
+        "mean_llm_calls": 0.8,
+        "mean_tokens": 1165.95
+      }
+    },
+    {
+      "config_id": "full_investigation",
+      "pipeline": "investigation",
+      "retrieval_mode": "hybrid_rrf",
+      "k": 8,
+      "n_questions": 20,
+      "n_errors": 0,
+      "corpus_active_documents": 2114,
+      "retrieval": {
+        "n": 3,
+        "recall_at_k": 0.8333333333333334,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.6666666666666666,
+        "multi_doc_coverage": 0.8333333333333334,
+        "mean_latency_s": 0.1901556000035877
+      },
+      "answer": {
+        "n": 20,
+        "exact_match": 0.0,
+        "token_f1": 0.014696969696969698,
+        "citation_f1": 0.1,
+        "correct_abstention_rate": 1.0,
+        "contradiction_detection_rate": 0.0,
+        "mean_latency_s": 0.2029744600004051,
+        "mean_llm_calls": 0.0,
+        "mean_tokens": 0.0
+      }
+    }
+  ]
+}

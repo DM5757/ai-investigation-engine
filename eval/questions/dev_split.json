@@ -1,0 +1,688 @@
+{
+  "split": "dev",
+  "n": 29,
+  "questions": [
+    {
+      "id": "hotpot_1272",
+      "question": "Which of Jonny Craig and Pete Doherty has been a member of more bands ?",
+      "gold_answer": "Jonny\" Craig",
+      "gold_doc_titles": [
+        "Jonny Craig",
+        "Pete Doherty"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Jonny Craig",
+        "hotpotqa:Pete Doherty"
+      ],
+      "question_type": "multi_doc",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 11,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_0977",
+      "question": "Stray Arrows: A Collection of Favorites is the first compilation album released by an American alternative metal band that formed in what Chicago suburb?",
+      "gold_answer": "Wildwood",
+      "gold_doc_titles": [
+        "Stray Arrows: A Collection of Favorites",
+        "Chevelle (band)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Stray Arrows: A Collection of Favorites",
+        "hotpotqa:Chevelle (band)"
+      ],
+      "question_type": "multi_doc",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 50,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_3537",
+      "question": "The man tried for the murder of Anthony \"White Tony\" Johnson is suspected of how many unsolved murders along with his younger brother?",
+      "gold_answer": "96",
+      "gold_doc_titles": [
+        "Anthony &quot;White Tony&quot; Johnson",
+        "Desmond Noonan"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Anthony &quot;White Tony&quot; Johnson",
+        "hotpotqa:Desmond Noonan"
+      ],
+      "question_type": "multi_doc",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 66,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_4599",
+      "question": "What was the previous name of the Italian town that is about 15 kilometres from a former Cistercian monastery?",
+      "gold_answer": "Borgo San Donnino",
+      "gold_doc_titles": [
+        "Fontevivo Abbey",
+        "Fidenza"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Fontevivo Abbey",
+        "hotpotqa:Fidenza"
+      ],
+      "question_type": "multi_doc",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 16,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_0180",
+      "question": "Which character does this protagonist, who secretly loves and marries a member of the rival house, of William Shakespeare's tragedy that has a fictional character Benvolio slay?",
+      "gold_answer": "Tybalt",
+      "gold_doc_titles": [
+        "Benvolio",
+        "Romeo"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Benvolio",
+        "hotpotqa:Romeo"
+      ],
+      "question_type": "multi_doc",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 60,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_2905",
+      "question": "What nationality was Oliver Reed's character in the film Royal Flash?",
+      "gold_answer": "Prussian",
+      "gold_doc_titles": [
+        "Royal Flash (film)",
+        "Otto von Bismarck"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Royal Flash (film)",
+        "hotpotqa:Otto von Bismarck"
+      ],
+      "question_type": "multi_doc",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 25,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_4348",
+      "question": "When was the game, in which Drew Gehling voices Gord, released for PlayStation 2?",
+      "gold_answer": "17 October 2006",
+      "gold_doc_titles": [
+        "Drew Gehling",
+        "Bully (video game)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Drew Gehling",
+        "hotpotqa:Bully (video game)"
+      ],
+      "question_type": "multi_doc",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 26,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "syn_multi_payment_march",
+      "question": "Which system changes caused disruptions in payment processing in March, which services were affected, and which documents support this?",
+      "gold_answer": "AuthGateway JWT TTL misconfiguration and related deploy changes disrupted payment processing; payment and auth services affected.",
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log",
+        "status_update",
+        "postmortem_draft"
+      ],
+      "gold_external_keys": [],
+      "gold_doc_paths": [
+        "data/synthetic/incident_march.md",
+        "data/synthetic/change_log.html",
+        "data/synthetic/status_update.txt",
+        "data/synthetic/postmortem_draft.docx"
+      ],
+      "question_type": "multi_doc",
+      "split_hint": "synthetic",
+      "provenance": {
+        "source": "synthetic_truth",
+        "seed": 42
+      },
+      "index": 0,
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_1889",
+      "question": "Mastophora dizzydeani is a species of spider named after baseball player Jerome Herman Dean who goes by what nickname?",
+      "gold_answer": "Dizzy Dean",
+      "gold_doc_titles": [
+        "Mastophora dizzydeani",
+        "Dizzy Dean"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Mastophora dizzydeani",
+        "hotpotqa:Dizzy Dean"
+      ],
+      "question_type": "multi_doc",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 15,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_3086",
+      "question": "Are both genera Silphium and Heliotropium, genera of flowering plants ?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "Silphium (genus)",
+        "Heliotropium"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Silphium (genus)",
+        "hotpotqa:Heliotropium"
+      ],
+      "question_type": "multi_doc",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 56,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_0015",
+      "question": "Are Giuseppe Verdi and Ambroise Thomas both Opera composers ?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "Giuseppe Verdi",
+        "Ambroise Thomas"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Giuseppe Verdi",
+        "hotpotqa:Ambroise Thomas"
+      ],
+      "question_type": "factual",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 18,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "syn_exec_summary",
+      "question": "What does the executive summary say about the March outage impact?",
+      "gold_answer": "payment processing disruptions",
+      "gold_doc_paths": [
+        "data/synthetic/exec_summary.pdf"
+      ],
+      "gold_doc_titles": [
+        "exec_summary"
+      ],
+      "gold_external_keys": [],
+      "question_type": "factual",
+      "split_hint": "synthetic",
+      "provenance": {
+        "source": "synthetic_enterprise"
+      },
+      "index": 9,
+      "split": "dev"
+    },
+    {
+      "id": "syn_factual_alpha_marker",
+      "question": "Where is the ALPHA-OUTAGE-0810 marker described?",
+      "gold_answer": "ALPHA-OUTAGE-0810",
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_doc_paths": [
+        "data/synthetic/long_architecture.md"
+      ],
+      "gold_external_keys": [],
+      "question_type": "factual",
+      "split_hint": "synthetic",
+      "provenance": {
+        "source": "chunking_gold_spans"
+      },
+      "index": 1,
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_3922",
+      "question": "Ashly Burch is known for voicing Aloy in a video game released in what year?",
+      "gold_answer": "2017",
+      "gold_doc_titles": [
+        "Ashly Burch",
+        "Horizon Zero Dawn"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Ashly Burch",
+        "hotpotqa:Horizon Zero Dawn"
+      ],
+      "question_type": "factual",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 28,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_1550",
+      "question": "Who was born first, Adrian McLaren or Ryan McLaren?",
+      "gold_answer": "Adrian Peter McLaren",
+      "gold_doc_titles": [
+        "Adrian McLaren",
+        "Ryan McLaren"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Adrian McLaren",
+        "hotpotqa:Ryan McLaren"
+      ],
+      "question_type": "factual",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 13,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_1780",
+      "question": "Ruth Vollmer begins work designing window displays for which American luxury jewelry and specialty retailer, headquartered in New York City",
+      "gold_answer": "Tiffany's",
+      "gold_doc_titles": [
+        "Ruth Vollmer",
+        "Tiffany &amp; Co."
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Ruth Vollmer",
+        "hotpotqa:Tiffany &amp; Co."
+      ],
+      "question_type": "factual",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 23,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "syn_contra_c1_deploy_time",
+      "question": "What do the documents say about auth-gateway deploy time on 2024-03-12? Note any contradictions.",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_paths": [
+        "data/synthetic/incident_march.md",
+        "data/synthetic/change_log.html"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_external_keys": [],
+      "question_type": "contradiction",
+      "expected_status": "conflicting",
+      "split_hint": "synthetic",
+      "provenance": {
+        "contradiction_id": "c1_deploy_time",
+        "claims": [
+          {
+            "doc": "data/synthetic/incident_march.md",
+            "claim": "deploy at 08:10 UTC"
+          },
+          {
+            "doc": "data/synthetic/change_log.html",
+            "claim": "deploy at 14:00 UTC"
+          }
+        ]
+      },
+      "index": 3,
+      "split": "dev"
+    },
+    {
+      "id": "syn_unans_cpu",
+      "question": "What was FraudScorer CPU usage during the incident?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_titles": [],
+      "gold_external_keys": [],
+      "question_type": "unanswerable",
+      "expected_status": "insufficient",
+      "split_hint": "synthetic",
+      "provenance": {
+        "source": "unanswerable"
+      },
+      "split": "dev"
+    },
+    {
+      "id": "syn_incomplete_inc1_approver",
+      "question": "What is the missing detail regarding: rollback approver identity?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_paths": [
+        "data/synthetic/status_update.txt"
+      ],
+      "gold_doc_titles": [
+        "status_update"
+      ],
+      "gold_external_keys": [],
+      "question_type": "unanswerable",
+      "expected_status": "insufficient",
+      "split_hint": "synthetic",
+      "provenance": {
+        "incomplete_id": "inc1_approver"
+      },
+      "index": 7,
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_2436",
+      "question": "Valais is known for the resort municipality in which district in Switzerland?",
+      "gold_answer": "Sierre",
+      "gold_doc_titles": [
+        "Valais",
+        "Crans-Montana"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Valais",
+        "hotpotqa:Crans-Montana"
+      ],
+      "question_type": "multi_hop",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 43,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_4118",
+      "question": "Which super bowl that took place at the Miami Dolphins home stadium, featured the San Francisco 49ers defeating the San Diego Chargers?",
+      "gold_answer": "Super Bowl XXIX",
+      "gold_doc_titles": [
+        "Super Bowl XXIX",
+        "Hard Rock Stadium"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Super Bowl XXIX",
+        "hotpotqa:Hard Rock Stadium"
+      ],
+      "question_type": "multi_hop",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 63,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_1139",
+      "question": "When was the host of \"British Academy Television Awards 2009\" born? ",
+      "gold_answer": "4 April 1963",
+      "gold_doc_titles": [
+        "British Academy Television Awards 2009",
+        "Graham Norton"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:British Academy Television Awards 2009",
+        "hotpotqa:Graham Norton"
+      ],
+      "question_type": "multi_hop",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 32,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_3006",
+      "question": "What are the symptoms of the virus identified by Robert Purcell?",
+      "gold_answer": "nausea, vomiting, diarrhea, jaundice, fever, and abdominal pain",
+      "gold_doc_titles": [
+        "Robert Purcell (virologist)",
+        "Hepatitis A"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Robert Purcell (virologist)",
+        "hotpotqa:Hepatitis A"
+      ],
+      "question_type": "multi_hop",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 48,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_3891",
+      "question": "What band has been around longer, Mazzy Star of Pendragon?",
+      "gold_answer": "Pendragon",
+      "gold_doc_titles": [
+        "Mazzy Star",
+        "Pendragon (band)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Mazzy Star",
+        "hotpotqa:Pendragon (band)"
+      ],
+      "question_type": "multi_hop",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 33,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_2306",
+      "question": "The first of the Simon Bloom books was optioned by a company founded in what year?",
+      "gold_answer": "1912",
+      "gold_doc_titles": [
+        "Simon Bloom",
+        "Universal Pictures"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Simon Bloom",
+        "hotpotqa:Universal Pictures"
+      ],
+      "question_type": "multi_hop",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 57,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_4480",
+      "question": "Which black comedy sequel to \"Forgetting Sarah Marshall\" starred an Australian actress?",
+      "gold_answer": "Rose Byrne",
+      "gold_doc_titles": [
+        "Rose Byrne",
+        "Get Him to the Greek"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Rose Byrne",
+        "hotpotqa:Get Him to the Greek"
+      ],
+      "question_type": "multi_hop",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 52,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_1168",
+      "question": "Are Steve Perry and Leslie West both singers?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "Steve Perry (Oregon musician)",
+        "Leslie West"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Steve Perry (Oregon musician)",
+        "hotpotqa:Leslie West"
+      ],
+      "question_type": "multi_hop",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 67,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_1187",
+      "question": "Where in the northernmost and largest freguesia can we find the Communications Museum?",
+      "gold_answer": "Macau, China",
+      "gold_doc_titles": [
+        "Communications Museum (Macau)",
+        "Nossa Senhora de F\u00e1tima, Macau"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Communications Museum (Macau)",
+        "hotpotqa:Nossa Senhora de F\u00e1tima, Macau"
+      ],
+      "question_type": "multi_hop",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 29,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_2093",
+      "question": "Are Macheng and Lianjiang, Guangdong both cities ?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "Macheng",
+        "Lianjiang, Guangdong"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Macheng",
+        "hotpotqa:Lianjiang, Guangdong"
+      ],
+      "question_type": "multi_hop",
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0"
+      },
+      "index": 69,
+      "gold_doc_paths": [],
+      "split": "dev"
+    }
+  ]
+}

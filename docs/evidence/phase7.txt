@@ -1,0 +1,9 @@
+Phase 7 evaluation harness — 2026-10-29
+
+- eval_set.json: 75 questions (seed 42); meets ≥40
+- Metrics unit tests: tests/unit/test_eval_metrics.py PASS
+- Retrieval comparison: eval/results/prelim_retrieval_v2__comparison.json (ACTIVE~2232, preliminary)
+- Answer comparison: eval/results/prelim_answer_v1__comparison.json (ACTIVE~2114, preliminary)
+- Report: docs/EVALUATION_REPORT.md
+- Render smoke (same day): /api/health 200, /api/health/ready 200, UI 200
+- DATA-1 still open: see dataset_counts.json meets_data1_50k

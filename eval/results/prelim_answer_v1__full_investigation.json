@@ -1,0 +1,2066 @@
+{
+  "summary": {
+    "config_id": "full_investigation",
+    "pipeline": "investigation",
+    "retrieval_mode": "hybrid_rrf",
+    "k": 8,
+    "n_questions": 20,
+    "n_errors": 0,
+    "corpus_active_documents": 2114,
+    "retrieval": {
+      "n": 3,
+      "recall_at_k": 0.8333333333333334,
+      "mrr": 1.0,
+      "all_gold_at_k": 0.6666666666666666,
+      "multi_doc_coverage": 0.8333333333333334,
+      "mean_latency_s": 0.1901556000035877
+    },
+    "answer": {
+      "n": 20,
+      "exact_match": 0.0,
+      "token_f1": 0.014696969696969698,
+      "citation_f1": 0.1,
+      "correct_abstention_rate": 1.0,
+      "contradiction_detection_rate": 0.0,
+      "mean_latency_s": 0.2029744600004051,
+      "mean_llm_calls": 0.0,
+      "mean_tokens": 0.0
+    }
+  },
+  "results": [
+    {
+      "question_id": "syn_factual_beta_marker",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_resolved": true,
+      "status": "partial",
+      "answer_text": "BETA-POOL-EXHAUST statement: Gold span marker BETA-POOL-EXHAUST appears here. [S1]. marker statement: Gold span marker ALPHA-OUTAGE-0810 appears here. [S2].",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.20729940000455827,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.2222222222222222,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c2_root_cause",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolved": true,
+      "status": "partial",
+      "answer_text": "payment statement: # Incident Report — Payment Outage March\n\n## Summary\n\nPaymentService timed out for six hours on 2024-03-12 after the **auth-gateway** deploy at 08:10 UTC. [S1]. root statement: ## Root cause (ops claim)\n\nA misconfigured JWT TTL on AuthGateway caused cascading retries into PaymentService. [S2]. payment statement: PaymentService was not changed in this release. [S3]. outage statement: Release notes claim the outage was caused by a Neon connection pool exhaustion , not JWT TTL. [S4]. payment statement: Dependencies include PaymentService and AuthGateway. [S5]. payment statement: On failure, page the payments on-call and check Neon pool metrics. [S6]. outage statement: Gold span marker ALPHA-OUTAGE-0810 appears here. [S7]. payment statement: Exec Summary: March payment disruption linked to auth-gateway change; duration six hours. [S8]. payment statement: An electronic remittance advice (ERA) is an electronic data interchange (EDI) version of a medical insurance payment explanation. [S9]. payment statement: It provides details about providers' claims payment, and if the claims are denied, it would then contain the required explanations. [S10]. Note statement: Notes on Nursing: What it is and What it is Not is a book first published by Florence Nightingale in 1859. [S11].",
+      "citations": [
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+          "label": "S2"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S3"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S4"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S5"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S7"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S8"
+        },
+        {
+          "doc_id": "ae941827-7015-4a72-b259-c854a0cf468b",
+          "chunk_id": "abc69609-b558-406d-b922-729221028779",
+          "label": "S9"
+        },
+        {
+          "doc_id": "ae941827-7015-4a72-b259-c854a0cf468b",
+          "chunk_id": "abc69609-b558-406d-b922-729221028779",
+          "label": "S10"
+        },
+        {
+          "doc_id": "a8dfc3be-f35e-4e0a-9170-ebd5d3d2e9d7",
+          "chunk_id": "58ae9ab2-c3f3-43c5-b534-8a3477b0766d",
+          "label": "S11"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.1722421000013128,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_5",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolved": true,
+      "status": "partial",
+      "answer_text": "auth-gateway statement: Rollback of auth-gateway initiated. [S1]. auth-gateway statement: Exec Summary: March payment disruption linked to auth-gateway change; duration six hours. [S2]. auth-gateway statement: Change Log March\n\nDeployed auth-gateway 2.4.1 at 14:00 UTC on 2024-03-12. [S3]. auth-gateway statement: # Incident Report — Payment Outage March\n\n## Summary\n\nPaymentService timed out for six hours on 2024-03-12 after the **auth-gateway** deploy at 08:10 UTC. [S4]. approved statement: Postmortem Draft — March Payments\n\nDraft only — not approved. [S5]. approved statement: The USA PATRIOT Act, though approved by large majorities in the U.S. [S6]. approved statement: Specifically, the Department of Interior approved “wind energy areas” off the coast where projects can move through the regulatory approval process more quickly. [S7].",
+      "citations": [
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S2"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S3"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S4"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S5"
+        },
+        {
+          "doc_id": "5512c565-c277-40e7-af5c-7eac594f2060",
+          "chunk_id": "c3e84232-61f5-42c5-82c5-2c9248e3bb8c",
+          "label": "S6"
+        },
+        {
+          "doc_id": "0a572b75-34be-46eb-b575-50d21a62d0ba",
+          "chunk_id": "803e9f3c-c7be-4935-aee2-9c5735c75ac8",
+          "label": "S7"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.17823219997808337,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer_on_unanswerable": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_6",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolved": true,
+      "status": "partial",
+      "answer_text": "FraudScorer statement: Open question: whether FraudScorer amplified retries. [S1]. incident statement: # Incident Report — Payment Outage March\n\n## Summary\n\nPaymentService timed out for six hours on 2024-03-12 after the **auth-gateway** deploy at 08:10 UTC. [S2]. during statement: The Troubles in Templepatrick recounts incidents during, and the effects of, The Troubles in Templepatrick, County Antrim, Northern Ireland. [S3]. incident statement: The Mudan incident of 1871 was the massacre of 54 Ryūkyūan sailors in Qing-era Taiwan who wandered into the central part of Taiwan after their ship was shipwrecked. [S4].",
+      "citations": [
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        },
+        {
+          "doc_id": "b35cbdf1-0245-47a7-94b5-6c4d6e24d04c",
+          "chunk_id": "5e0e9149-b39a-4436-a8ba-a67ca4cb7d03",
+          "label": "S3"
+        },
+        {
+          "doc_id": "386704bb-d530-42b3-8123-9e2168d7e149",
+          "chunk_id": "4ed88d3f-60b1-4046-b03c-f54b4e2dc9a3",
+          "label": "S4"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.16433350008446723,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer_on_unanswerable": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_multistep_latency",
+      "question_type": "multi_step",
+      "split": "test",
+      "gold_doc_ids": [
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "latency_metrics",
+        "status_update"
+      ],
+      "gold_resolved": true,
+      "status": "partial",
+      "answer_text": "status statement: Status update 2024-03-12 16:00 UTC\nPaymentService recovering. [S1]. metrics statement: On failure, page the payments on-call and check Neon pool metrics. [S2].",
+      "citations": [
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "fd6bc225-aa15-4c15-937d-ff1e598365ea",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.19092530000489205,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.06060606060606061,
+        "citation": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_3959",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Decomposer (album)",
+        "311 (band)"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "American statement: (born December 13, 1975) is an American musician, singer, songwriter, record producer, entrepreneur, and film producer. [S1]. rock statement: He is the guitarist and lead vocalist of the rock band Angels & Airwaves and was the guitarist and co-lead vocalist of the rock band Blink-182, which he co-founded, from 1992 to 2015. [S2]. rock statement: DeLonge received his first guitar shortly thereafter and began writing original punk rock songs. [S3]. band statement: The band created a following in the mid-1990s through independent releases and relentless touring, particularly in their home country and in Australia. [S4]. Nick statement: The band consisted of Scott Hunter (vocals), Jesse Sprinkle (drums), Aaron Sprinkle (guitar), and Nick Barber (bass). [S5]. American statement: Poor Old Lu was a pioneering alternative Christian band based in the American Northwest. [S6]. rock statement: The band experimented with a variety of sounds and genres, particularly grunge, funk and psychedelic rock. [S7]. American statement: Semisonic is an American rock band formed in Minneapolis, Minnesota in 1995. [S8]. band statement: The band had three members: Dan Wilson (lead vocals, guitar, keyboards), John Munson (bass guitar, backing vocals, keyboards, guitar), and Jacob Slichter (drums, percussion, keyboards). [S9]. rock statement: \"Queer\" is a song written and produced by alternative rock band Garbage for the band's self-titled debut album. [S10]. rock statement: Manson rewrote the sexualized lyrics to be more ambiguous, and rearranged the song into a subdued trip hop and rock crossover structure. [S11]. band statement: The song started as a demo during sessions between band members Butch Vig, Duke Erikson and Steve Marker, and had its composition finished after singer Shirley Manson joined the band. [S12]. American statement: Puddle of Mudd is an American rock band formed in 1991. [S13]. rock statement: 1 mainstream rock singles in the United States. [S14]. band statement: To date, the band has sold over seven million albums and has had a string of No. [S15]. American statement: Louis XIV is an American rock band from San Diego, California. [S16]. band statement: The band has released four EPs between 2003 and 2007, and three albums between 2003 and 2008, the latter two of which were distributed by Atlantic Records. [S17]. band statement: The band broke up in 2009, but in 2013, in an interview with The Reno Dispatch, Jason Hill confirmed that the band had decided to reunite. [S18]. American statement: Darby Crash (formerly Bobby Pyn; born Jan Paul Beahm; September 26, 1958 – December 7, 1980) was an American punk rock vocalist and songwriter who, along with long-time friend Pat Smear (born Georg Ru [S19]. rock statement: In the years since his suicide at the age of 22, the Germs have attained legendary status among punk rock fans and musicians alike, as well as from the wider alternative rock and underground music com [S20]. American statement: Lilys are an American indie rock band formed in Washington, D.C in 1988. [S21]. band statement: Several of the band's tracks have been used in television advertisements, and the band's biggest hit was one of these, \"A Nanny In Manhattan\", which reached No. [S22].",
+      "citations": [
+        {
+          "doc_id": "e0f8765c-0877-47a6-8c15-f89bd2201285",
+          "chunk_id": "d9c9555a-34af-477b-aa15-ce424f11ba78",
+          "label": "S1"
+        },
+        {
+          "doc_id": "e0f8765c-0877-47a6-8c15-f89bd2201285",
+          "chunk_id": "d9c9555a-34af-477b-aa15-ce424f11ba78",
+          "label": "S2"
+        },
+        {
+          "doc_id": "e0f8765c-0877-47a6-8c15-f89bd2201285",
+          "chunk_id": "d9c9555a-34af-477b-aa15-ce424f11ba78",
+          "label": "S3"
+        },
+        {
+          "doc_id": "e0f8765c-0877-47a6-8c15-f89bd2201285",
+          "chunk_id": "d9c9555a-34af-477b-aa15-ce424f11ba78",
+          "label": "S4"
+        },
+        {
+          "doc_id": "77b30478-7799-435a-bd3b-9d1dbdad8f57",
+          "chunk_id": "f8f2baff-8c3c-4185-ab00-6b428c91eef6",
+          "label": "S5"
+        },
+        {
+          "doc_id": "77b30478-7799-435a-bd3b-9d1dbdad8f57",
+          "chunk_id": "f8f2baff-8c3c-4185-ab00-6b428c91eef6",
+          "label": "S6"
+        },
+        {
+          "doc_id": "77b30478-7799-435a-bd3b-9d1dbdad8f57",
+          "chunk_id": "f8f2baff-8c3c-4185-ab00-6b428c91eef6",
+          "label": "S7"
+        },
+        {
+          "doc_id": "4befc74d-679a-411e-8ffa-f79b719606b7",
+          "chunk_id": "7b176729-b562-40b6-9fd5-cfd9fb2f4b06",
+          "label": "S8"
+        },
+        {
+          "doc_id": "4befc74d-679a-411e-8ffa-f79b719606b7",
+          "chunk_id": "7b176729-b562-40b6-9fd5-cfd9fb2f4b06",
+          "label": "S9"
+        },
+        {
+          "doc_id": "206450c1-8ef0-49e8-8753-867029559f3f",
+          "chunk_id": "baf4a636-8489-4366-a3a1-071206fff59e",
+          "label": "S10"
+        },
+        {
+          "doc_id": "206450c1-8ef0-49e8-8753-867029559f3f",
+          "chunk_id": "baf4a636-8489-4366-a3a1-071206fff59e",
+          "label": "S11"
+        },
+        {
+          "doc_id": "206450c1-8ef0-49e8-8753-867029559f3f",
+          "chunk_id": "baf4a636-8489-4366-a3a1-071206fff59e",
+          "label": "S12"
+        },
+        {
+          "doc_id": "fe1e0f4e-1b79-4e13-baae-bbce7fe24011",
+          "chunk_id": "0726e644-bd0a-4fcc-a25c-b589469a187d",
+          "label": "S13"
+        },
+        {
+          "doc_id": "fe1e0f4e-1b79-4e13-baae-bbce7fe24011",
+          "chunk_id": "0726e644-bd0a-4fcc-a25c-b589469a187d",
+          "label": "S14"
+        },
+        {
+          "doc_id": "fe1e0f4e-1b79-4e13-baae-bbce7fe24011",
+          "chunk_id": "0726e644-bd0a-4fcc-a25c-b589469a187d",
+          "label": "S15"
+        },
+        {
+          "doc_id": "c0966afe-0e4c-4488-87ba-99ab170fe953",
+          "chunk_id": "4709d056-f722-4def-a764-80b8e8ff884d",
+          "label": "S16"
+        },
+        {
+          "doc_id": "c0966afe-0e4c-4488-87ba-99ab170fe953",
+          "chunk_id": "4709d056-f722-4def-a764-80b8e8ff884d",
+          "label": "S17"
+        },
+        {
+          "doc_id": "c0966afe-0e4c-4488-87ba-99ab170fe953",
+          "chunk_id": "4709d056-f722-4def-a764-80b8e8ff884d",
+          "label": "S18"
+        },
+        {
+          "doc_id": "c99799db-434a-4657-80bb-dbaea82c1c25",
+          "chunk_id": "f5bae36d-5bf8-4055-bddc-609e8321bd65",
+          "label": "S19"
+        },
+        {
+          "doc_id": "c99799db-434a-4657-80bb-dbaea82c1c25",
+          "chunk_id": "f5bae36d-5bf8-4055-bddc-609e8321bd65",
+          "label": "S20"
+        },
+        {
+          "doc_id": "55ca12d8-7e6d-4ace-9cc4-5112fa961ccc",
+          "chunk_id": "9ba0f4ca-77a0-40a2-ba99-8c3558d17ed6",
+          "label": "S21"
+        },
+        {
+          "doc_id": "55ca12d8-7e6d-4ace-9cc4-5112fa961ccc",
+          "chunk_id": "9ba0f4ca-77a0-40a2-ba99-8c3558d17ed6",
+          "label": "S22"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.17314339999575168,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1430",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Vaisakhi List",
+        "Sunil Grover"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "played statement: This was the first film of leading South Indian film actress Kajal Aggarwal, who played a small role as a friend of Aishwarya Rai. [S1]. played statement: Zaheer Khan (born 7 October 1978) is a former Indian cricketer who played all forms of the game for Indian national cricket team from 2000 till 2014. [S2]. Kapil statement: He was the second-most successful Indian pace bowler in Test cricket, behind Kapil Dev. [S3]. actor statement: Edward Bridge \"Ted\" Danson III (born December 29, 1947) is an American actor, author, and producer well known for his role as lead character Sam Malone on the NBC sitcom \"Cheers\" and for his role as D [S4]. played statement: Since 2016, he has played the afterlife \"architect\" Michael in the NBC sitcom \"The Good Place. [S5]. Comedy statement: He also plays a recurring role on Larry David's HBO sitcom \"Curb Your Enthusiasm\", starred alongside Glenn Close in legal drama \"Damages\", and was a regular on the HBO comedy series \"Bored to Death\". [S6]. Comedy statement: In 2015 he starred as Hank Larsson in the second season of FX's black comedy-crime drama anthology \"Fargo\". [S7]. Comedy statement: The Great Gilly Hopkins is a 2015 American comedy-drama film directed by Stephen Herek and written by David L. [S8]. Comedy statement: I Love NY, also known as I Love New Year, is an Indian romantic comedy film directed by Radhika Rao and Vinay Sapru starring Sunny Deol and Kangana Ranaut in lead roles. [S9]. Comedy statement: The main plot was taken from the Russian romantic comedy \"The Irony of Fate\" (1976). [S10]. Comedy statement: Lola's Last Letter is a 2015 independent drama-comedy film written and directed by Valerie Brandy, starring Valerie Brandy, Annamarie Kenoyer, and Travis Quentin Young. [S11].",
+      "citations": [
+        {
+          "doc_id": "b3be5c69-1802-420e-90b9-b321ac3db1bf",
+          "chunk_id": "7b17a2e2-0e69-4e0a-a35d-7cce613ed108",
+          "label": "S1"
+        },
+        {
+          "doc_id": "ffb6e8df-6eba-45e5-a331-d2e1c0c5c516",
+          "chunk_id": "7c0b5545-ed3e-424e-b70d-9f4bb23c3901",
+          "label": "S2"
+        },
+        {
+          "doc_id": "ffb6e8df-6eba-45e5-a331-d2e1c0c5c516",
+          "chunk_id": "7c0b5545-ed3e-424e-b70d-9f4bb23c3901",
+          "label": "S3"
+        },
+        {
+          "doc_id": "d341357d-389c-4b3a-b021-b8411ab67295",
+          "chunk_id": "4c166ffd-4759-4ea7-8145-a1827a168012",
+          "label": "S4"
+        },
+        {
+          "doc_id": "d341357d-389c-4b3a-b021-b8411ab67295",
+          "chunk_id": "4c166ffd-4759-4ea7-8145-a1827a168012",
+          "label": "S5"
+        },
+        {
+          "doc_id": "d341357d-389c-4b3a-b021-b8411ab67295",
+          "chunk_id": "4c166ffd-4759-4ea7-8145-a1827a168012",
+          "label": "S6"
+        },
+        {
+          "doc_id": "d341357d-389c-4b3a-b021-b8411ab67295",
+          "chunk_id": "4c166ffd-4759-4ea7-8145-a1827a168012",
+          "label": "S7"
+        },
+        {
+          "doc_id": "147edd61-caf1-4c10-b341-482abda3771a",
+          "chunk_id": "519910f9-fe7a-4ef9-8085-c12414b669ef",
+          "label": "S8"
+        },
+        {
+          "doc_id": "9f81da03-8e9a-41c6-8c9a-efdb8b5fd006",
+          "chunk_id": "32846854-9edb-43e8-bd6a-e5adef2a6467",
+          "label": "S9"
+        },
+        {
+          "doc_id": "9f81da03-8e9a-41c6-8c9a-efdb8b5fd006",
+          "chunk_id": "32846854-9edb-43e8-bd6a-e5adef2a6467",
+          "label": "S10"
+        },
+        {
+          "doc_id": "75f766a4-d220-455d-b095-ebe9f8ec335b",
+          "chunk_id": "4fadd20b-6810-4be2-9cf7-0e3e2e7ff503",
+          "label": "S11"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.2138089999789372,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_4155",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Logan Leistikow",
+        "Guru Dutt"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "Guru statement: Jane Fonda (born Jayne Seymour Fonda; December 21, 1937) is an American actress, writer, political activist, former fashion model and fitness guru. [S1]. alive statement: \"Purple Reign\" follows the commercial collaborative mixtape \"What a Time to Be Alive\" with Canadian rapper Drake. [S2]. same statement: The cover font is a tribute to Prince's landmark 1984 album \"Purple Rain\", which is stylized in the same fashion. [S3]. Logan statement: Logan County Airport (ICAO: KAAA, FAA LID: AAA) is a public use airport located 2.2 nautical miles (4 km) northeast of the central business district of Lincoln, a city in Logan County, Illinois, Unite [S4]. Logan statement: It is owned by the Logan County Board. [S5]. Logan statement: Blizzard is most remembered for his role in the Battle of Blair Mountain, leading the miners against the forces of Logan County sheriff Don Chafin. [S6].",
+      "citations": [
+        {
+          "doc_id": "4d3e6769-353c-489b-8077-ffc2b3787d03",
+          "chunk_id": "18a190bf-6bb8-4142-b46d-182df2295885",
+          "label": "S1"
+        },
+        {
+          "doc_id": "64f4b624-4d89-4d1b-a702-71ea7d2c1e41",
+          "chunk_id": "56eda247-47a8-4a80-92a1-f6db8530e7a4",
+          "label": "S2"
+        },
+        {
+          "doc_id": "64f4b624-4d89-4d1b-a702-71ea7d2c1e41",
+          "chunk_id": "56eda247-47a8-4a80-92a1-f6db8530e7a4",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b874acb3-812b-4731-90fc-25909f8f7a9a",
+          "chunk_id": "df4aa7d4-0c6a-4a32-ab8c-2b4a06edb067",
+          "label": "S4"
+        },
+        {
+          "doc_id": "b874acb3-812b-4731-90fc-25909f8f7a9a",
+          "chunk_id": "df4aa7d4-0c6a-4a32-ab8c-2b4a06edb067",
+          "label": "S5"
+        },
+        {
+          "doc_id": "dcdd86ff-2e13-48aa-a981-a8e7103fb841",
+          "chunk_id": "8ba34463-c583-4dcb-b734-936b6a52ac37",
+          "label": "S6"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.19512499996926636,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1730",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "1989 (Taylor Swift album)",
+        "Shellback (record producer)"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "songwriter statement: \"Teardrops on My Guitar\" is a song by American singer-songwriter Taylor Swift. [S1]. Swift statement: The song was co-written by Swift, alongside Liz Rose and produced by Nathan Chapman with Swift's aid. [S2]. Swift statement: \"Teardrops on My Guitar\" was released on February 19, 2007 by Big Machine Records, as the second single from Swift's eponymous debut album (2006). [S3]. songwriter statement: Christopher Taylor \"Chris\" White (born 7 March 1943) is an English singer, songwriter, musician, and record producer. [S4]. songwriter statement: Adam Gubman (April 7, 1979) is an American songwriter, arranger, and composer. [S5]. songwriter statement: Victoria Loren \"Tori\" Kelly (born December 14, 1992) is an American singer, songwriter, record producer and voice actress who slowly gained recognition after starting to post videos on YouTube at the  [S6]. songwriter statement: Marilyn Martin (born May 4, 1954) is an American singer and songwriter. [S7]. Swift statement: He first received notice when he produced for Andy Mineo on the tracks \"Young\", featuring KB, and \"Michael Jackson\", featuring Thi'sl, Rich Perez, R-Swift, and Bubba Watson, from the album \"Formerly K [S8].",
+      "citations": [
+        {
+          "doc_id": "05dd04a0-1172-4116-8aac-f745e92707bc",
+          "chunk_id": "bffe3f7c-9132-428f-94e1-c6815af896a6",
+          "label": "S1"
+        },
+        {
+          "doc_id": "05dd04a0-1172-4116-8aac-f745e92707bc",
+          "chunk_id": "bffe3f7c-9132-428f-94e1-c6815af896a6",
+          "label": "S2"
+        },
+        {
+          "doc_id": "05dd04a0-1172-4116-8aac-f745e92707bc",
+          "chunk_id": "bffe3f7c-9132-428f-94e1-c6815af896a6",
+          "label": "S3"
+        },
+        {
+          "doc_id": "44b623ed-a96d-4523-b56c-a61212938b01",
+          "chunk_id": "0759be1f-03d1-4934-b283-f6c08f77b85d",
+          "label": "S4"
+        },
+        {
+          "doc_id": "0db6843e-88a0-4536-99cc-26c3d9bbc244",
+          "chunk_id": "ebadf8d3-08de-4c0c-85f4-8e583c564141",
+          "label": "S5"
+        },
+        {
+          "doc_id": "9eb2da8b-bd45-481e-96a2-2702852f22e5",
+          "chunk_id": "2eedd435-79c6-4531-b6a1-bc145f534930",
+          "label": "S6"
+        },
+        {
+          "doc_id": "bd5d6838-fd82-43bd-9270-573d8299187f",
+          "chunk_id": "631d9818-971d-4cd4-950e-bc0bd954d6f5",
+          "label": "S7"
+        },
+        {
+          "doc_id": "a609183c-02d0-4f67-a997-6dc1bfa1742a",
+          "chunk_id": "2d9e06a5-9278-4b34-a59b-ccab8cfaad97",
+          "label": "S8"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.19943789998069406,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_3534",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Louis Dunbar",
+        "Harlem Globetrotters"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "exhibition statement: The Pirates played home games in Newark, New Jersey at the Prudential Center, with one exhibition and one regular season game at Walsh Gymnasium in South Orange, New Jersey. [S1]. basketball statement: The 2015–16 Seton Hall Pirates men's basketball team represented Seton Hall University in the 2015–16 NCAA Division I men's basketball season. [S2]. games statement: The Cardinals compete in the Southland Conference and have played home games in the Montagne Center since 1984. [S3]. basketball statement: The Lamar Cardinals basketball team represents Lamar University in NCAA Division I men's basketball competition. [S4]. basketball statement: The Lamar University basketball team is one of the school's most storied athletic programs. [S5]. team statement: The 1979–80 team was one of the 1980 tournament's Sweet Sixteen teams. [S6]. games statement: The Gaels, led by seventh year head coach Tim Cluess, played their home games at the Hynes Athletic Center in New Rochelle, New York as members of the Metro Atlantic Athletic Conference (MAAC). [S7]. basketball statement: The 2016–17 Iona Gaels men's basketball team represented Iona College during the 2016–17 NCAA Division I men's basketball season. [S8]. many statement: The tournament, since its creation, has hosted nationally ranked teams from many states including Virginia, New York, Nevada, Louisiana, Texas, Maryland and numerous top teams from California. [S9]. basketball statement: The Les Schwab Invitational (LSI) is Oregon's premier pre-season high school invitational basketball tournament. [S10]. team statement: Prior to its founding in 1996, Oregon's high school teams had to travel out of state for quality pre-season play, denying fans connection to local teams prior to the regular season. [S11]. team statement: In 1994 South Salem High School coach Barry Adams and Beaverton High School coach Nick Robertson, along with the Oregon Athletic Coaches Association, proposed a pre-season tournament to showcase the u [S12]. games statement: The Raiders currently play their home games at the Cotterell Court. [S13]. basketball statement: The Colgate Raiders women’s basketball team is the college basketball program representing Colgate University in Hamilton, New York. [S14]. basketball statement: The Raiders currently participate as part of the NCAA Division I basketball, and compete in the Patriot League. [S15]. games statement: The Gaels, led by fifth year head coach Tim Cluess, played their home games at the Hynes Athletic Center and were members of the Metro Atlantic Athletic Conference. [S16]. basketball statement: The 2014–15 Iona Gaels men's basketball team represented Iona College during the 2014–15 NCAA Division I men's basketball season. [S17]. basketball statement: Reginald \"Reggie\" Harding (May 4, 1942 – September 2, 1972) was an American professional basketball player. [S18]. basketball statement: Harding also played for the Trenton Colonials which was apart of the Continental Basketball Association. [S19]. basketball statement: Al Wakrah Basketball Team (Arabic: فريق كرة السلة الوكرة‎ ‎ ) is a Qatari professional basketball team based in the city of Al Wakrah, in southern Qatar. [S20]. basketball statement: Al Wakrah's basketball team currently competes in the top tier of basketball, the Qatari Basketball League. [S21].",
+      "citations": [
+        {
+          "doc_id": "7808a12a-1c83-43fd-81ef-3d333f4be1da",
+          "chunk_id": "104166b2-3aa5-4bb3-bbf1-b87f6cd6cb91",
+          "label": "S1"
+        },
+        {
+          "doc_id": "7808a12a-1c83-43fd-81ef-3d333f4be1da",
+          "chunk_id": "104166b2-3aa5-4bb3-bbf1-b87f6cd6cb91",
+          "label": "S2"
+        },
+        {
+          "doc_id": "ff0894a0-683e-4c3a-96fe-79f7b90c7bf9",
+          "chunk_id": "8fde857c-776b-4f55-9ebd-d08ca12963be",
+          "label": "S3"
+        },
+        {
+          "doc_id": "ff0894a0-683e-4c3a-96fe-79f7b90c7bf9",
+          "chunk_id": "8fde857c-776b-4f55-9ebd-d08ca12963be",
+          "label": "S4"
+        },
+        {
+          "doc_id": "ff0894a0-683e-4c3a-96fe-79f7b90c7bf9",
+          "chunk_id": "8fde857c-776b-4f55-9ebd-d08ca12963be",
+          "label": "S5"
+        },
+        {
+          "doc_id": "ff0894a0-683e-4c3a-96fe-79f7b90c7bf9",
+          "chunk_id": "8fde857c-776b-4f55-9ebd-d08ca12963be",
+          "label": "S6"
+        },
+        {
+          "doc_id": "230b7d36-f844-4f25-9fe7-2734c627db78",
+          "chunk_id": "cc009439-f02d-4fc5-b920-86827e2f0b79",
+          "label": "S7"
+        },
+        {
+          "doc_id": "230b7d36-f844-4f25-9fe7-2734c627db78",
+          "chunk_id": "cc009439-f02d-4fc5-b920-86827e2f0b79",
+          "label": "S8"
+        },
+        {
+          "doc_id": "ea70f689-6fd5-4f58-b5be-7ab5084ac910",
+          "chunk_id": "fe0a6540-f8e5-4949-9a89-83a071b5f0ea",
+          "label": "S9"
+        },
+        {
+          "doc_id": "ea70f689-6fd5-4f58-b5be-7ab5084ac910",
+          "chunk_id": "fe0a6540-f8e5-4949-9a89-83a071b5f0ea",
+          "label": "S10"
+        },
+        {
+          "doc_id": "ea70f689-6fd5-4f58-b5be-7ab5084ac910",
+          "chunk_id": "fe0a6540-f8e5-4949-9a89-83a071b5f0ea",
+          "label": "S11"
+        },
+        {
+          "doc_id": "ea70f689-6fd5-4f58-b5be-7ab5084ac910",
+          "chunk_id": "fe0a6540-f8e5-4949-9a89-83a071b5f0ea",
+          "label": "S12"
+        },
+        {
+          "doc_id": "ff4defa2-28b3-4116-b9ab-21114ea6d9e6",
+          "chunk_id": "04138595-c879-4db0-9045-8251ffd218eb",
+          "label": "S13"
+        },
+        {
+          "doc_id": "ff4defa2-28b3-4116-b9ab-21114ea6d9e6",
+          "chunk_id": "04138595-c879-4db0-9045-8251ffd218eb",
+          "label": "S14"
+        },
+        {
+          "doc_id": "ff4defa2-28b3-4116-b9ab-21114ea6d9e6",
+          "chunk_id": "04138595-c879-4db0-9045-8251ffd218eb",
+          "label": "S15"
+        },
+        {
+          "doc_id": "ce0e3618-42a4-40c4-ace6-871a8bf2c9a6",
+          "chunk_id": "22d02408-0d9c-4865-a5a4-bd0e89bb14a3",
+          "label": "S16"
+        },
+        {
+          "doc_id": "ce0e3618-42a4-40c4-ace6-871a8bf2c9a6",
+          "chunk_id": "22d02408-0d9c-4865-a5a4-bd0e89bb14a3",
+          "label": "S17"
+        },
+        {
+          "doc_id": "361aecb8-6174-4912-ab13-5e5e7229e910",
+          "chunk_id": "98a2f5e1-f778-4b8d-bcee-837406af781c",
+          "label": "S18"
+        },
+        {
+          "doc_id": "361aecb8-6174-4912-ab13-5e5e7229e910",
+          "chunk_id": "98a2f5e1-f778-4b8d-bcee-837406af781c",
+          "label": "S19"
+        },
+        {
+          "doc_id": "28f85c43-3f45-48ab-bb50-858e4fcac4a5",
+          "chunk_id": "16f2841c-f32c-437f-a314-e58825ae172d",
+          "label": "S20"
+        },
+        {
+          "doc_id": "28f85c43-3f45-48ab-bb50-858e4fcac4a5",
+          "chunk_id": "16f2841c-f32c-437f-a314-e58825ae172d",
+          "label": "S21"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.24385990004520863,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_4251",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Press TV controversies",
+        "Douglas Murray (author)"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "Press statement: Press TV (stylised PRESSTV) is a 24-hour English language news and documentary network, affiliated with Islamic Republic of Iran Broadcasting (IRIB). [S1]. Press statement: Press TV is headquartered in Tehran, and has offices and bureaus around the world, including London, Beirut, Damascus, Kabul, and the Gaza Strip. [S2]. commentator statement: Sanjaya Baru is a political commentator and policy analyst, currently serving as Director for Geo-Economics and Strategy at the International Institute of Strategic Studies. [S3]. serve statement: </ref> Previously he had served as associate editor at \"The Economic Times\" and \"The Times of India\", and then chief editor at \"Business Standard\". [S4]. serve statement: Vithal served as Finance and Planning Secretary during former Prime Minister Manmohan Singh's stint as Secretary of Finance. [S5]. serve statement: He became Manmohan Singh's media advisor and chief spokesperson, a role in which he served from May 2004 until August 2008. [S6]. Press statement: SamSam is a television program based on a character created by Serge Bloch and directed by Tanguy de Kermel in association with Bayard Presse. [S7]. commentator statement: David Brock (born November 2, 1962) is an American Neo-Liberal political operative, author, and commentator who founded the media watchdog group Media Matters for America. [S8]. commentator statement: Leo Mazzone was as a fill in color commentator. [S9]. commentator statement: Georgia Rickard is an Australian-born journalist, magazine editor, author and media commentator. [S10].",
+      "citations": [
+        {
+          "doc_id": "531a2152-7b37-466f-85cb-43130c357e80",
+          "chunk_id": "f6e99de4-6cd9-473a-b622-6ddef9a5cb56",
+          "label": "S1"
+        },
+        {
+          "doc_id": "531a2152-7b37-466f-85cb-43130c357e80",
+          "chunk_id": "f6e99de4-6cd9-473a-b622-6ddef9a5cb56",
+          "label": "S2"
+        },
+        {
+          "doc_id": "b0e28a54-95b2-4230-be36-5f7ce0c727f0",
+          "chunk_id": "e8438bd6-3d66-4eb3-bf46-6abca3ef6021",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b0e28a54-95b2-4230-be36-5f7ce0c727f0",
+          "chunk_id": "e8438bd6-3d66-4eb3-bf46-6abca3ef6021",
+          "label": "S4"
+        },
+        {
+          "doc_id": "b0e28a54-95b2-4230-be36-5f7ce0c727f0",
+          "chunk_id": "e8438bd6-3d66-4eb3-bf46-6abca3ef6021",
+          "label": "S5"
+        },
+        {
+          "doc_id": "b0e28a54-95b2-4230-be36-5f7ce0c727f0",
+          "chunk_id": "e8438bd6-3d66-4eb3-bf46-6abca3ef6021",
+          "label": "S6"
+        },
+        {
+          "doc_id": "610b6638-c3d1-4bd7-81e7-c249c6760f7e",
+          "chunk_id": "a05ea5fe-5009-4919-9e3b-5547b360515b",
+          "label": "S7"
+        },
+        {
+          "doc_id": "d9fa6885-1304-45e3-8a3b-4f02ecb0b01f",
+          "chunk_id": "0b90c7b0-fcad-42d8-a2e4-eb25e0cb07b4",
+          "label": "S8"
+        },
+        {
+          "doc_id": "61e514bc-5fe0-4a84-b34e-2b3decb78706",
+          "chunk_id": "969d00e8-fdc2-45f4-b436-8b128098d5f5",
+          "label": "S9"
+        },
+        {
+          "doc_id": "8bd68ffa-4339-4d51-8a57-2b6a2d93a9b7",
+          "chunk_id": "fd13a9c2-f604-4032-8afa-c284bdefd887",
+          "label": "S10"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.21188259997870773,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_3014",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Metal Guru",
+        "Marc Bolan"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "Metal statement: Painkiller is the twelfth studio album by British heavy metal band Judas Priest, released in September 1990. [S1]. last statement: It is the last Judas Priest album to feature lead singer Rob Halford until his return for the 2005 album \"Angel of Retribution\" and the first to feature drummer Scott Travis. [S2]. lead statement: Josey Scott (born Joseph Scott Sappington; May 3, 1972) is the former lead vocalist of the rock band Saliva. [S3]. summer statement: He currently has releases under Play Me Records, Heavy Artillery Records, and an upcoming album scheduled for release in summer 2013. [S4]. Metal statement: Masatoshi Ono (小野正利 , Ono Masatoshi , born January 29, 1967 in Adachi, Tokyo, Japan) , also known as Sho, is a Japanese rock/heavy metal singer-songwriter and vocal coach. [S5]. Metal statement: Ono got his start in the 1980s as vocalist of the heavy metal band Fort Bragg. [S6]. number statement: The song placed at number four on the Adult Contemporary charts, number 18 on the \"Billboard\" Hot 100 chart, and number 38 in the UK. [S7]. lead statement: \"Looking Through Your Eyes\" is the lead single for the by American country pop recording artist LeAnn Rimes. [S8]. lead statement: Andrea Corr provided the singing voice for the female lead of Kayley and Bryan White provided the singing voice for the male lead of Garrett. [S9]. Metal statement: The band are often considered a precursor to the new wave of British heavy metal, which re-energised heavy metal in the late 1970s and early 1980s. [S10]. number statement: It also reached number one on the Australian pop chart, spending eight weeks at the top spot. [S11]. number statement: The song also later reached a peak of number seven on the British pop chart. [S12]. Metal statement: The album was influenced by the hard rock, progressive rock and heavy metal of the time and covers subjects such as folklore (\"My Fairy King\") and religion (\"Jesus\"). [S13]. lead statement: Lead singer Freddie Mercury composed five of the ten tracks, guitarist Brian May composed four songs, (including \"Doing All Right\", which was co-written by then Smile band-mate Tim Staffell), and drum [S14].",
+      "citations": [
+        {
+          "doc_id": "08579f40-3c4a-472c-b553-337aba4cd50d",
+          "chunk_id": "442556ee-4fa7-4006-adac-bf4a6cbf30f7",
+          "label": "S1"
+        },
+        {
+          "doc_id": "08579f40-3c4a-472c-b553-337aba4cd50d",
+          "chunk_id": "442556ee-4fa7-4006-adac-bf4a6cbf30f7",
+          "label": "S2"
+        },
+        {
+          "doc_id": "36180abb-2e91-41bc-a120-cfeca4e8a169",
+          "chunk_id": "9e102a7f-5adc-47c3-9f3c-f98282caddf2",
+          "label": "S3"
+        },
+        {
+          "doc_id": "17888b38-66bf-4963-a842-d696d1bf8158",
+          "chunk_id": "fa9e1fb7-8a12-4153-a3eb-bdde82eca0ba",
+          "label": "S4"
+        },
+        {
+          "doc_id": "dc17080a-0a42-4b6b-b06c-7bcbb3858f0d",
+          "chunk_id": "3d16371e-2460-41ff-b433-06ebf60f7c4b",
+          "label": "S5"
+        },
+        {
+          "doc_id": "dc17080a-0a42-4b6b-b06c-7bcbb3858f0d",
+          "chunk_id": "3d16371e-2460-41ff-b433-06ebf60f7c4b",
+          "label": "S6"
+        },
+        {
+          "doc_id": "99854cd7-11a1-46cd-9bbf-21f51db1d06d",
+          "chunk_id": "ca59d240-8178-4e0a-b0af-0343e0efc3a1",
+          "label": "S7"
+        },
+        {
+          "doc_id": "99854cd7-11a1-46cd-9bbf-21f51db1d06d",
+          "chunk_id": "ca59d240-8178-4e0a-b0af-0343e0efc3a1",
+          "label": "S8"
+        },
+        {
+          "doc_id": "99854cd7-11a1-46cd-9bbf-21f51db1d06d",
+          "chunk_id": "ca59d240-8178-4e0a-b0af-0343e0efc3a1",
+          "label": "S9"
+        },
+        {
+          "doc_id": "8d91a46e-0e76-41dc-8697-9a18a3477088",
+          "chunk_id": "789e09c9-8f77-4445-b0ea-beac568c4dc6",
+          "label": "S10"
+        },
+        {
+          "doc_id": "2945cefa-ed1e-477b-8f88-2bab8c1fdfee",
+          "chunk_id": "ff0d40ce-d202-4940-a44d-5036f5eedd63",
+          "label": "S11"
+        },
+        {
+          "doc_id": "2945cefa-ed1e-477b-8f88-2bab8c1fdfee",
+          "chunk_id": "ff0d40ce-d202-4940-a44d-5036f5eedd63",
+          "label": "S12"
+        },
+        {
+          "doc_id": "63d20544-1044-44ed-8b01-40003abbc66e",
+          "chunk_id": "2cfeac4a-edbf-4a9c-aa80-12c3864e51b0",
+          "label": "S13"
+        },
+        {
+          "doc_id": "63d20544-1044-44ed-8b01-40003abbc66e",
+          "chunk_id": "2cfeac4a-edbf-4a9c-aa80-12c3864e51b0",
+          "label": "S14"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.19130970002152026,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_5005",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Robert Von Ancken",
+        "Chrysler Building"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "building statement: His work includes the Empire Building, Manhattan Life Insurance Building, and Casino Theatre (Broadway). [S1]. style statement: He had Chicago architect Howard Van Doren Shaw design this Colonial Revival-style house, which is considered an excellent example of the style. [S2]. building statement: Van Buren Knott House is a historic building located in Sioux City, Iowa, United States. [S3]. Side statement: On the south side of the house is a full width porch, with a sleeping porch on the second floor. [S4]. style statement: Local architect Charles Brown designed the four-story Romanesque Revival style building. [S5]. building statement: The Evans Block, also known as Northwestern National Bank Building, is a historic building located in Sioux City, Iowa, United States. [S6]. building statement: The city experienced a building boom that began in the late 1880s and continued into the early 1890s. [S7]. building statement: Evans, an entrepreneur who had business interests in Iowa, Nebraska and South Dakota, had this building constructed to house Northwestern National Bank of which he was the president. [S8]. located statement: The White Horse Tavern, located in New York City's borough of Manhattan at Hudson Street and 11th Street, is known for its 1950s and 1960s Bohemian culture. [S9]. building statement: The official boundary does not include most of Hastings Street except for the Woodward's and Dominion Buildings, and stretches east past Columbia St., to the laneway running parallel to the west side  [S10]. East statement: Today, it a national historic site, at the northeast end of Downtown Vancouver, adjacent to the Downtown Eastside. [S11]. East statement: It is delimited by Fifth Avenue and Mount Morris Park on the east, Central Park on the south, Harlem River drive, Edgecombe Avenue, Saint Nicholas Avenue, the 123rd street and Morningside Avenue on th [S12]. Side statement: 111 Murray Street (formerly known as 101 Murray Street or 101 Tribeca) is a residential skyscraper under construction developed by Witkoff Group and Fisher Brothers in Tribeca, Manhattan, New York Cit [S13]. style statement: The model is located in a two story building built in 1953, in the style of Stalin's empire. [S14].",
+      "citations": [
+        {
+          "doc_id": "744668ea-bf75-4674-9172-08ffcbf093e4",
+          "chunk_id": "da028034-1213-48af-bd1b-a6e11515dec1",
+          "label": "S1"
+        },
+        {
+          "doc_id": "f9f063f3-2bdf-44aa-af8d-078889712d3c",
+          "chunk_id": "d84430aa-0179-4373-b229-8628a0caae73",
+          "label": "S2"
+        },
+        {
+          "doc_id": "f9f063f3-2bdf-44aa-af8d-078889712d3c",
+          "chunk_id": "d84430aa-0179-4373-b229-8628a0caae73",
+          "label": "S3"
+        },
+        {
+          "doc_id": "f9f063f3-2bdf-44aa-af8d-078889712d3c",
+          "chunk_id": "d84430aa-0179-4373-b229-8628a0caae73",
+          "label": "S4"
+        },
+        {
+          "doc_id": "61d235dd-4318-4cb5-a108-62433004098c",
+          "chunk_id": "7b67e5ce-388c-4727-86e4-4559d51aac9b",
+          "label": "S5"
+        },
+        {
+          "doc_id": "61d235dd-4318-4cb5-a108-62433004098c",
+          "chunk_id": "7b67e5ce-388c-4727-86e4-4559d51aac9b",
+          "label": "S6"
+        },
+        {
+          "doc_id": "61d235dd-4318-4cb5-a108-62433004098c",
+          "chunk_id": "7b67e5ce-388c-4727-86e4-4559d51aac9b",
+          "label": "S7"
+        },
+        {
+          "doc_id": "61d235dd-4318-4cb5-a108-62433004098c",
+          "chunk_id": "7b67e5ce-388c-4727-86e4-4559d51aac9b",
+          "label": "S8"
+        },
+        {
+          "doc_id": "cd319294-aa1d-428c-bd10-d9dd9db4984f",
+          "chunk_id": "27c391d5-1b10-4725-8f6c-c9789ba6c5ac",
+          "label": "S9"
+        },
+        {
+          "doc_id": "6c42f628-744e-4a29-a4b3-7b6cd05688b6",
+          "chunk_id": "062ac1b4-9416-41d1-965c-d13701e18822",
+          "label": "S10"
+        },
+        {
+          "doc_id": "6c42f628-744e-4a29-a4b3-7b6cd05688b6",
+          "chunk_id": "062ac1b4-9416-41d1-965c-d13701e18822",
+          "label": "S11"
+        },
+        {
+          "doc_id": "edf70e2c-2a25-473f-82b5-dcb1b364faf2",
+          "chunk_id": "9e81ef8f-2105-4e89-85fd-789150aa453a",
+          "label": "S12"
+        },
+        {
+          "doc_id": "f0b6dab8-3250-4215-bc68-b0b9f2c70b51",
+          "chunk_id": "50ecbe1c-4970-4652-bbe1-d1e430f259da",
+          "label": "S13"
+        },
+        {
+          "doc_id": "5b8e758b-8e05-4580-93b0-e1b47697e062",
+          "chunk_id": "6f7cf5e3-e247-4e05-8b28-7fa4df3f112f",
+          "label": "S14"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.2003275000024587,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.01111111111111111,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_2015",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Dillingham Airport",
+        "Rafael Hernández Airport"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "Airport statement: It is the country's largest international airport by number of passengers handled—85% of international traffic—and is a hub for international flights of Aerolíneas Argentinas and LATAM Argentina. [S1]. Airport statement: Aerolineas Argentinas and its subsidiary Austral Lineas Aereas do operate limited domestic or \"cabotaje\" air service from Pistarini Airport as well. [S2]. Airport statement: Covering 3,475 hectares (13.42 sq mi; 8,590 acres), the airport serves Buenos Aires and its metropolitan area. [S3]. Airport statement: Since its inception, British Airways has been centred at its main hub at London Heathrow Airport, with a second major hub at London Gatwick Airport. [S4]. Airport statement: Asheville Regional Airport (IATA: AVL, ICAO: KAVL, FAA LID: AVL) is a Class C airport near Interstate 26 near the town of Fletcher, 9 mi south of downtown Asheville, in the U.S. [S5]. Airport statement: It is owned by the Greater Asheville Regional Airport Authority. [S6]. Airport statement: It is included in the Federal Aviation Administration (FAA) National Plan of Integrated Airport Systems for 2017–2021, in which it is categorized as a non-hub primary commercial service facility. [S7]. Airport statement: Orlando International Airport (IATA: MCO, ICAO: KMCO, FAA LID: MCO) is a major public airport located six miles (10 km) southeast of Orlando, Florida, United States. [S8]. Airport statement: It is the second-busiest airport in the state of Florida, as over 40.2 million passengers were handled at the airport as of 2015. [S9]. Airport statement: This makes it the 14th-busiest airport in the U.S. [S10]. Airport statement: de C.V, doing business as Aeromar, is an airline based in Hangar 7 of Zone D of the General Aviation Terminal at Mexico City International Airport in Venustiano Carranza, Mexico City, Mexico. [S11]. Airport statement: Its main base is Mexico City International Airport. [S12]. Airport statement: Logan County Airport (ICAO: KAAA, FAA LID: AAA) is a public use airport located 2.2 nautical miles (4 km) northeast of the central business district of Lincoln, a city in Logan County, Illinois, Unite [S13]. Airport statement: The airport is also the site of the National Weather Service Central Illinois (Central Illinois Forecast Office). [S14]. Airport statement: Islay Airport (IATA: ILY, ICAO: EGPI) (also known as Glenegedale Airport) is located 4.5 NM north northwest of Port Ellen on the island of Islay in Argyll and Bute, off the west coast of Scotland. [S15]. Airport statement: It is a small rural airport owned and maintained by Highlands and Islands Airports Limited. [S16]. Airport statement: Today the airport is used for scheduled services to the Scottish mainland, and for air ambulances. [S17]. Airport statement: Shenandoah Valley Regional Airport (IATA: SHD, ICAO: KSHD, FAA LID: SHD) is a public airport located 10 nautical miles (12 mi, 19 km) northeast of the central business district of Staunton, a city in  [S18].",
+      "citations": [
+        {
+          "doc_id": "80796815-1b49-4142-92a3-f07c18c15c10",
+          "chunk_id": "bf5ae6b8-c76d-48a4-b3fb-dd8f4d88e077",
+          "label": "S1"
+        },
+        {
+          "doc_id": "80796815-1b49-4142-92a3-f07c18c15c10",
+          "chunk_id": "bf5ae6b8-c76d-48a4-b3fb-dd8f4d88e077",
+          "label": "S2"
+        },
+        {
+          "doc_id": "80796815-1b49-4142-92a3-f07c18c15c10",
+          "chunk_id": "bf5ae6b8-c76d-48a4-b3fb-dd8f4d88e077",
+          "label": "S3"
+        },
+        {
+          "doc_id": "761918b3-0ff3-4920-b069-55705a3b836f",
+          "chunk_id": "ae1a9d84-db84-48e4-a88b-6eb90b963509",
+          "label": "S4"
+        },
+        {
+          "doc_id": "40dd9177-3295-4765-aa40-310d3ce8547e",
+          "chunk_id": "6467d2ec-b16a-4d61-b17e-b000957f0f5f",
+          "label": "S5"
+        },
+        {
+          "doc_id": "40dd9177-3295-4765-aa40-310d3ce8547e",
+          "chunk_id": "6467d2ec-b16a-4d61-b17e-b000957f0f5f",
+          "label": "S6"
+        },
+        {
+          "doc_id": "40dd9177-3295-4765-aa40-310d3ce8547e",
+          "chunk_id": "6467d2ec-b16a-4d61-b17e-b000957f0f5f",
+          "label": "S7"
+        },
+        {
+          "doc_id": "c81751f9-b64e-410e-bb79-44f5bf2819ce",
+          "chunk_id": "df12cb15-25d2-4504-a5fa-b59cc8550768",
+          "label": "S8"
+        },
+        {
+          "doc_id": "c81751f9-b64e-410e-bb79-44f5bf2819ce",
+          "chunk_id": "df12cb15-25d2-4504-a5fa-b59cc8550768",
+          "label": "S9"
+        },
+        {
+          "doc_id": "c81751f9-b64e-410e-bb79-44f5bf2819ce",
+          "chunk_id": "df12cb15-25d2-4504-a5fa-b59cc8550768",
+          "label": "S10"
+        },
+        {
+          "doc_id": "c894ffa5-8535-43bd-bf83-3b27d7984dbd",
+          "chunk_id": "fa5120da-b8d4-4265-b65a-141c2048dc43",
+          "label": "S11"
+        },
+        {
+          "doc_id": "c894ffa5-8535-43bd-bf83-3b27d7984dbd",
+          "chunk_id": "fa5120da-b8d4-4265-b65a-141c2048dc43",
+          "label": "S12"
+        },
+        {
+          "doc_id": "b874acb3-812b-4731-90fc-25909f8f7a9a",
+          "chunk_id": "df4aa7d4-0c6a-4a32-ab8c-2b4a06edb067",
+          "label": "S13"
+        },
+        {
+          "doc_id": "b874acb3-812b-4731-90fc-25909f8f7a9a",
+          "chunk_id": "df4aa7d4-0c6a-4a32-ab8c-2b4a06edb067",
+          "label": "S14"
+        },
+        {
+          "doc_id": "de85a79a-eea4-486f-b063-a69941d216c0",
+          "chunk_id": "a42eb7b1-0e64-4e05-91f5-efa77ae67798",
+          "label": "S15"
+        },
+        {
+          "doc_id": "de85a79a-eea4-486f-b063-a69941d216c0",
+          "chunk_id": "a42eb7b1-0e64-4e05-91f5-efa77ae67798",
+          "label": "S16"
+        },
+        {
+          "doc_id": "de85a79a-eea4-486f-b063-a69941d216c0",
+          "chunk_id": "a42eb7b1-0e64-4e05-91f5-efa77ae67798",
+          "label": "S17"
+        },
+        {
+          "doc_id": "b7788523-af2c-4fdb-97e8-1e9edd55903b",
+          "chunk_id": "07ffcdd1-a931-4dbb-bb69-6ea485256dab",
+          "label": "S18"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.28998380003031343,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1078",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Bellini",
+        "Italian name"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "surname statement: Perger is a surname, which is an older version of \"Berger\". [S1]. surname statement: Howell is a surname (family name or last name) originating from Wales. [S2]. surname statement: See also:Powell (surname), and Welsh surnames. [S3]. Italian statement: Commedia all'italiana (i.e. [S4]. Italian statement: \"Comedy in the Italian way\"; ] ) or Italian-style comedy is an Italian film genre. [S5]. Italian statement: It is widely considered to have started with Mario Monicelli's \"I soliti ignoti\" (\"Big Deal on Madonna Street\") in 1958 and derives its name from the title of Pietro Germi's \"Divorzio all'italiana\" (\" [S6]. Italian statement: After a match between Romania and Italy, played in Rome, he was nicknamed by the Italian football fans \"Il Dio\", because of his incredible saves. [S7]. Italian statement: The Italian Peninsula or Apennine Peninsula (Italian: \"Penisola italiana\" , \"Penisola appenninica\") extends 1000 km from the Po Valley in the north to the central Mediterranean Sea in the south. [S8]. Italian statement: San Marco 1, also known as San Marco A, was the first Italian satellite, and the first non-Soviet/US spacecraft. [S9]. Italian statement: Built in-house by the Italian Space Research Commission (Italian: \"Commissione per le Ricerche Spaziali\" , CRS) on behalf of the National Research Council, it was the first of five as part of the Ital [S10]. after statement: It is primarily associated with the Archdiocese of Milan, and named after St. [S11]. after statement: Ambrose much as Gregorian chant is named after Gregory the Great. [S12]. Italian statement: Edda Dell'Orso (born Edda Sabatini, February 16, 1935) is an Italian singer, especially known for her collaboration with composer Ennio Morricone for which she provided wordless vocals to a large numb [S13]. Italian statement: Dell'Orso also provided vocals to film scores of other Italian composers such as Bruno Nicolai, Piero Piccioni, Luis Bacalov and Roberto Pregadio. [S14].",
+      "citations": [
+        {
+          "doc_id": "a168edfa-6427-414f-a524-3df5f68bfa5b",
+          "chunk_id": "17bac39a-a12f-416a-97cb-8d4153f4c627",
+          "label": "S1"
+        },
+        {
+          "doc_id": "a15d95d9-796a-445a-817b-8697d3d10b91",
+          "chunk_id": "ba5af04b-ea5f-4c24-bc8e-484b0578dbef",
+          "label": "S2"
+        },
+        {
+          "doc_id": "a15d95d9-796a-445a-817b-8697d3d10b91",
+          "chunk_id": "ba5af04b-ea5f-4c24-bc8e-484b0578dbef",
+          "label": "S3"
+        },
+        {
+          "doc_id": "829809f1-1cc8-4f43-b5fd-5fb3245d9cae",
+          "chunk_id": "25c3f361-d405-4a4c-a4fe-4b152771f056",
+          "label": "S4"
+        },
+        {
+          "doc_id": "829809f1-1cc8-4f43-b5fd-5fb3245d9cae",
+          "chunk_id": "25c3f361-d405-4a4c-a4fe-4b152771f056",
+          "label": "S5"
+        },
+        {
+          "doc_id": "829809f1-1cc8-4f43-b5fd-5fb3245d9cae",
+          "chunk_id": "25c3f361-d405-4a4c-a4fe-4b152771f056",
+          "label": "S6"
+        },
+        {
+          "doc_id": "d49e0e99-da0a-4f04-8ef0-e686609fa9b9",
+          "chunk_id": "01da5d31-ed3a-40c6-a015-2f1ab0e56bb3",
+          "label": "S7"
+        },
+        {
+          "doc_id": "a50b8020-12f3-4812-bf60-c9bd335b054d",
+          "chunk_id": "e5c2e1d6-2cf1-40be-8dec-2834e554454c",
+          "label": "S8"
+        },
+        {
+          "doc_id": "586a0d44-e650-41e7-9568-a40191d3b58e",
+          "chunk_id": "2b392542-eed8-4dc2-a211-5bc5fa62efb1",
+          "label": "S9"
+        },
+        {
+          "doc_id": "586a0d44-e650-41e7-9568-a40191d3b58e",
+          "chunk_id": "2b392542-eed8-4dc2-a211-5bc5fa62efb1",
+          "label": "S10"
+        },
+        {
+          "doc_id": "b6d9a3eb-3727-44da-b8f9-d4cf35b70ddc",
+          "chunk_id": "8b78ef39-4fed-4f93-892c-97410101849a",
+          "label": "S11"
+        },
+        {
+          "doc_id": "b6d9a3eb-3727-44da-b8f9-d4cf35b70ddc",
+          "chunk_id": "8b78ef39-4fed-4f93-892c-97410101849a",
+          "label": "S12"
+        },
+        {
+          "doc_id": "a1e47ce7-5852-4594-8bea-3d8b38bbd1e0",
+          "chunk_id": "7e7dac96-97de-4431-949d-3523e94e94f0",
+          "label": "S13"
+        },
+        {
+          "doc_id": "a1e47ce7-5852-4594-8bea-3d8b38bbd1e0",
+          "chunk_id": "7e7dac96-97de-4431-949d-3523e94e94f0",
+          "label": "S14"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.217112599988468,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1742",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Futbolita",
+        "David Villa"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "footballer statement: Franck Dja Djédjé (born 2 June 1986) is an Ivorian footballer who plays as a striker for FC Kaisar in the Kazakhstan Premier League. [S1]. Spanish statement: Josep Raich Garriga (August 28, 1913 - 25 July 1988) is a former Spanish footballer of Catalan ethnicity who played for Joventut FC, CE Júpiter and FC Barcelona in Spain and FC Sète and Troyes AC in F [S2]. Professional statement: Jessica Marie \"Jess\" McDonald (born February 28, 1988) is an American professional soccer forward who currently plays for the North Carolina Courage of the National Women's Soccer League and is a memb [S3]. Professional statement: Chris Jones (born 18 April 1956 in Jersey) is a former professional footballer who played for Tottenham Hotspur, Manchester City, Crystal Palace, Charlton Athletic, Leyton Orient and represented the E [S4]. footballer statement: Andrzej Edward \"Eddie\" Niedzwiecki; born 3 May 1959) is a Welsh former footballer who played as a goalkeeper for Wrexham and Chelsea and is now first-team coach at Stoke City. [S5]. Professional statement: Kasper Kusk Vangsgaard (born November 10, 1991) is a Danish professional footballer playing as a winger for Danish Superliga club FC Copenhagen. [S6]. Professional statement: Bernhard Carl \"Bert\" Trautmann OBE (22 October 1923 – 19 July 2013) was a German professional footballer who played as a goalkeeper for Manchester City from 1949 to 1964. [S7].",
+      "citations": [
+        {
+          "doc_id": "af919e5b-a279-4651-8809-e0428bb5da95",
+          "chunk_id": "31242182-ce68-4332-8be5-b9b2b82c30be",
+          "label": "S1"
+        },
+        {
+          "doc_id": "d999497c-7942-4234-91a0-af4ab1af43c5",
+          "chunk_id": "fbb282db-80c0-4c2d-8644-6e748df47257",
+          "label": "S2"
+        },
+        {
+          "doc_id": "36d63c47-ea6e-4e61-b874-4d6287f77a23",
+          "chunk_id": "31ebe08e-1ee7-4089-8752-a32062b18540",
+          "label": "S3"
+        },
+        {
+          "doc_id": "74a9a165-54c1-4504-ae8e-1d12f07ba9f7",
+          "chunk_id": "41f7bbb3-6a0e-4601-997f-8163637c4ccd",
+          "label": "S4"
+        },
+        {
+          "doc_id": "1d973ba5-aa9a-4198-a23b-fc76f033462a",
+          "chunk_id": "44b5613a-4937-4459-a913-5735c19e928f",
+          "label": "S5"
+        },
+        {
+          "doc_id": "0e1c9ec2-efee-4435-9720-ca24dc30977a",
+          "chunk_id": "1a91bdb1-5702-4c27-abe6-df4da5b9ac28",
+          "label": "S6"
+        },
+        {
+          "doc_id": "d9c89f07-0d77-4897-b3ea-3ba29fd22b63",
+          "chunk_id": "3103d05f-7f47-4573-94ac-f59423c98b2c",
+          "label": "S7"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.23619219998363405,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_3455",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Pratt Family Camps",
+        "Squam Lake"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "Grafton statement: New Hampshire Route 120 is a 26.928 mi secondary north–south state highway in Sullivan and Grafton counties in the upper Connecticut River Valley region of New Hampshire. [S1]. well statement: It reenters North Carolina near the border between Caswell County and Rockingham County. [S2]. well statement: It flows into northern Caswell County and then back into southern Virginia and finally into Kerr Reservoir on the Roanoke River. [S3]. well statement: It primarily serves the western part of the Town of Southold, as well as a small portion of the Town of Riverhead, and includes the census-designated places of Mattituck, Cutchogue and Laurel, and por [S4].",
+      "citations": [
+        {
+          "doc_id": "1a3c888b-585a-4e25-b753-4bcd172e76eb",
+          "chunk_id": "880f2841-db87-468b-93cc-69b4f3014830",
+          "label": "S1"
+        },
+        {
+          "doc_id": "946626dd-2f7d-41ef-851b-a968df9ede9d",
+          "chunk_id": "bd406d98-e549-428b-b837-b651d7fa510a",
+          "label": "S2"
+        },
+        {
+          "doc_id": "946626dd-2f7d-41ef-851b-a968df9ede9d",
+          "chunk_id": "bd406d98-e549-428b-b837-b651d7fa510a",
+          "label": "S3"
+        },
+        {
+          "doc_id": "ceb34b45-d0f2-4bc2-a106-34e316aabf51",
+          "chunk_id": "297ee3cd-7379-4987-9c37-6910f58c0c33",
+          "label": "S4"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.18697949999477714,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1466",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Taipa",
+        "Macau"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "country statement: The islands are an autonomous country within the Kingdom of Denmark. [S1]. island statement: The Faroe Islands ( ; Faroese: \"Føroyar\" ] ; Danish: \"Færøerne\" , ] ), sometimes called the Faeroe Islands, are an archipelago between the Norwegian Sea and the North Atlantic, about halfway between N [S2]. country statement: Indonesia is an archipelagic island country in South east Asia, lying between the Indian Ocean and the Pacific Ocean. [S3]. country statement: The only landlocked region in the country, it is bordered by the Ilocos Region in the west and southwest, and by the Cagayan Valley on the north, east, and southeast. [S4]. country statement: Prior to the 2015 census, it is the least populated and least densely-populated Region in the country. [S5]. island statement: Cordillera Administrative Region (Ilocano: \"Rehion/Deppaar Administratibo ti Kordiliera\" ; Filipino: \"Rehiyong Pampangasiwaan ng Cordillera\" ), designated as CAR, is an administrative region in the Ph [S6]. country statement: Including Crimea, Ukraine has an area of 603628 km² , making it the largest country entirely within Europe and the 46th largest country in the world. [S7]. country statement: Excluding Crimea, Ukraine has a population of about 42.5 million, making it the 32nd most populous country in the world. [S8]. island statement: RAF Mount Pleasant (IATA: MPN, ICAO: EGYP) (also known as Mount Pleasant Airport, Mount Pleasant Complex or MPA) is a Royal Air Force station in the British Overseas Territory of the Falkland Islands. [S9]. island statement: The airfield goes by the motto of \"Defend the right\" (while the motto of the islands is \"Desire the right\") and is part of the British Forces South Atlantic Islands (BFSAI). [S10]. island statement: Home to between 1,000 and 2,000 British military personnel, it is located about 33 mi southwest of Stanley, the capital of the Falklands—on the island of East Falkland. [S11]. island statement: Ny-Ålesund (\"New Ålesund\") is a research town in Oscar II Land on the island of Spitsbergen in Svalbard, Norway. [S12]. island statement: The basin lies within a Northeast and Southwest trending strait that separates the peninsula from the nearby South Shetland Islands to the Northwest. [S13]. island statement: The basin extends for more than 500 km from Smith Island (South Shetland Islands) to a portion of the Hero Fracture Zone. [S14]. island statement: The three basins are separated by the Deception Island and Bridgeman Island. [S15]. island statement: Karposh Point (Bulgarian: \"нос Карпош\" , ‘Nos Karposh’ \\'nos 'kar-posh\\) is the ice-free point on the north coast of Snow Island in the South Shetland Islands, Antarctica. [S16].",
+      "citations": [
+        {
+          "doc_id": "7a681a3e-032f-4705-8b0a-3445a7e3e7e4",
+          "chunk_id": "f4e56fdc-019c-41c4-9b98-d74192046cb6",
+          "label": "S1"
+        },
+        {
+          "doc_id": "7a681a3e-032f-4705-8b0a-3445a7e3e7e4",
+          "chunk_id": "f4e56fdc-019c-41c4-9b98-d74192046cb6",
+          "label": "S2"
+        },
+        {
+          "doc_id": "73232275-a3cd-40f1-a682-65e1bd6c1ca7",
+          "chunk_id": "7f356706-0fbb-4d86-a3cb-60e263002762",
+          "label": "S3"
+        },
+        {
+          "doc_id": "6889efba-7a51-4077-be6a-111d7e49b886",
+          "chunk_id": "d8b90c19-88be-4d3e-bd33-43044dead490",
+          "label": "S4"
+        },
+        {
+          "doc_id": "6889efba-7a51-4077-be6a-111d7e49b886",
+          "chunk_id": "d8b90c19-88be-4d3e-bd33-43044dead490",
+          "label": "S5"
+        },
+        {
+          "doc_id": "6889efba-7a51-4077-be6a-111d7e49b886",
+          "chunk_id": "d8b90c19-88be-4d3e-bd33-43044dead490",
+          "label": "S6"
+        },
+        {
+          "doc_id": "40161837-6661-42d9-bb6d-c48ad97b361c",
+          "chunk_id": "696414ef-9483-44d9-a7c6-b44880cf9556",
+          "label": "S7"
+        },
+        {
+          "doc_id": "40161837-6661-42d9-bb6d-c48ad97b361c",
+          "chunk_id": "696414ef-9483-44d9-a7c6-b44880cf9556",
+          "label": "S8"
+        },
+        {
+          "doc_id": "a181ff5e-64f0-48a7-9a75-4a46e0910c42",
+          "chunk_id": "5f0bd58a-09fd-4fa6-8480-7ebe0bb386e5",
+          "label": "S9"
+        },
+        {
+          "doc_id": "a181ff5e-64f0-48a7-9a75-4a46e0910c42",
+          "chunk_id": "5f0bd58a-09fd-4fa6-8480-7ebe0bb386e5",
+          "label": "S10"
+        },
+        {
+          "doc_id": "a181ff5e-64f0-48a7-9a75-4a46e0910c42",
+          "chunk_id": "5f0bd58a-09fd-4fa6-8480-7ebe0bb386e5",
+          "label": "S11"
+        },
+        {
+          "doc_id": "4459c684-5504-405b-bc10-60293668ec63",
+          "chunk_id": "77b68720-b8d3-4ba3-858c-38ccf5098c62",
+          "label": "S12"
+        },
+        {
+          "doc_id": "f4fd526d-73f7-44a5-8d8d-241e6f75c157",
+          "chunk_id": "c0a6e746-4c7a-49ec-bd98-ea8a8bb11b4c",
+          "label": "S13"
+        },
+        {
+          "doc_id": "f4fd526d-73f7-44a5-8d8d-241e6f75c157",
+          "chunk_id": "c0a6e746-4c7a-49ec-bd98-ea8a8bb11b4c",
+          "label": "S14"
+        },
+        {
+          "doc_id": "f4fd526d-73f7-44a5-8d8d-241e6f75c157",
+          "chunk_id": "c0a6e746-4c7a-49ec-bd98-ea8a8bb11b4c",
+          "label": "S15"
+        },
+        {
+          "doc_id": "e3e00e14-8ba2-4cda-9afb-1ebe547db69a",
+          "chunk_id": "f1e425a9-9a3e-4c04-bfd5-245e2123dc53",
+          "label": "S16"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.1863153000595048,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1534",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "The Trials of Life",
+        "Human (2015 film)"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "Human statement: The Human Factor is a 1979 British thriller film starring Richard Attenborough, Nicol Williamson, Derek Jacobi, and John Gielgud. [S1]. Human statement: It is based on the 1978 novel \"The Human Factor\" by Graham Greene, with the screenplay written by Tom Stoppard. [S2]. Life statement: \"What Is Life\" is a song by the English musician George Harrison, released on his 1970 triple album \"All Things Must Pass\". [S3]. Life statement: In the United Kingdom, \"What Is Life\" appeared as the B-side to \"My Sweet Lord\", which was the best-selling single there of 1971. [S4]. movie statement: The movie mixes elements of multiple genres, including comedy, science fiction, horror and thriller. [S5]. movie statement: Wild Gals of the Naked West is a 1962 nudie-cutie movie written and directed by Russ Meyer. [S6]. movie statement: Along with the hardcore pornographic movies \"A Dirty Western\" (1975) and \"Sweet Savage\", the film is one of the few porn flicks in the American Western movie genre. [S7]. Human statement: In the film, Clark Kent learns that he is a superpowered alien from the planet Krypton and assumes the role of mankind's protector as Superman, but finds himself having to prevent General Zod from des [S8]. movie statement: Mark Buntzman is the film director, writer, producer and actor of the cult classic movie \"Exterminator 2\", and was also the producer of the first, \"The Exterminator\". [S9]. movie statement: Other than those two movies, he hasn't produced, directed, or written any other prominent films. [S10]. movie statement: He did, though, have a cameo in the 1993 movie \"Posse\" as Deputy Buntzman, as well as playing a reporter in the 1995 movie \"Panther\". [S11]. both statement: Both movies starred Mario Van Peebles, who also played a large role in \"Exterminator 2\". [S12]. movie statement: \"Streiht Up Menace\" is a 1993 single by MC Eiht off the soundtrack of 1993 movie \"Menace II Society\". [S13]. movie statement: The lyrics of the song focus on the life of the characters in the movie, acting as a sort of plot summary for the film. [S14].",
+      "citations": [
+        {
+          "doc_id": "0e3f3f7e-c9cb-4e7a-97ec-d3c1b7a0ef22",
+          "chunk_id": "9f8bfa23-a99c-4e10-b980-bc03c8bfb09e",
+          "label": "S1"
+        },
+        {
+          "doc_id": "0e3f3f7e-c9cb-4e7a-97ec-d3c1b7a0ef22",
+          "chunk_id": "9f8bfa23-a99c-4e10-b980-bc03c8bfb09e",
+          "label": "S2"
+        },
+        {
+          "doc_id": "34f19daa-e1e4-4596-bc20-36d1ee74ba9a",
+          "chunk_id": "7ebf0088-8b3e-4e15-83e8-d0f4b1dc5236",
+          "label": "S3"
+        },
+        {
+          "doc_id": "34f19daa-e1e4-4596-bc20-36d1ee74ba9a",
+          "chunk_id": "7ebf0088-8b3e-4e15-83e8-d0f4b1dc5236",
+          "label": "S4"
+        },
+        {
+          "doc_id": "41f92129-1263-495d-9c71-90e721789eb0",
+          "chunk_id": "9b8b98d0-66de-4d67-9ba9-cb2459dc2d90",
+          "label": "S5"
+        },
+        {
+          "doc_id": "ec53e414-2346-449a-8ccd-e3b829a6941b",
+          "chunk_id": "d53e9cfa-cd82-44c7-9dd4-e7f7987294b9",
+          "label": "S6"
+        },
+        {
+          "doc_id": "ec53e414-2346-449a-8ccd-e3b829a6941b",
+          "chunk_id": "d53e9cfa-cd82-44c7-9dd4-e7f7987294b9",
+          "label": "S7"
+        },
+        {
+          "doc_id": "09df6b04-f4e2-4f01-a96d-bc49e47bdae6",
+          "chunk_id": "da610ff6-5b59-4529-94b0-382ee00fbe87",
+          "label": "S8"
+        },
+        {
+          "doc_id": "21db61a6-32c5-46f2-bdbb-d4ca232dc1c0",
+          "chunk_id": "6fe17ea2-4a55-49ee-8f10-7abd4df7d61e",
+          "label": "S9"
+        },
+        {
+          "doc_id": "21db61a6-32c5-46f2-bdbb-d4ca232dc1c0",
+          "chunk_id": "6fe17ea2-4a55-49ee-8f10-7abd4df7d61e",
+          "label": "S10"
+        },
+        {
+          "doc_id": "21db61a6-32c5-46f2-bdbb-d4ca232dc1c0",
+          "chunk_id": "6fe17ea2-4a55-49ee-8f10-7abd4df7d61e",
+          "label": "S11"
+        },
+        {
+          "doc_id": "21db61a6-32c5-46f2-bdbb-d4ca232dc1c0",
+          "chunk_id": "6fe17ea2-4a55-49ee-8f10-7abd4df7d61e",
+          "label": "S12"
+        },
+        {
+          "doc_id": "869249f0-f00e-4572-aacd-0748535ac58d",
+          "chunk_id": "350485e8-f77d-4f65-a6e2-155113707f21",
+          "label": "S13"
+        },
+        {
+          "doc_id": "869249f0-f00e-4572-aacd-0748535ac58d",
+          "chunk_id": "350485e8-f77d-4f65-a6e2-155113707f21",
+          "label": "S14"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.20805429993197322,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_3684",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Thomas D. Howie",
+        "Operation Overlord"
+      ],
+      "gold_resolved": false,
+      "status": "partial",
+      "answer_text": "first statement: The Battle of Cambrai, 1918 (also known as the Second Battle of Cambrai) was a battle between troops of the British First, Third and Fourth Armies and German Empire forces during the Hundred Days Offe [S1]. Battle statement: The battle took place in and around the French city of Cambrai, between 8 and 10 October 1918. [S2]. Battle statement: The battle incorporated many of the newer tactics of 1918, in particular tanks. [S3]. first statement: The battle was a part of the War of the Austrian Succession, sometimes referred to as the First Silesian War. [S4]. Battle statement: The Battle of Chotusitz, or Chotusice, sometimes called the Battle of Czaslau, was fought on May 17, 1742, in Bohemia between the Austrians under Prince Charles Alexander of Lorraine and the Prussians [S5]. Battle statement: The battle of Chotusitz was especially notable in that it was the only major battle started by the Austrians during this war. [S6]. name statement: \"Fat Man\" was the codename for the atomic bomb that was detonated over the Japanese city of Nagasaki by the United States on 9 August 1945. [S7]. first statement: It was the second of the only two nuclear weapons ever used in warfare, the first being Little Boy, and its detonation marked the third-ever man-made nuclear explosion in history. [S8]. name statement: She was the fourth US Navy ship to bear the name. [S9]. operation statement: Commissioned in December 1942, \"Essex\" participated in several campaigns in the Pacific Theater of Operations, earning the Presidential Unit Citation and 13 battle stars. [S10]. Battle statement: She also participated in the Korean War, earning four battle stars and the Navy Unit Commendation. [S11]. name statement: USS \"Bunch\" (DE-694) was a \"Buckley\"-class destroyer escort of the United States Navy, named after Kenneth Cecil Bunch, killed in action on 6 June 1942 while flying as radioman-gunner in an SBD Dauntl [S12]. first statement: They also operated the telephone switch boards at First Army headquarters at Ligny-en-Barrois, about 5 mi to the south of Saint-Mihiel, and later during the Meuse-Argonne Offensive. [S13]. first statement: In 1919, Banker was honoured with the Distinguished Service Medal for her services with the First Army headquarters during the St. [S14]. Battle statement: The Battle of Blair Mountain was the largest labor uprising in United States history and one of the largest, best-organized, and most well-armed uprisings since the American Civil War. [S15]. Battle statement: The battle ended after approximately one million rounds were fired, and the United States Army intervened by presidential order. [S16].",
+      "citations": [
+        {
+          "doc_id": "c2f84755-b5e4-414f-bea2-b52ca486560b",
+          "chunk_id": "5456b627-8111-4d6b-b09c-fad065aef287",
+          "label": "S1"
+        },
+        {
+          "doc_id": "c2f84755-b5e4-414f-bea2-b52ca486560b",
+          "chunk_id": "5456b627-8111-4d6b-b09c-fad065aef287",
+          "label": "S2"
+        },
+        {
+          "doc_id": "c2f84755-b5e4-414f-bea2-b52ca486560b",
+          "chunk_id": "5456b627-8111-4d6b-b09c-fad065aef287",
+          "label": "S3"
+        },
+        {
+          "doc_id": "6f4783f1-742e-4cce-82e9-8d7a6d149527",
+          "chunk_id": "cd91e072-946d-40c9-8745-3f4528b2573c",
+          "label": "S4"
+        },
+        {
+          "doc_id": "6f4783f1-742e-4cce-82e9-8d7a6d149527",
+          "chunk_id": "cd91e072-946d-40c9-8745-3f4528b2573c",
+          "label": "S5"
+        },
+        {
+          "doc_id": "6f4783f1-742e-4cce-82e9-8d7a6d149527",
+          "chunk_id": "cd91e072-946d-40c9-8745-3f4528b2573c",
+          "label": "S6"
+        },
+        {
+          "doc_id": "5314b645-3265-4dab-97ae-572cfa941b05",
+          "chunk_id": "bcdb7640-f9c4-4166-bb08-92783b05b2ef",
+          "label": "S7"
+        },
+        {
+          "doc_id": "5314b645-3265-4dab-97ae-572cfa941b05",
+          "chunk_id": "bcdb7640-f9c4-4166-bb08-92783b05b2ef",
+          "label": "S8"
+        },
+        {
+          "doc_id": "7ee6fe34-2326-4b3a-aa35-231019935748",
+          "chunk_id": "ce8d6e91-9a91-40f8-9cfb-5302d6427bc2",
+          "label": "S9"
+        },
+        {
+          "doc_id": "7ee6fe34-2326-4b3a-aa35-231019935748",
+          "chunk_id": "ce8d6e91-9a91-40f8-9cfb-5302d6427bc2",
+          "label": "S10"
+        },
+        {
+          "doc_id": "7ee6fe34-2326-4b3a-aa35-231019935748",
+          "chunk_id": "ce8d6e91-9a91-40f8-9cfb-5302d6427bc2",
+          "label": "S11"
+        },
+        {
+          "doc_id": "b309a4b1-cba9-4c3e-b313-cbd184670343",
+          "chunk_id": "9f23908e-0525-47aa-9a84-80d172c81223",
+          "label": "S12"
+        },
+        {
+          "doc_id": "f9e85028-20a8-4c4a-aff1-34fb280635d5",
+          "chunk_id": "0140149e-5700-4739-b1ba-7646f36cd772",
+          "label": "S13"
+        },
+        {
+          "doc_id": "f9e85028-20a8-4c4a-aff1-34fb280635d5",
+          "chunk_id": "0140149e-5700-4739-b1ba-7646f36cd772",
+          "label": "S14"
+        },
+        {
+          "doc_id": "88be5a3d-6afe-468f-ae04-26eeeb7f9840",
+          "chunk_id": "3e6f644e-3580-4d58-ae98-0c8a7e70842b",
+          "label": "S15"
+        },
+        {
+          "doc_id": "88be5a3d-6afe-468f-ae04-26eeeb7f9840",
+          "chunk_id": "3e6f644e-3580-4d58-ae98-0c8a7e70842b",
+          "label": "S16"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.1929239999735728,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    }
+  ]
+}

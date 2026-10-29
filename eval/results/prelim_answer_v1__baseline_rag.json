@@ -1,0 +1,1921 @@
+{
+  "summary": {
+    "config_id": "baseline_rag",
+    "pipeline": "baseline_rag",
+    "retrieval_mode": "hybrid_rrf",
+    "k": 8,
+    "n_questions": 20,
+    "n_errors": 0,
+    "corpus_active_documents": 2114,
+    "retrieval": {
+      "n": 3,
+      "recall_at_k": 0.8333333333333334,
+      "mrr": 1.0,
+      "all_gold_at_k": 0.6666666666666666,
+      "multi_doc_coverage": 0.8333333333333334,
+      "mean_latency_s": 1.2570618000269558
+    },
+    "answer": {
+      "n": 20,
+      "exact_match": 0.0,
+      "token_f1": 0.017247635361064127,
+      "citation_f1": 0.07833333333333334,
+      "correct_abstention_rate": 0.0,
+      "contradiction_detection_rate": 0.0,
+      "mean_latency_s": 6.487772604997735,
+      "mean_llm_calls": 0.8,
+      "mean_tokens": 1165.95
+    }
+  },
+  "results": [
+    {
+      "question_id": "syn_factual_beta_marker",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The BETA‑POOL‑EXHAUST marker is described in the documentation for **Service Component 14** – see the snippet that includes “Gold span marker BETA‑POOL‑EX”【S1】.",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S2"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "b0f15fd4-50f0-486d-8b7a-5c21e761d728",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "57b9df29-0d2a-4b49-9841-4a0a38417bd7",
+          "label": "S4"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S5"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "66f66289-a0a5-4114-9146-f0870d8759bd",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "fd6bc225-aa15-4c15-937d-ff1e598365ea",
+          "label": "S7"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "fb38e847-209b-4c8e-8d57-88284ee0f38d",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.4200414000079036,
+      "llm_calls": 1,
+      "tokens": 1475,
+      "retrieved_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+        "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+        "b0f15fd4-50f0-486d-8b7a-5c21e761d728",
+        "57b9df29-0d2a-4b49-9841-4a0a38417bd7",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "66f66289-a0a5-4114-9146-f0870d8759bd",
+        "fd6bc225-aa15-4c15-937d-ff1e598365ea",
+        "fb38e847-209b-4c8e-8d57-88284ee0f38d"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.20689655172413793,
+        "citation": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c2_root_cause",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "- The incident report links the six‑hour PaymentService outage on 2024‑03‑12 to the **auth‑gateway** deployment (08:10 UTC) [S1].  \n- Operations attribute the root cause to a **mis‑configured JWT TTL** on AuthGateway that triggered cascading retries into PaymentService [S2].  \n- The change‑log/release notes for the same auth‑gateway version (2.4.1, deployed at 14:00 UTC) state that the outage was caused by a **Neon connection‑pool exhaustion**, explicitly saying it was *not* due to the JWT TTL, and note that PaymentService itself was unchanged [S3].\n\n**Contradiction:** Ops claim a JWT‑TTL misconfiguration, while the release notes claim a Neon pool exhaustion as the cause, and they disagree on which factor was responsible for the outage.",
+      "citations": [
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+          "label": "S2"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S4"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S5"
+        },
+        {
+          "doc_id": "ae941827-7015-4a72-b259-c854a0cf468b",
+          "chunk_id": "abc69609-b558-406d-b922-729221028779",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "ca6175cd-864a-45e6-9f34-70ad2b54108d",
+          "label": "S7"
+        },
+        {
+          "doc_id": "a8dfc3be-f35e-4e0a-9170-ebd5d3d2e9d7",
+          "chunk_id": "58ae9ab2-c3f3-43c5-b534-8a3477b0766d",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.2916537000564858,
+      "llm_calls": 1,
+      "tokens": 1554,
+      "retrieved_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "ae941827-7015-4a72-b259-c854a0cf468b",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "a8dfc3be-f35e-4e0a-9170-ebd5d3d2e9d7"
+      ],
+      "retrieved_chunk_ids": [
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "abc69609-b558-406d-b922-729221028779",
+        "ca6175cd-864a-45e6-9f34-70ad2b54108d",
+        "58ae9ab2-c3f3-43c5-b534-8a3477b0766d"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_5",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The status update notes that the rollback of the auth‑gateway was initiated, but the approver’s name is redacted and the record is incomplete, so the identity of the approver is not available in the evidence provided【S1】.",
+      "citations": [
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S2"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S3"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S4"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S5"
+        },
+        {
+          "doc_id": "5512c565-c277-40e7-af5c-7eac594f2060",
+          "chunk_id": "c3e84232-61f5-42c5-82c5-2c9248e3bb8c",
+          "label": "S6"
+        },
+        {
+          "doc_id": "0a572b75-34be-46eb-b575-50d21a62d0ba",
+          "chunk_id": "803e9f3c-c7be-4935-aee2-9c5735c75ac8",
+          "label": "S7"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.0705245001008734,
+      "llm_calls": 1,
+      "tokens": 1280,
+      "retrieved_doc_ids": [
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "5512c565-c277-40e7-af5c-7eac594f2060",
+        "0a572b75-34be-46eb-b575-50d21a62d0ba",
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "retrieved_chunk_ids": [
+        "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "c3e84232-61f5-42c5-82c5-2c9248e3bb8c",
+        "803e9f3c-c7be-4935-aee2-9c5735c75ac8",
+        "dd9e862a-dd2d-4730-b446-8ba5cb3052a3"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 0.0,
+        "false_answer_on_unanswerable": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_6",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The provided evidence does not contain any information about the CPU usage of FraudScorer during the incident. No claim mentions a CPU metric for FraudScorer. Consequently, the answer cannot be determined from the available sources.",
+      "citations": [
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        },
+        {
+          "doc_id": "a5f14f5c-b4c6-493a-83af-085f47894286",
+          "chunk_id": "3d1b5141-a181-4615-9dfe-a549d2d36ab5",
+          "label": "S3"
+        },
+        {
+          "doc_id": "798b17e7-b5cb-4888-87d7-62c6bed78d29",
+          "chunk_id": "1e33f087-920f-47b5-912d-a4fc0086d1fa",
+          "label": "S4"
+        },
+        {
+          "doc_id": "b35cbdf1-0245-47a7-94b5-6c4d6e24d04c",
+          "chunk_id": "5e0e9149-b39a-4436-a8ba-a67ca4cb7d03",
+          "label": "S5"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S6"
+        },
+        {
+          "doc_id": "386704bb-d530-42b3-8123-9e2168d7e149",
+          "chunk_id": "4ed88d3f-60b1-4046-b03c-f54b4e2dc9a3",
+          "label": "S7"
+        },
+        {
+          "doc_id": "0651466e-de92-4925-9827-e6ae47642234",
+          "chunk_id": "37d0d4e5-becd-438f-88a0-7f99a4e1c7d2",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.7258326999144629,
+      "llm_calls": 1,
+      "tokens": 1292,
+      "retrieved_doc_ids": [
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a5f14f5c-b4c6-493a-83af-085f47894286",
+        "798b17e7-b5cb-4888-87d7-62c6bed78d29",
+        "b35cbdf1-0245-47a7-94b5-6c4d6e24d04c",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "386704bb-d530-42b3-8123-9e2168d7e149",
+        "0651466e-de92-4925-9827-e6ae47642234"
+      ],
+      "retrieved_chunk_ids": [
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "3d1b5141-a181-4615-9dfe-a549d2d36ab5",
+        "1e33f087-920f-47b5-912d-a4fc0086d1fa",
+        "5e0e9149-b39a-4436-a8ba-a67ca4cb7d03",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "4ed88d3f-60b1-4046-b03c-f54b4e2dc9a3",
+        "37d0d4e5-becd-438f-88a0-7f99a4e1c7d2"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 0.0,
+        "false_answer_on_unanswerable": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_multistep_latency",
+      "question_type": "multi_step",
+      "split": "test",
+      "gold_doc_ids": [
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "latency_metrics",
+        "status_update"
+      ],
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The provided evidence does not include any latency metrics or mention of elevated latency for specific service components during the March incident. The only details are that PaymentService timed out for six hours after the auth‑gateway deployment and that a status update noted the PaymentService was recovering and a rollback of auth‑gateway was initiated [S1][S6]. No component‑level latency data are given.",
+      "citations": [
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "b0f15fd4-50f0-486d-8b7a-5c21e761d728",
+          "label": "S2"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "bf400e08-1e4b-4a53-afe0-a2a9f203fef2",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "90d93451-2d49-48d9-b1f1-ee2747a430b9",
+          "label": "S4"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "7094967c-9a1b-4366-8910-f70d640fc217",
+          "label": "S5"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "0b5b375d-b725-4cd5-8f13-8c338ddda991",
+          "label": "S7"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.0594903000164777,
+      "llm_calls": 1,
+      "tokens": 1535,
+      "retrieved_doc_ids": [
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+        "b0f15fd4-50f0-486d-8b7a-5c21e761d728",
+        "bf400e08-1e4b-4a53-afe0-a2a9f203fef2",
+        "90d93451-2d49-48d9-b1f1-ee2747a430b9",
+        "7094967c-9a1b-4366-8910-f70d640fc217",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "0b5b375d-b725-4cd5-8f13-8c338ddda991",
+        "6a115ac6-0f33-4510-a846-3d8d5808fe0b"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.08571428571428573,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_3959",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Decomposer (album)",
+        "311 (band)"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "The provided claims do not contain any information about Nick Hexum, the band he is associated with, or his involvement in producing “Decomposer” by The Matches. Therefore, I cannot answer the question based on the available evidence.",
+      "citations": [
+        {
+          "doc_id": "e0f8765c-0877-47a6-8c15-f89bd2201285",
+          "chunk_id": "d9c9555a-34af-477b-aa15-ce424f11ba78",
+          "label": "S1"
+        },
+        {
+          "doc_id": "77b30478-7799-435a-bd3b-9d1dbdad8f57",
+          "chunk_id": "f8f2baff-8c3c-4185-ab00-6b428c91eef6",
+          "label": "S2"
+        },
+        {
+          "doc_id": "4befc74d-679a-411e-8ffa-f79b719606b7",
+          "chunk_id": "7b176729-b562-40b6-9fd5-cfd9fb2f4b06",
+          "label": "S3"
+        },
+        {
+          "doc_id": "206450c1-8ef0-49e8-8753-867029559f3f",
+          "chunk_id": "baf4a636-8489-4366-a3a1-071206fff59e",
+          "label": "S4"
+        },
+        {
+          "doc_id": "fe1e0f4e-1b79-4e13-baae-bbce7fe24011",
+          "chunk_id": "0726e644-bd0a-4fcc-a25c-b589469a187d",
+          "label": "S5"
+        },
+        {
+          "doc_id": "c0966afe-0e4c-4488-87ba-99ab170fe953",
+          "chunk_id": "4709d056-f722-4def-a764-80b8e8ff884d",
+          "label": "S6"
+        },
+        {
+          "doc_id": "c99799db-434a-4657-80bb-dbaea82c1c25",
+          "chunk_id": "f5bae36d-5bf8-4055-bddc-609e8321bd65",
+          "label": "S7"
+        },
+        {
+          "doc_id": "55ca12d8-7e6d-4ace-9cc4-5112fa961ccc",
+          "chunk_id": "9ba0f4ca-77a0-40a2-ba99-8c3558d17ed6",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.9769868000876158,
+      "llm_calls": 1,
+      "tokens": 1425,
+      "retrieved_doc_ids": [
+        "e0f8765c-0877-47a6-8c15-f89bd2201285",
+        "77b30478-7799-435a-bd3b-9d1dbdad8f57",
+        "4befc74d-679a-411e-8ffa-f79b719606b7",
+        "206450c1-8ef0-49e8-8753-867029559f3f",
+        "fe1e0f4e-1b79-4e13-baae-bbce7fe24011",
+        "c0966afe-0e4c-4488-87ba-99ab170fe953",
+        "c99799db-434a-4657-80bb-dbaea82c1c25",
+        "55ca12d8-7e6d-4ace-9cc4-5112fa961ccc"
+      ],
+      "retrieved_chunk_ids": [
+        "d9c9555a-34af-477b-aa15-ce424f11ba78",
+        "f8f2baff-8c3c-4185-ab00-6b428c91eef6",
+        "7b176729-b562-40b6-9fd5-cfd9fb2f4b06",
+        "baf4a636-8489-4366-a3a1-071206fff59e",
+        "0726e644-bd0a-4fcc-a25c-b589469a187d",
+        "4709d056-f722-4def-a764-80b8e8ff884d",
+        "f5bae36d-5bf8-4055-bddc-609e8321bd65",
+        "9ba0f4ca-77a0-40a2-ba99-8c3558d17ed6"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1430",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Vaisakhi List",
+        "Sunil Grover"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "The provided evidence does not contain any information about the actor who played Gutthi on Comedy Nights with Kapil or about a 2016 Punjabi film directed by Smeep Kang. Therefore, I cannot answer the question with the given sources.",
+      "citations": [
+        {
+          "doc_id": "b3be5c69-1802-420e-90b9-b321ac3db1bf",
+          "chunk_id": "7b17a2e2-0e69-4e0a-a35d-7cce613ed108",
+          "label": "S1"
+        },
+        {
+          "doc_id": "fec6e5da-b2fd-4440-94fe-27a4d809c027",
+          "chunk_id": "6e616426-4942-4a0d-b0f6-30ff333480cd",
+          "label": "S2"
+        },
+        {
+          "doc_id": "ffb6e8df-6eba-45e5-a331-d2e1c0c5c516",
+          "chunk_id": "7c0b5545-ed3e-424e-b70d-9f4bb23c3901",
+          "label": "S3"
+        },
+        {
+          "doc_id": "d341357d-389c-4b3a-b021-b8411ab67295",
+          "chunk_id": "4c166ffd-4759-4ea7-8145-a1827a168012",
+          "label": "S4"
+        },
+        {
+          "doc_id": "147edd61-caf1-4c10-b341-482abda3771a",
+          "chunk_id": "519910f9-fe7a-4ef9-8085-c12414b669ef",
+          "label": "S5"
+        },
+        {
+          "doc_id": "9f81da03-8e9a-41c6-8c9a-efdb8b5fd006",
+          "chunk_id": "32846854-9edb-43e8-bd6a-e5adef2a6467",
+          "label": "S6"
+        },
+        {
+          "doc_id": "cef5fc0f-5c99-40cb-9836-950aa7581c8b",
+          "chunk_id": "f7aec328-0971-403a-b191-0769dc8278e6",
+          "label": "S7"
+        },
+        {
+          "doc_id": "75f766a4-d220-455d-b095-ebe9f8ec335b",
+          "chunk_id": "4fadd20b-6810-4be2-9cf7-0e3e2e7ff503",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 12.163029299932532,
+      "llm_calls": 1,
+      "tokens": 1569,
+      "retrieved_doc_ids": [
+        "b3be5c69-1802-420e-90b9-b321ac3db1bf",
+        "fec6e5da-b2fd-4440-94fe-27a4d809c027",
+        "ffb6e8df-6eba-45e5-a331-d2e1c0c5c516",
+        "d341357d-389c-4b3a-b021-b8411ab67295",
+        "147edd61-caf1-4c10-b341-482abda3771a",
+        "9f81da03-8e9a-41c6-8c9a-efdb8b5fd006",
+        "cef5fc0f-5c99-40cb-9836-950aa7581c8b",
+        "75f766a4-d220-455d-b095-ebe9f8ec335b"
+      ],
+      "retrieved_chunk_ids": [
+        "7b17a2e2-0e69-4e0a-a35d-7cce613ed108",
+        "6e616426-4942-4a0d-b0f6-30ff333480cd",
+        "7c0b5545-ed3e-424e-b70d-9f4bb23c3901",
+        "4c166ffd-4759-4ea7-8145-a1827a168012",
+        "519910f9-fe7a-4ef9-8085-c12414b669ef",
+        "32846854-9edb-43e8-bd6a-e5adef2a6467",
+        "f7aec328-0971-403a-b191-0769dc8278e6",
+        "4fadd20b-6810-4be2-9cf7-0e3e2e7ff503"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_4155",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Logan Leistikow",
+        "Guru Dutt"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "The supplied claims do not contain any information about the birth or death dates of Logan Leistikow or Guru Dutt, so it is not possible to determine from the given evidence whether their lives overlapped.",
+      "citations": [
+        {
+          "doc_id": "4d3e6769-353c-489b-8077-ffc2b3787d03",
+          "chunk_id": "18a190bf-6bb8-4142-b46d-182df2295885",
+          "label": "S1"
+        },
+        {
+          "doc_id": "9de8800d-d7ed-4518-8dbb-c1afe5ca8ecf",
+          "chunk_id": "ab7c04e5-db2e-41be-8cf7-3b1ab43a57c9",
+          "label": "S2"
+        },
+        {
+          "doc_id": "11027cd9-809e-4b09-afa2-5c5aff3587e7",
+          "chunk_id": "1fdeb839-e38b-4d9a-bc83-2e872f845d0c",
+          "label": "S3"
+        },
+        {
+          "doc_id": "64f4b624-4d89-4d1b-a702-71ea7d2c1e41",
+          "chunk_id": "56eda247-47a8-4a80-92a1-f6db8530e7a4",
+          "label": "S4"
+        },
+        {
+          "doc_id": "ad68b157-ff74-4707-9ef2-c84706298c49",
+          "chunk_id": "2349450a-1b70-4517-abf0-bc8fbaf3f7c4",
+          "label": "S5"
+        },
+        {
+          "doc_id": "b874acb3-812b-4731-90fc-25909f8f7a9a",
+          "chunk_id": "df4aa7d4-0c6a-4a32-ab8c-2b4a06edb067",
+          "label": "S6"
+        },
+        {
+          "doc_id": "12fff2e5-4522-4ef9-9561-2a086abcb20b",
+          "chunk_id": "27fad949-c018-4231-a4c5-d84734142e6a",
+          "label": "S7"
+        },
+        {
+          "doc_id": "dcdd86ff-2e13-48aa-a981-a8e7103fb841",
+          "chunk_id": "8ba34463-c583-4dcb-b734-936b6a52ac37",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 11.200116600026377,
+      "llm_calls": 1,
+      "tokens": 1505,
+      "retrieved_doc_ids": [
+        "4d3e6769-353c-489b-8077-ffc2b3787d03",
+        "9de8800d-d7ed-4518-8dbb-c1afe5ca8ecf",
+        "11027cd9-809e-4b09-afa2-5c5aff3587e7",
+        "64f4b624-4d89-4d1b-a702-71ea7d2c1e41",
+        "ad68b157-ff74-4707-9ef2-c84706298c49",
+        "b874acb3-812b-4731-90fc-25909f8f7a9a",
+        "12fff2e5-4522-4ef9-9561-2a086abcb20b",
+        "dcdd86ff-2e13-48aa-a981-a8e7103fb841"
+      ],
+      "retrieved_chunk_ids": [
+        "18a190bf-6bb8-4142-b46d-182df2295885",
+        "ab7c04e5-db2e-41be-8cf7-3b1ab43a57c9",
+        "1fdeb839-e38b-4d9a-bc83-2e872f845d0c",
+        "56eda247-47a8-4a80-92a1-f6db8530e7a4",
+        "2349450a-1b70-4517-abf0-bc8fbaf3f7c4",
+        "df4aa7d4-0c6a-4a32-ab8c-2b4a06edb067",
+        "27fad949-c018-4231-a4c5-d84734142e6a",
+        "8ba34463-c583-4dcb-b734-936b6a52ac37"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1730",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "1989 (Taylor Swift album)",
+        "Shellback (record producer)"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "The provided claims do not include any Swedish songwriter who has worked with Taylor Swift. Therefore, based on the available evidence, I cannot identify a Swedish songwriter who collaborated with her.",
+      "citations": [
+        {
+          "doc_id": "05dd04a0-1172-4116-8aac-f745e92707bc",
+          "chunk_id": "bffe3f7c-9132-428f-94e1-c6815af896a6",
+          "label": "S1"
+        },
+        {
+          "doc_id": "44b623ed-a96d-4523-b56c-a61212938b01",
+          "chunk_id": "0759be1f-03d1-4934-b283-f6c08f77b85d",
+          "label": "S2"
+        },
+        {
+          "doc_id": "42c40682-5472-4d79-8789-6a57a316544a",
+          "chunk_id": "3edda7e7-425d-4f17-9729-b1e8688a61dc",
+          "label": "S3"
+        },
+        {
+          "doc_id": "0db6843e-88a0-4536-99cc-26c3d9bbc244",
+          "chunk_id": "ebadf8d3-08de-4c0c-85f4-8e583c564141",
+          "label": "S4"
+        },
+        {
+          "doc_id": "9eb2da8b-bd45-481e-96a2-2702852f22e5",
+          "chunk_id": "2eedd435-79c6-4531-b6a1-bc145f534930",
+          "label": "S5"
+        },
+        {
+          "doc_id": "bd5d6838-fd82-43bd-9270-573d8299187f",
+          "chunk_id": "631d9818-971d-4cd4-950e-bc0bd954d6f5",
+          "label": "S6"
+        },
+        {
+          "doc_id": "a609183c-02d0-4f67-a997-6dc1bfa1742a",
+          "chunk_id": "2d9e06a5-9278-4b34-a59b-ccab8cfaad97",
+          "label": "S7"
+        },
+        {
+          "doc_id": "34f19daa-e1e4-4596-bc20-36d1ee74ba9a",
+          "chunk_id": "7ebf0088-8b3e-4e15-83e8-d0f4b1dc5236",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 10.575983999995515,
+      "llm_calls": 1,
+      "tokens": 1382,
+      "retrieved_doc_ids": [
+        "05dd04a0-1172-4116-8aac-f745e92707bc",
+        "44b623ed-a96d-4523-b56c-a61212938b01",
+        "42c40682-5472-4d79-8789-6a57a316544a",
+        "0db6843e-88a0-4536-99cc-26c3d9bbc244",
+        "9eb2da8b-bd45-481e-96a2-2702852f22e5",
+        "bd5d6838-fd82-43bd-9270-573d8299187f",
+        "a609183c-02d0-4f67-a997-6dc1bfa1742a",
+        "34f19daa-e1e4-4596-bc20-36d1ee74ba9a"
+      ],
+      "retrieved_chunk_ids": [
+        "bffe3f7c-9132-428f-94e1-c6815af896a6",
+        "0759be1f-03d1-4934-b283-f6c08f77b85d",
+        "3edda7e7-425d-4f17-9729-b1e8688a61dc",
+        "ebadf8d3-08de-4c0c-85f4-8e583c564141",
+        "2eedd435-79c6-4531-b6a1-bc145f534930",
+        "631d9818-971d-4cd4-950e-bc0bd954d6f5",
+        "2d9e06a5-9278-4b34-a59b-ccab8cfaad97",
+        "7ebf0088-8b3e-4e15-83e8-d0f4b1dc5236"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_3534",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Louis Dunbar",
+        "Harlem Globetrotters"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "The provided claims do not contain any information linking Louis Dunbar to a specific basketball team, nor do they state how many exhibition games that team played. Therefore, based on the available evidence, the answer cannot be determined.",
+      "citations": [
+        {
+          "doc_id": "7808a12a-1c83-43fd-81ef-3d333f4be1da",
+          "chunk_id": "104166b2-3aa5-4bb3-bbf1-b87f6cd6cb91",
+          "label": "S1"
+        },
+        {
+          "doc_id": "ff0894a0-683e-4c3a-96fe-79f7b90c7bf9",
+          "chunk_id": "8fde857c-776b-4f55-9ebd-d08ca12963be",
+          "label": "S2"
+        },
+        {
+          "doc_id": "230b7d36-f844-4f25-9fe7-2734c627db78",
+          "chunk_id": "cc009439-f02d-4fc5-b920-86827e2f0b79",
+          "label": "S3"
+        },
+        {
+          "doc_id": "ea70f689-6fd5-4f58-b5be-7ab5084ac910",
+          "chunk_id": "fe0a6540-f8e5-4949-9a89-83a071b5f0ea",
+          "label": "S4"
+        },
+        {
+          "doc_id": "ff4defa2-28b3-4116-b9ab-21114ea6d9e6",
+          "chunk_id": "04138595-c879-4db0-9045-8251ffd218eb",
+          "label": "S5"
+        },
+        {
+          "doc_id": "ce0e3618-42a4-40c4-ace6-871a8bf2c9a6",
+          "chunk_id": "22d02408-0d9c-4865-a5a4-bd0e89bb14a3",
+          "label": "S6"
+        },
+        {
+          "doc_id": "361aecb8-6174-4912-ab13-5e5e7229e910",
+          "chunk_id": "98a2f5e1-f778-4b8d-bcee-837406af781c",
+          "label": "S7"
+        },
+        {
+          "doc_id": "28f85c43-3f45-48ab-bb50-858e4fcac4a5",
+          "chunk_id": "16f2841c-f32c-437f-a314-e58825ae172d",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 10.304827999905683,
+      "llm_calls": 1,
+      "tokens": 1444,
+      "retrieved_doc_ids": [
+        "7808a12a-1c83-43fd-81ef-3d333f4be1da",
+        "ff0894a0-683e-4c3a-96fe-79f7b90c7bf9",
+        "230b7d36-f844-4f25-9fe7-2734c627db78",
+        "ea70f689-6fd5-4f58-b5be-7ab5084ac910",
+        "ff4defa2-28b3-4116-b9ab-21114ea6d9e6",
+        "ce0e3618-42a4-40c4-ace6-871a8bf2c9a6",
+        "361aecb8-6174-4912-ab13-5e5e7229e910",
+        "28f85c43-3f45-48ab-bb50-858e4fcac4a5"
+      ],
+      "retrieved_chunk_ids": [
+        "104166b2-3aa5-4bb3-bbf1-b87f6cd6cb91",
+        "8fde857c-776b-4f55-9ebd-d08ca12963be",
+        "cc009439-f02d-4fc5-b920-86827e2f0b79",
+        "fe0a6540-f8e5-4949-9a89-83a071b5f0ea",
+        "04138595-c879-4db0-9045-8251ffd218eb",
+        "22d02408-0d9c-4865-a5a4-bd0e89bb14a3",
+        "98a2f5e1-f778-4b8d-bcee-837406af781c",
+        "16f2841c-f32c-437f-a314-e58825ae172d"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_4251",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Press TV controversies",
+        "Douglas Murray (author)"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "The provided claims do not contain any information about a Press TV commentator holding an associate‑director position at a particular organization. Therefore, the answer cannot be determined from the available evidence.",
+      "citations": [
+        {
+          "doc_id": "531a2152-7b37-466f-85cb-43130c357e80",
+          "chunk_id": "f6e99de4-6cd9-473a-b622-6ddef9a5cb56",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b0e28a54-95b2-4230-be36-5f7ce0c727f0",
+          "chunk_id": "e8438bd6-3d66-4eb3-bf46-6abca3ef6021",
+          "label": "S2"
+        },
+        {
+          "doc_id": "610b6638-c3d1-4bd7-81e7-c249c6760f7e",
+          "chunk_id": "a05ea5fe-5009-4919-9e3b-5547b360515b",
+          "label": "S3"
+        },
+        {
+          "doc_id": "d9fa6885-1304-45e3-8a3b-4f02ecb0b01f",
+          "chunk_id": "0b90c7b0-fcad-42d8-a2e4-eb25e0cb07b4",
+          "label": "S4"
+        },
+        {
+          "doc_id": "61e514bc-5fe0-4a84-b34e-2b3decb78706",
+          "chunk_id": "969d00e8-fdc2-45f4-b436-8b128098d5f5",
+          "label": "S5"
+        },
+        {
+          "doc_id": "97b97316-6261-41e1-8892-74afab1f1562",
+          "chunk_id": "e5e3e018-d0f3-44a1-a0b4-0952c4537194",
+          "label": "S6"
+        },
+        {
+          "doc_id": "8bd68ffa-4339-4d51-8a57-2b6a2d93a9b7",
+          "chunk_id": "fd13a9c2-f604-4032-8afa-c284bdefd887",
+          "label": "S7"
+        },
+        {
+          "doc_id": "e1a6b760-f6e9-4d5f-857e-f0de24138f5a",
+          "chunk_id": "110ac185-400d-470e-8d12-34f6bac6f595",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 10.315583199961111,
+      "llm_calls": 1,
+      "tokens": 1394,
+      "retrieved_doc_ids": [
+        "531a2152-7b37-466f-85cb-43130c357e80",
+        "b0e28a54-95b2-4230-be36-5f7ce0c727f0",
+        "610b6638-c3d1-4bd7-81e7-c249c6760f7e",
+        "d9fa6885-1304-45e3-8a3b-4f02ecb0b01f",
+        "61e514bc-5fe0-4a84-b34e-2b3decb78706",
+        "97b97316-6261-41e1-8892-74afab1f1562",
+        "8bd68ffa-4339-4d51-8a57-2b6a2d93a9b7",
+        "e1a6b760-f6e9-4d5f-857e-f0de24138f5a"
+      ],
+      "retrieved_chunk_ids": [
+        "f6e99de4-6cd9-473a-b622-6ddef9a5cb56",
+        "e8438bd6-3d66-4eb3-bf46-6abca3ef6021",
+        "a05ea5fe-5009-4919-9e3b-5547b360515b",
+        "0b90c7b0-fcad-42d8-a2e4-eb25e0cb07b4",
+        "969d00e8-fdc2-45f4-b436-8b128098d5f5",
+        "e5e3e018-d0f3-44a1-a0b4-0952c4537194",
+        "fd13a9c2-f604-4032-8afa-c284bdefd887",
+        "110ac185-400d-470e-8d12-34f6bac6f595"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_3014",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Metal Guru",
+        "Marc Bolan"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "The provided evidence does not contain any information about T. Rex or the name of its lead singer, so I cannot answer the question from the given sources.",
+      "citations": [
+        {
+          "doc_id": "08579f40-3c4a-472c-b553-337aba4cd50d",
+          "chunk_id": "442556ee-4fa7-4006-adac-bf4a6cbf30f7",
+          "label": "S1"
+        },
+        {
+          "doc_id": "36180abb-2e91-41bc-a120-cfeca4e8a169",
+          "chunk_id": "9e102a7f-5adc-47c3-9f3c-f98282caddf2",
+          "label": "S2"
+        },
+        {
+          "doc_id": "17888b38-66bf-4963-a842-d696d1bf8158",
+          "chunk_id": "fa9e1fb7-8a12-4153-a3eb-bdde82eca0ba",
+          "label": "S3"
+        },
+        {
+          "doc_id": "dc17080a-0a42-4b6b-b06c-7bcbb3858f0d",
+          "chunk_id": "3d16371e-2460-41ff-b433-06ebf60f7c4b",
+          "label": "S4"
+        },
+        {
+          "doc_id": "99854cd7-11a1-46cd-9bbf-21f51db1d06d",
+          "chunk_id": "ca59d240-8178-4e0a-b0af-0343e0efc3a1",
+          "label": "S5"
+        },
+        {
+          "doc_id": "8d91a46e-0e76-41dc-8697-9a18a3477088",
+          "chunk_id": "789e09c9-8f77-4445-b0ea-beac568c4dc6",
+          "label": "S6"
+        },
+        {
+          "doc_id": "2945cefa-ed1e-477b-8f88-2bab8c1fdfee",
+          "chunk_id": "ff0d40ce-d202-4940-a44d-5036f5eedd63",
+          "label": "S7"
+        },
+        {
+          "doc_id": "63d20544-1044-44ed-8b01-40003abbc66e",
+          "chunk_id": "2cfeac4a-edbf-4a9c-aa80-12c3864e51b0",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 12.302790999994613,
+      "llm_calls": 1,
+      "tokens": 1553,
+      "retrieved_doc_ids": [
+        "08579f40-3c4a-472c-b553-337aba4cd50d",
+        "36180abb-2e91-41bc-a120-cfeca4e8a169",
+        "17888b38-66bf-4963-a842-d696d1bf8158",
+        "dc17080a-0a42-4b6b-b06c-7bcbb3858f0d",
+        "99854cd7-11a1-46cd-9bbf-21f51db1d06d",
+        "8d91a46e-0e76-41dc-8697-9a18a3477088",
+        "2945cefa-ed1e-477b-8f88-2bab8c1fdfee",
+        "63d20544-1044-44ed-8b01-40003abbc66e"
+      ],
+      "retrieved_chunk_ids": [
+        "442556ee-4fa7-4006-adac-bf4a6cbf30f7",
+        "9e102a7f-5adc-47c3-9f3c-f98282caddf2",
+        "fa9e1fb7-8a12-4153-a3eb-bdde82eca0ba",
+        "3d16371e-2460-41ff-b433-06ebf60f7c4b",
+        "ca59d240-8178-4e0a-b0af-0343e0efc3a1",
+        "789e09c9-8f77-4445-b0ea-beac568c4dc6",
+        "ff0d40ce-d202-4940-a44d-5036f5eedd63",
+        "2cfeac4a-edbf-4a9c-aa80-12c3864e51b0"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_5005",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Robert Von Ancken",
+        "Chrysler Building"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "The provided claims do not contain any information about a building on the East Side of Midtown Manhattan that was appraised by Robert Von Ancken, nor do they specify the architectural style of such a building. Therefore, I cannot answer the question based on the available evidence.",
+      "citations": [
+        {
+          "doc_id": "744668ea-bf75-4674-9172-08ffcbf093e4",
+          "chunk_id": "da028034-1213-48af-bd1b-a6e11515dec1",
+          "label": "S1"
+        },
+        {
+          "doc_id": "f9f063f3-2bdf-44aa-af8d-078889712d3c",
+          "chunk_id": "d84430aa-0179-4373-b229-8628a0caae73",
+          "label": "S2"
+        },
+        {
+          "doc_id": "61d235dd-4318-4cb5-a108-62433004098c",
+          "chunk_id": "7b67e5ce-388c-4727-86e4-4559d51aac9b",
+          "label": "S3"
+        },
+        {
+          "doc_id": "6c42f628-744e-4a29-a4b3-7b6cd05688b6",
+          "chunk_id": "062ac1b4-9416-41d1-965c-d13701e18822",
+          "label": "S4"
+        },
+        {
+          "doc_id": "cd319294-aa1d-428c-bd10-d9dd9db4984f",
+          "chunk_id": "27c391d5-1b10-4725-8f6c-c9789ba6c5ac",
+          "label": "S5"
+        },
+        {
+          "doc_id": "edf70e2c-2a25-473f-82b5-dcb1b364faf2",
+          "chunk_id": "9e81ef8f-2105-4e89-85fd-789150aa453a",
+          "label": "S6"
+        },
+        {
+          "doc_id": "f0b6dab8-3250-4215-bc68-b0b9f2c70b51",
+          "chunk_id": "50ecbe1c-4970-4652-bbe1-d1e430f259da",
+          "label": "S7"
+        },
+        {
+          "doc_id": "5b8e758b-8e05-4580-93b0-e1b47697e062",
+          "chunk_id": "6f7cf5e3-e247-4e05-8b28-7fa4df3f112f",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 10.407605900079943,
+      "llm_calls": 1,
+      "tokens": 1435,
+      "retrieved_doc_ids": [
+        "744668ea-bf75-4674-9172-08ffcbf093e4",
+        "f9f063f3-2bdf-44aa-af8d-078889712d3c",
+        "61d235dd-4318-4cb5-a108-62433004098c",
+        "6c42f628-744e-4a29-a4b3-7b6cd05688b6",
+        "cd319294-aa1d-428c-bd10-d9dd9db4984f",
+        "edf70e2c-2a25-473f-82b5-dcb1b364faf2",
+        "f0b6dab8-3250-4215-bc68-b0b9f2c70b51",
+        "5b8e758b-8e05-4580-93b0-e1b47697e062"
+      ],
+      "retrieved_chunk_ids": [
+        "da028034-1213-48af-bd1b-a6e11515dec1",
+        "d84430aa-0179-4373-b229-8628a0caae73",
+        "7b67e5ce-388c-4727-86e4-4559d51aac9b",
+        "062ac1b4-9416-41d1-965c-d13701e18822",
+        "27c391d5-1b10-4725-8f6c-c9789ba6c5ac",
+        "9e81ef8f-2105-4e89-85fd-789150aa453a",
+        "50ecbe1c-4970-4652-bbe1-d1e430f259da",
+        "6f7cf5e3-e247-4e05-8b28-7fa4df3f112f"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0392156862745098,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_2015",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Dillingham Airport",
+        "Rafael Hernández Airport"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "The provided evidence does not contain any information about Dillingham Airport or Rafael Hernández Airport, so it cannot be determined from these sources whether either airport handles civilian (passenger) service.",
+      "citations": [
+        {
+          "doc_id": "80796815-1b49-4142-92a3-f07c18c15c10",
+          "chunk_id": "bf5ae6b8-c76d-48a4-b3fb-dd8f4d88e077",
+          "label": "S1"
+        },
+        {
+          "doc_id": "761918b3-0ff3-4920-b069-55705a3b836f",
+          "chunk_id": "ae1a9d84-db84-48e4-a88b-6eb90b963509",
+          "label": "S2"
+        },
+        {
+          "doc_id": "c81751f9-b64e-410e-bb79-44f5bf2819ce",
+          "chunk_id": "df12cb15-25d2-4504-a5fa-b59cc8550768",
+          "label": "S3"
+        },
+        {
+          "doc_id": "c894ffa5-8535-43bd-bf83-3b27d7984dbd",
+          "chunk_id": "fa5120da-b8d4-4265-b65a-141c2048dc43",
+          "label": "S4"
+        },
+        {
+          "doc_id": "b874acb3-812b-4731-90fc-25909f8f7a9a",
+          "chunk_id": "df4aa7d4-0c6a-4a32-ab8c-2b4a06edb067",
+          "label": "S5"
+        },
+        {
+          "doc_id": "de85a79a-eea4-486f-b063-a69941d216c0",
+          "chunk_id": "a42eb7b1-0e64-4e05-91f5-efa77ae67798",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b7788523-af2c-4fdb-97e8-1e9edd55903b",
+          "chunk_id": "07ffcdd1-a931-4dbb-bb69-6ea485256dab",
+          "label": "S7"
+        },
+        {
+          "doc_id": "4459c684-5504-405b-bc10-60293668ec63",
+          "chunk_id": "77b68720-b8d3-4ba3-858c-38ccf5098c62",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 12.020428400021046,
+      "llm_calls": 1,
+      "tokens": 1511,
+      "retrieved_doc_ids": [
+        "80796815-1b49-4142-92a3-f07c18c15c10",
+        "761918b3-0ff3-4920-b069-55705a3b836f",
+        "c81751f9-b64e-410e-bb79-44f5bf2819ce",
+        "c894ffa5-8535-43bd-bf83-3b27d7984dbd",
+        "b874acb3-812b-4731-90fc-25909f8f7a9a",
+        "de85a79a-eea4-486f-b063-a69941d216c0",
+        "b7788523-af2c-4fdb-97e8-1e9edd55903b",
+        "4459c684-5504-405b-bc10-60293668ec63"
+      ],
+      "retrieved_chunk_ids": [
+        "bf5ae6b8-c76d-48a4-b3fb-dd8f4d88e077",
+        "ae1a9d84-db84-48e4-a88b-6eb90b963509",
+        "df12cb15-25d2-4504-a5fa-b59cc8550768",
+        "fa5120da-b8d4-4265-b65a-141c2048dc43",
+        "df4aa7d4-0c6a-4a32-ab8c-2b4a06edb067",
+        "a42eb7b1-0e64-4e05-91f5-efa77ae67798",
+        "07ffcdd1-a931-4dbb-bb69-6ea485256dab",
+        "77b68720-b8d3-4ba3-858c-38ccf5098c62"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1078",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Bellini",
+        "Italian name"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "The provided sources do not contain any information about the Italian surname Bellini or the naming order in which it is normally written. Therefore, I cannot answer the question based on the available evidence.",
+      "citations": [
+        {
+          "doc_id": "a168edfa-6427-414f-a524-3df5f68bfa5b",
+          "chunk_id": "17bac39a-a12f-416a-97cb-8d4153f4c627",
+          "label": "S1"
+        },
+        {
+          "doc_id": "a15d95d9-796a-445a-817b-8697d3d10b91",
+          "chunk_id": "ba5af04b-ea5f-4c24-bc8e-484b0578dbef",
+          "label": "S2"
+        },
+        {
+          "doc_id": "829809f1-1cc8-4f43-b5fd-5fb3245d9cae",
+          "chunk_id": "25c3f361-d405-4a4c-a4fe-4b152771f056",
+          "label": "S3"
+        },
+        {
+          "doc_id": "d49e0e99-da0a-4f04-8ef0-e686609fa9b9",
+          "chunk_id": "01da5d31-ed3a-40c6-a015-2f1ab0e56bb3",
+          "label": "S4"
+        },
+        {
+          "doc_id": "a50b8020-12f3-4812-bf60-c9bd335b054d",
+          "chunk_id": "e5c2e1d6-2cf1-40be-8dec-2834e554454c",
+          "label": "S5"
+        },
+        {
+          "doc_id": "586a0d44-e650-41e7-9568-a40191d3b58e",
+          "chunk_id": "2b392542-eed8-4dc2-a211-5bc5fa62efb1",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b6d9a3eb-3727-44da-b8f9-d4cf35b70ddc",
+          "chunk_id": "8b78ef39-4fed-4f93-892c-97410101849a",
+          "label": "S7"
+        },
+        {
+          "doc_id": "a1e47ce7-5852-4594-8bea-3d8b38bbd1e0",
+          "chunk_id": "7e7dac96-97de-4431-949d-3523e94e94f0",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 10.429937699926086,
+      "llm_calls": 1,
+      "tokens": 1497,
+      "retrieved_doc_ids": [
+        "a168edfa-6427-414f-a524-3df5f68bfa5b",
+        "a15d95d9-796a-445a-817b-8697d3d10b91",
+        "829809f1-1cc8-4f43-b5fd-5fb3245d9cae",
+        "d49e0e99-da0a-4f04-8ef0-e686609fa9b9",
+        "a50b8020-12f3-4812-bf60-c9bd335b054d",
+        "586a0d44-e650-41e7-9568-a40191d3b58e",
+        "b6d9a3eb-3727-44da-b8f9-d4cf35b70ddc",
+        "a1e47ce7-5852-4594-8bea-3d8b38bbd1e0"
+      ],
+      "retrieved_chunk_ids": [
+        "17bac39a-a12f-416a-97cb-8d4153f4c627",
+        "ba5af04b-ea5f-4c24-bc8e-484b0578dbef",
+        "25c3f361-d405-4a4c-a4fe-4b152771f056",
+        "01da5d31-ed3a-40c6-a015-2f1ab0e56bb3",
+        "e5c2e1d6-2cf1-40be-8dec-2834e554454c",
+        "2b392542-eed8-4dc2-a211-5bc5fa62efb1",
+        "8b78ef39-4fed-4f93-892c-97410101849a",
+        "7e7dac96-97de-4431-949d-3523e94e94f0"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1742",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Futbolita",
+        "David Villa"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "The supplied claims do not include any Spanish professional footballer who currently plays as a striker for New York City FC, so the answer cannot be determined from the given evidence.",
+      "citations": [
+        {
+          "doc_id": "af919e5b-a279-4651-8809-e0428bb5da95",
+          "chunk_id": "31242182-ce68-4332-8be5-b9b2b82c30be",
+          "label": "S1"
+        },
+        {
+          "doc_id": "d999497c-7942-4234-91a0-af4ab1af43c5",
+          "chunk_id": "fbb282db-80c0-4c2d-8644-6e748df47257",
+          "label": "S2"
+        },
+        {
+          "doc_id": "36d63c47-ea6e-4e61-b874-4d6287f77a23",
+          "chunk_id": "31ebe08e-1ee7-4089-8752-a32062b18540",
+          "label": "S3"
+        },
+        {
+          "doc_id": "74a9a165-54c1-4504-ae8e-1d12f07ba9f7",
+          "chunk_id": "41f7bbb3-6a0e-4601-997f-8163637c4ccd",
+          "label": "S4"
+        },
+        {
+          "doc_id": "98f9ea94-09cd-4e42-8f8f-6621a89291bb",
+          "chunk_id": "75b21e2d-344b-4fc1-814b-e4c4cb2d7fb3",
+          "label": "S5"
+        },
+        {
+          "doc_id": "1d973ba5-aa9a-4198-a23b-fc76f033462a",
+          "chunk_id": "44b5613a-4937-4459-a913-5735c19e928f",
+          "label": "S6"
+        },
+        {
+          "doc_id": "0e1c9ec2-efee-4435-9720-ca24dc30977a",
+          "chunk_id": "1a91bdb1-5702-4c27-abe6-df4da5b9ac28",
+          "label": "S7"
+        },
+        {
+          "doc_id": "d9c89f07-0d77-4897-b3ea-3ba29fd22b63",
+          "chunk_id": "3103d05f-7f47-4573-94ac-f59423c98b2c",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 12.063906600000337,
+      "llm_calls": 1,
+      "tokens": 1468,
+      "retrieved_doc_ids": [
+        "af919e5b-a279-4651-8809-e0428bb5da95",
+        "d999497c-7942-4234-91a0-af4ab1af43c5",
+        "36d63c47-ea6e-4e61-b874-4d6287f77a23",
+        "74a9a165-54c1-4504-ae8e-1d12f07ba9f7",
+        "98f9ea94-09cd-4e42-8f8f-6621a89291bb",
+        "1d973ba5-aa9a-4198-a23b-fc76f033462a",
+        "0e1c9ec2-efee-4435-9720-ca24dc30977a",
+        "d9c89f07-0d77-4897-b3ea-3ba29fd22b63"
+      ],
+      "retrieved_chunk_ids": [
+        "31242182-ce68-4332-8be5-b9b2b82c30be",
+        "fbb282db-80c0-4c2d-8644-6e748df47257",
+        "31ebe08e-1ee7-4089-8752-a32062b18540",
+        "41f7bbb3-6a0e-4601-997f-8163637c4ccd",
+        "75b21e2d-344b-4fc1-814b-e4c4cb2d7fb3",
+        "44b5613a-4937-4459-a913-5735c19e928f",
+        "1a91bdb1-5702-4c27-abe6-df4da5b9ac28",
+        "3103d05f-7f47-4573-94ac-f59423c98b2c"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_3455",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Pratt Family Camps",
+        "Squam Lake"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "evidence snippet: New Hampshire Route 120 is a 26.928 mi secondary north–south state highway in Sullivan and Grafton counties in the upper Connecticut River Valley region of New Hampshire. Its southern terminus is at N [S1]. evidence snippet: Munsonville is an unincorporated community in the town of Nelson in Cheshire County, New Hampshire. It is located in the northwestern corner of Nelson, around the outlet of Granite Lake. [S2]. evidence snippet: Milan ( ) is a town in Coos County, New Hampshire, United States. The population was 1,337 at the 2010 census. It is part of the Berlin, NH–VT Micropolitan Statistical Area. [S3]. evidence snippet: The Pittsburg-Chartierville Border Crossing connects the towns of Chartierville, Quebec and Pittsburg, New Hampshire. The crossing can be reached by U.S. Route 3 on the American side and by Quebec Rou [S4]. evidence snippet: Bradford is a town in Merrimack County, New Hampshire, United States. The population was 1,650 at the 2010 census. The main village of the town, where 356 people resided at the 2010 census, is defined [S5]. evidence snippet: Great Neck is a region on Long Island, New York, that covers a peninsula on the North Shore of Long Island, which includes the villages of Great Neck, Great Neck Estates, Great Neck Plaza, and others, [S6]. evidence snippet: The Dan River flows 214 mi in the U.S. states of North Carolina and Virginia. It rises in Patrick County, Virginia, and crosses the state border into Stokes County, North Carolina. It then flows into  [S7]. evidence snippet: Mattituck-Cutchogue Union Free School District is a public school district located on the North Fork of Long Island, in Suffolk County, New York, United States. It primarily serves the western part of [S8].",
+      "citations": [
+        {
+          "doc_id": "1a3c888b-585a-4e25-b753-4bcd172e76eb",
+          "chunk_id": "880f2841-db87-468b-93cc-69b4f3014830",
+          "label": "S1"
+        },
+        {
+          "doc_id": "89035be6-daa8-48be-a8bc-348e58dee664",
+          "chunk_id": "fedaaa64-8951-46e7-8c3d-30459989c071",
+          "label": "S2"
+        },
+        {
+          "doc_id": "193e7157-30b4-49bd-aa8c-561529a7c488",
+          "chunk_id": "c259fcf6-494d-4435-a70e-d1d4aae24d46",
+          "label": "S3"
+        },
+        {
+          "doc_id": "74cf6f0e-8601-4c64-8959-e27095c0aae0",
+          "chunk_id": "8633a72c-4791-4b94-9c48-a6769770c73f",
+          "label": "S4"
+        },
+        {
+          "doc_id": "fbcb67f1-ea50-453f-b676-896eda41c9da",
+          "chunk_id": "26316556-b0e4-495b-82a1-e2dcfd01fcd4",
+          "label": "S5"
+        },
+        {
+          "doc_id": "77042b23-2a17-4e24-93fe-8500b651e8e7",
+          "chunk_id": "3ab72cbd-d13a-44d3-958f-9fb4f144628f",
+          "label": "S6"
+        },
+        {
+          "doc_id": "946626dd-2f7d-41ef-851b-a968df9ede9d",
+          "chunk_id": "bd406d98-e549-428b-b837-b651d7fa510a",
+          "label": "S7"
+        },
+        {
+          "doc_id": "ceb34b45-d0f2-4bc2-a106-34e316aabf51",
+          "chunk_id": "297ee3cd-7379-4987-9c37-6910f58c0c33",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 10.400593800004572,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "1a3c888b-585a-4e25-b753-4bcd172e76eb",
+        "89035be6-daa8-48be-a8bc-348e58dee664",
+        "193e7157-30b4-49bd-aa8c-561529a7c488",
+        "74cf6f0e-8601-4c64-8959-e27095c0aae0",
+        "fbcb67f1-ea50-453f-b676-896eda41c9da",
+        "77042b23-2a17-4e24-93fe-8500b651e8e7",
+        "946626dd-2f7d-41ef-851b-a968df9ede9d",
+        "ceb34b45-d0f2-4bc2-a106-34e316aabf51"
+      ],
+      "retrieved_chunk_ids": [
+        "880f2841-db87-468b-93cc-69b4f3014830",
+        "fedaaa64-8951-46e7-8c3d-30459989c071",
+        "c259fcf6-494d-4435-a70e-d1d4aae24d46",
+        "8633a72c-4791-4b94-9c48-a6769770c73f",
+        "26316556-b0e4-495b-82a1-e2dcfd01fcd4",
+        "3ab72cbd-d13a-44d3-958f-9fb4f144628f",
+        "bd406d98-e549-428b-b837-b651d7fa510a",
+        "297ee3cd-7379-4987-9c37-6910f58c0c33"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.006756756756756756,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1466",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Taipa",
+        "Macau"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "evidence snippet: The Faroe Islands ( ; Faroese: \"Føroyar\" ] ; Danish: \"Færøerne\" , ] ), sometimes called the Faeroe Islands, are an archipelago between the Norwegian Sea and the North Atlantic, about halfway between N [S1]. evidence snippet: Indonesia is an archipelagic island country in South east Asia, lying between the Indian Ocean and the Pacific Ocean. It is in a strategic location astride or along major sea lanes from Indian Ocean t [S2]. evidence snippet: Cordillera Administrative Region (Ilocano: \"Rehion/Deppaar Administratibo ti Kordiliera\" ; Filipino: \"Rehiyong Pampangasiwaan ng Cordillera\" ), designated as CAR, is an administrative region in the Ph [S3]. evidence snippet: Ukraine ( ; Ukrainian: Україна , \"Ukrajina \" ] ), sometimes called the Ukraine, is a sovereign state in Eastern Europe, bordered by Russia to the east and northeast, Belarus to the northwest, Poland,  [S4]. evidence snippet: RAF Mount Pleasant (IATA: MPN, ICAO: EGYP) (also known as Mount Pleasant Airport, Mount Pleasant Complex or MPA) is a Royal Air Force station in the British Overseas Territory of the Falkland Islands. [S5]. evidence snippet: Ny-Ålesund (\"New Ålesund\") is a research town in Oscar II Land on the island of Spitsbergen in Svalbard, Norway. It is situated on the Brøgger peninsula (Brøggerhalvøya) and on the shore of the bay of [S6]. evidence snippet: The Bransfield Basin is a back-arc rift basin located off the Northern tip of the Antarctic Peninsula. The basin lies within a Northeast and Southwest trending strait that separates the peninsula from [S7]. evidence snippet: Karposh Point (Bulgarian: \"нос Карпош\" , ‘Nos Karposh’ \\'nos 'kar-posh\\) is the ice-free point on the north coast of Snow Island in the South Shetland Islands, Antarctica. It is projecting 500 m into  [S8].",
+      "citations": [
+        {
+          "doc_id": "7a681a3e-032f-4705-8b0a-3445a7e3e7e4",
+          "chunk_id": "f4e56fdc-019c-41c4-9b98-d74192046cb6",
+          "label": "S1"
+        },
+        {
+          "doc_id": "73232275-a3cd-40f1-a682-65e1bd6c1ca7",
+          "chunk_id": "7f356706-0fbb-4d86-a3cb-60e263002762",
+          "label": "S2"
+        },
+        {
+          "doc_id": "6889efba-7a51-4077-be6a-111d7e49b886",
+          "chunk_id": "d8b90c19-88be-4d3e-bd33-43044dead490",
+          "label": "S3"
+        },
+        {
+          "doc_id": "40161837-6661-42d9-bb6d-c48ad97b361c",
+          "chunk_id": "696414ef-9483-44d9-a7c6-b44880cf9556",
+          "label": "S4"
+        },
+        {
+          "doc_id": "a181ff5e-64f0-48a7-9a75-4a46e0910c42",
+          "chunk_id": "5f0bd58a-09fd-4fa6-8480-7ebe0bb386e5",
+          "label": "S5"
+        },
+        {
+          "doc_id": "4459c684-5504-405b-bc10-60293668ec63",
+          "chunk_id": "77b68720-b8d3-4ba3-858c-38ccf5098c62",
+          "label": "S6"
+        },
+        {
+          "doc_id": "f4fd526d-73f7-44a5-8d8d-241e6f75c157",
+          "chunk_id": "c0a6e746-4c7a-49ec-bd98-ea8a8bb11b4c",
+          "label": "S7"
+        },
+        {
+          "doc_id": "e3e00e14-8ba2-4cda-9afb-1ebe547db69a",
+          "chunk_id": "f1e425a9-9a3e-4c04-bfd5-245e2123dc53",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.5232940999558195,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "7a681a3e-032f-4705-8b0a-3445a7e3e7e4",
+        "73232275-a3cd-40f1-a682-65e1bd6c1ca7",
+        "6889efba-7a51-4077-be6a-111d7e49b886",
+        "40161837-6661-42d9-bb6d-c48ad97b361c",
+        "a181ff5e-64f0-48a7-9a75-4a46e0910c42",
+        "4459c684-5504-405b-bc10-60293668ec63",
+        "f4fd526d-73f7-44a5-8d8d-241e6f75c157",
+        "e3e00e14-8ba2-4cda-9afb-1ebe547db69a"
+      ],
+      "retrieved_chunk_ids": [
+        "f4e56fdc-019c-41c4-9b98-d74192046cb6",
+        "7f356706-0fbb-4d86-a3cb-60e263002762",
+        "d8b90c19-88be-4d3e-bd33-43044dead490",
+        "696414ef-9483-44d9-a7c6-b44880cf9556",
+        "5f0bd58a-09fd-4fa6-8480-7ebe0bb386e5",
+        "77b68720-b8d3-4ba3-858c-38ccf5098c62",
+        "c0a6e746-4c7a-49ec-bd98-ea8a8bb11b4c",
+        "f1e425a9-9a3e-4c04-bfd5-245e2123dc53"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_1534",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "The Trials of Life",
+        "Human (2015 film)"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "evidence snippet: The Human Factor is a 1979 British thriller film starring Richard Attenborough, Nicol Williamson, Derek Jacobi, and John Gielgud. It is based on the 1978 novel \"The Human Factor\" by Graham Greene, wit [S1]. evidence snippet: \"What Is Life\" is a song by the English musician George Harrison, released on his 1970 triple album \"All Things Must Pass\". In many countries, it was issued as the second single from the album, in Feb [S2]. evidence snippet: Save the Green Planet! (Korean title: 지구를 지켜라! , \"Jigureul Jikyeora!\") is a South Korean film, written and directed by Jang Joon-hwan, released on 4 April 2003 . The movie mixes elements of multiple g [S3]. evidence snippet: Wild Gals of the Naked West is a 1962 nudie-cutie movie written and directed by Russ Meyer. Along with the hardcore pornographic movies \"A Dirty Western\" (1975) and \"Sweet Savage\", the film is one of  [S4]. evidence snippet: Man of Steel is a 2013 superhero film featuring the DC Comics character Superman. It is a British-American venture produced by Legendary Pictures, DC Entertainment, Syncopy Inc., and Cruel and Unusual [S5]. evidence snippet: HHhH (in some markets titled The Man with the Iron Heart) is a French biographical war thriller drama film directed by Cédric Jimenez and written by David Farr, Audrey Diwan, and Jimenez. It is based  [S6]. evidence snippet: Mark Buntzman is the film director, writer, producer and actor of the cult classic movie \"Exterminator 2\", and was also the producer of the first, \"The Exterminator\". Other than those two movies, he h [S7]. evidence snippet: \"Streiht Up Menace\" is a 1993 single by MC Eiht off the soundtrack of 1993 movie \"Menace II Society\". The lyrics of the song focus on the life of the characters in the movie, acting as a sort of plot  [S8].",
+      "citations": [
+        {
+          "doc_id": "0e3f3f7e-c9cb-4e7a-97ec-d3c1b7a0ef22",
+          "chunk_id": "9f8bfa23-a99c-4e10-b980-bc03c8bfb09e",
+          "label": "S1"
+        },
+        {
+          "doc_id": "34f19daa-e1e4-4596-bc20-36d1ee74ba9a",
+          "chunk_id": "7ebf0088-8b3e-4e15-83e8-d0f4b1dc5236",
+          "label": "S2"
+        },
+        {
+          "doc_id": "41f92129-1263-495d-9c71-90e721789eb0",
+          "chunk_id": "9b8b98d0-66de-4d67-9ba9-cb2459dc2d90",
+          "label": "S3"
+        },
+        {
+          "doc_id": "ec53e414-2346-449a-8ccd-e3b829a6941b",
+          "chunk_id": "d53e9cfa-cd82-44c7-9dd4-e7f7987294b9",
+          "label": "S4"
+        },
+        {
+          "doc_id": "09df6b04-f4e2-4f01-a96d-bc49e47bdae6",
+          "chunk_id": "da610ff6-5b59-4529-94b0-382ee00fbe87",
+          "label": "S5"
+        },
+        {
+          "doc_id": "bcdb9084-d43d-430c-b130-7a2635d03147",
+          "chunk_id": "5b1cdd6e-3867-4684-a0f1-12cdf61b5685",
+          "label": "S6"
+        },
+        {
+          "doc_id": "21db61a6-32c5-46f2-bdbb-d4ca232dc1c0",
+          "chunk_id": "6fe17ea2-4a55-49ee-8f10-7abd4df7d61e",
+          "label": "S7"
+        },
+        {
+          "doc_id": "869249f0-f00e-4572-aacd-0748535ac58d",
+          "chunk_id": "350485e8-f77d-4f65-a6e2-155113707f21",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.27472939994186163,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "0e3f3f7e-c9cb-4e7a-97ec-d3c1b7a0ef22",
+        "34f19daa-e1e4-4596-bc20-36d1ee74ba9a",
+        "41f92129-1263-495d-9c71-90e721789eb0",
+        "ec53e414-2346-449a-8ccd-e3b829a6941b",
+        "09df6b04-f4e2-4f01-a96d-bc49e47bdae6",
+        "bcdb9084-d43d-430c-b130-7a2635d03147",
+        "21db61a6-32c5-46f2-bdbb-d4ca232dc1c0",
+        "869249f0-f00e-4572-aacd-0748535ac58d"
+      ],
+      "retrieved_chunk_ids": [
+        "9f8bfa23-a99c-4e10-b980-bc03c8bfb09e",
+        "7ebf0088-8b3e-4e15-83e8-d0f4b1dc5236",
+        "9b8b98d0-66de-4d67-9ba9-cb2459dc2d90",
+        "d53e9cfa-cd82-44c7-9dd4-e7f7987294b9",
+        "da610ff6-5b59-4529-94b0-382ee00fbe87",
+        "5b1cdd6e-3867-4684-a0f1-12cdf61b5685",
+        "6fe17ea2-4a55-49ee-8f10-7abd4df7d61e",
+        "350485e8-f77d-4f65-a6e2-155113707f21"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_3684",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [
+        "Thomas D. Howie",
+        "Operation Overlord"
+      ],
+      "gold_resolved": false,
+      "status": "answered",
+      "answer_text": "evidence snippet: The Battle of Cambrai, 1918 (also known as the Second Battle of Cambrai) was a battle between troops of the British First, Third and Fourth Armies and German Empire forces during the Hundred Days Offe [S1]. evidence snippet: The Battle of Chotusitz, or Chotusice, sometimes called the Battle of Czaslau, was fought on May 17, 1742, in Bohemia between the Austrians under Prince Charles Alexander of Lorraine and the Prussians [S2]. evidence snippet: \"Fat Man\" was the codename for the atomic bomb that was detonated over the Japanese city of Nagasaki by the United States on 9 August 1945. It was the second of the only two nuclear weapons ever used  [S3]. evidence snippet: USS \"Essex\" (CV/CVA/CVS-9) was an aircraft carrier and the lead ship of the 24-ship \"Essex\" class built for the United States Navy during World War II. She was the fourth US Navy ship to bear the name [S4]. evidence snippet: USS \"Bunch\" (DE-694) was a \"Buckley\"-class destroyer escort of the United States Navy, named after Kenneth Cecil Bunch, killed in action on 6 June 1942 while flying as radioman-gunner in an SBD Dauntl [S5]. evidence snippet: Grace D. Banker (October 25, 1892 – September 17, 1960) was a telephone operator who served during World War I (1917–1918) as Chief Operator of mobile for the American Expeditionary Forces (AEF) in th [S6]. evidence snippet: The Battle of La Motta, also known as the Battle of Schio, Battle of Vicenza or Battle of Creazzo, took place at Schio, in the Italian region of Veneto, Republic of Venice, on 7 October 1513, between  [S7]. evidence snippet: The Battle of Blair Mountain was the largest labor uprising in United States history and one of the largest, best-organized, and most well-armed uprisings since the American Civil War. For five days i [S8].",
+      "citations": [
+        {
+          "doc_id": "c2f84755-b5e4-414f-bea2-b52ca486560b",
+          "chunk_id": "5456b627-8111-4d6b-b09c-fad065aef287",
+          "label": "S1"
+        },
+        {
+          "doc_id": "6f4783f1-742e-4cce-82e9-8d7a6d149527",
+          "chunk_id": "cd91e072-946d-40c9-8745-3f4528b2573c",
+          "label": "S2"
+        },
+        {
+          "doc_id": "5314b645-3265-4dab-97ae-572cfa941b05",
+          "chunk_id": "bcdb7640-f9c4-4166-bb08-92783b05b2ef",
+          "label": "S3"
+        },
+        {
+          "doc_id": "7ee6fe34-2326-4b3a-aa35-231019935748",
+          "chunk_id": "ce8d6e91-9a91-40f8-9cfb-5302d6427bc2",
+          "label": "S4"
+        },
+        {
+          "doc_id": "b309a4b1-cba9-4c3e-b313-cbd184670343",
+          "chunk_id": "9f23908e-0525-47aa-9a84-80d172c81223",
+          "label": "S5"
+        },
+        {
+          "doc_id": "f9e85028-20a8-4c4a-aff1-34fb280635d5",
+          "chunk_id": "0140149e-5700-4739-b1ba-7646f36cd772",
+          "label": "S6"
+        },
+        {
+          "doc_id": "36c3c693-61bb-46aa-a0ef-9bd079497f26",
+          "chunk_id": "cc263b1a-9789-4aef-a851-ee0f7587b599",
+          "label": "S7"
+        },
+        {
+          "doc_id": "88be5a3d-6afe-468f-ae04-26eeeb7f9840",
+          "chunk_id": "3e6f644e-3580-4d58-ae98-0c8a7e70842b",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.22809470002539456,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "c2f84755-b5e4-414f-bea2-b52ca486560b",
+        "6f4783f1-742e-4cce-82e9-8d7a6d149527",
+        "5314b645-3265-4dab-97ae-572cfa941b05",
+        "7ee6fe34-2326-4b3a-aa35-231019935748",
+        "b309a4b1-cba9-4c3e-b313-cbd184670343",
+        "f9e85028-20a8-4c4a-aff1-34fb280635d5",
+        "36c3c693-61bb-46aa-a0ef-9bd079497f26",
+        "88be5a3d-6afe-468f-ae04-26eeeb7f9840"
+      ],
+      "retrieved_chunk_ids": [
+        "5456b627-8111-4d6b-b09c-fad065aef287",
+        "cd91e072-946d-40c9-8745-3f4528b2573c",
+        "bcdb7640-f9c4-4166-bb08-92783b05b2ef",
+        "ce8d6e91-9a91-40f8-9cfb-5302d6427bc2",
+        "9f23908e-0525-47aa-9a84-80d172c81223",
+        "0140149e-5700-4739-b1ba-7646f36cd772",
+        "cc263b1a-9789-4aef-a851-ee0f7587b599",
+        "3e6f644e-3580-4d58-ae98-0c8a7e70842b"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.006369426751592357,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    }
+  ]
+}
