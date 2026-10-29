@@ -6,50 +6,22 @@
 
 ## Disclosure
 
-AI tools were used extensively during this assignment. This report discloses how they were used. The candidate remains responsible for the submitted code and for defending it in interview.
+This project was built with **extensive AI assistance**. Cursor Agent (Composer / agent mode) was the primary co-pilot for architecture, implementation, debugging, evaluation, deployment wiring, and documentation across Phases 0–7. The submitted work remains the candidate’s responsibility to understand and defend in interview. This report describes how AI was used; it does not claim that every line was independently authored without assistance.
 
 ## Tools used
 
 | Tool | Role |
 | --- | --- |
-| **Cursor Agent** (Composer / agent mode) | Primary implementation assistant across Phases 0–7: architecture drafting, Python modules, tests, scripts, deployment wiring, evaluation harness, documentation, debugging Neon/Qdrant/Render issues, and bulk-ingest acceleration |
-| **Cursor IDE inline assist** | Small edits, renames, and local fixes |
-| Web / provider docs (via agent tooling) | Free-tier verification for Render, Neon, Qdrant, Groq, Gemini |
+| Cursor Agent (Composer / agent mode) | Main assistant for design, code, tests, scripts, docs, free-tier deployment, and eval harness |
+| Cursor IDE inline assist | Small local edits and quick fixes |
+| Provider / product documentation (via agent tooling) | Checks against Render, Neon, Qdrant, Groq, and Gemini free-tier limits |
 
-## How AI helped
+## How AI was used
 
-1. **Architecture and free-tier planning** — compared hosting options under a no-paid-card constraint; documented Render Free + Neon + Qdrant Cloud.
-2. **Implementation** — FastAPI app, SQLAlchemy and Alembic lifecycle, FastEmbed plus custom BM25 hybrid retrieval, custom reranker, hand-written investigation state machine, static UI, evaluation harness.
-3. **Debugging** — Psycopg 3 dialect fix for Neon; Windows App Control / PyArrow parquet streaming workaround; Render memory gating for FastEmbed; bulk-ingest lock and batching.
-4. **Evaluation** — metrics, question-set builder (HotpotQA + synthetic), retrieval and answer comparison runners.
-5. **Documentation** — README, design notes, requirements traceability, evaluation report drafts.
+AI helped compare free hosting options and settle on Render Free with Neon and Qdrant Cloud under a no-paid-card constraint. It drafted and iterated much of the application stack: document ingestion and lifecycle, hybrid retrieval (dense embeddings with custom BM25 and reranking), the investigation tool loop and LLM gateway, the FastAPI API and static UI, and the evaluation harness built on HotpotQA plus synthetic questions.
 
-## What you should fill in (candidate)
+AI was also used heavily for debugging—including the Psycopg 3 / Neon dialect issue, Windows tooling and Parquet streaming workarounds, Render memory limits for FastEmbed, and Qdrant bulk-upsert timeouts—and for producing README, design notes, requirements traceability, and evaluation report drafts. Human direction set goals, constraints, and honesty rules (especially around measured corpus size and provider-limited evaluation); AI produced most of the concrete artifacts under those constraints.
 
-> Complete the following honestly before the 18:00 deadline. Agents must **not** check these boxes for you.
+## Integrity
 
-### Independent verification I performed
-
-- [ ] I read and can explain `app/ingestion/lifecycle.py` document state machine
-- [ ] I read and can explain `app/retrieval/hybrid.py` + custom BM25 / reranker
-- [ ] I read and can explain `app/investigation/engine.py` tool loop
-- [ ] I ran local tests / live smoke myself and recorded results
-- [ ] I verified the public Render demo with my own browser/API calls
-- [ ] I reviewed secrets handling (no keys in git; admin token for mutating APIs)
-- [ ] I confirmed Render deployed the latest `main` commit (dashboard SHA)
-- [ ] I re-read `docs/EVALUATION_REPORT.md` denominators (57-q active set; investigation provider skips)
-
-### Changes I made independently (examples)
-
-_Describe concrete edits, refactors, or decisions you made without AI, or after rejecting AI suggestions:_
-
-- …
-- …
-
-### Areas I still want to strengthen before interview
-
-- …
-
-## Integrity statement
-
-AI assistance does not replace ownership. Fabricated evaluation numbers, fake ingestion counts, or undocumented paid infrastructure would violate the assignment. Measured evidence lives under `docs/evidence/` and `eval/results/`.
+Evaluation metrics and ingestion counts in this submission are taken from recorded artifacts under `docs/evidence/` and `eval/results/`, not from unverified estimates. Known limitations—such as ACTIVE document count still below 50,000 at last measurement, and investigation answer eval heavily constrained by free-tier LLM rate limits—are disclosed in `docs/EVALUATION_REPORT.md` and `docs/PROGRESS.md`. Fabricated scores, inflated corpus claims, or undisclosed paid infrastructure would violate the assignment. AI assistance does not replace accountability for what is submitted.
