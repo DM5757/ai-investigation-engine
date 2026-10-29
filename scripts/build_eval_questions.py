@@ -122,8 +122,9 @@ def _hotpot_from_parquets(
             rows = batch.to_pydict()
             n = len(rows.get("question") or [])
             for i in range(n):
+                supporting = rows.get("supporting_facts")
                 gold_titles = _extract_gold_titles(
-                    rows["supporting_facts"][i] if rows.get("supporting_facts") is not None else None
+                    rows["supporting_facts"][i] if supporting is not None else None
                 )
                 if len(gold_titles) < 2:
                     continue
@@ -250,7 +251,8 @@ def _synthetic_questions(truth: dict[str, Any]) -> list[dict[str, Any]]:
         {
             "id": "syn_factual_pool",
             "question": (
-                "What database pool problem is mentioned in the change log as a root cause candidate?"
+                "What database pool problem is mentioned in the change log "
+                "as a root cause candidate?"
             ),
             "gold_answer": "Neon connection pool exhaustion",
             "gold_doc_paths": ["data/synthetic/change_log.html"],

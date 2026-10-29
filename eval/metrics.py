@@ -5,7 +5,6 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable, Sequence
 
-
 _WS_RE = re.compile(r"\s+")
 _PUNCT_RE = re.compile(r"[^\w\s]", re.UNICODE)
 

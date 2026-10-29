@@ -84,7 +84,10 @@ def main() -> None:
         "--batch-size",
         type=int,
         default=16,
-        help="Docs per embed/upsert batch (1 = legacy per-doc path; keep small on Qdrant free tier)",
+        help=(
+            "Docs per embed/upsert batch "
+            "(1 = legacy per-doc path; keep small on Qdrant free tier)"
+        ),
     )
     parser.add_argument("--force", action="store_true", help="Ignore no-go estimate")
     parser.add_argument("--reset-checkpoint", action="store_true")

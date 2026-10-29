@@ -287,9 +287,10 @@ def _score_answer(question: dict[str, Any], result: dict[str, Any]) -> dict[str,
     status = result.get("status")
     gold = str(question.get("gold_answer") or "")
     pred = str(result.get("answer_text") or "")
+    special_gold = gold in ("INSUFFICIENT", "CONFLICTING")
     scores: dict[str, Any] = {
-        "exact_match": exact_match(pred, gold) if gold not in ("INSUFFICIENT", "CONFLICTING") else 0.0,
-        "token_f1": token_f1(pred, gold) if gold not in ("INSUFFICIENT", "CONFLICTING") else 0.0,
+        "exact_match": 0.0 if special_gold else exact_match(pred, gold),
+        "token_f1": 0.0 if special_gold else token_f1(pred, gold),
     }
     if expected:
         scores["status_match"] = 1.0 if status == expected else 0.0
@@ -449,36 +450,42 @@ def main() -> None:
                 "gold_resolved": resolution["reason"] == "resolved"
                 or q.get("question_type") == "unanswerable",
             }
-            if args.scorable_only and pipeline == "retrieval_only":
-                if not resolution["eligible_retrieval"]:
-                    row["excluded_from_scoring"] = True
-                    row["exclusion_reason"] = resolution["reason"]
-                    per_q.append(row)
-                    write_json(
-                        ck_path,
-                        {
-                            "run_id": run_id,
-                            "config": cfg,
-                            "results": per_q,
-                            "updated_at": datetime.now(UTC).isoformat(),
-                        },
-                    )
-                    continue
-            if args.scorable_only and pipeline != "retrieval_only":
-                if not resolution["eligible_answer"]:
-                    row["excluded_from_scoring"] = True
-                    row["exclusion_reason"] = resolution["reason"]
-                    per_q.append(row)
-                    write_json(
-                        ck_path,
-                        {
-                            "run_id": run_id,
-                            "config": cfg,
-                            "results": per_q,
-                            "updated_at": datetime.now(UTC).isoformat(),
-                        },
-                    )
-                    continue
+            if (
+                args.scorable_only
+                and pipeline == "retrieval_only"
+                and not resolution["eligible_retrieval"]
+            ):
+                row["excluded_from_scoring"] = True
+                row["exclusion_reason"] = resolution["reason"]
+                per_q.append(row)
+                write_json(
+                    ck_path,
+                    {
+                        "run_id": run_id,
+                        "config": cfg,
+                        "results": per_q,
+                        "updated_at": datetime.now(UTC).isoformat(),
+                    },
+                )
+                continue
+            if (
+                args.scorable_only
+                and pipeline != "retrieval_only"
+                and not resolution["eligible_answer"]
+            ):
+                row["excluded_from_scoring"] = True
+                row["exclusion_reason"] = resolution["reason"]
+                per_q.append(row)
+                write_json(
+                    ck_path,
+                    {
+                        "run_id": run_id,
+                        "config": cfg,
+                        "results": per_q,
+                        "updated_at": datetime.now(UTC).isoformat(),
+                    },
+                )
+                continue
             try:
                 if pipeline == "retrieval_only":
                     _chunks, docs, latency = _run_retrieval(
@@ -642,7 +649,9 @@ def _summarize(
         "retrieval": {
             "n_scored": len(retrieval_rows),
             "n": len(retrieval_rows),
-            "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+            "denominator_note": (
+                "Metrics averaged only over questions with fully resolved gold docs"
+            ),
             "recall_at_k": mean(r["retrieval"]["recall_at_k"] for r in retrieval_rows),
             "mrr": mean(r["retrieval"]["mrr"] for r in retrieval_rows),
             "all_gold_at_k": mean(r["retrieval"]["all_gold_at_k"] for r in retrieval_rows),
