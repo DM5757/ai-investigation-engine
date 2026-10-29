@@ -1,0 +1,100 @@
+{
+  "created_at": "2026-10-29T04:12:15.712299+00:00",
+  "chunk_tokens": 200,
+  "overlap_tokens": 40,
+  "k": 5,
+  "chunk_stats": [
+    {
+      "strategy": "fixed_window",
+      "documents": 105,
+      "total_chunks": 118,
+      "avg_chunks_per_doc": 1.124,
+      "avg_chunk_tokens": 87.92,
+      "latency_seconds": 0.007,
+      "docs_per_second": 14975.18
+    },
+    {
+      "strategy": "structure_aware",
+      "documents": 105,
+      "total_chunks": 153,
+      "avg_chunks_per_doc": 1.457,
+      "avg_chunk_tokens": 65.41,
+      "latency_seconds": 0.0154,
+      "docs_per_second": 6835.14
+    }
+  ],
+  "span_metrics_synthetic": [
+    {
+      "strategy": "fixed_window",
+      "n": 2,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "k": 5,
+      "details": [
+        {
+          "marker": "ALPHA-OUTAGE-0810",
+          "query": "Where is the ALPHA-OUTAGE-0810 marker described?",
+          "rank_in_topk": 1,
+          "marker_in_any_chunk": true,
+          "n_chunks": 4
+        },
+        {
+          "marker": "BETA-POOL-EXHAUST",
+          "query": "Where is the BETA-POOL-EXHAUST marker described?",
+          "rank_in_topk": 1,
+          "marker_in_any_chunk": true,
+          "n_chunks": 4
+        }
+      ]
+    },
+    {
+      "strategy": "structure_aware",
+      "n": 2,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "k": 5,
+      "details": [
+        {
+          "marker": "ALPHA-OUTAGE-0810",
+          "query": "Where is the ALPHA-OUTAGE-0810 marker described?",
+          "rank_in_topk": 1,
+          "marker_in_any_chunk": true,
+          "n_chunks": 21
+        },
+        {
+          "marker": "BETA-POOL-EXHAUST",
+          "query": "Where is the BETA-POOL-EXHAUST marker described?",
+          "rank_in_topk": 1,
+          "marker_in_any_chunk": true,
+          "n_chunks": 21
+        }
+      ]
+    }
+  ],
+  "hotpot_proxy_metrics": [
+    {
+      "strategy": "fixed_window",
+      "n": 100,
+      "recall_at_k": 1.0,
+      "mrr": 0.995,
+      "k": 5,
+      "metric": "lexical_proxy_midgram"
+    },
+    {
+      "strategy": "structure_aware",
+      "n": 100,
+      "recall_at_k": 1.0,
+      "mrr": 0.995,
+      "k": 5,
+      "metric": "lexical_proxy_midgram"
+    }
+  ],
+  "winner": "fixed_window",
+  "reason": "Higher span-level Recall@5=1.0 and MRR=1.0 on synthetic gold markers; tie on recall, fewer/equal chunks (118 vs 153)",
+  "doc_counts": {
+    "synthetic_gold": 2,
+    "extra_synthetic": 3,
+    "hotpot_sample": 100,
+    "total_chunked": 105
+  }
+}

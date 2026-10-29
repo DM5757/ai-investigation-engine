@@ -1,0 +1,103 @@
+{
+  "created_at": "2026-10-29T03:49:07.890980+00:00",
+  "seed": 42,
+  "files": [
+    {
+      "path": "data/synthetic/incident_march.md",
+      "format": "md"
+    },
+    {
+      "path": "data/synthetic/change_log.html",
+      "format": "html"
+    },
+    {
+      "path": "data/synthetic/status_update.txt",
+      "format": "txt"
+    },
+    {
+      "path": "data/synthetic/latency_metrics.csv",
+      "format": "csv"
+    },
+    {
+      "path": "data/synthetic/runbook_snippets.jsonl",
+      "format": "jsonl"
+    },
+    {
+      "path": "data/synthetic/postmortem_draft.docx",
+      "format": "docx"
+    },
+    {
+      "path": "data/synthetic/exec_summary.pdf",
+      "format": "pdf"
+    },
+    {
+      "path": "data/synthetic/long_architecture.md",
+      "format": "md"
+    }
+  ],
+  "formats": [
+    "csv",
+    "docx",
+    "html",
+    "jsonl",
+    "md",
+    "pdf",
+    "txt"
+  ],
+  "contradictions": [
+    {
+      "id": "c1_deploy_time",
+      "topic": "auth-gateway deploy time on 2024-03-12",
+      "claims": [
+        {
+          "doc": "data/synthetic/incident_march.md",
+          "claim": "deploy at 08:10 UTC"
+        },
+        {
+          "doc": "data/synthetic/change_log.html",
+          "claim": "deploy at 14:00 UTC"
+        }
+      ]
+    },
+    {
+      "id": "c2_root_cause",
+      "topic": "root cause of payment outage",
+      "claims": [
+        {
+          "doc": "data/synthetic/incident_march.md",
+          "claim": "misconfigured JWT TTL on AuthGateway"
+        },
+        {
+          "doc": "data/synthetic/change_log.html",
+          "claim": "Neon connection pool exhaustion"
+        }
+      ]
+    }
+  ],
+  "incomplete": [
+    {
+      "id": "inc1_approver",
+      "doc": "data/synthetic/status_update.txt",
+      "missing": "rollback approver identity"
+    }
+  ],
+  "unanswerable_topics": [
+    "Who approved the auth-gateway rollback?",
+    "What was FraudScorer CPU usage during the incident?"
+  ],
+  "prompt_injection_docs": [
+    "data/synthetic/runbook_snippets.jsonl"
+  ],
+  "chunking_gold_spans": [
+    {
+      "doc": "data/synthetic/long_architecture.md",
+      "marker": "ALPHA-OUTAGE-0810",
+      "query": "Where is the ALPHA-OUTAGE-0810 marker described?"
+    },
+    {
+      "doc": "data/synthetic/long_architecture.md",
+      "marker": "BETA-POOL-EXHAUST",
+      "query": "Where is the BETA-POOL-EXHAUST marker described?"
+    }
+  ]
+}

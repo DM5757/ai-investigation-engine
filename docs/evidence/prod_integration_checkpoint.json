@@ -111,5 +111,30 @@
     },
     "document_id": "efb25d4c-e513-493a-8f1e-062d1f6b7d0b",
     "ok": true
-  }
+  },
+  "persist_after_restart": {
+    "ready_status": 200,
+    "ready_database": "ok",
+    "get_status": 200,
+    "doc_status": "ACTIVE",
+    "active_version": 2,
+    "persisted_ok": true,
+    "checked_at": "2026-10-29T03:35:00Z",
+    "note": "Verified after Render redeploy from docs commit d08d0c6"
+  },
+  "persist_checked_at": "2026-10-29T03:35:31.090486+00:00",
+  "delete_after_persist": {
+    "delete_status": 200,
+    "get_status": 404,
+    "qdrant_doc_points": 0,
+    "qdrant_total_points": 0,
+    "checked_at": "2026-10-29T03:39:00.277509+00:00"
+  },
+  "rate_limit_note": "Unauthorized upload returned 401 on public URL. Live 429 not observed under real Groq latency (burst=10 refills during ~30s queries). Token-bucket behavior covered by tests/unit/test_ratelimit.py.",
+  "latencies_ms": {
+    "ready": 1075.6,
+    "upload": 25917.0,
+    "query": 31561.8
+  },
+  "memory_note": "Render Free does not expose process RSS via API. Prior Docker --memory=512m bench: peak 284.6 MiB (docs/evidence/container_512m_bench.json). Production upload+query completed without OOM/502 after embedder lazy-load fix; transient 502 observed only under aggressive parallel query storm."
 }

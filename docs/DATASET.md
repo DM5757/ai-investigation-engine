@@ -1,4 +1,4 @@
-# Dataset plan (Phase 0)
+# Dataset plan (Phase 6 update)
 
 ## Assignment attachment
 
@@ -6,25 +6,26 @@ The specification says to use “the dataset attached to this assignment,” but
 
 ## Part A — Bulk corpus (HotpotQA distractor)
 
-| Field | Plan |
+| Field | Status |
 | --- | --- |
-| Source | [`hotpotqa/hotpot_qa`](https://huggingface.co/datasets/hotpotqa/hotpot_qa) config **`distractor`** (also downloadable from [hotpotqa.github.io](https://hotpotqa.github.io/)) |
+| Source | [`hotpotqa/hotpot_qa`](https://huggingface.co/datasets/hotpotqa/hotpot_qa) config **`distractor`** via HF parquet + pyarrow (`scripts/build_corpus.py`) |
 | License | **CC BY-SA 4.0** — attribute HotpotQA authors; share-alike for derivatives |
-| Access (28 Oct 2026) | Public on Hugging Face; no gated access observed for standard download |
-| Record definition | Each unique context paragraph → independent text record `{id: "hotpotqa:<title>", title, text, meta}` |
-| Target count | ≥ **55,000** unique records (buffer above DATA-1’s 50,000) |
-| Selection | Seeded, deterministic `scripts/build_corpus.py`; justify subset in this file after build |
-| Evaluation coupling | Eval questions drawn so gold supporting paragraphs are in the corpus; unanswerable set built by **removing** selected gold paragraphs before index |
+| Record definition | Each unique context paragraph → `{id: "hotpotqa:<title>", title, text, meta}` |
+| Build | Seeded (`seed=42`), deterministic shuffle; `--limit` for pilots; `--target 55000` for full |
+| Manifest | `data/manifests/corpus_manifest.json` (sha256, load method, counts) |
+| Offline fallback | `data/samples/hotpot_sample.jsonl` if all download paths fail (HUMAN ACTION in manifest) |
 
-Feasibility: train+validation distractor contexts contain far more than 55k paragraph instances; after exact-title dedup we still expect to clear 55k. Exact/near-duplicate rates will be reported from the real build.
+**Subset justification:** Target **55,000** unique titles (buffer above DATA-1’s 50,000). The Hotpot **validation** distractor split alone yields **66,581** unique titles after dedup (measured 2026-10-29); the build caps to 55,000 with `seed=42`. Train shards remain cached under `data/cache/hotpot_hf/` if a larger pool is needed later. Exact count and sha256 are only those written in the manifest after a successful build — never invent counts.
 
 ## Part B — Synthetic enterprise corpus
 
-Seeded generator (no LLM ground truth): multi-service payment-processing style docs in **md / pdf / docx / html / txt / csv**, with planted contradictions, incompleteness, duplicates, unanswerable asks, and prompt-injection samples. Ground truth in `data/manifests/synthetic_truth.json`.
+Seeded generator (`scripts/generate_synthetic.py`): **md / pdf / docx / html / txt / csv / jsonl** under `data/synthetic/`, with planted contradictions, incompleteness, prompt-injection, and gold span markers for DOC-6. Ground truth: `data/manifests/synthetic_truth.json`.
 
-## Storage fit (pre-measure estimate)
+## Storage fit (measured pilot → estimate)
 
-Short Hotpot paragraphs → Neon **1 GB** and Qdrant Free **4 GB disk / 1 GB RAM** are expected to suffice for ≥50k records **if** Postgres stores text once and Qdrant uses 384-d vectors + on-disk options as needed. **No count or footprint claim is final until `scripts/verify_counts.py` evidence exists.**
+See `docs/evidence/pilot_ingest.json` and `docs/evidence/storage_estimate_55k.json`.
+
+Hard rule: no “fits free tier / ≥50k indexed” claim without `docs/evidence/dataset_counts.json` against live Neon + Qdrant.
 
 ## Rejected / deferred public sets
 

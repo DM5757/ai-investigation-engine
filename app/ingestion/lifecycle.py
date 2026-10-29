@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from enum import StrEnum
 from typing import Any
 
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.db.models import Document, DocumentStatus
@@ -23,6 +24,13 @@ from app.retrieval.bm25_sparse import Bm25Encoder
 logger = logging.getLogger(__name__)
 
 EmbedFn = Callable[[Sequence[str]], list[list[float]]]
+
+
+def _is_unique_violation(exc: BaseException) -> bool:
+    if isinstance(exc, IntegrityError):
+        return True
+    text = f"{type(exc).__name__} {exc}".lower()
+    return "uniqueviolation" in text or "uq_documents_external_key" in text
 
 
 class LifecycleOutcome(StrEnum):
@@ -65,6 +73,7 @@ class DocumentLifecycle:
         dense_dims: int = 384,
         stop_before_active: bool = False,
         stop_before_version_cleanup: bool = False,
+        check_near_duplicates: bool = True,
     ) -> None:
         self.session = session
         self.store = store
@@ -79,6 +88,8 @@ class DocumentLifecycle:
         # Test hooks to simulate crash windows for reconcile.
         self.stop_before_active = stop_before_active
         self.stop_before_version_cleanup = stop_before_version_cleanup
+        # Bulk ingest can disable SimHash LSH lookups (exact hash / external_key remain).
+        self.check_near_duplicates = check_near_duplicates
 
     def add(
         self,
@@ -121,7 +132,9 @@ class DocumentLifecycle:
                     near_duplicate_of=exact.id,
                 )
 
-            near_of = self._near_duplicate_target(prep)
+            near_of = (
+                self._near_duplicate_target(prep) if self.check_near_duplicates else None
+            )
             if near_of is not None and self.near_duplicate_policy == "skip":
                 return LifecycleResult(
                     LifecycleOutcome.SKIPPED_NEAR_DUPLICATE,
@@ -153,8 +166,24 @@ class DocumentLifecycle:
         except DuplicateDocument:
             raise
         except Exception as exc:  # noqa: BLE001 — lifecycle must mark FAILED
-            logger.exception("document add failed before index")
             self.session.rollback()
+            self.session.expire_all()
+            # Recover unique races on external_key (common when corpus shuffle changes).
+            if external_key and _is_unique_violation(exc):
+                try:
+                    existing = self.docs.get_by_external_key(external_key)
+                    if existing is not None:
+                        if existing.content_hash == prep.content_hash:
+                            return LifecycleResult(
+                                LifecycleOutcome.UNCHANGED,
+                                existing,
+                                "recovered unique race; same content",
+                            )
+                        return self._update_existing(existing, prep)
+                except Exception:  # noqa: BLE001
+                    logger.exception("unique-race recovery failed key=%s", external_key)
+                    self.session.rollback()
+            logger.exception("document add failed before index")
             return LifecycleResult(LifecycleOutcome.FAILED, None, str(exc))
 
         try:

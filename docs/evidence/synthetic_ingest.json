@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-10-29T04:36:52.394865+00:00",
+  "files": [
+    "change_log.html",
+    "exec_summary.pdf",
+    "incident_march.md",
+    "latency_metrics.csv",
+    "long_architecture.md",
+    "postmortem_draft.docx",
+    "runbook_snippets.jsonl",
+    "status_update.txt"
+  ],
+  "outcomes": {
+    "unchanged": 7,
+    "created": 1
+  },
+  "errors": [],
+  "neon_counts": {
+    "active_documents": 888,
+    "non_deleted_documents": 889,
+    "chunk_rows": 942,
+    "by_status": {
+      "ACTIVE": 888,
+      "DELETED": 1,
+      "INDEXING": 1
+    }
+  }
+}

@@ -9,7 +9,7 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | DOC-3 | Chunking | `fixed_window` + `structure_aware` | `tests/unit/test_chunking.py` | Done-verified | Property tests; DOC-6 experiment later |
 | DOC-4 | Handle duplicate information | `dedup/hashing.py`, `simhash.py` | `test_simhash` + lifecycle | Done-verified | Exact skip; near-dup flag/skip policy |
 | DOC-5 | Add, update, delete documents | `lifecycle.py` + repos + reconcile | `tests/integration/test_lifecycle.py` | Done-verified | Crash hooks + reconcile covered |
-| DOC-6 | Compare ≥2 chunking strategies (real experiment) | TBD `scripts/chunking_experiment.py` | TBD | Not started | Deferred to Phase 6 |
+| DOC-6 | Compare ≥2 chunking strategies (real experiment) | `scripts/chunking_experiment.py` | `eval/results/chunking_comparison.json` | Done-verified | Winner `fixed_window` (tied Recall@5, fewer chunks); default prod strategy remains `structure_aware` |
 | DOC-7 | Justify processing architecture | `docs/DESIGN_DECISIONS.md`, DATABASE_DESIGN | Docs | Partial | Phase 2 schema notes added |
 | VEC-1 | Vector database | `app/index/qdrant_store.py` (+ search) | `test_qdrant_store.py` isinstance + lifecycle | Done-verified | Embedded `:memory:` upsert/search verified; **Qdrant Cloud remote not smoked** |
 | VEC-2 | Real embeddings and semantic search | `FastEmbedProvider` bge-small | dense-rescue integration + Phase 1 RSS | Done-verified | Real FastEmbed in Phase 3 tests; Render startup still gated by `EMBEDDING_ENABLED_AT_STARTUP` |
@@ -31,10 +31,10 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | EVAL-5 | Error analysis | EVALUATION_REPORT | TBD | Not started | — |
 | APP-1 | Python backend | FastAPI routes + deps (`documents`/`query`/`stats`) | `test_api_*` + phase5.txt | Done-verified | Thin handlers → lifecycle/engine |
 | APP-2 | Functional UI (docs, ask, sources) | `app/ui/static/` | `test_api_ui_static` + phase5_ui_checklist | Done-verified | textContent-only; admin token in JS memory |
-| DATA-1 | Process ≥50,000 documents/records | HotpotQA + synthetic | count script | Not started | No assignment file attached; public HotpotQA planned |
-| DATA-2 | Cross-document retrieval; identifiable sources | corpus + citations | TBD | Not started | — |
-| DATA-3 | Incomplete and contradictory information | synthetic truth | TBD | Not started | — |
-| DATA-4 | Reproducible evaluation / subset justification | DATASET.md + manifests | TBD | Not started | — |
+| DATA-1 | Process ≥50,000 documents/records | HotpotQA corpus + lifecycle ingest | `verify_counts.py` / `dataset_counts.json` | Partial | Corpus built to 55k; indexed count only as measured in evidence — do not claim 50k until ACTIVE≥50k |
+| DATA-2 | Cross-document retrieval; identifiable sources | `hotpotqa:<title>` external_key + citations | pilot/bulk + Phase 4 citations | Partial | Sources keyed; full-corpus retrieval eval is Phase 7 |
+| DATA-3 | Incomplete and contradictory information | `data/manifests/synthetic_truth.json` | synthetic generator | Done-verified | Planted contradictions, incompleteness, injection samples |
+| DATA-4 | Reproducible evaluation / subset justification | `docs/DATASET.md` + manifests | manifests sha256/seed | Done-verified | Seed 42; subset/scale justified in DATASET.md + storage estimate |
 | DEP-1 | Public URL on free hosting | Render Free | `docs/evidence/phase1_deploy.txt` | Done-verified | Live: https://ai-investigation-engine-scyz.onrender.com (2026-10-29) |
 | DEP-2 | Hosting and DB integration | Neon + app ready | public `/api/health/ready` | Partial | DB ok on Render; Phase 5 APIs local-verified; Qdrant Cloud / full Render wiring for new routes not smoked |
 | DEP-3 | Data persists across restarts | external Neon/Qdrant | restart test | Partial | Architecture chosen for persistence; local tests use temp SQLite + memory store |

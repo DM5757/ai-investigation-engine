@@ -1,0 +1,20 @@
+{
+  "created_at": "2026-10-29T04:12:20.457651+00:00",
+  "sources": {
+    "db_terms": 7662,
+    "corpus_terms": 20057,
+    "union_terms": 20057,
+    "max_chunks": 20000,
+    "max_corpus_docs": 20000
+  },
+  "hash": "zlib.crc32 UTF-8 & 0xFFFFFFFF",
+  "unique_terms": 20057,
+  "unique_crc32_ids": 20057,
+  "collision_id_count": 0,
+  "terms_involved_in_collisions": 0,
+  "collision_rate_ids": 0.0,
+  "collision_rate_terms": 0.0,
+  "sample_collisions": {},
+  "assessment": "negligible",
+  "note": "Colliding terms share a sparse index dimension; BM25 weights sum. Low rates are acceptable for this assignment-scale vocab."
+}

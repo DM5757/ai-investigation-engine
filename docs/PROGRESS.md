@@ -48,6 +48,16 @@ Ask API + vanilla JS UI (documents, query, sources, stats, eval stub, health).
 - Neon: migrate to alembic `0002`; evidence `docs/evidence/psycopg3_neon_fix.txt`
 - Suite after fix: **129 passed**, 1 deselected
 
-## Phase 6 — Next
+## Phase 6 — In progress (2026-10-29) — bulk overnight
 
-Chunking experiment / corpus scale (DOC-6 / DATA-*). Do not start until production DB readiness is verified and Phase 5 review accepted.
+Corpus scale + DOC-6 chunking experiment (after prod checkpoint).
+
+- Hotpot distractor corpus **55,000** unique `hotpotqa:<title>` built (`data/manifests/corpus_manifest.json`, sha256 `528db785…`, validation split)
+- Synthetic multi-format + `synthetic_truth.json` (all 8 files ingested incl. joined JSONL)
+- Pilot ingest measured; **55k storage GO** (`storage_estimate_55k.json`)
+- Bulk ingest **running under** `scripts/watch_bulk_ingest.ps1` (file-locked, checkpointed). **Do not claim ≥50k** until `dataset_counts.json` ACTIVE≥50000
+- BM25 avgdl **55.64** (pilot-scale); CRC32 collisions **0** on ~20k terms — recompute after full bulk
+- DOC-6: `fixed_window` wins on chunk count with tied Recall@K; default strategy still `structure_aware`
+- Windows: App Control blocks `datasets`/pandas; pyarrow parquet streaming OK (`windows_parquet_block.txt`)
+- Evidence: `docs/evidence/phase6.txt`, `pilot_ingest.json`, `storage_estimate_55k.json`, `bm25_corpus_stats.json`, `crc32_collisions.json`, `eval/results/chunking_comparison.*`
+- Phase 7 not started

@@ -1,0 +1,31 @@
+{
+  "created_at": "2026-10-29T04:24:28.678749+00:00",
+  "seed": 42,
+  "record_count": 55000,
+  "unique_ids": true,
+  "id_scheme": "hotpotqa:<title>",
+  "output": "data/raw/corpus.jsonl",
+  "sha256": "528db785aaeb5f4e43cb52cfd09ab3ad5e0ddfc50dbf82e592ff96a54409de19",
+  "source_mode": "huggingface",
+  "target_capability": 55000,
+  "license_note": "HotpotQA CC BY-SA 4.0 — attribute authors; share-alike derivatives",
+  "load_info": {
+    "method": "hf_parquet_pyarrow_stream",
+    "splits_loaded": [
+      {
+        "split": "validation",
+        "rows": 7405
+      }
+    ],
+    "rows": 7405,
+    "files": [
+      {
+        "path": "distractor/validation-00000-of-00001.parquet",
+        "rows": 7405,
+        "source": "cache"
+      }
+    ]
+  },
+  "human_action": null,
+  "meets_55k_capability": true
+}

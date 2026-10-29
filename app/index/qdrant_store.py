@@ -351,6 +351,11 @@ class QdrantChunkStore:
     def ensure_collection(self) -> None:
         from qdrant_client.http import models as qmodels
 
+        # Process-local cache: avoid re-listing collections + recreating indexes
+        # on every upsert (each create_payload_index is a remote round-trip).
+        if getattr(self, "_collection_ready", False):
+            return
+
         names = {c.name for c in self.client.get_collections().collections}
         if self.collection not in names:
             vectors_config: dict[str, Any] = {
@@ -380,6 +385,7 @@ class QdrantChunkStore:
                 sparse_vectors_config=sparse_config,
             )
         self._ensure_payload_indexes()
+        self._collection_ready = True
 
     def _ensure_payload_indexes(self) -> None:
         """Idempotent payload indexes used by filters / lifecycle."""

@@ -1,0 +1,29 @@
+{
+  "target_docs": 55000,
+  "pilot_docs": 85,
+  "scale_factor": 647.0588,
+  "neon_bytes_estimate": 429357176,
+  "neon_mb_estimate": 409.47,
+  "qdrant_points_estimate": 93176,
+  "qdrant_disk_bytes_estimate": 208342588,
+  "qdrant_disk_mb_estimate": 198.69,
+  "qdrant_ram_bytes_lower_bound": 143118336,
+  "qdrant_ram_mb_lower_bound": 136.49,
+  "wall_time_seconds_estimate": 159786.1,
+  "wall_time_hours_estimate": 44.4,
+  "neon_cap_bytes": 1000000000,
+  "neon_safe_bytes": 750000000,
+  "qdrant_disk_cap_bytes": 4000000000,
+  "qdrant_disk_safe_bytes": 3000000000,
+  "qdrant_ram_cap_bytes": 1000000000,
+  "qdrant_ram_safe_bytes": 700000000,
+  "full_ingest_go": true,
+  "reasons": [
+    "Storage headroom OK on Neon 1GB and Qdrant 4GB disk / 1GB RAM lower-bound.",
+    "Binding constraint is wall-clock (~0.3–0.6 creates/s → ~1–2 days for 55k); use resumable bulk_ingest.py."
+  ],
+  "proposed_max_safe_docs": 55000,
+  "records_per_second_pilot": 0.344,
+  "decision": "GO full ingest toward 55k with single-process resumable bulk (file lock).",
+  "pilot_basis": "docs/evidence/pilot_ingest.json (neon_delta_bytes=663552 for 85 created; qdrant_points_delta=144)"
+}

@@ -1,0 +1,75 @@
+Phase 6 verification — 2026-10-29
+
+Commands (representative; full outputs also in JSON evidence files):
+  uv sync --group dev
+  uv run python scripts/build_corpus.py --limit 2500 --splits validation
+  uv run python scripts/build_corpus.py --target 55000 --splits train,validation
+  uv run python scripts/generate_synthetic.py
+  uv run python scripts/pilot_ingest.py --limit 150 --offset 380
+  uv run python scripts/chunking_experiment.py
+  uv run python scripts/crc32_collision_analysis.py
+  uv run python scripts/compute_bm25_stats.py
+  uv run python scripts/verify_counts.py
+  uv run python scripts/bulk_ingest.py --max-docs 55000 --checkpoint-every 100
+  uv run ruff check app tests scripts
+  uv run python -m mypy app
+  uv run python -m pytest -q
+
+Corpus build (HF parquet + pyarrow streaming; Windows App Control blocks datasets/pandas):
+  wrote 2500 records -> data/raw/corpus.jsonl (earlier pilot build)
+  wrote 55000 records -> data/raw/corpus.jsonl mode=huggingface
+    sha256=528db785aaeb5f4e43cb52cfd09ab3ad5e0ddfc50dbf82e592ff96a54409de19
+    splits=validation only (7405 Hotpot rows → 66581 unique titles; capped to 55000)
+  manifest meets_55k_capability=true (data/manifests/corpus_manifest.json)
+  Windows evidence: docs/evidence/windows_parquet_block.txt
+    blocked: pyarrow _dataset_parquet*.pyd (warning) + pandas vectorized.pyd (datasets import)
+    workaround: pyarrow.parquet.ParquetFile.iter_batches (works without datasets)
+
+Synthetic:
+  wrote 8 files formats=['csv', 'docx', 'html', 'jsonl', 'md', 'pdf', 'txt']
+  -> data/manifests/synthetic_truth.json
+
+Pilot ingest (measured slice after earlier partial run; see pilot_ingest.json):
+  attempted=150 wall_s=246.9 rps=0.607
+  neon_delta_bytes=663552 qdrant_points_delta=144
+  outcomes created=85 unchanged=21 failed=44 (unique races from concurrent procs; fixed)
+  55k storage estimate full_ingest_go=True proposed_max_safe=55000
+
+Storage estimate (docs/evidence/storage_estimate_55k.json):
+  neon ~409 MB estimated for 55k (safe vs 1 GB)
+  qdrant disk LB ~199 MB (safe vs 4 GB)
+  qdrant RAM LB ~136 MB (under 1 GB with margin)
+  wall_time_seconds_estimate ~1.6e5 (~44h at pilot create rate) — binding constraint; bulk is resumable
+
+Chunking DOC-6 (eval/results/chunking_comparison.json):
+  winner=fixed_window
+  reason: Recall@5=1.0 MRR=1.0 tied with structure_aware; fewer chunks (118 vs 153)
+  default CHUNK_STRATEGY remains structure_aware for heading context in production
+
+BM25:
+  avgdl=55.6367 on 545 active chunks -> docs/evidence/bm25_corpus_stats.json
+  BM25_AVGDL=55.64 set in local .env / .env.example comment
+
+CRC32:
+  unique_terms=20057 collision_ids=0 assessment=negligible
+  -> docs/evidence/crc32_collisions.json
+
+Quality gates:
+  ruff: All checks passed!
+  mypy: Success: no issues found in 90 source files
+  pytest: 135 passed, 1 deselected (live), 1 warning
+
+Latest measured snapshot (during resumable bulk):
+  active_docs=871 qdrant_points=922 neon~12–13 MB meets_50k=False
+  resume: uv run python scripts/bulk_ingest.py --max-docs 55000 --checkpoint-every 100
+  lock file: data/checkpoints/bulk_ingest.lock
+
+Known limits / honesty:
+  - Do NOT claim ≥50k indexed until verify_counts shows ACTIVE>=50000
+  - Early bulk had concurrent process races (UniqueViolation); exclusive lock added
+  - Qdrant disk/ram API fields unavailable on Free; estimates are lower bounds
+  - datasets/pandas blocked by Windows App Control; parquet+pyarrow path used
+  - Phase 7 not started
+
+See also: docs/evidence/pilot_ingest.json, storage_estimate_55k.json,
+dataset_counts.json, bulk_ingest.json, docs/phase_notes/phase6.md

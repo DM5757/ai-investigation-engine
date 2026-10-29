@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-10-29T04:32:03.629770+00:00",
+  "collection_name": "chunks__structure_aware__bge_small",
+  "chunk_count_sampled": 854,
+  "avgdl": 54.267,
+  "min_dl": 6,
+  "max_dl": 155,
+  "p50_dl": 49,
+  "prior_settings_bm25_avgdl": 55.64,
+  "note": "computed from BM25 tokenizer token counts on active chunks",
+  "recommendation": "Set BM25_AVGDL=54.27 in environment and restart app so sparse encoding uses calibrated avgdl."
+}

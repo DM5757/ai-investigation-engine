@@ -1,0 +1,5 @@
+timestamp,service,p99_ms,error_rate
+2024-03-12T08:00:00Z,PaymentService,120,0.01
+2024-03-12T09:00:00Z,PaymentService,2400,0.42
+2024-03-12T10:00:00Z,AuthGateway,1800,0.35
+2024-03-12T15:00:00Z,PaymentService,200,0.02

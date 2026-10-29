@@ -1,0 +1,54 @@
+Windows Application Control / Parquet investigation (Phase 6)
+Date: 2026-10-29
+Host: Windows 10 (build 26300), Python 3.13.15, project .venv via uv
+
+## Warning observed
+Windows Security: "Part of this app has been blocked... can't confirm who published
+`_dataset_parquet.cp313-win_amd64.pyd` that the app tried to load."
+
+## Package providing the .pyd
+- Package: **pyarrow** (PyPI), version **26.0.0** (locked via uv; also pulled by
+  `datasets` as a transitive dependency).
+- Path:
+  `.venv\Lib\site-packages\pyarrow\_dataset_parquet.cp313-win_amd64.pyd`
+  (size 251392 bytes). Sibling:
+  `_dataset_parquet_encryption.cp313-win_amd64.pyd`.
+- Origin: installed from `https://pypi.org/simple` into the project venv
+  (`uv sync --group dev`). Not an unsigned console-script shim.
+
+## Related Application Control failures
+1. `import datasets` →
+   `ImportError: DLL load failed while importing vectorized: An Application Control
+   policy has blocked this file.`
+   Blocked module is **pandas** native code:
+   `.venv\Lib\site-packages\pandas\_libs\tslibs\vectorized.cp313-win_amd64.pyd`
+   (datasets depends on pandas).
+2. The `_dataset_parquet` warning concerns the **pyarrow.dataset** parquet
+   extension. Basic `import pyarrow.parquet` + `ParquetFile.iter_batches` /
+   `read_table` **succeeds** on this host (verified 2026-10-29 on the cached
+   Hotpot validation parquet, 7405 rows in ~0.6s).
+
+## Did App Control cause the corpus-building failure?
+**Partially / indirectly.**
+- Failure path for `datasets.load_dataset(...)`: yes — blocked pandas/vectorized DLL.
+- Failure / hang for naive full-table `pq.read_table` + row materialization of
+  train shards (~90k rows × nested context → huge Python lists): primarily
+  **memory/CPU**, not App Control. Duplicate concurrent `build_corpus.py` runs
+  exacerbated this (two processes loading train parquet).
+- Pilot ingest exit `4294967295` (~15 min): process killed/interrupted; later
+  pilot evidence shows partial success (Neon ACTIVE docs + Qdrant points), not a
+  parquet DLL block during ingest.
+
+## Workaround (no security weakening)
+1. Prefer **pyarrow.parquet streaming** (`ParquetFile.iter_batches`) over
+   Hugging Face `datasets` / pandas on Windows.
+2. Cache HF parquet under `data/cache/hotpot_hf/` (gitignored).
+3. Optional Linux Docker / WSL for `datasets` if needed; production Dockerfile
+   remains `--no-dev` and does not include corpus-build deps.
+4. Do **not** disable WDAC, Smart App Control, or antivirus.
+
+## Provenance preserved
+HotpotQA distractor parquet from
+`https://huggingface.co/datasets/hotpotqa/hotpot_qa` (CC BY-SA 4.0).
+Manifest records method `hf_parquet_pyarrow_stream`, split row counts, sha256 of
+`data/raw/corpus.jsonl`.

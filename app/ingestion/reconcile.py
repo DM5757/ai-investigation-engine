@@ -5,6 +5,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass, field
 
+from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 from app.db.models import Document, DocumentStatus
@@ -63,7 +64,21 @@ def reconcile_session(session: Session, store: ChunkStore) -> ReconcileReport:
             else:
                 report.failed.append(doc.id)
 
+    # Only issue Qdrant version cleanup for docs that actually have >1 chunk version.
+    # Calling delete_by_doc_version_ne for every ACTIVE doc is O(n) remote round-trips
+    # and made Phase 6 reconcile unusable once the corpus grew past a few hundred docs.
+    multi_version_doc_ids = {
+        row[0]
+        for row in session.execute(
+            text(
+                "SELECT document_id FROM chunks GROUP BY document_id "
+                "HAVING COUNT(DISTINCT version) > 1"
+            )
+        ).fetchall()
+    }
     for doc in docs.list_by_status(DocumentStatus.ACTIVE):
+        if doc.id not in multi_version_doc_ids:
+            continue
         try:
             store.delete_by_doc_version_ne(doc.id, doc.active_version)
             report.cleaned_versions.append(doc.id)
@@ -74,9 +89,16 @@ def reconcile_session(session: Session, store: ChunkStore) -> ReconcileReport:
             report.notes.append(f"{doc.id}: cleanup error {exc}")
 
     active = docs.list_by_status(DocumentStatus.ACTIVE)
-    chunk_count = 0
-    for doc in active:
-        chunk_count += len(chunks.list_for_version(doc.id, doc.active_version))
+    chunk_count = int(
+        session.execute(
+            text(
+                "SELECT count(*) FROM chunks c "
+                "JOIN documents d ON d.id = c.document_id "
+                "WHERE d.status = 'ACTIVE' AND c.version = d.active_version"
+            )
+        ).scalar()
+        or 0
+    )
     docs.upsert_index_stats(
         store.collection,
         document_count=len(active),
