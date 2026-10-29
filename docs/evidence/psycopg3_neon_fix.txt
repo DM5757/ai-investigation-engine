@@ -32,5 +32,18 @@ psycopg package version              -> 3.3.6
 ## Docker
 - `uv sync --frozen --no-dev` installs `psycopg[binary]` from project.dependencies (not dev-only).
 
-## Public Render verification
-(recorded after push/redeploy below)
+## Public Render verification (2026-10-29T03:09:04Z)
+
+URL: https://ai-investigation-engine-scyz.onrender.com/api/health/ready
+Deploy commit: 86977e5 (Psycopg 3 fix) after push; UI/stats also live.
+
+```
+HTTP/1.1 200 OK
+x-render-origin-server: uvicorn
+Body:
+{"status":"ready","database":"ok","embedding_model_configured":"BAAI/bge-small-en-v1.5","embedding_enabled_at_startup":false,"embedding_loaded":false,"embedding_load_ms":null,"llm_groq_configured":false,"llm_gemini_configured":false,"llm_status":"degraded","qdrant_configured":false,"qdrant_status":"local_or_memory"}
+```
+
+Also checked: GET /api/health → 200; GET / → 200 (Phase 5 UI); GET /api/stats → 200.
+
+Note: Render env currently has DATABASE_URL working; Groq/Gemini/Qdrant secrets not set on the service (llm_status=degraded, qdrant_configured=false). Optional follow-up — not part of this driver fix.
