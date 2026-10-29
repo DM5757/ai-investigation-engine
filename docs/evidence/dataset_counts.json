@@ -1,47 +1,46 @@
 {
-  "created_at": "2026-10-29T07:22:57.694375+00:00",
+  "created_at": "2026-10-29T13:23:12.379280+00:00",
   "postgres": {
-    "active_documents": 8629,
-    "non_deleted_documents": 8645,
-    "chunk_rows": 8943,
+    "active_documents": 35735,
+    "non_deleted_documents": 35735,
+    "chunk_rows": 36888,
     "by_status": {
-      "ACTIVE": 8629,
-      "DELETED": 5,
-      "INDEXING": 16
+      "ACTIVE": 35735,
+      "DELETED": 5
     }
   },
   "neon_size": {
     "ok": true,
     "dialect": "postgresql",
     "database": "neondb",
-    "size_bytes": 51658752,
-    "size_mb": 49.266
+    "size_bytes": 185237504,
+    "size_mb": 176.656
   },
   "qdrant": {
     "ok": true,
     "collection": "chunks__structure_aware__bge_small",
-    "points_count": 8933,
+    "points_count": 36878,
     "status": "green",
     "telemetry_available": false,
-    "indexed_vectors_count": 8940,
-    "points_count_info": 8933,
-    "approx_dense_vector_bytes": 13721088,
+    "indexed_vectors_count": 70227,
+    "points_count_info": 36878,
+    "approx_dense_vector_bytes": 56644608,
     "disk_bytes": null,
     "ram_bytes": null,
     "disk_bytes_source": "unavailable",
     "ram_bytes_source": "unavailable",
-    "estimated_disk_bytes_lower_bound": 19974188
+    "estimated_disk_bytes_lower_bound": 82459208
   },
   "consistency": {
     "ok": true,
-    "active_documents": 8629,
-    "qdrant_points": 8933,
+    "active_documents": 35735,
+    "qdrant_points": 36878,
     "notes": []
   },
   "claims": {
     "do_not_claim_50k_without_measurement": true,
-    "measured_active_documents": 8629,
-    "measured_qdrant_points": 8933,
+    "measured_active_documents": 35735,
+    "measured_qdrant_points": 36878,
     "meets_data1_50k": false
   }
 }

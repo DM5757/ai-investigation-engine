@@ -2,7 +2,7 @@
 
 **Project:** Applied AI Investigation Engine  
 **Date:** 2026-10-29  
-**Corpus note:** Preliminary while ACTIVE &lt; 50k. Metrics use **transparent denominators**.
+**Corpus note:** Preliminary while ACTIVE &lt; 50k (measured ~35.7k ACTIVE at 2026-10-29 17:23 Asia/Tbilisi; ingest still running). Metrics use **transparent denominators**. Retrieval/answer eval artifacts below were measured earlier the same day on a smaller ACTIVE corpus — do not reinterpret them as full-corpus scores.
 
 ## 1. Why earlier runs scored only ~7 questions
 
