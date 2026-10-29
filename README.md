@@ -69,14 +69,14 @@ Windows overnight resume: `scripts/watch_bulk_ingest.ps1` (single writer; file l
 ## Evaluation
 
 ```bash
-uv run python scripts/build_eval_questions.py   # ≥40 questions → eval/questions/
-uv run python eval/run_eval.py --configs dense_only,hybrid_rrf --split test --retrieval-only
-uv run python eval/run_eval.py --configs baseline_rag,full_investigation --split test --limit 20
+# Prefer Hotpot questions whose gold titles are already ACTIVE in Neon:
+uv run python scripts/build_eval_questions.py --require-active
+uv run python eval/run_eval.py --configs dense_only,hybrid_rrf --split all --retrieval-only --scorable-only
+uv run python eval/run_eval.py --configs baseline_rag,full_investigation --split test --scorable-only
 ```
 
-Report: `docs/EVALUATION_REPORT.md`  
-Results: `eval/results/`  
-Chunking comparison (DOC-6): `eval/results/chunking_comparison.*`
+Always report **n_total / n_scored / exclusions** (do not hide unresolved golds).  
+Report: `docs/EVALUATION_REPORT.md` · Results: `eval/results/` · DOC-6: `eval/results/chunking_comparison.*`
 
 ## Deployment
 

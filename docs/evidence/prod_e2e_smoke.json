@@ -1,0 +1,73 @@
+{
+  "base": "https://ai-investigation-engine-scyz.onrender.com",
+  "steps": [
+    {
+      "step": "health",
+      "status": 200,
+      "ms": 521.5,
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "step": "ready",
+      "status": 200,
+      "ms": 1572.3,
+      "body": {
+        "status": "ready",
+        "database": "ok",
+        "embedding_model_configured": "BAAI/bge-small-en-v1.5",
+        "embedding_enabled_at_startup": false,
+        "embedding_loaded": false,
+        "embedding_load_ms": null,
+        "embedder_impl": "FastEmbedProvider",
+        "llm_groq_configured": true,
+        "llm_gemini_configured": true,
+        "llm_status": "configured",
+        "qdrant_configured": true,
+        "qdrant_status": "configured"
+      }
+    },
+    {
+      "step": "upload_unauthorized",
+      "status": 401,
+      "ok": true
+    },
+    {
+      "step": "upload",
+      "status": 200,
+      "outcome": "created",
+      "document_id": "c8f2ffe6-35a0-4796-b6ea-ccb8df74b7e4",
+      "ms": 4784.9
+    },
+    {
+      "step": "chunks",
+      "status": 200,
+      "n": 1
+    },
+    {
+      "step": "query",
+      "status": 200,
+      "answer_status": "partial",
+      "n_citations": 7,
+      "ms": 3506.5,
+      "has_answer": true
+    },
+    {
+      "step": "update",
+      "status": 200,
+      "outcome": "updated"
+    },
+    {
+      "step": "delete",
+      "status": 200,
+      "outcome": "deleted"
+    },
+    {
+      "step": "delete_unauthorized",
+      "status": 401,
+      "ok": true
+    }
+  ],
+  "ok": true
+}

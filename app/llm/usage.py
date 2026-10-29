@@ -36,6 +36,12 @@ class BudgetTracker:
     tokens_used: int = 0
     started_at: float = field(default_factory=time.monotonic)
 
+    def reset(self) -> None:
+        """Clear counters for a new investigation / eval question."""
+        self.calls_used = 0
+        self.tokens_used = 0
+        self.started_at = time.monotonic()
+
     def check(self) -> None:
         elapsed = time.monotonic() - self.started_at
         if self.calls_used >= self.max_calls:

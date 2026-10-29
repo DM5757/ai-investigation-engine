@@ -1,0 +1,3900 @@
+{
+  "summary": {
+    "config_id": "baseline_rag",
+    "pipeline": "baseline_rag",
+    "retrieval_mode": "hybrid_rrf",
+    "k": 8,
+    "n_questions_total": 37,
+    "n_questions": 37,
+    "n_scored_retrieval": 35,
+    "n_scored_answer": 37,
+    "n_excluded": 0,
+    "exclusion_reasons": {},
+    "by_type_total": {
+      "factual": 12,
+      "multi_doc": 11,
+      "contradiction": 2,
+      "unanswerable": 2,
+      "multi_step": 1,
+      "multi_hop": 9
+    },
+    "by_type_scored_retrieval": {
+      "factual": 12,
+      "multi_doc": 11,
+      "contradiction": 2,
+      "multi_step": 1,
+      "multi_hop": 9
+    },
+    "by_type_scored_answer": {
+      "factual": 12,
+      "multi_doc": 11,
+      "contradiction": 2,
+      "unanswerable": 2,
+      "multi_step": 1,
+      "multi_hop": 9
+    },
+    "n_errors": 0,
+    "corpus_active_documents": 3766,
+    "retrieval": {
+      "n_scored": 35,
+      "n": 35,
+      "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+      "recall_at_k": 0.9,
+      "mrr": 0.9428571428571428,
+      "all_gold_at_k": 0.8285714285714286,
+      "multi_doc_coverage": 0.9,
+      "mean_latency_s": 4.046406785714706
+    },
+    "answer": {
+      "n_scored": 37,
+      "n": 37,
+      "exact_match": 0.0,
+      "token_f1": 0.03840755805979264,
+      "citation_f1": 0.3494422994422995,
+      "correct_abstention_rate": 0.0,
+      "n_unanswerable_scored": 2,
+      "contradiction_detection_rate": 0.0,
+      "n_contradiction_scored": 2,
+      "mean_latency_s": 3.9141341351394265,
+      "mean_llm_calls": 0.40540540540540543,
+      "mean_tokens": 600.4864864864865,
+      "status_counts": {
+        "answered": 37
+      }
+    }
+  },
+  "results": [
+    {
+      "question_id": "syn_factual_alpha_marker",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The ALPHA‑OUTAGE‑0810 marker is mentioned in the description of **Service Component 7** – the component’s documentation includes the line “Gold span marker ALPHA‑OUTAGE‑08”【S1】.  (No other provided claim references an ALPHA‑OUTAGE‑0810 marker.)",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S1"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S2"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+          "label": "S4"
+        },
+        {
+          "doc_id": "02be0814-201f-416f-aad9-df0bfc436f6d",
+          "chunk_id": "deb41c00-0dd1-4af9-b036-34230f6e3fc4",
+          "label": "S5"
+        },
+        {
+          "doc_id": "a5fba852-7457-43f9-90f5-b46efc5c905d",
+          "chunk_id": "d2fcaac0-1aae-4317-af8b-f46b2622ed0e",
+          "label": "S6"
+        },
+        {
+          "doc_id": "a0b27a25-cc78-4826-bcab-f3cb24c9d500",
+          "chunk_id": "75cae5ce-c263-437f-9129-cf17ee40b490",
+          "label": "S7"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "d8c274be-5131-4b92-8e1a-8bf3d1f8d9a4",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.5523099000565708,
+      "llm_calls": 1,
+      "tokens": 1583,
+      "retrieved_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "02be0814-201f-416f-aad9-df0bfc436f6d",
+        "a5fba852-7457-43f9-90f5-b46efc5c905d",
+        "a0b27a25-cc78-4826-bcab-f3cb24c9d500",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+        "deb41c00-0dd1-4af9-b036-34230f6e3fc4",
+        "d2fcaac0-1aae-4317-af8b-f46b2622ed0e",
+        "75cae5ce-c263-437f-9129-cf17ee40b490",
+        "d8c274be-5131-4b92-8e1a-8bf3d1f8d9a4"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.14634146341463414,
+        "citation": {
+          "precision": 0.16666666666666666,
+          "recall": 1.0,
+          "f1": 0.2857142857142857
+        }
+      }
+    },
+    {
+      "question_id": "syn_multi_docs_services",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The March outage was a payment‑service disruption that lasted about six hours after a change to the **auth‑gateway** component. The incident reports identify **PaymentService** as the service that timed‑out, and they link the failure to the **auth‑gateway** deployment that triggered the problem【S1】【S2】【S6】.",
+      "citations": [
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "21d9f81a-0431-4cee-89d8-ce958e2eecfc",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "2dad8203-b865-41d9-84e5-054eaff1205b",
+          "label": "S4"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "66f66289-a0a5-4114-9146-f0870d8759bd",
+          "label": "S5"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "e0dcca0d-b51f-49b9-b665-7b9aacc1afb4",
+          "label": "S7"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "212b7e16-369b-4c64-94a0-e0623807a0a8",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.022045399993658,
+      "llm_calls": 1,
+      "tokens": 1451,
+      "retrieved_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "21d9f81a-0431-4cee-89d8-ce958e2eecfc",
+        "2dad8203-b865-41d9-84e5-054eaff1205b",
+        "66f66289-a0a5-4114-9146-f0870d8759bd",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "e0dcca0d-b51f-49b9-b665-7b9aacc1afb4",
+        "212b7e16-369b-4c64-94a0-e0623807a0a8"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.07547169811320753,
+        "citation": {
+          "precision": 0.25,
+          "recall": 0.5,
+          "f1": 0.3333333333333333
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c1_deploy_time",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The records give two different timestamps for the auth‑gateway deployment on 2024‑03‑12.  \n\n* The change‑log entry says the auth‑gateway 2.4.1 was deployed at **14:00 UTC** 【S1】.  \n* Both the incident report and the draft post‑mortem state that the deployment occurred at **08:10 UTC** 【S2】【S6】.  \n\nThus the documents conflict on the exact deploy time—one source lists 14:00 UTC, while two other sources list 08:10 UTC. No other statements resolve this discrepancy.",
+      "citations": [
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        },
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S3"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S4"
+        },
+        {
+          "doc_id": "d7776547-bc26-46db-a01c-21fda4757724",
+          "chunk_id": "ea468d8c-6e8f-4b99-bd4e-c68f8fd9d3c5",
+          "label": "S5"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S6"
+        },
+        {
+          "doc_id": "70ea071e-55b2-4448-8fc5-93fd5b9cb65a",
+          "chunk_id": "72b210d8-6aaa-4e92-8ce0-7d8da503e84b",
+          "label": "S7"
+        },
+        {
+          "doc_id": "e71c1ae6-86b3-45ed-bbbf-11c2e55182d2",
+          "chunk_id": "bb69e68c-922c-4625-8d7a-56cf13195fb9",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.7273800999391824,
+      "llm_calls": 1,
+      "tokens": 1593,
+      "retrieved_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "70ea071e-55b2-4448-8fc5-93fd5b9cb65a",
+        "e71c1ae6-86b3-45ed-bbbf-11c2e55182d2"
+      ],
+      "retrieved_chunk_ids": [
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "ea468d8c-6e8f-4b99-bd4e-c68f8fd9d3c5",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "72b210d8-6aaa-4e92-8ce0-7d8da503e84b",
+        "bb69e68c-922c-4625-8d7a-56cf13195fb9"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c2_root_cause",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The incident report links the six‑hour payment‑service outage to the **auth‑gateway** deployment on 12 Mar 2024 (08:10 UTC) [S1] and the executive summary notes that the disruption was “linked to auth‑gateway change” [S5].  \n\nTwo different explanations are given for the underlying cause:  \n\n* The operations team’s root‑cause analysis attributes the failure to a **mis‑configured JWT TTL on AuthGateway**, which triggered cascading retries into PaymentService [S2].  \n* The release notes in the March change log state that the outage was caused by a **Neon connection‑pool exhaustion**, explicitly saying it was not due to the JWT TTL [S3].  \n\nThus the documents present conflicting accounts of the root cause—one blaming JWT‑TTL misconfiguration, the other blaming Neon pool exhaustion. No other sources provide a definitive cause.",
+      "citations": [
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+          "label": "S2"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S4"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S5"
+        },
+        {
+          "doc_id": "ae941827-7015-4a72-b259-c854a0cf468b",
+          "chunk_id": "abc69609-b558-406d-b922-729221028779",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "ca6175cd-864a-45e6-9f34-70ad2b54108d",
+          "label": "S7"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "b0f15fd4-50f0-486d-8b7a-5c21e761d728",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.8803284999448806,
+      "llm_calls": 1,
+      "tokens": 1563,
+      "retrieved_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "ae941827-7015-4a72-b259-c854a0cf468b",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "abc69609-b558-406d-b922-729221028779",
+        "ca6175cd-864a-45e6-9f34-70ad2b54108d",
+        "b0f15fd4-50f0-486d-8b7a-5c21e761d728"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.4,
+          "recall": 1.0,
+          "f1": 0.5714285714285715
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_149",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The status update for the auth‑gateway rollback lists the approver as “[REDACTED — incomplete record]”, so the identity of the person who approved the rollback is not provided in the available evidence【S1】.",
+      "citations": [
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S2"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S3"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S4"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S5"
+        },
+        {
+          "doc_id": "5512c565-c277-40e7-af5c-7eac594f2060",
+          "chunk_id": "c3e84232-61f5-42c5-82c5-2c9248e3bb8c",
+          "label": "S6"
+        },
+        {
+          "doc_id": "0984d7a8-6378-4c9f-a6d4-447054537bf4",
+          "chunk_id": "79c91d69-68f6-4a1f-bd12-fdb24cc1c813",
+          "label": "S7"
+        },
+        {
+          "doc_id": "0a572b75-34be-46eb-b575-50d21a62d0ba",
+          "chunk_id": "803e9f3c-c7be-4935-aee2-9c5735c75ac8",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.0205444000894204,
+      "llm_calls": 1,
+      "tokens": 1324,
+      "retrieved_doc_ids": [
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "5512c565-c277-40e7-af5c-7eac594f2060",
+        "0984d7a8-6378-4c9f-a6d4-447054537bf4",
+        "0a572b75-34be-46eb-b575-50d21a62d0ba"
+      ],
+      "retrieved_chunk_ids": [
+        "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "c3e84232-61f5-42c5-82c5-2c9248e3bb8c",
+        "79c91d69-68f6-4a1f-bd12-fdb24cc1c813",
+        "803e9f3c-c7be-4935-aee2-9c5735c75ac8"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 0.0,
+        "soft_abstention": 0.0,
+        "false_answer_on_unanswerable": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_1758",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The provided evidence does not contain any information about the CPU usage of FraudScorer during the incident. No claim mentions a CPU metric for FraudScorer, so the answer cannot be determined from the available sources.",
+      "citations": [
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        },
+        {
+          "doc_id": "a5f14f5c-b4c6-493a-83af-085f47894286",
+          "chunk_id": "3d1b5141-a181-4615-9dfe-a549d2d36ab5",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b35cbdf1-0245-47a7-94b5-6c4d6e24d04c",
+          "chunk_id": "5e0e9149-b39a-4436-a8ba-a67ca4cb7d03",
+          "label": "S4"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S5"
+        },
+        {
+          "doc_id": "386704bb-d530-42b3-8123-9e2168d7e149",
+          "chunk_id": "4ed88d3f-60b1-4046-b03c-f54b4e2dc9a3",
+          "label": "S6"
+        },
+        {
+          "doc_id": "0651466e-de92-4925-9827-e6ae47642234",
+          "chunk_id": "37d0d4e5-becd-438f-88a0-7f99a4e1c7d2",
+          "label": "S7"
+        },
+        {
+          "doc_id": "877506a0-46bf-45ad-9034-85d3bf29c3db",
+          "chunk_id": "57c1ca30-aaad-49fb-b9d7-744ed2e77191",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 2.178181100054644,
+      "llm_calls": 1,
+      "tokens": 1286,
+      "retrieved_doc_ids": [
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a5f14f5c-b4c6-493a-83af-085f47894286",
+        "b35cbdf1-0245-47a7-94b5-6c4d6e24d04c",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "386704bb-d530-42b3-8123-9e2168d7e149",
+        "0651466e-de92-4925-9827-e6ae47642234",
+        "877506a0-46bf-45ad-9034-85d3bf29c3db"
+      ],
+      "retrieved_chunk_ids": [
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "3d1b5141-a181-4615-9dfe-a549d2d36ab5",
+        "5e0e9149-b39a-4436-a8ba-a67ca4cb7d03",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "4ed88d3f-60b1-4046-b03c-f54b4e2dc9a3",
+        "37d0d4e5-becd-438f-88a0-7f99a4e1c7d2",
+        "57c1ca30-aaad-49fb-b9d7-744ed2e77191"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 0.0,
+        "soft_abstention": 0.0,
+        "false_answer_on_unanswerable": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_multistep_latency",
+      "question_type": "multi_step",
+      "split": "test",
+      "gold_doc_ids": [
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "latency_metrics",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The available evidence does not include any latency metrics or mention of elevated latency for particular service components during the March incident. The records note that **PaymentService** experienced a six‑hour timeout after the auth‑gateway deployment and later began recovering (see the status update and incident summary) [S1][S5], but they do not specify which individual components (e.g., components 9, 11, 15, 16, 17, 19) showed increased latency. Therefore, based on the provided claims, we cannot identify any components with elevated latency.",
+      "citations": [
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "bf400e08-1e4b-4a53-afe0-a2a9f203fef2",
+          "label": "S2"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "90d93451-2d49-48d9-b1f1-ee2747a430b9",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "fd6bc225-aa15-4c15-937d-ff1e598365ea",
+          "label": "S4"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S5"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "e0dcca0d-b51f-49b9-b665-7b9aacc1afb4",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "212b7e16-369b-4c64-94a0-e0623807a0a8",
+          "label": "S7"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "66f66289-a0a5-4114-9146-f0870d8759bd",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 10.440709299989976,
+      "llm_calls": 1,
+      "tokens": 1560,
+      "retrieved_doc_ids": [
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+        "bf400e08-1e4b-4a53-afe0-a2a9f203fef2",
+        "90d93451-2d49-48d9-b1f1-ee2747a430b9",
+        "fd6bc225-aa15-4c15-937d-ff1e598365ea",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "e0dcca0d-b51f-49b9-b665-7b9aacc1afb4",
+        "212b7e16-369b-4c64-94a0-e0623807a0a8",
+        "66f66289-a0a5-4114-9146-f0870d8759bd"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.06741573033707865,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "syn_exec_summary",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884"
+      ],
+      "gold_doc_titles": [
+        "exec_summary"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The executive summary states that the March payment disruption was caused by a change to the auth‑gateway and that the outage lasted six hours【S2】.",
+      "citations": [
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S1"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S2"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S3"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S4"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "86dd9307-6923-4909-bd0a-3177d9920abc",
+          "label": "S5"
+        },
+        {
+          "doc_id": "5e1ff013-9044-43fb-b865-a46d3f97f22a",
+          "chunk_id": "7aed4600-42b7-46a2-9658-54ea8fc29889",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S7"
+        },
+        {
+          "doc_id": "ce985a26-0146-4369-8471-88b33af122b1",
+          "chunk_id": "68c31041-0c9c-4c80-a8a5-9cd9326b41c4",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 10.697310299961828,
+      "llm_calls": 1,
+      "tokens": 1347,
+      "retrieved_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "5e1ff013-9044-43fb-b865-a46d3f97f22a",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "ce985a26-0146-4369-8471-88b33af122b1"
+      ],
+      "retrieved_chunk_ids": [
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "86dd9307-6923-4909-bd0a-3177d9920abc",
+        "7aed4600-42b7-46a2-9658-54ea8fc29889",
+        "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+        "68c31041-0c9c-4c80-a8a5-9cd9326b41c4"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.06896551724137931,
+        "citation": {
+          "precision": 0.14285714285714285,
+          "recall": 1.0,
+          "f1": 0.25
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0033",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+        "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63"
+      ],
+      "gold_doc_titles": [
+        "Taglierini",
+        "Capellini"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Taglierini (or tagliolini) is a thin, long ribbon‑shaped pasta—essentially a very narrow, flat strand that is long like spaghetti and similar to tagliatelle but as thin as capellini【S1】.",
+      "citations": [
+        {
+          "doc_id": "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+          "chunk_id": "fee1db98-909a-4d63-8635-d6db18653e46",
+          "label": "S1"
+        },
+        {
+          "doc_id": "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63",
+          "chunk_id": "1335ccce-7ce8-44a5-a150-f4d58a56012a",
+          "label": "S2"
+        },
+        {
+          "doc_id": "443dce99-d745-4b94-af82-64c67a7d16b5",
+          "chunk_id": "bc35bdb3-b1ac-486d-bee8-90c1cd9ed591",
+          "label": "S3"
+        },
+        {
+          "doc_id": "f010fb9d-0468-4955-b5e1-fd3ce901a1bb",
+          "chunk_id": "ae444fdc-6fa4-4976-9b1d-4f15236afef1",
+          "label": "S4"
+        },
+        {
+          "doc_id": "780982ce-d69a-4951-8985-7485b5fe7d6d",
+          "chunk_id": "f888e010-8003-4fca-86cd-525090922fda",
+          "label": "S5"
+        },
+        {
+          "doc_id": "450ea64e-b735-4a9a-89f7-297ff4886f24",
+          "chunk_id": "9d0059a2-94f3-4118-a42a-181b7493e376",
+          "label": "S6"
+        },
+        {
+          "doc_id": "a50b8020-12f3-4812-bf60-c9bd335b054d",
+          "chunk_id": "e5c2e1d6-2cf1-40be-8dec-2834e554454c",
+          "label": "S7"
+        },
+        {
+          "doc_id": "7782ead2-e255-4dc9-9796-eddc465ce0ca",
+          "chunk_id": "0f6605ec-f149-4279-a37f-c4ac2a3fd6e9",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 12.47970950009767,
+      "llm_calls": 1,
+      "tokens": 1524,
+      "retrieved_doc_ids": [
+        "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+        "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63",
+        "443dce99-d745-4b94-af82-64c67a7d16b5",
+        "f010fb9d-0468-4955-b5e1-fd3ce901a1bb",
+        "780982ce-d69a-4951-8985-7485b5fe7d6d",
+        "450ea64e-b735-4a9a-89f7-297ff4886f24",
+        "a50b8020-12f3-4812-bf60-c9bd335b054d",
+        "7782ead2-e255-4dc9-9796-eddc465ce0ca"
+      ],
+      "retrieved_chunk_ids": [
+        "fee1db98-909a-4d63-8635-d6db18653e46",
+        "1335ccce-7ce8-44a5-a150-f4d58a56012a",
+        "bc35bdb3-b1ac-486d-bee8-90c1cd9ed591",
+        "ae444fdc-6fa4-4976-9b1d-4f15236afef1",
+        "f888e010-8003-4fca-86cd-525090922fda",
+        "9d0059a2-94f3-4118-a42a-181b7493e376",
+        "e5c2e1d6-2cf1-40be-8dec-2834e554454c",
+        "0f6605ec-f149-4279-a37f-c4ac2a3fd6e9"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.06060606060606061,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0026",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "82cc1274-c5ea-4827-8b2e-6a4ab9c72dac",
+        "1e424697-5008-4954-be9f-3281598dc546"
+      ],
+      "gold_doc_titles": [
+        "Ralph Faudree",
+        "Provost (education)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Ralph Faudree was the provost of the University of Memphis — the senior academic administrator in the United States that is considered the counterpart of a **pro‑vice‑chancellor** at many UK institutions and of a **Deputy Vice‑Chancellor** at Australian universities【S1】【S3】.",
+      "citations": [
+        {
+          "doc_id": "82cc1274-c5ea-4827-8b2e-6a4ab9c72dac",
+          "chunk_id": "ff3677fd-ed31-4e28-ae55-6e13e7717002",
+          "label": "S1"
+        },
+        {
+          "doc_id": "3dadeacd-1cbd-4eee-9210-4bff50a498c9",
+          "chunk_id": "6b283125-8fc0-4b00-a4c3-cc023b1d99dc",
+          "label": "S2"
+        },
+        {
+          "doc_id": "1e424697-5008-4954-be9f-3281598dc546",
+          "chunk_id": "fa0c900c-7577-4d24-8657-1a1dd5c14225",
+          "label": "S3"
+        },
+        {
+          "doc_id": "3f414db0-0593-4ae0-9007-20acd18d5b18",
+          "chunk_id": "705fab2b-a533-4a16-96ca-60b8a21370c0",
+          "label": "S4"
+        },
+        {
+          "doc_id": "9049dcc1-851b-49b2-a271-375ad4e26be8",
+          "chunk_id": "6e8edf19-1bb8-4bd2-9ef9-c5120e3fc1b9",
+          "label": "S5"
+        },
+        {
+          "doc_id": "9f489a6c-decc-426b-b119-b9006dcbdeda",
+          "chunk_id": "8730319b-0c40-4657-b494-6af2ad14a054",
+          "label": "S6"
+        },
+        {
+          "doc_id": "461c18fc-bf1b-4873-9d08-71f8e973ec67",
+          "chunk_id": "51975b2b-cdde-4253-9db2-831b82f04555",
+          "label": "S7"
+        },
+        {
+          "doc_id": "cc732afe-5c1b-4beb-be7b-57feac3b23b1",
+          "chunk_id": "1d6a2fae-a66a-4316-bcf9-72aab4cbc390",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 11.531557700014673,
+      "llm_calls": 1,
+      "tokens": 1593,
+      "retrieved_doc_ids": [
+        "82cc1274-c5ea-4827-8b2e-6a4ab9c72dac",
+        "3dadeacd-1cbd-4eee-9210-4bff50a498c9",
+        "1e424697-5008-4954-be9f-3281598dc546",
+        "3f414db0-0593-4ae0-9007-20acd18d5b18",
+        "9049dcc1-851b-49b2-a271-375ad4e26be8",
+        "9f489a6c-decc-426b-b119-b9006dcbdeda",
+        "461c18fc-bf1b-4873-9d08-71f8e973ec67",
+        "cc732afe-5c1b-4beb-be7b-57feac3b23b1"
+      ],
+      "retrieved_chunk_ids": [
+        "ff3677fd-ed31-4e28-ae55-6e13e7717002",
+        "6b283125-8fc0-4b00-a4c3-cc023b1d99dc",
+        "fa0c900c-7577-4d24-8657-1a1dd5c14225",
+        "705fab2b-a533-4a16-96ca-60b8a21370c0",
+        "6e8edf19-1bb8-4bd2-9ef9-c5120e3fc1b9",
+        "8730319b-0c40-4657-b494-6af2ad14a054",
+        "51975b2b-cdde-4253-9db2-831b82f04555",
+        "1d6a2fae-a66a-4316-bcf9-72aab4cbc390"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.13043478260869565,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0022",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "1d09acbc-13a8-47c5-8bcf-ae1fd8624f0e",
+        "b8c23ead-cbc4-41cd-8ec7-a72c87f14413"
+      ],
+      "gold_doc_titles": [
+        "Pennsylvania Route 145",
+        "Jersey barrier"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The plastic, water‑filled traffic separators used along highways such as MacArthur Road are called **Jersey barriers** (also known as Jersey walls) [S1].",
+      "citations": [
+        {
+          "doc_id": "b8c23ead-cbc4-41cd-8ec7-a72c87f14413",
+          "chunk_id": "c4865353-eb8d-4b16-8d64-fc074e0b230f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "1d09acbc-13a8-47c5-8bcf-ae1fd8624f0e",
+          "chunk_id": "c5d84e90-494a-42f2-ac20-e4c2d64ecde4",
+          "label": "S2"
+        },
+        {
+          "doc_id": "1d09acbc-13a8-47c5-8bcf-ae1fd8624f0e",
+          "chunk_id": "fcd7c5ce-5244-4255-b65f-41adfc2fc0ab",
+          "label": "S3"
+        },
+        {
+          "doc_id": "6a168045-994a-48ff-bbf6-b58750d6238e",
+          "chunk_id": "d1b0f9b9-045b-4ca8-80e7-257bf628e00d",
+          "label": "S4"
+        },
+        {
+          "doc_id": "69d6363f-7b40-4894-8cb9-6d21f5f56082",
+          "chunk_id": "fa046d5c-14ff-44f5-bf83-88937c15c709",
+          "label": "S5"
+        },
+        {
+          "doc_id": "1d4b1e7f-4a6a-46d9-912a-f34f496865d3",
+          "chunk_id": "09d6246b-6c3a-40fd-9704-20362079570e",
+          "label": "S6"
+        },
+        {
+          "doc_id": "985741fb-e80c-4478-aee8-d04db4328248",
+          "chunk_id": "2e0543c8-e8b2-4e45-9483-8fe71a12544d",
+          "label": "S7"
+        },
+        {
+          "doc_id": "c4894be0-c76a-45d5-9f0b-e2fbb289d77f",
+          "chunk_id": "be54c1de-5065-404f-9e34-e71a4edbaf55",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 10.34411689999979,
+      "llm_calls": 1,
+      "tokens": 1434,
+      "retrieved_doc_ids": [
+        "b8c23ead-cbc4-41cd-8ec7-a72c87f14413",
+        "1d09acbc-13a8-47c5-8bcf-ae1fd8624f0e",
+        "1d09acbc-13a8-47c5-8bcf-ae1fd8624f0e",
+        "6a168045-994a-48ff-bbf6-b58750d6238e",
+        "69d6363f-7b40-4894-8cb9-6d21f5f56082",
+        "1d4b1e7f-4a6a-46d9-912a-f34f496865d3",
+        "985741fb-e80c-4478-aee8-d04db4328248",
+        "c4894be0-c76a-45d5-9f0b-e2fbb289d77f"
+      ],
+      "retrieved_chunk_ids": [
+        "c4865353-eb8d-4b16-8d64-fc074e0b230f",
+        "c5d84e90-494a-42f2-ac20-e4c2d64ecde4",
+        "fcd7c5ce-5244-4255-b65f-41adfc2fc0ab",
+        "d1b0f9b9-045b-4ca8-80e7-257bf628e00d",
+        "fa046d5c-14ff-44f5-bf83-88937c15c709",
+        "09d6246b-6c3a-40fd-9704-20362079570e",
+        "2e0543c8-e8b2-4e45-9483-8fe71a12544d",
+        "be54c1de-5065-404f-9e34-e71a4edbaf55"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.08,
+        "citation": {
+          "precision": 0.2857142857142857,
+          "recall": 1.0,
+          "f1": 0.4444444444444445
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0016",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "04b1e19d-fc56-4ec7-89e5-88801ece1eca",
+        "1b5f6d96-9744-413a-aa22-f4e4a5afae8b"
+      ],
+      "gold_doc_titles": [
+        "2003 SANFL Grand Final",
+        "West Adelaide Football Club"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The Central District Bulldogs defeated West Adelaide, whose home base – Richmond Oval – is currently known as **City Mazda Stadium**【S1】【S2】.",
+      "citations": [
+        {
+          "doc_id": "04b1e19d-fc56-4ec7-89e5-88801ece1eca",
+          "chunk_id": "3c88a223-e839-46bf-bfa4-d5c773cbb170",
+          "label": "S1"
+        },
+        {
+          "doc_id": "1b5f6d96-9744-413a-aa22-f4e4a5afae8b",
+          "chunk_id": "9caea410-db42-407a-9ea3-4578960c5370",
+          "label": "S2"
+        },
+        {
+          "doc_id": "784e2ebd-3a42-4e48-879b-50f098f415a6",
+          "chunk_id": "2873517b-c2e6-4b51-b085-c3fc4c2b99ee",
+          "label": "S3"
+        },
+        {
+          "doc_id": "e9b48418-9b1a-4189-80b9-da3e3fedbc68",
+          "chunk_id": "7ff12171-066c-4f71-a738-863fed9fb0fd",
+          "label": "S4"
+        },
+        {
+          "doc_id": "d2d3e58e-236d-4f21-94bc-7b4972d846fb",
+          "chunk_id": "8a524c1a-2873-48ff-8dd7-8708f0abdcfe",
+          "label": "S5"
+        },
+        {
+          "doc_id": "4ec4d2fe-2d07-4f2a-9999-0acc78f2c276",
+          "chunk_id": "c0c9f019-21eb-4e23-b2cd-9728b3e85c08",
+          "label": "S6"
+        },
+        {
+          "doc_id": "326a3e73-9a31-4fb3-8536-d90e22da7540",
+          "chunk_id": "0254266b-10ea-4457-9111-94d47e415d9b",
+          "label": "S7"
+        },
+        {
+          "doc_id": "55ecb707-1a20-46ac-8b64-aab22cdea73e",
+          "chunk_id": "1851a6ec-d0b7-4ace-bd58-af2dfff7d8b2",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 10.326671999995597,
+      "llm_calls": 1,
+      "tokens": 1379,
+      "retrieved_doc_ids": [
+        "04b1e19d-fc56-4ec7-89e5-88801ece1eca",
+        "1b5f6d96-9744-413a-aa22-f4e4a5afae8b",
+        "784e2ebd-3a42-4e48-879b-50f098f415a6",
+        "e9b48418-9b1a-4189-80b9-da3e3fedbc68",
+        "d2d3e58e-236d-4f21-94bc-7b4972d846fb",
+        "4ec4d2fe-2d07-4f2a-9999-0acc78f2c276",
+        "326a3e73-9a31-4fb3-8536-d90e22da7540",
+        "55ecb707-1a20-46ac-8b64-aab22cdea73e"
+      ],
+      "retrieved_chunk_ids": [
+        "3c88a223-e839-46bf-bfa4-d5c773cbb170",
+        "9caea410-db42-407a-9ea3-4578960c5370",
+        "2873517b-c2e6-4b51-b085-c3fc4c2b99ee",
+        "7ff12171-066c-4f71-a738-863fed9fb0fd",
+        "8a524c1a-2873-48ff-8dd7-8708f0abdcfe",
+        "c0c9f019-21eb-4e23-b2cd-9728b3e85c08",
+        "0254266b-10ea-4457-9111-94d47e415d9b",
+        "1851a6ec-d0b7-4ace-bd58-af2dfff7d8b2"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.25,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0015",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "3f7b5862-a843-48ae-8cf7-e53cd1d1f72c",
+        "954c9fe4-cae8-4dbb-a3e1-743cd7738632"
+      ],
+      "gold_doc_titles": [
+        "66th Academy Awards",
+        "Laura Dern"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The actress who was nominated for Best Actress for “Rambling Rose” is Laura Dern [​S2].  However, none of the supplied claims state that she served as the host for the technical‑achievement awards at the 66th Academy Awards, so that specific detail cannot be confirmed from the given evidence.",
+      "citations": [
+        {
+          "doc_id": "3f7b5862-a843-48ae-8cf7-e53cd1d1f72c",
+          "chunk_id": "ffca2e4b-743d-42c4-a777-47f28529aa4d",
+          "label": "S1"
+        },
+        {
+          "doc_id": "954c9fe4-cae8-4dbb-a3e1-743cd7738632",
+          "chunk_id": "53839887-3de3-48d2-a665-b6da27ee4e01",
+          "label": "S2"
+        },
+        {
+          "doc_id": "06d4559c-a7d4-4ad0-81d0-7e5840a7dd63",
+          "chunk_id": "49a624dd-244b-4bad-974d-3293b65515cd",
+          "label": "S3"
+        },
+        {
+          "doc_id": "4d3e6769-353c-489b-8077-ffc2b3787d03",
+          "chunk_id": "18a190bf-6bb8-4142-b46d-182df2295885",
+          "label": "S4"
+        },
+        {
+          "doc_id": "c5e801e0-31a4-4ca9-b177-1c7eae50cfba",
+          "chunk_id": "367f2c5f-5dad-4c4c-9e77-50d728526ca0",
+          "label": "S5"
+        },
+        {
+          "doc_id": "de9552f5-0799-4764-ac15-89d236b7825e",
+          "chunk_id": "1ea703df-5854-427e-b30e-5688953cf93e",
+          "label": "S6"
+        },
+        {
+          "doc_id": "3ac1cd60-e72a-47f6-b1f3-d496188b119d",
+          "chunk_id": "03c47aa9-60cc-460e-8fec-f1a00b8929e7",
+          "label": "S7"
+        },
+        {
+          "doc_id": "49dc7e65-46b0-43d4-9230-2c7c618f63ba",
+          "chunk_id": "4eebb6bb-6488-4a4e-a9f3-a09f9f9e11f0",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 11.663271600031294,
+      "llm_calls": 1,
+      "tokens": 1694,
+      "retrieved_doc_ids": [
+        "3f7b5862-a843-48ae-8cf7-e53cd1d1f72c",
+        "954c9fe4-cae8-4dbb-a3e1-743cd7738632",
+        "06d4559c-a7d4-4ad0-81d0-7e5840a7dd63",
+        "4d3e6769-353c-489b-8077-ffc2b3787d03",
+        "c5e801e0-31a4-4ca9-b177-1c7eae50cfba",
+        "de9552f5-0799-4764-ac15-89d236b7825e",
+        "3ac1cd60-e72a-47f6-b1f3-d496188b119d",
+        "49dc7e65-46b0-43d4-9230-2c7c618f63ba"
+      ],
+      "retrieved_chunk_ids": [
+        "ffca2e4b-743d-42c4-a777-47f28529aa4d",
+        "53839887-3de3-48d2-a665-b6da27ee4e01",
+        "49a624dd-244b-4bad-974d-3293b65515cd",
+        "18a190bf-6bb8-4142-b46d-182df2295885",
+        "367f2c5f-5dad-4c4c-9e77-50d728526ca0",
+        "1ea703df-5854-427e-b30e-5688953cf93e",
+        "03c47aa9-60cc-460e-8fec-f1a00b8929e7",
+        "4eebb6bb-6488-4a4e-a9f3-a09f9f9e11f0"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.07843137254901959,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0032",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "557f5585-f6d2-4df9-b119-18589058d266",
+        "7ba67de5-6ad2-4193-bfbe-3665a15ae47d"
+      ],
+      "gold_doc_titles": [
+        "Chris McKay",
+        "Robot Chicken"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The provided evidence only states that Chris McKay directed and edited three seasons of **“Robot Chicken”** [​S1]. However, none of the supplied claims indicate which television channel aired that show. Therefore, with the given information we cannot determine the channel on which the show was shown.",
+      "citations": [
+        {
+          "doc_id": "557f5585-f6d2-4df9-b119-18589058d266",
+          "chunk_id": "2ac6e1dc-425a-4fe1-99db-b4868a9852fd",
+          "label": "S1"
+        },
+        {
+          "doc_id": "fcf12bdf-45fe-4974-9b69-210eee997c47",
+          "chunk_id": "1b15538c-a328-43ac-b720-fda1abdf94d2",
+          "label": "S2"
+        },
+        {
+          "doc_id": "678686e3-54c1-48f9-9bd0-a5f7a6677522",
+          "chunk_id": "a0e8f63f-e189-4a03-9f01-f9be5b85b857",
+          "label": "S3"
+        },
+        {
+          "doc_id": "88d62ea8-b77c-4fdb-943f-4c321586b499",
+          "chunk_id": "c552a6d5-ba59-45f3-b049-a1a42953f26d",
+          "label": "S4"
+        },
+        {
+          "doc_id": "376565b7-ca00-445b-8114-cdf4584509c8",
+          "chunk_id": "54a06bc8-077f-464b-a06f-65de63eb84fc",
+          "label": "S5"
+        },
+        {
+          "doc_id": "75ed71da-40bb-4a17-b1d3-ebd8c8d15db5",
+          "chunk_id": "a7b1c39a-ff17-4fc5-828f-dd6ce417164d",
+          "label": "S6"
+        },
+        {
+          "doc_id": "ff62b94f-fea3-4b28-bed1-4c47b137086e",
+          "chunk_id": "33442281-d989-4eb2-aefa-b517fe02efea",
+          "label": "S7"
+        },
+        {
+          "doc_id": "d4e1a9ef-854b-47fa-8f98-2c97fdc1b460",
+          "chunk_id": "0af9c694-8e08-4563-9473-a5947743d45b",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 12.736451499979012,
+      "llm_calls": 1,
+      "tokens": 1416,
+      "retrieved_doc_ids": [
+        "557f5585-f6d2-4df9-b119-18589058d266",
+        "fcf12bdf-45fe-4974-9b69-210eee997c47",
+        "678686e3-54c1-48f9-9bd0-a5f7a6677522",
+        "88d62ea8-b77c-4fdb-943f-4c321586b499",
+        "376565b7-ca00-445b-8114-cdf4584509c8",
+        "75ed71da-40bb-4a17-b1d3-ebd8c8d15db5",
+        "ff62b94f-fea3-4b28-bed1-4c47b137086e",
+        "d4e1a9ef-854b-47fa-8f98-2c97fdc1b460"
+      ],
+      "retrieved_chunk_ids": [
+        "2ac6e1dc-425a-4fe1-99db-b4868a9852fd",
+        "1b15538c-a328-43ac-b720-fda1abdf94d2",
+        "a0e8f63f-e189-4a03-9f01-f9be5b85b857",
+        "c552a6d5-ba59-45f3-b049-a1a42953f26d",
+        "54a06bc8-077f-464b-a06f-65de63eb84fc",
+        "a7b1c39a-ff17-4fc5-828f-dd6ce417164d",
+        "33442281-d989-4eb2-aefa-b517fe02efea",
+        "0af9c694-8e08-4563-9473-a5947743d45b"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.125,
+          "recall": 0.5,
+          "f1": 0.2
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0005",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "e5593917-3f08-4612-a8b3-a3a5183e8d01",
+        "403e0b45-90f8-4a0c-98ac-266a4c4c533f"
+      ],
+      "gold_doc_titles": [
+        "Karen Dotrice",
+        "Mary Poppins"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The British actress is Karen Dotrice, who was born in 1955【S2】.",
+      "citations": [
+        {
+          "doc_id": "403e0b45-90f8-4a0c-98ac-266a4c4c533f",
+          "chunk_id": "888be158-95ee-4784-b47c-48911c7313bb",
+          "label": "S1"
+        },
+        {
+          "doc_id": "e5593917-3f08-4612-a8b3-a3a5183e8d01",
+          "chunk_id": "ceb21226-31e6-4a68-beca-78ea4961967e",
+          "label": "S2"
+        },
+        {
+          "doc_id": "146dd559-535c-4364-b803-eb841f3240ac",
+          "chunk_id": "dc44bb96-4d4d-444d-a329-c8a384a5362e",
+          "label": "S3"
+        },
+        {
+          "doc_id": "147edd61-caf1-4c10-b341-482abda3771a",
+          "chunk_id": "519910f9-fe7a-4ef9-8085-c12414b669ef",
+          "label": "S4"
+        },
+        {
+          "doc_id": "5fe7cbeb-4b7c-431c-a8d9-73618fa3b1d2",
+          "chunk_id": "062bcb40-d840-4399-b629-ee3b4432d245",
+          "label": "S5"
+        },
+        {
+          "doc_id": "644c9503-a1b1-454a-9254-dfb422ae275a",
+          "chunk_id": "d8bd3525-78f9-423e-a7da-bfba936930ce",
+          "label": "S6"
+        },
+        {
+          "doc_id": "ae495078-5d56-48fe-9726-7919be9de868",
+          "chunk_id": "de71e9da-463e-4cc5-98e5-3cc0df142ecd",
+          "label": "S7"
+        },
+        {
+          "doc_id": "dd30f8e7-33c2-4c06-b48d-f4514af9fe87",
+          "chunk_id": "81464b97-a24d-4460-91e4-6490b3a26411",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 10.530731400009245,
+      "llm_calls": 1,
+      "tokens": 1471,
+      "retrieved_doc_ids": [
+        "403e0b45-90f8-4a0c-98ac-266a4c4c533f",
+        "e5593917-3f08-4612-a8b3-a3a5183e8d01",
+        "146dd559-535c-4364-b803-eb841f3240ac",
+        "147edd61-caf1-4c10-b341-482abda3771a",
+        "5fe7cbeb-4b7c-431c-a8d9-73618fa3b1d2",
+        "644c9503-a1b1-454a-9254-dfb422ae275a",
+        "ae495078-5d56-48fe-9726-7919be9de868",
+        "dd30f8e7-33c2-4c06-b48d-f4514af9fe87"
+      ],
+      "retrieved_chunk_ids": [
+        "888be158-95ee-4784-b47c-48911c7313bb",
+        "ceb21226-31e6-4a68-beca-78ea4961967e",
+        "dc44bb96-4d4d-444d-a329-c8a384a5362e",
+        "519910f9-fe7a-4ef9-8085-c12414b669ef",
+        "062bcb40-d840-4399-b629-ee3b4432d245",
+        "d8bd3525-78f9-423e-a7da-bfba936930ce",
+        "de71e9da-463e-4cc5-98e5-3cc0df142ecd",
+        "81464b97-a24d-4460-91e4-6490b3a26411"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.13333333333333333,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0011",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "5b6da0bd-3766-4ee4-b7dd-291dd4384d14",
+        "cdf1db6f-f695-45b9-a693-ec51a969a9c0"
+      ],
+      "gold_doc_titles": [
+        "1994 British Army Lynx shootdown",
+        "Barrack buster"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: On 20 March 1994, a British Army Lynx helicopter was shot down by the Provisional Irish Republican Army (IRA) in Northern Ireland. A unit of the IRA's South Armagh Brigade fired an improvised mortar a [S1]. evidence snippet: Barrack buster is the colloquial name given to several improvised mortars, developed in the 1990s by the engineering group of the Provisional Irish Republican Army (IRA). [S2]. evidence snippet: The Deal barracks bombing was an attack by the Provisional Irish Republican Army (IRA) on the Royal Marine Depot, Deal, England. It took place at 8:22 am on 22 September 1989, when the IRA exploded a  [S3]. evidence snippet: The M18 recoilless rifle was a 57 mm shoulder fired anti-tank recoilless rifle used by the U.S. Army in World War II and the Korean War. Recoilless rifles are capable of firing artillery-type shells a [S4]. evidence snippet: Ali Akbar Shiroodi (Persian: علی‌اکبر شیرودی‎ ‎ ) was one of the pilots who had the highest number of flights in the world. Ali Akbar Shiroodi, according to air-war experts, was one of the most promin [S5]. evidence snippet: RAF Mount Pleasant (IATA: MPN, ICAO: EGYP) (also known as Mount Pleasant Airport, Mount Pleasant Complex or MPA) is a Royal Air Force station in the British Overseas Territory of the Falkland Islands. [S6]. evidence snippet: The Battle of Cambrai, 1918 (also known as the Second Battle of Cambrai) was a battle between troops of the British First, Third and Fourth Armies and German Empire forces during the Hundred Days Offe [S7]. evidence snippet: Manfred Albrecht \"Freiherr\" von Richthofen (2 May 1892 – 21 April 1918), widely known as the Red Baron, is considered the ace-of-aces of the First World War, being officially credited with 80 air comb [S8].",
+      "citations": [
+        {
+          "doc_id": "5b6da0bd-3766-4ee4-b7dd-291dd4384d14",
+          "chunk_id": "7bef15fb-bcdd-4a9a-a730-59fed6ab0405",
+          "label": "S1"
+        },
+        {
+          "doc_id": "cdf1db6f-f695-45b9-a693-ec51a969a9c0",
+          "chunk_id": "efcc5b56-5f69-4b12-84bd-db78d0d5ea46",
+          "label": "S2"
+        },
+        {
+          "doc_id": "9b7695f2-f642-4107-b302-138f3957f0bb",
+          "chunk_id": "bc77f254-eb47-43df-b2f5-c6d097c3196f",
+          "label": "S3"
+        },
+        {
+          "doc_id": "d4f54b3c-20fb-4c65-b099-4743c12eae21",
+          "chunk_id": "b16119db-e73a-45cb-b638-0fc896d6711f",
+          "label": "S4"
+        },
+        {
+          "doc_id": "e7eab225-ea01-47d6-9eb0-fc77d13ee831",
+          "chunk_id": "2cd6791b-129e-4c27-bd08-23a0b93ea134",
+          "label": "S5"
+        },
+        {
+          "doc_id": "a181ff5e-64f0-48a7-9a75-4a46e0910c42",
+          "chunk_id": "5f0bd58a-09fd-4fa6-8480-7ebe0bb386e5",
+          "label": "S6"
+        },
+        {
+          "doc_id": "c2f84755-b5e4-414f-bea2-b52ca486560b",
+          "chunk_id": "5456b627-8111-4d6b-b09c-fad065aef287",
+          "label": "S7"
+        },
+        {
+          "doc_id": "6388d990-4e50-4e47-9814-56465b56da81",
+          "chunk_id": "83dfaa3c-dab3-4327-a1b5-013963d56d4a",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 11.604720000061207,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "5b6da0bd-3766-4ee4-b7dd-291dd4384d14",
+        "cdf1db6f-f695-45b9-a693-ec51a969a9c0",
+        "9b7695f2-f642-4107-b302-138f3957f0bb",
+        "d4f54b3c-20fb-4c65-b099-4743c12eae21",
+        "e7eab225-ea01-47d6-9eb0-fc77d13ee831",
+        "a181ff5e-64f0-48a7-9a75-4a46e0910c42",
+        "c2f84755-b5e4-414f-bea2-b52ca486560b",
+        "6388d990-4e50-4e47-9814-56465b56da81"
+      ],
+      "retrieved_chunk_ids": [
+        "7bef15fb-bcdd-4a9a-a730-59fed6ab0405",
+        "efcc5b56-5f69-4b12-84bd-db78d0d5ea46",
+        "bc77f254-eb47-43df-b2f5-c6d097c3196f",
+        "b16119db-e73a-45cb-b638-0fc896d6711f",
+        "2cd6791b-129e-4c27-bd08-23a0b93ea134",
+        "5f0bd58a-09fd-4fa6-8480-7ebe0bb386e5",
+        "5456b627-8111-4d6b-b09c-fad065aef287",
+        "83dfaa3c-dab3-4327-a1b5-013963d56d4a"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.006644518272425249,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0031",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "3da0f193-b7c8-4d0a-ac7f-d57de81d2bb4",
+        "e4230bea-f920-4cbf-86e2-809afec39e06"
+      ],
+      "gold_doc_titles": [
+        "Walter Leslie Duncan",
+        "Adelaide Steamship Company"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Walter Leslie Duncan (14 February 1883 – 28 May 1947) was an Australian politician. Born in Armidale, New South Wales, he was educated at state schools before becoming a clerk, and was President of th [S1]. evidence snippet: The Adelaide Steamship Company was formed by a group of South Australian businessmen in 1875. Their aim was to control the transport of goods between Adelaide and Melbourne and profit from the need fo [S2]. evidence snippet: Patrick Frederick Mooney (17 January 1880 – 23 December 1942) was an Australian politician. Born in Eurobodalla, New South Wales, he received a primary education before becoming a hotel manager and tr [S3]. evidence snippet: Samuel James \"Sam\" Ervin Jr. (September 27, 1896April 23, 1985) was an American politician. A Democrat, he served as a U.S. Senator from North Carolina from 1954 to 1974. A native of Morganton, he lik [S4]. evidence snippet: The president pro tempore of the United States Senate ( or ), also president pro tem, is the second-highest-ranking official of the United States Senate. of the United States Constitution provides tha [S5]. evidence snippet: Nancy Anne Temple was an in-house attorney for Arthur Andersen who advised Michael Odom and David B. Duncan about Arthur Andersen policies regarding retention of documents from client engagements. Dun [S6]. evidence snippet: Charlie Ross is an American politician and attorney who lives in Brandon, Mississippi. He served as Senator from District 20 in the Mississippi Senate until 2007. District 20 comprises parts of Madiso [S7]. evidence snippet: The 3000/3100 class are a class of diesel railcars operated by Adelaide Metro (and its predecessors STA and TransAdelaide). They were built by Comeng and Clyde Engineering, all in Dandenong, between 1 [S8].",
+      "citations": [
+        {
+          "doc_id": "3da0f193-b7c8-4d0a-ac7f-d57de81d2bb4",
+          "chunk_id": "d86aa200-9670-470e-bb05-0129e4e2c219",
+          "label": "S1"
+        },
+        {
+          "doc_id": "e4230bea-f920-4cbf-86e2-809afec39e06",
+          "chunk_id": "28f76582-3bf4-44fc-9634-75e0e369d900",
+          "label": "S2"
+        },
+        {
+          "doc_id": "4f737645-86fa-4029-a571-c700847d9900",
+          "chunk_id": "877d2f21-16a8-42e0-9773-4627b9ae2067",
+          "label": "S3"
+        },
+        {
+          "doc_id": "33be6550-1eff-4868-8af6-e30444d57e63",
+          "chunk_id": "3116ff5f-12b2-4342-a265-27704f61a3c8",
+          "label": "S4"
+        },
+        {
+          "doc_id": "22e94c05-dc9f-46d3-a744-19dfa10fefb7",
+          "chunk_id": "60a289e3-bfb4-4987-ac69-a1b8f9e158f0",
+          "label": "S5"
+        },
+        {
+          "doc_id": "5679280d-a4e5-4fd5-9e5e-d74ca5bf1972",
+          "chunk_id": "25ccbe77-9435-4d06-bd41-706d29fcd1e8",
+          "label": "S6"
+        },
+        {
+          "doc_id": "568486c6-6d8d-410b-b747-e302a18c1a94",
+          "chunk_id": "dba51e4a-34e3-480d-a1b4-2f43cf7dead8",
+          "label": "S7"
+        },
+        {
+          "doc_id": "df215b4d-7e0c-49f6-9021-e4bbdd616c61",
+          "chunk_id": "4a7c335c-55a7-46f2-90a3-3b0435d18dc5",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.44119640009012073,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "3da0f193-b7c8-4d0a-ac7f-d57de81d2bb4",
+        "e4230bea-f920-4cbf-86e2-809afec39e06",
+        "4f737645-86fa-4029-a571-c700847d9900",
+        "33be6550-1eff-4868-8af6-e30444d57e63",
+        "22e94c05-dc9f-46d3-a744-19dfa10fefb7",
+        "5679280d-a4e5-4fd5-9e5e-d74ca5bf1972",
+        "568486c6-6d8d-410b-b747-e302a18c1a94",
+        "df215b4d-7e0c-49f6-9021-e4bbdd616c61"
+      ],
+      "retrieved_chunk_ids": [
+        "d86aa200-9670-470e-bb05-0129e4e2c219",
+        "28f76582-3bf4-44fc-9634-75e0e369d900",
+        "877d2f21-16a8-42e0-9773-4627b9ae2067",
+        "3116ff5f-12b2-4342-a265-27704f61a3c8",
+        "60a289e3-bfb4-4987-ac69-a1b8f9e158f0",
+        "25ccbe77-9435-4d06-bd41-706d29fcd1e8",
+        "dba51e4a-34e3-480d-a1b4-2f43cf7dead8",
+        "4a7c335c-55a7-46f2-90a3-3b0435d18dc5"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0020",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "b872bda8-2f7a-46f5-a148-7326b28281f7",
+        "b8e35092-3a6f-4fa9-b7c5-8a52c55b28ae"
+      ],
+      "gold_doc_titles": [
+        "1998–99 Los Angeles Lakers season",
+        "Dennis Rodman"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: The 1998–99 NBA season was the Lakers' 51st season in the National Basketball Association, and 39th in the city of Los Angeles. It was the Lakers' final season at the Great Western Forum. During the o [S1]. evidence snippet: Dennis Keith Rodman (born May 13, 1961) is an American retired professional basketball player, who played for the Detroit Pistons, San Antonio Spurs, Chicago Bulls, Los Angeles Lakers, and Dallas Mave [S2]. evidence snippet: The 2007–08 Los Angeles Lakers season was the 60th season of the franchise, 59th in the National Basketball Association (NBA) and 48th in Los Angeles. During the offseason, the Lakers re-signed point  [S3]. evidence snippet: The 2009–10 Los Angeles Lakers season is the 62nd season of the franchise, 61st in the National Basketball Association (NBA) and 50th in Los Angeles. During the offseason, the Lakers signed free agent [S4]. evidence snippet: The 2004–05 NBA season was the SuperSonics' 38th season in the National Basketball Association. After losing their season opener to the Los Angeles Clippers 114–84 on November 3, the Sonics went on a  [S5]. evidence snippet: The 1967 NBA All-Star Game was the 17th All-Star Game played January 10, 1967, at the Cow Palace in San Francisco, California. The coaches were Red Auerbach, Boston Celtics (Eastern Conference) and Fr [S6]. evidence snippet: James Edwin Tracy (born December 31, 1955) is a former professional baseball manager and player. He has managed the Los Angeles Dodgers, Pittsburgh Pirates, and Colorado Rockies. Tracy was named Manag [S7]. evidence snippet: Timothy John Laker (born November 27, 1969) is a minor-league baseball manager and a former Major League Baseball catcher. [S8].",
+      "citations": [
+        {
+          "doc_id": "b872bda8-2f7a-46f5-a148-7326b28281f7",
+          "chunk_id": "300f3ef4-164c-4f2e-83e7-24b5eddccd0d",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b8e35092-3a6f-4fa9-b7c5-8a52c55b28ae",
+          "chunk_id": "3af83ae1-e0ed-45bc-8d04-0ec39cc68f4a",
+          "label": "S2"
+        },
+        {
+          "doc_id": "99c443e6-b355-499f-b859-0f58113b1ed7",
+          "chunk_id": "3a3f2b62-7337-4cb0-a0e6-39e8ae7ee336",
+          "label": "S3"
+        },
+        {
+          "doc_id": "fe37596a-9068-4335-8eff-8ba1f784279f",
+          "chunk_id": "753e14cf-7a38-4e47-b390-f546255c9fdf",
+          "label": "S4"
+        },
+        {
+          "doc_id": "ca24f9e9-1263-4cd5-a47c-a3fb68f72ea7",
+          "chunk_id": "c6dde77a-39b0-4ac6-8372-16c66d6ae9ec",
+          "label": "S5"
+        },
+        {
+          "doc_id": "4b28b232-62c2-4472-af70-6c6712e6d4fa",
+          "chunk_id": "4bc38192-da30-42c8-a353-d74d8dbcdac2",
+          "label": "S6"
+        },
+        {
+          "doc_id": "40b6a27c-ace3-45bc-9f0f-e970acf7b136",
+          "chunk_id": "0c0dab74-f0e4-4500-b342-ae73ce0eaa15",
+          "label": "S7"
+        },
+        {
+          "doc_id": "69b120a8-ca77-4b75-81d4-69e337aea9c0",
+          "chunk_id": "17766ce3-5139-4cd5-875d-e8f574013768",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.1968994999770075,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "b872bda8-2f7a-46f5-a148-7326b28281f7",
+        "b8e35092-3a6f-4fa9-b7c5-8a52c55b28ae",
+        "99c443e6-b355-499f-b859-0f58113b1ed7",
+        "fe37596a-9068-4335-8eff-8ba1f784279f",
+        "ca24f9e9-1263-4cd5-a47c-a3fb68f72ea7",
+        "4b28b232-62c2-4472-af70-6c6712e6d4fa",
+        "40b6a27c-ace3-45bc-9f0f-e970acf7b136",
+        "69b120a8-ca77-4b75-81d4-69e337aea9c0"
+      ],
+      "retrieved_chunk_ids": [
+        "300f3ef4-164c-4f2e-83e7-24b5eddccd0d",
+        "3af83ae1-e0ed-45bc-8d04-0ec39cc68f4a",
+        "3a3f2b62-7337-4cb0-a0e6-39e8ae7ee336",
+        "753e14cf-7a38-4e47-b390-f546255c9fdf",
+        "c6dde77a-39b0-4ac6-8372-16c66d6ae9ec",
+        "4bc38192-da30-42c8-a353-d74d8dbcdac2",
+        "0c0dab74-f0e4-4500-b342-ae73ce0eaa15",
+        "17766ce3-5139-4cd5-875d-e8f574013768"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.007067137809187279,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0030",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "019020b7-347e-4600-8ef5-3c688ca85beb",
+        "8443d53f-6cee-4948-b7f2-d749bcb411a0"
+      ],
+      "gold_doc_titles": [
+        "Massachusetts Institute of Technology",
+        "Johns Hopkins University"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: The Johns Hopkins University (commonly referred to as Johns Hopkins, JHU, or simply Hopkins) is an American private research university in Baltimore, Maryland. Founded in 1876, the university was name [S1]. evidence snippet: The Massachusetts Institute of Technology (MIT) is a private research university in Cambridge, Massachusetts. It is often ranked as one of the world's most prestigious universities. [S2]. evidence snippet: The University of Delaware (colloquially \"UD\") is the largest university in Delaware. The main campus is in Newark, with satellite campuses in Dover, Wilmington, Lewes, and Georgetown. It is considere [S3]. evidence snippet: John C. Markowitz (born 1954 in New York City) is an American physician, a Professor of Clinical Psychiatry at the Columbia University College of Physicians & Surgeons and a Psychiatric Researcher at  [S4]. evidence snippet: Loughborough University (abbreviated as Lough for post-nominals) is a public research university located in the market town of Loughborough, Leicestershire, in the East Midlands of England. It has bee [S5]. evidence snippet: Cornell University ( ) is a private and statutory Ivy League research university located in Ithaca, New York. Founded in 1865 by Ezra Cornell and Andrew Dickson White, the university was intended to t [S6]. evidence snippet: In the United States, a state college or state university is one of the public colleges or universities funded by or associated with the state government. In some cases, these institutions of higher l [S7]. evidence snippet: The Aspen Institute is an international nonprofit think tank founded in 1950 as the Aspen Institute of Humanistic Studies. The organization is dedicated to \"fostering enlightened leadership, the appre [S8].",
+      "citations": [
+        {
+          "doc_id": "8443d53f-6cee-4948-b7f2-d749bcb411a0",
+          "chunk_id": "a143497a-a7f3-430b-9b8e-51a8181c22a7",
+          "label": "S1"
+        },
+        {
+          "doc_id": "019020b7-347e-4600-8ef5-3c688ca85beb",
+          "chunk_id": "cd1933a3-134d-4c7d-8538-589f0e4a73a9",
+          "label": "S2"
+        },
+        {
+          "doc_id": "aeb60454-44ed-487d-a122-cf0c911d7468",
+          "chunk_id": "bf38785b-6e53-435c-ac96-fff09d075233",
+          "label": "S3"
+        },
+        {
+          "doc_id": "2ebba278-d6b9-409a-8d7f-a465e4cea522",
+          "chunk_id": "8e255374-3d83-4d73-9607-dfca7f296133",
+          "label": "S4"
+        },
+        {
+          "doc_id": "2043763c-266c-4a97-a886-5c9a827934d0",
+          "chunk_id": "f47c6ec3-a654-4960-8147-1c54bb1c4540",
+          "label": "S5"
+        },
+        {
+          "doc_id": "c0ac7458-09e9-453d-9e42-61093372383e",
+          "chunk_id": "b6fb44a7-6255-4c1d-8df3-1a8bb6eb4092",
+          "label": "S6"
+        },
+        {
+          "doc_id": "3dff0639-5a00-4235-90b3-9d552a1aaea3",
+          "chunk_id": "aacef5c2-5fc5-414a-8f56-c988a0e624c8",
+          "label": "S7"
+        },
+        {
+          "doc_id": "76fc164e-cb9f-4656-9735-93c6fdaf20f8",
+          "chunk_id": "d41fc3d0-ae73-40f7-a9d2-c43772821162",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.27697420003823936,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "8443d53f-6cee-4948-b7f2-d749bcb411a0",
+        "019020b7-347e-4600-8ef5-3c688ca85beb",
+        "aeb60454-44ed-487d-a122-cf0c911d7468",
+        "2ebba278-d6b9-409a-8d7f-a465e4cea522",
+        "2043763c-266c-4a97-a886-5c9a827934d0",
+        "c0ac7458-09e9-453d-9e42-61093372383e",
+        "3dff0639-5a00-4235-90b3-9d552a1aaea3",
+        "76fc164e-cb9f-4656-9735-93c6fdaf20f8"
+      ],
+      "retrieved_chunk_ids": [
+        "a143497a-a7f3-430b-9b8e-51a8181c22a7",
+        "cd1933a3-134d-4c7d-8538-589f0e4a73a9",
+        "bf38785b-6e53-435c-ac96-fff09d075233",
+        "8e255374-3d83-4d73-9607-dfca7f296133",
+        "f47c6ec3-a654-4960-8147-1c54bb1c4540",
+        "b6fb44a7-6255-4c1d-8df3-1a8bb6eb4092",
+        "aacef5c2-5fc5-414a-8f56-c988a0e624c8",
+        "d41fc3d0-ae73-40f7-a9d2-c43772821162"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.02222222222222222,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0008",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "77b30478-7799-435a-bd3b-9d1dbdad8f57",
+        "0a064438-0d31-4673-8ca7-acf5af07edb1"
+      ],
+      "gold_doc_titles": [
+        "Poor Old Lu",
+        "Shudder to Think"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Poor Old Lu was a pioneering alternative Christian band based in the American Northwest. The band experimented with a variety of sounds and genres, particularly grunge, funk and psychedelic rock. The  [S1]. evidence snippet: Shudder to Think was an American indie rock group. Formed in 1986, they released three albums on the Washington, D.C.-based label Dischord Records and were a post-hardcore band, although they drew upo [S2]. evidence snippet: Fair is an alternative rock band currently signed to Tooth & Nail Records. It was created in 2005 from members of Aaron Sprinkle's touring band – Sprinkle, fellow Poor Old Lu alum Nick Barber, Erick N [S3]. evidence snippet: King Crimson are an English rock band formed in London in 1968. The band has undergone numerous formations throughout its history of which 21 musicians have been members; since January 2017 it has con [S4]. evidence snippet: Grey Holiday was a four-member American Christian rock band from Austin, Texas. The band was signed to Essential Records. Band members included Matthew Minor (vocals, keys, guitar), Steven Bedingfield [S5]. evidence snippet: World We View is the second studio album by the American Christian rock band Nine Lashes, released on February 14, 2012 through Tooth & Nail Records. It is the follow-up to their independent debut alb [S6]. evidence snippet: Tool is an American progressive metal band from Los Angeles, California. Formed in 1990, the band originally featured vocalist Maynard James Keenan, guitarist Adam Jones, bassist Paul D'Amour and drum [S7]. evidence snippet: Motörhead ( ) were an English rock band formed in June 1975 by bassist, singer, and songwriter Ian Fraser \"Lemmy\" Kilmister, who was the sole constant member, guitarist Larry Wallis and drummer Lucas  [S8].",
+      "citations": [
+        {
+          "doc_id": "77b30478-7799-435a-bd3b-9d1dbdad8f57",
+          "chunk_id": "f8f2baff-8c3c-4185-ab00-6b428c91eef6",
+          "label": "S1"
+        },
+        {
+          "doc_id": "0a064438-0d31-4673-8ca7-acf5af07edb1",
+          "chunk_id": "464b90dd-f9b1-4ad8-bce4-a0ce22c605ce",
+          "label": "S2"
+        },
+        {
+          "doc_id": "7c4b3e45-f0ba-4836-b613-947336c560ba",
+          "chunk_id": "719e5f52-763c-4a47-aceb-e6b7dfcae302",
+          "label": "S3"
+        },
+        {
+          "doc_id": "e1975151-6731-4c3b-a53e-a827a42e6dc0",
+          "chunk_id": "bee389ec-3e2a-4a63-9401-9b2bdd042d78",
+          "label": "S4"
+        },
+        {
+          "doc_id": "46e614c8-5452-4523-ba9a-b798b29bf7bb",
+          "chunk_id": "f6ea5377-6c6e-4ee2-9d9d-6398ca28926b",
+          "label": "S5"
+        },
+        {
+          "doc_id": "08ce5599-961d-4981-ae1d-a5717cc2a86d",
+          "chunk_id": "e7e75bad-a88a-498b-8f21-aac4a46b089c",
+          "label": "S6"
+        },
+        {
+          "doc_id": "de0c2a45-c305-462e-bcbf-c017309e0b25",
+          "chunk_id": "6cf5a268-e668-4114-8719-aa5490d3f263",
+          "label": "S7"
+        },
+        {
+          "doc_id": "8d91a46e-0e76-41dc-8697-9a18a3477088",
+          "chunk_id": "789e09c9-8f77-4445-b0ea-beac568c4dc6",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.30581779999192804,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "77b30478-7799-435a-bd3b-9d1dbdad8f57",
+        "0a064438-0d31-4673-8ca7-acf5af07edb1",
+        "7c4b3e45-f0ba-4836-b613-947336c560ba",
+        "e1975151-6731-4c3b-a53e-a827a42e6dc0",
+        "46e614c8-5452-4523-ba9a-b798b29bf7bb",
+        "08ce5599-961d-4981-ae1d-a5717cc2a86d",
+        "de0c2a45-c305-462e-bcbf-c017309e0b25",
+        "8d91a46e-0e76-41dc-8697-9a18a3477088"
+      ],
+      "retrieved_chunk_ids": [
+        "f8f2baff-8c3c-4185-ab00-6b428c91eef6",
+        "464b90dd-f9b1-4ad8-bce4-a0ce22c605ce",
+        "719e5f52-763c-4a47-aceb-e6b7dfcae302",
+        "bee389ec-3e2a-4a63-9401-9b2bdd042d78",
+        "f6ea5377-6c6e-4ee2-9d9d-6398ca28926b",
+        "e7e75bad-a88a-498b-8f21-aac4a46b089c",
+        "6cf5a268-e668-4114-8719-aa5490d3f263",
+        "789e09c9-8f77-4445-b0ea-beac568c4dc6"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.020761245674740487,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0014",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+        "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63"
+      ],
+      "gold_doc_titles": [
+        "Taglierini",
+        "Capellini"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Taglierini ] (or Tagliolini) is a type of ribbon pasta, long like Spaghetti, two to three mm or roughly a tenth of an inch wide, similar to tagliatelle, but thin like Capellini. It is a traditional re [S1]. evidence snippet: Tagliatelle (] ) and tagliolini (from the Italian \"tagliare\", meaning \"to cut\") are a traditional type of pasta from Emilia-Romagna and Marche, regions of Italy. Individual pieces of \"tagliatelle\" are [S2]. evidence snippet: Gemma Rovira Ortega (born in 1974) is an English-Spanish translator from Barcelona, known for translating the Harry Potter series, The Boy in the Striped Pyjamas by John Boyne and The Kingkiller Chron [S3]. evidence snippet: The Chien Français Tricolore (FCI No.219) translated into English as the French Tricolour Hound, is a breed of dog of the scenthound type, originating in France. The breed is used for hunting in packs [S4]. evidence snippet: Mots D'Heures: Gousses, Rames: The D'Antin Manuscript (\"Mother Goose's Rhymes\"), published in 1967 by Luis d'Antin van Rooten is purportedly a collection of poems written in archaic French with learne [S5]. evidence snippet: The Chien Français Blanc et Noir (FCI No.220) translated into English as the French White and Black Hound, is a breed of dog of the scenthound type, originating in France. The breed is used for huntin [S6]. evidence snippet: The Law of Jante (Danish: \"Janteloven\" , ] ; Norwegian Bokmål: \"Janteloven\" , ] , Nynorsk: \"Jantelova\" ; Icelandic: \"Jantelögin\" ;,Faroese: \"Jantelógin\" Swedish: \"Jantelagen\" , ] ) is the description  [S7]. evidence snippet: Salade niçoise (] ), la salada nissarda in the Niçard dialect of the Occitan language, is a salad that originated in the French city of Nice. It is traditionally made of tomatoes, hard-boiled eggs, Ni [S8].",
+      "citations": [
+        {
+          "doc_id": "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+          "chunk_id": "fee1db98-909a-4d63-8635-d6db18653e46",
+          "label": "S1"
+        },
+        {
+          "doc_id": "443dce99-d745-4b94-af82-64c67a7d16b5",
+          "chunk_id": "bc35bdb3-b1ac-486d-bee8-90c1cd9ed591",
+          "label": "S2"
+        },
+        {
+          "doc_id": "1ef180d3-9fd4-4c45-b2d7-501f1059b943",
+          "chunk_id": "15d0a1b7-19f8-4595-a6c7-9d705b09b75f",
+          "label": "S3"
+        },
+        {
+          "doc_id": "15607272-a146-4307-9839-7f7193fc5a5e",
+          "chunk_id": "a63b47bf-c095-4471-a32e-01d3e3e3715e",
+          "label": "S4"
+        },
+        {
+          "doc_id": "0cdd15d9-322b-4f95-8f0c-c2f240ea3309",
+          "chunk_id": "8c85f026-2865-43f6-bc7e-3a427e2e1de3",
+          "label": "S5"
+        },
+        {
+          "doc_id": "f30a8d9e-a1ef-493f-b1e0-b2ea7773d97a",
+          "chunk_id": "23085f8f-4e5f-4ac6-ad3b-a2eff4130175",
+          "label": "S6"
+        },
+        {
+          "doc_id": "5bcc952d-d2ec-47c2-a380-f9f5c84f2776",
+          "chunk_id": "76fabea5-1d9f-4977-9c14-bad84f5d1ca3",
+          "label": "S7"
+        },
+        {
+          "doc_id": "be65e517-7c71-4fe7-a406-1ca1a529ea1c",
+          "chunk_id": "3b5fbc27-a2c5-49b6-b546-73fe148805d4",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.5636239000596106,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+        "443dce99-d745-4b94-af82-64c67a7d16b5",
+        "1ef180d3-9fd4-4c45-b2d7-501f1059b943",
+        "15607272-a146-4307-9839-7f7193fc5a5e",
+        "0cdd15d9-322b-4f95-8f0c-c2f240ea3309",
+        "f30a8d9e-a1ef-493f-b1e0-b2ea7773d97a",
+        "5bcc952d-d2ec-47c2-a380-f9f5c84f2776",
+        "be65e517-7c71-4fe7-a406-1ca1a529ea1c"
+      ],
+      "retrieved_chunk_ids": [
+        "fee1db98-909a-4d63-8635-d6db18653e46",
+        "bc35bdb3-b1ac-486d-bee8-90c1cd9ed591",
+        "15d0a1b7-19f8-4595-a6c7-9d705b09b75f",
+        "a63b47bf-c095-4471-a32e-01d3e3e3715e",
+        "8c85f026-2865-43f6-bc7e-3a427e2e1de3",
+        "23085f8f-4e5f-4ac6-ad3b-a2eff4130175",
+        "76fabea5-1d9f-4977-9c14-bad84f5d1ca3",
+        "3b5fbc27-a2c5-49b6-b546-73fe148805d4"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.125,
+          "recall": 0.5,
+          "f1": 0.2
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0027",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "06d4559c-a7d4-4ad0-81d0-7e5840a7dd63",
+        "954c9fe4-cae8-4dbb-a3e1-743cd7738632"
+      ],
+      "gold_doc_titles": [
+        "Diane Ladd",
+        "Laura Dern"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Diane Ladd (born November 29, 1932) is an American actress, film director, producer and author. She has appeared in over 120 film and television roles. For the 1974 film \"Alice Doesn't Live Here Anymo [S1]. evidence snippet: Laura Elizabeth Dern (born February 10, 1967) is an American actress. For her performance in the 1991 film \"Rambling Rose\", she was nominated for the Academy Award for Best Actress, while for her perf [S2]. evidence snippet: Carrie Frances Fisher (October 21, 1956 – December 27, 2016) was an American actress, writer, and humorist. Fisher was known for playing Princess Leia in the \"Star Wars\" films; a role for which she wa [S3]. evidence snippet: Janet McTeer, {'1': \", '2': \", '3': \", '4': \"} (born 5 August 1961) is an English actress. In 1997, she won the Tony Award for Best Actress in a Play, the Olivier Award for Best Actress and the Drama  [S4]. evidence snippet: Scarlett Johansson ( ; born November 22, 1984) is an American actress, model, and singer. She made her film debut in the fantasy comedy \"North\" (1994). Johansson subsequently starred in \"Manny & Lo\" ( [S5]. evidence snippet: Joan Ann Plowright, Baroness Olivier, DBE (born 28 October 1929), commonly known as Dame Joan Plowright, is an English retired actress whose career has spanned over six decades. She has won two Golden [S6]. evidence snippet: Jane Fonda (born Jayne Seymour Fonda; December 21, 1937) is an American actress, writer, political activist, former fashion model and fitness guru. She is a two-time Academy Award winner and two time  [S7]. evidence snippet: Christopher Walken (born Ronald Walken; March 31, 1943) is an American stage and film lead and character actor who has appeared in more than 100 films and television shows, including \"Annie Hall\" (197 [S8].",
+      "citations": [
+        {
+          "doc_id": "06d4559c-a7d4-4ad0-81d0-7e5840a7dd63",
+          "chunk_id": "49a624dd-244b-4bad-974d-3293b65515cd",
+          "label": "S1"
+        },
+        {
+          "doc_id": "954c9fe4-cae8-4dbb-a3e1-743cd7738632",
+          "chunk_id": "53839887-3de3-48d2-a665-b6da27ee4e01",
+          "label": "S2"
+        },
+        {
+          "doc_id": "4ad0f7ea-9a97-4177-8003-eb20facf6521",
+          "chunk_id": "2af04f3e-f8e5-4b14-8463-963aa2f98194",
+          "label": "S3"
+        },
+        {
+          "doc_id": "feb04a7d-cd35-4534-ae06-cfacaf9498ee",
+          "chunk_id": "b5036138-e503-463e-ae91-3cfdbec92cfd",
+          "label": "S4"
+        },
+        {
+          "doc_id": "68f91f94-1f4e-41cf-8dc4-70bf0c6a711e",
+          "chunk_id": "bd688850-f983-4b27-9c8f-25f8e9a42145",
+          "label": "S5"
+        },
+        {
+          "doc_id": "c5e801e0-31a4-4ca9-b177-1c7eae50cfba",
+          "chunk_id": "367f2c5f-5dad-4c4c-9e77-50d728526ca0",
+          "label": "S6"
+        },
+        {
+          "doc_id": "4d3e6769-353c-489b-8077-ffc2b3787d03",
+          "chunk_id": "18a190bf-6bb8-4142-b46d-182df2295885",
+          "label": "S7"
+        },
+        {
+          "doc_id": "fab97a3b-d9d2-4229-a235-c9e722201c44",
+          "chunk_id": "1c3d7937-454e-4339-bfe9-c92f54b9f17c",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.4703448999207467,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "06d4559c-a7d4-4ad0-81d0-7e5840a7dd63",
+        "954c9fe4-cae8-4dbb-a3e1-743cd7738632",
+        "4ad0f7ea-9a97-4177-8003-eb20facf6521",
+        "feb04a7d-cd35-4534-ae06-cfacaf9498ee",
+        "68f91f94-1f4e-41cf-8dc4-70bf0c6a711e",
+        "c5e801e0-31a4-4ca9-b177-1c7eae50cfba",
+        "4d3e6769-353c-489b-8077-ffc2b3787d03",
+        "fab97a3b-d9d2-4229-a235-c9e722201c44"
+      ],
+      "retrieved_chunk_ids": [
+        "49a624dd-244b-4bad-974d-3293b65515cd",
+        "53839887-3de3-48d2-a665-b6da27ee4e01",
+        "2af04f3e-f8e5-4b14-8463-963aa2f98194",
+        "b5036138-e503-463e-ae91-3cfdbec92cfd",
+        "bd688850-f983-4b27-9c8f-25f8e9a42145",
+        "367f2c5f-5dad-4c4c-9e77-50d728526ca0",
+        "18a190bf-6bb8-4142-b46d-182df2295885",
+        "1c3d7937-454e-4339-bfe9-c92f54b9f17c"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.013605442176870748,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0021",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "b333ad7b-fbb6-410c-9348-a99b02543685",
+        "c6e92f49-4906-4882-b5ad-bcc79b124d87"
+      ],
+      "gold_doc_titles": [
+        "2006 KNVB Cup Final",
+        "Klaas-Jan Huntelaar"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: The 2006 KNVB Cup Final was a football match between Ajax and PSV on 7 May 2006 at De Kuip, Rotterdam. It was the final match of the 2005–06 KNVB Cup competition. Ajax won 2–1, both of their goals bei [S1]. evidence snippet: Allan Rodenkam Simonsen (born 15 December 1952) is a former Danish footballer and manager. He most prominently played as a forward for German Bundesliga club Borussia Mönchengladbach, winning the 1975 [S2]. evidence snippet: The 1963 European Cup Winners' Cup Final was the final football match of the 1962–63 European Cup Winners' Cup and was the third European Cup Winners' Cup final. It was contested between Tottenham Hot [S3]. evidence snippet: The 1955 Scottish League Cup Final was played on 22 October 1955, at Hampden Park in Glasgow and was the final of the 10th Scottish League Cup competition. The final was contested by Aberdeen and St M [S4]. evidence snippet: Sandjar Ahmadi is an Afghan footballer who currently plays for Hamm United FC and Afghanistan national football team. He scored two goals against Sri Lanka in 2011 SAFF Championship which helped the n [S5]. evidence snippet: The 1956 FA Charity Shield was the 34th FA Charity Shield, an annual football match held between the winners of the previous season's Football League and FA Cup competitions. The match was contested b [S6]. evidence snippet: The 1972–73 DFB-Pokal was the 30th season of the annual German football cup competition. It began on 10 December 1972 and ended on 23 June 1973. 32 teams competed in the tournament of five rounds. As  [S7]. evidence snippet: Olle Nordin (born 23 November 1949 in Delary, Småland) is a Swedish football coach and former player. He was capped 19 times for the national team and played at the 1978 FIFA World Cup, but he is best [S8].",
+      "citations": [
+        {
+          "doc_id": "b333ad7b-fbb6-410c-9348-a99b02543685",
+          "chunk_id": "9c922c3b-ff50-4681-a265-fd44b1d74632",
+          "label": "S1"
+        },
+        {
+          "doc_id": "4b15cbf8-d268-4502-9309-1b7ee375a7e7",
+          "chunk_id": "35259b6f-8a7e-4c32-bb5a-f7c4b85b1e35",
+          "label": "S2"
+        },
+        {
+          "doc_id": "c3cce4f6-4bc6-442d-afa3-89ab14562414",
+          "chunk_id": "225120b3-ddfd-4812-af51-5ba5ac8d3792",
+          "label": "S3"
+        },
+        {
+          "doc_id": "71b0453f-f18d-49de-a45c-c0fc9e9e221b",
+          "chunk_id": "31825c41-7903-4c86-8332-7659cda36b43",
+          "label": "S4"
+        },
+        {
+          "doc_id": "4756de69-7df1-4ecb-bde8-9111192d1a7e",
+          "chunk_id": "878fc0be-ef1b-4fcf-9a7a-dc499b4f001f",
+          "label": "S5"
+        },
+        {
+          "doc_id": "97c2094a-b320-4fa7-8716-83eb8b1a611c",
+          "chunk_id": "881ddb74-39e5-4a3a-a58f-94ff852087cf",
+          "label": "S6"
+        },
+        {
+          "doc_id": "da725683-882b-4052-8bf8-0b6862b4a6b4",
+          "chunk_id": "10438e59-d1e3-4506-b766-f3fa128392a2",
+          "label": "S7"
+        },
+        {
+          "doc_id": "1f48f953-39f3-472e-a9a0-658b04da32b4",
+          "chunk_id": "4284aaa4-81fa-40f6-a4c0-98d4af49abfe",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.42320800002198666,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "b333ad7b-fbb6-410c-9348-a99b02543685",
+        "4b15cbf8-d268-4502-9309-1b7ee375a7e7",
+        "c3cce4f6-4bc6-442d-afa3-89ab14562414",
+        "71b0453f-f18d-49de-a45c-c0fc9e9e221b",
+        "4756de69-7df1-4ecb-bde8-9111192d1a7e",
+        "97c2094a-b320-4fa7-8716-83eb8b1a611c",
+        "da725683-882b-4052-8bf8-0b6862b4a6b4",
+        "1f48f953-39f3-472e-a9a0-658b04da32b4"
+      ],
+      "retrieved_chunk_ids": [
+        "9c922c3b-ff50-4681-a265-fd44b1d74632",
+        "35259b6f-8a7e-4c32-bb5a-f7c4b85b1e35",
+        "225120b3-ddfd-4812-af51-5ba5ac8d3792",
+        "31825c41-7903-4c86-8332-7659cda36b43",
+        "878fc0be-ef1b-4fcf-9a7a-dc499b4f001f",
+        "881ddb74-39e5-4a3a-a58f-94ff852087cf",
+        "10438e59-d1e3-4506-b766-f3fa128392a2",
+        "4284aaa4-81fa-40f6-a4c0-98d4af49abfe"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.125,
+          "recall": 0.5,
+          "f1": 0.2
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0039",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+        "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63"
+      ],
+      "gold_doc_titles": [
+        "Taglierini",
+        "Capellini"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Capellini (] , literally \"little hairs\") is a very thin variety of Italian pasta, with a diameter between 0.85 and . Like spaghetti, it is rod-shaped, in the form of long strands. [S1]. evidence snippet: Tagliatelle (] ) and tagliolini (from the Italian \"tagliare\", meaning \"to cut\") are a traditional type of pasta from Emilia-Romagna and Marche, regions of Italy. Individual pieces of \"tagliatelle\" are [S2]. evidence snippet: Taglierini ] (or Tagliolini) is a type of ribbon pasta, long like Spaghetti, two to three mm or roughly a tenth of an inch wide, similar to tagliatelle, but thin like Capellini. It is a traditional re [S3]. evidence snippet: Gari (ガリ ) is a type of tsukemono (pickled vegetables). It is sweet, thinly sliced young ginger that has been marinated in a solution of sugar and vinegar. Young ginger is generally preferred for gari [S4]. evidence snippet: Commedia all'italiana (i.e. \"Comedy in the Italian way\"; ] ) or Italian-style comedy is an Italian film genre. It is widely considered to have started with Mario Monicelli's \"I soliti ignoti\" (\"Big De [S5]. evidence snippet: The Bardigiano is a breed of small horse from the Emilia Romagna region of Italy. It takes its name from the town of Bardi, in the Apennines of Parma, and is principally associated with the surroundin [S6]. evidence snippet: Vefa is a quarter in Istanbul, Turkey. It is part of the district of Fatih and managed as borough of Mollahüsrev, inside the walled city. It belonged to the district of Eminönü between 1928 and 2008.  [S7]. evidence snippet: A powder horn was a container for gunpowder, and was generally created from cow, ox or buffalo horn. The term may also be used for any personal container for gunpowder, regardless of material or shape [S8].",
+      "citations": [
+        {
+          "doc_id": "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63",
+          "chunk_id": "1335ccce-7ce8-44a5-a150-f4d58a56012a",
+          "label": "S1"
+        },
+        {
+          "doc_id": "443dce99-d745-4b94-af82-64c67a7d16b5",
+          "chunk_id": "bc35bdb3-b1ac-486d-bee8-90c1cd9ed591",
+          "label": "S2"
+        },
+        {
+          "doc_id": "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+          "chunk_id": "fee1db98-909a-4d63-8635-d6db18653e46",
+          "label": "S3"
+        },
+        {
+          "doc_id": "f010fb9d-0468-4955-b5e1-fd3ce901a1bb",
+          "chunk_id": "ae444fdc-6fa4-4976-9b1d-4f15236afef1",
+          "label": "S4"
+        },
+        {
+          "doc_id": "829809f1-1cc8-4f43-b5fd-5fb3245d9cae",
+          "chunk_id": "25c3f361-d405-4a4c-a4fe-4b152771f056",
+          "label": "S5"
+        },
+        {
+          "doc_id": "01e7df56-9291-44dc-8318-eb3dc4d183d2",
+          "chunk_id": "c9e48d24-cecd-4b31-8aa0-3f3aeed91895",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b1ad656f-327b-426a-b10f-d8870a3f2bf8",
+          "chunk_id": "309e52b5-784a-450d-a8c6-1c6553f679b3",
+          "label": "S7"
+        },
+        {
+          "doc_id": "aa334464-f3d6-49b8-a7c1-4dc41b34b985",
+          "chunk_id": "90c19efb-7d72-43dd-b9d3-d1ce38ca5de4",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.6110422000056133,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63",
+        "443dce99-d745-4b94-af82-64c67a7d16b5",
+        "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+        "f010fb9d-0468-4955-b5e1-fd3ce901a1bb",
+        "829809f1-1cc8-4f43-b5fd-5fb3245d9cae",
+        "01e7df56-9291-44dc-8318-eb3dc4d183d2",
+        "b1ad656f-327b-426a-b10f-d8870a3f2bf8",
+        "aa334464-f3d6-49b8-a7c1-4dc41b34b985"
+      ],
+      "retrieved_chunk_ids": [
+        "1335ccce-7ce8-44a5-a150-f4d58a56012a",
+        "bc35bdb3-b1ac-486d-bee8-90c1cd9ed591",
+        "fee1db98-909a-4d63-8635-d6db18653e46",
+        "ae444fdc-6fa4-4976-9b1d-4f15236afef1",
+        "25c3f361-d405-4a4c-a4fe-4b152771f056",
+        "c9e48d24-cecd-4b31-8aa0-3f3aeed91895",
+        "309e52b5-784a-450d-a8c6-1c6553f679b3",
+        "90c19efb-7d72-43dd-b9d3-d1ce38ca5de4"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.006734006734006735,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0017",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "fa046f5e-57aa-423b-b6fc-b057cec5166d",
+        "34c68735-04c1-4a1c-8bc8-8ea80211241a"
+      ],
+      "gold_doc_titles": [
+        "Enoka Lucas",
+        "Oregon Ducks football"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Enoka Lucas (born April 29, 1984) is a former American football center that last played for the Virginia Destroyers of the United Football League. He was signed by the Houston Texans as an undrafted f [S1]. evidence snippet: The Oregon Ducks football program is a college football team for the University of Oregon, located in the U.S. state of Oregon. The team competes at the NCAA Division I level in the FBS and is a membe [S2]. evidence snippet: The College Football Playoff National Championship is a post-season college football bowl game, used to determine a national champion of the NCAA Division I Football Bowl Subdivision (FBS), which bega [S3]. evidence snippet: Paul Hilton \"Butch\" Davis, Jr. (born November 17, 1951) is an American football coach. He is the head football coach at Florida International University. After graduating from the University of Arkans [S4]. evidence snippet: The Baylor Bears football program is a college football team that represents Baylor University in the Big 12 Conference in the National Collegiate Athletic Association. The team has had 25 head coache [S5]. evidence snippet: The 2009 Colorado Buffaloes football team represented the University of Colorado in the 2009 NCAA Division I FBS college football season. The Buffaloes were led by fourth year head coach Dan Hawkins a [S6]. evidence snippet: The 2012 Columbia Lions football team represented Columbia University in the 2012 NCAA Division I FCS football season. They were led by first year head coach Pete Mangurian and played their home games [S7]. evidence snippet: The Les Schwab Invitational (LSI) is Oregon's premier pre-season high school invitational basketball tournament. Prior to its founding in 1996, Oregon's high school teams had to travel out of state fo [S8].",
+      "citations": [
+        {
+          "doc_id": "fa046f5e-57aa-423b-b6fc-b057cec5166d",
+          "chunk_id": "beb2e7ac-a35c-4af8-b1f1-ec3c47379225",
+          "label": "S1"
+        },
+        {
+          "doc_id": "34c68735-04c1-4a1c-8bc8-8ea80211241a",
+          "chunk_id": "55de273d-a76d-48e0-a861-4c83af71f0c4",
+          "label": "S2"
+        },
+        {
+          "doc_id": "938e7ad9-ecbd-4e54-b2fc-f70ef658988e",
+          "chunk_id": "9ebf8481-530d-4694-8d1f-9cc865a4615c",
+          "label": "S3"
+        },
+        {
+          "doc_id": "d1093b5a-fcea-4d08-ae5b-4edc5d27d947",
+          "chunk_id": "e5799804-f503-41d9-a905-42049730ebc3",
+          "label": "S4"
+        },
+        {
+          "doc_id": "0d4f0093-e161-49fc-ad1a-47551fcf016a",
+          "chunk_id": "6517f2eb-9452-4a6e-b357-8f80aefd8ff4",
+          "label": "S5"
+        },
+        {
+          "doc_id": "14838b7a-6206-4a16-b351-c43c5282c54a",
+          "chunk_id": "59c8d9e1-6e88-4d25-ab5a-209de700916e",
+          "label": "S6"
+        },
+        {
+          "doc_id": "e3f6dc8d-e93b-41dd-9e90-d86c555a5cc9",
+          "chunk_id": "030a27c3-2bb7-4d0f-a5e4-603b5509672f",
+          "label": "S7"
+        },
+        {
+          "doc_id": "ea70f689-6fd5-4f58-b5be-7ab5084ac910",
+          "chunk_id": "fe0a6540-f8e5-4949-9a89-83a071b5f0ea",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 2.0931774999480695,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "fa046f5e-57aa-423b-b6fc-b057cec5166d",
+        "34c68735-04c1-4a1c-8bc8-8ea80211241a",
+        "938e7ad9-ecbd-4e54-b2fc-f70ef658988e",
+        "d1093b5a-fcea-4d08-ae5b-4edc5d27d947",
+        "0d4f0093-e161-49fc-ad1a-47551fcf016a",
+        "14838b7a-6206-4a16-b351-c43c5282c54a",
+        "e3f6dc8d-e93b-41dd-9e90-d86c555a5cc9",
+        "ea70f689-6fd5-4f58-b5be-7ab5084ac910"
+      ],
+      "retrieved_chunk_ids": [
+        "beb2e7ac-a35c-4af8-b1f1-ec3c47379225",
+        "55de273d-a76d-48e0-a861-4c83af71f0c4",
+        "9ebf8481-530d-4694-8d1f-9cc865a4615c",
+        "e5799804-f503-41d9-a905-42049730ebc3",
+        "6517f2eb-9452-4a6e-b357-8f80aefd8ff4",
+        "59c8d9e1-6e88-4d25-ab5a-209de700916e",
+        "030a27c3-2bb7-4d0f-a5e4-603b5509672f",
+        "fe0a6540-f8e5-4949-9a89-83a071b5f0ea"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.02033898305084746,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0000",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "86a437ad-0677-46cb-80d3-e9a57b73d806",
+        "307228da-0eb8-4923-b7cf-0bb40e5033fe"
+      ],
+      "gold_doc_titles": [
+        "Ballarat Bitter",
+        "Bitter (beer)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Ballarat Bitter is a 4.9% (abv) Australian beer, originally brewed in Ballarat, Australia by the Ballarat Brewing Company. The beer is of the bitter top fermented ale variety, and was traditionally so [S1]. evidence snippet: Bitter is a British style of pale ale that varies in colour from gold to dark amber, and in strength from 3% to 7% alcohol by volume. [S2]. evidence snippet: Lion Red is a New Zealand lager-style beer brewed by Lion Breweries, part of the Lion Nathan group. The beer is 4.0% alcohol. Because of its relatively low alcohol content it is widely regarded as an  [S3]. evidence snippet: Hard soda, also referred to as flavored beer, is a type of alcoholic beverage and craft beer that is manufactured in the style of a soft drink. It has gained recent prominence in the United States aft [S4]. evidence snippet: Bitter Springs is an Australian–British film directed by Ralph Smart and released in 1950. An Australian pioneer family leases a piece of land from the government in the Australian outback in 1900 and [S5]. evidence snippet: Jean Marie Constantin Joseph \"Jan\" van Beers (27 March 1852 – 17 November 1927) was a Belgian painter and illustrator, the son of the poet Jan van Beers. They are sometimes referred to as \"Jan van Bee [S6]. evidence snippet: A beer shop (also referred to as beershop) is a retail store where beer and other goods related to beer are sold. Beer shops can be found all around the world, but there are many located in famous bee [S7]. evidence snippet: The Koolie (also known as the Australian Koolie or by the misnomer German Coolie) is an Australian dog breed. The Koolie is a working or herding dog which has existed in Australia since the early 19th [S8].",
+      "citations": [
+        {
+          "doc_id": "86a437ad-0677-46cb-80d3-e9a57b73d806",
+          "chunk_id": "557300e7-0d09-4cc9-a2ad-b974ce0e98b7",
+          "label": "S1"
+        },
+        {
+          "doc_id": "307228da-0eb8-4923-b7cf-0bb40e5033fe",
+          "chunk_id": "28ce7fcd-2700-4d35-960c-86e4d7208b47",
+          "label": "S2"
+        },
+        {
+          "doc_id": "044f526c-97df-48a5-b1b0-13d0073aa042",
+          "chunk_id": "12dac71a-616c-4d0a-855f-0eceb94b35c0",
+          "label": "S3"
+        },
+        {
+          "doc_id": "4cc94e35-343c-408a-a28b-210e5b9999be",
+          "chunk_id": "eb3440d7-a0a4-400a-9e53-0af693191b58",
+          "label": "S4"
+        },
+        {
+          "doc_id": "3dadeacd-1cbd-4eee-9210-4bff50a498c9",
+          "chunk_id": "6b283125-8fc0-4b00-a4c3-cc023b1d99dc",
+          "label": "S5"
+        },
+        {
+          "doc_id": "d9d25710-b9aa-49e5-844e-c2d498f79ac8",
+          "chunk_id": "3b7b2757-2b24-4cef-b80f-eeea1468f263",
+          "label": "S6"
+        },
+        {
+          "doc_id": "ce44edff-e0f3-4d29-bb98-d82a8f827ad4",
+          "chunk_id": "28a34a4e-68d7-4d3c-99e2-0e2270cfb33d",
+          "label": "S7"
+        },
+        {
+          "doc_id": "427034ea-5d40-4eef-812b-adb9dbe87937",
+          "chunk_id": "72e4973d-395d-4921-9bae-2dddad410c11",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.5439994999906048,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "86a437ad-0677-46cb-80d3-e9a57b73d806",
+        "307228da-0eb8-4923-b7cf-0bb40e5033fe",
+        "044f526c-97df-48a5-b1b0-13d0073aa042",
+        "4cc94e35-343c-408a-a28b-210e5b9999be",
+        "3dadeacd-1cbd-4eee-9210-4bff50a498c9",
+        "d9d25710-b9aa-49e5-844e-c2d498f79ac8",
+        "ce44edff-e0f3-4d29-bb98-d82a8f827ad4",
+        "427034ea-5d40-4eef-812b-adb9dbe87937"
+      ],
+      "retrieved_chunk_ids": [
+        "557300e7-0d09-4cc9-a2ad-b974ce0e98b7",
+        "28ce7fcd-2700-4d35-960c-86e4d7208b47",
+        "12dac71a-616c-4d0a-855f-0eceb94b35c0",
+        "eb3440d7-a0a4-400a-9e53-0af693191b58",
+        "6b283125-8fc0-4b00-a4c3-cc023b1d99dc",
+        "3b7b2757-2b24-4cef-b80f-eeea1468f263",
+        "28a34a4e-68d7-4d3c-99e2-0e2270cfb33d",
+        "72e4973d-395d-4921-9bae-2dddad410c11"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.05750798722044728,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0006",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "a5619b9b-e155-45ba-ac69-40f21660161a",
+        "f40ecf4d-d283-47ae-b0b5-c2553c746743"
+      ],
+      "gold_doc_titles": [
+        "Formula One 2001 (video game)",
+        "PlayStation 2"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: The PlayStation 2 (PS2) is a home video game console that was developed by Sony Computer Entertainment. It is the successor to the PlayStation, and is the second installment in the PlayStation lineup  [S1]. evidence snippet: Formula One 2001 is a racing video game for the PlayStation and PlayStation 2 developed by Studio 33 (PS) and Sony Studio Liverpool (PS2) and published by Sony Computer Entertainment. It was released  [S2]. evidence snippet: Black the Fall is an indie puzzle-platform video game developed by Sand Sailor Studio and published by Square Enix for Linux, Microsoft Windows, OS X, PlayStation 4, and Xbox One. [S3]. evidence snippet: Super Ghouls 'n Ghosts is a side-scrolling platform game developed and published by Capcom and released for the Super Nintendo Entertainment System in 1991. It is the third game in the \"Ghosts 'n Gobl [S4]. evidence snippet: The Lost Vikings is a puzzle-platform video game developed by Silicon & Synapse (now Blizzard Entertainment) and published by Interplay. It was originally released for the Super NES in 1992, then subs [S5]. evidence snippet: Dead Space is a science fiction survival horror video game developed by EA Redwood Shores (now Visceral Games) for Microsoft Windows, PlayStation 3, and Xbox 360. The game was released on all platform [S6]. evidence snippet: Outland is a platform game developed by Housemarque and published by Ubisoft. The game combines two-dimensional platforming with a polarity system similar to Treasure's \"Ikaruga\" and \"Silhouette Mirag [S7]. evidence snippet: SpongeBob SquarePants: Plankton's Robotic Revenge is an action-adventure video game based on the television series \"SpongeBob SquarePants\". It was released in October 2013 for Wii U, Wii, Nintendo 3DS [S8].",
+      "citations": [
+        {
+          "doc_id": "f40ecf4d-d283-47ae-b0b5-c2553c746743",
+          "chunk_id": "1ed31253-f34a-4213-85a6-2c24ffadfc9b",
+          "label": "S1"
+        },
+        {
+          "doc_id": "a5619b9b-e155-45ba-ac69-40f21660161a",
+          "chunk_id": "80def393-a9fb-46ad-98f2-4721e95cc50d",
+          "label": "S2"
+        },
+        {
+          "doc_id": "fe8cda0b-d7b1-4e3a-b455-adb69ab55a4e",
+          "chunk_id": "dd09c107-b3c3-4891-a48c-fde348ae0f90",
+          "label": "S3"
+        },
+        {
+          "doc_id": "fa47f501-4051-48ed-a2cf-71f7dd07f964",
+          "chunk_id": "d588820d-d738-4f39-bf73-ace5107abcde",
+          "label": "S4"
+        },
+        {
+          "doc_id": "18a5da0e-84a6-4df3-a322-5bcfa7678902",
+          "chunk_id": "34f1fd74-870c-4287-9510-45dc188621bc",
+          "label": "S5"
+        },
+        {
+          "doc_id": "99c4d279-3db7-4739-86b0-ffa3d04b16db",
+          "chunk_id": "06543214-8c7e-4e22-a9ce-f079052407f5",
+          "label": "S6"
+        },
+        {
+          "doc_id": "02be0814-201f-416f-aad9-df0bfc436f6d",
+          "chunk_id": "deb41c00-0dd1-4af9-b036-34230f6e3fc4",
+          "label": "S7"
+        },
+        {
+          "doc_id": "6ce5b7cb-1aac-43aa-9515-af9247367dac",
+          "chunk_id": "c91577ca-1105-444c-9fa7-95a954f4e19e",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 3.118579400004819,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "f40ecf4d-d283-47ae-b0b5-c2553c746743",
+        "a5619b9b-e155-45ba-ac69-40f21660161a",
+        "fe8cda0b-d7b1-4e3a-b455-adb69ab55a4e",
+        "fa47f501-4051-48ed-a2cf-71f7dd07f964",
+        "18a5da0e-84a6-4df3-a322-5bcfa7678902",
+        "99c4d279-3db7-4739-86b0-ffa3d04b16db",
+        "02be0814-201f-416f-aad9-df0bfc436f6d",
+        "6ce5b7cb-1aac-43aa-9515-af9247367dac"
+      ],
+      "retrieved_chunk_ids": [
+        "1ed31253-f34a-4213-85a6-2c24ffadfc9b",
+        "80def393-a9fb-46ad-98f2-4721e95cc50d",
+        "dd09c107-b3c3-4891-a48c-fde348ae0f90",
+        "d588820d-d738-4f39-bf73-ace5107abcde",
+        "34f1fd74-870c-4287-9510-45dc188621bc",
+        "06543214-8c7e-4e22-a9ce-f079052407f5",
+        "deb41c00-0dd1-4af9-b036-34230f6e3fc4",
+        "c91577ca-1105-444c-9fa7-95a954f4e19e"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.021052631578947368,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0002",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "4e71998f-300b-4105-a830-93652c4ad104",
+        "7c2a6107-b4a8-43d8-bb37-dcfc4d78a869"
+      ],
+      "gold_doc_titles": [
+        "William Ulmer Brewery",
+        "Bushwick, Brooklyn"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: The William Ulmer Brewery was a brewery founded by William Ulmer (1833–1907) at 31 Belvidere Street in Bushwick, Brooklyn, New York. The main brew house dates from 1872 with major additions through 18 [S1]. evidence snippet: Bushwick is a working-class neighborhood in the northern part of the New York City borough of Brooklyn. The neighborhood, historically a community of Germanic immigrants and their descendants, has bee [S2]. evidence snippet: Bell's Brewery, Inc. is a brewing company based in Kalamazoo, Michigan, with a second brewery in Comstock, Michigan. Bell's Brewery produces the Bell's brand of beers. Bell's also has a brewpub called [S3]. evidence snippet: Gunther Brewing Company is a historic brewery building located at Baltimore, Maryland, United States. The site comprises 15 masonry buildings. The main structure is a five-story brick \"L\"-shaped Roman [S4]. evidence snippet: Vlezenbeek is a small town of 3,324 in the Flemish Brabant southwest of Brussels, Belgium. It is part of the municipality Sint-Pieters-Leeuw. It is the home of Neuhaus, an international exporter of fi [S5]. evidence snippet: The William P. Hobby Unit (HB) is a prison for women in unincorporated Falls County, Texas. Named after William P. Hobby, Lieutenant Governor of Texas, it is a part of the Texas Department of Criminal [S6]. evidence snippet: Ansells Brewery (Ansells) was a regional brewery founded in Aston, Birmingham, England in 1858. It merged with Taylor Walker and Ind Coope in 1961 to form Allied Breweries. The brewery remained in ope [S7]. evidence snippet: The Manhattan Community Board 10 is a New York City community board encompassing the neighborhoods of Harlem and Polo Grounds in the borough of Manhattan. It is delimited by Fifth Avenue and Mount Mor [S8].",
+      "citations": [
+        {
+          "doc_id": "4e71998f-300b-4105-a830-93652c4ad104",
+          "chunk_id": "7a7ef5ae-4e69-4b62-8133-6c5775e1d02b",
+          "label": "S1"
+        },
+        {
+          "doc_id": "7c2a6107-b4a8-43d8-bb37-dcfc4d78a869",
+          "chunk_id": "df27014f-39f3-4b4a-8718-608c92f7f090",
+          "label": "S2"
+        },
+        {
+          "doc_id": "cce26ec4-0e88-4d19-968d-203b4f1e5094",
+          "chunk_id": "f56d2c6e-503c-4a46-98c4-bb94a64f72cf",
+          "label": "S3"
+        },
+        {
+          "doc_id": "78f26354-a6c5-40d9-b763-a758d827ca6b",
+          "chunk_id": "10933129-6171-4a1f-beb3-d0e3b229171e",
+          "label": "S4"
+        },
+        {
+          "doc_id": "b215bd8d-078a-4546-afa6-b056b49664d1",
+          "chunk_id": "2d2ef7bb-d7be-4cf6-afc5-3f9fc7c3b3ea",
+          "label": "S5"
+        },
+        {
+          "doc_id": "c4a37c97-f115-4be5-b61b-47d3d80b75e2",
+          "chunk_id": "d80e43b0-04ad-4cd4-a85b-5ab11411c765",
+          "label": "S6"
+        },
+        {
+          "doc_id": "db0263b0-1d13-4021-adf1-c45f95d03d97",
+          "chunk_id": "0aa62bd8-2c87-4d7e-b065-33a86ed1f06d",
+          "label": "S7"
+        },
+        {
+          "doc_id": "edf70e2c-2a25-473f-82b5-dcb1b364faf2",
+          "chunk_id": "9e81ef8f-2105-4e89-85fd-789150aa453a",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.6700085999909788,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "4e71998f-300b-4105-a830-93652c4ad104",
+        "7c2a6107-b4a8-43d8-bb37-dcfc4d78a869",
+        "cce26ec4-0e88-4d19-968d-203b4f1e5094",
+        "78f26354-a6c5-40d9-b763-a758d827ca6b",
+        "b215bd8d-078a-4546-afa6-b056b49664d1",
+        "c4a37c97-f115-4be5-b61b-47d3d80b75e2",
+        "db0263b0-1d13-4021-adf1-c45f95d03d97",
+        "edf70e2c-2a25-473f-82b5-dcb1b364faf2"
+      ],
+      "retrieved_chunk_ids": [
+        "7a7ef5ae-4e69-4b62-8133-6c5775e1d02b",
+        "df27014f-39f3-4b4a-8718-608c92f7f090",
+        "f56d2c6e-503c-4a46-98c4-bb94a64f72cf",
+        "10933129-6171-4a1f-beb3-d0e3b229171e",
+        "2d2ef7bb-d7be-4cf6-afc5-3f9fc7c3b3ea",
+        "d80e43b0-04ad-4cd4-a85b-5ab11411c765",
+        "0aa62bd8-2c87-4d7e-b065-33a86ed1f06d",
+        "9e81ef8f-2105-4e89-85fd-789150aa453a"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.006711409395973154,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0010",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "e4db1636-3f52-4a4e-9219-c20cb621fc84",
+        "6b7858ab-259d-44c0-a5c1-61d92e1bd116"
+      ],
+      "gold_doc_titles": [
+        "Sly Stone",
+        "Mary Ramsey"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Mary Ramsey (born 24 December 1963), a resident of Buffalo, New York, is a member of folk rock duo John & Mary and lead singer and violinist for the American alternative rock band 10,000 Maniacs. Rams [S1]. evidence snippet: Sly Stone (born Sylvester Stewart, March 15, 1943, Denton, Texas) is an American musician, songwriter, and record producer, most famous for his role as frontman for Sly and the Family Stone, a band wh [S2]. evidence snippet: \"Family Affair\" is a 1971 number-one hit single recorded by Sly and the Family Stone for the Epic Records label. Their first new material since the double a-sided single \"Thank You (Falettinme Be Mice [S3]. evidence snippet: Mary Poppins is a series of eight children's books written by P. L. Travers and published over the period 1934 to 1988. Mary Shepard was the illustrator throughout the series. [S4]. evidence snippet: Long Meg and Her Daughters is a Bronze Age stone circle near Penrith in Cumbria, North West England. One of around 1,300 stone circles in the British Isles and Brittany, it was constructed as a part o [S5]. evidence snippet: \"A Man Has Dreams\" is a song from Walt Disney's film \"Mary Poppins\", written by Richard M. Sherman and Robert B. Sherman. The song melody is a slowed down version of \"The Life I Lead\" which serves as  [S6]. evidence snippet: Florence Leontine Mary Welch (born 28 August 1986) is an English musician, singer and songwriter, best known as the vocalist of indie rock band Florence and the Machine. [S7]. evidence snippet: The Taming of the Shrew (1929) is the first sound film adaptation of the Shakespearean play of the same name. The movie was directed by Sam Taylor, adapted by Taylor from William Shakespeare's play, a [S8].",
+      "citations": [
+        {
+          "doc_id": "6b7858ab-259d-44c0-a5c1-61d92e1bd116",
+          "chunk_id": "2bb7e167-2800-4f56-a72d-dcfaad964cf9",
+          "label": "S1"
+        },
+        {
+          "doc_id": "e4db1636-3f52-4a4e-9219-c20cb621fc84",
+          "chunk_id": "3c443dcf-6723-4ed2-961e-b7325fe23fd4",
+          "label": "S2"
+        },
+        {
+          "doc_id": "5686468f-f715-4cf5-9a95-3ee614f7dc6e",
+          "chunk_id": "9adfcad8-1ea8-4102-ac62-c6fd9d8c6fd1",
+          "label": "S3"
+        },
+        {
+          "doc_id": "403e0b45-90f8-4a0c-98ac-266a4c4c533f",
+          "chunk_id": "888be158-95ee-4784-b47c-48911c7313bb",
+          "label": "S4"
+        },
+        {
+          "doc_id": "ad40b383-0731-4513-af75-172e079a8cd1",
+          "chunk_id": "6039b99c-f6e7-44f9-93b2-543ae8c98d7e",
+          "label": "S5"
+        },
+        {
+          "doc_id": "4b14be12-c2d7-469e-9ded-7a27896086bb",
+          "chunk_id": "1e307ac4-9196-40f1-acc6-ad93004f4ef1",
+          "label": "S6"
+        },
+        {
+          "doc_id": "1a24ea04-8734-42f1-9242-3b34d12ef136",
+          "chunk_id": "93a8e558-396c-4f01-9821-f2df379539c3",
+          "label": "S7"
+        },
+        {
+          "doc_id": "b36f41b4-a3db-409e-87ab-d1a89dd66063",
+          "chunk_id": "cad9d460-de97-4b08-8e96-586391d9e4cb",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 2.3021111000562087,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "6b7858ab-259d-44c0-a5c1-61d92e1bd116",
+        "e4db1636-3f52-4a4e-9219-c20cb621fc84",
+        "5686468f-f715-4cf5-9a95-3ee614f7dc6e",
+        "403e0b45-90f8-4a0c-98ac-266a4c4c533f",
+        "ad40b383-0731-4513-af75-172e079a8cd1",
+        "4b14be12-c2d7-469e-9ded-7a27896086bb",
+        "1a24ea04-8734-42f1-9242-3b34d12ef136",
+        "b36f41b4-a3db-409e-87ab-d1a89dd66063"
+      ],
+      "retrieved_chunk_ids": [
+        "2bb7e167-2800-4f56-a72d-dcfaad964cf9",
+        "3c443dcf-6723-4ed2-961e-b7325fe23fd4",
+        "9adfcad8-1ea8-4102-ac62-c6fd9d8c6fd1",
+        "888be158-95ee-4784-b47c-48911c7313bb",
+        "6039b99c-f6e7-44f9-93b2-543ae8c98d7e",
+        "1e307ac4-9196-40f1-acc6-ad93004f4ef1",
+        "93a8e558-396c-4f01-9821-f2df379539c3",
+        "cad9d460-de97-4b08-8e96-586391d9e4cb"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.01929260450160772,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0041",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "64e62904-44bb-4f73-88e2-8587cf7175a5",
+        "06522883-bf5c-4dda-b61d-11620e57ab3b"
+      ],
+      "gold_doc_titles": [
+        "The Fatima Mansions",
+        "3OH!3"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: The Fatima Mansions were an art rock group formed in 1988 by Cork singer/keyboardist Cathal Coughlan, formerly of Microdisney. The original line-up consisted of Coughlan, along with Nick Allum, Jonath [S1]. evidence snippet: 3OH! 3 (pronounced \"three oh three\") is an American electronic music duo from Boulder, Colorado, made up of Sean Foreman and Nathaniel Motte. They are best known for their single \"Don't Trust Me\" from [S2]. evidence snippet: Against Nature was the debut album from Fatima Mansions. It was released in September 1989, receiving almost universal critical acclaim, described by \"NME\" as \"staggering in its weight of ideas...neve [S3]. evidence snippet: Reboot (stylized as REBOOT) is the third and final studio album by South Korean girl group Wonder Girls. It was released on August 3, 2015 through JYP Entertainment. The Wonder Girls were more involve [S4]. evidence snippet: Tribo de Jah is a reggae band from Brazil formed in 1986 at the Maranhão's capital city, São Luís is known as the Brazilian Jamaica, by Fauzi Beydoun, who in that time was a multinational CEO coming f [S5]. evidence snippet: Semisonic is an American rock band formed in Minneapolis, Minnesota in 1995. The band had three members: Dan Wilson (lead vocals, guitar, keyboards), John Munson (bass guitar, backing vocals, keyboard [S6]. evidence snippet: Goldfinger is an American rock band from Los Angeles, California that formed in 1994. The band is widely considered to have been a contributor to the movement of third-wave ska, a mid-1990s revitaliza [S7]. evidence snippet: Blood, Sweat & 3 Years is the fourth studio album by American electronic music group Cash Cash, released on June 24, 2016 by Big Beat Records and Atlantic Records. It is their first full-length album  [S8].",
+      "citations": [
+        {
+          "doc_id": "64e62904-44bb-4f73-88e2-8587cf7175a5",
+          "chunk_id": "8ae3dbed-cef1-4ad1-9518-a7506f32ffde",
+          "label": "S1"
+        },
+        {
+          "doc_id": "06522883-bf5c-4dda-b61d-11620e57ab3b",
+          "chunk_id": "1c4be83f-dcd9-4e6e-888b-8dd8b65c6a92",
+          "label": "S2"
+        },
+        {
+          "doc_id": "12ecbfbc-27e5-412b-bd25-08707e87be58",
+          "chunk_id": "48962854-9933-443f-b5a4-a2c9d427b7e9",
+          "label": "S3"
+        },
+        {
+          "doc_id": "d0262ca5-3f63-472b-9673-94a95d3cb50f",
+          "chunk_id": "53edd02d-baa2-49fa-8a9e-97bf2ce9038f",
+          "label": "S4"
+        },
+        {
+          "doc_id": "b4160b4c-6f80-4d5a-8eef-5321d64599b2",
+          "chunk_id": "c4a53361-8681-43b6-a33c-727f439cb32a",
+          "label": "S5"
+        },
+        {
+          "doc_id": "4befc74d-679a-411e-8ffa-f79b719606b7",
+          "chunk_id": "7b176729-b562-40b6-9fd5-cfd9fb2f4b06",
+          "label": "S6"
+        },
+        {
+          "doc_id": "f91c1f92-b424-4297-95dc-c90d482c2e87",
+          "chunk_id": "787e7b05-b2cc-404a-9c77-9e7533d84a5a",
+          "label": "S7"
+        },
+        {
+          "doc_id": "db1f1306-ffb9-4bfb-b36c-71f4410d3677",
+          "chunk_id": "8e990b2b-4fa7-4932-9011-d76b09a4d5f1",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.6012612999184057,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "64e62904-44bb-4f73-88e2-8587cf7175a5",
+        "06522883-bf5c-4dda-b61d-11620e57ab3b",
+        "12ecbfbc-27e5-412b-bd25-08707e87be58",
+        "d0262ca5-3f63-472b-9673-94a95d3cb50f",
+        "b4160b4c-6f80-4d5a-8eef-5321d64599b2",
+        "4befc74d-679a-411e-8ffa-f79b719606b7",
+        "f91c1f92-b424-4297-95dc-c90d482c2e87",
+        "db1f1306-ffb9-4bfb-b36c-71f4410d3677"
+      ],
+      "retrieved_chunk_ids": [
+        "8ae3dbed-cef1-4ad1-9518-a7506f32ffde",
+        "1c4be83f-dcd9-4e6e-888b-8dd8b65c6a92",
+        "48962854-9933-443f-b5a4-a2c9d427b7e9",
+        "53edd02d-baa2-49fa-8a9e-97bf2ce9038f",
+        "c4a53361-8681-43b6-a33c-727f439cb32a",
+        "7b176729-b562-40b6-9fd5-cfd9fb2f4b06",
+        "787e7b05-b2cc-404a-9c77-9e7533d84a5a",
+        "8e990b2b-4fa7-4932-9011-d76b09a4d5f1"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.020134228187919462,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0018",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "568486c6-6d8d-410b-b747-e302a18c1a94",
+        "21e78295-f5b9-4598-bba2-8e71def231d6"
+      ],
+      "gold_doc_titles": [
+        "Charlie Ross (state senator)",
+        "Gregg Harper"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Gary Earl Johnson (born January 1, 1953) is an American businessman, author, and politician. He was the 29th Governor of New Mexico from 1995 to 2003 as a member of the Republican Party. He was also t [S1]. evidence snippet: Kirk Humphreys (born September 13, 1950) is an American politician who served as Mayor of Oklahoma City from April 9, 1998 to November 3, 2003. He was considered a favorite candidate of the Republican [S2]. evidence snippet: Nicholas Anthony \"Nick\" Micozzie (born November 2, 1928) is an American politician from Pennsylvania who served as a member of the Pennsylvania House of Representatives. He was Republican Chairman of  [S3]. evidence snippet: Eugene \"Gene\" Robert Black Sr. (May 1, 1898 – February 20, 1992) was President of the World Bank from 1949 to 1963. His father, a 1930s Chairman of the Federal Reserve, also named Eugene Robert Black, [S4]. evidence snippet: Charles Ellis Schumer ( ; born November 23, 1950) is an American politician, the senior United States senator from New York and a member of the Democratic Party. First elected in 1998, he defeated thr [S5]. evidence snippet: David Richard Sheepshanks CBE DL is the founding and current Chairman of the St George's Park National Football Centre and former Chairman of Ipswich Town FC. He is also chairman of UK Community Found [S6]. evidence snippet: Alfred Attilio Checchi (born June 6, 1948) is an American businessman who was a candidate for Governor of California in the 1998 gubernatorial election, losing to fellow Democrat Gray Davis in the Jun [S7]. evidence snippet: Edward Scott Pruitt (born May 9, 1968) is an American lawyer and Republican politician from the state of Oklahoma who is currently the fourteenth Administrator of the Environmental Protection Agency ( [S8].",
+      "citations": [
+        {
+          "doc_id": "29d81ea0-b6ca-48e7-9a73-1dabe5e0ad95",
+          "chunk_id": "2bf6e60a-d70d-4c59-9e55-2fe76b060771",
+          "label": "S1"
+        },
+        {
+          "doc_id": "ffbc1142-06ba-4b31-b8e2-88f4b0b64536",
+          "chunk_id": "924eab94-fd9d-4774-b0f4-7575435af9e2",
+          "label": "S2"
+        },
+        {
+          "doc_id": "941d246c-e717-41eb-9daa-cfd3966f82dd",
+          "chunk_id": "6eeb50a8-eaac-4159-9ba2-8e4f3204d4a8",
+          "label": "S3"
+        },
+        {
+          "doc_id": "3018e93c-a4d2-4cd2-9c66-6943497e7ae1",
+          "chunk_id": "cbb9cfa0-5d5d-4cd0-9acc-b736ed83baae",
+          "label": "S4"
+        },
+        {
+          "doc_id": "8b489c81-5b40-472a-9b89-b4d7629f98e6",
+          "chunk_id": "f5eb5f13-6ac3-42d8-a348-987413d74891",
+          "label": "S5"
+        },
+        {
+          "doc_id": "ef3b7703-bff4-4799-986b-be5f811de7b9",
+          "chunk_id": "50f7ca83-dd2a-4252-849e-7eab50996366",
+          "label": "S6"
+        },
+        {
+          "doc_id": "80ef678d-3eed-42bd-943c-987b446731e3",
+          "chunk_id": "cede03b5-18f2-4de4-a9e7-18ff7f8f4f2f",
+          "label": "S7"
+        },
+        {
+          "doc_id": "4eadd743-8148-4758-b29d-1ab381370c42",
+          "chunk_id": "8e319d9b-a5a7-4da7-8249-ca8b8c5e378b",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.8960255000274628,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "29d81ea0-b6ca-48e7-9a73-1dabe5e0ad95",
+        "ffbc1142-06ba-4b31-b8e2-88f4b0b64536",
+        "941d246c-e717-41eb-9daa-cfd3966f82dd",
+        "3018e93c-a4d2-4cd2-9c66-6943497e7ae1",
+        "8b489c81-5b40-472a-9b89-b4d7629f98e6",
+        "ef3b7703-bff4-4799-986b-be5f811de7b9",
+        "80ef678d-3eed-42bd-943c-987b446731e3",
+        "4eadd743-8148-4758-b29d-1ab381370c42"
+      ],
+      "retrieved_chunk_ids": [
+        "2bf6e60a-d70d-4c59-9e55-2fe76b060771",
+        "924eab94-fd9d-4774-b0f4-7575435af9e2",
+        "6eeb50a8-eaac-4159-9ba2-8e4f3204d4a8",
+        "cbb9cfa0-5d5d-4cd0-9acc-b736ed83baae",
+        "f5eb5f13-6ac3-42d8-a348-987413d74891",
+        "50f7ca83-dd2a-4252-849e-7eab50996366",
+        "cede03b5-18f2-4de4-a9e7-18ff7f8f4f2f",
+        "8e319d9b-a5a7-4da7-8249-ca8b8c5e378b"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0042",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "2fb6107e-7981-4d85-85fd-c06b933a99bc",
+        "7b3fc12f-d2c7-41ab-8a61-7f2f4b99ac56"
+      ],
+      "gold_doc_titles": [
+        "Jessi Klein",
+        "Lucy, the Daughter of the Devil"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Lucy, the Daughter of the Devil is an American computer-animated television series aired by the Adult Swim programming block of Cartoon Network. It was written and directed by Loren Bouchard, produced [S1]. evidence snippet: Jessi Ruth Klein (born August 17, 1975) is an American comedy writer and stand-up comic based out of New York City. Klein has regularly appeared on shows such as \"The Showbiz Show with David Spade\" an [S2]. evidence snippet: American Dad! is an American adult animated sitcom created by Seth MacFarlane, Mike Barker, and Matt Weitzman for the Fox Broadcasting Company. \"American Dad!\" is the first television series to have i [S3]. evidence snippet: The second season of the animated television series \"Rick and Morty\" originally aired in the United States on Cartoon Network's late night programming block, Adult Swim, which premiered on July 26, 20 [S4]. evidence snippet: Robot Chicken is an American stop motion sketch comedy television series, created and executive produced for Adult Swim by Seth Green and Matthew Senreich along with co-head writers Douglas Goldstein  [S5]. evidence snippet: Klein is an unincorporated community in the extraterritorial jurisdiction of Houston within north Harris County, Texas, United States, bordering on Houston to the south and Tomball to the north. It in [S6]. evidence snippet: Million Dollar Extreme Presents: World Peace is an American comedy television series starring sketch comedy group Million Dollar Extreme, which premiered on Adult Swim on August 5, 2016. On December 5 [S7]. evidence snippet: The History of Sex is a 1999 five-part documentary series by Jim Milio, Kelly McPherson, and Melissa Jo Peltier; and narrated by Peter Coyote. It was first aired on The History Channel. It features in [S8].",
+      "citations": [
+        {
+          "doc_id": "7b3fc12f-d2c7-41ab-8a61-7f2f4b99ac56",
+          "chunk_id": "02aa4ed2-4a43-412e-95a4-63aede032bc1",
+          "label": "S1"
+        },
+        {
+          "doc_id": "2fb6107e-7981-4d85-85fd-c06b933a99bc",
+          "chunk_id": "aba0b73a-137f-4963-ae65-1f76783325ef",
+          "label": "S2"
+        },
+        {
+          "doc_id": "b7e45c4d-7b2c-4447-bfe9-c883f77ce287",
+          "chunk_id": "9ab79810-5149-4777-9d19-1a0809330c0f",
+          "label": "S3"
+        },
+        {
+          "doc_id": "3c881678-ae32-4a85-ac81-5032c355bf03",
+          "chunk_id": "b9ec759a-b289-4aab-9b1e-470be7a737fb",
+          "label": "S4"
+        },
+        {
+          "doc_id": "7ba67de5-6ad2-4193-bfbe-3665a15ae47d",
+          "chunk_id": "a993c664-888d-4af7-8241-9f11a7ef3aba",
+          "label": "S5"
+        },
+        {
+          "doc_id": "972c8863-d92e-4eeb-ba78-06c475455633",
+          "chunk_id": "def69ae3-4dd6-41ce-b71c-33ee3124ed10",
+          "label": "S6"
+        },
+        {
+          "doc_id": "430ac06f-cd4b-4f3a-a7c7-5282642608f3",
+          "chunk_id": "8fe28a4b-fe64-466e-ad41-a4b2f30f0d9e",
+          "label": "S7"
+        },
+        {
+          "doc_id": "4787b742-6212-4f3e-8240-a5ac99256568",
+          "chunk_id": "b89f808f-2128-4c80-b573-674e85dabf95",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.3658285998972133,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "7b3fc12f-d2c7-41ab-8a61-7f2f4b99ac56",
+        "2fb6107e-7981-4d85-85fd-c06b933a99bc",
+        "b7e45c4d-7b2c-4447-bfe9-c883f77ce287",
+        "3c881678-ae32-4a85-ac81-5032c355bf03",
+        "7ba67de5-6ad2-4193-bfbe-3665a15ae47d",
+        "972c8863-d92e-4eeb-ba78-06c475455633",
+        "430ac06f-cd4b-4f3a-a7c7-5282642608f3",
+        "4787b742-6212-4f3e-8240-a5ac99256568"
+      ],
+      "retrieved_chunk_ids": [
+        "02aa4ed2-4a43-412e-95a4-63aede032bc1",
+        "aba0b73a-137f-4963-ae65-1f76783325ef",
+        "9ab79810-5149-4777-9d19-1a0809330c0f",
+        "b9ec759a-b289-4aab-9b1e-470be7a737fb",
+        "a993c664-888d-4af7-8241-9f11a7ef3aba",
+        "def69ae3-4dd6-41ce-b71c-33ee3124ed10",
+        "8fe28a4b-fe64-466e-ad41-a4b2f30f0d9e",
+        "b89f808f-2128-4c80-b573-674e85dabf95"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.01384083044982699,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0004",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "f22e76ac-e6ee-49e4-9420-e03e090cc610",
+        "b96548a8-320a-4aad-aec0-37b06738f1e5"
+      ],
+      "gold_doc_titles": [
+        "Chanda Rubin",
+        "Maria Sharapova"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Chanda Rubin (born February 18, 1976) is an American tennis player. Winning seven WTA Tour singles titles, she reached her highest ranking at World No. 6 on April 8, 1996, after reaching semifinals at [S1]. evidence snippet: Maria Yuryevna Sharapova (Russian: Мари́я Ю́рьевна Шара́пова ; ] ; born April 19, 1987) is a Russian professional tennis player. A United States resident since 1994, Sharapova has competed on the WTA  [S2]. evidence snippet: Bruno Fraga Soares (] ; born February 27, 1982, in Belo Horizonte) is a professional tennis player from Brazil. His highest singles ranking on the ATP Tour is World No. 221, which he reached in March  [S3]. evidence snippet: The Connors–Lendl rivalry was a tennis rivalry played between American Jimmy Connors and Czech-American Ivan Lendl, who met 35 times. Connors, who is 7 and a half years older than Lendl, won the first [S4]. evidence snippet: Jelena Janković and Katarina Srebotnik were the defending champions, but they chose not to compete together. Janković played alongside Klára Koukalová, but lost in the second round to Michaëlla Krajic [S5]. evidence snippet: Highway Companion is the third solo studio album by American singer-songwriter Tom Petty. It was released on July 25, 2006, and charted at #4 on the \"Billboard\" 200 album chart. The album was produced [S6]. evidence snippet: Sara Errani and Roberta Vinci were the defending champions, but Errani chose not to participate this year. Vinci played alongside Karin Knapp, but lost in the third round to Casey Dellacqua and Yarosl [S7]. evidence snippet: Maria Anna of Austria (Maria Anna Josepha; 7 September 1683 – 14 August 1754) was Queen consort of Portugal by marriage to King John V of Portugal. She was Regent of Portugal from 1742 until 1750 duri [S8].",
+      "citations": [
+        {
+          "doc_id": "f22e76ac-e6ee-49e4-9420-e03e090cc610",
+          "chunk_id": "6d33e13a-41ba-4908-ae42-1cfa6d58d5fb",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b96548a8-320a-4aad-aec0-37b06738f1e5",
+          "chunk_id": "387730a6-14af-43a4-8524-6ce65a8e42dd",
+          "label": "S2"
+        },
+        {
+          "doc_id": "ca4a80eb-ceef-4630-a1c5-fa7a88d7f535",
+          "chunk_id": "5df31e73-92e6-46f2-a4b0-db5832d617c6",
+          "label": "S3"
+        },
+        {
+          "doc_id": "4bd62eb6-079e-4709-ad4e-4fd00cbca362",
+          "chunk_id": "55d8aacd-ecd1-4279-9be2-4c56c5715a04",
+          "label": "S4"
+        },
+        {
+          "doc_id": "64603cb9-a2a5-4133-8cb9-0a2119c5c43b",
+          "chunk_id": "74b5cdf6-c720-478e-a3a6-1d51684a2e74",
+          "label": "S5"
+        },
+        {
+          "doc_id": "13a48ff7-0265-4fd1-91aa-a4d7b7b0879b",
+          "chunk_id": "9b05c62f-4aab-4478-b11d-4743c45a73a8",
+          "label": "S6"
+        },
+        {
+          "doc_id": "980860b1-54ec-4af6-94f5-1ec2d01e4aff",
+          "chunk_id": "a71386d4-56a3-4728-904e-6228bebbebb5",
+          "label": "S7"
+        },
+        {
+          "doc_id": "e99094bf-08f9-48b7-b480-fe32de594998",
+          "chunk_id": "a059ad11-6f62-477b-b727-683081442e56",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 2.3221658000256866,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "f22e76ac-e6ee-49e4-9420-e03e090cc610",
+        "b96548a8-320a-4aad-aec0-37b06738f1e5",
+        "ca4a80eb-ceef-4630-a1c5-fa7a88d7f535",
+        "4bd62eb6-079e-4709-ad4e-4fd00cbca362",
+        "64603cb9-a2a5-4133-8cb9-0a2119c5c43b",
+        "13a48ff7-0265-4fd1-91aa-a4d7b7b0879b",
+        "980860b1-54ec-4af6-94f5-1ec2d01e4aff",
+        "e99094bf-08f9-48b7-b480-fe32de594998"
+      ],
+      "retrieved_chunk_ids": [
+        "6d33e13a-41ba-4908-ae42-1cfa6d58d5fb",
+        "387730a6-14af-43a4-8524-6ce65a8e42dd",
+        "5df31e73-92e6-46f2-a4b0-db5832d617c6",
+        "55d8aacd-ecd1-4279-9be2-4c56c5715a04",
+        "74b5cdf6-c720-478e-a3a6-1d51684a2e74",
+        "9b05c62f-4aab-4478-b11d-4743c45a73a8",
+        "a71386d4-56a3-4728-904e-6228bebbebb5",
+        "a059ad11-6f62-477b-b727-683081442e56"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.039999999999999994,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0012",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "2fb6107e-7981-4d85-85fd-c06b933a99bc",
+        "7b3fc12f-d2c7-41ab-8a61-7f2f4b99ac56"
+      ],
+      "gold_doc_titles": [
+        "Jessi Klein",
+        "Lucy, the Daughter of the Devil"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Lucy, the Daughter of the Devil is an American computer-animated television series aired by the Adult Swim programming block of Cartoon Network. It was written and directed by Loren Bouchard, produced [S1]. evidence snippet: Jessi Ruth Klein (born August 17, 1975) is an American comedy writer and stand-up comic based out of New York City. Klein has regularly appeared on shows such as \"The Showbiz Show with David Spade\" an [S2]. evidence snippet: Robot Chicken is an American stop motion sketch comedy television series, created and executive produced for Adult Swim by Seth Green and Matthew Senreich along with co-head writers Douglas Goldstein  [S3]. evidence snippet: Scott Gairdner is an American comedy writer and director, known for having created the Comedy Central animated series \"Moonbeam City\". [S4]. evidence snippet: Kung Fu Panda is a 2008 American computer-animated action comedy martial arts film produced by DreamWorks Animation and distributed by Paramount Pictures. It was directed by John Stevenson and Mark Os [S5]. evidence snippet: \"Clown in the Dumps\" is the season premiere of the twenty-sixth season of the American animated television series \"The Simpsons\", and the 553rd episode of the series overall. It first aired in the Uni [S6]. evidence snippet: Curb Your Enthusiasm is an American comedy television series produced and broadcast by HBO that premiered on October 15, 2000. The series was created by Larry David, who stars as a fictionalized versi [S7]. evidence snippet: Aron J. Warner is an American actor and producer. He won an Academy Award for Best Animated Feature as a producer of the animated blockbuster \"Shrek\", in which he also voices the Big Bad Wolf. [S8].",
+      "citations": [
+        {
+          "doc_id": "7b3fc12f-d2c7-41ab-8a61-7f2f4b99ac56",
+          "chunk_id": "02aa4ed2-4a43-412e-95a4-63aede032bc1",
+          "label": "S1"
+        },
+        {
+          "doc_id": "2fb6107e-7981-4d85-85fd-c06b933a99bc",
+          "chunk_id": "aba0b73a-137f-4963-ae65-1f76783325ef",
+          "label": "S2"
+        },
+        {
+          "doc_id": "7ba67de5-6ad2-4193-bfbe-3665a15ae47d",
+          "chunk_id": "a993c664-888d-4af7-8241-9f11a7ef3aba",
+          "label": "S3"
+        },
+        {
+          "doc_id": "249ae3df-48de-4c9b-a985-e86bdd8fb708",
+          "chunk_id": "ad2d8d0c-8062-4896-915e-b32a42997d7a",
+          "label": "S4"
+        },
+        {
+          "doc_id": "88c7e688-41bc-451f-853b-38bc677a712f",
+          "chunk_id": "73110425-5a0c-4be3-88e1-580719471d96",
+          "label": "S5"
+        },
+        {
+          "doc_id": "e275ca76-ef20-4071-a242-5aeda65deb5c",
+          "chunk_id": "f4b193ea-6743-48eb-a00c-360be76c20c8",
+          "label": "S6"
+        },
+        {
+          "doc_id": "358b01f6-a3cb-4af3-8301-f7cd9411f683",
+          "chunk_id": "728c6263-730a-4629-a1d4-cc44a7f0db63",
+          "label": "S7"
+        },
+        {
+          "doc_id": "04e809e2-72a4-483e-a7ba-8b386c8b8c63",
+          "chunk_id": "8eee1829-f5e3-4dad-ab45-49a9b0c255d0",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.7392040999839082,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "7b3fc12f-d2c7-41ab-8a61-7f2f4b99ac56",
+        "2fb6107e-7981-4d85-85fd-c06b933a99bc",
+        "7ba67de5-6ad2-4193-bfbe-3665a15ae47d",
+        "249ae3df-48de-4c9b-a985-e86bdd8fb708",
+        "88c7e688-41bc-451f-853b-38bc677a712f",
+        "e275ca76-ef20-4071-a242-5aeda65deb5c",
+        "358b01f6-a3cb-4af3-8301-f7cd9411f683",
+        "04e809e2-72a4-483e-a7ba-8b386c8b8c63"
+      ],
+      "retrieved_chunk_ids": [
+        "02aa4ed2-4a43-412e-95a4-63aede032bc1",
+        "aba0b73a-137f-4963-ae65-1f76783325ef",
+        "a993c664-888d-4af7-8241-9f11a7ef3aba",
+        "ad2d8d0c-8062-4896-915e-b32a42997d7a",
+        "73110425-5a0c-4be3-88e1-580719471d96",
+        "f4b193ea-6743-48eb-a00c-360be76c20c8",
+        "728c6263-730a-4629-a1d4-cc44a7f0db63",
+        "8eee1829-f5e3-4dad-ab45-49a9b0c255d0"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.014234875444839857,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0037",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "db80c8c8-65a0-4ebc-88fa-a1692aa9595b",
+        "0e256ca6-0a12-46fb-b01d-e99665b7861c"
+      ],
+      "gold_doc_titles": [
+        "Herbert Büchs",
+        "Alfred Jodl"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Herbert Büchs (20 November 1913 – 19 May 1996) was a Lieutenant General of the German Air Force and a former Luftwaffe staff officer in Nazi Germany's Oberkommando der Wehrmacht (OKW) during World War [S1]. evidence snippet: Alfred Josef Ferdinand Jodl ( ; 10 May 1890 – 16 October 1946) was a German general and war criminal during World War II, who served as the Chief of the Operations Staff of the Armed Forces High Comma [S2]. evidence snippet: Rear Admiral Herbert James Ray (1 February 1893 – 3 December 1970) was an officer in the United States Navy who served in World War I and World War II. A 1914 graduate of the Naval Academy, he served  [S3]. evidence snippet: Ibrahim Abdel Ghafour El Orabi (Arabic: إبراهيم عبد الغفور العرابي‎ ‎ , ] ) (born 20 May 1931) was an Egyptian Army Lieutenant General and the 13th and former Chief of Staff of the Egyptian Armed Forc [S4]. evidence snippet: Marshal of the Royal Air Force Sir Edward Leonard Ellington, {'1': \", '2': \", '3': \", '4': \"} (30 December 1877 – 13 June 1967) was a senior officer in the Royal Air Force. He served in the First Worl [S5]. evidence snippet: The Twelfth United States Army Group was the largest and most powerful United States Army formation ever to take to the field. It controlled the majority of American forces on the Western Front in 194 [S6]. evidence snippet: As the Chief of Staff of the Egyptian Armed Forces, Orabi was formerly the second highest-ranking military officer in all of the Egyptian Armed Forces. Orabi assumed his former assignment on 16 July 1 [S7]. evidence snippet: General Sir John Monash, ( ; 27 June 1865 – 8 October 1931) was a civil engineer and an Australian military commander of the First World War. He commanded the 13th Infantry Brigade before the war and  [S8].",
+      "citations": [
+        {
+          "doc_id": "db80c8c8-65a0-4ebc-88fa-a1692aa9595b",
+          "chunk_id": "0e8c559b-9e6c-45a0-ba43-289103b5fa81",
+          "label": "S1"
+        },
+        {
+          "doc_id": "0e256ca6-0a12-46fb-b01d-e99665b7861c",
+          "chunk_id": "9ec42496-4407-4de2-bd1e-2c3a71dfb00d",
+          "label": "S2"
+        },
+        {
+          "doc_id": "112575e7-4dc0-4236-ad88-e9ca2554f93c",
+          "chunk_id": "f1ec0928-978a-4465-9321-af3c0b4e7086",
+          "label": "S3"
+        },
+        {
+          "doc_id": "7694f355-029b-44b6-8320-eb2dd01b2636",
+          "chunk_id": "1e17a3ba-9818-44e9-994b-3ad7f4df201a",
+          "label": "S4"
+        },
+        {
+          "doc_id": "7a35d7f3-a4fe-4373-bf7d-56644b4378fc",
+          "chunk_id": "816bd38b-6f7e-4716-914e-1cc228c90642",
+          "label": "S5"
+        },
+        {
+          "doc_id": "0cc8d96e-83db-42a3-9a89-8e20412c09f9",
+          "chunk_id": "abfd66d6-c49a-40aa-ba76-884af89e7083",
+          "label": "S6"
+        },
+        {
+          "doc_id": "7694f355-029b-44b6-8320-eb2dd01b2636",
+          "chunk_id": "ea75d5e6-7882-44eb-8aad-0eeaafd65e08",
+          "label": "S7"
+        },
+        {
+          "doc_id": "b7a33e1a-b034-4d23-97e9-a1791ed3b151",
+          "chunk_id": "235ef619-c959-4f10-b057-cc77172edec6",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.5511566000059247,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "db80c8c8-65a0-4ebc-88fa-a1692aa9595b",
+        "0e256ca6-0a12-46fb-b01d-e99665b7861c",
+        "112575e7-4dc0-4236-ad88-e9ca2554f93c",
+        "7694f355-029b-44b6-8320-eb2dd01b2636",
+        "7a35d7f3-a4fe-4373-bf7d-56644b4378fc",
+        "0cc8d96e-83db-42a3-9a89-8e20412c09f9",
+        "7694f355-029b-44b6-8320-eb2dd01b2636",
+        "b7a33e1a-b034-4d23-97e9-a1791ed3b151"
+      ],
+      "retrieved_chunk_ids": [
+        "0e8c559b-9e6c-45a0-ba43-289103b5fa81",
+        "9ec42496-4407-4de2-bd1e-2c3a71dfb00d",
+        "f1ec0928-978a-4465-9321-af3c0b4e7086",
+        "1e17a3ba-9818-44e9-994b-3ad7f4df201a",
+        "816bd38b-6f7e-4716-914e-1cc228c90642",
+        "abfd66d6-c49a-40aa-ba76-884af89e7083",
+        "ea75d5e6-7882-44eb-8aad-0eeaafd65e08",
+        "235ef619-c959-4f10-b057-cc77172edec6"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.019543973941368076,
+        "citation": {
+          "precision": 0.2857142857142857,
+          "recall": 1.0,
+          "f1": 0.4444444444444445
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0003",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "d17bee22-b7f1-4f76-9c20-f9edd640abf6",
+        "ac97011b-61b7-4cec-ade0-7fa0d3332a17"
+      ],
+      "gold_doc_titles": [
+        "Beitun, Xinjiang",
+        "Wafangdian"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Beitun () is a city in the north of Xinjiang, People's Republic of China (PRC). Administratively, it is a county-level city under the direct administration of the regional government, though it is geo [S1]. evidence snippet: Wafangdian (), formerly Fuxian or Fu County (), is one of the two \"northern county-level cities\", the other being Zhuanghe, under the administration of Dalian, located in the south of Liaoning provinc [S2]. evidence snippet: Karamay dialect is a Beijing Mandarin dialect spoken by Han Chinese People in northern Xinjiang, China. It is also known as North Xinjiang Area dialect (), the regions of which include Karamay, Shihez [S3]. evidence snippet: The historical area of what is modern day Xinjiang consisted of the distinct areas of the Tarim Basin (also known as Altishahr) and Dzungaria, and was populated by Indo-European Tocharians and Saka pe [S4]. evidence snippet: Macheng () is a city in northeastern Hubei province, People's Republic of China, bordering the provinces of Henan to the north and Anhui to the northeast. It is a county-level city under the administr [S5]. evidence snippet: According to the administrative divisions of China including Hong Kong and Macau, there are three level of cities, namely provincial-level (consists of municipalities and SARs), prefectural-level citi [S6]. evidence snippet: Changtu County () is a county in the northeast of Liaoning province, China, bordering Jilin to the northeast and Inner Mongolia in the northwest. It is under the administration of Tieling City, the do [S7]. evidence snippet: Nan'an () is a county-level city of southern Fujian province, People's Republic of China. It is under the administration of Quanzhou City and as of 2010, had a total population of 1,500,000. More than [S8].",
+      "citations": [
+        {
+          "doc_id": "d17bee22-b7f1-4f76-9c20-f9edd640abf6",
+          "chunk_id": "5386fb86-7fff-4142-a2a7-7941ea4fbc27",
+          "label": "S1"
+        },
+        {
+          "doc_id": "ac97011b-61b7-4cec-ade0-7fa0d3332a17",
+          "chunk_id": "050631a7-040b-4b16-a03f-06ec288996f3",
+          "label": "S2"
+        },
+        {
+          "doc_id": "54027af5-a000-427e-833b-c894ca5d2f94",
+          "chunk_id": "688befb7-2b2c-48dd-84ef-0ffd44c376ff",
+          "label": "S3"
+        },
+        {
+          "doc_id": "7f9016ca-0d07-4290-8b3b-47c24c1681e7",
+          "chunk_id": "a3021e22-e234-4637-bb1a-bfd9b29e67ea",
+          "label": "S4"
+        },
+        {
+          "doc_id": "7f594f96-79a3-48f7-ba9d-2661c47e6e7e",
+          "chunk_id": "af350712-128d-4627-b04e-74e4f511c455",
+          "label": "S5"
+        },
+        {
+          "doc_id": "b1302982-8be5-4045-99d7-8033e59259f7",
+          "chunk_id": "47ca81db-d6b2-4cf4-81f4-bb0ccabf5024",
+          "label": "S6"
+        },
+        {
+          "doc_id": "915420ef-47af-4130-a7d7-d91a929c073c",
+          "chunk_id": "e27395c5-d479-40be-a5c9-2006ce44a3d9",
+          "label": "S7"
+        },
+        {
+          "doc_id": "9448e9cd-30f6-40f0-b9dc-c7d0d29d201e",
+          "chunk_id": "1da61353-1049-4cb4-815b-2318230ebce5",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.5491572999162599,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "d17bee22-b7f1-4f76-9c20-f9edd640abf6",
+        "ac97011b-61b7-4cec-ade0-7fa0d3332a17",
+        "54027af5-a000-427e-833b-c894ca5d2f94",
+        "7f9016ca-0d07-4290-8b3b-47c24c1681e7",
+        "7f594f96-79a3-48f7-ba9d-2661c47e6e7e",
+        "b1302982-8be5-4045-99d7-8033e59259f7",
+        "915420ef-47af-4130-a7d7-d91a929c073c",
+        "9448e9cd-30f6-40f0-b9dc-c7d0d29d201e"
+      ],
+      "retrieved_chunk_ids": [
+        "5386fb86-7fff-4142-a2a7-7941ea4fbc27",
+        "050631a7-040b-4b16-a03f-06ec288996f3",
+        "688befb7-2b2c-48dd-84ef-0ffd44c376ff",
+        "a3021e22-e234-4637-bb1a-bfd9b29e67ea",
+        "af350712-128d-4627-b04e-74e4f511c455",
+        "47ca81db-d6b2-4cf4-81f4-bb0ccabf5024",
+        "e27395c5-d479-40be-a5c9-2006ce44a3d9",
+        "1da61353-1049-4cb4-815b-2318230ebce5"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0136986301369863,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0025",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "f91c1f92-b424-4297-95dc-c90d482c2e87",
+        "8e048f99-d9f9-436f-a809-81257633875b"
+      ],
+      "gold_doc_titles": [
+        "Goldfinger (band)",
+        "The Fray"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "evidence snippet: Goldfinger is an American rock band from Los Angeles, California that formed in 1994. The band is widely considered to have been a contributor to the movement of third-wave ska, a mid-1990s revitaliza [S1]. evidence snippet: The Fray is an American pop rock band from Denver, Colorado. Formed in 2002 by schoolmates Isaac Slade and Joe King, they achieved success with the release of their debut album, \"How to Save a Life\" i [S2]. evidence snippet: King Crimson are an English rock band formed in London in 1968. The band has undergone numerous formations throughout its history of which 21 musicians have been members; since January 2017 it has con [S3]. evidence snippet: The Sword is an American heavy metal band formed in Austin, Texas in 2003. The band released its debut album \"Age of Winters\" in 2006; the songs on the album were largely written by frontman J. D. Cro [S4]. evidence snippet: Tool is an American progressive metal band from Los Angeles, California. Formed in 1990, the band originally featured vocalist Maynard James Keenan, guitarist Adam Jones, bassist Paul D'Amour and drum [S5]. evidence snippet: The Lemonheads are an American alternative rock band first formed in 1986 by Evan Dando, Ben Deily, and Jesse Peretz. Dando has remained the band's only constant member. [S6]. evidence snippet: \"Heartbeat\" is the first single from The Fray's third album \"Scars & Stories\". The band premiered the song while opening for U2 on their U2 360° Tour in May 2011. The song was released for airplay on  [S7]. evidence snippet: Double Trouble is an American blues rock band from Austin, Texas, formed by guitarist/singer Stevie Ray Vaughan in 1978. The group was active throughout the 1980s and responsible for reviving the blue [S8].",
+      "citations": [
+        {
+          "doc_id": "f91c1f92-b424-4297-95dc-c90d482c2e87",
+          "chunk_id": "787e7b05-b2cc-404a-9c77-9e7533d84a5a",
+          "label": "S1"
+        },
+        {
+          "doc_id": "8e048f99-d9f9-436f-a809-81257633875b",
+          "chunk_id": "a3580f9e-e2b0-4695-9b1e-2218bc2f08d7",
+          "label": "S2"
+        },
+        {
+          "doc_id": "e1975151-6731-4c3b-a53e-a827a42e6dc0",
+          "chunk_id": "bee389ec-3e2a-4a63-9401-9b2bdd042d78",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b339c91b-03e6-4c46-9b52-4393c553214e",
+          "chunk_id": "664b7890-d28a-4255-af77-4d662052599d",
+          "label": "S4"
+        },
+        {
+          "doc_id": "de0c2a45-c305-462e-bcbf-c017309e0b25",
+          "chunk_id": "6cf5a268-e668-4114-8719-aa5490d3f263",
+          "label": "S5"
+        },
+        {
+          "doc_id": "404b8881-78ed-40e2-87c4-d37d66073a1e",
+          "chunk_id": "2d57c1bd-ba7c-4f6e-96b6-e1def2bad3eb",
+          "label": "S6"
+        },
+        {
+          "doc_id": "4860e122-8cda-4be0-850c-fec465f7d4ad",
+          "chunk_id": "15b099d9-ecf7-4b93-8830-0afc78f4ede1",
+          "label": "S7"
+        },
+        {
+          "doc_id": "293c256f-77db-4716-a7e2-b1812f837f5e",
+          "chunk_id": "df0a5312-8b98-4d2f-8dd1-99bace26cad6",
+          "label": "S8"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 3.045141200069338,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "f91c1f92-b424-4297-95dc-c90d482c2e87",
+        "8e048f99-d9f9-436f-a809-81257633875b",
+        "e1975151-6731-4c3b-a53e-a827a42e6dc0",
+        "b339c91b-03e6-4c46-9b52-4393c553214e",
+        "de0c2a45-c305-462e-bcbf-c017309e0b25",
+        "404b8881-78ed-40e2-87c4-d37d66073a1e",
+        "4860e122-8cda-4be0-850c-fec465f7d4ad",
+        "293c256f-77db-4716-a7e2-b1812f837f5e"
+      ],
+      "retrieved_chunk_ids": [
+        "787e7b05-b2cc-404a-9c77-9e7533d84a5a",
+        "a3580f9e-e2b0-4695-9b1e-2218bc2f08d7",
+        "bee389ec-3e2a-4a63-9401-9b2bdd042d78",
+        "664b7890-d28a-4255-af77-4d662052599d",
+        "6cf5a268-e668-4114-8719-aa5490d3f263",
+        "2d57c1bd-ba7c-4f6e-96b6-e1def2bad3eb",
+        "15b099d9-ecf7-4b93-8830-0afc78f4ede1",
+        "df0a5312-8b98-4d2f-8dd1-99bace26cad6"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.006688963210702341,
+        "citation": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4
+        }
+      }
+    }
+  ]
+}

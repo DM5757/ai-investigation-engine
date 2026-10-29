@@ -2,113 +2,123 @@
 
 **Project:** Applied AI Investigation Engine  
 **Date:** 2026-10-29  
-**Status:** Preliminary — active corpus below 50k at measurement time. Re-run after bulk ingest completes.
+**Corpus note:** Preliminary while ACTIVE &lt; 50k. Metrics use **transparent denominators**.
 
-## 1. Dataset and question construction
+## 1. Why earlier runs scored only ~7 questions
 
-### Evaluation set
+| Cause | Count (old 75-q set @ ~3k ACTIVE) | Notes |
+| --- | --- | --- |
+| `external_keys_not_indexed` | **57** | Hotpot golds selected from full 55k title pool; bulk ingest had only indexed a prefix |
+| Evaluator / mapping bugs | 0 (primary) | Synthetic titles resolve via filename stems in doc maps |
+| Invented gold | **not used** | |
 
-- Builder: `scripts/build_eval_questions.py`
-- Artifact: `eval/questions/eval_set.json` (**75 questions**, seed **42**)
-- Splits: `eval/questions/dev_split.json` (29) / `test_split.json` (46)
-- Type mix (approx.): factual, multi_hop, multi_doc, multi_step, contradiction, unanswerable
+**Fix:** rebuild with `scripts/build_eval_questions.py --require-active` so every Hotpot item has **all** supporting titles present as ACTIVE `hotpotqa:<title>` docs (validation + train parquet). Synthetic items kept for contradiction / unanswerable / multi-step.
 
-### Provenance
+## 2. Dataset (active-gold rebuild)
 
-| Source | Role |
+| Field | Value |
 | --- | --- |
-| HotpotQA distractor **validation** (CC BY-SA 4.0) | Multi-hop / multi-doc / factual questions whose supporting titles exist in `data/raw/corpus.jsonl` |
-| `data/manifests/synthetic_truth.json` | Contradiction pairs, incompleteness / unanswerable topics, gold span markers, enterprise multi-doc questions |
+| Artifact | `eval/questions/eval_set.json` |
+| Filter | `title_filter=active_neon` |
+| **n_questions** | **57** (≥40) |
+| Types | factual 19, multi_doc 17, multi_hop 14, contradiction 3, unanswerable 3, multi_step 1 |
+| Splits | dev 20 / test 37 |
+| Provenance | HotpotQA CC BY-SA 4.0 + `synthetic_truth.json` (seed 42) |
 
-Gold answers for Hotpot items are the dataset answers (not LLM-generated). Synthetic golds are planted strings / expected statuses (`INSUFFICIENT`, `CONFLICTING`).
+At build time (~3.3k ACTIVE), **54/57** questions are retrieval-eligible; **3** unanswerable correctly have no retrieval gold.
 
-### Corpus under test
+## 3. Methodology
 
-Indexed Hotpot paragraphs + synthetic enterprise docs in **Neon + Qdrant**. Exact ACTIVE counts are always taken from `docs/evidence/dataset_counts.json` / eval comparison payloads — never invented.
+Harness: `eval/run_eval.py` (`--scorable-only` records exclusions explicitly).
 
-At preliminary runs below, ACTIVE ≈ **2.1k–2.2k** documents (`preliminary: true`). Many Hotpot gold titles are not yet indexed, so retrieval metrics are computed only on questions whose gold docs resolve in Postgres.
+| Config | Pipeline | Mode |
+| --- | --- | --- |
+| `dense_only` | retrieval_only | dense |
+| `hybrid_rrf` | retrieval_only | hybrid_rrf |
+| `baseline_rag` | baseline_rag | hybrid_rrf |
+| `full_investigation` | investigation | hybrid_rrf |
 
-## 2. Methodology
+Per-question LLM **budget reset** added so multi-question evals do not trip the process-level `BudgetTracker` (root cause of earlier 0-call investigation runs).
 
-Harness: `eval/run_eval.py` (resumable checkpoints under `data/checkpoints/eval/`).
+## 4. Retrieval — dense vs hybrid (`active_retrieval_v1`)
 
-| Config | Pipeline | Retrieval mode | Purpose |
-| --- | --- | --- | --- |
-| `dense_only` | retrieval_only | dense | Dense vs hybrid |
-| `hybrid_rrf` | retrieval_only | hybrid_rrf | Dense vs hybrid |
-| `baseline_rag` | baseline_rag | hybrid_rrf | Single-shot retrieve + synthesize |
-| `full_investigation` | investigation | hybrid_rrf | Full multi-step engine |
+Evidence: `eval/results/active_retrieval_v1__comparison.json`  
+Corpus ACTIVE **3446** at run start.
 
-**Metrics (deterministic primary):** Recall@K, MRR, All-gold@K, multi-doc coverage, exact match, token F1, citation precision/recall/F1, correct abstention, contradiction detection, latency, LLM calls/tokens.
+| | dense_only | hybrid_rrf |
+| --- | --- | --- |
+| **n_total** | 57 | 57 |
+| **n_scored** | **54** | **54** |
+| **n_excluded** | 3 (unanswerable) | 3 (unanswerable) |
+| Recall@10 | **0.963** | 0.940 |
+| MRR | 0.920 | **0.948** |
+| All-gold@10 | **0.944** | 0.870 |
+| Multi-doc coverage | **0.963** | 0.940 |
+| Mean latency (s) | **0.143** | 0.232 |
 
-DOC-6 chunking comparison (fixed_window vs structure_aware) was measured earlier: `eval/results/chunking_comparison.json`.
+### Scored by type (same for both configs)
 
-## 3. Results
+multi_doc 17 · factual 19 · multi_hop 14 · contradiction 3 · multi_step 1
 
-### 3.1 Retrieval — dense vs hybrid (`prelim_retrieval_v2`)
+### Failure analysis (retrieval)
 
-Evidence: `eval/results/prelim_retrieval_v2__comparison.json`  
-Corpus ACTIVE **2232**. Questions with resolved gold docs: **n=7** (mostly synthetic + early corpus overlap).
+Dense missed **3** items (partial gold or zero recall); hybrid missed **7** (more partial multi-doc misses on synthetic multi-file questions where BM25/fusion under-ranks one side). Example: `hotpot_validation_0018` dense recall 0.0; hybrid 0.5. Synthetic multi-doc (`syn_multi_payment_march`) hybrid recall 0.75 / all-gold 0.0 — not all four planted docs in top-10.
 
-| Config | Recall@10 | MRR | All-gold@10 | Multi-doc coverage | Mean latency (s) |
-| --- | --- | --- | --- | --- | --- |
-| dense_only | **1.00** | 0.67 | **1.00** | **1.00** | 0.13 |
-| hybrid_rrf | 0.86 | **0.86** | 0.71 | 0.86 | 0.22 |
+## 5. Answer quality — baseline vs investigation
 
-**Reading:** On this small resolved subset (synthetic-heavy), dense recall is perfect while hybrid trades a bit of recall for better MRR. **Do not extrapolate to the full Hotpot corpus** until more gold titles are ACTIVE and n ≫ 7.
+### 5.1 `active_answer_v1` (test split, n=37)
 
-Earlier v1 (`prelim_retrieval_v1`, ACTIVE 1806, n=6 resolved) showed the same qualitative pattern (dense Recall@10=1.0; hybrid MRR competitive).
+Evidence: `eval/results/active_answer_v1__comparison.json`  
+ACTIVE **3766**.
 
-### 3.2 Answer quality — baseline RAG vs investigation (`prelim_answer_v1`)
+| | baseline_rag | full_investigation |
+| --- | --- | --- |
+| n_scored answer | 37 | 37 |
+| n_scored retrieval | 35 | 35 |
+| Token F1 | **0.038** | 0.019 |
+| Citation F1 | 0.349 | **0.387** |
+| Correct abstention (strict) | 0.0 (2 unans) | 0.0 (2 unans) |
+| Contradiction detect | 0.0 (2) | 0.0 (2) |
+| Mean LLM calls | 0.41 | **0.0** |
+| Status mix | all `answered` | all `partial` |
 
-Evidence: `eval/results/prelim_answer_v1__comparison.json`  
-Corpus ACTIVE **2114**. Test subset **n=20** (factual / multi_doc / contradiction / unanswerable / multi_step filter).
+**Root cause (investigation):** shared `LLMGateway` budget exhausted after baseline_rag in the same process → every investigation hit `BudgetExceeded` after seed retrieve (trace shows `budget`). **Not** a model quality result.
 
-| Config | Token F1 | Citation F1 | Correct abstention | Contradiction detect | Mean latency (s) | Mean LLM calls |
-| --- | --- | --- | --- | --- | --- | --- |
-| baseline_rag | 0.017 | 0.078 | 0.00 | 0.00 | 6.49 | 0.80 |
-| full_investigation | 0.015 | 0.10 | **1.00** | 0.00 | 0.20 | 0.00 |
+### 5.2 Investigation re-run (`active_investigation_v2`)
 
-**Reading:**
+After `BudgetTracker.reset()` per question — see `eval/results/active_investigation_v2__*` when present. Live smoke after fix: investigation returns `answered` with LLM calls &gt; 0 on `ALPHA-OUTAGE-0810`.
 
-- Exact-match is near zero: Hotpot/synthetic answers are free-form; token F1 is the fairer lexical metric and remains low on this incomplete corpus.
-- **Investigation abstained correctly** on unanswerable items in this run (rate 1.0) but recorded **0 LLM calls** — behavior matches the **degraded / heuristic path** (retrieve + sufficiency) rather than a full live tool loop for every item. Baseline RAG did call the LLM (~0.8 calls/question) with higher latency.
-- Contradiction detection rate 0.0 in both configs on the sampled contradiction items: planted conflicts were not surfaced as `conflicting` in this preliminary pass (retrieval may not have jointly ranked both sides, or synthesis stayed non-conflict). Unit/scripted contradiction tests remain green; **live contradiction coverage is a known gap**.
+### 5.3 Behavioral gaps (honest)
 
-### 3.3 Chunking strategies (DOC-6)
+- Baseline **answers** unanswerable items (`answered`) → false answers; abstention rate 0.
+- Contradiction items not labeled `conflicting` in these runs.
+- Lexical EM/F1 remain low vs free-form Hotpot answers; citation F1 is the stronger answer-side signal here (~0.35–0.39).
 
-Evidence: `eval/results/chunking_comparison.json`
+## 6. Chunking (DOC-6)
 
-| Strategy | Avg chunks/doc | Span Recall@5 (synthetic markers) | Hotpot proxy Recall@5 |
-| --- | --- | --- | --- |
-| fixed_window | **1.12** | 1.0 | 1.0 |
-| structure_aware | 1.46 | 1.0 | 1.0 |
+Unchanged: `eval/results/chunking_comparison.json` — fixed_window wins on chunk count; tied proxy Recall@5; prod default `structure_aware`.
 
-**Decision:** `fixed_window` wins on chunk count with tied proxy recall; production default remains `structure_aware` for heading context (documented trade-off).
+## 7. Production verification
 
-## 4. Failure analysis
+`docs/evidence/prod_e2e_smoke.json` / `.txt` against https://ai-investigation-engine-scyz.onrender.com:
 
-1. **Unresolved Hotpot golds** — Most multi-hop questions lack ACTIVE supporting docs until bulk ingest passes their titles → retrieval scores exclude them. Fix: continue ingest; re-run `prelim_retrieval_*` when ACTIVE ≥ 50k or when a title-filtered subset is fully indexed.
-2. **Low answer F1** — Incomplete evidence + free-form answers; lexical match under-penalizes semantically correct paraphrases. Optional LLM-judge was deferred to protect free-tier quotas.
-3. **Contradiction live miss** — Need joint retrieval of both conflicting docs and explicit conflict adjudication in the evaluated path.
-4. **Investigation LLM underuse in prelim_answer_v1** — Degraded path dominated; verify gateway rate limits / budgets when re-running full investigation eval.
-5. **Citation F1 low** — Gold doc id resolution depends on title/path maps; synthetic filenames vs titles can undercount even when quotes are valid.
+health/ready 200 · unauthorized upload 401 · upload/update/delete 200 · query 200 with citations · unauthorized delete 401. Isolated `e2e-*` documents only.
 
-## 5. Limitations and next improvements
+## 8. Limitations and next steps
 
-- Label all current numbers **preliminary** until `dataset_counts.json` shows `meets_data1_50k`.
-- Re-run retrieval on gold-resolved Hotpot subset after ingest catches supporting titles.
-- Force live investigation eval with explicit non-degraded checks; log provider errors.
-- Add human calibration sample for citation / contradiction judgments.
-- Cache LLM responses in Postgres `llm_cache` more aggressively during multi-day eval.
+1. Re-run `--require-active` as ACTIVE grows toward 50k to enlarge Hotpot coverage.  
+2. Keep reporting **n_total / n_scored / exclusions**.  
+3. Improve abstention + contradiction on live paths (sufficiency thresholds, conflict adjudication).  
+4. Optional LLM-judge for answer correctness once quotas allow.  
+5. DATA-1 (≥50k ACTIVE) still open — bulk ingest continues separately.
 
-## 6. Evidence index
+## 9. Evidence index
 
 | Artifact | Path |
 | --- | --- |
-| Question set | `eval/questions/eval_set.json` |
-| Retrieval comparison | `eval/results/prelim_retrieval_v2__comparison.json` |
-| Answer comparison | `eval/results/prelim_answer_v1__comparison.json` |
-| Chunking DOC-6 | `eval/results/chunking_comparison.json` |
-| Corpus counts | `docs/evidence/dataset_counts.json` |
-| Metrics unit tests | `tests/unit/test_eval_metrics.py` |
+| Active-gold question set | `eval/questions/eval_set.json` |
+| Retrieval comparison | `eval/results/active_retrieval_v1__comparison.json` |
+| Answer comparison | `eval/results/active_answer_v1__comparison.json` |
+| Investigation budget-fix run | `eval/results/active_investigation_v2__*` |
+| Prod E2E | `docs/evidence/prod_e2e_smoke.json` |
+| Counts | `docs/evidence/dataset_counts.json` |

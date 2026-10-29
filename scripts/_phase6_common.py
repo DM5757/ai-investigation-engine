@@ -701,7 +701,9 @@ def _repair_incomplete_docs(
     from app.index.qdrant_store import ChunkPoint
 
     docs = lifecycle.docs.list_by_status(
-        DocumentStatus.INDEXING, DocumentStatus.PENDING
+        DocumentStatus.INDEXING,
+        DocumentStatus.PENDING,
+        DocumentStatus.FAILED,
     )[:limit]
     repaired = 0
     for doc in docs:

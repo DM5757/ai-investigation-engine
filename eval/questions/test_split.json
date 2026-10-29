@@ -1,76 +1,220 @@
 {
   "split": "test",
-  "n": 46,
+  "n": 37,
   "questions": [
     {
-      "id": "hotpot_0391",
-      "question": "Which has more species, Aichryson or Polypodium?",
-      "gold_answer": "Polypodium",
+      "id": "hotpot_validation_0004",
+      "question": "who is older, Maria Sharapova or Chanda Rubin?",
+      "gold_answer": "Chanda Rubin (born February 18, 1976)",
       "gold_doc_titles": [
-        "Aichryson",
-        "Polypodium"
+        "Chanda Rubin",
+        "Maria Sharapova"
       ],
       "gold_external_keys": [
-        "hotpotqa:Aichryson",
-        "hotpotqa:Polypodium"
+        "hotpotqa:Chanda Rubin",
+        "hotpotqa:Maria Sharapova"
       ],
       "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 46,
+      "index": 22,
+      "gold_doc_paths": [],
+      "split": "test",
+      "multi_evidence": true
+    },
+    {
+      "id": "hotpot_validation_0000",
+      "question": "What Australian beer is a British style pale ale whose label features a character conceived in 1926? ",
+      "gold_answer": "Ballarat Bitter is a 4.9% (abv) Australian beer",
+      "gold_doc_titles": [
+        "Ballarat Bitter",
+        "Bitter (beer)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Ballarat Bitter",
+        "hotpotqa:Bitter (beer)"
+      ],
+      "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "index": 44,
+      "gold_doc_paths": [],
+      "split": "test",
+      "multi_evidence": true
+    },
+    {
+      "id": "hotpot_validation_0016",
+      "question": "The 2003 South Australian National Football League Grand Final saw the Central District Bulldogs defeat a football club whose home base is currently known as what?",
+      "gold_answer": "City Mazda Stadium",
+      "gold_doc_titles": [
+        "2003 SANFL Grand Final",
+        "West Adelaide Football Club"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:2003 SANFL Grand Final",
+        "hotpotqa:West Adelaide Football Club"
+      ],
+      "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 40,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_1466",
-      "question": "Which country is the Taipa island part of?",
-      "gold_answer": "China",
+      "id": "hotpot_validation_0005",
+      "question": "In what year was the British actress who starred in a film adaptation of a series of eight children's books written by P. L. Travers born?",
+      "gold_answer": "9 November 1955",
       "gold_doc_titles": [
-        "Taipa",
-        "Macau"
+        "Karen Dotrice",
+        "Mary Poppins"
       ],
       "gold_external_keys": [
-        "hotpotqa:Taipa",
-        "hotpotqa:Macau"
+        "hotpotqa:Karen Dotrice",
+        "hotpotqa:Mary Poppins"
       ],
       "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 36,
+      "multi_evidence": true,
+      "index": 47,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_1078",
-      "question": "The Italian surname Bellini is normally written after what names?",
-      "gold_answer": "given names",
+      "id": "hotpot_train_0033",
+      "question": "Taglierini is thin pasta like the type that is shaped in what form?",
+      "gold_answer": "rod-shaped",
       "gold_doc_titles": [
-        "Bellini",
-        "Italian name"
+        "Taglierini",
+        "Capellini"
       ],
       "gold_external_keys": [
-        "hotpotqa:Bellini",
-        "hotpotqa:Italian name"
+        "hotpotqa:Taglierini",
+        "hotpotqa:Capellini"
       ],
       "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 23,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_0018",
+      "question": "Which Republican Chairman was born June 1, 1956? ",
+      "gold_answer": "Gregg Harper",
+      "gold_doc_titles": [
+        "Charlie Ross (state senator)",
+        "Gregg Harper"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Charlie Ross (state senator)",
+        "hotpotqa:Gregg Harper"
+      ],
+      "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 30,
+      "multi_evidence": true,
+      "index": 19,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_0037",
+      "question": "A former officer of what was a Lieutenant General is notable for being present in the conference room when the 20 July plot bomb exploded in 1944 along with a German general and war criminal during World War II, who served as the Chief of the Operations Staff of the Armed Forces High Command ?",
+      "gold_answer": "German Air Force",
+      "gold_doc_titles": [
+        "Herbert B\u00fcchs",
+        "Alfred Jodl"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Herbert B\u00fcchs",
+        "hotpotqa:Alfred Jodl"
+      ],
+      "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 31,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_0031",
+      "question": "Walter Leslie Duncan, director of the Adelaide Steamship Company, resigned from the Senate in what year?",
+      "gold_answer": "1931",
+      "gold_doc_titles": [
+        "Walter Leslie Duncan",
+        "Adelaide Steamship Company"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Walter Leslie Duncan",
+        "hotpotqa:Adelaide Steamship Company"
+      ],
+      "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 43,
       "gold_doc_paths": [],
       "split": "test"
     },
@@ -88,442 +232,72 @@
       ],
       "gold_external_keys": [],
       "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
       "split_hint": "synthetic",
       "provenance": {
         "source": "synthetic"
       },
+      "index": 5,
       "split": "test"
     },
     {
-      "id": "hotpot_3824",
-      "question": "What year did the prison where William Penn wrote No Cross, No Crown stop being used as a prison?",
-      "gold_answer": "1952",
+      "id": "hotpot_train_0027",
+      "question": "Diane Ladd's daugther was nominated for the Academy Award for Best Actress for her performance in what film?",
+      "gold_answer": "\"Rambling Rose\"",
       "gold_doc_titles": [
-        "No Cross, No Crown",
-        "Tower of London"
+        "Diane Ladd",
+        "Laura Dern"
       ],
       "gold_external_keys": [
-        "hotpotqa:No Cross, No Crown",
-        "hotpotqa:Tower of London"
+        "hotpotqa:Diane Ladd",
+        "hotpotqa:Laura Dern"
       ],
       "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 55,
+      "multi_evidence": true,
+      "index": 46,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_4251",
-      "question": "For what ogranization does a commentator of Press TV serve as associate director?",
-      "gold_answer": "Henry Jackson Society",
+      "id": "hotpot_train_0030",
+      "question": "Which is a research university in Maryland, Massachusetts Institute of Technology or Johns Hopkins University?",
+      "gold_answer": "Johns Hopkins University",
       "gold_doc_titles": [
-        "Press TV controversies",
-        "Douglas Murray (author)"
+        "Massachusetts Institute of Technology",
+        "Johns Hopkins University"
       ],
       "gold_external_keys": [
-        "hotpotqa:Press TV controversies",
-        "hotpotqa:Douglas Murray (author)"
+        "hotpotqa:Massachusetts Institute of Technology",
+        "hotpotqa:Johns Hopkins University"
       ],
       "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 21,
+      "multi_evidence": true,
+      "index": 38,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_3534",
-      "question": "How many exhibition games has the basketball team with which Louis Dunbar played, played? ",
-      "gold_answer": "more than 26,000",
-      "gold_doc_titles": [
-        "Louis Dunbar",
-        "Harlem Globetrotters"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Louis Dunbar",
-        "hotpotqa:Harlem Globetrotters"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 20,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_1742",
-      "question": "Futbolita has interviewed what Spanish Professional footballer who plays as a striker for New York City FC?",
-      "gold_answer": "David Villa",
-      "gold_doc_titles": [
-        "Futbolita",
-        "David Villa"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Futbolita",
-        "hotpotqa:David Villa"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 31,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_0886",
-      "question": "Which Disneyland attraction is Matterhorn Bobsleds roller coaster, an expanded version of",
-      "gold_answer": "Autopia",
-      "gold_doc_titles": [
-        "Submarine Voyage",
-        "Autopia"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Submarine Voyage",
-        "hotpotqa:Autopia"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 45,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_0729",
-      "question": "When was the director of an American short slasher film with French-speaking serial killers that was released on October 31, 2011 born?",
-      "gold_answer": "June 11, 1986",
-      "gold_doc_titles": [
-        "Maniac (2011 film)",
-        "Shia LaBeouf"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Maniac (2011 film)",
-        "hotpotqa:Shia LaBeouf"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 61,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_3455",
-      "question": "Grafton and Carroll counties as well as the Pratt Family Camps border what lake in New Hampshire?",
-      "gold_answer": "Squam Lake",
-      "gold_doc_titles": [
-        "Pratt Family Camps",
-        "Squam Lake"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Pratt Family Camps",
-        "hotpotqa:Squam Lake"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 35,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_1314",
-      "question": "How many albums did the company who released Tift Merritt's debut album release for Tif Merritt?",
-      "gold_answer": "two",
-      "gold_doc_titles": [
-        "Bramble Rose",
-        "Tift Merritt"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Bramble Rose",
-        "hotpotqa:Tift Merritt"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 51,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_3959",
-      "question": "Nick Hexum of which American rock band helped produce Decomposer by The Matches?",
-      "gold_answer": "311",
-      "gold_doc_titles": [
-        "Decomposer (album)",
-        "311 (band)"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Decomposer (album)",
-        "hotpotqa:311 (band)"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 10,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_3684",
-      "question": "What is the familiar name for the first operation in the Battle of Normandy, also codenamed Operation Overlord?",
-      "gold_answer": "D-Day",
-      "gold_doc_titles": [
-        "Thomas D. Howie",
-        "Operation Overlord"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Thomas D. Howie",
-        "hotpotqa:Operation Overlord"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 41,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_1194",
-      "question": "Were H. G. Wells and Rub\u00e9n Dar\u00edo both English?",
-      "gold_answer": "no",
-      "gold_doc_titles": [
-        "H. G. Wells",
-        "Rub\u00e9n Dar\u00edo"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:H. G. Wells",
-        "hotpotqa:Rub\u00e9n Dar\u00edo"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 65,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_1534",
-      "question": "What movie genre does both \"The Trials of Life\" and \"Human\" belong to?",
-      "gold_answer": "documentary",
-      "gold_doc_titles": [
-        "The Trials of Life",
-        "Human (2015 film)"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:The Trials of Life",
-        "hotpotqa:Human (2015 film)"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 40,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_1730",
-      "question": "What Swedish songwriter worked with Taylor Swift?",
-      "gold_answer": "Shellback",
-      "gold_doc_titles": [
-        "1989 (Taylor Swift album)",
-        "Shellback (record producer)"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:1989 (Taylor Swift album)",
-        "hotpotqa:Shellback (record producer)"
-      ],
-      "question_type": "factual",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 19,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_3014",
-      "question": "In the summer of 1972, \"Metal Guru\" was the last UK number one for T. Rex and its lead singer. What was his name?",
-      "gold_answer": "Marc Bolan",
-      "gold_doc_titles": [
-        "Metal Guru",
-        "Marc Bolan"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Metal Guru",
-        "hotpotqa:Marc Bolan"
-      ],
-      "question_type": "factual",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 22,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_1430",
-      "question": "The actor that played Gutthi on Comedy nights with Kapil Show also starred in what 2016 Punjabi film directed by Smeep Kang?",
-      "gold_answer": "Vaisakhi List",
-      "gold_doc_titles": [
-        "Vaisakhi List",
-        "Sunil Grover"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Vaisakhi List",
-        "hotpotqa:Sunil Grover"
-      ],
-      "question_type": "factual",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 12,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_2015",
-      "question": "Do Dillingham Airport and Rafael Hern\u00e1ndez Airport both handle civilian (passenger) service?",
-      "gold_answer": "yes",
-      "gold_doc_titles": [
-        "Dillingham Airport",
-        "Rafael Hern\u00e1ndez Airport"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Dillingham Airport",
-        "hotpotqa:Rafael Hern\u00e1ndez Airport"
-      ],
-      "question_type": "factual",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 27,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_5005",
-      "question": "Which style is the building located on the East Side of Midtown Manhattan that Robert Von Ancken appraised? ",
-      "gold_answer": "Art Deco-style skyscraper",
-      "gold_doc_titles": [
-        "Robert Von Ancken",
-        "Chrysler Building"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Robert Von Ancken",
-        "hotpotqa:Chrysler Building"
-      ],
-      "question_type": "factual",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 24,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "syn_factual_pool",
-      "question": "What database pool problem is mentioned in the change log as a root cause candidate?",
-      "gold_answer": "Neon connection pool exhaustion",
-      "gold_doc_paths": [
-        "data/synthetic/change_log.html"
-      ],
-      "gold_doc_titles": [
-        "change_log"
-      ],
-      "gold_external_keys": [],
-      "question_type": "factual",
-      "split_hint": "synthetic",
-      "provenance": {
-        "source": "synthetic"
-      },
-      "split": "test"
-    },
-    {
-      "id": "syn_factual_beta_marker",
-      "question": "Where is the BETA-POOL-EXHAUST marker described?",
-      "gold_answer": "BETA-POOL-EXHAUST",
+      "id": "syn_factual_alpha_marker",
+      "question": "Where is the ALPHA-OUTAGE-0810 marker described?",
+      "gold_answer": "ALPHA-OUTAGE-0810",
       "gold_doc_titles": [
         "long_architecture"
       ],
@@ -532,74 +306,302 @@
       ],
       "gold_external_keys": [],
       "question_type": "factual",
+      "requires_all_gold_docs": true,
       "split_hint": "synthetic",
       "provenance": {
         "source": "chunking_gold_spans"
       },
-      "index": 2,
+      "index": 1,
       "split": "test"
     },
     {
-      "id": "syn_factual_jwt",
-      "question": "What misconfiguration on AuthGateway was reported in the March incident?",
-      "gold_answer": "misconfigured JWT TTL",
-      "gold_doc_paths": [
-        "data/synthetic/incident_march.md"
-      ],
+      "id": "hotpot_validation_0017",
+      "question": "Which college football team for the University of Oregon did Enoka Lucas played for ",
+      "gold_answer": "The Oregon Ducks",
       "gold_doc_titles": [
-        "incident_march"
-      ],
-      "gold_external_keys": [],
-      "question_type": "factual",
-      "split_hint": "synthetic",
-      "provenance": {
-        "source": "synthetic"
-      },
-      "split": "test"
-    },
-    {
-      "id": "hotpot_4155",
-      "question": "Were Logan Leistikow and Guru Dutt alive at the same time?",
-      "gold_answer": "no",
-      "gold_doc_titles": [
-        "Logan Leistikow",
-        "Guru Dutt"
+        "Enoka Lucas",
+        "Oregon Ducks football"
       ],
       "gold_external_keys": [
-        "hotpotqa:Logan Leistikow",
-        "hotpotqa:Guru Dutt"
+        "hotpotqa:Enoka Lucas",
+        "hotpotqa:Oregon Ducks football"
       ],
       "question_type": "factual",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 14,
+      "multi_evidence": true,
+      "index": 53,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "syn_contra_deploy",
-      "question": "At what time was auth-gateway deployed on 2024-03-12? Report contradictions if present.",
-      "gold_answer": "CONFLICTING",
+      "id": "hotpot_train_0041",
+      "question": "Which band had more members The Fatima Mansions or  3OH!3 ?",
+      "gold_answer": "The Fatima Mansions",
+      "gold_doc_titles": [
+        "The Fatima Mansions",
+        "3OH!3"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Fatima Mansions",
+        "hotpotqa:3OH!3"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 41,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_0014",
+      "question": "What is the English translation of the noodle similar to Taglierini that is not tagliatelle?",
+      "gold_answer": "little hairs",
+      "gold_doc_titles": [
+        "Taglierini",
+        "Capellini"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Taglierini",
+        "hotpotqa:Capellini"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 51,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_0011",
+      "question": "Who used a Barrack buster to shoot down a British Army Lynx helicopter",
+      "gold_answer": "IRA",
+      "gold_doc_titles": [
+        "1994 British Army Lynx shootdown",
+        "Barrack buster"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:1994 British Army Lynx shootdown",
+        "hotpotqa:Barrack buster"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 25,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_0025",
+      "question": "Which band was formed first, Goldfinger or The Fray?",
+      "gold_answer": "Goldfinger",
+      "gold_doc_titles": [
+        "Goldfinger (band)",
+        "The Fray"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Goldfinger (band)",
+        "hotpotqa:The Fray"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 21,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_0039",
+      "question": "What is a type of ribbon pasta, long like Spaghetti, two to three mm or roughly a tenth of an inch wide, similar to tagliatelle, but thin like a very thin variety of Italian pasta, with a diameter between 0.85?",
+      "gold_answer": "Taglierini",
+      "gold_doc_titles": [
+        "Taglierini",
+        "Capellini"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Taglierini",
+        "hotpotqa:Capellini"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 37,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_0022",
+      "question": "What is the name for plastic water-filled barriers that you might find along the MacArthur Road highway in Pennsylvania?",
+      "gold_answer": "Jersey barrier",
+      "gold_doc_titles": [
+        "Pennsylvania Route 145",
+        "Jersey barrier"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Pennsylvania Route 145",
+        "hotpotqa:Jersey barrier"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 24,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_0042",
+      "question": "Jessi Ruth Klein played in many rolls throughout the years. Lucy, the Daughter of the Devil was aired by the Adult Swim Programming block of what channel?",
+      "gold_answer": "Cartoon Network",
+      "gold_doc_titles": [
+        "Jessi Klein",
+        "Lucy, the Daughter of the Devil"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Jessi Klein",
+        "hotpotqa:Lucy, the Daughter of the Devil"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 20,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "syn_exec_summary",
+      "question": "What does the executive summary say about the March outage impact?",
+      "gold_answer": "payment processing disruptions",
       "gold_doc_paths": [
-        "data/synthetic/incident_march.md",
-        "data/synthetic/change_log.html"
+        "data/synthetic/exec_summary.pdf"
       ],
       "gold_doc_titles": [
-        "incident_march",
-        "change_log"
+        "exec_summary"
       ],
       "gold_external_keys": [],
-      "question_type": "contradiction",
-      "expected_status": "conflicting",
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
       "split_hint": "synthetic",
       "provenance": {
-        "source": "c1"
+        "source": "synthetic_enterprise"
       },
+      "index": 13,
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_0032",
+      "question": "Chris McKay directed three seasons of the show that was shown on which channel?",
+      "gold_answer": "Adult Swim",
+      "gold_doc_titles": [
+        "Chris McKay",
+        "Robot Chicken"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Chris McKay",
+        "hotpotqa:Robot Chicken"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 32,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_0002",
+      "question": "The William Ulmer Brewery is located in a neighborhood that is policed by who?",
+      "gold_answer": "NYPD's 83rd Precinct",
+      "gold_doc_titles": [
+        "William Ulmer Brewery",
+        "Bushwick, Brooklyn"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:William Ulmer Brewery",
+        "hotpotqa:Bushwick, Brooklyn"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 45,
+      "gold_doc_paths": [],
       "split": "test"
     },
     {
@@ -617,6 +619,7 @@
       "gold_external_keys": [],
       "question_type": "contradiction",
       "expected_status": "conflicting",
+      "requires_all_gold_docs": true,
       "split_hint": "synthetic",
       "provenance": {
         "contradiction_id": "c2_root_cause",
@@ -631,38 +634,73 @@
           }
         ]
       },
-      "index": 4,
+      "index": 7,
       "split": "test"
     },
     {
-      "id": "syn_unans_5",
-      "question": "Who approved the auth-gateway rollback?",
-      "gold_answer": "INSUFFICIENT",
-      "gold_doc_titles": [],
+      "id": "syn_contra_c1_deploy_time",
+      "question": "What do the documents say about auth-gateway deploy time on 2024-03-12? Note any contradictions.",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_paths": [
+        "data/synthetic/incident_march.md",
+        "data/synthetic/change_log.html"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
       "gold_external_keys": [],
-      "question_type": "unanswerable",
-      "expected_status": "insufficient",
+      "question_type": "contradiction",
+      "expected_status": "conflicting",
+      "requires_all_gold_docs": true,
       "split_hint": "synthetic",
       "provenance": {
-        "source": "unanswerable_topics"
+        "contradiction_id": "c1_deploy_time",
+        "claims": [
+          {
+            "doc": "data/synthetic/incident_march.md",
+            "claim": "deploy at 08:10 UTC"
+          },
+          {
+            "doc": "data/synthetic/change_log.html",
+            "claim": "deploy at 14:00 UTC"
+          }
+        ]
       },
-      "index": 5,
-      "gold_doc_paths": [],
+      "index": 6,
       "split": "test"
     },
     {
-      "id": "syn_unans_6",
+      "id": "syn_unans_1758",
       "question": "What was FraudScorer CPU usage during the incident?",
       "gold_answer": "INSUFFICIENT",
       "gold_doc_titles": [],
       "gold_external_keys": [],
       "question_type": "unanswerable",
       "expected_status": "insufficient",
+      "requires_all_gold_docs": false,
       "split_hint": "synthetic",
       "provenance": {
         "source": "unanswerable_topics"
       },
-      "index": 6,
+      "index": 10,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "syn_unans_149",
+      "question": "Who approved the auth-gateway rollback?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_titles": [],
+      "gold_external_keys": [],
+      "question_type": "unanswerable",
+      "expected_status": "insufficient",
+      "requires_all_gold_docs": false,
+      "split_hint": "synthetic",
+      "provenance": {
+        "source": "unanswerable_topics"
+      },
+      "index": 9,
       "gold_doc_paths": [],
       "split": "test"
     },
@@ -680,394 +718,254 @@
       ],
       "gold_external_keys": [],
       "question_type": "multi_step",
+      "requires_all_gold_docs": true,
       "split_hint": "synthetic",
       "provenance": {
         "source": "synthetic_enterprise"
       },
-      "index": 8,
+      "index": 12,
       "split": "test"
     },
     {
-      "id": "hotpot_2986",
-      "question": "What is a popular industry in the neighborhood of Willow Vale, New South Wales?",
-      "gold_answer": "wineries",
+      "id": "hotpot_validation_0026",
+      "question": "Ralph Faudree served as the American equivalent to what United Kingdom and Australian position?",
+      "gold_answer": "pro-vice-chancellor",
       "gold_doc_titles": [
-        "Willow Vale, New South Wales (Wingecarribee)",
-        "Mittagong"
+        "Ralph Faudree",
+        "Provost (education)"
       ],
       "gold_external_keys": [
-        "hotpotqa:Willow Vale, New South Wales (Wingecarribee)",
-        "hotpotqa:Mittagong"
+        "hotpotqa:Ralph Faudree",
+        "hotpotqa:Provost (education)"
       ],
       "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 42,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_3856",
-      "question": "Who was born first, Frank I. Cobb or Joseph Pulitzer?",
-      "gold_answer": "Joseph J. Pulitzer",
-      "gold_doc_titles": [
-        "Frank I. Cobb",
-        "Joseph Pulitzer"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Frank I. Cobb",
-        "hotpotqa:Joseph Pulitzer"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 58,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_1567",
-      "question": "What is the birthdate of this King of Italy, claiming thrones of Ethiopia and Albania and father of Princess Yolanda of Savoy?",
-      "gold_answer": "11 November 1869",
-      "gold_doc_titles": [
-        "Princess Yolanda of Savoy",
-        "Victor Emmanuel III of Italy"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Princess Yolanda of Savoy",
-        "hotpotqa:Victor Emmanuel III of Italy"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 37,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_1460",
-      "question": "What is the approximate population of the town near which Forward Operating Base Gibraltar was located ?",
-      "gold_answer": "approximately 14,000",
-      "gold_doc_titles": [
-        "Forward Operating Base Gibraltar",
-        "Sangin"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Forward Operating Base Gibraltar",
-        "hotpotqa:Sangin"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 64,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_1074",
-      "question": "What occupation do Graham Streeter and Geir Hansteen J\u00f6rgensen both have in common.",
-      "gold_answer": "film director",
-      "gold_doc_titles": [
-        "Graham Streeter",
-        "Geir Hansteen J\u00f6rgensen"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Graham Streeter",
-        "hotpotqa:Geir Hansteen J\u00f6rgensen"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 44,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_3526",
-      "question": "On May 25, 2017 Greg Gianforte won the special election following the resignation of a politican that current holds what position?",
-      "gold_answer": "United States Secretary of the Interior",
-      "gold_doc_titles": [
-        "Greg Gianforte",
-        "Ryan Zinke"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Greg Gianforte",
-        "hotpotqa:Ryan Zinke"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 39,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_4958",
-      "question": "The revue Putting It Together was devised by Stephen Sondheim and what actress best known as Miss Marple?",
-      "gold_answer": "Julia McKenzie",
-      "gold_doc_titles": [
-        "Putting It Together",
-        "Julia McKenzie"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Putting It Together",
-        "hotpotqa:Julia McKenzie"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 38,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_1381",
-      "question": "What mine was operated by Royal Oak Mines at at earlier date, Kemess Mine or Colomac Mine?",
-      "gold_answer": "The Colomac Mine",
-      "gold_doc_titles": [
-        "Kemess Mine",
-        "Colomac Mine"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Kemess Mine",
-        "hotpotqa:Colomac Mine"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 59,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_3047",
-      "question": "When \"Good Night\" was aired on \"The Simpsons 138th Epsiode Spectacular,\" which actress did the voice of the character named after Matt Groening's mother?",
-      "gold_answer": "Julie Kavner",
-      "gold_doc_titles": [
-        "Marge Simpson",
-        "Good Night (The Simpsons short)"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Marge Simpson",
-        "hotpotqa:Good Night (The Simpsons short)"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 34,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_1930",
-      "question": "After Patrick Mercer's suspension in April 2014, who won the seat for Newark?",
-      "gold_answer": "Robert Jenrick",
-      "gold_doc_titles": [
-        "Newark (UK Parliament constituency)",
-        "Patrick Mercer"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Newark (UK Parliament constituency)",
-        "hotpotqa:Patrick Mercer"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 49,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_2951",
-      "question": "Which award did the Tunisian-Dutch actor that starred in Collide win? ",
-      "gold_answer": "Best Actor in 2013",
-      "gold_doc_titles": [
-        "Collide (film)",
-        "Marwan Kenzari"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Collide (film)",
-        "hotpotqa:Marwan Kenzari"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
+      "multi_evidence": true,
       "index": 17,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_0296",
-      "question": "What is the height of the player who won the 2015 AFL Rising Star award?",
-      "gold_answer": "1.95 m",
+      "id": "hotpot_validation_0012",
+      "question": "Who directed the animated series which featured an American comedy writer as the voice of Lucy?",
+      "gold_answer": "Loren Bouchard",
       "gold_doc_titles": [
-        "2015 AFL Rising Star",
-        "Jesse Hogan"
+        "Jessi Klein",
+        "Lucy, the Daughter of the Devil"
       ],
       "gold_external_keys": [
-        "hotpotqa:2015 AFL Rising Star",
-        "hotpotqa:Jesse Hogan"
+        "hotpotqa:Jessi Klein",
+        "hotpotqa:Lucy, the Daughter of the Devil"
       ],
       "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 68,
+      "multi_evidence": true,
+      "index": 28,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_2759",
-      "question": "What's the name of the differential equation that was developed by the German physicist who was the doctoral advisor to another German Physicist who identified the Stark effect?",
-      "gold_answer": "Lommel differential equation",
+      "id": "hotpot_validation_0010",
+      "question": "What is a difference between Sly Stone and Mary Ramsey?",
+      "gold_answer": "Ramsey has also worked with other well-known artists",
       "gold_doc_titles": [
-        "Eugen von Lommel",
-        "Johannes Stark"
+        "Sly Stone",
+        "Mary Ramsey"
       ],
       "gold_external_keys": [
-        "hotpotqa:Eugen von Lommel",
-        "hotpotqa:Johannes Stark"
+        "hotpotqa:Sly Stone",
+        "hotpotqa:Mary Ramsey"
       ],
       "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 53,
+      "index": 16,
+      "gold_doc_paths": [],
+      "split": "test",
+      "multi_evidence": true
+    },
+    {
+      "id": "hotpot_validation_0015",
+      "question": "At the 66th Academy Awards, the awards for technical achievements were presented by what host who was nominated for Best Actress for \"Rambling Rose\"?",
+      "gold_answer": "Laura Dern",
+      "gold_doc_titles": [
+        "66th Academy Awards",
+        "Laura Dern"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:66th Academy Awards",
+        "hotpotqa:Laura Dern"
+      ],
+      "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 52,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_4736",
-      "question": "Which band was active the longest, Spirit of the West or Big Pig?",
-      "gold_answer": "Spirit of the West",
+      "id": "hotpot_validation_0006",
+      "question": "The home video game console that was developed by Sony Computer Entertainment is a platform for a racing video game developed by who?",
+      "gold_answer": "Sony Studio Liverpool",
       "gold_doc_titles": [
-        "Spirit of the West",
-        "Big Pig"
+        "Formula One 2001 (video game)",
+        "PlayStation 2"
       ],
       "gold_external_keys": [
-        "hotpotqa:Spirit of the West",
-        "hotpotqa:Big Pig"
+        "hotpotqa:Formula One 2001 (video game)",
+        "hotpotqa:PlayStation 2"
       ],
       "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 62,
+      "multi_evidence": true,
+      "index": 49,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_1727",
-      "question": "The album on which \"Desperado\" appeared released on what date?",
-      "gold_answer": "January 28, 2016",
+      "id": "hotpot_validation_0003",
+      "question": "In what administrative category are the cities of Beitun, Xinjiang and Wafangdian?",
+      "gold_answer": "county-level",
       "gold_doc_titles": [
-        "Desperado (Rihanna song)",
-        "Anti (album)"
+        "Beitun, Xinjiang",
+        "Wafangdian"
       ],
       "gold_external_keys": [
-        "hotpotqa:Desperado (Rihanna song)",
-        "hotpotqa:Anti (album)"
+        "hotpotqa:Beitun, Xinjiang",
+        "hotpotqa:Wafangdian"
       ],
       "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 54,
+      "multi_evidence": true,
+      "index": 15,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_2527",
-      "question": "Jim Atchison was the President of the theme park that had headquarters in what city?",
-      "gold_answer": "Orlando",
+      "id": "hotpot_validation_0008",
+      "question": "Which of the following bands is considered \"one of the most accomplished and creative Christian bands of the '90s\": Poor Old Lu or Shudder to Think?",
+      "gold_answer": "Poor Old Lu",
       "gold_doc_titles": [
-        "Jim Atchison",
-        "SeaWorld Parks &amp; Entertainment"
+        "Poor Old Lu",
+        "Shudder to Think"
       ],
       "gold_external_keys": [
-        "hotpotqa:Jim Atchison",
-        "hotpotqa:SeaWorld Parks &amp; Entertainment"
+        "hotpotqa:Poor Old Lu",
+        "hotpotqa:Shudder to Think"
       ],
       "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 47,
+      "multi_evidence": true,
+      "index": 50,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_0020",
+      "question": "The 1998\u201399 Los Angeles Lakers season included the signing of the rebounding specialist who had what nickname?",
+      "gold_answer": "The Worm",
+      "gold_doc_titles": [
+        "1998\u201399 Los Angeles Lakers season",
+        "Dennis Rodman"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:1998\u201399 Los Angeles Lakers season",
+        "hotpotqa:Dennis Rodman"
+      ],
+      "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 35,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_0021",
+      "question": "2006 KNVB Cup Final had two goals scored by a player of what nationality?",
+      "gold_answer": "Dutch",
+      "gold_doc_titles": [
+        "2006 KNVB Cup Final",
+        "Klaas-Jan Huntelaar"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:2006 KNVB Cup Final",
+        "hotpotqa:Klaas-Jan Huntelaar"
+      ],
+      "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 27,
       "gold_doc_paths": [],
       "split": "test"
     }

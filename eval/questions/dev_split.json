@@ -1,175 +1,7 @@
 {
   "split": "dev",
-  "n": 29,
+  "n": 20,
   "questions": [
-    {
-      "id": "hotpot_1272",
-      "question": "Which of Jonny Craig and Pete Doherty has been a member of more bands ?",
-      "gold_answer": "Jonny\" Craig",
-      "gold_doc_titles": [
-        "Jonny Craig",
-        "Pete Doherty"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Jonny Craig",
-        "hotpotqa:Pete Doherty"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 11,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_0977",
-      "question": "Stray Arrows: A Collection of Favorites is the first compilation album released by an American alternative metal band that formed in what Chicago suburb?",
-      "gold_answer": "Wildwood",
-      "gold_doc_titles": [
-        "Stray Arrows: A Collection of Favorites",
-        "Chevelle (band)"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Stray Arrows: A Collection of Favorites",
-        "hotpotqa:Chevelle (band)"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 50,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_3537",
-      "question": "The man tried for the murder of Anthony \"White Tony\" Johnson is suspected of how many unsolved murders along with his younger brother?",
-      "gold_answer": "96",
-      "gold_doc_titles": [
-        "Anthony &quot;White Tony&quot; Johnson",
-        "Desmond Noonan"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Anthony &quot;White Tony&quot; Johnson",
-        "hotpotqa:Desmond Noonan"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 66,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_4599",
-      "question": "What was the previous name of the Italian town that is about 15 kilometres from a former Cistercian monastery?",
-      "gold_answer": "Borgo San Donnino",
-      "gold_doc_titles": [
-        "Fontevivo Abbey",
-        "Fidenza"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Fontevivo Abbey",
-        "hotpotqa:Fidenza"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 16,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_0180",
-      "question": "Which character does this protagonist, who secretly loves and marries a member of the rival house, of William Shakespeare's tragedy that has a fictional character Benvolio slay?",
-      "gold_answer": "Tybalt",
-      "gold_doc_titles": [
-        "Benvolio",
-        "Romeo"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Benvolio",
-        "hotpotqa:Romeo"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 60,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_2905",
-      "question": "What nationality was Oliver Reed's character in the film Royal Flash?",
-      "gold_answer": "Prussian",
-      "gold_doc_titles": [
-        "Royal Flash (film)",
-        "Otto von Bismarck"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Royal Flash (film)",
-        "hotpotqa:Otto von Bismarck"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 25,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_4348",
-      "question": "When was the game, in which Drew Gehling voices Gord, released for PlayStation 2?",
-      "gold_answer": "17 October 2006",
-      "gold_doc_titles": [
-        "Drew Gehling",
-        "Bully (video game)"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Drew Gehling",
-        "hotpotqa:Bully (video game)"
-      ],
-      "question_type": "multi_doc",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 26,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
     {
       "id": "syn_multi_payment_march",
       "question": "Which system changes caused disruptions in payment processing in March, which services were affected, and which documents support this?",
@@ -188,6 +20,7 @@
         "data/synthetic/postmortem_draft.docx"
       ],
       "question_type": "multi_doc",
+      "requires_all_gold_docs": false,
       "split_hint": "synthetic",
       "provenance": {
         "source": "synthetic_truth",
@@ -197,100 +30,272 @@
       "split": "dev"
     },
     {
-      "id": "hotpot_1889",
-      "question": "Mastophora dizzydeani is a species of spider named after baseball player Jerome Herman Dean who goes by what nickname?",
-      "gold_answer": "Dizzy Dean",
+      "id": "hotpot_validation_0009",
+      "question": "Which airport served more people in 2015 Asheville Regional Airport or Orlando International Airport ?",
+      "gold_answer": "Orlando International Airport",
       "gold_doc_titles": [
-        "Mastophora dizzydeani",
-        "Dizzy Dean"
+        "Asheville Regional Airport",
+        "Orlando International Airport"
       ],
       "gold_external_keys": [
-        "hotpotqa:Mastophora dizzydeani",
-        "hotpotqa:Dizzy Dean"
+        "hotpotqa:Asheville Regional Airport",
+        "hotpotqa:Orlando International Airport"
       ],
       "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 15,
+      "multi_evidence": true,
+      "index": 14,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "hotpot_3086",
-      "question": "Are both genera Silphium and Heliotropium, genera of flowering plants ?",
-      "gold_answer": "yes",
+      "id": "hotpot_train_0040",
+      "question": "How long was the battle that Bill Blizzard commanded an army of miners in?",
+      "gold_answer": "five days",
       "gold_doc_titles": [
-        "Silphium (genus)",
-        "Heliotropium"
+        "Bill Blizzard",
+        "Battle of Blair Mountain"
       ],
       "gold_external_keys": [
-        "hotpotqa:Silphium (genus)",
-        "hotpotqa:Heliotropium"
+        "hotpotqa:Bill Blizzard",
+        "hotpotqa:Battle of Blair Mountain"
       ],
       "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
+      "multi_evidence": true,
       "index": 56,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "hotpot_0015",
-      "question": "Are Giuseppe Verdi and Ambroise Thomas both Opera composers ?",
-      "gold_answer": "yes",
+      "id": "hotpot_validation_0023",
+      "question": " Umaru Mutallab had a son who tried to detonate materials about the flight that took place on what date?",
+      "gold_answer": "December 25, 2009",
       "gold_doc_titles": [
-        "Giuseppe Verdi",
-        "Ambroise Thomas"
+        "Umaru Mutallab",
+        "Northwest Airlines Flight 253"
       ],
       "gold_external_keys": [
-        "hotpotqa:Giuseppe Verdi",
-        "hotpotqa:Ambroise Thomas"
+        "hotpotqa:Umaru Mutallab",
+        "hotpotqa:Northwest Airlines Flight 253"
       ],
-      "question_type": "factual",
+      "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
+      "multi_evidence": true,
+      "index": 34,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_0001",
+      "question": "Although a dependent territory remains politically outside of the controlling state's integral area, what else can it contain?",
+      "gold_answer": "the flags",
+      "gold_doc_titles": [
+        "Gallery of flags of dependent territories",
+        "Dependent territory"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Gallery of flags of dependent territories",
+        "hotpotqa:Dependent territory"
+      ],
+      "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 54,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_0007",
+      "question": "What land elevation does Khunyang Chhish and Ismoil Somoni Peak have in common?",
+      "gold_answer": "mountain",
+      "gold_doc_titles": [
+        "Khunyang Chhish",
+        "Ismoil Somoni Peak"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Khunyang Chhish",
+        "hotpotqa:Ismoil Somoni Peak"
+      ],
+      "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 55,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "syn_factual_pool",
+      "question": "What database pool problem is mentioned in the change log as a root cause candidate?",
+      "gold_answer": "Neon connection pool exhaustion",
+      "gold_doc_paths": [
+        "data/synthetic/change_log.html"
+      ],
+      "gold_doc_titles": [
+        "change_log"
+      ],
+      "gold_external_keys": [],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "synthetic",
+      "provenance": {
+        "source": "synthetic"
+      },
+      "index": 4,
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_train_0036",
+      "question": "Who is the director of the film which is based on the novel by John Green and Laura Elizabeth Dern has a role?",
+      "gold_answer": "Josh Boone",
+      "gold_doc_titles": [
+        "Laura Dern",
+        "The Fault in Our Stars (film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Laura Dern",
+        "hotpotqa:The Fault in Our Stars (film)"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 30,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_0024",
+      "question": "Where did the steamship company whose former director was an Australian politician born in New South Wales operate for its first 100 years?",
+      "gold_answer": "Australian coast",
+      "gold_doc_titles": [
+        "Walter Leslie Duncan",
+        "Adelaide Steamship Company"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Walter Leslie Duncan",
+        "hotpotqa:Adelaide Steamship Company"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 29,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_train_0029",
+      "question": "Are Boy George and Florence Welch both from England?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "Boy George",
+        "Florence Welch"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Boy George",
+        "hotpotqa:Florence Welch"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
+      "index": 26,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_train_0038",
+      "question": "Name the romantic drama from 2014 about two young cancer patients, featuring Laura Dern from Twin Peaks.",
+      "gold_answer": "Laura Dern",
+      "gold_doc_titles": [
+        "Laura Dern",
+        "The Fault in Our Stars (film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Laura Dern",
+        "hotpotqa:The Fault in Our Stars (film)"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
+      },
+      "multi_evidence": true,
       "index": 18,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "syn_exec_summary",
-      "question": "What does the executive summary say about the March outage impact?",
-      "gold_answer": "payment processing disruptions",
-      "gold_doc_paths": [
-        "data/synthetic/exec_summary.pdf"
-      ],
-      "gold_doc_titles": [
-        "exec_summary"
-      ],
-      "gold_external_keys": [],
-      "question_type": "factual",
-      "split_hint": "synthetic",
-      "provenance": {
-        "source": "synthetic_enterprise"
-      },
-      "index": 9,
-      "split": "dev"
-    },
-    {
-      "id": "syn_factual_alpha_marker",
-      "question": "Where is the ALPHA-OUTAGE-0810 marker described?",
-      "gold_answer": "ALPHA-OUTAGE-0810",
+      "id": "syn_factual_beta_marker",
+      "question": "Where is the BETA-POOL-EXHAUST marker described?",
+      "gold_answer": "BETA-POOL-EXHAUST",
       "gold_doc_titles": [
         "long_architecture"
       ],
@@ -299,88 +304,37 @@
       ],
       "gold_external_keys": [],
       "question_type": "factual",
+      "requires_all_gold_docs": true,
       "split_hint": "synthetic",
       "provenance": {
         "source": "chunking_gold_spans"
       },
-      "index": 1,
+      "index": 2,
       "split": "dev"
     },
     {
-      "id": "hotpot_3922",
-      "question": "Ashly Burch is known for voicing Aloy in a video game released in what year?",
-      "gold_answer": "2017",
+      "id": "syn_factual_jwt",
+      "question": "What misconfiguration on AuthGateway was reported in the March incident?",
+      "gold_answer": "misconfigured JWT TTL",
+      "gold_doc_paths": [
+        "data/synthetic/incident_march.md"
+      ],
       "gold_doc_titles": [
-        "Ashly Burch",
-        "Horizon Zero Dawn"
+        "incident_march"
       ],
-      "gold_external_keys": [
-        "hotpotqa:Ashly Burch",
-        "hotpotqa:Horizon Zero Dawn"
-      ],
+      "gold_external_keys": [],
       "question_type": "factual",
-      "split_hint": "hotpot",
+      "requires_all_gold_docs": true,
+      "split_hint": "synthetic",
       "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "source": "synthetic"
       },
-      "index": 28,
-      "gold_doc_paths": [],
+      "index": 3,
       "split": "dev"
     },
     {
-      "id": "hotpot_1550",
-      "question": "Who was born first, Adrian McLaren or Ryan McLaren?",
-      "gold_answer": "Adrian Peter McLaren",
-      "gold_doc_titles": [
-        "Adrian McLaren",
-        "Ryan McLaren"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Adrian McLaren",
-        "hotpotqa:Ryan McLaren"
-      ],
-      "question_type": "factual",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 13,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_1780",
-      "question": "Ruth Vollmer begins work designing window displays for which American luxury jewelry and specialty retailer, headquartered in New York City",
-      "gold_answer": "Tiffany's",
-      "gold_doc_titles": [
-        "Ruth Vollmer",
-        "Tiffany &amp; Co."
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Ruth Vollmer",
-        "hotpotqa:Tiffany &amp; Co."
-      ],
-      "question_type": "factual",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 23,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "syn_contra_c1_deploy_time",
-      "question": "What do the documents say about auth-gateway deploy time on 2024-03-12? Note any contradictions.",
+      "id": "syn_contra_deploy",
+      "question": "At what time was auth-gateway deployed on 2024-03-12? Report contradictions if present.",
       "gold_answer": "CONFLICTING",
       "gold_doc_paths": [
         "data/synthetic/incident_march.md",
@@ -393,35 +347,12 @@
       "gold_external_keys": [],
       "question_type": "contradiction",
       "expected_status": "conflicting",
+      "requires_all_gold_docs": true,
       "split_hint": "synthetic",
       "provenance": {
-        "contradiction_id": "c1_deploy_time",
-        "claims": [
-          {
-            "doc": "data/synthetic/incident_march.md",
-            "claim": "deploy at 08:10 UTC"
-          },
-          {
-            "doc": "data/synthetic/change_log.html",
-            "claim": "deploy at 14:00 UTC"
-          }
-        ]
+        "source": "c1"
       },
-      "index": 3,
-      "split": "dev"
-    },
-    {
-      "id": "syn_unans_cpu",
-      "question": "What was FraudScorer CPU usage during the incident?",
-      "gold_answer": "INSUFFICIENT",
-      "gold_doc_titles": [],
-      "gold_external_keys": [],
-      "question_type": "unanswerable",
-      "expected_status": "insufficient",
-      "split_hint": "synthetic",
-      "provenance": {
-        "source": "unanswerable"
-      },
+      "index": 8,
       "split": "dev"
     },
     {
@@ -437,250 +368,146 @@
       "gold_external_keys": [],
       "question_type": "unanswerable",
       "expected_status": "insufficient",
+      "requires_all_gold_docs": false,
       "split_hint": "synthetic",
       "provenance": {
         "incomplete_id": "inc1_approver"
       },
-      "index": 7,
+      "index": 11,
       "split": "dev"
     },
     {
-      "id": "hotpot_2436",
-      "question": "Valais is known for the resort municipality in which district in Switzerland?",
-      "gold_answer": "Sierre",
+      "id": "hotpot_train_0035",
+      "question": "Jessi Ruth Klein, is an American comedy writer and stand-up comic based out of which city, Klein also provided the voice of Lucy in the animated pilot for Lucy, the Daughter of the Devil is an American computer-animated television series aired by the Adult Swim programming block of Cartoon Network?",
+      "gold_answer": "New York City",
       "gold_doc_titles": [
-        "Valais",
-        "Crans-Montana"
+        "Jessi Klein",
+        "Lucy, the Daughter of the Devil"
       ],
       "gold_external_keys": [
-        "hotpotqa:Valais",
-        "hotpotqa:Crans-Montana"
+        "hotpotqa:Jessi Klein",
+        "hotpotqa:Lucy, the Daughter of the Devil"
       ],
       "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 43,
+      "multi_evidence": true,
+      "index": 42,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "hotpot_4118",
-      "question": "Which super bowl that took place at the Miami Dolphins home stadium, featured the San Francisco 49ers defeating the San Diego Chargers?",
-      "gold_answer": "Super Bowl XXIX",
+      "id": "hotpot_validation_0019",
+      "question": "When was the eighth season renewed for the series starring Al Harrington?",
+      "gold_answer": "March 23, 2017",
       "gold_doc_titles": [
-        "Super Bowl XXIX",
-        "Hard Rock Stadium"
+        "Al Harrington (actor)",
+        "Hawaii Five-0 (2010 TV series)"
       ],
       "gold_external_keys": [
-        "hotpotqa:Super Bowl XXIX",
-        "hotpotqa:Hard Rock Stadium"
+        "hotpotqa:Al Harrington (actor)",
+        "hotpotqa:Hawaii Five-0 (2010 TV series)"
       ],
       "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 63,
+      "multi_evidence": true,
+      "index": 39,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "hotpot_1139",
-      "question": "When was the host of \"British Academy Television Awards 2009\" born? ",
-      "gold_answer": "4 April 1963",
+      "id": "hotpot_train_0028",
+      "question": "Are K6 and Trivor on different continents?",
+      "gold_answer": "no",
       "gold_doc_titles": [
-        "British Academy Television Awards 2009",
-        "Graham Norton"
+        "K6 (mountain)",
+        "Trivor"
       ],
       "gold_external_keys": [
-        "hotpotqa:British Academy Television Awards 2009",
-        "hotpotqa:Graham Norton"
+        "hotpotqa:K6 (mountain)",
+        "hotpotqa:Trivor"
       ],
       "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
-      "index": 32,
+      "multi_evidence": true,
+      "index": 36,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "hotpot_3006",
-      "question": "What are the symptoms of the virus identified by Robert Purcell?",
-      "gold_answer": "nausea, vomiting, diarrhea, jaundice, fever, and abdominal pain",
+      "id": "hotpot_train_0034",
+      "question": "What is the nickname of the footballer who scored both of Ajax's goals in the 2006 KNVB Cup Final?",
+      "gold_answer": "\"The Hunter\"",
       "gold_doc_titles": [
-        "Robert Purcell (virologist)",
-        "Hepatitis A"
+        "2006 KNVB Cup Final",
+        "Klaas-Jan Huntelaar"
       ],
       "gold_external_keys": [
-        "hotpotqa:Robert Purcell (virologist)",
-        "hotpotqa:Hepatitis A"
+        "hotpotqa:2006 KNVB Cup Final",
+        "hotpotqa:Klaas-Jan Huntelaar"
       ],
       "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
+      "multi_evidence": true,
       "index": 48,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "hotpot_3891",
-      "question": "What band has been around longer, Mazzy Star of Pendragon?",
-      "gold_answer": "Pendragon",
+      "id": "hotpot_validation_0013",
+      "question": "Mr. Wilson's Cabinet of Wonder: Pronged Ants, Horned Humans, Mice on Toast, and Other Marvels of Jurassic Technology is a book about a museum that is located in which city ?",
+      "gold_answer": "Los Angeles",
       "gold_doc_titles": [
-        "Mazzy Star",
-        "Pendragon (band)"
+        "Mr. Wilson's Cabinet of Wonder",
+        "Museum of Jurassic Technology"
       ],
       "gold_external_keys": [
-        "hotpotqa:Mazzy Star",
-        "hotpotqa:Pendragon (band)"
+        "hotpotqa:Mr. Wilson's Cabinet of Wonder",
+        "hotpotqa:Museum of Jurassic Technology"
       ],
       "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
         "split": "validation",
-        "license": "CC-BY-SA-4.0"
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "corpus_jsonl"
       },
+      "multi_evidence": true,
       "index": 33,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_2306",
-      "question": "The first of the Simon Bloom books was optioned by a company founded in what year?",
-      "gold_answer": "1912",
-      "gold_doc_titles": [
-        "Simon Bloom",
-        "Universal Pictures"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Simon Bloom",
-        "hotpotqa:Universal Pictures"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 57,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_4480",
-      "question": "Which black comedy sequel to \"Forgetting Sarah Marshall\" starred an Australian actress?",
-      "gold_answer": "Rose Byrne",
-      "gold_doc_titles": [
-        "Rose Byrne",
-        "Get Him to the Greek"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Rose Byrne",
-        "hotpotqa:Get Him to the Greek"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 52,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_1168",
-      "question": "Are Steve Perry and Leslie West both singers?",
-      "gold_answer": "yes",
-      "gold_doc_titles": [
-        "Steve Perry (Oregon musician)",
-        "Leslie West"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Steve Perry (Oregon musician)",
-        "hotpotqa:Leslie West"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 67,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_1187",
-      "question": "Where in the northernmost and largest freguesia can we find the Communications Museum?",
-      "gold_answer": "Macau, China",
-      "gold_doc_titles": [
-        "Communications Museum (Macau)",
-        "Nossa Senhora de F\u00e1tima, Macau"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Communications Museum (Macau)",
-        "hotpotqa:Nossa Senhora de F\u00e1tima, Macau"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 29,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_2093",
-      "question": "Are Macheng and Lianjiang, Guangdong both cities ?",
-      "gold_answer": "yes",
-      "gold_doc_titles": [
-        "Macheng",
-        "Lianjiang, Guangdong"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Macheng",
-        "hotpotqa:Lianjiang, Guangdong"
-      ],
-      "question_type": "multi_hop",
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0"
-      },
-      "index": 69,
       "gold_doc_paths": [],
       "split": "dev"
     }

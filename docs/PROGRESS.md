@@ -60,5 +60,5 @@ Corpus scale + DOC-6 chunking experiment (after prod checkpoint).
 - DOC-6: `fixed_window` wins on chunk count with tied Recall@K; default strategy still `structure_aware`
 - Windows: App Control blocks `datasets`/pandas; pyarrow parquet streaming OK (`windows_parquet_block.txt`)
 - Evidence: `docs/evidence/phase6.txt`, `pilot_ingest.json`, `storage_estimate_55k.json`, `bm25_corpus_stats.json`, `crc32_collisions.json`, `eval/results/chunking_comparison.*`
-- Phase 7 **started**: eval harness + 75-question set + preliminary dense vs hybrid and baseline vs investigation runs (corpus still &lt;50k — results labeled preliminary)
-- Batched bulk ingest (`--batch-size 64`) ~1.5–2.5 docs/s after repair of interrupted INDEXING rows; watchdog resumes from `data/checkpoints/bulk_ingest.json`
+- Phase 7: active-gold eval set (57 q); retrieval `active_retrieval_v1` **n_scored=54** (dense Recall@10 0.963 vs hybrid MRR 0.948); answer `active_answer_v1`; investigation budget-reset fix; prod E2E smoke passed
+- Batched bulk ingest continues (`batch_size=64`); monitor FAILED count; do not claim ≥50k until measured

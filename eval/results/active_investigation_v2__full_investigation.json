@@ -1,0 +1,686 @@
+{
+  "summary": {
+    "config_id": "full_investigation",
+    "pipeline": "investigation",
+    "retrieval_mode": "hybrid_rrf",
+    "k": 8,
+    "n_questions_total": 7,
+    "n_questions": 7,
+    "n_scored_retrieval": 5,
+    "n_scored_answer": 7,
+    "n_excluded": 0,
+    "exclusion_reasons": {},
+    "by_type_total": {
+      "factual": 1,
+      "multi_doc": 1,
+      "contradiction": 2,
+      "unanswerable": 2,
+      "multi_step": 1
+    },
+    "by_type_scored_retrieval": {
+      "factual": 1,
+      "multi_doc": 1,
+      "contradiction": 2,
+      "multi_step": 1
+    },
+    "by_type_scored_answer": {
+      "factual": 1,
+      "multi_doc": 1,
+      "contradiction": 2,
+      "unanswerable": 2,
+      "multi_step": 1
+    },
+    "n_errors": 0,
+    "corpus_active_documents": 4022,
+    "retrieval": {
+      "n_scored": 5,
+      "n": 5,
+      "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+      "recall_at_k": 0.8,
+      "mrr": 0.8,
+      "all_gold_at_k": 0.6,
+      "multi_doc_coverage": 0.8,
+      "mean_latency_s": 86.49248856001068
+    },
+    "answer": {
+      "n_scored": 7,
+      "n": 7,
+      "exact_match": 0.0,
+      "token_f1": 0.06262626262626263,
+      "citation_f1": 0.5578231292517007,
+      "correct_abstention_rate": 0.0,
+      "n_unanswerable_scored": 2,
+      "contradiction_detection_rate": 0.0,
+      "n_contradiction_scored": 2,
+      "mean_latency_s": 95.39125111429686,
+      "mean_llm_calls": 1.4285714285714286,
+      "mean_tokens": 990.2857142857143,
+      "status_counts": {
+        "answered": 3,
+        "partial": 3,
+        "llm_unavailable": 1
+      }
+    },
+    "partial_run": true,
+    "note": "In-progress / rate-limited free-tier LLM run; not full test split"
+  },
+  "results": [
+    {
+      "question_id": "syn_factual_alpha_marker",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The ALPHA‑OUTAGE‑0810 marker is described as appearing “here” in the source document【S1】.",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 30.53525479999371,
+      "llm_calls": 2,
+      "tokens": 820,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.33333333333333337,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_multi_docs_services",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The March outage was a six‑hour failure of **PaymentService** that occurred after a deployment to the **auth‑gateway** component. The incident report links the disruption to the auth‑gateway change, and the status update shows PaymentService recovering [S1][S2][S11].",
+      "citations": [
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b35cbdf1-0245-47a7-94b5-6c4d6e24d04c",
+          "chunk_id": "5e0e9149-b39a-4436-a8ba-a67ca4cb7d03",
+          "label": "S4"
+        },
+        {
+          "doc_id": "386704bb-d530-42b3-8123-9e2168d7e149",
+          "chunk_id": "4ed88d3f-60b1-4046-b03c-f54b4e2dc9a3",
+          "label": "S5"
+        },
+        {
+          "doc_id": "ba5cc1da-bdd9-4c9e-9dac-7cd70bb7c73f",
+          "chunk_id": "10abb956-86cf-4125-9b01-8b992c7426db",
+          "label": "S6"
+        },
+        {
+          "doc_id": "6c010671-aa79-4697-a16a-9e6a7d1e62ed",
+          "chunk_id": "4cfac9e0-b300-4e80-bcfb-1799332cad52",
+          "label": "S7"
+        },
+        {
+          "doc_id": "6c010671-aa79-4697-a16a-9e6a7d1e62ed",
+          "chunk_id": "4cfac9e0-b300-4e80-bcfb-1799332cad52",
+          "label": "S8"
+        },
+        {
+          "doc_id": "a0b27a25-cc78-4826-bcab-f3cb24c9d500",
+          "chunk_id": "75cae5ce-c263-437f-9129-cf17ee40b490",
+          "label": "S9"
+        },
+        {
+          "doc_id": "a0b27a25-cc78-4826-bcab-f3cb24c9d500",
+          "chunk_id": "75cae5ce-c263-437f-9129-cf17ee40b490",
+          "label": "S10"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "ca6175cd-864a-45e6-9f34-70ad2b54108d",
+          "label": "S11"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "ca6175cd-864a-45e6-9f34-70ad2b54108d",
+          "label": "S12"
+        },
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S13"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 65.12045150005724,
+      "llm_calls": 2,
+      "tokens": 2216,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "tools_round_4",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.04444444444444444,
+        "citation": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "f1": 0.33333333333333337
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c1_deploy_time",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The documents give two different timestamps for the auth‑gateway deployment on 2024‑03‑12. One source records a deployment of auth‑gateway 2.4.1 at 14:00 UTC [S1], while an incident report and timeline state that the auth‑gateway was deployed at 08:10 UTC, after which the payment‑service outage began [S3][S6]. These two times conflict with each other.",
+      "citations": [
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S1"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S2"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S3"
+        },
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S4"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S5"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S6"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 92.6162371999817,
+      "llm_calls": 2,
+      "tokens": 1526,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "tools_round_4",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.4,
+          "recall": 1.0,
+          "f1": 0.5714285714285715
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c2_root_cause",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "partial",
+      "answer_text": "payment statement: # Incident Report — Payment Outage March\n\n## Summary\n\nPaymentService timed out for six hours on 2024-03-12 after the **auth-gateway** deploy at 08:10 UTC. [S1]. root statement: ## Root cause (ops claim)\n\nA misconfigured JWT TTL on AuthGateway caused cascading retries into PaymentService. [S2]. payment statement: PaymentService was not changed in this release. [S3]. outage statement: Release notes claim the outage was caused by a Neon connection pool exhaustion , not JWT TTL. [S4]. payment statement: Dependencies include PaymentService and AuthGateway. [S5]. payment statement: On failure, page the payments on-call and check Neon pool metrics. [S6]. outage statement: Gold span marker ALPHA-OUTAGE-0810 appears here. [S7]. payment statement: Exec Summary: March payment disruption linked to auth-gateway change; duration six hours. [S8]. root statement: Roots is the sixth studio album by Brazilian heavy metal band Sepultura. [S9]. root statement: (After leaving the band, Max Cavalera would continue to pursue the nu metal and \"world\" stylings of \"Roots\" with his solo project Soulfly.) Since its release, \"Roots\" has sold over 2 million copies wo [S10]. outage statement: The PlayStation 3 version was delayed because of the PlayStation Network outage then later released on June 14, 2011. [S11].",
+      "citations": [
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+          "label": "S2"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S3"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S4"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S5"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S6"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S7"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S8"
+        },
+        {
+          "doc_id": "b862ecfa-9442-4243-afa0-354d2bf074d7",
+          "chunk_id": "f668edc8-ab90-46b9-b40d-5521a4894e2e",
+          "label": "S9"
+        },
+        {
+          "doc_id": "b862ecfa-9442-4243-afa0-354d2bf074d7",
+          "chunk_id": "f668edc8-ab90-46b9-b40d-5521a4894e2e",
+          "label": "S10"
+        },
+        {
+          "doc_id": "02be0814-201f-416f-aad9-df0bfc436f6d",
+          "chunk_id": "deb41c00-0dd1-4af9-b036-34230f6e3fc4",
+          "label": "S11"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 122.33030979998875,
+      "llm_calls": 1,
+      "tokens": 726,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "tools_round_4",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_149",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "status": "partial",
+      "answer_text": "auth-gateway statement: Rollback of auth-gateway initiated. [S1]. auth-gateway statement: Exec Summary: March payment disruption linked to auth-gateway change; duration six hours. [S2]. auth-gateway statement: Change Log March\n\nDeployed auth-gateway 2.4.1 at 14:00 UTC on 2024-03-12. [S3]. auth-gateway statement: # Incident Report — Payment Outage March\n\n## Summary\n\nPaymentService timed out for six hours on 2024-03-12 after the **auth-gateway** deploy at 08:10 UTC. [S4]. approved statement: Postmortem Draft — March Payments\n\nDraft only — not approved. [S5]. approved statement: The USA PATRIOT Act, though approved by large majorities in the U.S. [S6]. approved statement: On September 9, 2009 the FTC approved a consent decree with SHMC requiring full disclosure of its activities and destruction of previously obtained information. [S7]. approved statement: Specifically, the Department of Interior approved “wind energy areas” off the coast where projects can move through the regulatory approval process more quickly. [S8]. approved statement: In 2013, the system was approved by Canada for the same uses. [S9].",
+      "citations": [
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S2"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S3"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S4"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S5"
+        },
+        {
+          "doc_id": "5512c565-c277-40e7-af5c-7eac594f2060",
+          "chunk_id": "c3e84232-61f5-42c5-82c5-2c9248e3bb8c",
+          "label": "S6"
+        },
+        {
+          "doc_id": "0984d7a8-6378-4c9f-a6d4-447054537bf4",
+          "chunk_id": "79c91d69-68f6-4a1f-bd12-fdb24cc1c813",
+          "label": "S7"
+        },
+        {
+          "doc_id": "0a572b75-34be-46eb-b575-50d21a62d0ba",
+          "chunk_id": "803e9f3c-c7be-4935-aee2-9c5735c75ac8",
+          "label": "S8"
+        },
+        {
+          "doc_id": "17943c6d-f058-440a-99a2-463344a95db2",
+          "chunk_id": "c4ea17fd-6973-4d3a-bc7e-01659a0f3863",
+          "label": "S9"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 125.22031860006973,
+      "llm_calls": 1,
+      "tokens": 404,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "tools_round_4",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 0.0,
+        "soft_abstention": 0.0,
+        "false_answer_on_unanswerable": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_1758",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 110.05599639995489,
+      "llm_calls": 1,
+      "tokens": 575,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 0.0,
+        "soft_abstention": 0.0,
+        "false_answer_on_unanswerable": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_multistep_latency",
+      "question_type": "multi_step",
+      "split": "test",
+      "gold_doc_ids": [
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "latency_metrics",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "partial",
+      "answer_text": "metrics statement: On failure, page the payments on-call and check Neon pool metrics. [S1]. status statement: Status update 2024-03-12 16:00 UTC\nPaymentService recovering. [S2].",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "90d93451-2d49-48d9-b1f1-ee2747a430b9",
+          "label": "S1"
+        },
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 121.86018950003199,
+      "llm_calls": 1,
+      "tokens": 665,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "budget",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.06060606060606061,
+        "citation": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        }
+      }
+    }
+  ],
+  "created_at": "2026-10-29T05:58:10.687113+00:00"
+}

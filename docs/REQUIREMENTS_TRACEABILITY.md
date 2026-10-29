@@ -24,11 +24,11 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | RAG-7 | Handle LLM errors/limits | gateway retry/fallback/budget + degraded | `test_gateway` | Partial | Scripted 429/timeout/budget; live rate-limit not forced |
 | RAG-8 | Tool-calling / structured tools | `investigation/tools.py` | live tool rounds + schemas | Done-verified | Live tools_round_0..3 with tool calls |
 
-| EVAL-1 | Automated evaluation harness | `eval/run_eval.py`, `eval/metrics.py` | `tests/unit/test_eval_metrics.py` + result JSONs | Done-verified | Resumable; preliminary corpus labeled |
-| EVAL-2 | ≥40 questions across required types | `eval/questions/eval_set.json` (75) | manifest type_counts | Done-verified | Hotpot + synthetic; seed 42 |
-| EVAL-3 | Quantitative retrieval + answer metrics | `eval/metrics.py` + runners | `prelim_retrieval_v2`, `prelim_answer_v1` | Done-verified | Many Hotpot golds unresolved until ingest catches titles |
-| EVAL-4 | Compare ≥2 configurations | dense vs hybrid; baseline vs investigation | comparison JSONs | Done-verified | Chunking DOC-6 also compared |
-| EVAL-5 | Error analysis | `docs/EVALUATION_REPORT.md` | report §4 | Done-verified | Honest preliminary limitations |
+| EVAL-1 | Automated evaluation harness | `eval/run_eval.py`, `eval/metrics.py` | `tests/unit/test_eval_metrics.py` + result JSONs | Done-verified | Resumable; `--scorable-only` + exclusion reasons |
+| EVAL-2 | ≥40 questions across required types | `eval/questions/eval_set.json` (57 active-gold) | type_counts + `--require-active` | Done-verified | Hotpot titles must be ACTIVE; synthetic for contra/unans |
+| EVAL-3 | Quantitative retrieval + answer metrics | `eval/metrics.py` + runners | `active_retrieval_v1` (n_scored=54), `active_answer_v1` | Done-verified | Transparent denominators; investigation budget reset |
+| EVAL-4 | Compare ≥2 configurations | dense vs hybrid; baseline vs investigation | comparison JSONs | Done-verified | DOC-6 chunking also compared |
+| EVAL-5 | Error analysis | `docs/EVALUATION_REPORT.md` | report §§1,4,5 | Done-verified | Documents unresolved-gold root cause + budget bug |
 | APP-1 | Python backend | FastAPI routes + deps (`documents`/`query`/`stats`) | `test_api_*` + phase5.txt | Done-verified | Thin handlers → lifecycle/engine |
 | APP-2 | Functional UI (docs, ask, sources) | `app/ui/static/` | `test_api_ui_static` + phase5_ui_checklist | Done-verified | textContent-only; admin token in JS memory |
 | DATA-1 | Process ≥50,000 documents/records | HotpotQA corpus + lifecycle ingest | `verify_counts.py` / `dataset_counts.json` | Partial | Corpus JSONL 55k built; bulk ingest in progress (batched); claim 50k only when measured ACTIVE≥50k |
@@ -36,7 +36,7 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | DATA-3 | Incomplete and contradictory information | `data/manifests/synthetic_truth.json` | synthetic generator | Done-verified | Planted contradictions, incompleteness, injection samples |
 | DATA-4 | Reproducible evaluation / subset justification | `docs/DATASET.md` + manifests | manifests sha256/seed | Done-verified | Seed 42; subset/scale justified in DATASET.md + storage estimate |
 | DEP-1 | Public URL on free hosting | Render Free | `docs/evidence/phase1_deploy.txt` | Done-verified | Live: https://ai-investigation-engine-scyz.onrender.com (2026-10-29) |
-| DEP-2 | Hosting and DB integration | Neon + app ready | public `/api/health/ready` | Partial | DB ok on Render; Phase 5 APIs local-verified; Qdrant Cloud / full Render wiring for new routes not smoked |
+| DEP-2 | Hosting and DB integration | Neon + app ready | `docs/evidence/prod_e2e_smoke.json` | Done-verified | Render ready + upload/query/update/delete/401 E2E 2026-10-29 |
 | DEP-3 | Data persists across restarts | external Neon/Qdrant | restart test | Partial | Architecture chosen for persistence; local tests use temp SQLite + memory store |
 | DEP-4 | Secrets protected | env/secrets; admin token; no CORS `*` | secret scan + UI | Partial | `.env` gitignored; admin token not stored in localStorage; keys never returned in API |
 | DEP-5 | Deployment architecture, costs, free-tier limits documented | `FREE_TIER_NOTES.md`, DEPLOYMENT | docs | Partial | Phase 0 notes written; Deploy smoke pending |

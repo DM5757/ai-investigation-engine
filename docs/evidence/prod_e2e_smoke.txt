@@ -1,0 +1,17 @@
+Production Render E2E smoke — 2026-10-29
+
+Base: https://ai-investigation-engine-scyz.onrender.com
+Evidence JSON: docs/evidence/prod_e2e_smoke.json
+
+Results (isolated e2e-* documents only; production corpus untouched aside from temp doc lifecycle):
+- health 200
+- ready 200 (database ok, qdrant configured, llm configured)
+- upload without admin token → 401
+- upload with admin token → 200 created
+- chunks → 200 (n=1)
+- query → 200 (status=partial, citations=7)
+- update → 200 updated
+- delete → 200 deleted
+- delete without token → 401
+
+ok=true
