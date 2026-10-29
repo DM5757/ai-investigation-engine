@@ -55,6 +55,18 @@ def ready(request: Request, settings: SettingsDep) -> JSONResponse:
     if settings.groq_api_key is not None or settings.gemini_api_key is not None:
         llm_status = "configured"
 
+    # Report process embedder type without loading secrets.
+    embedder_impl = "unknown"
+    try:
+        from app.deps import _embedder as process_embedder
+
+        if process_embedder is None:
+            embedder_impl = "not_loaded_yet"
+        else:
+            embedder_impl = type(process_embedder).__name__
+    except Exception:  # noqa: BLE001
+        embedder_impl = "unknown"
+
     body: dict[str, Any] = {
         "status": "ready" if db_status == "ok" else "not_ready",
         "database": db_status,
@@ -62,6 +74,7 @@ def ready(request: Request, settings: SettingsDep) -> JSONResponse:
         "embedding_enabled_at_startup": settings.embedding_enabled_at_startup,
         "embedding_loaded": provider is not None,
         "embedding_load_ms": getattr(request.app.state, "embedding_load_ms", None),
+        "embedder_impl": embedder_impl,
         "llm_groq_configured": settings.groq_api_key is not None,
         "llm_gemini_configured": settings.gemini_api_key is not None,
         "llm_status": llm_status,

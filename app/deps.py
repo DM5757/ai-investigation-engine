@@ -100,7 +100,12 @@ def get_or_create_embedder(
     *,
     app_state: Any | None = None,
 ) -> EmbeddingProvider:
-    """Prefer FastEmbed when enabled/cached on app.state; else zero vectors."""
+    """Prefer real BGE FastEmbed (lazy); zero vectors only if load fails.
+
+    ``EMBEDDING_ENABLED_AT_STARTUP`` controls eager load in lifespan only.
+    Production indexing/query must still use FastEmbed on first use when the
+    ONNX cache is available (baked into the Docker image).
+    """
     global _embedder
     if _embedder is not None:
         return _embedder
@@ -109,15 +114,15 @@ def get_or_create_embedder(
         if loaded is not None and isinstance(loaded, EmbeddingProvider):
             _embedder = loaded
             return loaded
-    if settings.embedding_enabled_at_startup:
-        try:
-            from app.embeddings.fastembed_provider import FastEmbedProvider
+    try:
+        from app.embeddings.fastembed_provider import FastEmbedProvider
 
-            provider: EmbeddingProvider = FastEmbedProvider(model_name=settings.embedding_model)
-            _embedder = provider
-            return provider
-        except Exception:  # noqa: BLE001
-            logger.exception("FastEmbed load failed; using ZeroEmbeddingProvider")
+        provider: EmbeddingProvider = FastEmbedProvider(model_name=settings.embedding_model)
+        _embedder = provider
+        logger.info("embedder_ready model=%s dims=%s", provider.model_name, provider.dimensions)
+        return provider
+    except Exception:  # noqa: BLE001
+        logger.exception("FastEmbed load failed; using ZeroEmbeddingProvider")
     zero = ZeroEmbeddingProvider(dimensions=settings.dense_vector_size)
     _embedder = zero
     return zero

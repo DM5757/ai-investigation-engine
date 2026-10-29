@@ -352,26 +352,57 @@ class QdrantChunkStore:
         from qdrant_client.http import models as qmodels
 
         names = {c.name for c in self.client.get_collections().collections}
-        if self.collection in names:
-            return
-        vectors_config: dict[str, Any] = {
-            DENSE_VECTOR_NAME: qmodels.VectorParams(
-                size=self.dense_size,
-                distance=qmodels.Distance.COSINE,
-            )
-        }
-        sparse_config: dict[str, Any] | None = None
-        if self.enable_sparse:
-            sparse_config = {
-                SPARSE_VECTOR_NAME: qmodels.SparseVectorParams(
-                    index=qmodels.SparseIndexParams(on_disk=False),
+        if self.collection not in names:
+            vectors_config: dict[str, Any] = {
+                DENSE_VECTOR_NAME: qmodels.VectorParams(
+                    size=self.dense_size,
+                    distance=qmodels.Distance.COSINE,
                 )
             }
-        self.client.create_collection(
-            collection_name=self.collection,
-            vectors_config=vectors_config,
-            sparse_vectors_config=sparse_config,
-        )
+            sparse_config: dict[str, Any] | None = None
+            if self.enable_sparse:
+                # IDF modifier: server-side IDF over our custom BM25 TF weights.
+                sparse_kwargs: dict[str, Any] = {
+                    "index": qmodels.SparseIndexParams(on_disk=False),
+                }
+                try:
+                    from qdrant_client.http.models import Modifier
+
+                    sparse_kwargs["modifier"] = Modifier.IDF
+                except Exception:  # noqa: BLE001
+                    pass
+                sparse_config = {
+                    SPARSE_VECTOR_NAME: qmodels.SparseVectorParams(**sparse_kwargs)
+                }
+            self.client.create_collection(
+                collection_name=self.collection,
+                vectors_config=vectors_config,
+                sparse_vectors_config=sparse_config,
+            )
+        self._ensure_payload_indexes()
+
+    def _ensure_payload_indexes(self) -> None:
+        """Idempotent payload indexes used by filters / lifecycle."""
+        import logging
+
+        from qdrant_client.http import models as qmodels
+
+        log = logging.getLogger(__name__)
+        for field_name, schema in (
+            ("doc_id", qmodels.PayloadSchemaType.KEYWORD),
+            ("version", qmodels.PayloadSchemaType.INTEGER),
+            ("source_type", qmodels.PayloadSchemaType.KEYWORD),
+            ("origin", qmodels.PayloadSchemaType.KEYWORD),
+            ("doc_date", qmodels.PayloadSchemaType.KEYWORD),
+        ):
+            try:
+                self.client.create_payload_index(
+                    collection_name=self.collection,
+                    field_name=field_name,
+                    field_schema=schema,
+                )
+            except Exception:  # noqa: BLE001 — already exists / older cluster
+                log.debug("payload_index_skip field=%s", field_name, exc_info=True)
 
     def upsert_chunks(self, points: list[ChunkPoint]) -> None:
         if not points:
