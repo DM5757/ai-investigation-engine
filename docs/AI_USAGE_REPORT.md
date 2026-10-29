@@ -19,7 +19,7 @@ AI tools were used extensively during this assignment. This report discloses how
 ## How AI helped
 
 1. **Architecture and free-tier planning** — compared hosting options under a no-paid-card constraint; documented Render Free + Neon + Qdrant Cloud.
-2. **Implementation** — FastAPI app, SQLAlchemy/Alembic lifecycle, FastEmbed + custom BM25 hybrid retrieval, custom reranker, hand-written investigation state machine, static UI, evaluation harness.
+2. **Implementation** — FastAPI app, SQLAlchemy and Alembic lifecycle, FastEmbed plus custom BM25 hybrid retrieval, custom reranker, hand-written investigation state machine, static UI, evaluation harness.
 3. **Debugging** — Psycopg 3 dialect fix for Neon; Windows App Control / PyArrow parquet streaming workaround; Render memory gating for FastEmbed; bulk-ingest lock and batching.
 4. **Evaluation** — metrics, question-set builder (HotpotQA + synthetic), retrieval and answer comparison runners.
 5. **Documentation** — README, design notes, requirements traceability, evaluation report drafts.

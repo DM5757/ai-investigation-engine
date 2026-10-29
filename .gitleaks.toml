@@ -1,0 +1,8 @@
+# Project gitleaks config — keep scanning enabled; allow only known doc false positives.
+title = "ai-investigation-engine"
+
+[allowlist]
+description = "Documentation prose falsely matching generic-api-key (e.g. SQLAlchemy/Alembic)"
+paths = [
+  '''(^|/)docs/AI_USAGE_REPORT\.md$''',
+]
