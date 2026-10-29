@@ -1,10 +1,12 @@
 {
   "base": "https://ai-investigation-engine-scyz.onrender.com",
+  "created_at": "2026-10-29T06:26:57.847792+00:00",
+  "git_local_head": "222d483",
   "steps": [
     {
       "step": "health",
       "status": 200,
-      "ms": 521.5,
+      "ms": 866.7,
       "body": {
         "status": "ok"
       }
@@ -12,7 +14,7 @@
     {
       "step": "ready",
       "status": 200,
-      "ms": 1572.3,
+      "ms": 1471.2,
       "body": {
         "status": "ready",
         "database": "ok",
@@ -37,8 +39,8 @@
       "step": "upload",
       "status": 200,
       "outcome": "created",
-      "document_id": "c8f2ffe6-35a0-4796-b6ea-ccb8df74b7e4",
-      "ms": 4784.9
+      "document_id": "529293dd-7a01-4275-9eb5-a0f2e5cbbd6c",
+      "ms": 5319.7
     },
     {
       "step": "chunks",
@@ -49,14 +51,22 @@
       "step": "query",
       "status": 200,
       "answer_status": "partial",
-      "n_citations": 7,
-      "ms": 3506.5,
-      "has_answer": true
+      "n_citations": 5,
+      "ms": 20582.3,
+      "has_answer": true,
+      "degraded": true
     },
     {
       "step": "update",
       "status": 200,
       "outcome": "updated"
+    },
+    {
+      "step": "abstention_probe",
+      "status": 200,
+      "answer_status": "partial",
+      "abstention_reason": null,
+      "ms": 40192.7
     },
     {
       "step": "delete",

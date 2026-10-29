@@ -1,0 +1,172 @@
+{
+  "created_at": "2026-10-29T06:16:38.640539+00:00",
+  "corpus": {
+    "active_documents": 4461,
+    "non_deleted_documents": 4663,
+    "chunk_rows": 4824,
+    "by_status": {
+      "ACTIVE": 4461,
+      "DELETED": 3,
+      "FAILED": 201,
+      "INDEXING": 1
+    }
+  },
+  "deterministic_gate": {
+    "agree_conflicts": 0,
+    "disagree_conflicts": 1,
+    "empty_status": "insufficient",
+    "empty_reason": "No verified claims could be grounded in retrieved document quotes.",
+    "conflict_status": "conflicting",
+    "conflict_reason": "Independent sources disagree on the same attribute.",
+    "pass": true
+  },
+  "targets": [
+    "syn_contra_c1_deploy_time",
+    "syn_contra_c2_root_cause"
+  ],
+  "llm_cases": [
+    {
+      "id": "syn_contra_c1_deploy_time",
+      "type": "contradiction",
+      "status": "llm_unavailable",
+      "expected_status": "conflicting",
+      "n_conflicts": 0,
+      "n_citations": 0,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "llm_calls": 1,
+      "latency_s": 95.701,
+      "answer_preview": "",
+      "provider_limit_likely": true
+    },
+    {
+      "id": "syn_contra_c2_root_cause",
+      "type": "contradiction",
+      "status": "llm_unavailable",
+      "expected_status": "conflicting",
+      "n_conflicts": 0,
+      "n_citations": 0,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "llm_calls": 1,
+      "latency_s": 30.849,
+      "answer_preview": "",
+      "provider_limit_likely": true
+    }
+  ],
+  "gemini_only_cases": [
+    {
+      "id": "syn_contra_c1_deploy_time",
+      "type": "contradiction",
+      "expected": "conflicting",
+      "status": "llm_unavailable",
+      "n_conflicts": 0,
+      "n_citations": 0,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "llm_calls": 1,
+      "latency_s": 3.727,
+      "answer_preview": "",
+      "provider": "gemini-only"
+    },
+    {
+      "id": "syn_contra_c2_root_cause",
+      "type": "contradiction",
+      "expected": "conflicting",
+      "status": "llm_unavailable",
+      "n_conflicts": 0,
+      "n_citations": 0,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "llm_calls": 1,
+      "latency_s": 2.369,
+      "answer_preview": "",
+      "provider": "gemini-only"
+    },
+    {
+      "id": "syn_unans_149",
+      "type": "unanswerable",
+      "expected": "insufficient",
+      "status": "llm_unavailable",
+      "n_conflicts": 0,
+      "n_citations": 0,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "llm_calls": 1,
+      "latency_s": 2.954,
+      "answer_preview": "",
+      "provider": "gemini-only"
+    },
+    {
+      "id": "syn_unans_1758",
+      "type": "unanswerable",
+      "expected": "insufficient",
+      "status": "llm_unavailable",
+      "n_conflicts": 0,
+      "n_citations": 0,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "llm_calls": 1,
+      "latency_s": 2.399,
+      "answer_preview": "",
+      "provider": "gemini-only"
+    }
+  ],
+  "gemini_only_at": "2026-10-29T06:28:55.959031+00:00",
+  "note": "Groq TPD exhausted; Gemini-only path used for live contradiction/abstention probe.",
+  "gemini_only_after_signature_fix": [
+    {
+      "id": "syn_contra_c1_deploy_time",
+      "type": "contradiction",
+      "expected": "conflicting",
+      "status": "answered",
+      "n_conflicts": 0,
+      "n_citations": 6,
+      "abstention_reason": null,
+      "llm_calls": 2,
+      "latency_s": 8.518,
+      "answer_preview": "The documents contain a contradiction regarding the deploy time of `auth-gateway` on 2024-03-12:\n\n* One source states that `auth-gateway` 2.4.1 was deployed at **14:00 UTC** on 2024-03-12 [S1].\n* Other sources state that the `auth-gateway` deploy occurred at **08:10 UTC** on 2024-03-12 [S3, S6].",
+      "degraded": false,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "tools_round_4",
+        "tools_round_5",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ]
+    },
+    {
+      "id": "syn_unans_149",
+      "type": "unanswerable",
+      "expected": "insufficient",
+      "status": "answered",
+      "n_conflicts": 0,
+      "n_citations": 8,
+      "abstention_reason": null,
+      "llm_calls": 2,
+      "latency_s": 8.472,
+      "answer_preview": "Based on the provided claims, there is no information regarding who approved the auth-gateway rollback; the sources only state that the rollback was initiated [S1].",
+      "degraded": false,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "tools_round_4",
+        "tools_round_5",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ]
+    }
+  ],
+  "gemini_only_after_signature_fix_at": "2026-10-29T06:31:12.682600+00:00"
+}

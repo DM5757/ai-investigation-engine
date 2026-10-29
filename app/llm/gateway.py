@@ -10,7 +10,7 @@ from openai import APIConnectionError, APIStatusError, APITimeoutError, OpenAI
 
 from app.config import Settings, get_settings
 from app.errors import BudgetExceeded, LLMUnavailable
-from app.llm.cache import LLMCache, cache_key
+from app.llm.cache import InMemoryLLMCache, LLMCache, cache_key
 from app.llm.openai_format import classify_status_error, messages_to_openai, parse_tool_calls
 from app.llm.retry import FatalLLMError, RetryableLLMError, RetryPolicy, with_retries
 from app.llm.types import ChatMessage, ChatResult, LLMClient, ToolCall
@@ -257,6 +257,8 @@ def build_gateway(settings: Settings | None = None) -> LLMGateway:
             max_tokens=cfg.llm_budget_max_tokens,
             max_wall_clock_s=cfg.llm_budget_wall_clock_s,
         ),
+        # Process-local cache reduces repeat free-tier spend within one eval/run.
+        cache=InMemoryLLMCache(default_ttl_s=3600.0),
     )
 
 

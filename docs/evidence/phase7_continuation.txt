@@ -1,0 +1,16 @@
+﻿Continuation verification 2026-10-29 (afternoon agent)
+
+Ingestion:
+- Watchdog restarted with batch_size=16 after Qdrant write-timeout hemorrhage at batch 64
+- repaired_incomplete_docs=321 (FAILED write timeouts -> ACTIVE)
+- Checkpoint resumes from next_index without reset; submission tag untouched
+
+Eval:
+- active_investigation_v2 finalized: 6 answered, 3 partial, 27 llm_unavailable (Groq TPD)
+- deterministic contradiction/abstention gates PASS
+- live Gemini investigation runs after thought_signature fix but statuses not yet conflicting/insufficient
+
+Prod:
+- UI 200; ready 200; e2e lifecycle ok=true (query degraded under Groq TPD)
+
+See dataset_counts.json, prod_e2e_smoke.json, behavioral_rag_smoke.json, EVALUATION_REPORT.md

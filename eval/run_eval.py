@@ -332,6 +332,18 @@ def main() -> None:
         action="store_true",
         help="Skip questions whose gold docs are not fully resolved (still recorded in exclusions)",
     )
+    parser.add_argument(
+        "--pause-s",
+        type=float,
+        default=0.0,
+        help="Sleep between LLM questions to reduce free-tier rate-limit pressure",
+    )
+    parser.add_argument(
+        "--stop-after-llm-unavailable",
+        type=int,
+        default=0,
+        help="Stop a config early after N consecutive llm_unavailable results (0=never)",
+    )
     args = parser.parse_args()
 
     ensure_dirs()
@@ -408,9 +420,22 @@ def main() -> None:
             flush=True,
         )
 
+        consecutive_llm_unavailable = 0
+        stopped_for_provider_limits = False
         for q in questions:
             qid = str(q["id"])
             if qid in done_ids:
+                continue
+            if stopped_for_provider_limits:
+                row = {
+                    "question_id": qid,
+                    "question_type": q.get("question_type"),
+                    "split": q.get("split"),
+                    "excluded_from_scoring": True,
+                    "exclusion_reason": "provider_rate_limited_skipped",
+                    "status": "skipped_provider_limit",
+                }
+                per_q.append(row)
                 continue
             gold_docs = _resolve_gold_doc_ids(q, title_to, path_to, ext_to)
             resolution = _gold_resolution(q, gold_docs)
@@ -495,6 +520,12 @@ def main() -> None:
                     row["answer"] = _score_answer(q, result)
             except Exception as exc:  # noqa: BLE001
                 row["error"] = str(exc)[:400]
+            status = str(row.get("status") or "")
+            if status == "llm_unavailable" or "rate" in str(row.get("error") or "").lower():
+                consecutive_llm_unavailable += 1
+                row["provider_limit_likely"] = True
+            else:
+                consecutive_llm_unavailable = 0
             per_q.append(row)
             write_json(
                 ck_path,
@@ -507,11 +538,28 @@ def main() -> None:
             )
             print(
                 f"  [{cfg_id}] {len(per_q)}/{len(questions)} {qid} "
-                f"type={q.get('question_type')} err={row.get('error', '')[:60]}",
+                f"type={q.get('question_type')} status={status or '-'} "
+                f"err={row.get('error', '')[:60]}",
                 flush=True,
             )
+            if (
+                args.stop_after_llm_unavailable > 0
+                and consecutive_llm_unavailable >= args.stop_after_llm_unavailable
+            ):
+                stopped_for_provider_limits = True
+                print(
+                    f"  [{cfg_id}] stopping early after "
+                    f"{consecutive_llm_unavailable} consecutive llm_unavailable "
+                    "(provider rate limits)",
+                    flush=True,
+                )
+            if args.pause_s > 0 and pipeline != "retrieval_only":
+                time.sleep(args.pause_s)
 
         summary = _summarize(cfg, per_q, corpus_counts, k)
+        if stopped_for_provider_limits:
+            summary["stopped_for_provider_limits"] = True
+            summary["partial_run"] = True
         out = RESULTS_DIR / f"{run_id}__{cfg_id}.json"
         write_json(out, {"summary": summary, "results": per_q})
         all_summaries.append(summary)

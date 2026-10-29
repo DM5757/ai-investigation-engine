@@ -18,5 +18,7 @@
 ## Limits
 
 - Re-run after ACTIVE ≥ 50k
-- Contradiction live detection still weak vs unit tests
+- Contradiction/abstention: deterministic PASS; live status labeling still weak
+- Investigation answer eval heavily rate-limited (Groq 200k TPD); use pause + stop-after flags
 - Candidate must complete AI usage independent-verification checklist
+- Early tag `submission-2026-10-29` preserved; continuation work lands on `main`

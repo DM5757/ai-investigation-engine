@@ -37,28 +37,36 @@ Ask API + vanilla JS UI (documents, query, sources, stats, eval stub, health).
 - Static UI tabs: Ask | Documents | Corpus stats | Evaluation | Health
 - Tests: `test_api_documents`, `test_api_query`, `test_api_ui_static` (+ ratelimit/security unit)
 - Evidence: `docs/evidence/phase5.txt`, `docs/evidence/phase5_ui_checklist.txt`
-- Local verification: ruff/mypy clean; **119 passed**, 1 deselected (`live`)
-- Render: Phase 1 public URL unchanged; Phase 5 endpoints not claimed verified on Render
-- Gaps still open: Qdrant Cloud; bm25_avgdl; CRC32 collisions; retrieval eval
 
 ## Hotfix — Neon / Psycopg 3 (2026-10-29)
 
 - Root cause: `postgresql://` → SQLAlchemy loaded missing `psycopg2`
 - Fix: normalize to `postgresql+psycopg://`; ready → sanitized 503 on DB failure
 - Neon: migrate to alembic `0002`; evidence `docs/evidence/psycopg3_neon_fix.txt`
-- Suite after fix: **129 passed**, 1 deselected
 
 ## Phase 6 — In progress (2026-10-29) — bulk overnight
 
-Corpus scale + DOC-6 chunking experiment (after prod checkpoint).
+Corpus scale + DOC-6 chunking experiment.
 
-- Hotpot distractor corpus **55,000** unique `hotpotqa:<title>` built (`data/manifests/corpus_manifest.json`, sha256 `528db785…`, validation split)
-- Synthetic multi-format + `synthetic_truth.json` (all 8 files ingested incl. joined JSONL)
-- Pilot ingest measured; **55k storage GO** (`storage_estimate_55k.json`)
-- Bulk ingest **running under** `scripts/watch_bulk_ingest.ps1` (file-locked, checkpointed). **Do not claim ≥50k** until `dataset_counts.json` ACTIVE≥50000
-- BM25 avgdl **55.64** (pilot-scale); CRC32 collisions **0** on ~20k terms — recompute after full bulk
-- DOC-6: `fixed_window` wins on chunk count with tied Recall@K; default strategy still `structure_aware`
-- Windows: App Control blocks `datasets`/pandas; pyarrow parquet streaming OK (`windows_parquet_block.txt`)
-- Evidence: `docs/evidence/phase6.txt`, `pilot_ingest.json`, `storage_estimate_55k.json`, `bm25_corpus_stats.json`, `crc32_collisions.json`, `eval/results/chunking_comparison.*`
-- Phase 7: active-gold eval set (57 q); retrieval `active_retrieval_v1` **n_scored=54** (dense Recall@10 0.963 vs hybrid MRR 0.948); answer `active_answer_v1`; investigation budget-reset fix; prod E2E smoke passed
-- Batched bulk ingest continues (`batch_size=64`); monitor FAILED count; do not claim ≥50k until measured
+- Hotpot distractor corpus **55,000** unique `hotpotqa:<title>` built
+- Synthetic multi-format + `synthetic_truth.json` ingested
+- Bulk ingest under `scripts/watch_bulk_ingest.ps1` (file-locked, checkpointed)
+- **Qdrant write-timeout mitigation (2026-10-29 afternoon):** upsert chunking + retries/backoff/split; batch size **16**; on restart repaired **321** FAILED write-timeout rows back to ACTIVE
+- **Do not claim ≥50k** until `dataset_counts.json` `meets_data1_50k: true`
+- Measured later the same day (post-repair): ACTIVE ≈ **5.1k+** and climbing; FAILED cleared after repair; Neon↔Qdrant consistent
+
+## Phase 7 — Evaluation (2026-10-29) — partial LLM answer coverage
+
+- Active-gold eval set (57 q); retrieval `active_retrieval_v1` **n_scored=54** (dense Recall@10 0.963 vs hybrid MRR 0.948)
+- Investigation budget-reset fix; `active_investigation_v2` ran test split but **27/37** hit `llm_unavailable` after Groq **200k TPD** exhaustion
+- Deterministic contradiction/abstention gates **PASS**; live status labeling still weak (`docs/evidence/behavioral_rag_smoke.json`)
+- Gemini tool round-trip fixed by preserving `thought_signature` / `extra_content`
+- Prod E2E re-verified (lifecycle + UI); query degraded while Groq TPD exhausted
+- Early submission tag `submission-2026-10-29` @ `1ab164d` **preserved unchanged**
+- Submission-ready continuation commit: recorded after push in git log (see latest `main`)
+
+## Human actions still required before deadline
+
+1. Complete independent-verification checklist in `docs/AI_USAGE_REPORT.md` (do not leave AI-filled claims).
+2. Confirm Render auto-deployed the latest `main` commit (dashboard SHA).
+3. Optional: after Groq TPD resets, re-run investigation eval with `--pause-s 3 --stop-after-llm-unavailable 3`.

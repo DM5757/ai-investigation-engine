@@ -1,11 +1,8 @@
 {
-  "created_at": "2026-10-29T05:58:10.687855+00:00",
+  "created_at": "2026-10-29T06:11:25.399711+00:00",
   "run_id": "active_investigation_v2",
   "split": "test",
   "partial": true,
-  "corpus": {
-    "active_documents": 4022
-  },
   "preliminary": true,
   "summaries": [
     {
@@ -13,66 +10,69 @@
       "pipeline": "investigation",
       "retrieval_mode": "hybrid_rrf",
       "k": 8,
-      "n_questions_total": 7,
-      "n_questions": 7,
-      "n_scored_retrieval": 5,
-      "n_scored_answer": 7,
+      "n_questions_total": 37,
+      "n_questions": 37,
+      "n_scored_retrieval": 34,
+      "n_scored_answer": 36,
       "n_excluded": 0,
       "exclusion_reasons": {},
       "by_type_total": {
-        "factual": 1,
-        "multi_doc": 1,
+        "factual": 12,
+        "multi_doc": 11,
         "contradiction": 2,
         "unanswerable": 2,
-        "multi_step": 1
+        "multi_step": 1,
+        "multi_hop": 9
       },
       "by_type_scored_retrieval": {
-        "factual": 1,
-        "multi_doc": 1,
+        "factual": 12,
+        "multi_doc": 11,
         "contradiction": 2,
-        "multi_step": 1
+        "multi_step": 1,
+        "multi_hop": 8
       },
       "by_type_scored_answer": {
-        "factual": 1,
-        "multi_doc": 1,
+        "factual": 12,
+        "multi_doc": 11,
         "contradiction": 2,
         "unanswerable": 2,
-        "multi_step": 1
+        "multi_step": 1,
+        "multi_hop": 8
       },
-      "n_errors": 0,
-      "corpus_active_documents": 4022,
+      "n_errors": 1,
+      "corpus_active_documents": 0,
       "retrieval": {
-        "n_scored": 5,
-        "n": 5,
+        "n_scored": 34,
+        "n": 34,
         "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
-        "recall_at_k": 0.8,
-        "mrr": 0.8,
-        "all_gold_at_k": 0.6,
-        "multi_doc_coverage": 0.8,
-        "mean_latency_s": 86.49248856001068
+        "recall_at_k": 0.19117647058823528,
+        "mrr": 0.20588235294117646,
+        "all_gold_at_k": 0.14705882352941177,
+        "multi_doc_coverage": 0.19117647058823528,
+        "mean_latency_s": 36.021802973546606
       },
       "answer": {
-        "n_scored": 7,
-        "n": 7,
+        "n_scored": 36,
+        "n": 36,
         "exact_match": 0.0,
-        "token_f1": 0.06262626262626263,
-        "citation_f1": 0.5578231292517007,
+        "token_f1": 0.016802148468815135,
+        "citation_f1": 0.13013529680196345,
         "correct_abstention_rate": 0.0,
         "n_unanswerable_scored": 2,
         "contradiction_detection_rate": 0.0,
         "n_contradiction_scored": 2,
-        "mean_latency_s": 95.39125111429686,
-        "mean_llm_calls": 1.4285714285714286,
-        "mean_tokens": 990.2857142857143,
+        "mean_latency_s": 40.55604489168359,
+        "mean_llm_calls": 1.1388888888888888,
+        "mean_tokens": 624.0,
         "status_counts": {
-          "answered": 3,
+          "answered": 6,
           "partial": 3,
-          "llm_unavailable": 1
+          "llm_unavailable": 27
         }
       },
       "partial_run": true,
-      "note": "In-progress / rate-limited free-tier LLM run; not full test split"
+      "note": "Stopped/finalized during free-tier llm_unavailable streak; transparent denominators"
     }
   ],
-  "note": "Partial: Groq free-tier rate limits; budget reset fixed 0-call bug. Compare to active_answer_v1 baseline_rag on overlapping ids."
+  "note": "Partial investigation run under Groq/Gemini free-tier limits. Do not treat as full test-split quality."
 }

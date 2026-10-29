@@ -19,19 +19,19 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | RAG-2 | Combine info from different documents | engine + aggregator + synthesizer | live citations live_a+live_b | Done-verified | Live trace cites ≥2 docs |
 | RAG-3 | Multi-step complex questions | planner + tool loop | live plan n=2 + 4 tool rounds | Done-verified | Live plan type=causal; tools used |
 | RAG-4 | Evidence-based answers; citations | synthesizer + verifier + quote check | live verify ok=True | Done-verified | Quotes match chunks; fabricated path unit-tested |
-| RAG-5 | Detect contradictory information | `contradictions.py` | unit + scripted conflicting | Partial | Scripted verified; dedicated live conflict smoke not run |
-| RAG-6 | Abstain when insufficient | `sufficiency.py` | unit + scripted | Partial | Scripted verified; dedicated live abstention smoke not run |
-| RAG-7 | Handle LLM errors/limits | gateway retry/fallback/budget + degraded | `test_gateway` | Partial | Scripted 429/timeout/budget; live rate-limit not forced |
+| RAG-5 | Detect contradictory information | `contradictions.py` | unit + scripted + `behavioral_rag_smoke.json` | Partial | Deterministic gates pass; live investigation still returns `answered` on planted conflicts |
+| RAG-6 | Abstain when insufficient | `sufficiency.py` | unit + scripted + behavioral smoke | Partial | Deterministic empty→insufficient; live unanswerable still often `answered`/`partial` |
+| RAG-7 | Handle LLM errors/limits | gateway retry/fallback/budget + degraded | `test_gateway` + eval stop-on-429 | Partial | Live Groq TPD exhaustion observed; Gemini thought_signature round-trip fixed |
 | RAG-8 | Tool-calling / structured tools | `investigation/tools.py` | live tool rounds + schemas | Done-verified | Live tools_round_0..3 with tool calls |
 
 | EVAL-1 | Automated evaluation harness | `eval/run_eval.py`, `eval/metrics.py` | `tests/unit/test_eval_metrics.py` + result JSONs | Done-verified | Resumable; `--scorable-only` + exclusion reasons |
 | EVAL-2 | ≥40 questions across required types | `eval/questions/eval_set.json` (57 active-gold) | type_counts + `--require-active` | Done-verified | Hotpot titles must be ACTIVE; synthetic for contra/unans |
-| EVAL-3 | Quantitative retrieval + answer metrics | `eval/metrics.py` + runners | `active_retrieval_v1` (n_scored=54), `active_answer_v1` | Done-verified | Transparent denominators; investigation budget reset |
+| EVAL-3 | Quantitative retrieval + answer metrics | `eval/metrics.py` + runners | `active_retrieval_v1` (n_scored=54), `active_investigation_v2` (partial) | Done-verified | Transparent denominators; 27/37 investigation rows provider-limited |
 | EVAL-4 | Compare ≥2 configurations | dense vs hybrid; baseline vs investigation | comparison JSONs | Done-verified | DOC-6 chunking also compared |
 | EVAL-5 | Error analysis | `docs/EVALUATION_REPORT.md` | report §§1,4,5 | Done-verified | Documents unresolved-gold root cause + budget bug |
 | APP-1 | Python backend | FastAPI routes + deps (`documents`/`query`/`stats`) | `test_api_*` + phase5.txt | Done-verified | Thin handlers → lifecycle/engine |
 | APP-2 | Functional UI (docs, ask, sources) | `app/ui/static/` | `test_api_ui_static` + phase5_ui_checklist | Done-verified | textContent-only; admin token in JS memory |
-| DATA-1 | Process ≥50,000 documents/records | HotpotQA corpus + lifecycle ingest | `verify_counts.py` / `dataset_counts.json` | Partial | Corpus JSONL 55k built; bulk ingest in progress (batched); claim 50k only when measured ACTIVE≥50k |
+| DATA-1 | Process ≥50,000 documents/records | HotpotQA corpus + lifecycle ingest | `verify_counts.py` / `dataset_counts.json` | Partial | 55k corpus built; ACTIVE climbing after FAILED repair (~5k+ measured); claim 50k only when measured |
 | DATA-2 | Cross-document retrieval; identifiable sources | `hotpotqa:<title>` external_key + citations | pilot/bulk + Phase 4 citations | Partial | Sources keyed; full-corpus retrieval eval is Phase 7 |
 | DATA-3 | Incomplete and contradictory information | `data/manifests/synthetic_truth.json` | synthetic generator | Done-verified | Planted contradictions, incompleteness, injection samples |
 | DATA-4 | Reproducible evaluation / subset justification | `docs/DATASET.md` + manifests | manifests sha256/seed | Done-verified | Seed 42; subset/scale justified in DATASET.md + storage estimate |
@@ -44,7 +44,7 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | TECH-2 | Automated tests; DB/API integration | `tests/` | local pytest 119 passed | Partial | Phase 5 API/UI covered; Render E2E for new routes pending |
 | TECH-3 | Secure env config; technical docs | config + docs | TBD | Partial | Phase 0–1 docs started |
 | TECH-4 | Performance and LLM cost understanding | PERFORMANCE_AND_COST | measured | Partial | Embed RSS/512m bench recorded; LLM cost TBD |
-| SUB-1 | GitHub repo with history | git | `5c4d02c` on origin/main | Partial | History started; more phase commits needed |
+| SUB-1 | GitHub repo with history | git | `origin/main` + tag `submission-2026-10-29` | Partial | Early tag preserved; continuation commits on main |
 | SUB-2 | Live demo link | README | `phase1_deploy.txt` | Done-verified | https://ai-investigation-engine-scyz.onrender.com |
 | SUB-3 | README | README.md | review | Done-verified | Describes implemented system + honesty rules |
 | SUB-4 | Evaluation report | `docs/EVALUATION_REPORT.md` | evidence paths | Done-verified | Preliminary metrics; owner should re-read |

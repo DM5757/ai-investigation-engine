@@ -15,6 +15,8 @@ class ToolCall:
     id: str
     name: str
     arguments: dict[str, Any]
+    # Provider-specific extras (e.g. Gemini thought_signature) required on round-trip.
+    provider_extra: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass

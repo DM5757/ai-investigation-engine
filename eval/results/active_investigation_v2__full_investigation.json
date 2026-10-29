@@ -4,65 +4,68 @@
     "pipeline": "investigation",
     "retrieval_mode": "hybrid_rrf",
     "k": 8,
-    "n_questions_total": 7,
-    "n_questions": 7,
-    "n_scored_retrieval": 5,
-    "n_scored_answer": 7,
+    "n_questions_total": 37,
+    "n_questions": 37,
+    "n_scored_retrieval": 34,
+    "n_scored_answer": 36,
     "n_excluded": 0,
     "exclusion_reasons": {},
     "by_type_total": {
-      "factual": 1,
-      "multi_doc": 1,
+      "factual": 12,
+      "multi_doc": 11,
       "contradiction": 2,
       "unanswerable": 2,
-      "multi_step": 1
+      "multi_step": 1,
+      "multi_hop": 9
     },
     "by_type_scored_retrieval": {
-      "factual": 1,
-      "multi_doc": 1,
+      "factual": 12,
+      "multi_doc": 11,
       "contradiction": 2,
-      "multi_step": 1
+      "multi_step": 1,
+      "multi_hop": 8
     },
     "by_type_scored_answer": {
-      "factual": 1,
-      "multi_doc": 1,
+      "factual": 12,
+      "multi_doc": 11,
       "contradiction": 2,
       "unanswerable": 2,
-      "multi_step": 1
+      "multi_step": 1,
+      "multi_hop": 8
     },
-    "n_errors": 0,
-    "corpus_active_documents": 4022,
+    "n_errors": 1,
+    "corpus_active_documents": 0,
     "retrieval": {
-      "n_scored": 5,
-      "n": 5,
+      "n_scored": 34,
+      "n": 34,
       "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
-      "recall_at_k": 0.8,
-      "mrr": 0.8,
-      "all_gold_at_k": 0.6,
-      "multi_doc_coverage": 0.8,
-      "mean_latency_s": 86.49248856001068
+      "recall_at_k": 0.19117647058823528,
+      "mrr": 0.20588235294117646,
+      "all_gold_at_k": 0.14705882352941177,
+      "multi_doc_coverage": 0.19117647058823528,
+      "mean_latency_s": 36.021802973546606
     },
     "answer": {
-      "n_scored": 7,
-      "n": 7,
+      "n_scored": 36,
+      "n": 36,
       "exact_match": 0.0,
-      "token_f1": 0.06262626262626263,
-      "citation_f1": 0.5578231292517007,
+      "token_f1": 0.016802148468815135,
+      "citation_f1": 0.13013529680196345,
       "correct_abstention_rate": 0.0,
       "n_unanswerable_scored": 2,
       "contradiction_detection_rate": 0.0,
       "n_contradiction_scored": 2,
-      "mean_latency_s": 95.39125111429686,
-      "mean_llm_calls": 1.4285714285714286,
-      "mean_tokens": 990.2857142857143,
+      "mean_latency_s": 40.55604489168359,
+      "mean_llm_calls": 1.1388888888888888,
+      "mean_tokens": 624.0,
       "status_counts": {
-        "answered": 3,
+        "answered": 6,
         "partial": 3,
-        "llm_unavailable": 1
+        "llm_unavailable": 27
       }
     },
     "partial_run": true,
-    "note": "In-progress / rate-limited free-tier LLM run; not full test split"
+    "note": "Stopped/finalized during free-tier llm_unavailable streak; transparent denominators"
   },
   "results": [
     {
@@ -84,7 +87,7 @@
       },
       "gold_resolved": true,
       "status": "answered",
-      "answer_text": "The ALPHA‑OUTAGE‑0810 marker is described as appearing “here” in the source document【S1】.",
+      "answer_text": "The ALPHA\u2011OUTAGE\u20110810 marker is described as appearing \u201chere\u201d in the source document\u3010S1\u3011.",
       "citations": [
         {
           "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
@@ -152,7 +155,7 @@
       },
       "gold_resolved": true,
       "status": "answered",
-      "answer_text": "The March outage was a six‑hour failure of **PaymentService** that occurred after a deployment to the **auth‑gateway** component. The incident report links the disruption to the auth‑gateway change, and the status update shows PaymentService recovering [S1][S2][S11].",
+      "answer_text": "The March outage was a six\u2011hour failure of **PaymentService** that occurred after a deployment to the **auth\u2011gateway** component.\u202fThe incident report links the disruption to the auth\u2011gateway change, and the status update shows PaymentService recovering\u202f[S1][S2][S11].",
       "citations": [
         {
           "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
@@ -277,7 +280,7 @@
       },
       "gold_resolved": true,
       "status": "answered",
-      "answer_text": "The documents give two different timestamps for the auth‑gateway deployment on 2024‑03‑12. One source records a deployment of auth‑gateway 2.4.1 at 14:00 UTC [S1], while an incident report and timeline state that the auth‑gateway was deployed at 08:10 UTC, after which the payment‑service outage began [S3][S6]. These two times conflict with each other.",
+      "answer_text": "The documents give two different timestamps for the auth\u2011gateway deployment on\u202f2024\u201103\u201112.\u202fOne source records a deployment of auth\u2011gateway\u202f2.4.1 at\u202f14:00\u202fUTC\u202f[S1], while an incident report and timeline state that the auth\u2011gateway was deployed at\u202f08:10\u202fUTC, after which the payment\u2011service outage began\u202f[S3][S6].\u202fThese two times conflict with each other.",
       "citations": [
         {
           "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
@@ -369,7 +372,7 @@
       },
       "gold_resolved": true,
       "status": "partial",
-      "answer_text": "payment statement: # Incident Report — Payment Outage March\n\n## Summary\n\nPaymentService timed out for six hours on 2024-03-12 after the **auth-gateway** deploy at 08:10 UTC. [S1]. root statement: ## Root cause (ops claim)\n\nA misconfigured JWT TTL on AuthGateway caused cascading retries into PaymentService. [S2]. payment statement: PaymentService was not changed in this release. [S3]. outage statement: Release notes claim the outage was caused by a Neon connection pool exhaustion , not JWT TTL. [S4]. payment statement: Dependencies include PaymentService and AuthGateway. [S5]. payment statement: On failure, page the payments on-call and check Neon pool metrics. [S6]. outage statement: Gold span marker ALPHA-OUTAGE-0810 appears here. [S7]. payment statement: Exec Summary: March payment disruption linked to auth-gateway change; duration six hours. [S8]. root statement: Roots is the sixth studio album by Brazilian heavy metal band Sepultura. [S9]. root statement: (After leaving the band, Max Cavalera would continue to pursue the nu metal and \"world\" stylings of \"Roots\" with his solo project Soulfly.) Since its release, \"Roots\" has sold over 2 million copies wo [S10]. outage statement: The PlayStation 3 version was delayed because of the PlayStation Network outage then later released on June 14, 2011. [S11].",
+      "answer_text": "payment statement: # Incident Report \u2014 Payment Outage March\n\n## Summary\n\nPaymentService timed out for six hours on 2024-03-12 after the **auth-gateway** deploy at 08:10 UTC. [S1]. root statement: ## Root cause (ops claim)\n\nA misconfigured JWT TTL on AuthGateway caused cascading retries into PaymentService. [S2]. payment statement: PaymentService was not changed in this release. [S3]. outage statement: Release notes claim the outage was caused by a Neon connection pool exhaustion , not JWT TTL. [S4]. payment statement: Dependencies include PaymentService and AuthGateway. [S5]. payment statement: On failure, page the payments on-call and check Neon pool metrics. [S6]. outage statement: Gold span marker ALPHA-OUTAGE-0810 appears here. [S7]. payment statement: Exec Summary: March payment disruption linked to auth-gateway change; duration six hours. [S8]. root statement: Roots is the sixth studio album by Brazilian heavy metal band Sepultura. [S9]. root statement: (After leaving the band, Max Cavalera would continue to pursue the nu metal and \"world\" stylings of \"Roots\" with his solo project Soulfly.) Since its release, \"Roots\" has sold over 2 million copies wo [S10]. outage statement: The PlayStation 3 version was delayed because of the PlayStation Network outage then later released on June 14, 2011. [S11].",
       "citations": [
         {
           "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
@@ -481,7 +484,7 @@
       },
       "gold_resolved": true,
       "status": "partial",
-      "answer_text": "auth-gateway statement: Rollback of auth-gateway initiated. [S1]. auth-gateway statement: Exec Summary: March payment disruption linked to auth-gateway change; duration six hours. [S2]. auth-gateway statement: Change Log March\n\nDeployed auth-gateway 2.4.1 at 14:00 UTC on 2024-03-12. [S3]. auth-gateway statement: # Incident Report — Payment Outage March\n\n## Summary\n\nPaymentService timed out for six hours on 2024-03-12 after the **auth-gateway** deploy at 08:10 UTC. [S4]. approved statement: Postmortem Draft — March Payments\n\nDraft only — not approved. [S5]. approved statement: The USA PATRIOT Act, though approved by large majorities in the U.S. [S6]. approved statement: On September 9, 2009 the FTC approved a consent decree with SHMC requiring full disclosure of its activities and destruction of previously obtained information. [S7]. approved statement: Specifically, the Department of Interior approved “wind energy areas” off the coast where projects can move through the regulatory approval process more quickly. [S8]. approved statement: In 2013, the system was approved by Canada for the same uses. [S9].",
+      "answer_text": "auth-gateway statement: Rollback of auth-gateway initiated. [S1]. auth-gateway statement: Exec Summary: March payment disruption linked to auth-gateway change; duration six hours. [S2]. auth-gateway statement: Change Log March\n\nDeployed auth-gateway 2.4.1 at 14:00 UTC on 2024-03-12. [S3]. auth-gateway statement: # Incident Report \u2014 Payment Outage March\n\n## Summary\n\nPaymentService timed out for six hours on 2024-03-12 after the **auth-gateway** deploy at 08:10 UTC. [S4]. approved statement: Postmortem Draft \u2014 March Payments\n\nDraft only \u2014 not approved. [S5]. approved statement: The USA PATRIOT Act, though approved by large majorities in the U.S. [S6]. approved statement: On September 9, 2009 the FTC approved a consent decree with SHMC requiring full disclosure of its activities and destruction of previously obtained information. [S7]. approved statement: Specifically, the Department of Interior approved \u201cwind energy areas\u201d off the coast where projects can move through the regulatory approval process more quickly. [S8]. approved statement: In 2013, the system was approved by Canada for the same uses. [S9].",
       "citations": [
         {
           "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
@@ -680,7 +683,1798 @@
           "f1": 0.5
         }
       }
+    },
+    {
+      "question_id": "syn_exec_summary",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884"
+      ],
+      "gold_doc_titles": [
+        "exec_summary"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "summary statement: Exec Summary: March payment disruption linked to auth-gateway change; duration six hours. [S1]. summary statement: # Incident Report \u2014 Payment Outage March\n\n## Summary\n\nPaymentService timed out for six hours on 2024-03-12 after the **auth-gateway** deploy at 08:10 UTC. [S2]. summary statement: The lyrics of the song focus on the life of the characters in the movie, acting as a sort of plot summary for the film. [S3]. March statement: Change Log March\n\nDeployed auth-gateway 2.4.1 at 14:00 UTC on 2024-03-12. [S4]. outage statement: Release notes claim the outage was caused by a Neon connection pool exhaustion , not JWT TTL. [S5]. March statement: Postmortem Draft \u2014 March Payments\n\nDraft only \u2014 not approved. [S6]. impact statement: Customer impact: checkout failures across EU region. [S7]. impact statement: ## Impact\n\nCard authorizations failed; SettlementBatch lagged by 4 hours. [S8]. outage statement: Gold span marker ALPHA-OUTAGE-0810 appears here. [S9]. executive statement: It grants nationally recognized certification and fellowship designations to the most accomplished medical practice executives and leaders in the profession. [S10]. March statement: May is a Memphis, Tennessee native, former CEO of FedEx Office, and chairman of the March of Dimes' board of trustees. [S11]. March statement: You Fell Victim (Russian: \"\u0412\u044b \u0436\u0435\u0440\u0442\u0432\u043e\u044e \u043f\u0430\u043b\u0438\"; \"Vy zhertvoiu pali\"), or You Fell Victim to a Fateful Struggle, is a Russian Marxist and revolutionary funeral march. [S12]. executive statement: since April 30, 2005, and its unit chief executive officer since March 2005. [S13]. executive statement: He served as the chief executive of HS BC North America Holdings Inc., of HSBC Finance Corp., from March 2005 to February 15, 2007. [S14]. executive statement: He served as an executive chairman of HSBC Financial Corporation Limited since April 2005 and served as its chief executive officer from April 2005 to February 15, 2007. [S15].",
+      "citations": [
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        },
+        {
+          "doc_id": "869249f0-f00e-4572-aacd-0748535ac58d",
+          "chunk_id": "350485e8-f77d-4f65-a6e2-155113707f21",
+          "label": "S3"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S4"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S5"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S6"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S7"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "86dd9307-6923-4909-bd0a-3177d9920abc",
+          "label": "S8"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S9"
+        },
+        {
+          "doc_id": "8baca7d3-a621-4153-8fd4-5701e1016dec",
+          "chunk_id": "9d1917ae-c51a-4000-8a35-e9431b2ca79c",
+          "label": "S10"
+        },
+        {
+          "doc_id": "f42ab4fb-d376-445e-b077-ceaef3a3a68b",
+          "chunk_id": "d2c97f23-87dc-4220-a4ef-3e3f81b629cb",
+          "label": "S11"
+        },
+        {
+          "doc_id": "a42c0f1a-6eaf-448c-ba55-244caa2ea616",
+          "chunk_id": "c1654a1c-03d6-4670-a496-2f706c1c4e7c",
+          "label": "S12"
+        },
+        {
+          "doc_id": "4ac166e2-0a4d-4373-b77e-8b2f01a1e846",
+          "chunk_id": "f4ac59af-962a-4709-8a61-095eebe21b86",
+          "label": "S13"
+        },
+        {
+          "doc_id": "4ac166e2-0a4d-4373-b77e-8b2f01a1e846",
+          "chunk_id": "f4ac59af-962a-4709-8a61-095eebe21b86",
+          "label": "S14"
+        },
+        {
+          "doc_id": "4ac166e2-0a4d-4373-b77e-8b2f01a1e846",
+          "chunk_id": "f4ac59af-962a-4709-8a61-095eebe21b86",
+          "label": "S15"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 131.56369189999532,
+      "llm_calls": 1,
+      "tokens": 546,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "tools_round_4",
+        "tools_round_5",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.006493506493506494,
+        "citation": {
+          "precision": 0.1,
+          "recall": 1.0,
+          "f1": 0.18181818181818182
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0033",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+        "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63"
+      ],
+      "gold_doc_titles": [
+        "Taglierini",
+        "Capellini"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Taglierini (or\u202fTagliolini) is a very thin ribbon\u2011type pasta that, like spaghetti, is **rod\u2011shaped and formed as long strands**\u202f[S5][S1].",
+      "citations": [
+        {
+          "doc_id": "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+          "chunk_id": "fee1db98-909a-4d63-8635-d6db18653e46",
+          "label": "S1"
+        },
+        {
+          "doc_id": "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+          "chunk_id": "fee1db98-909a-4d63-8635-d6db18653e46",
+          "label": "S2"
+        },
+        {
+          "doc_id": "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+          "chunk_id": "fee1db98-909a-4d63-8635-d6db18653e46",
+          "label": "S3"
+        },
+        {
+          "doc_id": "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63",
+          "chunk_id": "1335ccce-7ce8-44a5-a150-f4d58a56012a",
+          "label": "S4"
+        },
+        {
+          "doc_id": "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63",
+          "chunk_id": "1335ccce-7ce8-44a5-a150-f4d58a56012a",
+          "label": "S5"
+        },
+        {
+          "doc_id": "443dce99-d745-4b94-af82-64c67a7d16b5",
+          "chunk_id": "bc35bdb3-b1ac-486d-bee8-90c1cd9ed591",
+          "label": "S6"
+        },
+        {
+          "doc_id": "7ee028ca-58d9-45e6-a0d4-6436fcbfa50b",
+          "chunk_id": "55caff4c-9ae2-4ab4-b0cd-c724afb209b1",
+          "label": "S7"
+        },
+        {
+          "doc_id": "450ea64e-b735-4a9a-89f7-297ff4886f24",
+          "chunk_id": "9d0059a2-94f3-4118-a42a-181b7493e376",
+          "label": "S8"
+        },
+        {
+          "doc_id": "450ea64e-b735-4a9a-89f7-297ff4886f24",
+          "chunk_id": "9d0059a2-94f3-4118-a42a-181b7493e376",
+          "label": "S9"
+        },
+        {
+          "doc_id": "450ea64e-b735-4a9a-89f7-297ff4886f24",
+          "chunk_id": "9d0059a2-94f3-4118-a42a-181b7493e376",
+          "label": "S10"
+        },
+        {
+          "doc_id": "05e7bbe3-cb49-42ec-9df1-8c18a0349603",
+          "chunk_id": "87c6417c-1a3b-4fb4-be58-7b4a43533dfe",
+          "label": "S11"
+        },
+        {
+          "doc_id": "7782ead2-e255-4dc9-9796-eddc465ce0ca",
+          "chunk_id": "0f6605ec-f149-4279-a37f-c4ac2a3fd6e9",
+          "label": "S12"
+        },
+        {
+          "doc_id": "7782ead2-e255-4dc9-9796-eddc465ce0ca",
+          "chunk_id": "0f6605ec-f149-4279-a37f-c4ac2a3fd6e9",
+          "label": "S13"
+        },
+        {
+          "doc_id": "7782ead2-e255-4dc9-9796-eddc465ce0ca",
+          "chunk_id": "0f6605ec-f149-4279-a37f-c4ac2a3fd6e9",
+          "label": "S14"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 61.75240370002575,
+      "llm_calls": 2,
+      "tokens": 2169,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.16,
+        "citation": {
+          "precision": 0.2857142857142857,
+          "recall": 1.0,
+          "f1": 0.4444444444444445
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0026",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "82cc1274-c5ea-4827-8b2e-6a4ab9c72dac",
+        "1e424697-5008-4954-be9f-3281598dc546"
+      ],
+      "gold_doc_titles": [
+        "Ralph Faudree",
+        "Provost (education)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Based on the provided claims, there is insufficient information to answer the question about what United Kingdom and Australian position Ralph Faudree served as the American equivalent to. The available sources only state that Ralph Faudree was a mathematician, professor of mathematics, and former provost of the University of Memphis [S1].",
+      "citations": [
+        {
+          "doc_id": "82cc1274-c5ea-4827-8b2e-6a4ab9c72dac",
+          "chunk_id": "ff3677fd-ed31-4e28-ae55-6e13e7717002",
+          "label": "S1"
+        },
+        {
+          "doc_id": "4eadd743-8148-4758-b29d-1ab381370c42",
+          "chunk_id": "8e319d9b-a5a7-4da7-8249-ca8b8c5e378b",
+          "label": "S2"
+        },
+        {
+          "doc_id": "4eadd743-8148-4758-b29d-1ab381370c42",
+          "chunk_id": "8e319d9b-a5a7-4da7-8249-ca8b8c5e378b",
+          "label": "S3"
+        },
+        {
+          "doc_id": "af7908be-0285-47fe-b098-1ed19bb0a27f",
+          "chunk_id": "e54e0923-d44d-4034-a56a-0386847e6079",
+          "label": "S4"
+        },
+        {
+          "doc_id": "af7908be-0285-47fe-b098-1ed19bb0a27f",
+          "chunk_id": "e54e0923-d44d-4034-a56a-0386847e6079",
+          "label": "S5"
+        },
+        {
+          "doc_id": "764048d1-9a13-44b0-a43f-0a5fe83d68f9",
+          "chunk_id": "91491746-4a35-47a0-ada9-df36e3618d4a",
+          "label": "S6"
+        },
+        {
+          "doc_id": "764048d1-9a13-44b0-a43f-0a5fe83d68f9",
+          "chunk_id": "91491746-4a35-47a0-ada9-df36e3618d4a",
+          "label": "S7"
+        },
+        {
+          "doc_id": "22e94c05-dc9f-46d3-a744-19dfa10fefb7",
+          "chunk_id": "60a289e3-bfb4-4987-ac69-a1b8f9e158f0",
+          "label": "S8"
+        },
+        {
+          "doc_id": "22e94c05-dc9f-46d3-a744-19dfa10fefb7",
+          "chunk_id": "60a289e3-bfb4-4987-ac69-a1b8f9e158f0",
+          "label": "S9"
+        },
+        {
+          "doc_id": "53266b62-d45b-40bc-bbbd-708bbe464260",
+          "chunk_id": "edcf11ac-8aa0-483f-9330-f09d9be1bb6a",
+          "label": "S10"
+        },
+        {
+          "doc_id": "53266b62-d45b-40bc-bbbd-708bbe464260",
+          "chunk_id": "edcf11ac-8aa0-483f-9330-f09d9be1bb6a",
+          "label": "S11"
+        },
+        {
+          "doc_id": "7d9f5d11-c059-4a83-a038-11396c13b0a2",
+          "chunk_id": "c0f9fffb-6456-444f-a8f5-7ea3c4f8ae5a",
+          "label": "S12"
+        },
+        {
+          "doc_id": "6fdb964b-4092-4fff-abfb-013b9b01bce4",
+          "chunk_id": "5dbdf697-55b8-4b89-bc2f-e6450043b17c",
+          "label": "S13"
+        },
+        {
+          "doc_id": "3dadeacd-1cbd-4eee-9210-4bff50a498c9",
+          "chunk_id": "6b283125-8fc0-4b00-a4c3-cc023b1d99dc",
+          "label": "S14"
+        },
+        {
+          "doc_id": "9f489a6c-decc-426b-b119-b9006dcbdeda",
+          "chunk_id": "8730319b-0c40-4657-b494-6af2ad14a054",
+          "label": "S15"
+        },
+        {
+          "doc_id": "af10ad21-e97e-4d0a-bfcc-339bcb7a45a4",
+          "chunk_id": "4f48bf3e-ae86-4c37-b666-617bcdc1b03c",
+          "label": "S16"
+        },
+        {
+          "doc_id": "af10ad21-e97e-4d0a-bfcc-339bcb7a45a4",
+          "chunk_id": "4f48bf3e-ae86-4c37-b666-617bcdc1b03c",
+          "label": "S17"
+        },
+        {
+          "doc_id": "af10ad21-e97e-4d0a-bfcc-339bcb7a45a4",
+          "chunk_id": "4f48bf3e-ae86-4c37-b666-617bcdc1b03c",
+          "label": "S18"
+        },
+        {
+          "doc_id": "af10ad21-e97e-4d0a-bfcc-339bcb7a45a4",
+          "chunk_id": "4f48bf3e-ae86-4c37-b666-617bcdc1b03c",
+          "label": "S19"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 72.82747829996515,
+      "llm_calls": 2,
+      "tokens": 3250,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.09090909090909091,
+          "recall": 0.5,
+          "f1": 0.15384615384615385
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0022",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "1d09acbc-13a8-47c5-8bcf-ae1fd8624f0e",
+        "b8c23ead-cbc4-41cd-8ec7-a72c87f14413"
+      ],
+      "gold_doc_titles": [
+        "Pennsylvania Route 145",
+        "Jersey barrier"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 17.28272380004637,
+      "llm_calls": 1,
+      "tokens": 521,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0016",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "04b1e19d-fc56-4ec7-89e5-88801ece1eca",
+        "1b5f6d96-9744-413a-aa22-f4e4a5afae8b"
+      ],
+      "gold_doc_titles": [
+        "2003 SANFL Grand Final",
+        "West Adelaide Football Club"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 14.894288999959826,
+      "llm_calls": 1,
+      "tokens": 626,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0015",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "3f7b5862-a843-48ae-8cf7-e53cd1d1f72c",
+        "954c9fe4-cae8-4dbb-a3e1-743cd7738632"
+      ],
+      "gold_doc_titles": [
+        "66th Academy Awards",
+        "Laura Dern"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 12.661128200008534,
+      "llm_calls": 1,
+      "tokens": 280,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0032",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "557f5585-f6d2-4df9-b119-18589058d266",
+        "7ba67de5-6ad2-4193-bfbe-3665a15ae47d"
+      ],
+      "gold_doc_titles": [
+        "Chris McKay",
+        "Robot Chicken"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 12.564294000039808,
+      "llm_calls": 1,
+      "tokens": 260,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0005",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "e5593917-3f08-4612-a8b3-a3a5183e8d01",
+        "403e0b45-90f8-4a0c-98ac-266a4c4c533f"
+      ],
+      "gold_doc_titles": [
+        "Karen Dotrice",
+        "Mary Poppins"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 10.524712900049053,
+      "llm_calls": 1,
+      "tokens": 322,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0011",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "5b6da0bd-3766-4ee4-b7dd-291dd4384d14",
+        "cdf1db6f-f695-45b9-a693-ec51a969a9c0"
+      ],
+      "gold_doc_titles": [
+        "1994 British Army Lynx shootdown",
+        "Barrack buster"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 92.64125350001268,
+      "llm_calls": 1,
+      "tokens": 448,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0031",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "3da0f193-b7c8-4d0a-ac7f-d57de81d2bb4",
+        "e4230bea-f920-4cbf-86e2-809afec39e06"
+      ],
+      "gold_doc_titles": [
+        "Walter Leslie Duncan",
+        "Adelaide Steamship Company"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 11.141398300067522,
+      "llm_calls": 1,
+      "tokens": 228,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0020",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "b872bda8-2f7a-46f5-a148-7326b28281f7",
+        "b8e35092-3a6f-4fa9-b7c5-8a52c55b28ae"
+      ],
+      "gold_doc_titles": [
+        "1998\u201399 Los Angeles Lakers season",
+        "Dennis Rodman"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 10.419373900047503,
+      "llm_calls": 1,
+      "tokens": 274,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0030",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "019020b7-347e-4600-8ef5-3c688ca85beb",
+        "8443d53f-6cee-4948-b7f2-d749bcb411a0"
+      ],
+      "gold_doc_titles": [
+        "Massachusetts Institute of Technology",
+        "Johns Hopkins University"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 10.03583810001146,
+      "llm_calls": 1,
+      "tokens": 252,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0008",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "77b30478-7799-435a-bd3b-9d1dbdad8f57",
+        "0a064438-0d31-4673-8ca7-acf5af07edb1"
+      ],
+      "gold_doc_titles": [
+        "Poor Old Lu",
+        "Shudder to Think"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 9.768662700080313,
+      "llm_calls": 1,
+      "tokens": 301,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0014",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+        "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63"
+      ],
+      "gold_doc_titles": [
+        "Taglierini",
+        "Capellini"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 10.919762199977413,
+      "llm_calls": 1,
+      "tokens": 268,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0027",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "06d4559c-a7d4-4ad0-81d0-7e5840a7dd63",
+        "954c9fe4-cae8-4dbb-a3e1-743cd7738632"
+      ],
+      "gold_doc_titles": [
+        "Diane Ladd",
+        "Laura Dern"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 9.63179710006807,
+      "llm_calls": 1,
+      "tokens": 266,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0021",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "b333ad7b-fbb6-410c-9348-a99b02543685",
+        "c6e92f49-4906-4882-b5ad-bcc79b124d87"
+      ],
+      "gold_doc_titles": [
+        "2006 KNVB Cup Final",
+        "Klaas-Jan Huntelaar"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 10.106239499989897,
+      "llm_calls": 1,
+      "tokens": 352,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0039",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ad56beae-87b4-4d0f-b0c5-bd266d1e8f6a",
+        "f8365a63-7bdb-4cfe-a0e4-a79ef7323a63"
+      ],
+      "gold_doc_titles": [
+        "Taglierini",
+        "Capellini"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 10.591298999963328,
+      "llm_calls": 1,
+      "tokens": 269,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0017",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "fa046f5e-57aa-423b-b6fc-b057cec5166d",
+        "34c68735-04c1-4a1c-8bc8-8ea80211241a"
+      ],
+      "gold_doc_titles": [
+        "Enoka Lucas",
+        "Oregon Ducks football"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 11.0161805000389,
+      "llm_calls": 1,
+      "tokens": 217,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0000",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "86a437ad-0677-46cb-80d3-e9a57b73d806",
+        "307228da-0eb8-4923-b7cf-0bb40e5033fe"
+      ],
+      "gold_doc_titles": [
+        "Ballarat Bitter",
+        "Bitter (beer)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 89.17995300004259,
+      "llm_calls": 1,
+      "tokens": 1999,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0006",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "a5619b9b-e155-45ba-ac69-40f21660161a",
+        "f40ecf4d-d283-47ae-b0b5-c2553c746743"
+      ],
+      "gold_doc_titles": [
+        "Formula One 2001 (video game)",
+        "PlayStation 2"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 15.540954599971883,
+      "llm_calls": 1,
+      "tokens": 274,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0002",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "4e71998f-300b-4105-a830-93652c4ad104",
+        "7c2a6107-b4a8-43d8-bb37-dcfc4d78a869"
+      ],
+      "gold_doc_titles": [
+        "William Ulmer Brewery",
+        "Bushwick, Brooklyn"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 25.299673799891025,
+      "llm_calls": 1,
+      "tokens": 267,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0010",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "e4db1636-3f52-4a4e-9219-c20cb621fc84",
+        "6b7858ab-259d-44c0-a5c1-61d92e1bd116"
+      ],
+      "gold_doc_titles": [
+        "Sly Stone",
+        "Mary Ramsey"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 25.80033530003857,
+      "llm_calls": 1,
+      "tokens": 311,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0041",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "64e62904-44bb-4f73-88e2-8587cf7175a5",
+        "06522883-bf5c-4dda-b61d-11620e57ab3b"
+      ],
+      "gold_doc_titles": [
+        "The Fatima Mansions",
+        "3OH!3"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 13.822776500019245,
+      "llm_calls": 1,
+      "tokens": 256,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0018",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "568486c6-6d8d-410b-b747-e302a18c1a94",
+        "21e78295-f5b9-4598-bba2-8e71def231d6"
+      ],
+      "gold_doc_titles": [
+        "Charlie Ross (state senator)",
+        "Gregg Harper"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 14.530793800018728,
+      "llm_calls": 1,
+      "tokens": 217,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_0042",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "2fb6107e-7981-4d85-85fd-c06b933a99bc",
+        "7b3fc12f-d2c7-41ab-8a61-7f2f4b99ac56"
+      ],
+      "gold_doc_titles": [
+        "Jessi Klein",
+        "Lucy, the Daughter of the Devil"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 13.21253780007828,
+      "llm_calls": 1,
+      "tokens": 236,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0004",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "f22e76ac-e6ee-49e4-9420-e03e090cc610",
+        "b96548a8-320a-4aad-aec0-37b06738f1e5"
+      ],
+      "gold_doc_titles": [
+        "Chanda Rubin",
+        "Maria Sharapova"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 14.040389000088908,
+      "llm_calls": 1,
+      "tokens": 249,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0012",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "2fb6107e-7981-4d85-85fd-c06b933a99bc",
+        "7b3fc12f-d2c7-41ab-8a61-7f2f4b99ac56"
+      ],
+      "gold_doc_titles": [
+        "Jessi Klein",
+        "Lucy, the Daughter of the Devil"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "error": "The read operation timed out"
+    },
+    {
+      "question_id": "hotpot_train_0037",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "db80c8c8-65a0-4ebc-88fa-a1692aa9595b",
+        "0e256ca6-0a12-46fb-b01d-e99665b7861c"
+      ],
+      "gold_doc_titles": [
+        "Herbert B\u00fcchs",
+        "Alfred Jodl"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 25.6340866999235,
+      "llm_calls": 1,
+      "tokens": 366,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0003",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "d17bee22-b7f1-4f76-9c20-f9edd640abf6",
+        "ac97011b-61b7-4cec-ade0-7fa0d3332a17"
+      ],
+      "gold_doc_titles": [
+        "Beitun, Xinjiang",
+        "Wafangdian"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 18.77059890003875,
+      "llm_calls": 1,
+      "tokens": 263,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0025",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "f91c1f92-b424-4297-95dc-c90d482c2e87",
+        "8e048f99-d9f9-436f-a809-81257633875b"
+      ],
+      "gold_doc_titles": [
+        "Goldfinger (band)",
+        "The Fray"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 16.10423230007291,
+      "llm_calls": 1,
+      "tokens": 245,
+      "abstention_reason": "LLM unavailable; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "retrieve_degraded",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
     }
   ],
-  "created_at": "2026-10-29T05:58:10.687113+00:00"
+  "finalized_at": "2026-10-29T06:11:25.398818+00:00",
+  "partial": true
 }

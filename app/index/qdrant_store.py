@@ -2,13 +2,22 @@
 
 from __future__ import annotations
 
+import logging
 import math
+import time
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from typing import Any, Protocol, runtime_checkable
 
 DENSE_VECTOR_NAME = "dense"
 SPARSE_VECTOR_NAME = "sparse"
+log = logging.getLogger(__name__)
+
+# Free-tier Qdrant Cloud often times out on large upserts; keep writes small + retried.
+_UPSERT_MAX_ATTEMPTS = 5
+_UPSERT_BASE_DELAY_S = 0.75
+_UPSERT_MAX_DELAY_S = 20.0
+_UPSERT_CHUNK_POINTS = 24
 
 
 def collection_name(strategy: str, embedding_short: str = "bge-small") -> str:
@@ -389,11 +398,8 @@ class QdrantChunkStore:
 
     def _ensure_payload_indexes(self) -> None:
         """Idempotent payload indexes used by filters / lifecycle."""
-        import logging
-
         from qdrant_client.http import models as qmodels
 
-        log = logging.getLogger(__name__)
         for field_name, schema in (
             ("doc_id", qmodels.PayloadSchemaType.KEYWORD),
             ("version", qmodels.PayloadSchemaType.INTEGER),
@@ -439,7 +445,61 @@ class QdrantChunkStore:
                     payload=point.to_payload(),
                 )
             )
-        self.client.upsert(collection_name=self.collection, points=qpoints)
+        for start in range(0, len(qpoints), _UPSERT_CHUNK_POINTS):
+            chunk = qpoints[start : start + _UPSERT_CHUNK_POINTS]
+            self._upsert_qpoints_with_retry(chunk)
+
+    def _upsert_qpoints_with_retry(self, qpoints: list[Any]) -> None:
+        """Idempotent upsert with backoff; on persistent timeout, split once."""
+        last_exc: Exception | None = None
+        for attempt in range(_UPSERT_MAX_ATTEMPTS):
+            try:
+                self.client.upsert(collection_name=self.collection, points=qpoints)
+                return
+            except Exception as exc:  # noqa: BLE001 — classify timeout-ish remote errors
+                last_exc = exc
+                msg = str(exc).lower()
+                retryable = (
+                    "timed out" in msg
+                    or "timeout" in msg
+                    or "temporarily" in msg
+                    or "unavailable" in msg
+                    or "429" in msg
+                    or "503" in msg
+                    or "502" in msg
+                )
+                if not retryable or attempt + 1 >= _UPSERT_MAX_ATTEMPTS:
+                    break
+                delay = min(
+                    _UPSERT_BASE_DELAY_S * (2**attempt),
+                    _UPSERT_MAX_DELAY_S,
+                )
+                log.warning(
+                    "qdrant upsert retry attempt=%s points=%s delay=%.1fs err=%s",
+                    attempt + 1,
+                    len(qpoints),
+                    delay,
+                    str(exc)[:160],
+                )
+                time.sleep(delay)
+        assert last_exc is not None
+        # Last resort: binary-split only for transient write failures.
+        final_msg = str(last_exc).lower()
+        can_split = len(qpoints) > 1 and (
+            "timed out" in final_msg
+            or "timeout" in final_msg
+            or "temporarily" in final_msg
+            or "unavailable" in final_msg
+            or "429" in final_msg
+            or "503" in final_msg
+            or "502" in final_msg
+        )
+        if can_split:
+            mid = len(qpoints) // 2
+            self._upsert_qpoints_with_retry(qpoints[:mid])
+            self._upsert_qpoints_with_retry(qpoints[mid:])
+            return
+        raise last_exc
 
     def delete_by_doc_id(self, doc_id: str) -> None:
         from qdrant_client.http import models as qmodels

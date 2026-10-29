@@ -628,13 +628,13 @@ def _ingest_batch(
         for row in chunk_rows:
             all_texts.append(row.text)
 
+    points: list[ChunkPoint] = []
     try:
         vectors = lifecycle.embed_fn(all_texts) if all_texts else []
         if len(vectors) != len(all_texts):
             raise RuntimeError(
                 f"embed count mismatch: got {len(vectors)} for {len(all_texts)} texts"
             )
-        points: list[ChunkPoint] = []
         vec_i = 0
         for doc, version, _prep, chunk_rows in pending_rows:
             for row in chunk_rows:
@@ -672,19 +672,69 @@ def _ingest_batch(
         outcomes["created"] = outcomes.get("created", 0) + len(pending_rows)
     except Exception as exc:  # noqa: BLE001
         session.rollback()
-        for doc, _version, _prep, _rows in pending_rows:
-            try:
-                failed = lifecycle.docs.get(doc.id)
-                if failed is not None:
-                    lifecycle.docs.set_status(
-                        failed, DocumentStatus.FAILED, error_message=str(exc)[:500]
-                    )
-            except Exception:  # noqa: BLE001
-                pass
-        session.commit()
-        outcomes["failed"] = outcomes.get("failed", 0) + len(pending_rows)
+        # Prefer per-doc upsert recovery over marking the whole embed batch FAILED.
+        outcomes["batch_index_fallback"] = outcomes.get("batch_index_fallback", 0) + 1
         if len(errors) < 20:
             errors.append({"id": "batch_index", "error": str(exc)[:300]})
+        for doc, version, _prep, chunk_rows in pending_rows:
+            try:
+                doc_points = [p for p in points if p.doc_id == doc.id]
+                if not doc_points:
+                    texts = [r.text for r in chunk_rows]
+                    densies = lifecycle.embed_fn(texts) if texts else []
+                    if len(densies) != len(texts):
+                        raise RuntimeError("per-doc embed count mismatch")
+                    for row, dense in zip(chunk_rows, densies, strict=True):
+                        sparse_indices: list[int] = []
+                        sparse_values: list[float] = []
+                        if lifecycle.sparse_encoder is not None:
+                            sparse = lifecycle.sparse_encoder.encode_document(row.text)
+                            sparse_indices = sparse.indices
+                            sparse_values = sparse.values
+                        doc_points.append(
+                            ChunkPoint(
+                                point_id=row.qdrant_point_id,
+                                doc_id=doc.id,
+                                version=version,
+                                chunk_index=row.chunk_index,
+                                content_hash=row.content_hash,
+                                text=row.text,
+                                dense_vector=dense,
+                                sparse_indices=sparse_indices,
+                                sparse_values=sparse_values,
+                                payload_extra={
+                                    "title": doc.title,
+                                    "heading_path": row.heading_path,
+                                    "near_duplicate_of": doc.near_duplicate_of,
+                                },
+                            )
+                        )
+                store.upsert_chunks(doc_points)
+                lifecycle.docs.set_status(doc, DocumentStatus.ACTIVE, clear_error=True)
+                lifecycle.docs.set_active_version(doc, version)
+                session.commit()
+                outcomes["created"] = outcomes.get("created", 0) + 1
+            except Exception as inner:  # noqa: BLE001
+                session.rollback()
+                try:
+                    failed = lifecycle.docs.get(doc.id)
+                    if failed is not None:
+                        lifecycle.docs.set_status(
+                            failed,
+                            DocumentStatus.FAILED,
+                            error_message=str(inner)[:500],
+                        )
+                        session.commit()
+                except Exception:  # noqa: BLE001
+                    session.rollback()
+                outcomes["failed"] = outcomes.get("failed", 0) + 1
+                if len(errors) < 20:
+                    errors.append(
+                        {
+                            "id": str(doc.external_key or doc.id),
+                            "error": f"per_doc_index: {inner}"[:300],
+                        }
+                    )
 
 
 def _repair_incomplete_docs(

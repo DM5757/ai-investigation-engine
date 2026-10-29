@@ -58,11 +58,11 @@ uv run python scripts/build_corpus.py --target 55000
 uv run python scripts/generate_synthetic.py
 uv run python scripts/ingest_synthetic.py
 uv run python scripts/pilot_ingest.py
-uv run python scripts/bulk_ingest.py --max-docs 55000 --batch-size 64 --checkpoint-every 64
+uv run python scripts/bulk_ingest.py --max-docs 55000 --batch-size 16 --checkpoint-every 50
 uv run python scripts/verify_counts.py   # writes docs/evidence/dataset_counts.json
 ```
 
-Windows overnight resume: `scripts/watch_bulk_ingest.ps1` (single writer; file lock).
+Windows overnight resume: `scripts/watch_bulk_ingest.ps1` (single writer; file lock; default batch 16).
 
 **Honesty rule:** Do not claim ≥50,000 indexed documents unless `docs/evidence/dataset_counts.json` reports `meets_data1_50k: true`.
 
@@ -72,10 +72,11 @@ Windows overnight resume: `scripts/watch_bulk_ingest.ps1` (single writer; file l
 # Prefer Hotpot questions whose gold titles are already ACTIVE in Neon:
 uv run python scripts/build_eval_questions.py --require-active
 uv run python eval/run_eval.py --configs dense_only,hybrid_rrf --split all --retrieval-only --scorable-only
-uv run python eval/run_eval.py --configs baseline_rag,full_investigation --split test --scorable-only
+uv run python eval/run_eval.py --configs baseline_rag,full_investigation --split test --scorable-only \
+  --pause-s 2 --stop-after-llm-unavailable 3
 ```
 
-Always report **n_total / n_scored / exclusions** (do not hide unresolved golds).  
+Always report **n_total / n_scored / exclusions / provider skips** (do not hide unresolved golds or rate-limit skips).  
 Report: `docs/EVALUATION_REPORT.md` · Results: `eval/results/` · DOC-6: `eval/results/chunking_comparison.*`
 
 ## Deployment

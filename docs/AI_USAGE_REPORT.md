@@ -26,7 +26,7 @@ AI tools were used extensively during this assignment. This report discloses how
 
 ## What you should fill in (candidate)
 
-> Complete the following honestly before submission. Do not leave placeholder claims.
+> Complete the following honestly before the 18:00 deadline. Agents must **not** check these boxes for you.
 
 ### Independent verification I performed
 
@@ -36,6 +36,8 @@ AI tools were used extensively during this assignment. This report discloses how
 - [ ] I ran local tests / live smoke myself and recorded results
 - [ ] I verified the public Render demo with my own browser/API calls
 - [ ] I reviewed secrets handling (no keys in git; admin token for mutating APIs)
+- [ ] I confirmed Render deployed the latest `main` commit (dashboard SHA)
+- [ ] I re-read `docs/EVALUATION_REPORT.md` denominators (57-q active set; investigation provider skips)
 
 ### Changes I made independently (examples)
 
