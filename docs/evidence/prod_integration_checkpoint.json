@@ -1,0 +1,115 @@
+{
+  "timestamp": "2026-10-29T03:25:58.814213+00:00",
+  "phase": "full",
+  "base": "https://ai-investigation-engine-scyz.onrender.com",
+  "neon": {
+    "ok": true,
+    "database": "neondb",
+    "active_ish_documents": 0,
+    "dialect_prefix": "postgresql+psycopg"
+  },
+  "qdrant": {
+    "ok": true,
+    "collection": "chunks__structure_aware__bge_small",
+    "points_count": 0,
+    "dense_named_vector": true,
+    "dense_size": 384,
+    "sparse_named_vector": true,
+    "status": "green"
+  },
+  "embeddings": {
+    "ok": true,
+    "model": "BAAI/bge-small-en-v1.5",
+    "dims": 384,
+    "query_nonzero": true,
+    "query_differs_from_passage": true,
+    "sample_norm": 1.0
+  },
+  "api_e2e": {
+    "base": "https://ai-investigation-engine-scyz.onrender.com",
+    "steps": [
+      {
+        "step": "ready",
+        "status": 200
+      },
+      {
+        "step": "upload_unauthorized",
+        "status": 401,
+        "ok": true
+      },
+      {
+        "step": "upload",
+        "status": 200,
+        "outcome": "created",
+        "document_id": "efb25d4c-e513-493a-8f1e-062d1f6b7d0b",
+        "latency_ms": 25917.0
+      },
+      {
+        "step": "chunks",
+        "status": 200,
+        "n": 1
+      },
+      {
+        "step": "query",
+        "status": 200,
+        "answer_status": "answered",
+        "n_citations": 1,
+        "n_sources": 1,
+        "latency_ms": 31561.8,
+        "answer_preview": "The PaymentService timeouts were caused by the March\u202f12 deployment of the Auth\u2011gateway, which led to six hours of timeout issues. [S1]",
+        "citation_doc_ids": [
+          "efb25d4c-e513-493a-8f1e-062d1f6b7d0b"
+        ]
+      },
+      {
+        "step": "update",
+        "status": 200,
+        "outcome": "updated",
+        "active_version": null
+      },
+      {
+        "step": "query_after_update",
+        "status": 200,
+        "answer_status": "answered",
+        "mentions_eight": true,
+        "answer_preview": "The PaymentService timeouts lasted for **eight hours** after the auth\u2011gateway March\u202f12 deployment. [S1]"
+      },
+      {
+        "step": "delete",
+        "status": 0,
+        "skipped": true,
+        "note": "deferred until after Render restart persistence check"
+      },
+      {
+        "step": "rate_limit_probe",
+        "got_429": false
+      }
+    ],
+    "skip_delete": true,
+    "ready_ms": 1075.6,
+    "ready": {
+      "status": "ready",
+      "database": "ok",
+      "embedding_model_configured": "BAAI/bge-small-en-v1.5",
+      "embedding_enabled_at_startup": false,
+      "embedding_loaded": false,
+      "embedding_load_ms": null,
+      "embedder_impl": "not_loaded_yet",
+      "llm_groq_configured": true,
+      "llm_gemini_configured": true,
+      "llm_status": "configured",
+      "qdrant_configured": true,
+      "qdrant_status": "configured"
+    },
+    "metrics": {
+      "queries": 42,
+      "uploads": 1,
+      "errors": 0,
+      "llm_calls_today": 0,
+      "llm_daily_cap": null,
+      "extra": {}
+    },
+    "document_id": "efb25d4c-e513-493a-8f1e-062d1f6b7d0b",
+    "ok": true
+  }
+}
