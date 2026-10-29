@@ -1,4 +1,4 @@
-.PHONY: install test lint typecheck bench docker-build docker-run migrate
+.PHONY: install test test-live lint typecheck bench docker-build docker-run migrate
 
 install:
 	uv sync --all-groups
@@ -7,6 +7,9 @@ install:
 # (mypy.exe / pytest.exe). See docs/evidence/windows_security_tools.txt.
 test:
 	uv run python -m pytest -q
+
+test-live:
+	uv run python -m pytest tests/live -m live -q
 
 lint:
 	uv run ruff check app tests scripts

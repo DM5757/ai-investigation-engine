@@ -1,0 +1,12 @@
+{
+  "status": "llm_unavailable",
+  "answer": null,
+  "degraded": true,
+  "trace_stages": [
+    "guard",
+    "plan",
+    "retrieve_degraded",
+    "llm_unavailable"
+  ],
+  "usage_calls": 0
+}

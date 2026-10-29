@@ -32,6 +32,18 @@ Embeddings, custom BM25 sparse encoder, dense+sparse Qdrant retrieval, RRF/weigh
 - Verification: **ruff / mypy clean; 74 pytest passed, 0 skipped** (`docs/evidence/phase3.txt`)
 - Limitation: Qdrant Cloud remote URL not exercised this session (embedded `:memory:` ok)
 
-## Phase 4 — Next
+## Phase 4 — Partial (2026-10-29) — NOT complete
 
-LLM gateway + investigation / RAG (do not start until Phase 3 docs accepted).
+LLM gateway + hand-written investigation engine implemented; scripted unit/integration tests green.
+
+- Gateway: Groq primary → Gemini OpenAI-compatible fallback; retries/budget/JSON repair/`ScriptedLLM`
+- Engine stages: guard → plan → tools → claims → aggregate → contradictions → sufficiency → synthesize → verify
+- Verification: **ruff / mypy clean; 98 pytest passed, 1 skipped** (`docs/evidence/phase4.txt`)
+- Live LLM: **NOT run** (GROQ_API_KEY / GEMINI_API_KEY absent) — no `phase4_live_trace.json`
+- **HUMAN ACTION REQUIRED:** set free-tier keys locally, run `make test-live`, then mark Complete only after live evidence exists
+- Limits still open: Qdrant Cloud unverified; bm25_avgdl default; CRC32 collisions pending; retrieval eval pending
+- Phase 5 (API/UI) not started
+
+## Phase 5 — Next
+
+Ask API + static UI (do not start until Phase 4 live evidence accepted).

@@ -31,7 +31,31 @@ class Settings(BaseSettings):
     groq_api_key: SecretStr | None = Field(default=None, alias="GROQ_API_KEY")
     gemini_api_key: SecretStr | None = Field(default=None, alias="GEMINI_API_KEY")
     groq_model: str = Field(default="openai/gpt-oss-120b", alias="GROQ_MODEL")
+    groq_alt_model: str = Field(default="qwen/qwen3.8-27b", alias="GROQ_ALT_MODEL")
     gemini_model: str = Field(default="gemini-3.5-flash-lite", alias="GEMINI_MODEL")
+    groq_base_url: str = Field(
+        default="https://api.groq.com/openai/v1",
+        alias="GROQ_BASE_URL",
+    )
+    gemini_base_url: str = Field(
+        default="https://generativelanguage.googleapis.com/v1beta/openai/",
+        alias="GEMINI_BASE_URL",
+    )
+
+    # LLM / investigation (Phase 4)
+    llm_timeout_s: float = Field(default=30.0, alias="LLM_TIMEOUT_S")
+    llm_max_retries: int = Field(default=3, alias="LLM_MAX_RETRIES")
+    llm_retry_base_s: float = Field(default=0.5, alias="LLM_RETRY_BASE_S")
+    llm_retry_max_s: float = Field(default=8.0, alias="LLM_RETRY_MAX_S")
+    llm_budget_max_calls: int = Field(default=20, alias="LLM_BUDGET_MAX_CALLS")
+    llm_budget_max_tokens: int = Field(default=50_000, alias="LLM_BUDGET_MAX_TOKENS")
+    llm_budget_wall_clock_s: float = Field(default=120.0, alias="LLM_BUDGET_WALL_CLOCK_S")
+    max_tool_rounds: int = Field(default=6, alias="MAX_TOOL_ROUNDS")
+    max_sub_questions: int = Field(default=4, alias="MAX_SUB_QUESTIONS")
+    max_question_chars: int = Field(default=2000, alias="MAX_QUESTION_CHARS")
+    tau_retrieval: float = Field(default=0.0, alias="TAU_RETRIEVAL")
+    retrieval_top_k: int = Field(default=8, alias="RETRIEVAL_TOP_K")
+    injection_downweight: float = Field(default=0.05, alias="INJECTION_DOWNWEIGHT")
 
     admin_token: SecretStr | None = Field(default=None, alias="ADMIN_TOKEN")
 

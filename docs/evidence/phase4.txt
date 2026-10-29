@@ -1,0 +1,44 @@
+Phase 4 verification — 2026-10-29
+
+Commands:
+  uv run ruff check app tests scripts
+  uv run python -m mypy app
+  uv run python -m pytest -q
+  uv run python -m pytest tests/live -m live -q
+  uv run python scripts/trace_demo.py
+
+Results:
+  ruff: All checks passed!
+  mypy: Success: no issues found in 81 source files
+  pytest (default): 98 passed, 1 skipped in ~3s
+    - skipped = tests/live/test_investigation_live.py (GROQ_API_KEY absent)
+  pytest live: 1 skipped (GROQ_API_KEY absent)
+  trace_demo: degraded mode status=llm_unavailable (no keys)
+
+Live LLM evidence:
+  NOT collected. docs/evidence/phase4_live_trace.json was NOT written.
+  Reason: GROQ_API_KEY and GEMINI_API_KEY absent from environment / empty .env.
+
+HUMAN ACTION REQUIRED:
+  Set GROQ_API_KEY (and optionally GEMINI_API_KEY) in a local .env (never commit).
+  Then run: make test-live
+  On success, docs/evidence/phase4_live_trace.json will be written (redacted; no secrets).
+  Only then can Phase 4 be marked Complete in PROGRESS.md.
+
+Known limits carried forward:
+  - Qdrant Cloud remote URL unverified (embedded :memory: ok)
+  - bm25_avgdl still default 100
+  - CRC32 sparse term-id collisions pending measurement
+  - Retrieval eval pending (Phase 6)
+
+Phase 4 status: Partial — implementation + scripted tests done; live LLM NOT verified.
+
+## Parent agent re-verification (same day)
+
+  uv run ruff check app tests scripts  -> All checks passed!
+  uv run python -m mypy app            -> Success: no issues found in 81 source files
+  uv run python -m pytest -q           -> 98 passed, 1 skipped in 3.04s
+  uv run python -m pytest tests/live -m live -q -> 1 skipped
+
+.env on this machine: 0 bytes (no keys). Process/User env: GROQ_API_KEY / GEMINI_API_KEY unset.
+Phase 4 remains NOT complete.

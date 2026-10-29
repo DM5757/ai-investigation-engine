@@ -62,15 +62,15 @@ Status: **Hosting = Render Free**. Phase 1 container gate under **512 MB** passe
 
 ---
 
-## D6. LLM gateway (model IDs revised)
+## D6. LLM gateway (model IDs confirmed for wiring — 2026-10-29)
 
-- **Selection:** OpenAI-compatible gateway. **Primary: Groq `openai/gpt-oss-120b`**. **Secondary: Gemini** Flash-class free model from AI Studio (`gemini-3.5-flash-lite` / `gemini-3.8-flash` — pick at wiring time). Fallback primary alternative: `qwen/qwen3.8-27b` if tool quality is better in smoke tests.
-- **Why:** Free quotas; docs confirm tool use + JSON object/schema mode on gpt-oss-120b; OpenAI-compatible client; automatic fallback.
-- **Alternatives:** OpenRouter free; Mistral/Cohere trials; local Ollama on free CPU.
-- **Why-not:** Master prompt’s Llama 3.3 70B **is no longer on Groq free/Developer** (shutdown 16 Aug 2026). Ollama quality/latency on free PaaS is poor.
-- **Trade-offs:** Tight RPD/TPM; **no combining tools + structured outputs in one Groq call**; no parallel tool calls on gpt-oss-120b; free-tier prompts may train models — public/synthetic data only; eval must throttle and cache. **Owner-account live smoke still pending.**
-- **Free-tier fit:** Groq deprecations + rate limits + tool/structured-output docs verified 28 Oct 2026; Gemini free tier pricing page same date.
-- **Interview:** Gateway, retries, budgets, degraded mode without LLM.
+- **Selection:** OpenAI-compatible gateway. **Primary: Groq `openai/gpt-oss-120b`**. **Secondary: Gemini `gemini-3.5-flash-lite`** (alt `gemini-3.8-flash`) via `https://generativelanguage.googleapis.com/v1beta/openai/`. Config-only Groq alt: `qwen/qwen3.8-27b` (`GROQ_ALT_MODEL`).
+- **Why:** Free quotas; docs confirm tool use + JSON mode on gpt-oss-120b; one OpenAI SDK client with `base_url`; automatic Groq→Gemini fallback; hand-written investigation state machine (no LangChain/LlamaIndex).
+- **Alternatives:** OpenRouter free; Mistral/Cohere trials; local Ollama on free CPU; google-genai native SDK.
+- **Why-not:** Master prompt’s Llama 3.3 70B **removed from Groq free/Developer** (shutdown 16 Aug 2026). Prefer OpenAI-compatible Gemini endpoint over a second SDK. Ollama quality/latency on free PaaS is poor.
+- **Trade-offs:** Tight RPD/TPM; **never combine tools + `response_format` in one Groq call**; no parallel tool calls on gpt-oss-120b; free-tier prompts may train models — public/synthetic data only. **Owner-account live smoke still pending (keys absent 2026-10-29).**
+- **Free-tier fit:** Model IDs + tool/JSON capabilities recorded in `docs/evidence/llm_models_verified.txt` (2026-10-29).
+- **Interview:** Gateway, retries, budgets, degraded `llm_unavailable` with retrieved evidence, quote-verified citations.
 
 ---
 

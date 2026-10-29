@@ -1,0 +1,43 @@
+LLM model IDs — verified against provider docs 2026-10-29
+
+## Groq (primary)
+
+Model: openai/gpt-oss-120b
+  Local tool use: YES
+  Parallel tool calls: NO
+  JSON mode / response_format: YES
+  Hard rule: do NOT combine tools + response_format json_schema in one call.
+  Free/org rate limits (Groq docs table 2026-10-29):
+    30 RPM, 1K RPD, 8K TPM, 200K TPD
+  Confirm live values on https://console.groq.com → Limits (org-specific).
+
+Groq (config-only alt): qwen/qwen3.8-27b
+  Parallel tools: YES
+  Same order-of-magnitude free limits (30 RPM / 1K RPD / 8K TPM / 200K TPD)
+  Kept as GROQ_ALT_MODEL option only (not default primary).
+
+Sources:
+  https://console.groq.com/docs/models
+  https://console.groq.com/docs/tool-use/overview
+  https://console.groq.com/docs/rate-limits
+
+## Gemini (secondary fallback)
+
+Models: gemini-3.5-flash-lite (default) or gemini-3.8-flash
+  Function calling: YES (including parallel / compositional on current Flash family)
+  Access: OpenAI-compatible endpoint
+    https://generativelanguage.googleapis.com/v1beta/openai/
+  Auth: GEMINI_API_KEY via OpenAI SDK base_url (single gateway)
+  Free tier: pricing page lists free-of-charge rows for these Flash/Flash-Lite IDs;
+  RPM/RPD are project-specific in AI Studio — do not hardcode; read console.
+
+Sources:
+  https://ai.google.dev/gemini-api/docs/models
+  https://ai.google.dev/gemini-api/docs/pricing
+  https://ai.google.dev/gemini-api/docs/generate-content/function-calling
+
+## Policy
+
+Free tiers only — no paid services in default path.
+Live smoke on owner account: PENDING (keys absent this session).
+See docs/evidence/phase4.txt HUMAN ACTION REQUIRED.
