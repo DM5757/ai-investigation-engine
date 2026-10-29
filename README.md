@@ -4,8 +4,9 @@ Evidence-based multi-document investigation system (not chat-with-PDF): hybrid r
 
 ## Status
 
-Phase 1 scaffold in progress. **Hosting:** Render Free + Neon Postgres + Qdrant Cloud.  
-**Embeddings:** candidate `BAAI/bge-small-en-v1.5` via fastembed — **not finalized** until RSS benchmarks pass under Render’s 512 MB limit.
+Phase 2 complete (ingestion lifecycle). **Live demo:** https://ai-investigation-engine-scyz.onrender.com  
+**Hosting:** Render Free + Neon Postgres + Qdrant Cloud.  
+**Embeddings:** `BAAI/bge-small-en-v1.5` via fastembed — provisionally approved (Docker 512 MB peak **284.6 MiB**); query-time wiring is Phase 3.
 
 See `docs/FREE_TIER_NOTES.md` and `docs/DESIGN_DECISIONS.md`.
 

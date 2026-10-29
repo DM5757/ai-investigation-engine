@@ -1,0 +1,64 @@
+Phase 1 public deploy verification
+Correct public URL: https://ai-investigation-engine-scyz.onrender.com
+Local HEAD: 5c4d02c18d25acb76a23b87a3b81ff7ad137777f
+Remote: https://github.com/DM5757/ai-investigation-engine.git
+
+## Result: PASS (corrected hostname)
+
+Probe time (UTC): 2026-10-29T01:29:02Z
+Origin: uvicorn (`x-render-origin-server: uvicorn`)
+All three endpoints returned HTTP 200 + application/json.
+
+### GET /api/health
+HTTP/1.1 200 OK
+Date: Thu, 29 Oct 2026 01:29:02 GMT
+Content-Type: application/json
+x-render-origin-server: uvicorn
+x-request-id: c4750485-87d2-48d2-9643-49705ae6f6da
+rndr-id: d6e10248-c057-4469
+CF-RAY: a51e682aa82ba893-TBS
+Body:
+{"status":"ok"}
+
+### GET /api/health/ready
+HTTP/1.1 200 OK
+Date: Thu, 29 Oct 2026 01:29:02 GMT
+Content-Type: application/json
+x-render-origin-server: uvicorn
+x-request-id: 60d0590a-070b-44e9-8496-e3219ca06311
+rndr-id: 714d9ba3-b1f0-416c
+CF-RAY: a51e682ccf93acf5-TBS
+Body:
+{"status":"ready","database":"ok","embedding_model_configured":"BAAI/bge-small-en-v1.5","embedding_enabled_at_startup":false,"embedding_loaded":false,"embedding_load_ms":null,"llm_groq_configured":false,"llm_gemini_configured":false,"qdrant_configured":false}
+
+Notes from ready:
+- database: ok (configured DATABASE_URL reachable from Render)
+- embeddings not loaded at startup (EMBEDDING_ENABLED_AT_STARTUP=false) — expected for skeleton
+- LLM / Qdrant keys not configured yet — expected until later phases
+
+### GET /api/version
+HTTP/1.1 200 OK
+Date: Thu, 29 Oct 2026 01:29:02 GMT
+Content-Type: application/json
+x-render-origin-server: uvicorn
+x-request-id: bc42c4f2-49e3-4410-98e5-d4de7c741892
+rndr-id: c3cd9240-f878-44a3
+CF-RAY: a51e682ebe019317-TBS
+Body:
+{"version":"0.1.0","app":"ai-investigation-engine"}
+
+## Prior failed probe (wrong hostname — retained for audit)
+
+Probe time (UTC): 2026-10-29T01:22:16Z
+Incorrect URL typed as: https://ai-investigation-engine-sqyz.onrender.com
+(typo: sqyz vs scyz)
+
+All paths returned HTTP 404 plain text "Not Found" with
+  x-render-routing: no-server
+That hostname has no bound Render service. Not an application failure.
+
+## Phase 1 acceptance
+
+Local gates: PASS (docs/evidence/phase1.txt, container_512m_bench.json)
+Public URL smoke: PASS (this file)
+Phase 1 complete.

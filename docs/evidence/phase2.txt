@@ -1,0 +1,33 @@
+Phase 2 verification evidence
+Date: 2026-10-29
+
+## Scope verified
+- Parsers: TXT, MD, PDF, DOCX, HTML, JSONL, CSV + metadata
+- Normalize + fixed_window / structure_aware chunkers (property tests)
+- Exact hash dedup + SimHash near-dup (bands)
+- Document lifecycle add/update/delete + reconcile crash recovery
+- ChunkStore Protocol with InMemoryChunkStore fallback (Qdrant adapter present)
+
+## Commands (WDAC blocks some uv shims on this host; use python -m)
+
+  uv run ruff check app tests scripts
+  uv run python -m mypy app
+  uv run python -m pytest -q
+
+## Results (re-run by parent agent 2026-10-29)
+
+  ruff: All checks passed!
+  mypy: Success: no issues found in 47 source files
+  pytest: 52 passed in 3.84s
+
+## Supporting evidence
+  docs/evidence/phase2_lifecycle.txt — earlier focused run (19 passed: simhash + lifecycle + health)
+
+## Notes / limitations
+  - Native embedded Qdrant gRPC (`cygrpc`) blocked by Windows Application Control on the
+    developer host. Production path remains `QdrantChunkStore`; local tests use
+    `InMemoryChunkStore` via `make_local_chunk_store()` implementing the same Protocol.
+  - Phase 2 indexes with zero dense vectors (placeholder). Real FastEmbed wiring is Phase 3.
+  - Chunking strategy experiment (DOC-6) deferred to Phase 6 per master plan.
+  - Postgres document `text` SoT lives on `document_versions.text` (active version);
+    chunk rows currently also store text for Phase 2 simplicity (may slim to offsets later).

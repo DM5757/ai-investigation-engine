@@ -3,6 +3,7 @@
 ## Architecture
 
 - **App host:** Render Free (Docker), sleeps after 15 minutes idle
+- **Public URL:** https://ai-investigation-engine-scyz.onrender.com
 - **State:** Neon Postgres + Qdrant Cloud (not container disk)
 - **Image:** multi-stage Dockerfile, non-root user, BGE-small ONNX cache baked
 

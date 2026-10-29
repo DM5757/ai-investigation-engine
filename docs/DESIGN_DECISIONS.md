@@ -133,10 +133,20 @@ Each dependency will be justified in one line when `pyproject.toml` is created i
 
 ---
 
+## D14. Phase 2 document SoT layout
+
+- **Selection:** Normalised full text stored on `document_versions.text`; chunk rows currently also store `text` plus offsets; `ChunkStore` Protocol with `QdrantChunkStore` + `InMemoryChunkStore` fallback for tests.
+- **Why:** Versioned text makes update/diff clear; Protocol keeps lifecycle testable when host WDAC blocks embedded Qdrant gRPC (`cygrpc`).
+- **Trade-offs:** Chunk text duplication vs master “offsets only in PG” ideal — acceptable for Phase 2; slim later if Neon storage pressure appears. In-memory store is tests-only; Render uses Qdrant Cloud URL when configured.
+- **Free-tier fit:** No extra paid dependency.
+- **Interview:** Explain crash windows + `reconcile_session`, and why retrieval must filter `version == active_version`.
+
+---
+
 ## Decisions to revisit
 
-1. Confirm Northflank account can create Sandbox service and public URL (HUMAN ACTION).
-2. Measure process RSS with model loaded; trigger D5 contingency if needed.
+1. ~~Confirm Northflank Sandbox~~ — rejected (card). Render Free live at `ai-investigation-engine-scyz.onrender.com`.
+2. ~~Measure RSS with model loaded~~ — Docker 512m peak 284.6 MiB (passed).
 3. Confirm Groq model tool-calling quality vs Qwen alternative on a 5-question smoke set.
 4. Confirm Qdrant free cluster disk/RAM after 55k+ points with payload text.
-5. If Northflank $20 allowance or free-project limits prove insufficient, switch to Oracle Always Free without changing Neon/Qdrant/LLM choices.
+5. Optionally slim chunk text out of Postgres once retrieval always loads text from version slices or Qdrant payload.

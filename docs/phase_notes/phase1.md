@@ -1,4 +1,4 @@
-# Phase 1 notes (scaffold + local benchmarks)
+# Phase 1 notes (scaffold + local benchmarks + walking-skeleton deploy)
 
 ## What was built
 
@@ -9,6 +9,7 @@
 - Candidate FastEmbed provider (not loaded at app startup by default)
 - Dockerfile, Makefile, GitHub Actions CI, `render.yaml`
 - RSS/latency bench script: `scripts/bench_embeddings_rss.py`
+- Public deploy on Render Free
 
 ## Key functions / modules
 
@@ -19,9 +20,11 @@
 5. `app.embeddings.fastembed_provider.FastEmbedProvider`
 6. `scripts.bench_embeddings_rss.main` — resource gate for Render 512 MB
 
-## Hosting revision
+## Verified evidence
 
-Render Free is primary. Northflank rejected (card required). Neon + Qdrant unchanged. Embedding strategy **not finalized** until bench evidence is reviewed.
+- Local: `docs/evidence/phase1.txt`, `docs/evidence/container_512m_bench.json` (peak 284.6 MiB)
+- Deploy: `docs/evidence/phase1_deploy.txt`
+- Public URL: https://ai-investigation-engine-scyz.onrender.com
 
 ## Interview questions to practice
 
@@ -30,3 +33,4 @@ Render Free is primary. Northflank rejected (card required). Neon + Qdrant uncha
 3. Why is `EMBEDDING_ENABLED_AT_STARTUP` default false?
 4. How will keep-alive interact with Render’s 15-minute sleep and 750 instance-hours?
 5. What happens if peak RSS exceeds ~450 MB under a 512 MB budget?
+6. Why did a mistyped hostname (`sqyz` vs `scyz`) look like a total outage (`x-render-routing: no-server`)?

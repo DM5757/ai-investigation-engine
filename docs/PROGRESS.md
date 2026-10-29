@@ -4,27 +4,23 @@
 
 Render Free + Neon + Qdrant. Northflank rejected (card).
 
-## Phase 1 — Local verification complete; deploy pending
+## Phase 1 — Complete (2026-10-29)
 
-### Passed (recorded in `docs/evidence/`)
+- Local quality + 512 MB container bench (peak **284.6 MiB**)
+- Public URL: https://ai-investigation-engine-scyz.onrender.com
+- Evidence: `docs/evidence/phase1.txt`, `docs/evidence/phase1_deploy.txt`
 
-- Docker Engine 29.7.2 accessible
-- Image build + run; `/api/health`, `/api/health/ready`, `/api/version`
-- ruff / mypy / pytest (5 passed)
-- Container bench under **512 MB**: peak **284.6 MiB**, no OOM, embed p50 **~6.3 ms**
+## Phase 2 — Complete (2026-10-29)
 
-### Remaining to close Phase 1
+Parsing, chunking, duplicates, document lifecycle (DOC-1 to DOC-5).
 
-1. First git commit + push to GitHub
-2. Deploy Render Free web service → public URL
-3. Save `curl` of live `/api/health` to `docs/evidence/phase1_deploy.txt`
+- Parsers: TXT, MD, PDF, DOCX, HTML, JSONL, CSV
+- Chunkers: `fixed_window` + `structure_aware`
+- Dedup: exact SHA-256 + SimHash bands
+- Lifecycle add/update/delete + reconcile
+- Verification: **ruff / mypy clean; 52 pytest passed** (`docs/evidence/phase2.txt`)
+- Note: local tests use `InMemoryChunkStore` when embedded Qdrant gRPC is blocked by WDAC; `QdrantChunkStore` remains the production adapter. Embeddings still placeholders (Phase 3).
 
-**Do not start Phase 2 until the public URL evidence exists.**
+## Phase 3 — Next
 
-## HUMAN ACTION REQUIRED — Render deploy
-
-See chat instructions (commit/push + Render dashboard). Set at least:
-
-- `DATABASE_URL` (SQLite file URL is OK for skeleton only; prefer Neon for persistence)
-- Optional for skeleton: leave `EMBEDDING_ENABLED_AT_STARTUP=false`
-- Keep `ENABLE_BENCH_ENDPOINTS=false` on Render
+Embeddings, BM25 sparse encoder, hybrid retrieval, custom reranker (VEC-1 to VEC-4).

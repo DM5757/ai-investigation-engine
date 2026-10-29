@@ -60,7 +60,14 @@ packages = ["app"]
 warn_unused_configs = true
 
 [[tool.mypy.overrides]]
-module = ["fastembed.*"]
+module = [
+    "fastembed.*",
+    "pypdf.*",
+    "docx.*",
+    "bs4.*",
+    "lxml.*",
+    "qdrant_client.*",
+]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

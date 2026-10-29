@@ -1,0 +1,26 @@
+﻿Phase 2 lifecycle verification evidence
+Date: 2026-10-29
+
+Commands (via python -m because WDAC blocked direct uv run mypy/pytest shims):
+
+  uv run python -m ruff check app/db app/index app/ingestion/dedup app/ingestion/lifecycle.py app/ingestion/pipeline.py app/ingestion/reconcile.py scripts/reconcile.py
+  uv run python -m mypy app
+  uv run python -m pytest tests/unit/test_simhash.py tests/integration/test_lifecycle.py tests/unit/test_health.py -q
+
+Results:
+
+  ruff: All checks passed!
+
+  mypy: Success: no issues found in 47 source files
+
+  pytest:
+  ...................                                                      [100%]
+  19 passed in 2.18s
+
+Notes:
+  - Embedded QdrantClient import fails on this host with:
+    ImportError: DLL load failed while importing cygrpc: An Application Control policy has blocked this file.
+  - Integration tests use make_local_chunk_store() which falls back to InMemoryChunkStore
+    implementing the same ChunkStore Protocol. QdrantChunkStore remains the production adapter.
+  - Parsers/chunkers from the parallel agent were present; pipeline uses
+    parse_document / get_chunker(structure_aware).chunk(ParsedDocument, ...).

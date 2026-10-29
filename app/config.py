@@ -51,6 +51,13 @@ class Settings(BaseSettings):
 
     chunk_tokens: int = Field(default=200, alias="CHUNK_TOKENS")
     overlap_tokens: int = Field(default=40, alias="OVERLAP_TOKENS")
+    chunk_strategy: str = Field(default="structure_aware", alias="CHUNK_STRATEGY")
+    simhash_threshold: int = Field(default=3, alias="SIMHASH_THRESHOLD")
+    near_duplicate_policy: str = Field(default="flag", alias="NEAR_DUPLICATE_POLICY")
+    upload_max_bytes: int = Field(default=10_485_760, alias="UPLOAD_MAX_BYTES")
+    qdrant_path: str | None = Field(default=None, alias="QDRANT_PATH")
+    dense_vector_size: int = Field(default=384, alias="DENSE_VECTOR_SIZE")
+    embedding_model_short: str = Field(default="bge-small", alias="EMBEDDING_MODEL_SHORT")
 
 
 @lru_cache
