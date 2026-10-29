@@ -5,6 +5,7 @@ from app.index.qdrant_store import (
     ChunkStore,
     InMemoryChunkStore,
     QdrantChunkStore,
+    SearchHit,
     collection_name,
     make_local_chunk_store,
 )
@@ -14,6 +15,7 @@ __all__ = [
     "ChunkStore",
     "InMemoryChunkStore",
     "QdrantChunkStore",
+    "SearchHit",
     "collection_name",
     "make_local_chunk_store",
 ]

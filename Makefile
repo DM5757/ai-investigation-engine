@@ -3,14 +3,16 @@
 install:
 	uv sync --all-groups
 
+# Prefer `python -m` so Windows Smart App Control does not block unsigned venv shims
+# (mypy.exe / pytest.exe). See docs/evidence/windows_security_tools.txt.
 test:
-	uv run pytest -q
+	uv run python -m pytest -q
 
 lint:
 	uv run ruff check app tests scripts
 
 typecheck:
-	uv run mypy app
+	uv run python -m mypy app
 
 bench:
 	uv run python scripts/bench_embeddings_rss.py

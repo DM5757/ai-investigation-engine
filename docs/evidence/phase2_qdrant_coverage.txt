@@ -1,0 +1,41 @@
+Phase 2 — Qdrant vs in-memory ChunkStore coverage
+Date: 2026-10-29
+
+## What the 52 tests actually exercised
+
+Lifecycle integration (`tests/integration/test_lifecycle.py`) uses fixture `store()`:
+  try: make_local_chunk_store(...)
+  except: InMemoryChunkStore(...)
+
+`make_local_chunk_store` itself prefers `QdrantChunkStore.local(:memory:)` and only
+falls back to `InMemoryChunkStore` if native client construction raises.
+
+Therefore:
+- **Passing lifecycle tests alone do NOT prove which backend ran** unless the test
+  asserts `isinstance(store, QdrantChunkStore)`.
+- Early Phase 2 evidence (`phase2_lifecycle.txt`) recorded an InMemory fallback when
+  `cygrpc` import failed under Application Control.
+- Re-check on 2026-10-29 (same host, no security changes):
+    `make_local_chunk_store` → **QdrantChunkStore**
+    upsert + count_for_doc against embedded `:memory:` → **OK**
+
+## Classification
+
+| Area | Backend | Verified? |
+| --- | --- | --- |
+| Lifecycle Protocol behaviour (add/update/delete/reconcile) | ChunkStore Protocol | Yes (tests) |
+| InMemoryChunkStore | pure Python double | Yes (can force) |
+| QdrantChunkStore embedded `:memory:` upsert/delete/count | real qdrant-client | Yes on re-check 2026-10-29; dedicated test added in Phase 3 work |
+| Qdrant Cloud remote URL | network + credentials | **Not verified** (no keys in this session) |
+| Semantic retrieval quality | dense embeddings + search | **Not Phase 2** — Phase 3 |
+
+## Follow-up (Phase 3)
+Dedicated `tests/integration/test_qdrant_store.py` asserts `isinstance(..., QdrantChunkStore)`
+and exercises upsert + dense/sparse search. Passed on 2026-10-29 with embedded `:memory:`.
+Qdrant Cloud remote still not verified.
+
+## Policy going forward
+- Placeholder / zero vectors must never be cited as proof of semantic search.
+- Real BGE semantic retrieval verified in Phase 3 dense-rescue test only.
+- If embedded Qdrant fails again on Windows, that test `pytest.skip`s; InMemory remains
+  for Protocol-only lifecycle tests.

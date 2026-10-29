@@ -1,0 +1,54 @@
+Phase 3 evidence — embeddings + hybrid retrieval (VEC-1..VEC-4)
+Date: 2026-10-29
+Host: Windows 10 (local)
+
+## Commands
+
+```
+uv run ruff check app tests scripts
+```
+Result: All checks passed!
+
+```
+uv run python -m mypy app
+```
+Result: Success: no issues found in 54 source files
+
+```
+uv run python -m pytest -q
+```
+Result:
+```
+........................................................................ [ 97%]
+..                                                                       [100%]
+74 passed in 5.77s
+```
+Skips: none (0 skipped)
+
+## What was verified
+
+| Check | Result |
+| --- | --- |
+| Hand-computed BM25 weights (`tests/unit/test_bm25.py`) | Passed |
+| Hand-computed RRF + weighted fusion (`tests/unit/test_fusion.py`) | Passed |
+| Each reranker feature + caps (`tests/unit/test_reranker.py`) | Passed |
+| Sparse rescue (adversarial dense fails; BM25/hybrid finds gold) | Passed |
+| Dense rescue paraphrase (real FastEmbed BGE-small) | Passed — FastEmbed loaded; nonzero 384-d vectors |
+| Stale/deleted versions dropped via `active_versions` | Passed |
+| `isinstance(store, QdrantChunkStore)` upsert + dense/sparse search | Passed (`tests/integration/test_qdrant_store.py`) |
+| Qdrant Cloud remote URL | **Not verified** this session (no cloud keys exercised) |
+
+## Honesty notes
+
+- Zero / placeholder dense vectors are not cited as semantic success.
+- Sparse-rescue integration uses an **adversarial** dense embedder on purpose so dense-only fails; sparse/BM25 rescues the rare keyword `zymopolymer`.
+- Dense-rescue uses **real** `FastEmbedProvider` (`BAAI/bge-small-en-v1.5`); would `pytest.skip` if the model cannot load.
+- Term ids use `zlib.crc32(utf-8) & 0xffffffff` (stable across restarts), not `hash()`.
+
+## Parent agent re-verification (same day)
+
+```
+uv run ruff check app tests scripts   -> All checks passed!
+uv run python -m mypy app             -> Success: no issues found in 54 source files
+uv run python -m pytest -q            -> 74 passed in 3.51s
+```

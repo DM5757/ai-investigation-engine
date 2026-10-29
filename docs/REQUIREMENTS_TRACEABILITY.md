@@ -11,10 +11,10 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | DOC-5 | Add, update, delete documents | `lifecycle.py` + repos + reconcile | `tests/integration/test_lifecycle.py` | Done-verified | Crash hooks + reconcile covered |
 | DOC-6 | Compare ≥2 chunking strategies (real experiment) | TBD `scripts/chunking_experiment.py` | TBD | Not started | Deferred to Phase 6 |
 | DOC-7 | Justify processing architecture | `docs/DESIGN_DECISIONS.md`, DATABASE_DESIGN | Docs | Partial | Phase 2 schema notes added |
-| VEC-1 | Vector database | `app/index/qdrant_store.py` | lifecycle integration | Partial | Store Protocol + Qdrant adapter; real embeddings Phase 3 |
-| VEC-2 | Real embeddings and semantic search | `fastembed` bge-small (candidate) | local RSS bench | Partial | Local RSS OK (~268 MB); not finalized for Render |
-| VEC-3 | Hybrid search | dense + custom sparse BM25 | TBD | Not started | — |
-| VEC-4 | ≥1 custom search/ranking component | custom BM25 + custom reranker | TBD | Not started | — |
+| VEC-1 | Vector database | `app/index/qdrant_store.py` (+ search) | `test_qdrant_store.py` isinstance + lifecycle | Done-verified | Embedded `:memory:` upsert/search verified; **Qdrant Cloud remote not smoked** |
+| VEC-2 | Real embeddings and semantic search | `FastEmbedProvider` bge-small | dense-rescue integration + Phase 1 RSS | Done-verified | Real FastEmbed in Phase 3 tests; Render startup still gated by `EMBEDDING_ENABLED_AT_STARTUP` |
+| VEC-3 | Hybrid search | `app/retrieval/hybrid.py` + BM25 sparse | sparse/dense rescue + fusion unit tests | Done-verified | Modes: dense/sparse/hybrid_rrf/hybrid_weighted/hybrid_rerank |
+| VEC-4 | ≥1 custom search/ranking component | custom BM25 + custom reranker | `test_bm25` / `test_reranker` hand checks | Done-verified | Explainable linear features + MMR / near-dup / per-doc cap |
 | RAG-1 | ≥1 LLM; RAG architecture | Groq primary, Gemini secondary | TBD | Partial | Model IDs revised (Llama free removed) |
 | RAG-2 | Combine info from different documents | investigation engine | TBD | Not started | — |
 | RAG-3 | Multi-step complex questions | planner + tools | TBD | Not started | — |

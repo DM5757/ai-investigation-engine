@@ -67,6 +67,7 @@ module = [
     "bs4.*",
     "lxml.*",
     "qdrant_client.*",
+    "Stemmer",
 ]
 ignore_missing_imports = true
 

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import math
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from typing import Any, Protocol, runtime_checkable
 
@@ -14,6 +16,15 @@ def collection_name(strategy: str, embedding_short: str = "bge-small") -> str:
     safe_strategy = strategy.replace("-", "_")
     safe_embed = embedding_short.replace("-", "_")
     return f"chunks__{safe_strategy}__{safe_embed}"
+
+
+@dataclass(frozen=True)
+class SearchHit:
+    """One search result from dense or sparse query."""
+
+    point_id: str
+    score: float
+    payload: dict[str, Any]
 
 
 @dataclass
@@ -43,9 +54,66 @@ class ChunkPoint:
         return payload
 
 
+def payload_matches_filters(
+    payload: Mapping[str, Any],
+    filters: Mapping[str, Any] | None,
+) -> bool:
+    """Apply store-level filters (doc_id / version / active_versions)."""
+    if not filters:
+        return True
+    if "doc_id" in filters and payload.get("doc_id") != filters["doc_id"]:
+        return False
+    if "version" in filters and payload.get("version") != filters["version"]:
+        return False
+    if "doc_ids" in filters:
+        allowed = filters["doc_ids"]
+        if payload.get("doc_id") not in allowed:
+            return False
+    if "active_versions" in filters:
+        active = filters["active_versions"]
+        doc_id = payload.get("doc_id")
+        if not isinstance(active, Mapping):
+            return False
+        if doc_id not in active or payload.get("version") != active[doc_id]:
+            return False
+    return True
+
+
+def _cosine_similarity(a: list[float], b: list[float]) -> float:
+    if len(a) != len(b) or not a:
+        return 0.0
+    dot = 0.0
+    na = 0.0
+    nb = 0.0
+    for x, y in zip(a, b, strict=True):
+        dot += x * y
+        na += x * x
+        nb += y * y
+    if na <= 0.0 or nb <= 0.0:
+        return 0.0
+    return dot / (math.sqrt(na) * math.sqrt(nb))
+
+
+def _sparse_dot(
+    indices_a: list[int],
+    values_a: list[float],
+    indices_b: list[int],
+    values_b: list[float],
+) -> float:
+    if not indices_a or not indices_b:
+        return 0.0
+    b_map = dict(zip(indices_b, values_b, strict=True))
+    score = 0.0
+    for idx, val in zip(indices_a, values_a, strict=True):
+        other = b_map.get(idx)
+        if other is not None:
+            score += val * other
+    return score
+
+
 @runtime_checkable
 class ChunkStore(Protocol):
-    """Index operations used by document lifecycle and reconcile."""
+    """Index operations used by document lifecycle, reconcile, and retrieval."""
 
     collection: str
 
@@ -70,6 +138,33 @@ class ChunkStore(Protocol):
     def count_for_doc(self, doc_id: str, *, version: int | None = None) -> int:
         """Count points for a document, optionally filtered by version."""
 
+    def search_dense(
+        self,
+        vector: list[float],
+        limit: int,
+        *,
+        filters: Mapping[str, Any] | None = None,
+    ) -> list[SearchHit]:
+        """Nearest-neighbour search over the named dense vector."""
+
+    def search_sparse(
+        self,
+        indices: list[int],
+        values: list[float],
+        limit: int,
+        *,
+        filters: Mapping[str, Any] | None = None,
+    ) -> list[SearchHit]:
+        """Sparse vector search (BM25-style indices/values)."""
+
+
+@dataclass
+class _MemPoint:
+    dense: list[float]
+    sparse_indices: list[int]
+    sparse_values: list[float]
+    payload: dict[str, Any]
+
 
 class InMemoryChunkStore:
     """Pure-Python ChunkStore for unit/integration tests without native gRPC."""
@@ -85,7 +180,7 @@ class InMemoryChunkStore:
         self.embedding_short = embedding_short
         self.dense_size = dense_size
         self.collection = collection_name(strategy, embedding_short)
-        self._points: dict[str, tuple[list[float], dict[str, Any]]] = {}
+        self._points: dict[str, _MemPoint] = {}
         self._ready = False
 
     def ensure_collection(self) -> None:
@@ -97,14 +192,19 @@ class InMemoryChunkStore:
             dense = list(point.dense_vector) or [0.0] * self.dense_size
             if len(dense) != self.dense_size:
                 raise ValueError(f"dense vector length {len(dense)} != {self.dense_size}")
-            self._points[point.point_id] = (dense, point.to_payload())
+            self._points[point.point_id] = _MemPoint(
+                dense=dense,
+                sparse_indices=list(point.sparse_indices),
+                sparse_values=list(point.sparse_values),
+                payload=point.to_payload(),
+            )
 
     def delete_by_doc_id(self, doc_id: str) -> None:
         self.ensure_collection()
         drop = [
             pid
-            for pid, (_, payload) in self._points.items()
-            if payload.get("doc_id") == doc_id
+            for pid, mp in self._points.items()
+            if mp.payload.get("doc_id") == doc_id
         ]
         for pid in drop:
             del self._points[pid]
@@ -113,8 +213,8 @@ class InMemoryChunkStore:
         self.ensure_collection()
         drop = [
             pid
-            for pid, (_, payload) in self._points.items()
-            if payload.get("doc_id") == doc_id and payload.get("version") != version
+            for pid, mp in self._points.items()
+            if mp.payload.get("doc_id") == doc_id and mp.payload.get("version") != version
         ]
         for pid in drop:
             del self._points[pid]
@@ -123,8 +223,8 @@ class InMemoryChunkStore:
         self.ensure_collection()
         return [
             pid
-            for pid, (_, payload) in self._points.items()
-            if payload.get("doc_id") == doc_id
+            for pid, mp in self._points.items()
+            if mp.payload.get("doc_id") == doc_id
         ]
 
     def get_payloads(self, point_ids: list[str]) -> dict[str, dict[str, Any]]:
@@ -133,19 +233,56 @@ class InMemoryChunkStore:
         for pid in point_ids:
             item = self._points.get(pid)
             if item is not None:
-                out[pid] = dict(item[1])
+                out[pid] = dict(item.payload)
         return out
 
     def count_for_doc(self, doc_id: str, *, version: int | None = None) -> int:
         self.ensure_collection()
         count = 0
-        for _, payload in self._points.values():
-            if payload.get("doc_id") != doc_id:
+        for mp in self._points.values():
+            if mp.payload.get("doc_id") != doc_id:
                 continue
-            if version is not None and payload.get("version") != version:
+            if version is not None and mp.payload.get("version") != version:
                 continue
             count += 1
         return count
+
+    def search_dense(
+        self,
+        vector: list[float],
+        limit: int,
+        *,
+        filters: Mapping[str, Any] | None = None,
+    ) -> list[SearchHit]:
+        self.ensure_collection()
+        scored: list[SearchHit] = []
+        for pid, mp in self._points.items():
+            if not payload_matches_filters(mp.payload, filters):
+                continue
+            score = _cosine_similarity(vector, mp.dense)
+            scored.append(SearchHit(point_id=pid, score=score, payload=dict(mp.payload)))
+        scored.sort(key=lambda h: (-h.score, h.point_id))
+        return scored[: max(0, limit)]
+
+    def search_sparse(
+        self,
+        indices: list[int],
+        values: list[float],
+        limit: int,
+        *,
+        filters: Mapping[str, Any] | None = None,
+    ) -> list[SearchHit]:
+        self.ensure_collection()
+        scored: list[SearchHit] = []
+        for pid, mp in self._points.items():
+            if not payload_matches_filters(mp.payload, filters):
+                continue
+            score = _sparse_dot(indices, values, mp.sparse_indices, mp.sparse_values)
+            if score <= 0.0:
+                continue
+            scored.append(SearchHit(point_id=pid, score=score, payload=dict(mp.payload)))
+        scored.sort(key=lambda h: (-h.score, h.point_id))
+        return scored[: max(0, limit)]
 
 
 class QdrantChunkStore:
@@ -368,6 +505,126 @@ class QdrantChunkStore:
             exact=True,
         )
         return int(result.count)
+
+    def _build_query_filter(self, filters: Mapping[str, Any] | None) -> Any | None:
+        from qdrant_client.http import models as qmodels
+
+        if not filters:
+            return None
+        must: list[Any] = []
+        should: list[Any] = []
+        if "doc_id" in filters:
+            must.append(
+                qmodels.FieldCondition(
+                    key="doc_id",
+                    match=qmodels.MatchValue(value=filters["doc_id"]),
+                )
+            )
+        if "version" in filters:
+            must.append(
+                qmodels.FieldCondition(
+                    key="version",
+                    match=qmodels.MatchValue(value=filters["version"]),
+                )
+            )
+        if "doc_ids" in filters:
+            for doc_id in filters["doc_ids"]:
+                should.append(
+                    qmodels.FieldCondition(
+                        key="doc_id",
+                        match=qmodels.MatchValue(value=doc_id),
+                    )
+                )
+        if "active_versions" in filters:
+            active = filters["active_versions"]
+            if isinstance(active, Mapping):
+                for doc_id, version in active.items():
+                    should.append(
+                        qmodels.Filter(
+                            must=[
+                                qmodels.FieldCondition(
+                                    key="doc_id",
+                                    match=qmodels.MatchValue(value=doc_id),
+                                ),
+                                qmodels.FieldCondition(
+                                    key="version",
+                                    match=qmodels.MatchValue(value=version),
+                                ),
+                            ]
+                        )
+                    )
+        if not must and not should:
+            return None
+        kwargs: dict[str, Any] = {}
+        if must:
+            kwargs["must"] = must
+        if should:
+            # OR across doc_ids / (doc_id, version) pairs
+            kwargs["min_should"] = qmodels.MinShould(conditions=should, min_count=1)
+        return qmodels.Filter(**kwargs)
+
+    def search_dense(
+        self,
+        vector: list[float],
+        limit: int,
+        *,
+        filters: Mapping[str, Any] | None = None,
+    ) -> list[SearchHit]:
+        self.ensure_collection()
+        if limit <= 0:
+            return []
+        response = self.client.query_points(
+            collection_name=self.collection,
+            query=list(vector),
+            using=DENSE_VECTOR_NAME,
+            query_filter=self._build_query_filter(filters),
+            limit=limit,
+            with_payload=True,
+            with_vectors=False,
+        )
+        hits: list[SearchHit] = []
+        for point in response.points:
+            hits.append(
+                SearchHit(
+                    point_id=str(point.id),
+                    score=float(point.score),
+                    payload=dict(point.payload or {}),
+                )
+            )
+        return hits
+
+    def search_sparse(
+        self,
+        indices: list[int],
+        values: list[float],
+        limit: int,
+        *,
+        filters: Mapping[str, Any] | None = None,
+    ) -> list[SearchHit]:
+        from qdrant_client.http import models as qmodels
+
+        self.ensure_collection()
+        if limit <= 0 or not indices:
+            return []
+        response = self.client.query_points(
+            collection_name=self.collection,
+            query=qmodels.SparseVector(indices=list(indices), values=list(values)),
+            using=SPARSE_VECTOR_NAME,
+            query_filter=self._build_query_filter(filters),
+            limit=limit,
+            with_payload=True,
+            with_vectors=False,
+        )
+        hits: list[SearchHit] = []
+        for point in response.points:
+            hits.append(
+                SearchHit(
+                    point_id=str(point.id),
+                    score=float(point.score),
+                    payload=dict(point.payload or {}),
+                )
+            )
+        return hits
 
 
 def make_local_chunk_store(

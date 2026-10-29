@@ -59,6 +59,22 @@ class Settings(BaseSettings):
     dense_vector_size: int = Field(default=384, alias="DENSE_VECTOR_SIZE")
     embedding_model_short: str = Field(default="bge-small", alias="EMBEDDING_MODEL_SHORT")
 
+    # Retrieval / hybrid search (Phase 3)
+    n_dense: int = Field(default=50, alias="N_DENSE")
+    n_sparse: int = Field(default=50, alias="N_SPARSE")
+    rrf_k: int = Field(default=60, alias="RRF_K")
+    fusion_alpha: float = Field(default=0.5, alias="FUSION_ALPHA")
+    bm25_k1: float = Field(default=1.2, alias="BM25_K1")
+    bm25_b: float = Field(default=0.75, alias="BM25_B")
+    bm25_avgdl: float = Field(default=100.0, alias="BM25_AVGDL")
+    per_doc_cap: int = Field(default=3, alias="PER_DOC_CAP")
+    rerank_w_fused: float = Field(default=0.40, alias="RERANK_W_FUSED")
+    rerank_w_coverage: float = Field(default=0.20, alias="RERANK_W_COVERAGE")
+    rerank_w_title: float = Field(default=0.15, alias="RERANK_W_TITLE")
+    rerank_w_entity: float = Field(default=0.15, alias="RERANK_W_ENTITY")
+    rerank_w_proximity: float = Field(default=0.10, alias="RERANK_W_PROXIMITY")
+    rerank_mmr_lambda: float = Field(default=0.7, alias="RERANK_MMR_LAMBDA")
+
 
 @lru_cache
 def get_settings() -> Settings:

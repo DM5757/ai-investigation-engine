@@ -143,6 +143,17 @@ Each dependency will be justified in one line when `pyproject.toml` is created i
 
 ---
 
+## D15. Phase 3 retrieval wiring
+
+- **Selection:** Custom BM25 sparse (`zlib.crc32` term ids, TF-only weights) stored beside dense in Qdrant named vectors; fusion via custom RRF + weighted min-max; custom linear reranker. `DocumentLifecycle` optionally accepts `Bm25Encoder` to populate sparse on upsert. `active_versions` filter at store + defensive drop in `HybridRetriever`.
+- **Why:** Matches D7/D8; hand-tested formulas satisfy VEC-4; stable ids survive restarts (unlike `hash()`).
+- **Change vs Phase 2:** Search APIs added to `ChunkStore`; zero-vector default embed still allowed for old lifecycle tests, but semantic claims require FastEmbed (integration skips if model missing).
+- **Trade-offs:** Fixed `bm25_avgdl` until bulk stats; adversarial dense used in sparse-rescue test (honest: not BGE failure).
+- **Free-tier fit:** Same Qdrant Free + local ONNX path.
+- **Interview:** Walk BM25 weight, RRF k=60, and why deleted docs never appear when caller passes only active version map.
+
+---
+
 ## Decisions to revisit
 
 1. ~~Confirm Northflank Sandbox~~ — rejected (card). Render Free live at `ai-investigation-engine-scyz.onrender.com`.
@@ -150,3 +161,4 @@ Each dependency will be justified in one line when `pyproject.toml` is created i
 3. Confirm Groq model tool-calling quality vs Qwen alternative on a 5-question smoke set.
 4. Confirm Qdrant free cluster disk/RAM after 55k+ points with payload text.
 5. Optionally slim chunk text out of Postgres once retrieval always loads text from version slices or Qdrant payload.
+6. Compute corpus `avgdl` at bulk ingest and refresh sparse vectors if drift is large.

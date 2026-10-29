@@ -18,6 +18,7 @@ from app.errors import DuplicateDocument, NotFound
 from app.index.qdrant_store import ChunkPoint, ChunkStore
 from app.ingestion.dedup.simhash import find_near_duplicates
 from app.ingestion.pipeline import PreparedDocument, prepare_document
+from app.retrieval.bm25_sparse import Bm25Encoder
 
 logger = logging.getLogger(__name__)
 
@@ -60,6 +61,7 @@ class DocumentLifecycle:
         simhash_threshold: int = 3,
         near_duplicate_policy: str = "flag",
         embed_fn: EmbedFn | None = None,
+        sparse_encoder: Bm25Encoder | None = None,
         dense_dims: int = 384,
         stop_before_active: bool = False,
         stop_before_version_cleanup: bool = False,
@@ -72,6 +74,7 @@ class DocumentLifecycle:
         self.simhash_threshold = simhash_threshold
         self.near_duplicate_policy = near_duplicate_policy
         self.embed_fn = embed_fn or (lambda texts: zero_embed(texts, dims=dense_dims))
+        self.sparse_encoder = sparse_encoder
         self.dense_dims = dense_dims
         # Test hooks to simulate crash windows for reconcile.
         self.stop_before_active = stop_before_active
@@ -344,6 +347,13 @@ class DocumentLifecycle:
         vectors = self.embed_fn([r.text for r in rows])
         points: list[ChunkPoint] = []
         for row, dense in zip(rows, vectors, strict=True):
+            sparse_indices: list[int] = []
+            sparse_values: list[float] = []
+            if self.sparse_encoder is not None:
+                sparse = self.sparse_encoder.encode_document(row.text)
+                sparse_indices = sparse.indices
+                sparse_values = sparse.values
+            heading = row.heading_path
             points.append(
                 ChunkPoint(
                     point_id=row.qdrant_point_id,
@@ -353,6 +363,13 @@ class DocumentLifecycle:
                     content_hash=row.content_hash,
                     text=row.text,
                     dense_vector=dense,
+                    sparse_indices=sparse_indices,
+                    sparse_values=sparse_values,
+                    payload_extra={
+                        "title": doc.title,
+                        "heading_path": heading,
+                        "near_duplicate_of": doc.near_duplicate_of,
+                    },
                 )
             )
         self.store.upsert_chunks(points)

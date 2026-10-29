@@ -1,0 +1,65 @@
+Windows Security / tooling investigation
+Date: 2026-10-29
+Host: Windows 10 (build 26300), project venv via uv
+
+## Question
+Windows Security warned that part of `uv.exe` was blocked because the publisher of
+`mypy.exe` could not be verified. Separately, Phase 2 noted embedded Qdrant/gRPC
+DLL issues under Application Control.
+
+## Findings (no protections disabled)
+
+### Executable paths
+- `uv.exe`:
+  `C:\Users\datom\AppData\Local\Programs\Python\Python313\Scripts\uv.exe`
+  Authenticode: **Valid** — signer CN="OpenAI OpCo, LLC" (Installed via Python Scripts;
+  signature verified by Get-AuthenticodeSignature).
+- Project interpreter:
+  `.venv\Scripts\python.exe`
+  Authenticode: **Valid** — Python Software Foundation.
+- `mypy.exe` shim:
+  `.venv\Scripts\mypy.exe`
+  Authenticode: **NotSigned** (StatusMessage: file is not digitally signed).
+  This is a setuptools/uv console-script launcher generated into the venv, not a
+  separately downloaded unsigned binary from an unknown website.
+
+### Package origin (trusted project dependencies)
+- `mypy==2.4.0` from `https://pypi.org/simple` via `uv.lock` (dev dependency group
+  in `pyproject.toml`: `mypy>=1.13.0`).
+- Module path: `.venv\Lib\site-packages\mypy\` (includes compiled `.pyd`).
+- `qdrant-client==1.20.0` from PyPI; depends on `grpcio==1.85.0` from PyPI.
+- `fastembed==0.9.1` from PyPI.
+
+### Workaround that works without weakening security
+```
+uv run python -m mypy app
+```
+Result observed 2026-10-29: `Success: no issues found in 47 source files`
+
+Prefer `python -m <tool>` over invoking unsigned venv `*.exe` shims when Smart App
+Control / WDAC complains. Do **not** disable WDAC, Smart App Control, or Windows
+Security to “fix” this.
+
+### Relation to Qdrant
+**Separate issues.**
+1. **mypy.exe unsigned shim** — Windows publisher verification of the console-script
+   launcher. Mitigated by `python -m mypy`.
+2. **Qdrant / grpcio native DLL** — previously reported `ImportError: DLL load failed
+   while importing cygrpc` under Application Control. That affects native gRPC code
+   inside `grpcio`, not mypy.
+
+### Current Qdrant status on this host (re-checked 2026-10-29)
+```
+make_local_chunk_store(...) -> QdrantChunkStore
+ensure_collection + upsert_chunks + count_for_doc: OK against embedded :memory:
+```
+So embedded Qdrant **works in this session**. Earlier Phase 2 runs fell back to
+`InMemoryChunkStore` when native import failed. Both code paths remain; tests must
+explicitly report which backend was used (see docs/evidence/phase2_qdrant_coverage.txt).
+
+## Remaining limitations
+- Unsigned venv script shims (`mypy.exe`, `pytest.exe`, etc.) may still trigger
+  Smart App Control when launched directly (`uv run mypy` / `uv run pytest`).
+- CI / Linux containers are unaffected by Windows Smart App Control.
+- Do not treat unsigned-shim warnings as evidence the PyPI packages are malicious;
+  verify lockfile source (`pypi.org`) and prefer `python -m`.
