@@ -63,7 +63,7 @@ Corpus scale + DOC-6 chunking experiment.
 - Gemini tool round-trip fixed by preserving `thought_signature` / `extra_content`
 - Prod E2E re-verified (lifecycle + UI); query degraded while Groq TPD exhausted
 - Early submission tag `submission-2026-10-29` @ `1ab164d` **preserved unchanged**
-- Submission-ready continuation commit: recorded after push in git log (see latest `main`)
+- Submission-ready continuation commit (local): **`f07b0f1`** (`f07b0f11d88103364f800ea798bd4de32a087a8b`) — push to `origin/main` required if not yet visible on GitHub
 
 ## Human actions still required before deadline
 
