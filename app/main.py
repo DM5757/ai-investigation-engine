@@ -7,16 +7,24 @@ import time
 import uuid
 from collections.abc import AsyncIterator, Callable
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI, Request, Response
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
+from app.api.ratelimit import DailyCounter, TokenBucketLimiter
+from app.api.routes_documents import router as documents_router
 from app.api.routes_health import router as health_router
+from app.api.routes_query import router as query_router
+from app.api.routes_stats import router as stats_router
 from app.config import get_settings
 from app.errors import AppError
 from app.logging_setup import request_id_ctx, setup_logging
 
 logger = logging.getLogger(__name__)
+
+_STATIC_DIR = Path(__file__).resolve().parent / "ui" / "static"
 
 
 @asynccontextmanager
@@ -25,6 +33,12 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     setup_logging(settings.log_level)
     app.state.embedding_provider = None
     app.state.embedding_load_ms = None
+    app.state.metrics = {"queries": 0, "uploads": 0, "errors": 0}
+    app.state.query_limiter = TokenBucketLimiter(
+        rate_per_min=settings.query_rate_per_min,
+        burst=settings.query_burst,
+    )
+    app.state.llm_daily = DailyCounter(cap=settings.llm_daily_cap)
     logger.info("app_start env=%s", settings.app_env)
 
     if settings.embedding_enabled_at_startup:
@@ -51,6 +65,21 @@ def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title=settings.app_name, version="0.1.0", lifespan=lifespan)
     app.include_router(health_router)
+    app.include_router(documents_router)
+    app.include_router(query_router)
+    app.include_router(stats_router)
+
+    @app.middleware("http")
+    async def security_headers_middleware(
+        request: Request, call_next: Callable[..., object]
+    ) -> Response:
+        response = await call_next(request)  # type: ignore[misc]
+        assert isinstance(response, Response)
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Referrer-Policy"] = "no-referrer"
+        # Intentionally omit Access-Control-Allow-Origin (no CORS wildcard).
+        return response
 
     @app.middleware("http")
     async def request_id_middleware(request: Request, call_next: Callable[..., object]) -> Response:
@@ -70,6 +99,13 @@ def create_app() -> FastAPI:
             status_code=exc.http_status,
             content={"error": {"code": exc.code, "message": exc.message}},
         )
+
+    @app.get("/")
+    def ui_index() -> FileResponse:
+        return FileResponse(_STATIC_DIR / "index.html")
+
+    if _STATIC_DIR.is_dir():
+        app.mount("/static", StaticFiles(directory=str(_STATIC_DIR)), name="static")
 
     return app
 

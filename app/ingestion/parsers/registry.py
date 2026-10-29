@@ -36,6 +36,16 @@ _CONTENT_TYPE_MAP: dict[str, Parser] = {
 }
 
 
+def allowed_extensions() -> frozenset[str]:
+    """Extension allow-list for upload endpoints."""
+    return frozenset(_EXTENSION_MAP.keys())
+
+
+def extension_allowed(filename: str) -> bool:
+    lower = filename.lower()
+    return any(lower.endswith(ext) for ext in _EXTENSION_MAP)
+
+
 def get_parser(
     *,
     filename: str | None = None,

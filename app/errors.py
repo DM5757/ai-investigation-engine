@@ -57,3 +57,8 @@ class NotFound(AppError):
 class Unauthorized(AppError):
     code = "unauthorized"
     http_status = 401
+
+
+class PayloadTooLarge(AppError):
+    code = "payload_too_large"
+    http_status = 413

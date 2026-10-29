@@ -1,0 +1,38 @@
+Phase 5 UI / API checklist — executed 2026-10-29 via TestClient smoke
+(script: scripts/phase5_smoke.py — not a browser session; covers same HTTP surface the UI uses)
+
+Environment:
+  - temp SQLite DATABASE_URL
+  - ADMIN_TOKEN=checklist-admin
+  - InMemoryChunkStore injected; ZeroEmbeddingProvider; llm_override=None (degraded)
+  - No live Groq/Gemini required
+
+Steps executed (actual results):
+
+1. GET / -> 200; has_brand=True
+2. GET /static/app.js -> 200; setText=True (textContent helper present)
+3. GET /static/style.css -> 200
+4. GET /api/health -> 200 {'status': 'ok'}
+5. GET /api/health/ready -> 200 db=ok (llm_status/qdrant_status reported)
+6. GET /api/version -> 200 version present
+7. GET /api/stats -> 200 keys include documents_by_status, chunk_total, collection_name
+8. GET /api/eval/runs -> 200 empty runs; note mentions Phase 7
+9. POST /api/documents with X-Admin-Token -> 200 outcome=created
+10. GET /api/documents -> 200 total=1
+11. GET /api/documents/{id}/chunks -> 200 n>=1
+12. POST /api/query (sparse) -> 200 status=llm_unavailable sources>=1 missing_information set
+13. GET /api/metrics -> queries=1 uploads=1 errors=0
+14. Security headers: X-Content-Type-Options=nosniff; X-Frame-Options=DENY; no Access-Control-Allow-Origin
+15. POST /api/documents without token -> 401
+
+UI tab mapping (static assets inspected + endpoints above):
+  Ask       -> POST /api/query (+ status badge classes in style.css)
+  Documents -> admin token memory var in app.js; upload/list/chunks/update/delete
+  Corpus    -> GET /api/stats
+  Evaluation-> GET /api/eval/runs empty state
+  Health    -> GET /api/health, /api/health/ready, /api/version
+
+Browser note:
+  Full click-through in a real browser was not required for this evidence pass;
+  functional coverage is TestClient against the same routes/static files the UI loads.
+  Optional local uvicorn was not left running for this record.

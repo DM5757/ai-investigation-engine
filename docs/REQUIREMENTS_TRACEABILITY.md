@@ -29,19 +29,19 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | EVAL-3 | Quantitative retrieval + answer metrics | `eval/metrics.py` | TBD | Not started | — |
 | EVAL-4 | Compare ≥2 configurations | `eval/configs/` | TBD | Not started | — |
 | EVAL-5 | Error analysis | EVALUATION_REPORT | TBD | Not started | — |
-| APP-1 | Python backend | FastAPI (`app/main.py`) | local health + pytest | Partial | Walking skeleton only |
-| APP-2 | Functional UI (docs, ask, sources) | `app/ui/static/` | TBD | Not started | — |
+| APP-1 | Python backend | FastAPI routes + deps (`documents`/`query`/`stats`) | `test_api_*` + phase5.txt | Done-verified | Thin handlers → lifecycle/engine |
+| APP-2 | Functional UI (docs, ask, sources) | `app/ui/static/` | `test_api_ui_static` + phase5_ui_checklist | Done-verified | textContent-only; admin token in JS memory |
 | DATA-1 | Process ≥50,000 documents/records | HotpotQA + synthetic | count script | Not started | No assignment file attached; public HotpotQA planned |
 | DATA-2 | Cross-document retrieval; identifiable sources | corpus + citations | TBD | Not started | — |
 | DATA-3 | Incomplete and contradictory information | synthetic truth | TBD | Not started | — |
 | DATA-4 | Reproducible evaluation / subset justification | DATASET.md + manifests | TBD | Not started | — |
 | DEP-1 | Public URL on free hosting | Render Free | `docs/evidence/phase1_deploy.txt` | Done-verified | Live: https://ai-investigation-engine-scyz.onrender.com (2026-10-29) |
-| DEP-2 | Hosting and DB integration | Neon + app ready | public `/api/health/ready` | Partial | DB ok on Render; Qdrant not configured yet |
-| DEP-3 | Data persists across restarts | external Neon/Qdrant | restart test | Partial | Architecture chosen for persistence |
-| DEP-4 | Secrets protected | env/secrets; `.gitignore` | secret scan | Partial | `.env` gitignored; CI scan TBD |
+| DEP-2 | Hosting and DB integration | Neon + app ready | public `/api/health/ready` | Partial | DB ok on Render; Phase 5 APIs local-verified; Qdrant Cloud / full Render wiring for new routes not smoked |
+| DEP-3 | Data persists across restarts | external Neon/Qdrant | restart test | Partial | Architecture chosen for persistence; local tests use temp SQLite + memory store |
+| DEP-4 | Secrets protected | env/secrets; admin token; no CORS `*` | secret scan + UI | Partial | `.env` gitignored; admin token not stored in localStorage; keys never returned in API |
 | DEP-5 | Deployment architecture, costs, free-tier limits documented | `FREE_TIER_NOTES.md`, DEPLOYMENT | docs | Partial | Phase 0 notes written; Deploy smoke pending |
-| TECH-1 | Clean modular code, SoC, errors | `app/` layout | review/tests | Partial | Scaffold + health routes; full SoC later |
-| TECH-2 | Automated tests; DB/API integration | `tests/` | local pytest 5 passed | Partial | CI present; live deploy tests pending |
+| TECH-1 | Clean modular code, SoC, errors | `app/` layout | review/tests | Partial | API → services → repos; modules kept thin |
+| TECH-2 | Automated tests; DB/API integration | `tests/` | local pytest 119 passed | Partial | Phase 5 API/UI covered; Render E2E for new routes pending |
 | TECH-3 | Secure env config; technical docs | config + docs | TBD | Partial | Phase 0–1 docs started |
 | TECH-4 | Performance and LLM cost understanding | PERFORMANCE_AND_COST | measured | Partial | Embed RSS/512m bench recorded; LLM cost TBD |
 | SUB-1 | GitHub repo with history | git | `5c4d02c` on origin/main | Partial | History started; more phase commits needed |

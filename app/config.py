@@ -59,6 +59,11 @@ class Settings(BaseSettings):
 
     admin_token: SecretStr | None = Field(default=None, alias="ADMIN_TOKEN")
 
+    # API rate limits (Phase 5)
+    query_rate_per_min: float = Field(default=30.0, alias="QUERY_RATE_PER_MIN")
+    query_burst: float = Field(default=10.0, alias="QUERY_BURST")
+    llm_daily_cap: int = Field(default=0, alias="LLM_DAILY_CAP")  # 0 = disabled
+
     embedding_model: str = Field(
         default="BAAI/bge-small-en-v1.5",
         alias="EMBEDDING_MODEL",

@@ -95,24 +95,28 @@ class HybridRetriever:
         embedder: EmbeddingProvider,
         bm25: Bm25Encoder,
         settings: Settings | None = None,
+        *,
+        default_mode: RetrievalMode = "hybrid_rrf",
     ) -> None:
         self.store = store
         self.embedder = embedder
         self.bm25 = bm25
         self.settings = settings or get_settings()
+        self.default_mode: RetrievalMode = default_mode
 
     def retrieve(
         self,
         query: str,
         k: int = 10,
         *,
-        mode: RetrievalMode = "hybrid_rrf",
+        mode: RetrievalMode | None = None,
         filters: Mapping[str, Any] | None = None,
         active_versions: Mapping[str, int] | None = None,
     ) -> list[RetrievalHit]:
         """Retrieve top-k chunks for ``query`` under the selected mode."""
         if k <= 0:
             return []
+        mode = mode or self.default_mode
         store_filters = dict(filters) if filters else None
         if active_versions and store_filters is not None:
             store_filters = {**store_filters, "active_versions": dict(active_versions)}

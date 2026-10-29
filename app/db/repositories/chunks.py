@@ -78,3 +78,15 @@ class ChunkRepository:
             self.session.delete(row)
         self.session.flush()
         return len(rows)
+
+    def count_all(self) -> int:
+        from sqlalchemy import func
+
+        return int(self.session.scalar(select(func.count()).select_from(Chunk)) or 0)
+
+    def get(self, chunk_id: str) -> Chunk | None:
+        return self.session.get(Chunk, chunk_id)
+
+    def get_by_point_id(self, point_id: str) -> Chunk | None:
+        stmt = select(Chunk).where(Chunk.qdrant_point_id == point_id)
+        return self.session.scalars(stmt).first()

@@ -1,0 +1,229 @@
+:root {
+  --bg: #f6f4ef;
+  --fg: #1c1b19;
+  --muted: #5c584f;
+  --line: #d4cfc3;
+  --card: #fffdf8;
+  --accent: #245b4a;
+  --accent-fg: #f4fff9;
+  --answered: #1f6b3a;
+  --partial: #8a6d1d;
+  --conflicting: #8a2f1d;
+  --insufficient: #5a4a78;
+  --llm_unavailable: #3a4a5c;
+  --idle: #6a655c;
+  --font: "Segoe UI", "IBM Plex Sans", "Helvetica Neue", sans-serif;
+  --mono: "Cascadia Code", "Consolas", "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--fg);
+  background:
+    radial-gradient(circle at 10% 0%, #efe8d8 0%, transparent 40%),
+    linear-gradient(180deg, #f8f5ee, var(--bg));
+  min-height: 100vh;
+}
+
+.top {
+  padding: 1.25rem 1.5rem 0.5rem;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.tab {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--fg);
+  padding: 0.4rem 0.85rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+
+main {
+  padding: 1rem 1.5rem 2.5rem;
+  max-width: 1100px;
+}
+
+.panel[hidden] { display: none !important; }
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+textarea, input[type="text"], input[type="password"], input[type="file"], select {
+  width: 100%;
+  max-width: 100%;
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--card);
+  color: var(--fg);
+}
+
+textarea { resize: vertical; }
+
+.row, .upload-row, .admin-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: end;
+  margin: 0.75rem 0;
+}
+
+.row > *, .upload-row > *, .admin-bar > * {
+  flex: 1 1 auto;
+}
+
+button {
+  font: inherit;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+
+button.secondary {
+  background: var(--card);
+}
+
+button.linkish {
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 0.2rem 0.45rem;
+  font-size: 0.85rem;
+}
+
+.status-badge {
+  display: inline-block;
+  margin: 0.5rem 0 1rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.status-badge.muted,
+.status-badge.idle { background: var(--idle); }
+.status-badge.answered { background: var(--answered); }
+.status-badge.partial { background: var(--partial); }
+.status-badge.conflicting { background: var(--conflicting); }
+.status-badge.insufficient { background: var(--insufficient); }
+.status-badge.llm_unavailable { background: var(--llm_unavailable); }
+
+.answer-box, pre {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.85rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  min-height: 2.5rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  background: #eef6f2;
+  color: var(--accent);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.chip.active {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 800px) {
+  .split { grid-template-columns: 1fr; }
+}
+
+.source-card {
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 0.7rem;
+  margin-bottom: 0.6rem;
+  border-radius: 4px;
+}
+
+.source-card.highlight {
+  outline: 2px solid var(--accent);
+}
+
+.muted { color: var(--muted); font-size: 0.9rem; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  margin-top: 0.75rem;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 0.45rem 0.55rem;
+  text-align: left;
+  font-size: 0.9rem;
+  vertical-align: top;
+}
+
+h2, h3 { margin: 1rem 0 0.45rem; font-size: 1.05rem; }
+
+details {
+  margin-top: 1rem;
+}

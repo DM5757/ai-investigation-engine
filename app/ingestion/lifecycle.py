@@ -216,6 +216,62 @@ class DocumentLifecycle:
             )
         return self._update_existing(existing, prep)
 
+    def update_by_id(
+        self,
+        document_id: str,
+        filename: str,
+        data: bytes,
+        *,
+        prepared: PreparedDocument | None = None,
+        parse_fn: Callable[[str, bytes], Any] | None = None,
+        normalize_fn: Callable[[str], str] | None = None,
+        chunk_fn: Callable[..., Any] | None = None,
+    ) -> LifecycleResult:
+        """Replace content for an existing document id (new version)."""
+        existing = self.docs.get(document_id)
+        if existing is None or existing.status == DocumentStatus.DELETED:
+            raise NotFound(f"document {document_id} not found")
+        prep = prepared or prepare_document(
+            filename,
+            data,
+            chunk_strategy=self.chunk_strategy,
+            parse_fn=parse_fn,
+            normalize_fn=normalize_fn,
+            chunk_fn=chunk_fn,
+        )
+        if existing.content_hash == prep.content_hash:
+            return LifecycleResult(
+                LifecycleOutcome.UNCHANGED,
+                existing,
+                "same content_hash",
+            )
+        return self._update_existing(existing, prep)
+
+    def reindex(self, document_id: str) -> LifecycleResult:
+        """Re-embed and upsert the active version into the chunk store."""
+        doc = self.docs.get(document_id)
+        if doc is None or doc.status == DocumentStatus.DELETED:
+            raise NotFound(f"document {document_id} not found")
+        if doc.active_version < 1:
+            return LifecycleResult(
+                LifecycleOutcome.FAILED,
+                doc,
+                "document has no active version to reindex",
+            )
+        try:
+            self._index_version(doc, doc.active_version)
+            self.docs.set_status(doc, DocumentStatus.ACTIVE, clear_error=True)
+            self.session.commit()
+            return LifecycleResult(LifecycleOutcome.UPDATED, doc, "reindexed active version")
+        except Exception as exc:  # noqa: BLE001
+            logger.exception("document reindex failed")
+            self.session.rollback()
+            failed = self.docs.get(document_id)
+            if failed is not None:
+                self.docs.set_status(failed, DocumentStatus.FAILED, error_message=str(exc))
+                self.session.commit()
+            return LifecycleResult(LifecycleOutcome.FAILED, failed, str(exc))
+
     def delete(self, document_id: str) -> LifecycleResult:
         doc = self.docs.get(document_id)
         if doc is None or doc.status == DocumentStatus.DELETED:

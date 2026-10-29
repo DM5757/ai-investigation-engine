@@ -26,6 +26,13 @@ def ready(request: Request, settings: SettingsDep, session: DbSession) -> dict[s
     """Readiness probe — validates configuration and database connectivity."""
     session.execute(text("SELECT 1"))
     provider = getattr(request.app.state, "embedding_provider", None)
+    store = getattr(request.app.state, "chunk_store", None)
+    qdrant_status = "configured" if settings.qdrant_url else "local_or_memory"
+    if store is not None:
+        qdrant_status = "injected"
+    llm_status = "degraded"
+    if settings.groq_api_key is not None or settings.gemini_api_key is not None:
+        llm_status = "configured"
     return {
         "status": "ready",
         "database": "ok",
@@ -35,7 +42,9 @@ def ready(request: Request, settings: SettingsDep, session: DbSession) -> dict[s
         "embedding_load_ms": getattr(request.app.state, "embedding_load_ms", None),
         "llm_groq_configured": settings.groq_api_key is not None,
         "llm_gemini_configured": settings.gemini_api_key is not None,
+        "llm_status": llm_status,
         "qdrant_configured": settings.qdrant_url is not None,
+        "qdrant_status": qdrant_status,
     }
 
 

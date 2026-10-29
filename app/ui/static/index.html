@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Investigation Engine</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="top">
+    <h1>AI Investigation Engine</h1>
+    <p class="tagline">Evidence-backed answers across documents — not chat-with-PDF.</p>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button type="button" class="tab active" data-tab="ask" role="tab">Ask</button>
+    <button type="button" class="tab" data-tab="documents" role="tab">Documents</button>
+    <button type="button" class="tab" data-tab="stats" role="tab">Corpus stats</button>
+    <button type="button" class="tab" data-tab="eval" role="tab">Evaluation</button>
+    <button type="button" class="tab" data-tab="health" role="tab">Health</button>
+  </nav>
+
+  <main>
+    <section id="panel-ask" class="panel active" role="tabpanel">
+      <label for="question">Question</label>
+      <textarea id="question" rows="4" placeholder="Ask a multi-document investigation question…"></textarea>
+      <div class="row">
+        <label for="mode">Mode</label>
+        <select id="mode">
+          <option value="hybrid_rerank" selected>hybrid_rerank</option>
+          <option value="hybrid_rrf">hybrid_rrf</option>
+          <option value="hybrid_weighted">hybrid_weighted</option>
+          <option value="dense">dense</option>
+          <option value="sparse">sparse</option>
+        </select>
+        <button type="button" id="ask-btn" class="primary">Ask</button>
+      </div>
+      <div id="ask-status" class="status-badge muted" aria-live="polite">idle</div>
+      <h2>Answer</h2>
+      <pre id="answer-text" class="answer-box"></pre>
+      <p id="missing-info" class="muted"></p>
+      <h2>Citations</h2>
+      <div id="citation-chips" class="chips"></div>
+      <div class="split">
+        <div>
+          <h3>Sources</h3>
+          <div id="sources-panel"></div>
+        </div>
+        <div>
+          <h3>Conflicts</h3>
+          <div id="conflicts-panel"></div>
+        </div>
+      </div>
+      <details id="trace-details">
+        <summary>Investigation trace</summary>
+        <pre id="trace-panel"></pre>
+      </details>
+      <h3>Usage</h3>
+      <pre id="usage-panel"></pre>
+    </section>
+
+    <section id="panel-documents" class="panel" role="tabpanel" hidden>
+      <div class="admin-bar">
+        <label for="admin-token">Admin token (memory only)</label>
+        <input id="admin-token" type="password" autocomplete="off" placeholder="X-Admin-Token" />
+        <button type="button" id="save-token" class="secondary">Use token</button>
+        <span id="token-state" class="muted">not set</span>
+      </div>
+      <div class="upload-row">
+        <input id="upload-file" type="file" />
+        <input id="external-key" type="text" placeholder="optional external_key" />
+        <button type="button" id="upload-btn" class="primary">Upload</button>
+      </div>
+      <p id="docs-msg" class="muted" aria-live="polite"></p>
+      <table id="docs-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Version</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <h3>Chunks</h3>
+      <pre id="chunks-panel"></pre>
+    </section>
+
+    <section id="panel-stats" class="panel" role="tabpanel" hidden>
+      <button type="button" id="refresh-stats" class="secondary">Refresh</button>
+      <pre id="stats-panel"></pre>
+    </section>
+
+    <section id="panel-eval" class="panel" role="tabpanel" hidden>
+      <button type="button" id="refresh-eval" class="secondary">Refresh</button>
+      <pre id="eval-panel"></pre>
+    </section>
+
+    <section id="panel-health" class="panel" role="tabpanel" hidden>
+      <button type="button" id="refresh-health" class="secondary">Refresh</button>
+      <h3>/api/health</h3>
+      <pre id="health-panel"></pre>
+      <h3>/api/health/ready</h3>
+      <pre id="ready-panel"></pre>
+      <h3>/api/version</h3>
+      <pre id="version-panel"></pre>
+    </section>
+  </main>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>

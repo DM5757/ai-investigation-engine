@@ -1,0 +1,33 @@
+Phase 5 verification — 2026-10-29 (local)
+
+Commands:
+  uv run ruff check app tests scripts
+  uv run python -m mypy app
+  uv run python -m pytest -q
+  uv run python scripts/phase5_smoke.py
+
+ruff:
+  All checks passed!
+
+mypy:
+  Success: no issues found in 89 source files
+
+pytest:
+  119 passed, 1 deselected in ~6–20s
+  (live marker deselected by default)
+
+Known gaps (unchanged / still open):
+  - Qdrant Cloud remote unverified
+  - bm25_avgdl pending corpus calibration
+  - CRC32 collisions pending
+  - retrieval eval pending (Phase 7)
+
+Local vs Render:
+  - Local: Phase 5 API + UI verified via TestClient + pytest (temp SQLite + InMemoryChunkStore; llm=None degraded / ScriptedLLM).
+  - Parent re-check 2026-10-29: ruff clean; mypy 89 files; pytest 119 passed, 1 deselected; phase5_smoke.py OK.
+  - Render public probe same day (commit not yet redeployed with Phase 5):
+      GET /api/health -> 200
+      GET /api/stats, /, /static/app.js, /api/documents -> 404
+    Conclusion: public URL still serves Phase 1 skeleton only until owner redeploys
+    from GitHub main with ADMIN_TOKEN (+ Neon/Qdrant/LLM secrets as needed).
+    Phase 5 is locally verified; NOT verified on Render.

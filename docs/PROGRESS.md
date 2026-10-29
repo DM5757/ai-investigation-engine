@@ -29,6 +29,18 @@ LLM gateway + investigation engine (RAG-1 to RAG-8).
 - Default pytest excludes `live` marker to protect free-tier quotas; use `make test-live`
 - Limits still open: Qdrant Cloud remote; bm25_avgdl; CRC32 collisions; retrieval eval
 
-## Phase 5 — Next
+## Phase 5 — Complete (2026-10-29)
 
-Ask API + static UI (documents, query, sources). Do not start until Phase 4 review accepted.
+Ask API + vanilla JS UI (documents, query, sources, stats, eval stub, health).
+
+- Admin-token mutating document routes; public rate-limited `/api/query`
+- Static UI tabs: Ask | Documents | Corpus stats | Evaluation | Health
+- Tests: `test_api_documents`, `test_api_query`, `test_api_ui_static` (+ ratelimit/security unit)
+- Evidence: `docs/evidence/phase5.txt`, `docs/evidence/phase5_ui_checklist.txt`
+- Local verification: ruff/mypy clean; **119 passed**, 1 deselected (`live`)
+- Render: Phase 1 public URL unchanged; Phase 5 endpoints not claimed verified on Render
+- Gaps still open: Qdrant Cloud; bm25_avgdl; CRC32 collisions; retrieval eval
+
+## Phase 6 — Next
+
+Chunking experiment / corpus scale (DOC-6 / DATA-*). Do not start until Phase 5 review accepted.

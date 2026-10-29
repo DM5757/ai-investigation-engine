@@ -45,6 +45,46 @@ class DocumentRepository:
         stmt = select(Document).where(Document.status.in_(statuses))
         return list(self.session.scalars(stmt).all())
 
+    def list_filtered(
+        self,
+        *,
+        limit: int = 50,
+        offset: int = 0,
+        status: str | None = None,
+        title_contains: str | None = None,
+        include_deleted: bool = False,
+    ) -> tuple[list[Document], int]:
+        """Return (page, total) for document listing."""
+        from sqlalchemy import func
+
+        filters: list[Any] = []
+        if not include_deleted:
+            filters.append(Document.status != DocumentStatus.DELETED)
+        if status:
+            filters.append(Document.status == status)
+        if title_contains:
+            filters.append(Document.title.ilike(f"%{title_contains}%"))
+
+        count_stmt = select(func.count()).select_from(Document)
+        list_stmt = select(Document).order_by(Document.created_at.desc())
+        for clause in filters:
+            count_stmt = count_stmt.where(clause)
+            list_stmt = list_stmt.where(clause)
+        total = int(self.session.scalar(count_stmt) or 0)
+        items = list(
+            self.session.scalars(list_stmt.limit(max(0, limit)).offset(max(0, offset))).all()
+        )
+        return items, total
+
+    def counts_by_status(self, *, include_deleted: bool = True) -> dict[str, int]:
+        from sqlalchemy import func
+
+        stmt = select(Document.status, func.count()).group_by(Document.status)
+        if not include_deleted:
+            stmt = stmt.where(Document.status != DocumentStatus.DELETED)
+        rows = self.session.execute(stmt).all()
+        return {str(status): int(count) for status, count in rows}
+
     def create(
         self,
         *,
