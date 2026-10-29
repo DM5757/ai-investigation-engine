@@ -1,0 +1,29 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local data
+data/raw/
+*.db
+*.sqlite
+*.sqlite3
+
+# Tooling / caches
+uv.lock.bak
+.coverage
+htmlcov/
+dist/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/

@@ -1,0 +1,29 @@
+# Blueprint for Render Free web service (owner connects repo in dashboard).
+services:
+  - type: web
+    name: ai-investigation-engine
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: APP_ENV
+        value: production
+      # Keep false on Render until container_512m_bench.json confirms stability.
+      - key: EMBEDDING_ENABLED_AT_STARTUP
+        value: "false"
+      - key: ENABLE_BENCH_ENDPOINTS
+        value: "false"
+      - key: FASTEMBED_CACHE_PATH
+        value: /app/model_cache
+      - key: DATABASE_URL
+        sync: false
+      - key: QDRANT_URL
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ADMIN_TOKEN
+        sync: false

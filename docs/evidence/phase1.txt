@@ -1,0 +1,51 @@
+Phase 1 verification evidence
+Date: 2026-10-28T06:19Z (UTC)
+
+## Docker Engine
+  docker version Server: 29.7.2
+  docker info MemTotal: ~8 GB host (container benches use --memory=512m)
+
+## Local quality gates (Python 3.13 / uv)
+  ruff check app tests scripts     -> All checks passed
+  mypy app                         -> Success: no issues found in 16 source files
+  pytest -q                        -> 5 passed
+
+## Local process embedding bench (earlier)
+  docs/evidence/embedding_rss_bench.json
+  peak RSS: 268.07 MB; query p50: 5.7 ms
+
+## Docker image
+  docker build -t ai-investigation-engine:local .
+  Image size observed: ~1.29 GB (includes baked BGE-small ONNX cache)
+  CMD: python -m uvicorn app.main:app
+
+## Container health (no embeddings)
+  docker run -p 18081:8000 -e DATABASE_URL=sqlite+pysqlite:////tmp/app.db \
+    -e EMBEDDING_ENABLED_AT_STARTUP=false ai-investigation-engine:local
+  GET /api/health  -> {"status":"ok"}
+  GET /api/health/ready -> status ready, database ok, embedding_loaded false
+  GET /api/version -> {"version":"0.1.0","app":"ai-investigation-engine"}
+
+## Container bench under Render Free simulation (--memory=512m --memory-swap=512m)
+  Script: scripts/bench_container_512m.py
+  Results: docs/evidence/container_512m_bench.json
+  Logs: docs/evidence/container_512m_logs.txt
+  oom_killed: false
+  startup_to_health_ms: 3747.0
+  startup_to_ready_ms: 3814.7 (embeddings loaded)
+  embedding_load_ms_reported: 440.12
+  embed_latency_ms_p50: 6.295
+  embed_latency_ms_mean: 13.531
+  docker_stats_peak_mem_usage_mb: 284.6 (~55.6% of 512m)
+  notes: Provisional pass under 512m docker memory limit
+
+## Deployment artifacts reviewed
+  Dockerfile: multi-stage, non-root, model cache baked, healthcheck on /api/health
+  render.yaml: plan free, docker runtime, secrets sync:false, bench endpoints off
+  Default EMBEDDING_ENABLED_AT_STARTUP=false for walking skeleton; safe to enable true
+  after deploy if cold-start budget allows (measured load ~0.4s with baked cache)
+
+## Outstanding for Phase 1 completion
+  - Push to GitHub + deploy Render Free public URL
+  - Owner must create Neon/Qdrant secrets for full ready dependencies later
+  - No Phase 2 until public URL smoke is recorded

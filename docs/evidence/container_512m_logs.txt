@@ -1,0 +1,25 @@
+{"ts": "2026-10-28T06:19:04.699875+00:00", "level": "INFO", "logger": "app.main", "msg": "app_start env=benchmark", "request_id": null}
+{"ts": "2026-10-28T06:19:05.726218+00:00", "level": "INFO", "logger": "app.main", "msg": "embedding_loaded model=BAAI/bge-small-en-v1.5 load_ms=440.12", "request_id": null}
+INFO:     172.17.0.1:48690 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     172.17.0.1:48702 - "GET /api/health/ready HTTP/1.1" 200 OK
+INFO:     172.17.0.1:48718 - "POST /api/bench/embed?q=payment+incident+march+0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41478 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     172.17.0.1:48728 - "POST /api/bench/embed?q=payment+incident+march+1 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:44676 - "POST /api/bench/embed?q=payment+incident+march+2 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:44690 - "POST /api/bench/embed?q=payment+incident+march+3 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:44704 - "POST /api/bench/embed?q=payment+incident+march+4 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:44708 - "POST /api/bench/embed?q=payment+incident+march+5 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:44714 - "POST /api/bench/embed?q=payment+incident+march+6 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:35884 - "POST /api/bench/embed?q=payment+incident+march+7 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:35888 - "POST /api/bench/embed?q=payment+incident+march+8 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:35890 - "POST /api/bench/embed?q=payment+incident+march+9 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:35896 - "POST /api/bench/embed?q=payment+incident+march+10 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:35910 - "POST /api/bench/embed?q=payment+incident+march+11 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:39906 - "POST /api/bench/embed?q=payment+incident+march+12 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:39910 - "POST /api/bench/embed?q=payment+incident+march+13 HTTP/1.1" 200 OK
+INFO:     172.17.0.1:39918 - "POST /api/bench/embed?q=payment+incident+march+14 HTTP/1.1" 200 OK
+
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
