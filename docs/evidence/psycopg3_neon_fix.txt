@@ -1,0 +1,36 @@
+PostgreSQL driver / Neon readiness fix
+Date: 2026-10-29
+
+## Root cause
+Production DATABASE_URL uses scheme postgresql:// (Neon).
+SQLAlchemy maps bare postgresql:// → legacy psycopg2 driver.
+Project depends on Psycopg 3 (`psycopg[binary]` in pyproject main deps) but not psycopg2.
+Result on Render /api/health/ready: ModuleNotFoundError: No module named 'psycopg2' → HTTP 500.
+
+## Fix
+- Prefer Psycopg 3 (already production dependency; modern; SQLAlchemy 2 dialect `postgresql+psycopg`).
+- `app/db/url.py::normalize_database_url` rewrites postgres:// and postgresql:// to postgresql+psycopg://.
+- Applied in Settings validator, get_engine/get_session_factory, and Alembic env.
+- `/api/health/ready` no longer uses a hard DbSession dependency; DB failures → sanitized HTTP 503
+  (`status=not_ready`, `error.code=database_unavailable`) without leaking driver names.
+
+## Local Neon verification (secrets not logged)
+- SELECT 1 → OK
+- current_database → neondb
+- current_schema → public
+- alembic upgrade head → PostgresqlImpl; version 0002
+- tables: alembic_version, chunks, document_versions, documents, health_probes, index_stats, simhash_bands
+
+## Tests (2026-10-29)
+```
+uv run ruff check app tests scripts  -> All checks passed!
+uv run python -m mypy app            -> Success: no issues found in 90 source files
+uv run python -m pytest -q           -> 129 passed, 1 deselected
+psycopg package version              -> 3.3.6
+```
+
+## Docker
+- `uv sync --frozen --no-dev` installs `psycopg[binary]` from project.dependencies (not dev-only).
+
+## Public Render verification
+(recorded after push/redeploy below)

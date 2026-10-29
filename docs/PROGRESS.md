@@ -41,6 +41,13 @@ Ask API + vanilla JS UI (documents, query, sources, stats, eval stub, health).
 - Render: Phase 1 public URL unchanged; Phase 5 endpoints not claimed verified on Render
 - Gaps still open: Qdrant Cloud; bm25_avgdl; CRC32 collisions; retrieval eval
 
+## Hotfix — Neon / Psycopg 3 (2026-10-29)
+
+- Root cause: `postgresql://` → SQLAlchemy loaded missing `psycopg2`
+- Fix: normalize to `postgresql+psycopg://`; ready → sanitized 503 on DB failure
+- Neon: migrate to alembic `0002`; evidence `docs/evidence/psycopg3_neon_fix.txt`
+- Suite after fix: **129 passed**, 1 deselected
+
 ## Phase 6 — Next
 
-Chunking experiment / corpus scale (DOC-6 / DATA-*). Do not start until Phase 5 review accepted.
+Chunking experiment / corpus scale (DOC-6 / DATA-*). Do not start until production DB readiness is verified and Phase 5 review accepted.

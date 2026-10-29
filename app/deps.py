@@ -44,6 +44,7 @@ SettingsDep = Annotated[Settings, Depends(settings_dep)]
 
 
 def db_session(settings: SettingsDep) -> Generator[Session, None, None]:
+    # settings.database_url is already dialect-normalized (Psycopg 3).
     factory = get_session_factory(settings.database_url)
     session = factory()
     try:

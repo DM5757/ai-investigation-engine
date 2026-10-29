@@ -18,7 +18,7 @@
 
 | Name | Required for skeleton | Notes |
 | --- | --- | --- |
-| `DATABASE_URL` | yes | Neon for persistence; SQLite only for throwaway tests |
+| `DATABASE_URL` | yes | Neon for persistence; SQLite only for throwaway tests. Bare `postgresql://` is rewritten to `postgresql+psycopg://` (Psycopg 3). Do not install/use psycopg2. |
 | `EMBEDDING_ENABLED_AT_STARTUP` | no | `false` for walking skeleton; `true` OK per 512m bench |
 | `ENABLE_BENCH_ENDPOINTS` | no | keep `false` on public URL |
 | `FASTEMBED_CACHE_PATH` | no | default `/app/model_cache` in image |

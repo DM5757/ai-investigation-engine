@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import time
 from typing import Any
 
@@ -10,7 +11,11 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import text
 
 from app import __version__
-from app.deps import DbSession, SettingsDep
+from app.db.session import get_session_factory
+from app.db.url import normalize_database_url
+from app.deps import SettingsDep
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(tags=["health"])
 
@@ -22,9 +27,25 @@ def health() -> dict[str, str]:
 
 
 @router.get("/api/health/ready")
-def ready(request: Request, settings: SettingsDep, session: DbSession) -> dict[str, Any]:
-    """Readiness probe — validates configuration and database connectivity."""
-    session.execute(text("SELECT 1"))
+def ready(request: Request, settings: SettingsDep) -> JSONResponse:
+    """Readiness probe — dependency failures return sanitized HTTP 503."""
+    db_status = "ok"
+    db_detail: str | None = None
+    try:
+        url = normalize_database_url(settings.database_url)
+        factory = get_session_factory(url)
+        session = factory()
+        try:
+            session.execute(text("SELECT 1"))
+            session.commit()
+        finally:
+            session.close()
+    except Exception:
+        # Never leak driver names, DSNs, or stack traces to clients.
+        logger.exception("readiness_database_failed")
+        db_status = "unavailable"
+        db_detail = "database_unavailable"
+
     provider = getattr(request.app.state, "embedding_provider", None)
     store = getattr(request.app.state, "chunk_store", None)
     qdrant_status = "configured" if settings.qdrant_url else "local_or_memory"
@@ -33,9 +54,10 @@ def ready(request: Request, settings: SettingsDep, session: DbSession) -> dict[s
     llm_status = "degraded"
     if settings.groq_api_key is not None or settings.gemini_api_key is not None:
         llm_status = "configured"
-    return {
-        "status": "ready",
-        "database": "ok",
+
+    body: dict[str, Any] = {
+        "status": "ready" if db_status == "ok" else "not_ready",
+        "database": db_status,
         "embedding_model_configured": settings.embedding_model,
         "embedding_enabled_at_startup": settings.embedding_enabled_at_startup,
         "embedding_loaded": provider is not None,
@@ -46,6 +68,11 @@ def ready(request: Request, settings: SettingsDep, session: DbSession) -> dict[s
         "qdrant_configured": settings.qdrant_url is not None,
         "qdrant_status": qdrant_status,
     }
+    if db_detail is not None:
+        body["error"] = {"code": db_detail, "message": "A required dependency is unavailable"}
+
+    status_code = 200 if db_status == "ok" else 503
+    return JSONResponse(status_code=status_code, content=body)
 
 
 @router.get("/api/version")

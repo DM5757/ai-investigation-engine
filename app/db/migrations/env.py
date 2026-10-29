@@ -8,7 +8,9 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
+from app.config import get_settings
 from app.db.models import Base
+from app.db.url import normalize_database_url
 
 config = context.config
 if config.config_file_name is not None:
@@ -16,13 +18,25 @@ if config.config_file_name is not None:
 
 target_metadata = Base.metadata
 
-db_url = os.getenv("DATABASE_URL")
-if db_url:
-    config.set_main_option("sqlalchemy.url", db_url)
+
+def _resolve_database_url() -> str:
+    """Prefer process env, then Settings (.env), always Psycopg-3-normalized."""
+    raw = os.getenv("DATABASE_URL")
+    if not raw:
+        get_settings.cache_clear()
+        raw = get_settings().database_url
+    return normalize_database_url(raw)
+
+
+# ConfigParser treats % specially; escape for alembic.ini overlay.
+_db_url = _resolve_database_url()
+config.set_main_option("sqlalchemy.url", _db_url.replace("%", "%%"))
 
 
 def run_migrations_offline() -> None:
-    url = config.get_main_option("sqlalchemy.url")
+    url = normalize_database_url(
+        (config.get_main_option("sqlalchemy.url") or "").replace("%%", "%")
+    )
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -34,8 +48,10 @@ def run_migrations_offline() -> None:
 
 
 def run_migrations_online() -> None:
+    section = config.get_section(config.config_ini_section, {}) or {}
+    # engine_from_config reads the escaped URL; SQLAlchemy accepts %%.
     connectable = engine_from_config(
-        config.get_section(config.config_ini_section, {}),
+        section,
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )

@@ -2,8 +2,10 @@
 
 from functools import lru_cache
 
-from pydantic import Field, SecretStr
+from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+from app.db.url import normalize_database_url
 
 
 class Settings(BaseSettings):
@@ -25,6 +27,13 @@ class Settings(BaseSettings):
         default="sqlite+pysqlite:///:memory:",
         alias="DATABASE_URL",
     )
+
+    @field_validator("database_url", mode="before")
+    @classmethod
+    def _normalize_database_url(cls, value: object) -> object:
+        if isinstance(value, str):
+            return normalize_database_url(value)
+        return value
     qdrant_url: str | None = Field(default=None, alias="QDRANT_URL")
     qdrant_api_key: SecretStr | None = Field(default=None, alias="QDRANT_API_KEY")
 
