@@ -1,8 +1,8 @@
 {
-  "created_at": "2026-10-30T06:06:16.250046+00:00",
+  "created_at": "2026-10-30T06:24:45.630723+00:00",
   "base": "https://ai-investigation-engine-scyz.onrender.com",
   "timeout_s": 280.0,
-  "pause_s": 35.0,
+  "pause_s": 30.0,
   "steps": [
     {
       "step": "/api/health",
@@ -35,7 +35,7 @@
       "body": {
         "version": "0.1.0",
         "app": "ai-investigation-engine",
-        "git_commit": "464d8b20f6f9a368746747bc15b5146f822b3c89"
+        "git_commit": "3738d2daa1e1fbb62f32d6082cc40c34ba3e83f7"
       }
     },
     {
@@ -66,15 +66,15 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 10962.7,
+      "ms": 15286.8,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "Roanoke\u2013Blacksburg Regional Airport (IATA\u202f:\u202fROA, ICAO\u202f:\u202fKROA, FAA\u202fLID\u202f:\u202fROA), also called Woodrum Field, is a regional airport situated about three nautical miles (\u2248\u202f6\u202fkm) northwest of the central business district of Roanoke, Virginia\u3010S1\u3011.",
-      "answer_preview": "Roanoke\u2013Blacksburg Regional Airport (IATA\u202f:\u202fROA, ICAO\u202f:\u202fKROA, FAA\u202fLID\u202f:\u202fROA), also called Woodrum Field, is a regional airport situated about three nautical miles (\u2248\u202f6\u202fkm) northwest of the central business district of Roanoke, Virginia\u3010S1\u3011.",
+      "answer": "Roanoke\u2013Blacksburg Regional Airport (also known as Woodrum Field) is a regional airport located three nautical miles (6 km) northwest of the central business district of Roanoke, a city in Roanoke County [S1].",
+      "answer_preview": "Roanoke\u2013Blacksburg Regional Airport (also known as Woodrum Field) is a regional airport located three nautical miles (6 km) northwest of the central business district of Roanoke, a city in Roanoke County [S1].",
       "n_citations": 1,
       "citation_titles": [
         "Roanoke\u2013Blacksburg Regional Airport"
@@ -85,9 +85,9 @@
       "n_conflicts": 0,
       "n_evidence_preview": 0,
       "usage_calls": 3,
-      "usage_prompt_tokens": 1558,
-      "usage_completion_tokens": 598,
-      "usage_total_tokens": 2156,
+      "usage_prompt_tokens": 3435,
+      "usage_completion_tokens": 460,
+      "usage_total_tokens": 3895,
       "abstention_reason": null,
       "trace_stages": [
         [
@@ -96,23 +96,27 @@
         ],
         [
           "plan",
-          1211.5
+          1140.1
         ],
         [
           "tools_seed_search",
-          1682.8
+          1853.8
+        ],
+        [
+          "tools_bridge_search",
+          3099.9
         ],
         [
           "tools_llm_round_0",
-          988.5
+          1294.7
         ],
         [
           "tool_record_finding",
-          0.1
+          0.0
         ],
         [
           "extract",
-          0.8
+          1.9
         ],
         [
           "contradictions",
@@ -124,7 +128,7 @@
         ],
         [
           "synthesize",
-          484.9
+          744.0
         ],
         [
           "verify",
@@ -132,7 +136,7 @@
         ],
         [
           "request",
-          4369.6
+          8135.8
         ]
       ]
     },
@@ -148,30 +152,30 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 9765.5,
+      "ms": 13201.0,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "Based on the provided claims, the provided sources state that Ohio State University is located in Columbus, Ohio [S1], while California State University, Dominguez Hills is located on the West Coast in Carson, California [S9]. However, the provided claims are insufficient to directly determine which university is further west.",
-      "answer_preview": "Based on the provided claims, the provided sources state that Ohio State University is located in Columbus, Ohio [S1], while California State University, Dominguez Hills is located on the West Coast in Carson, California [S9]. However, the provided claims are insufficient to directly determine which university is further west.",
+      "answer": "The provided claims are insufficient to determine whether Ohio State University or California State University, Dominguez Hills is further west, as they do not provide the geographical coordinates or locations for California State University, Dominguez Hills (only noting that it is part of the California State University system [S6], while Ohio State University is located in Columbus, Ohio [S1]).",
+      "answer_preview": "The provided claims are insufficient to determine whether Ohio State University or California State University, Dominguez Hills is further west, as they do not provide the geographical coordinates or locations for California State University, Dominguez Hills (only noting that it is part of the California State University system [S6], while Ohio State University is located in Columbus, Ohio [S1]).",
       "n_citations": 2,
       "citation_titles": [
         "Ohio State University",
-        "StubHub Center"
+        "California State University, Dominguez Hills"
       ],
       "citation_doc_ids": [
         "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
-        "cc662a1d-7816-41bd-83a1-c443af527264"
+        "955d5257-0873-47d3-a587-1c54a38242cd"
       ],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
       "usage_calls": 3,
-      "usage_prompt_tokens": 5170,
-      "usage_completion_tokens": 704,
-      "usage_total_tokens": 5874,
+      "usage_prompt_tokens": 9488,
+      "usage_completion_tokens": 716,
+      "usage_total_tokens": 10204,
       "abstention_reason": null,
       "trace_stages": [
         [
@@ -180,15 +184,19 @@
         ],
         [
           "plan",
-          1103.4
+          1108.0
         ],
         [
           "tools_seed_search",
-          5097.6
+          5280.1
+        ],
+        [
+          "tools_bridge_search",
+          2607.8
         ],
         [
           "tools_llm_round_0",
-          1181.7
+          1651.3
         ],
         [
           "tool_record_finding",
@@ -196,19 +204,19 @@
         ],
         [
           "extract",
-          5.8
+          7.6
         ],
         [
           "contradictions",
-          0.2
+          0.1
         ],
         [
           "sufficiency",
-          0.8
+          0.4
         ],
         [
           "synthesize",
-          770.7
+          719.0
         ],
         [
           "verify",
@@ -216,7 +224,7 @@
         ],
         [
           "request",
-          8160.8
+          11376.5
         ]
       ]
     },
@@ -232,7 +240,7 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 12394.6,
+      "ms": 14079.5,
       "timeout_or_error": false,
       "pass": false,
       "honest_degraded": false,
@@ -242,8 +250,8 @@
       ],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star of the series *Ice Road Truckers* [S2]. The provided claims do not contain the premiere date of the television series.",
-      "answer_preview": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star of the series *Ice Road Truckers* [S2]. The provided claims do not contain the premiere date of the television series.",
+      "answer": "Based on the provided claims, Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, who is a star of the series *Ice Road Truckers* [S2]. However, the provided claims do not contain information regarding the premiere date of that reality television series.",
+      "answer_preview": "Based on the provided claims, Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, who is a star of the series *Ice Road Truckers* [S2]. However, the provided claims do not contain information regarding the premiere date of that reality television series.",
       "n_citations": 1,
       "citation_titles": [
         "Michael Lent (writer and producer)"
@@ -253,10 +261,10 @@
       ],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
-      "usage_calls": 4,
-      "usage_prompt_tokens": 9155,
-      "usage_completion_tokens": 556,
-      "usage_total_tokens": 9711,
+      "usage_calls": 3,
+      "usage_prompt_tokens": 7401,
+      "usage_completion_tokens": 552,
+      "usage_total_tokens": 7953,
       "abstention_reason": null,
       "trace_stages": [
         [
@@ -265,216 +273,19 @@
         ],
         [
           "plan",
-          745.1
+          798.5
         ],
         [
           "tools_seed_search",
-          5866.6
+          5921.5
+        ],
+        [
+          "tools_bridge_search",
+          3796.4
         ],
         [
           "tools_llm_round_0",
-          845.1
-        ],
-        [
-          "tool_search_documents",
-          1968.3
-        ],
-        [
-          "tools_llm_round_1",
-          1318.2
-        ],
-        [
-          "tool_record_finding",
-          0.1
-        ],
-        [
-          "extract",
-          4.1
-        ],
-        [
-          "contradictions",
-          0.0
-        ],
-        [
-          "sufficiency",
-          0.4
-        ],
-        [
-          "synthesize",
-          633.1
-        ],
-        [
-          "verify",
-          0.0
-        ],
-        [
-          "request",
-          11381.9
-        ]
-      ]
-    },
-    {
-      "id": "multihop_robinson_perdita",
-      "letter": "C3",
-      "category": "entity_relationship_multihop",
-      "question": "The character for whom Mary Robinson was nicknamed was the daughter of Leontes, king of which country?",
-      "mode": "default",
-      "expected_behavior": "HotpotQA multi-hop nickname \u2192 Shakespeare character \u2192 country.",
-      "expect_status": [
-        "answered",
-        "partial"
-      ],
-      "http_status": 200,
-      "ms": 8670.2,
-      "timeout_or_error": false,
-      "pass": false,
-      "honest_degraded": false,
-      "failure_reasons": [
-        "answer_missing_required_tokens"
-      ],
-      "answer_status": "answered",
-      "degraded": false,
-      "answer": "Based on the provided sources, there is insufficient information to answer the question about the character Mary Robinson was nicknamed for or the country of Leontes.",
-      "answer_preview": "Based on the provided sources, there is insufficient information to answer the question about the character Mary Robinson was nicknamed for or the country of Leontes.",
-      "n_citations": 1,
-      "citation_titles": [
-        "Mary Robinson (poet)"
-      ],
-      "citation_doc_ids": [
-        "ffbee402-5430-49de-928f-9d781644fac1"
-      ],
-      "n_conflicts": 0,
-      "n_evidence_preview": 0,
-      "usage_calls": 4,
-      "usage_prompt_tokens": 3925,
-      "usage_completion_tokens": 533,
-      "usage_total_tokens": 4458,
-      "abstention_reason": null,
-      "trace_stages": [
-        [
-          "guard",
-          0.0
-        ],
-        [
-          "plan",
-          810.4
-        ],
-        [
-          "tools_seed_search",
-          2093.7
-        ],
-        [
-          "tools_llm_round_0",
-          900.1
-        ],
-        [
-          "tool_search_documents",
-          1818.9
-        ],
-        [
-          "tools_llm_round_1",
-          1207.5
-        ],
-        [
-          "tool_record_finding",
-          0.0
-        ],
-        [
-          "extract",
-          3.4
-        ],
-        [
-          "contradictions",
-          0.0
-        ],
-        [
-          "sufficiency",
-          0.2
-        ],
-        [
-          "synthesize",
-          805.7
-        ],
-        [
-          "verify",
-          0.0
-        ],
-        [
-          "request",
-          7640.5
-        ]
-      ]
-    },
-    {
-      "id": "colony_regression",
-      "letter": "regression-A",
-      "category": "insufficient_missing_entity",
-      "question": "Which evidence connects the investigation of the Roanoke colony disappearance to the key individuals involved, and what conclusions can be drawn from the available documents?",
-      "mode": "default",
-      "expected_behavior": "Roanoke Colony title absent from ACTIVE corpus; must abstain.",
-      "expect_status": [
-        "insufficient"
-      ],
-      "http_status": 200,
-      "ms": 25169.8,
-      "timeout_or_error": false,
-      "pass": true,
-      "honest_degraded": false,
-      "failure_reasons": [],
-      "answer_status": "insufficient",
-      "degraded": false,
-      "answer": "No verified claims could be grounded in retrieved document quotes.",
-      "answer_preview": "No verified claims could be grounded in retrieved document quotes.",
-      "n_citations": 0,
-      "citation_titles": [],
-      "citation_doc_ids": [],
-      "n_conflicts": 0,
-      "n_evidence_preview": 0,
-      "usage_calls": 5,
-      "usage_prompt_tokens": 18458,
-      "usage_completion_tokens": 629,
-      "usage_total_tokens": 19087,
-      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
-      "trace_stages": [
-        [
-          "guard",
-          0.0
-        ],
-        [
-          "plan",
-          12453.0
-        ],
-        [
-          "tools_seed_search",
-          2649.6
-        ],
-        [
-          "tools_llm_round_0",
-          917.2
-        ],
-        [
-          "tool_find_documents",
-          1373.3
-        ],
-        [
-          "tools_llm_round_1",
-          868.5
-        ],
-        [
-          "tool_search_documents",
-          2145.0
-        ],
-        [
-          "tools_llm_round_2",
-          763.9
-        ],
-        [
-          "tool_search_documents",
-          2229.7
-        ],
-        [
-          "tools_llm_round_3",
-          1328.1
+          1512.7
         ],
         [
           "tool_record_finding",
@@ -490,6 +301,302 @@
         ],
         [
           "sufficiency",
+          0.4
+        ],
+        [
+          "synthesize",
+          950.0
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          12987.1
+        ]
+      ]
+    },
+    {
+      "id": "multihop_robinson_perdita",
+      "letter": "C3",
+      "category": "entity_relationship_multihop",
+      "question": "The character for whom Mary Robinson was nicknamed was the daughter of Leontes, king of which country?",
+      "mode": "default",
+      "expected_behavior": "HotpotQA multi-hop nickname \u2192 Shakespeare character \u2192 country.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 12050.4,
+      "timeout_or_error": false,
+      "pass": false,
+      "honest_degraded": false,
+      "failure_reasons": [
+        "answer_missing_required_tokens"
+      ],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "The provided claims are insufficient to answer the question about the character Mary Robinson was nicknamed for or the country of Leontes [S1].",
+      "answer_preview": "The provided claims are insufficient to answer the question about the character Mary Robinson was nicknamed for or the country of Leontes [S1].",
+      "n_citations": 1,
+      "citation_titles": [
+        "Mary Robinson (poet)"
+      ],
+      "citation_doc_ids": [
+        "ffbee402-5430-49de-928f-9d781644fac1"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 4,
+      "usage_prompt_tokens": 8467,
+      "usage_completion_tokens": 532,
+      "usage_total_tokens": 8999,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          748.6
+        ],
+        [
+          "tools_seed_search",
+          2333.7
+        ],
+        [
+          "tools_bridge_search",
+          3190.8
+        ],
+        [
+          "tools_llm_round_0",
+          766.2
+        ],
+        [
+          "tool_search_documents",
+          1834.9
+        ],
+        [
+          "tools_llm_round_1",
+          1112.1
+        ],
+        [
+          "tool_record_finding",
+          0.0
+        ],
+        [
+          "extract",
+          2.3
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.1
+        ],
+        [
+          "synthesize",
+          913.5
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          10903.5
+        ]
+      ]
+    },
+    {
+      "id": "colony_regression",
+      "letter": "regression-A",
+      "category": "insufficient_missing_entity",
+      "question": "Which evidence connects the investigation of the Roanoke colony disappearance to the key individuals involved, and what conclusions can be drawn from the available documents?",
+      "mode": "default",
+      "expected_behavior": "Roanoke Colony title absent from ACTIVE corpus; must abstain.",
+      "expect_status": [
+        "insufficient"
+      ],
+      "http_status": 200,
+      "ms": 38245.7,
+      "timeout_or_error": false,
+      "pass": false,
+      "honest_degraded": false,
+      "failure_reasons": [
+        "unexpected_status:answered"
+      ],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Based on the provided claims, there is no information or evidence connecting the investigation of the Roanoke colony disappearance to key individuals or documents. The provided sources only discuss the definition and limitations of anecdotal evidence [S1, S2, S3].",
+      "answer_preview": "Based on the provided claims, there is no information or evidence connecting the investigation of the Roanoke colony disappearance to key individuals or documents. The provided sources only discuss the definition and limitations of anecdotal evidence [S1, S2, S3].",
+      "n_citations": 1,
+      "citation_titles": [
+        "Anecdotal evidence"
+      ],
+      "citation_doc_ids": [
+        "913a4588-ab1b-45fe-9d74-ba5c53c3ad91"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 6,
+      "usage_prompt_tokens": 23593,
+      "usage_completion_tokens": 403,
+      "usage_total_tokens": 23996,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          2827.6
+        ],
+        [
+          "tools_seed_search",
+          1684.0
+        ],
+        [
+          "tools_bridge_search",
+          3011.1
+        ],
+        [
+          "tools_llm_round_0",
+          4536.7
+        ],
+        [
+          "tool_find_documents",
+          1250.0
+        ],
+        [
+          "tools_llm_round_1",
+          3882.2
+        ],
+        [
+          "tool_search_documents",
+          1822.0
+        ],
+        [
+          "tools_llm_round_2",
+          8019.5
+        ],
+        [
+          "tool_search_documents",
+          2084.7
+        ],
+        [
+          "tools_llm_round_3",
+          3067.2
+        ],
+        [
+          "extract",
+          7.2
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.2
+        ],
+        [
+          "synthesize",
+          4411.4
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          36605.7
+        ]
+      ]
+    },
+    {
+      "id": "contradiction_deploy",
+      "letter": "E",
+      "category": "contradiction",
+      "question": "What do the documents say about auth-gateway deploy time on 2024-03-12? Note any contradictions.",
+      "mode": "default",
+      "expected_behavior": "Synthetic planted conflict: 08:10 UTC vs 14:00 UTC.",
+      "expect_status": [
+        "conflicting",
+        "partial",
+        "answered"
+      ],
+      "http_status": 200,
+      "ms": 19003.3,
+      "timeout_or_error": false,
+      "pass": false,
+      "honest_degraded": false,
+      "failure_reasons": [
+        "unexpected_status:insufficient"
+      ],
+      "answer_status": "insufficient",
+      "degraded": false,
+      "answer": "No verified claims could be grounded in retrieved document quotes.",
+      "answer_preview": "No verified claims could be grounded in retrieved document quotes.",
+      "n_citations": 0,
+      "citation_titles": [],
+      "citation_doc_ids": [],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 3,
+      "usage_prompt_tokens": 7900,
+      "usage_completion_tokens": 545,
+      "usage_total_tokens": 8445,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          3027.8
+        ],
+        [
+          "tools_seed_search",
+          1926.3
+        ],
+        [
+          "tools_bridge_search",
+          3096.2
+        ],
+        [
+          "tools_llm_round_0",
+          4422.8
+        ],
+        [
+          "tool_search_documents",
+          1489.9
+        ],
+        [
+          "tools_llm_round_1",
+          4712.9
+        ],
+        [
+          "tool_record_finding",
+          0.0
+        ],
+        [
+          "extract",
+          1.8
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
           0.0
         ],
         [
@@ -502,15 +609,15 @@
         ],
         [
           "request",
-          24734.5
+          18678.6
         ]
       ]
     }
   ],
-  "git_commit": "464d8b20f6f9a368746747bc15b5146f822b3c89",
+  "git_commit": "3738d2daa1e1fbb62f32d6082cc40c34ba3e83f7",
   "active_documents": 55081,
-  "n_pass": 3,
+  "n_pass": 2,
   "n_honest_degraded": 0,
-  "n_fail": 2,
+  "n_fail": 4,
   "ok": false
 }

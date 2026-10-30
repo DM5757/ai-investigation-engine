@@ -113,6 +113,27 @@ def extract_title_phrases(text: str, *, max_phrases: int = 12) -> list[str]:
     return _dedupe(found)[:max_phrases]
 
 
+_MULTI_HOP_CUES = re.compile(
+    r"\b(?:nicknamed|nickname|premiered|co-writer|cowriter|daughter of|son of|"
+    r"star on|star of|further (?:west|east|north|south)|compared|versus|"
+    r"which country|which date|what date)\b",
+    re.IGNORECASE,
+)
+_BRIDGE_LINK_CUES = re.compile(
+    r"(?:nicknamed|named|called|known as|star of|star on|series|title|"
+    r"daughter of|son of|premiered|written by|co-writer|memoirs of)\s+"
+    r"(.{0,60})",
+    re.IGNORECASE,
+)
+
+
+def should_attempt_bridge(question: str, entities: list[str]) -> bool:
+    """Bridge hops only for comparison/multi-hop style questions."""
+    if len(entities) >= 2:
+        return True
+    return bool(_MULTI_HOP_CUES.search(question or ""))
+
+
 def bridge_entity_queries(
     *,
     question: str,
@@ -124,24 +145,45 @@ def bridge_entity_queries(
     """Propose follow-up searches for entities mentioned in evidence but not retrieved.
 
     Supports multi-hop jumps (nickname → character title, memoir subject → show title)
-    without hardcoding particular documents.
+    without hardcoding particular documents. Candidates must appear near a relational
+    cue or share a content token with the question to avoid topical drift.
     """
+    if not should_attempt_bridge(question, known_entities):
+        return []
+
     known: set[str] = {e.lower() for e in known_entities}
     known.update(t.lower() for t in retrieved_titles if t)
     known.update(p.lower() for p in extract_title_phrases(question))
-    # Tokens already explicit in the question should not dominate bridges.
     q_low = question.lower()
+    q_tokens = {
+        t
+        for t in re.findall(r"[a-z][a-z0-9_-]{3,}", q_low)
+        if t not in _STOP and t not in _BRIDGE_STOP
+    }
 
     scores: dict[str, float] = {}
     for text in retrieved_texts:
-        for phrase in extract_title_phrases(text[:1200]):
+        window = text[:1400]
+        linked: set[str] = set()
+        for match in _BRIDGE_LINK_CUES.finditer(window):
+            for phrase in extract_title_phrases(match.group(0)):
+                linked.add(phrase.lower())
+
+        for phrase in extract_title_phrases(window):
             key = phrase.lower()
-            if key in known:
+            if key in known or key in q_low:
                 continue
-            if key in q_low:
+            parts = [
+                p
+                for p in re.split(r"[\s\-–,，]+", key)
+                if p and p not in _STOP and len(p) > 2
+            ]
+            shares_question = bool(q_tokens & set(parts))
+            if key not in linked and not shares_question:
                 continue
-            # Prefer longer, rarer bridge phrases.
-            scores[phrase] = scores.get(phrase, 0.0) + 1.0 + 0.15 * len(phrase.split())
+            scores[phrase] = scores.get(phrase, 0.0) + (
+                1.5 if key in linked else 1.0
+            ) + 0.15 * len(phrase.split())
 
     ranked = sorted(scores.items(), key=lambda kv: (-kv[1], -len(kv[0]), kv[0]))
     return [p for p, _ in ranked[:max_bridges]]
@@ -285,4 +327,5 @@ __all__ = [
     "entity_title_fidelity",
     "extract_focus_entities",
     "extract_title_phrases",
+    "should_attempt_bridge",
 ]

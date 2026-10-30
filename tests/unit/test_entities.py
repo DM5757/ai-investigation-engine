@@ -43,10 +43,12 @@ def test_focus_phrases_include_comparison_entities() -> None:
 
 
 def test_bridge_queries_surface_unretrieved_titles() -> None:
-    from app.investigation.entities import bridge_entity_queries
+    from app.investigation.entities import bridge_entity_queries, should_attempt_bridge
 
+    q = "What country was the character Mary Robinson was nicknamed for from?"
+    assert should_attempt_bridge(q, ["Mary Robinson"])
     bridges = bridge_entity_queries(
-        question="What country was the character Mary Robinson was nicknamed for from?",
+        question=q,
         retrieved_titles=["Mary Robinson (poet)"],
         retrieved_texts=[
             "Mary Robinson was nicknamed Perdita after the heroine of "
@@ -57,6 +59,21 @@ def test_bridge_queries_surface_unretrieved_titles() -> None:
     )
     joined = " | ".join(bridges).lower()
     assert "perdita" in joined or "winter" in joined
+
+
+def test_bridge_skipped_for_ordinary_factual_questions() -> None:
+    from app.investigation.entities import bridge_entity_queries, should_attempt_bridge
+
+    q = "What is Roanoke–Blacksburg Regional Airport, and where is it located?"
+    assert not should_attempt_bridge(q, ["Roanoke-Blacksburg Regional Airport"])
+    bridges = bridge_entity_queries(
+        question=q,
+        retrieved_titles=["Roanoke–Blacksburg Regional Airport"],
+        retrieved_texts=["Also called Woodrum Field near Roanoke, Virginia."],
+        known_entities=["Roanoke-Blacksburg Regional Airport"],
+        max_bridges=3,
+    )
+    assert bridges == []
 
 
 def test_multi_entity_sufficiency_requires_both_sides() -> None:
