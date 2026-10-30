@@ -53,7 +53,7 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Colony abstention (scripted LLM + live index) | **`insufficient`**, 0 claims/cites | `docs/evidence/colony_abstention_scripted.json` |
 | Local live LLM | Colony `llm_unavailable` (provider TPM); Airport **`answered`** with **1** citation (Woodrum Field / ~6 km NW of Roanoke) | `docs/evidence/local_rag_quality_probe.json` |
 | Render public @ `0036003` (pre-300s budget) | All four cases returned explicit **`llm_unavailable`** with evidence preview after **120s wall-clock** on Free tier (no fake partial essays). | `docs/evidence/prod_quality_probe.json` |
-| Render public @ `0f6adc3` | Deploy SHA confirmed via `/api/version`; ACTIVE **55,081** via `/api/stats`; wall-clock default **300s**. Production behavioral re-validation tracked as follow-up. | live `/api/version`, `/api/stats` |
+| Render public @ `0f6adc3` / `c03b155` | Deploy SHA + ACTIVE **55,081** confirmed. Behavioral smoke: airport **PASS** (~142s, 1 cite); budget isolation **PASS**; multi-doc/multi-hop/unanswerable hit provider limits or client timeouts; colony/contradiction returned honest `llm_unavailable`. | `docs/evidence/prod_smoke_suite.json` |
 
 ## 5. Quality fixes reflected in metrics intent
 

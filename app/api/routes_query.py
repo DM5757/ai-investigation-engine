@@ -126,10 +126,16 @@ def query(
     # Also enrich from evidence_preview when citations empty (degraded).
     sources = _enrich_sources(session, answer.citations, payloads)
     if not sources and answer.evidence_preview:
+        docs = DocumentRepository(session)
         for i, prev in enumerate(answer.evidence_preview[:8]):
             cid = str(prev.get("chunk_id", ""))
             did = str(prev.get("doc_id", ""))
             text = str(prev.get("text", ""))
+            title = prev.get("title") if isinstance(prev.get("title"), str) else None
+            if title is None and did:
+                doc = docs.get(did)
+                if doc is not None:
+                    title = doc.title
             sources.append(
                 SourceEnrichment(
                     label=f"E{i + 1}",
@@ -138,7 +144,7 @@ def query(
                     quote=text[:200],
                     chunk_text=text,
                     excerpt=_excerpt(text),
-                    title=None,
+                    title=title,
                 )
             )
 

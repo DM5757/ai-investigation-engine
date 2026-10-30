@@ -1,0 +1,474 @@
+{
+  "created_at": "2026-10-30T03:55:38.803332+00:00",
+  "base": "https://ai-investigation-engine-scyz.onrender.com",
+  "timeout_s": 330.0,
+  "pause_s": 10.0,
+  "steps": [],
+  "cases": [
+    {
+      "id": "airport",
+      "letter": "A/regression-B",
+      "category": "factual",
+      "question": "What is Roanoke\u2013Blacksburg Regional Airport, and where is it located?",
+      "mode": "default",
+      "expected_behavior": "Concise factual answer about Woodrum Field near Roanoke, VA.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 142241.9,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Roanoke\u2013Blacksburg Regional Airport (IATA : ROA, ICAO : KROA, FAA LID : ROA), also called Woodrum Field, is a regional airport situated about three nautical miles (\u2248 6 km) northwest of the central business district of Roanoke, Virginia\u3010S1\u3011.",
+      "answer_preview": "Roanoke\u2013Blacksburg Regional Airport (IATA : ROA, ICAO : KROA, FAA LID : ROA), also called Woodrum Field, is a regional airport situated about three nautical miles (\u2248 6 km) northwest of the central business district of Roanoke, Virginia\u3010S1\u3011.",
+      "n_citations": 1,
+      "citation_titles": [
+        "Roanoke\u2013Blacksburg Regional Airport"
+      ],
+      "citation_doc_ids": [
+        "b16b4334-f9a7-4ced-99a5-d5f986d8c4ac"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 5,
+      "usage_prompt_tokens": null,
+      "usage_completion_tokens": null,
+      "usage_total_tokens": null,
+      "abstention_reason": null,
+      "note": "Standalone wake+probe before multi-case run; deploy c03b155."
+    },
+    {
+      "id": "multi_doc_payment",
+      "letter": "B",
+      "category": "multi_document",
+      "question": "Which system changes caused disruptions in payment processing in March, which services were affected, and which documents support this?",
+      "mode": "default",
+      "expected_behavior": "Requires combining synthetic incident + change-log style sources.",
+      "expect_status": [
+        "answered",
+        "partial",
+        "conflicting"
+      ],
+      "http_status": 200,
+      "ms": 221031.1,
+      "timeout_or_error": false,
+      "pass": false,
+      "honest_degraded": false,
+      "failure_reasons": [
+        "unexpected_status:insufficient"
+      ],
+      "answer_status": "insufficient",
+      "degraded": false,
+      "answer": "No verified claims could be grounded in retrieved document quotes.",
+      "answer_preview": "No verified claims could be grounded in retrieved document quotes.",
+      "n_citations": 0,
+      "citation_titles": [],
+      "citation_doc_ids": [],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 5,
+      "usage_prompt_tokens": 4309,
+      "usage_completion_tokens": 1396,
+      "usage_total_tokens": 5705,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.0
+        ],
+        [
+          "tools_seed_search",
+          0.0
+        ],
+        [
+          "tools_round_0",
+          0.0
+        ],
+        [
+          "tools_round_1",
+          0.0
+        ],
+        [
+          "tools_round_2",
+          0.0
+        ],
+        [
+          "tools_round_3",
+          0.0
+        ],
+        [
+          "extract",
+          0.0
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.0
+        ],
+        [
+          "synthesize",
+          0.0
+        ],
+        [
+          "verify",
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "multihop_ohio_csudh",
+      "letter": "C",
+      "category": "entity_relationship_multihop",
+      "question": "Is Ohio State University or California State University, Dominguez Hills further west?",
+      "mode": "default",
+      "expected_behavior": "HotpotQA multi-hop; both gold titles verified ACTIVE in Neon.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 0,
+      "ms": 330369.3,
+      "timeout_or_error": true,
+      "pass": false,
+      "honest_degraded": false,
+      "failure_reasons": [
+        "request_failed_or_timeout"
+      ],
+      "error": {
+        "error": "timeout",
+        "detail": "The read operation timed out"
+      }
+    },
+    {
+      "id": "unanswerable_fraudscorer",
+      "letter": "D",
+      "category": "unanswerable",
+      "question": "What was FraudScorer CPU usage during the incident?",
+      "mode": "default",
+      "expected_behavior": "Evidence intentionally absent in synthetic corpus.",
+      "expect_status": [
+        "insufficient"
+      ],
+      "http_status": 0,
+      "ms": 330763.0,
+      "timeout_or_error": true,
+      "pass": false,
+      "honest_degraded": false,
+      "failure_reasons": [
+        "request_failed_or_timeout"
+      ],
+      "error": {
+        "error": "timeout",
+        "detail": "The read operation timed out"
+      }
+    },
+    {
+      "id": "contradiction_deploy",
+      "letter": "E",
+      "category": "contradiction",
+      "question": "What do the documents say about auth-gateway deploy time on 2024-03-12? Note any contradictions.",
+      "mode": "default",
+      "expected_behavior": "Synthetic planted conflict: 08:10 UTC vs 14:00 UTC.",
+      "expect_status": [
+        "conflicting",
+        "partial",
+        "answered"
+      ],
+      "http_status": 200,
+      "ms": 295901.4,
+      "timeout_or_error": false,
+      "pass": false,
+      "honest_degraded": true,
+      "failure_reasons": [
+        "provider_or_budget_degraded"
+      ],
+      "answer_status": "llm_unavailable",
+      "degraded": true,
+      "answer": "",
+      "answer_preview": "",
+      "n_citations": 5,
+      "citation_titles": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "citation_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 5,
+      "usage_calls": 3,
+      "usage_prompt_tokens": 1818,
+      "usage_completion_tokens": 583,
+      "usage_total_tokens": 2401,
+      "abstention_reason": "LLM provider unavailable after retries/fallback; returning retrieved evidence only.",
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.0
+        ],
+        [
+          "tools_seed_search",
+          0.0
+        ],
+        [
+          "tools_round_0",
+          0.0
+        ],
+        [
+          "tools_round_1",
+          0.0
+        ],
+        [
+          "llm_unavailable",
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "colony_regression",
+      "letter": "regression-A",
+      "category": "insufficient_missing_entity",
+      "question": "Which evidence connects the investigation of the Roanoke colony disappearance to the key individuals involved, and what conclusions can be drawn from the available documents?",
+      "mode": "default",
+      "expected_behavior": "Roanoke Colony title absent from ACTIVE corpus; must abstain.",
+      "expect_status": [
+        "insufficient"
+      ],
+      "http_status": 200,
+      "ms": 257399.9,
+      "timeout_or_error": false,
+      "pass": false,
+      "honest_degraded": true,
+      "failure_reasons": [
+        "provider_or_budget_degraded"
+      ],
+      "answer_status": "llm_unavailable",
+      "degraded": true,
+      "answer": "",
+      "answer_preview": "",
+      "n_citations": 5,
+      "citation_titles": [
+        "ec3643c8-d27d-414c-aa8b-47d97e7ea25e",
+        "5fdece0a-a66b-4b7e-876d-3fa83e4e2574",
+        "58b6f473-f828-445f-ba47-f4eb4ea445e1",
+        "a64a384f-c3d6-465e-9f41-f2c3670f718e",
+        "d7d05dcb-c7fd-407c-9786-db62bf4054bb"
+      ],
+      "citation_doc_ids": [
+        "ec3643c8-d27d-414c-aa8b-47d97e7ea25e",
+        "5fdece0a-a66b-4b7e-876d-3fa83e4e2574",
+        "58b6f473-f828-445f-ba47-f4eb4ea445e1",
+        "a64a384f-c3d6-465e-9f41-f2c3670f718e",
+        "d7d05dcb-c7fd-407c-9786-db62bf4054bb"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 5,
+      "usage_calls": 2,
+      "usage_prompt_tokens": 660,
+      "usage_completion_tokens": 540,
+      "usage_total_tokens": 1200,
+      "abstention_reason": "LLM provider unavailable after retries/fallback; returning retrieved evidence only.",
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.0
+        ],
+        [
+          "tools_seed_search",
+          0.0
+        ],
+        [
+          "tools_round_0",
+          0.0
+        ],
+        [
+          "llm_unavailable",
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "budget_isolation_1",
+      "letter": "F1",
+      "category": "budget_isolation",
+      "question": "What is Roanoke\u2013Blacksburg Regional Airport, and where is it located?",
+      "mode": "default",
+      "expected_behavior": "First of two consecutive requests; budgets must reset per request.",
+      "expect_status": [
+        "answered",
+        "partial",
+        "llm_unavailable",
+        "insufficient"
+      ],
+      "http_status": 200,
+      "ms": 135791.9,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "llm_unavailable",
+      "degraded": true,
+      "answer": "",
+      "answer_preview": "",
+      "n_citations": 2,
+      "citation_titles": [
+        "b16b4334-f9a7-4ced-99a5-d5f986d8c4ac",
+        "b16b4334-f9a7-4ced-99a5-d5f986d8c4ac"
+      ],
+      "citation_doc_ids": [
+        "b16b4334-f9a7-4ced-99a5-d5f986d8c4ac",
+        "b16b4334-f9a7-4ced-99a5-d5f986d8c4ac"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 2,
+      "usage_calls": 2,
+      "usage_prompt_tokens": 630,
+      "usage_completion_tokens": 319,
+      "usage_total_tokens": 949,
+      "abstention_reason": "LLM provider unavailable after retries/fallback; returning retrieved evidence only.",
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.0
+        ],
+        [
+          "tools_seed_search",
+          0.0
+        ],
+        [
+          "tools_round_0",
+          0.0
+        ],
+        [
+          "llm_unavailable",
+          0.0
+        ]
+      ]
+    },
+    {
+      "id": "budget_isolation_2",
+      "letter": "F2",
+      "category": "budget_isolation",
+      "question": "Where are schools in the athletic association Cardinal Hayes High School is part of located?",
+      "mode": "default",
+      "expected_behavior": "Second consecutive request. Pass isolation if this is not immediately budget-dead solely because F1 consumed a shared budget.",
+      "expect_status": [
+        "answered",
+        "partial",
+        "llm_unavailable",
+        "insufficient"
+      ],
+      "http_status": 200,
+      "ms": 177829.1,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Based on the provided claims, there is no information regarding the athletic association that Cardinal Hayes High School is part of or the locations of the schools in that association [S1].",
+      "answer_preview": "Based on the provided claims, there is no information regarding the athletic association that Cardinal Hayes High School is part of or the locations of the schools in that association [S1].",
+      "n_citations": 1,
+      "citation_titles": [
+        "Cardinal Hayes High School"
+      ],
+      "citation_doc_ids": [
+        "bded95e2-8c23-42ac-aa61-890823e6a81f"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 4,
+      "usage_prompt_tokens": 2264,
+      "usage_completion_tokens": 613,
+      "usage_total_tokens": 2877,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.0
+        ],
+        [
+          "tools_seed_search",
+          0.0
+        ],
+        [
+          "tools_round_0",
+          0.0
+        ],
+        [
+          "tools_round_1",
+          0.0
+        ],
+        [
+          "extract",
+          0.0
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.0
+        ],
+        [
+          "synthesize",
+          0.0
+        ],
+        [
+          "verify",
+          0.0
+        ]
+      ],
+      "budget_isolation_ok": true
+    }
+  ],
+  "n_pass": 3,
+  "n_honest_degraded": 2,
+  "n_fail": 3,
+  "ok": false,
+  "merged_at": "2026-10-30T04:34:02.534813+00:00",
+  "git_commit": "c03b1557d3bb4ee766d1c1d7052177bd6ec6e8a3",
+  "active_documents": 55081,
+  "provider_notes": [
+    "Airport answered correctly on healthy providers (~142s, 1 citation).",
+    "Later cases hit Groq/Gemini unavailability and/or client 330s timeouts.",
+    "Budget isolation verified: F2 answered after F1 llm_unavailable.",
+    "multi_doc_payment insufficient was a keyword-hint bug (fixed in follow-up commit)."
+  ]
+}

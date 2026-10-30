@@ -80,8 +80,16 @@ _STOP = frozenset(
     }
 )
 
-_PHRASE_RE = re.compile(
+# Title-case multi-token entities: "California State University", "Roanoke Colony".
+_PHRASE_TITLE_RE = re.compile(
     r"\b([A-Z][A-Za-z0-9]*(?:[\s\-–—][A-Z][A-Za-z0-9]*)+)\b"
+)
+# Mixed-case two-token entities: "Roanoke colony" (not whole questions).
+_PHRASE_MIXED_RE = re.compile(
+    r"\b([A-Z][A-Za-z0-9]+[\s\-–—][a-z][A-Za-z0-9]{2,})\b"
+)
+_QUESTION_STARTERS = frozenset(
+    {"which", "what", "when", "where", "who", "whom", "whose", "why", "how"}
 )
 _TOKEN_RE = re.compile(r"[A-Za-z][A-Za-z0-9_-]{2,}")
 _QUOTE_RE = re.compile(r"[\"“”']([^\"“”']{3,80})[\"“”']")
@@ -104,8 +112,17 @@ def extract_question_focus(question: str) -> QuestionFocus:
     phrases: list[str] = []
     for match in _QUOTE_RE.finditer(question):
         phrases.append(_norm_phrase(match.group(1)))
-    for match in _PHRASE_RE.finditer(question):
+    for match in _PHRASE_TITLE_RE.finditer(question):
         phrases.append(_norm_phrase(match.group(1)))
+    for match in _PHRASE_MIXED_RE.finditer(question):
+        raw = _norm_phrase(match.group(1))
+        first = re.split(r"[\s\-–—]+", raw)[0]
+        # Skip CamelCase/PascalCase heads (PaymentService disruptions) — those
+        # are already covered as single tokens; mixed phrases are for
+        # Title + lowercase like "Roanoke colony".
+        if any(ch.isupper() for ch in first[1:]):
+            continue
+        phrases.append(raw)
     # Hyphen/en-dash compounds even if casing is mixed
     for match in re.finditer(
         r"\b([A-Za-z][A-Za-z0-9]*(?:[\-–—][A-Za-z][A-Za-z0-9]*){1,})\b",
@@ -119,11 +136,16 @@ def extract_question_focus(question: str) -> QuestionFocus:
         key = phrase.lower()
         if len(key) < 4 or key in seen_p:
             continue
-        # Drop phrases that are only stopwords
-        parts = [p for p in re.split(r"[\s\-–—]+", key) if p and p not in _STOP]
-        if len(parts) < 2 and (not parts or parts[0] in _STOP):
+        parts_all = [p for p in re.split(r"[\s\-–—]+", key) if p]
+        if parts_all and parts_all[0] in _QUESTION_STARTERS:
             continue
+        # Drop phrases that are only stopwords / stop-inflated (e.g. "March according")
+        parts = [p for p in parts_all if p not in _STOP]
         if len(parts) < 1:
+            continue
+        if len(parts_all) >= 2 and len(parts) < 2:
+            continue
+        if len(parts) == 1 and parts[0] in _STOP:
             continue
         seen_p.add(key)
         uniq_phrases.append(phrase)

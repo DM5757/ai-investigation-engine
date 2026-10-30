@@ -217,7 +217,10 @@ class LLMGateway:
                 stage=stage,
             )
 
-        kwargs: dict[str, Any] = {"policy": self.retry_policy}
+        kwargs: dict[str, Any] = {
+            "policy": self.retry_policy,
+            "before_attempt": self.budget.check,
+        }
         if self._sleeper is not None:
             kwargs["sleeper"] = self._sleeper
         return with_retries(_call, **kwargs)

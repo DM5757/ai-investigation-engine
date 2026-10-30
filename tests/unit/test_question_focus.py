@@ -31,6 +31,14 @@ def test_extracts_multi_token_phrase() -> None:
     assert any("roanoke" in p.lower() and "colony" in p.lower() for p in focus.phrases)
 
 
+def test_extracts_mixed_case_entity_phrase() -> None:
+    focus = extract_question_focus(
+        "Which evidence connects the investigation of the Roanoke colony "
+        "disappearance to the key individuals involved?"
+    )
+    assert any("roanoke" in p.lower() and "colony" in p.lower() for p in focus.phrases)
+
+
 def test_airport_claim_does_not_support_colony_question() -> None:
     question = "What happened to the Roanoke Colony and why did it disappear?"
     airport = _claim(

@@ -200,19 +200,27 @@ class InvestigationEngine:
             ),
             reverse=True,
         )
-        preview = [
-            {
-                "chunk_id": h.chunk.chunk_id,
-                "doc_id": h.chunk.doc_id,
-                "title": h.chunk.title,
-                "text": h.chunk.text[:240],
-                "score": h.fused_score or h.chunk.score,
-                "focus_support": round(
-                    evidence_text_support(h.chunk.text, h.chunk.title, focus), 3
-                ),
-            }
-            for h in ranked[:5]
-        ]
+        # Require claim-level focus support so missing-entity questions do not
+        # surface weak lexical neighbours (e.g. "Alien Investigations" for
+        # "Roanoke colony") as if they were supporting citations.
+        min_preview_support = float(self.settings.claim_min_support)
+        preview = []
+        for h in ranked[:8]:
+            support = evidence_text_support(h.chunk.text, h.chunk.title, focus)
+            if support < min_preview_support:
+                continue
+            preview.append(
+                {
+                    "chunk_id": h.chunk.chunk_id,
+                    "doc_id": h.chunk.doc_id,
+                    "title": h.chunk.title,
+                    "text": h.chunk.text[:240],
+                    "score": h.fused_score or h.chunk.score,
+                    "focus_support": round(support, 3),
+                }
+            )
+            if len(preview) >= 5:
+                break
         with trace.stage("llm_unavailable") as bag:
             bag["outputs_summary"] = reason[:160]
         return AnswerResponse(
@@ -306,8 +314,13 @@ class InvestigationEngine:
                 )
                 if built and built.verified:
                     claims.append(built)
-        # Heuristic fallback from retrieved chunks (skip injection-flagged)
-        hints = _keyword_hints(question)
+        # Heuristic fallback from retrieved chunks (skip injection-flagged).
+        # Prefer hints that actually appear in retrieved text so long question
+        # tokens (e.g. "disruptions") do not crowd out domain terms ("payment").
+        corpus = " ".join(
+            h.chunk.text for h in tools.state.retrieved if h.chunk.chunk_id
+        )
+        hints = _keyword_hints(question, prefer_in_text=corpus)
         for hit in tools.state.retrieved:
             if hit.chunk.chunk_id in tools.state.flagged_chunk_ids:
                 continue
@@ -421,7 +434,7 @@ class InvestigationEngine:
         )
 
 
-def _keyword_hints(question: str) -> list[str]:
+def _keyword_hints(question: str, *, prefer_in_text: str | None = None) -> list[str]:
     stop = {
         "what",
         "which",
@@ -451,13 +464,23 @@ def _keyword_hints(question: str) -> list[str]:
             p for p in re.split(r"[\s\-–—]+", phrase) if len(p) > 3 and p.lower() not in stop
         )
     for tok in focus.tokens:
-        if tok not in {h.lower() for h in hints}:
+        if tok not in stop and tok not in {h.lower() for h in hints}:
             hints.append(tok)
-    # Prefer multi-token / longer hints first so extraction is tighter
-    hints = sorted(dict.fromkeys(hints), key=lambda h: (-len(h.split()), -len(h)))
-    return hints[:6] or [
+    # Prefer multi-token / longer hints, then ones attested in retrieved text.
+    corpus = (prefer_in_text or "").lower()
+
+    def _rank(h: str) -> tuple[int, int, int, int]:
+        low = h.lower()
+        in_corpus = 1 if corpus and low in corpus else 0
+        return (-in_corpus, -len(h.split()), -len(h), 0)
+
+    hints = sorted(dict.fromkeys(hints), key=_rank)
+    selected = hints[:12]
+    if selected:
+        return selected
+    return [
         t for t in re.findall(r"[A-Za-z][A-Za-z0-9_-]+", question) if len(t) > 3
-    ][:3]
+    ][:6]
 
 
 def _json(payload: dict[str, Any]) -> str:

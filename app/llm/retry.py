@@ -53,16 +53,25 @@ def with_retries(
     policy: RetryPolicy,
     *,
     sleeper: Callable[[float], None] = time.sleep,
+    before_attempt: Callable[[], None] | None = None,
 ) -> T:
-    """Call ``fn`` with exponential backoff on ``RetryableLLMError``."""
+    """Call ``fn`` with exponential backoff on ``RetryableLLMError``.
+
+    Optional ``before_attempt`` runs before each try (and before backoff sleep)
+    so callers can enforce wall-clock budgets instead of hanging past them.
+    """
     last: RetryableLLMError | None = None
     for attempt in range(policy.max_attempts):
+        if before_attempt is not None:
+            before_attempt()
         try:
             return fn()
         except RetryableLLMError as exc:
             last = exc
             if attempt + 1 >= policy.max_attempts:
                 break
+            if before_attempt is not None:
+                before_attempt()
             sleeper(compute_delay(attempt, policy, retry_after_s=exc.retry_after_s))
     assert last is not None
     raise last

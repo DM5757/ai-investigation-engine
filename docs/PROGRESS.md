@@ -52,8 +52,15 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Default wall-clock budget raised **120→300s** for Render Free latency
 - Early tag `submission-2026-10-29` @ `1ab164d` **unchanged**
 
+## Portfolio quality — docs + production smoke (2026-10-30)
+
+- Public docs cleaned of candidate/interview handoff language (`c03b155`).
+- Production smoke suite: `scripts/prod_smoke_suite.py` → `docs/evidence/prod_smoke_suite.json`.
+- Live @ `c03b155`: airport **answered** (Woodrum Field, 1 cite, ~142s); budget isolation **pass**; several later cases **llm_unavailable**/client timeout under free-tier provider pressure.
+- Correctness fixes queued/shipped from smoke diagnosis: keyword-hint corpus preference (multi-doc payment), mixed-case focus phrases, degraded preview focus filter, evidence-preview title enrichment, retry wall-clock gate.
+
 ## Outstanding technical follow-ups
 
-1. Re-validate Roanoke airport and colony regression cases on the public URL when LLM providers are healthy.
+1. Re-run production smoke after quality deploy when Groq/Gemini quotas are healthy (multi-doc, multi-hop, unanswerable, contradiction, colony).
 2. Run a full investigation answer eval in a quota-healthy window (no early `--stop-after-llm-unavailable`).
-3. Production smoke suite for representative factual / multi-doc / entity / unanswerable / contradiction / budget-isolation cases.
+3. Consider shorter provider fail-fast on sustained 429s so clients receive `llm_unavailable` before proxy timeouts.
