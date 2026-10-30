@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from app.errors import LLMOutputInvalid, LLMUnavailable
+from app.errors import BudgetExceeded, LLMOutputInvalid, LLMUnavailable
 from app.llm.json_repair import parse_model
 from app.llm.prompts.planner import PLANNER_SYSTEM
 from app.llm.types import ChatMessage, LLMClient
@@ -44,6 +44,8 @@ def plan_question(
             response_format={"type": "json_object"},
             stage="plan",
         )
+    except BudgetExceeded:
+        raise
     except (LLMUnavailable, LLMOutputInvalid, Exception):
         return deterministic_plan(question), UsageStats(), False
     raw = result.content or ""

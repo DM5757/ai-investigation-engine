@@ -19,6 +19,8 @@ RUN mkdir -p /build/model_cache \
 
 FROM python:3.11-slim AS runtime
 
+ARG GIT_COMMIT=unknown
+
 RUN useradd --create-home --uid 10001 appuser
 WORKDIR /app
 
@@ -33,7 +35,8 @@ ENV PATH="/app/.venv/bin:$PATH" \
     EMBEDDING_ENABLED_AT_STARTUP=false \
     ENABLE_BENCH_ENDPOINTS=false \
     PORT=8000 \
-    HOME=/home/appuser
+    HOME=/home/appuser \
+    GIT_COMMIT=${GIT_COMMIT}
 
 RUN chown -R appuser:appuser /app /home/appuser
 

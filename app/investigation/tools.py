@@ -112,6 +112,7 @@ class ToolExecutor:
     state: ToolState = field(default_factory=ToolState)
     top_k: int = 8
     tau_retrieval: float = 0.0
+    tau_relative: float = 0.35
     injection_downweight: float = 0.05
 
     def execute(self, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
@@ -132,13 +133,22 @@ class ToolExecutor:
 
     def _search(self, args: SearchDocumentsArgs) -> dict[str, Any]:
         k = max(1, min(args.k, self.top_k))
-        hits = self.retriever.retrieve(args.query, k=k)
+        # Over-fetch then apply absolute + relative score floors before capping.
+        fetch_k = max(k, min(self.top_k * 3, 24))
+        hits = self.retriever.retrieve(args.query, k=fetch_k)
+        scores = [float(hit.fused_score or hit.chunk.score or 0.0) for hit in hits]
+        max_score = max(scores) if scores else 0.0
+        rel_floor = max_score * max(0.0, min(1.0, self.tau_relative)) if max_score else 0.0
+        floor = max(self.tau_retrieval, rel_floor)
+
         results: list[dict[str, Any]] = []
         for hit in hits:
-            if hit.fused_score < self.tau_retrieval and hit.chunk.score < self.tau_retrieval:
+            score = float(hit.fused_score or hit.chunk.score or 0.0)
+            if score < floor and score < self.tau_retrieval:
+                continue
+            if floor > 0 and score < floor:
                 continue
             scan = scan_injection(hit.chunk.text)
-            score = hit.fused_score or hit.chunk.score
             if scan.flagged:
                 self.state.flagged_chunk_ids.add(hit.chunk.chunk_id)
                 score *= self.injection_downweight
@@ -154,6 +164,8 @@ class ToolExecutor:
                     "injection_flagged": scan.flagged,
                 }
             )
+            if len(results) >= k:
+                break
         results.sort(key=lambda r: (-float(r["score"]), str(r["chunk_id"])))
         return {"results": results}
 

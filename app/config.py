@@ -63,8 +63,19 @@ class Settings(BaseSettings):
     max_sub_questions: int = Field(default=4, alias="MAX_SUB_QUESTIONS")
     max_question_chars: int = Field(default=2000, alias="MAX_QUESTION_CHARS")
     tau_retrieval: float = Field(default=0.0, alias="TAU_RETRIEVAL")
+    tau_relative: float = Field(
+        default=0.35,
+        alias="TAU_RELATIVE",
+        description="Keep hits with score >= tau_relative * max_score in the retrieved pool.",
+    )
+    claim_min_support: float = Field(
+        default=0.55,
+        alias="CLAIM_MIN_SUPPORT",
+        description="Minimum question-focus support for a claim to count as evidence.",
+    )
     retrieval_top_k: int = Field(default=8, alias="RETRIEVAL_TOP_K")
     injection_downweight: float = Field(default=0.05, alias="INJECTION_DOWNWEIGHT")
+    git_commit: str | None = Field(default=None, alias="GIT_COMMIT")
 
     admin_token: SecretStr | None = Field(default=None, alias="ADMIN_TOKEN")
 

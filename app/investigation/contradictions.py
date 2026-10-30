@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel
 
+from app.errors import BudgetExceeded
 from app.investigation.aggregator import aggregate_claims
 from app.llm.json_repair import parse_model
 from app.llm.types import ChatMessage, LLMClient
@@ -110,6 +111,8 @@ def adjudicate_conflicts(
             usage = usage.add(result.usage)
             note = parse_model(result.content or "", _Adjudication).note
             updated.append(conflict.model_copy(update={"adjudication": note}))
+        except BudgetExceeded:
+            raise
         except Exception:
             updated.append(conflict)
     return updated, usage

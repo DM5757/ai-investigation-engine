@@ -11,6 +11,8 @@ ROOT = __import__("pathlib").Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from sqlalchemy import text  # noqa: E402
+
 from app.config import Settings, get_settings  # noqa: E402
 from app.db.session import get_engine  # noqa: E402
 from scripts._phase6_common import (  # noqa: E402
@@ -22,7 +24,6 @@ from scripts._phase6_common import (  # noqa: E402
     qdrant_collection_stats,
     write_json,
 )
-from sqlalchemy import text  # noqa: E402
 
 
 def _chunk_rows_by_doc_status(settings: Settings) -> tuple[int | None, int | None]:

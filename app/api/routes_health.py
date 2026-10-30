@@ -11,6 +11,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import text
 
 from app import __version__
+from app.build_info import resolve_git_commit
 from app.db.session import get_session_factory
 from app.db.url import normalize_database_url
 from app.deps import SettingsDep
@@ -89,8 +90,13 @@ def ready(request: Request, settings: SettingsDep) -> JSONResponse:
 
 
 @router.get("/api/version")
-def version() -> dict[str, str]:
-    return {"version": __version__, "app": "ai-investigation-engine"}
+def version(settings: SettingsDep) -> dict[str, str]:
+    """App version plus deployed git commit when the host injects it."""
+    return {
+        "version": __version__,
+        "app": "ai-investigation-engine",
+        "git_commit": resolve_git_commit(configured=settings.git_commit),
+    }
 
 
 @router.post("/api/bench/embed")

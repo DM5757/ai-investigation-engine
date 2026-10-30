@@ -90,6 +90,7 @@ def _build_stack(
         max_tool_rounds=3,
         max_sub_questions=4,
         tau_retrieval=0.0,
+        tau_relative=0.0,
     )
     retriever = HybridRetriever(store, embedder, bm25, settings=settings)
     return (
@@ -132,7 +133,7 @@ def test_multi_doc_answered_with_citations() -> None:
             ),
         ]
     )
-    settings = Settings(retrieval_top_k=5, max_tool_rounds=2)
+    settings = Settings(retrieval_top_k=5, max_tool_rounds=2, tau_relative=0.0)
     eng = InvestigationEngine(retriever, store, llm=llm, settings=settings)
     result = eng.investigate(
         "What caused PaymentService disruptions in March across documents?"

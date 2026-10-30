@@ -55,19 +55,69 @@ def feature_title_heading_match(query: str, title: str | None, heading: str | No
 
 
 def feature_entity_number_overlap(query: str, text: str) -> float:
-    """Overlap of capitalised tokens and numbers between query and text."""
+    """Overlap of entities/numbers, with extra weight for multi-token phrases.
+
+    Multi-token proper phrases (and hyphenated compounds) must match as a unit;
+    a single shared token cannot dominate when the query names a longer entity.
+    """
     q_ents = set(_CAP_ENTITY_RE.findall(query)) | set(_NUMBER_RE.findall(query))
-    if not q_ents:
-        return 0.0
-    # Match case-insensitively against text tokens / numbers.
+    phrases = _multi_token_phrases(query)
+    t_lower_text = text.lower()
     t_caps = set(_CAP_ENTITY_RE.findall(text))
     t_nums = set(_NUMBER_RE.findall(text))
     t_lower = {t.lower() for t in tokenize(text, stem=False)}
-    hits = 0
-    for ent in q_ents:
-        if ent in t_caps or ent in t_nums or ent.lower() in t_lower:
-            hits += 1
-    return hits / len(q_ents)
+
+    phrase_score = 0.0
+    if phrases:
+        phrase_hits = 0.0
+        for phrase in phrases:
+            parts = [p for p in re.split(r"[\s\-–—]+", phrase.lower()) if len(p) > 2]
+            if not parts:
+                continue
+            covered = sum(1 for p in parts if p in t_lower_text)
+            ratio = covered / len(parts)
+            if ratio >= 0.6:
+                phrase_hits = max(phrase_hits, ratio)
+        phrase_score = phrase_hits
+
+    token_score = 0.0
+    if q_ents:
+        hits = 0
+        for ent in q_ents:
+            if ent in t_caps or ent in t_nums or ent.lower() in t_lower:
+                hits += 1
+        token_score = hits / len(q_ents)
+
+    if phrases:
+        # Phrase agreement dominates; lone token overlap is capped when phrases miss.
+        if phrase_score >= 0.6:
+            return min(1.0, 0.65 * phrase_score + 0.35 * token_score)
+        return min(0.4, 0.25 * phrase_score + 0.2 * token_score)
+    return token_score
+
+
+def _multi_token_phrases(query: str) -> list[str]:
+    found: list[str] = []
+    for match in re.finditer(
+        r"\b([A-Z][A-Za-z0-9]*(?:[\s\-–—][A-Z][A-Za-z0-9]*)+)\b",
+        query,
+    ):
+        found.append(match.group(1))
+    for match in re.finditer(
+        r"\b([A-Za-z][A-Za-z0-9]*(?:[\-–—][A-Za-z][A-Za-z0-9]*){1,})\b",
+        query,
+    ):
+        found.append(match.group(1))
+    # Unique, longest first
+    uniq: list[str] = []
+    seen: set[str] = set()
+    for phrase in sorted(found, key=lambda p: (-len(p), p)):
+        key = phrase.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        uniq.append(phrase)
+    return uniq[:6]
 
 
 def feature_proximity(query: str, text: str) -> float:

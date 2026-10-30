@@ -12,6 +12,11 @@ from app.investigation.aggregator import assign_source_labels
 from app.investigation.contradictions import adjudicate_conflicts, candidate_conflicts
 from app.investigation.extractor import claims_from_tool_payload, heuristic_claims_from_chunk
 from app.investigation.planner import plan_question
+from app.investigation.question_focus import (
+    evidence_text_support,
+    extract_question_focus,
+    filter_claims_for_question,
+)
 from app.investigation.sufficiency import assess_sufficiency
 from app.investigation.synthesizer import synthesize_answer
 from app.investigation.tools import TOOL_SCHEMAS, ToolExecutor
@@ -62,12 +67,50 @@ class InvestigationEngine:
                 trace=trace.events,
             )
 
+        # Independent per-request budget (does not leak across questions/users).
+        self._begin_request_budget()
+
         with trace.stage("guard", inputs_summary=q[:120]) as bag:
             bag["outputs_summary"] = f"len={len(q)}"
 
-        plan, plan_usage, used_llm_plan = plan_question(
-            q, self.llm, max_sub_questions=self.settings.max_sub_questions
+        tools = ToolExecutor(
+            retriever=self.retriever,
+            store=self.store,
+            top_k=self.settings.retrieval_top_k,
+            tau_retrieval=self.settings.tau_retrieval,
+            tau_relative=self.settings.tau_relative,
+            injection_downweight=self.settings.injection_downweight,
         )
+
+        if self.llm is None:
+            return self._degraded(
+                q,
+                None,
+                tools,
+                trace,
+                usage_total,
+                reason="LLM unavailable; returning retrieved evidence only.",
+            )
+
+        try:
+            plan, plan_usage, used_llm_plan = plan_question(
+                q, self.llm, max_sub_questions=self.settings.max_sub_questions
+            )
+        except BudgetExceeded as exc:
+            with trace.stage("budget", inputs_summary=str(exc)) as bag:
+                bag["outputs_summary"] = "budget_exceeded_during_plan"
+            return self._degraded(
+                q,
+                None,
+                tools,
+                trace,
+                usage_total,
+                reason=(
+                    f"Local investigation budget exceeded during planning ({exc}). "
+                    "Retrieved evidence only; no synthesized answer."
+                ),
+            )
+
         usage_total = usage_total.add(plan_usage)
         with trace.stage("plan", inputs_summary=q[:120]) as bag:
             bag["outputs_summary"] = (
@@ -75,30 +118,60 @@ class InvestigationEngine:
             )
             bag["tokens"] = plan_usage
 
-        tools = ToolExecutor(
-            retriever=self.retriever,
-            store=self.store,
-            top_k=self.settings.retrieval_top_k,
-            tau_retrieval=self.settings.tau_retrieval,
-            injection_downweight=self.settings.injection_downweight,
-        )
-
-        if self.llm is None:
-            return self._degraded(q, plan, tools, trace, usage_total)
-
         focus = plan.sub_questions[0].text if plan.sub_questions else q
+        tool_usage_box: dict[str, UsageStats] = {"usage": UsageStats()}
         try:
-            self._tool_loop(q, focus, tools, trace)
+            self._tool_loop(q, focus, tools, trace, tool_usage_box)
+            usage_total = usage_total.add(tool_usage_box["usage"])
         except BudgetExceeded as exc:
+            usage_total = usage_total.add(tool_usage_box["usage"])
             with trace.stage("budget", inputs_summary=str(exc)) as bag:
-                bag["outputs_summary"] = "budget_exceeded"
-            return self._finalize(
-                q, plan, tools, trace, usage_total, force_status="partial", degraded=True
+                bag["outputs_summary"] = "budget_exceeded_during_tools"
+            return self._degraded(
+                q,
+                plan,
+                tools,
+                trace,
+                usage_total,
+                reason=(
+                    f"Local investigation budget exceeded during tool use ({exc}). "
+                    "Retrieved evidence only; no synthesized answer."
+                ),
             )
         except LLMUnavailable:
-            return self._degraded(q, plan, tools, trace, usage_total)
+            usage_total = usage_total.add(tool_usage_box["usage"])
+            return self._degraded(
+                q,
+                plan,
+                tools,
+                trace,
+                usage_total,
+                reason="LLM provider unavailable after retries/fallback; "
+                "returning retrieved evidence only.",
+            )
 
-        return self._finalize(q, plan, tools, trace, usage_total)
+        try:
+            return self._finalize(q, plan, tools, trace, usage_total)
+        except BudgetExceeded as exc:
+            with trace.stage("budget", inputs_summary=str(exc)) as bag:
+                bag["outputs_summary"] = "budget_exceeded_during_finalize"
+            return self._degraded(
+                q,
+                plan,
+                tools,
+                trace,
+                usage_total,
+                reason=(
+                    f"Local investigation budget exceeded during synthesis ({exc}). "
+                    "Retrieved evidence only; no synthesized answer."
+                ),
+            )
+
+    def _begin_request_budget(self) -> None:
+        budget = getattr(self.llm, "budget", None)
+        reset = getattr(budget, "reset", None)
+        if callable(reset):
+            reset()
 
     def _degraded(
         self,
@@ -107,32 +180,48 @@ class InvestigationEngine:
         tools: ToolExecutor,
         trace: TraceRecorder,
         usage: UsageStats,
+        *,
+        reason: str,
     ) -> AnswerResponse:
-        """No provider: still retrieve evidence and return llm_unavailable."""
-        with trace.stage("retrieve_degraded", inputs_summary=question[:120]) as bag:
-            hits = self.retriever.retrieve(question, k=self.settings.retrieval_top_k)
-            for hit in hits:
-                tools.state.chunk_texts[hit.chunk.chunk_id] = hit.chunk.text
-                tools.state.retrieved.append(hit)
-            bag["outputs_summary"] = f"hits={len(hits)}"
+        """Provider/budget failure: retrieve evidence preview, do not fake an answer."""
+        if not tools.state.retrieved:
+            with trace.stage("retrieve_degraded", inputs_summary=question[:120]) as bag:
+                hits = self.retriever.retrieve(question, k=self.settings.retrieval_top_k)
+                for hit in hits:
+                    tools.state.chunk_texts[hit.chunk.chunk_id] = hit.chunk.text
+                    tools.state.retrieved.append(hit)
+                bag["outputs_summary"] = f"hits={len(hits)}"
+
+        focus = extract_question_focus(question)
+        ranked = sorted(
+            tools.state.retrieved,
+            key=lambda h: evidence_text_support(
+                h.chunk.text, h.chunk.title, focus
+            ),
+            reverse=True,
+        )
         preview = [
             {
                 "chunk_id": h.chunk.chunk_id,
                 "doc_id": h.chunk.doc_id,
+                "title": h.chunk.title,
                 "text": h.chunk.text[:240],
                 "score": h.fused_score or h.chunk.score,
+                "focus_support": round(
+                    evidence_text_support(h.chunk.text, h.chunk.title, focus), 3
+                ),
             }
-            for h in tools.state.retrieved[:5]
+            for h in ranked[:5]
         ]
         with trace.stage("llm_unavailable") as bag:
-            bag["outputs_summary"] = "no provider / provider failed"
+            bag["outputs_summary"] = reason[:160]
         return AnswerResponse(
             status="llm_unavailable",
             answer=None,
             plan=plan,
             evidence_preview=preview,
             findings=list(tools.state.findings),
-            abstention_reason="LLM unavailable; returning retrieved evidence only.",
+            abstention_reason=reason,
             usage=usage,
             degraded=True,
             trace=trace.events,
@@ -144,6 +233,7 @@ class InvestigationEngine:
         sub_q: str,
         tools: ToolExecutor,
         trace: TraceRecorder,
+        usage_box: dict[str, UsageStats],
     ) -> None:
         assert self.llm is not None
         messages: list[ChatMessage] = [
@@ -160,6 +250,7 @@ class InvestigationEngine:
 
         for round_i in range(self.settings.max_tool_rounds):
             result = self.llm.chat(messages, tools=TOOL_SCHEMAS, stage="tools")
+            usage_box["usage"] = usage_box["usage"].add(result.usage)
             with trace.stage(f"tools_round_{round_i}", inputs_summary=f"round={round_i}") as bag:
                 bag["outputs_summary"] = (
                     f"content={bool(result.content)}; tools={len(result.tool_calls)}"
@@ -249,13 +340,21 @@ class InvestigationEngine:
         trace: TraceRecorder,
         usage_total: UsageStats,
         *,
-        force_status: str | None = None,
         degraded: bool = False,
     ) -> AnswerResponse:
-        claims = self._collect_claims(question, tools)
+        raw_claims = self._collect_claims(question, tools)
+        supporting, _weak, focus = filter_claims_for_question(
+            [c for c in raw_claims if c.verified],
+            question,
+            min_support=self.settings.claim_min_support,
+        )
+        claims = assign_source_labels(supporting)
         n_ret = len(tools.state.retrieved)
         with trace.stage("extract", inputs_summary=f"n_retrieved={n_ret}") as bag:
-            bag["outputs_summary"] = f"verified={sum(1 for c in claims if c.verified)}"
+            bag["outputs_summary"] = (
+                f"verified={len(claims)}; raw={sum(1 for c in raw_claims if c.verified)}; "
+                f"focus_phrases={list(focus.phrases)[:3]}"
+            )
 
         conflicts = candidate_conflicts(claims)
         conflicts, adj_usage = adjudicate_conflicts(conflicts, self.llm)
@@ -265,13 +364,12 @@ class InvestigationEngine:
             bag["tokens"] = adj_usage
 
         status, reason = assess_sufficiency(
-            verified_claims=[c for c in claims if c.verified],
+            verified_claims=claims,
             conflicts=conflicts,
             question=question,
+            focus=focus,
+            min_support=self.settings.claim_min_support,
         )
-        if force_status == "partial":
-            status = "partial"
-            reason = reason or "Budget exceeded; partial investigation."
         with trace.stage("sufficiency") as bag:
             bag["outputs_summary"] = f"status={status}"
 
@@ -304,7 +402,7 @@ class InvestigationEngine:
             )
             status = downgrade_status(status, citation_failed=not ok or bool(removed))
         with trace.stage("verify") as bag:
-            bag["outputs_summary"] = f"ok={ok}; removed={removed}"
+            bag["outputs_summary"] = f"ok={ok}; removed={removed}; cites={len(citations)}"
 
         return AnswerResponse(
             status=status,
@@ -314,7 +412,9 @@ class InvestigationEngine:
             conflicts=conflicts,
             findings=list(tools.state.findings),
             plan=plan,
-            abstention_reason=reason if status in ("insufficient", "llm_unavailable") else None,
+            abstention_reason=reason
+            if status in ("insufficient", "llm_unavailable", "partial")
+            else None,
             usage=usage_total,
             degraded=degraded,
             trace=trace.events,
@@ -343,9 +443,21 @@ def _keyword_hints(question: str) -> list[str]:
         "their",
         "into",
     }
-    tokens = [t for t in re.findall(r"[A-Za-z][A-Za-z0-9_-]+", question) if len(t) > 3]
-    hints = [t for t in tokens if t.lower() not in stop]
-    return hints[:6] or tokens[:3]
+    focus = extract_question_focus(question)
+    hints: list[str] = []
+    for phrase in focus.phrases:
+        hints.append(phrase)
+        hints.extend(
+            p for p in re.split(r"[\s\-–—]+", phrase) if len(p) > 3 and p.lower() not in stop
+        )
+    for tok in focus.tokens:
+        if tok not in {h.lower() for h in hints}:
+            hints.append(tok)
+    # Prefer multi-token / longer hints first so extraction is tighter
+    hints = sorted(dict.fromkeys(hints), key=lambda h: (-len(h.split()), -len(h)))
+    return hints[:6] or [
+        t for t in re.findall(r"[A-Za-z][A-Za-z0-9_-]+", question) if len(t) > 3
+    ][:3]
 
 
 def _json(payload: dict[str, Any]) -> str:

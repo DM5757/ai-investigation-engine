@@ -113,6 +113,10 @@ class LLMGateway:
     def available(self) -> bool:
         return bool(self.providers)
 
+    def begin_request(self) -> None:
+        """Reset per-request budget counters (call once per investigation)."""
+        self.budget.reset()
+
     def chat(
         self,
         messages: list[ChatMessage],

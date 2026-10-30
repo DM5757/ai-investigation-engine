@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from app.errors import LLMOutputInvalid, LLMUnavailable
+from app.errors import BudgetExceeded, LLMOutputInvalid, LLMUnavailable
 from app.investigation.aggregator import assign_source_labels
 from app.llm.prompts.synthesizer import SYNTHESIZER_SYSTEM
 from app.llm.types import ChatMessage, LLMClient
@@ -26,6 +26,29 @@ def claims_to_citations(claims: list[Claim]) -> list[Citation]:
     ]
 
 
+def prune_citations_to_answer(
+    answer: str | None,
+    citations: list[Citation],
+) -> list[Citation]:
+    """Keep only citations whose labels appear in the answer text.
+
+    If the answer has no [Sn] markers, keep a single highest-priority citation
+    when exactly one unique doc is present; otherwise keep citations unchanged
+    only when the answer is empty (caller handles degraded paths).
+    """
+    if not answer or not citations:
+        return []
+    used = citation_labels_in_text(answer)
+    if used:
+        pruned = [c for c in citations if c.label in used]
+        return pruned or citations[:1]
+    docs = {c.doc_id for c in citations}
+    if len(docs) == 1:
+        return citations[:1]
+    # Prefer not to ship an uncapped citation dump without in-text labels
+    return citations[:3]
+
+
 def deterministic_synthesize(
     *,
     status: AnswerStatus,
@@ -38,6 +61,8 @@ def deterministic_synthesize(
     citations = claims_to_citations(labeled)
     if status == "insufficient":
         return abstention_reason or "Insufficient evidence to answer.", []
+    if status == "llm_unavailable":
+        return None, []
     if status == "conflicting":
         parts: list[str] = ["Sources conflict:"]
         for conf in conflicts:
@@ -49,13 +74,22 @@ def deterministic_synthesize(
                 parts.append(
                     f"- {conf.subject}/{conf.attribute}: {side.value} [{label}]"
                 )
-        return "\n".join(parts), citations
+        text = "\n".join(parts)
+        return text, prune_citations_to_answer(text, citations)
     if not labeled:
         return abstention_reason or "No verified claims.", []
+    # Concise deterministic fallback: one sentence per unique doc (cap 3)
+    by_doc: dict[str, Claim] = {}
+    for claim in labeled:
+        by_doc.setdefault(claim.doc_id, claim)
+    selected = list(by_doc.values())[:3]
+    selected = assign_source_labels(selected)
+    citations = claims_to_citations(selected)
     sentences = [
-        f"{c.subject} {c.attribute}: {c.value} [{c.source_label}]." for c in labeled
+        f"{c.subject} {c.attribute}: {c.value} [{c.source_label}]." for c in selected
     ]
-    return " ".join(sentences), citations
+    text = " ".join(sentences)
+    return text, prune_citations_to_answer(text, citations)
 
 
 def llm_synthesize(
@@ -82,7 +116,8 @@ def llm_synthesize(
     user = (
         f"Question: {question}\nStatus: {status}\nClaims:\n{claim_lines}\n"
         f"Conflicts:\n{conflict_lines or '(none)'}\n"
-        "Write the answer with [Sn] citations."
+        "Write a concise answer with only the [Sn] citations that support it. "
+        "Do not cite unrelated sources."
     )
     result = llm.chat(
         [
@@ -94,7 +129,7 @@ def llm_synthesize(
     text = (result.content or "").strip()
     if not text:
         raise LLMOutputInvalid("empty synthesizer output")
-    return text, citations, result.usage
+    return text, prune_citations_to_answer(text, citations), result.usage
 
 
 def synthesize_answer(
@@ -107,7 +142,7 @@ def synthesize_answer(
     llm: LLMClient | None,
 ) -> tuple[str | None, list[Citation], UsageStats, bool]:
     """Prefer LLM phrasing; fall back to deterministic synthesis."""
-    if status in ("insufficient",) or llm is None:
+    if status in ("insufficient", "llm_unavailable") or llm is None:
         text, cites = deterministic_synthesize(
             status=status,
             claims=claims,
@@ -124,6 +159,8 @@ def synthesize_answer(
             llm=llm,
         )
         return text, cites, usage, True
+    except BudgetExceeded:
+        raise
     except (LLMUnavailable, LLMOutputInvalid, Exception):
         text, cites = deterministic_synthesize(
             status=status,
