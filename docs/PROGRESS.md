@@ -57,10 +57,11 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Public docs cleaned of candidate/interview handoff language (`c03b155`).
 - Production smoke suite: `scripts/prod_smoke_suite.py` → `docs/evidence/prod_smoke_suite.json`.
 - Live @ `c03b155`: airport **answered** (Woodrum Field, 1 cite, ~142s); budget isolation **pass**; several later cases **llm_unavailable**/client timeout under free-tier provider pressure.
-- Correctness fixes queued/shipped from smoke diagnosis: keyword-hint corpus preference (multi-doc payment), mixed-case focus phrases, degraded preview focus filter, evidence-preview title enrichment, retry wall-clock gate.
+- Quality deploy `04153fe` (CI green; Render `/api/version` matched): keyword-hint corpus preference, mixed-case focus phrases, degraded preview focus filter, evidence-preview title enrichment, retry wall-clock gate.
+- Post-fix retest under exhausted providers: colony preview cites **0** (was 5 unrelated); payment degraded previews show correct titled synthetic docs; all three retested cases honest `llm_unavailable` (no hard fails).
 
 ## Outstanding technical follow-ups
 
-1. Re-run production smoke after quality deploy when Groq/Gemini quotas are healthy (multi-doc, multi-hop, unanswerable, contradiction, colony).
+1. Re-run full production smoke when Groq/Gemini quotas are healthy (multi-doc answer, multi-hop, unanswerable→insufficient, contradiction, colony→insufficient).
 2. Run a full investigation answer eval in a quota-healthy window (no early `--stop-after-llm-unavailable`).
-3. Consider shorter provider fail-fast on sustained 429s so clients receive `llm_unavailable` before proxy timeouts.
+3. Optional: shorter fail-fast on sustained 429s (retries now honour wall-clock; further TPM-aware backoff still open).
