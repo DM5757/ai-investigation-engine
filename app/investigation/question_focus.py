@@ -181,6 +181,20 @@ def extract_question_focus(question: str) -> QuestionFocus:
             "south",
         }:
             continue
+        # Drop lone generic nouns that are not named entities.
+        if len(parts) == 1 and parts[0] in {
+            "evidence",
+            "documents",
+            "information",
+            "investigation",
+            "conclusions",
+            "individuals",
+            "services",
+            "system",
+            "changes",
+            "support",
+        }:
+            continue
         seen_p.add(key)
         uniq_phrases.append(cleaned)
 
@@ -219,9 +233,18 @@ def claim_support_score(claim: Claim, focus: QuestionFocus) -> float:
         list(focus.phrases), claim.source_title or claim.subject
     )
     title_boost = 0.0
-    if focus.phrases:
+    # Prefer multi-token entities; lone generics like "evidence" must not dominate.
+    scored_phrases = [
+        p
+        for p in focus.phrases
+        if len(p.replace("-", " ").split()) >= 2
+        or (len(p) >= 6 and p.lower() not in _STOP and p[:1].isupper())
+    ]
+    if not scored_phrases:
+        scored_phrases = list(focus.phrases)
+    if scored_phrases:
         phrase_hits = 0.0
-        for phrase in focus.phrases:
+        for phrase in scored_phrases:
             parts = [
                 p
                 for p in re.split(r"[\s\-–—]+", phrase.lower())
@@ -240,14 +263,14 @@ def claim_support_score(claim: Claim, focus: QuestionFocus) -> float:
             base = min(1.0, 0.55 + 0.45 * phrase_hits + title_boost)
             if fidelity >= 0.9:
                 return min(1.0, base + 0.1)
-            titled = [p for p in focus.phrases if len(p.replace("-", " ").split()) >= 2]
+            titled = [p for p in scored_phrases if len(p.replace("-", " ").split()) >= 2]
             if titled and fidelity < 0.4:
                 # Extended campus/branch OR unrelated doc that only mentions the
                 # entity in passing (e.g. StubHub Center vs CSUDH).
                 return min(0.45, base * 0.55)
             return base
         # Multi-token phrase present in question but not in claim → weak at best
-        if any(len(p.split()) >= 2 or "-" in p or "–" in p for p in focus.phrases):
+        if any(len(p.split()) >= 2 or "-" in p or "–" in p for p in scored_phrases):
             token_hits = _token_coverage(hay, focus.tokens)
             # Single shared token (e.g. only "roanoke") is not enough
             return min(0.35, token_hits * 0.35)
