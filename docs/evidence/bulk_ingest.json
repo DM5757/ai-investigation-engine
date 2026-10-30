@@ -1,16 +1,42 @@
 {
-  "created_at": "2026-10-29T04:33:00+00:00",
-  "status": "in_progress_resumable",
+  "created_at": "2026-10-29T17:32:00.086499+00:00",
+  "max_docs_requested": 55000,
+  "max_docs_effective": 55000,
+  "shard_start": 0,
+  "shard_end": 55000,
   "full_ingest_go": true,
-  "max_docs_target": 55000,
-  "note": "Single-process bulk with exclusive lock. Do not launch parallel bulk_ingest.py.",
-  "checkpoint_path": "data/checkpoints/bulk_ingest.json",
-  "resume_command": "uv run python scripts/bulk_ingest.py --max-docs 55000 --checkpoint-every 100",
-  "measured_at_snapshot": {
-    "active_documents": 839,
-    "qdrant_points": 884,
-    "neon_size_mb": 12.523,
-    "meets_data1_50k": false
+  "forced": false,
+  "estimate_proposed_max_safe": 55000,
+  "result": {
+    "attempted": 50492,
+    "start_index": 4508,
+    "outcomes": {
+      "repaired": 321,
+      "created": 50418,
+      "exact_duplicate": 19,
+      "unchanged": 55
+    },
+    "errors_sample": [],
+    "wall_seconds": 40747.463,
+    "records_per_second": 1.239,
+    "batch_size": 16
   },
-  "honesty": "Actual ingested count is whatever verify_counts.py reports — not 50k until measured."
+  "wall_seconds_this_run": 40762.324,
+  "neon_counts": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "neon_size": {
+    "ok": true,
+    "dialect": "postgresql",
+    "database": "neondb",
+    "size_bytes": 280379392,
+    "size_mb": 267.391
+  },
+  "checkpoint": "data/checkpoints/bulk_ingest.json"
 }

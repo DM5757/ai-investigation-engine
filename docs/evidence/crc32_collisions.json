@@ -1,20 +1,25 @@
 {
-  "created_at": "2026-10-29T04:12:20.457651+00:00",
+  "created_at": "2026-10-29T17:33:19.031369+00:00",
   "sources": {
-    "db_terms": 7662,
-    "corpus_terms": 20057,
-    "union_terms": 20057,
+    "db_terms": 69920,
+    "corpus_terms": 70375,
+    "union_terms": 94426,
     "max_chunks": 20000,
     "max_corpus_docs": 20000
   },
   "hash": "zlib.crc32 UTF-8 & 0xFFFFFFFF",
-  "unique_terms": 20057,
-  "unique_crc32_ids": 20057,
-  "collision_id_count": 0,
-  "terms_involved_in_collisions": 0,
-  "collision_rate_ids": 0.0,
-  "collision_rate_terms": 0.0,
-  "sample_collisions": {},
-  "assessment": "negligible",
+  "unique_terms": 94426,
+  "unique_crc32_ids": 94425,
+  "collision_id_count": 1,
+  "terms_involved_in_collisions": 2,
+  "collision_rate_ids": 1.059e-05,
+  "collision_rate_terms": 2.118e-05,
+  "sample_collisions": {
+    "efd3e8c0": [
+      "offic",
+      "vachon"
+    ]
+  },
+  "assessment": "low",
   "note": "Colliding terms share a sparse index dimension; BM25 weights sum. Low rates are acceptable for this assignment-scale vocab."
 }

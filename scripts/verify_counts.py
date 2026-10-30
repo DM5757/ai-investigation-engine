@@ -11,7 +11,8 @@ ROOT = __import__("pathlib").Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from app.config import get_settings  # noqa: E402
+from app.config import Settings, get_settings  # noqa: E402
+from app.db.session import get_engine  # noqa: E402
 from scripts._phase6_common import (  # noqa: E402
     EVIDENCE_DIR,
     build_store,
@@ -21,6 +22,30 @@ from scripts._phase6_common import (  # noqa: E402
     qdrant_collection_stats,
     write_json,
 )
+from sqlalchemy import text  # noqa: E402
+
+
+def _chunk_rows_by_doc_status(settings: Settings) -> tuple[int | None, int | None]:
+    """Return (ACTIVE chunk rows, DELETED chunk rows) when Postgres is available."""
+    try:
+        engine = get_engine(settings.database_url)
+        with engine.connect() as conn:
+            rows = {
+                str(status): int(n)
+                for status, n in conn.execute(
+                    text(
+                        """
+                        SELECT d.status, count(c.id)
+                        FROM chunks c
+                        JOIN documents d ON d.id = c.document_id
+                        GROUP BY d.status
+                        """
+                    )
+                ).all()
+            }
+        return int(rows.get("ACTIVE", 0)), int(rows.get("DELETED", 0))
+    except Exception:  # noqa: BLE001
+        return None, None
 
 
 def main() -> None:
@@ -46,20 +71,43 @@ def main() -> None:
         notes.append("Qdrant points > 0 but ACTIVE docs == 0")
     # Soft check: chunks roughly match points for active versions (not exact across versions)
     chunk_rows = counts["chunk_rows"]
-    if points and chunk_rows and abs(points - chunk_rows) > max(50, int(0.25 * chunk_rows)):
+    active_chunk_rows, deleted_chunk_rows = _chunk_rows_by_doc_status(settings)
+    if points and active_chunk_rows and points != active_chunk_rows:
         notes.append(
-            f"soft mismatch: qdrant_points={points} vs chunk_rows={chunk_rows} "
-            "(may include old versions in Postgres)"
+            f"ACTIVE chunk rows ({active_chunk_rows}) != Qdrant points ({points})"
         )
+        if abs(points - active_chunk_rows) > max(50, int(0.25 * max(active_chunk_rows, 1))):
+            consistent = False
+    if chunk_rows and active_chunk_rows is not None and deleted_chunk_rows is not None:
+        gap = chunk_rows - points
+        if gap == deleted_chunk_rows and points == active_chunk_rows:
+            notes.append(
+                f"total chunk_rows ({chunk_rows}) - qdrant_points ({points}) = "
+                f"{gap} equals DELETED-document chunk rows "
+                f"({deleted_chunk_rows}); ACTIVE chunks match Qdrant exactly"
+            )
+        elif points and chunk_rows and abs(points - chunk_rows) > max(
+            50, int(0.25 * chunk_rows)
+        ):
+            notes.append(
+                f"soft mismatch: qdrant_points={points} vs chunk_rows={chunk_rows} "
+                "(may include DELETED or old versions in Postgres)"
+            )
 
     payload: dict[str, Any] = {
         "created_at": datetime.now(UTC).isoformat(),
-        "postgres": counts,
+        "postgres": {
+            **counts,
+            "active_chunk_rows": active_chunk_rows,
+            "deleted_chunk_rows": deleted_chunk_rows,
+        },
         "neon_size": neon,
         "qdrant": qstats,
         "consistency": {
             "ok": consistent,
             "active_documents": active,
+            "active_chunk_rows": active_chunk_rows,
+            "deleted_chunk_rows": deleted_chunk_rows,
             "qdrant_points": points,
             "notes": notes,
         },

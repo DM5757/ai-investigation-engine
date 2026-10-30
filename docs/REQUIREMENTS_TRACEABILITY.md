@@ -31,8 +31,8 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | EVAL-5 | Error analysis | `docs/EVALUATION_REPORT.md` | report §§1,4,5 | Done-verified | Documents unresolved-gold root cause + budget bug |
 | APP-1 | Python backend | FastAPI routes + deps (`documents`/`query`/`stats`) | `test_api_*` + phase5.txt | Done-verified | Thin handlers → lifecycle/engine |
 | APP-2 | Functional UI (docs, ask, sources) | `app/ui/static/` | `test_api_ui_static` + phase5_ui_checklist | Done-verified | textContent-only; admin token in JS memory |
-| DATA-1 | Process ≥50,000 documents/records | HotpotQA corpus + lifecycle ingest | `verify_counts.py` / `dataset_counts.json` | Partial | 55k corpus built; measured ACTIVE ~35.9k / Qdrant ~37.0k (2026-10-29 ~17:25); FAILED 0; claim 50k only when `meets_data1_50k: true` |
-| DATA-2 | Cross-document retrieval; identifiable sources | `hotpotqa:<title>` external_key + citations | pilot/bulk + Phase 4 citations | Partial | Sources keyed; full-corpus retrieval eval is Phase 7 |
+| DATA-1 | Process ≥50,000 documents/records | HotpotQA corpus + lifecycle ingest | `verify_counts.py` / `dataset_counts.json` | Done-verified | Measured 2026-10-30: ACTIVE **55081**, FAILED **0**, Qdrant **56890**; ACTIVE chunks == points; total chunk_rows 56900 includes 10 DELETED-doc rows; `meets_data1_50k: true` |
+| DATA-2 | Cross-document retrieval; identifiable sources | `hotpotqa:<title>` external_key + citations | pilot/bulk + Phase 4 citations | Partial | Sources keyed; full-corpus retrieval eval follow-up after quality fixes |
 | DATA-3 | Incomplete and contradictory information | `data/manifests/synthetic_truth.json` | synthetic generator | Done-verified | Planted contradictions, incompleteness, injection samples |
 | DATA-4 | Reproducible evaluation / subset justification | `docs/DATASET.md` + manifests | manifests sha256/seed | Done-verified | Seed 42; subset/scale justified in DATASET.md + storage estimate |
 | DEP-1 | Public URL on free hosting | Render Free | `docs/evidence/phase1_deploy.txt` | Done-verified | Live: https://ai-investigation-engine-scyz.onrender.com (2026-10-29) |

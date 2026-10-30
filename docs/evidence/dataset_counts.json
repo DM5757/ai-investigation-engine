@@ -1,46 +1,52 @@
 {
-  "created_at": "2026-10-29T13:24:54.608740+00:00",
+  "created_at": "2026-10-30T02:37:27.876108+00:00",
   "postgres": {
-    "active_documents": 35879,
-    "non_deleted_documents": 35879,
-    "chunk_rows": 37041,
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
     "by_status": {
-      "ACTIVE": 35879,
+      "ACTIVE": 55081,
       "DELETED": 5
-    }
+    },
+    "active_chunk_rows": 56890,
+    "deleted_chunk_rows": 10
   },
   "neon_size": {
     "ok": true,
     "dialect": "postgresql",
     "database": "neondb",
-    "size_bytes": 185819136,
-    "size_mb": 177.211
+    "size_bytes": 280379392,
+    "size_mb": 267.391
   },
   "qdrant": {
     "ok": true,
     "collection": "chunks__structure_aware__bge_small",
-    "points_count": 37031,
+    "points_count": 56890,
     "status": "green",
     "telemetry_available": false,
-    "indexed_vectors_count": 70380,
-    "points_count_info": 37031,
-    "approx_dense_vector_bytes": 56879616,
+    "indexed_vectors_count": 110263,
+    "points_count_info": 56890,
+    "approx_dense_vector_bytes": 87383040,
     "disk_bytes": null,
     "ram_bytes": null,
     "disk_bytes_source": "unavailable",
     "ram_bytes_source": "unavailable",
-    "estimated_disk_bytes_lower_bound": 82801316
+    "estimated_disk_bytes_lower_bound": 127206040
   },
   "consistency": {
     "ok": true,
-    "active_documents": 35879,
-    "qdrant_points": 37031,
-    "notes": []
+    "active_documents": 55081,
+    "active_chunk_rows": 56890,
+    "deleted_chunk_rows": 10,
+    "qdrant_points": 56890,
+    "notes": [
+      "total chunk_rows (56900) - qdrant_points (56890) = 10 equals DELETED-document chunk rows (10); ACTIVE chunks match Qdrant exactly"
+    ]
   },
   "claims": {
     "do_not_claim_50k_without_measurement": true,
-    "measured_active_documents": 35879,
-    "measured_qdrant_points": 37031,
-    "meets_data1_50k": false
+    "measured_active_documents": 55081,
+    "measured_qdrant_points": 56890,
+    "meets_data1_50k": true
   }
 }
