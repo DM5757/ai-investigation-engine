@@ -111,9 +111,10 @@ class Settings(BaseSettings):
     dense_vector_size: int = Field(default=384, alias="DENSE_VECTOR_SIZE")
     embedding_model_short: str = Field(default="bge-small", alias="EMBEDDING_MODEL_SHORT")
 
-    # Retrieval / hybrid search (Phase 3)
-    n_dense: int = Field(default=50, alias="N_DENSE")
-    n_sparse: int = Field(default=50, alias="N_SPARSE")
+    # Retrieval / hybrid search (Phase 3).
+    # Keep candidate pools modest on Render Free / Qdrant Free (network + CPU bound).
+    n_dense: int = Field(default=24, alias="N_DENSE")
+    n_sparse: int = Field(default=24, alias="N_SPARSE")
     rrf_k: int = Field(default=60, alias="RRF_K")
     fusion_alpha: float = Field(default=0.5, alias="FUSION_ALPHA")
     bm25_k1: float = Field(default=1.2, alias="BM25_K1")

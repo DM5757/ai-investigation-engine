@@ -82,6 +82,7 @@ class InvestigationEngine:
             tau_retrieval=self.settings.tau_retrieval,
             tau_relative=self.settings.tau_relative,
             injection_downweight=self.settings.injection_downweight,
+            before_call=self._budget_check,
         )
 
         if self.llm is None:
@@ -270,6 +271,22 @@ class InvestigationEngine:
         if callable(reset):
             reset()
 
+    def _budget_check(self) -> None:
+        """Enforce wall-clock during retrieval/tools without applying LLM call caps.
+
+        Call/token limits remain gated by the LLM gateway. Retrieval must still
+        stop when the request deadline is reached so clients do not hang.
+        """
+        budget = getattr(self.llm, "budget", None)
+        if budget is None:
+            return
+        max_wall = getattr(budget, "max_wall_clock_s", None)
+        elapsed_fn = getattr(budget, "elapsed_s", None)
+        if max_wall is None or not callable(elapsed_fn):
+            return
+        if float(elapsed_fn()) >= float(max_wall):
+            raise BudgetExceeded(f"wall clock budget exceeded ({max_wall}s)")
+
     def _degraded(
         self,
         question: str,
@@ -283,7 +300,11 @@ class InvestigationEngine:
         """Provider/budget failure: retrieve evidence preview, do not fake an answer."""
         if not tools.state.retrieved:
             with trace.stage("retrieve_degraded", inputs_summary=question[:120]) as bag:
-                hits = self.retriever.retrieve(question, k=self.settings.retrieval_top_k)
+                # Intentionally skip the request budget gate: previews remain useful
+                # after budget/provider failure and must not raise BudgetExceeded here.
+                hits = self.retriever.retrieve(
+                    question, k=self.settings.retrieval_top_k
+                )
                 for hit in hits:
                     tools.state.chunk_texts[hit.chunk.chunk_id] = hit.chunk.text
                     tools.state.retrieved.append(hit)

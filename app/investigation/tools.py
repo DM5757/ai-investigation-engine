@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any, Literal
 
@@ -115,8 +116,12 @@ class ToolExecutor:
     tau_relative: float = 0.35
     injection_downweight: float = 0.05
     last_timings: dict[str, float] = field(default_factory=dict)
+    # Optional wall-clock / call budget gate (e.g. BudgetTracker.check).
+    before_call: Callable[[], None] | None = None
 
     def execute(self, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
+        if self.before_call is not None:
+            self.before_call()
         self.last_timings = {}
         try:
             if name == "search_documents":
