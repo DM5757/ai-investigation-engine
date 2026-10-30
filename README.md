@@ -104,7 +104,8 @@ Report: `docs/EVALUATION_REPORT.md` · Results: `eval/results/` · DOC-6: `eval/
 
 ## Known limitations
 
-- Render Free cold starts and free LLM rate limits affect demo latency and can force `llm_unavailable`.
+- Render Free cold starts and free LLM rate limits affect demo latency and can force `llm_unavailable` (with sanitized failure categories such as `daily_quota`).
+- Measured successful factual queries are typically dominated by hybrid retrieval then LLM tool rounds; traces expose per-stage `latency_ms`.
 - Investigation answer evaluation is provider-limited on free tiers; report scored vs skipped honestly.
 - Contradiction detection is strong in unit/scripted tests; live contradiction rates depend on retrieval coverage and LLM availability.
 - Baseline RAG can still over-answer unanswerable items relative to the full investigation path.

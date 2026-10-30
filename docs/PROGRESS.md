@@ -60,8 +60,17 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Quality deploy `04153fe` (CI green; Render `/api/version` matched): keyword-hint corpus preference, mixed-case focus phrases, degraded preview focus filter, evidence-preview title enrichment, retry wall-clock gate.
 - Post-fix retest under exhausted providers: colony preview cites **0** (was 5 unrelated); payment degraded previews show correct titled synthetic docs; all three retested cases honest `llm_unavailable` (no hard fails).
 
+## Milestone 3 — reliability / latency / provider resilience (2026-10-30)
+
+- Deployed commits: `428ed09` (fail-fast + latency traces) then `fecabea` (retrieval wall-clock + smaller hybrid pools). Render `/api/version` matched.
+- False near-zero `trace.latency_ms` fixed: stages wrap real work with `perf_counter`; request totals include stage breakdown.
+- Provider failures classified (`daily_quota`, TPM/RPM, context overflow, auth); daily quota / context overflow are non-retryable; dead providers short-circuited within a request.
+- Live acceptance @ `428ed09`: airport PASS ~75s; contradiction PASS; unanswerable PASS; multi-doc DEGRADED (`groq:daily_quota`); multihop answer quality FAIL; colony client timeout.
+- Live retest @ `fecabea`: airport PASS ~67s (seed search ~12s, was ~65s); colony PASS `insufficient` @ ~48s with 0 cites.
+- Tests: **163** passed (non-live). Early tag `submission-2026-10-29` unchanged.
+
 ## Outstanding technical follow-ups
 
-1. Re-run full production smoke when Groq/Gemini quotas are healthy (multi-doc answer, multi-hop, unanswerable→insufficient, contradiction, colony→insufficient).
-2. Run a full investigation answer eval in a quota-healthy window (no early `--stop-after-llm-unavailable`).
-3. Optional: shorter fail-fast on sustained 429s (retries now honour wall-clock; further TPM-aware backoff still open).
+1. Multi-hop title disambiguation (Mansfield Campus vs primary campus / CSUDH) under healthy quotas.
+2. Full investigation answer eval in a quota-healthy window (no early `--stop-after-llm-unavailable`).
+3. Optional TPM-aware backoff tuning beyond current Retry-After + wall-clock gate.

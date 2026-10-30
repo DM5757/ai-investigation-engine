@@ -4,29 +4,60 @@
 - ACTIVE documents: **55,081**
 - Suite script: `scripts/prod_smoke_suite.py`
 
-## Verified passes (deploy `c03b155`)
+## Milestone 3 acceptance (`428ed09`)
 
 | Case | Status | ms | cites | Verdict |
 | --- | --- | ---: | ---: | --- |
-| airport (regression B) | answered | 142242 | 1 | PASS — Woodrum Field / Roanoke, VA |
-| budget_isolation_1→2 | llm_unavailable → answered | 136k / 178k | 2 / 1 | PASS — per-request budget isolation |
+| airport | answered | 74931 | 1 | PASS — Woodrum Field / Roanoke, VA |
+| multi_doc_payment | llm_unavailable | 186629 | 5 | DEGRADED — `groq:daily_quota`; correct synthetic titles |
+| multihop_ohio_csudh | answered | 232129 | 3 | FAIL — abstention-like answer; Mansfield Campus cites |
+| contradiction_deploy | answered | 149740 | 2 | PASS — 08:10 vs 14:00 UTC |
+| unanswerable_fraudscorer | insufficient | 190914 | 0 | PASS — honest abstention |
+| colony_regression | timeout | 300266 | — | FAIL — client timeout before retrieval wall-clock gate |
 
-## Baseline failures / degraded (`c03b155`)
+### Measured stage latency (airport @ `428ed09`)
 
-| Case | Status | Notes |
-| --- | --- | --- |
-| multi_doc_payment | insufficient | Keyword-hint truncation dropped `payment`/`march` (fixed in `04153fe`) |
-| multihop_ohio_csudh | timeout | Client 330s while providers retrying |
-| unanswerable_fraudscorer | timeout | Same |
-| contradiction_deploy | llm_unavailable | Honest degraded; correct synthetic docs retrieved |
-| colony_regression | llm_unavailable | Honest degraded; previously surfaced unrelated Hotpot titles |
+| Stage | ms |
+| --- | ---: |
+| plan | 1,388 |
+| tools_seed_search | 64,915 |
+| tools_llm_round_0 | 801 |
+| synthesize | 486 |
+| request total | 67,591 |
 
-## Post-fix retest (`04153fe`, providers exhausted)
+Retrieval dominated successful latency before the candidate-pool change.
 
-| Case | Status | cites | Notes |
-| --- | --- | ---: | --- |
-| multi_doc_payment | llm_unavailable | 4 | Titles now present: Exec Summary + Incident Report |
-| colony_regression | llm_unavailable | **0** | Weak unrelated previews filtered |
-| unanswerable_fraudscorer | llm_unavailable | 0 | Honest degraded (insufficient path not reached) |
+## Follow-up retest (`fecabea`)
+
+| Case | Status | ms | cites | Verdict |
+| --- | --- | ---: | ---: | --- |
+| airport | answered | 66851 | 1 | PASS — Woodrum Field; seed search ~12s |
+| colony_regression | insufficient | 47992 | 0 | PASS — abstains; no unrelated Hotpot previews |
+
+### Measured stage latency (airport @ `fecabea`)
+
+| Stage | ms |
+| --- | ---: |
+| plan | 1,046 |
+| tools_seed_search | 11,656 |
+| tools_llm_round_0 | 44,715 |
+| synthesize | 1,081 |
+| request total | 58,498 |
+
+After shrinking dense/sparse pools and gating retrieval on wall-clock, seed retrieval dropped from ~65s to ~12s. Remaining airport latency is mainly one LLM tool round.
+
+## Before / after
+
+| Metric | Before (c03b155 era) | After (`fecabea`) |
+| --- | ---: | ---: |
+| Airport factual | ~142s | ~67s |
+| Colony regression | timeout / llm_unavailable | insufficient @ ~48s |
+| False zero `trace.latency_ms` | present | fixed (monotonic per-stage) |
+| Daily quota handling | retried until hang | `daily_quota` fail-fast + failover |
+
+## Earlier baselines
+
+- `c03b155`: airport PASS @ 142s; several later cases provider-limited.
+- `04153fe`: exhausted-provider retest — honest `llm_unavailable`, improved payment titles, colony preview cites 0.
 
 Full machine-readable record: `docs/evidence/prod_smoke_suite.json`.

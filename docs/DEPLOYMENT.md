@@ -26,7 +26,7 @@
 | `EMBEDDING_ENABLED_AT_STARTUP` | no | Prefer `false` on Render Free; model lazy-loads on first query |
 | `ENABLE_BENCH_ENDPOINTS` | no | Keep `false` on public URL |
 | `FASTEMBED_CACHE_PATH` | no | Default `/app/model_cache` in image |
-| `INVESTIGATION_WALL_CLOCK_S` | no | Default 300s (Render Free latency) |
+| `LLM_BUDGET_WALL_CLOCK_S` | no | Default 240s (below typical ~330s client timeouts) |
 
 Full list: `.env.example`.
 

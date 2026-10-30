@@ -1,11 +1,11 @@
 {
-  "created_at": "2026-10-30T04:50:55+00:00",
+  "created_at": "2026-10-30T05:40:00+00:00",
   "base": "https://ai-investigation-engine-scyz.onrender.com",
+  "active_documents": 55081,
   "runs": [
     {
       "id": "baseline_c03b155",
       "git_commit": "c03b1557d3bb4ee766d1c1d7052177bd6ec6e8a3",
-      "active_documents": 55081,
       "summary": {
         "n_pass": 3,
         "n_honest_degraded": 2,
@@ -14,79 +14,172 @@
       "highlights": [
         "airport answered Woodrum Field / Roanoke VA with 1 citation in 142s",
         "budget_isolation_2 answered after budget_isolation_1 llm_unavailable",
-        "multi_doc_payment insufficient (keyword-hint bug; fixed in 04153fe)",
         "multihop + unanswerable client timeouts under provider pressure"
       ]
     },
     {
       "id": "post_fix_04153fe",
       "git_commit": "04153fee483d5668a91fff09656219cd1cd102c1",
-      "active_documents": 55081,
-      "timeout_s": 360.0,
-      "pause_s": 45.0,
       "summary": {
         "n_pass": 0,
         "n_honest_degraded": 3,
         "n_fail": 0
       },
+      "note": "Providers exhausted; honest llm_unavailable with improved previews."
+    },
+    {
+      "id": "m3_acceptance_428ed09",
+      "git_commit": "428ed09c4200bd92c79b07584f6a4d06b5189d03",
+      "timeout_s": 300.0,
+      "pause_s": 40.0,
+      "summary": {
+        "n_pass": 4,
+        "n_honest_degraded": 1,
+        "n_fail": 1
+      },
       "cases": [
+        {
+          "id": "airport",
+          "answer_status": "answered",
+          "ms": 74930.7,
+          "usage_calls": 3,
+          "n_citations": 1,
+          "citation_titles": ["Roanoke–Blacksburg Regional Airport"],
+          "verdict": "PASS",
+          "stage_ms_highlight": {
+            "plan": 1387.8,
+            "tools_seed_search": 64915.3,
+            "tools_llm_round_0": 800.5,
+            "synthesize": 485.6,
+            "request": 67590.5
+          },
+          "note": "Woodrum Field / Roanoke VA; retrieval dominated latency."
+        },
         {
           "id": "multi_doc_payment",
           "answer_status": "llm_unavailable",
-          "ms": 179905.8,
-          "usage_calls": 3,
-          "n_citations": 4,
+          "ms": 186629.0,
+          "usage_calls": 2,
+          "n_citations": 5,
           "citation_titles": [
             "Exec Summary",
             "Incident Report — Payment Outage March",
-            "Exec Summary",
-            "Incident Report — Payment Outage March"
+            "Change Log March"
           ],
-          "honest_degraded": true,
-          "note": "Correct synthetic docs retrieved with titles; providers exhausted before synthesis."
+          "verdict": "DEGRADED",
+          "provider_failures": "groq:daily_quota; gemini:bad_request",
+          "note": "Correct synthetic docs retrieved; fail-fast categories reported; no invented answer."
         },
         {
-          "id": "colony_regression",
-          "answer_status": "llm_unavailable",
-          "ms": 245279.2,
-          "usage_calls": 2,
-          "n_citations": 0,
-          "citation_titles": [],
-          "honest_degraded": true,
-          "note": "Focus filter removed unrelated Hotpot previews (previously 5 weak cites)."
+          "id": "multihop_ohio_csudh",
+          "answer_status": "answered",
+          "ms": 232128.5,
+          "usage_calls": 6,
+          "n_citations": 3,
+          "citation_titles": ["Ohio State University, Mansfield Campus"],
+          "verdict": "FAIL",
+          "note": "HTTP answered but content abstained and cited Mansfield Campus instead of gold CSUDH/OSU titles. Smoke judge later tightened."
+        },
+        {
+          "id": "contradiction_deploy",
+          "answer_status": "answered",
+          "ms": 149739.8,
+          "usage_calls": 4,
+          "n_citations": 2,
+          "citation_titles": [
+            "Incident Report — Payment Outage March",
+            "Change Log March"
+          ],
+          "verdict": "PASS",
+          "note": "Surfaced 08:10 UTC vs 14:00 UTC contradiction with correct docs."
         },
         {
           "id": "unanswerable_fraudscorer",
-          "answer_status": "llm_unavailable",
-          "ms": 312782.3,
-          "usage_calls": 4,
+          "answer_status": "insufficient",
+          "ms": 190913.8,
+          "usage_calls": 5,
           "n_citations": 0,
-          "citation_titles": [],
-          "honest_degraded": true,
-          "note": "Honest degraded; insufficient path not reached because LLM failed mid-investigation."
+          "verdict": "PASS",
+          "note": "Honest abstention; no invented CPU metric."
+        },
+        {
+          "id": "colony_regression",
+          "answer_status": null,
+          "ms": 300265.6,
+          "verdict": "FAIL",
+          "note": "Client timeout; retrieval not under wall-clock yet (fixed in fecabea)."
+        }
+      ]
+    },
+    {
+      "id": "m3_retest_fecabea",
+      "git_commit": "fecabea6e5336db4cffa56498129e1b1453e057c",
+      "timeout_s": 280.0,
+      "pause_s": 25.0,
+      "summary": {
+        "n_pass": 2,
+        "n_honest_degraded": 0,
+        "n_fail": 0
+      },
+      "cases": [
+        {
+          "id": "airport",
+          "answer_status": "answered",
+          "ms": 66851.2,
+          "usage_calls": 3,
+          "n_citations": 1,
+          "citation_titles": ["Roanoke–Blacksburg Regional Airport"],
+          "verdict": "PASS",
+          "stage_ms_highlight": {
+            "plan": 1045.6,
+            "tools_seed_search": 11655.5,
+            "tools_llm_round_0": 44714.5,
+            "synthesize": 1080.9,
+            "request": 58497.6
+          },
+          "note": "Seed retrieval ~12s after candidate-pool shrink (was ~65s)."
+        },
+        {
+          "id": "colony_regression",
+          "answer_status": "insufficient",
+          "ms": 47991.8,
+          "usage_calls": 5,
+          "n_citations": 0,
+          "verdict": "PASS",
+          "stage_ms_highlight": {
+            "plan": 952.8,
+            "tools_seed_search": 15845.3,
+            "tool_search_documents": 16667.4,
+            "request": 47476.8
+          },
+          "note": "Abstains with zero citations; previously client-timeout / llm_unavailable."
         }
       ]
     }
   ],
   "verified_regressions": {
     "airport_factual": {
-      "question": "What is Roanoke–Blacksburg Regional Airport, and where is it located?",
-      "status": "answered",
-      "pass": true,
-      "deploy": "c03b155",
-      "ms": 142241.9,
-      "n_citations": 1,
-      "citation_titles": ["Roanoke–Blacksburg Regional Airport"]
+      "before_ms": 142241.9,
+      "after_ms_428ed09": 74930.7,
+      "after_ms_fecabea": 66851.2,
+      "pass": true
     },
-    "budget_isolation": {
-      "pass": true,
-      "deploy": "c03b155",
-      "note": "Second consecutive request answered after first returned llm_unavailable."
+    "colony_abstention": {
+      "before": "timeout or llm_unavailable",
+      "after_ms_fecabea": 47991.8,
+      "status": "insufficient",
+      "n_citations": 0,
+      "pass": true
     }
   },
   "provider_limitations": [
-    "Groq/Gemini free-tier unavailability after a few multi-step investigations",
-    "Client timeouts (~330s) observed when provider retries consumed wall clock before fix deploy",
-    "Configured LLM keys do not imply usable quota at query time"
-  ]
+    "Groq free-tier daily_quota observed mid-suite (classified and fail-fasted)",
+    "Gemini occasionally returns bad_request on tool turns after primary failure",
+    "Multi-hop retrieval quality still sensitive to title ambiguity (Mansfield Campus vs main campus)"
+  ],
+  "latency_root_cause": {
+    "primary": "hybrid retrieval (embed + Qdrant dense/sparse) on Render Free / Qdrant Free",
+    "secondary": "LLM tool rounds when providers healthy",
+    "not_primary": "citation verification / claim extraction (sub-millisecond to low ms)"
+  }
 }

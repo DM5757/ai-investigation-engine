@@ -54,6 +54,7 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Local live LLM | Colony `llm_unavailable` (provider TPM); Airport **`answered`** with **1** citation (Woodrum Field / ~6 km NW of Roanoke) | `docs/evidence/local_rag_quality_probe.json` |
 | Render public @ `0036003` (pre-300s budget) | All four cases returned explicit **`llm_unavailable`** with evidence preview after **120s wall-clock** on Free tier (no fake partial essays). | `docs/evidence/prod_quality_probe.json` |
 | Render public @ `0f6adc3` / `c03b155` | Deploy SHA + ACTIVE **55,081** confirmed. Behavioral smoke: airport **PASS** (~142s, 1 cite); budget isolation **PASS**; multi-doc/multi-hop/unanswerable hit provider limits or client timeouts; colony/contradiction returned honest `llm_unavailable`. | `docs/evidence/prod_smoke_suite.json` |
+| Render Milestone 3 @ `428ed09` / `fecabea` | Airport **~67–75s** (was ~142s); contradiction + unanswerable **PASS**; colony **insufficient @ ~48s** (was timeout); multi-doc honest `llm_unavailable` with `groq:daily_quota`; multihop answer quality still weak. Per-stage traces show retrieval then LLM as dominant costs. | `docs/evidence/prod_smoke_suite.json` |
 
 ## 5. Quality fixes reflected in metrics intent
 
@@ -64,9 +65,9 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 
 ## 6. Remaining gaps
 
-1. Live contradiction/abstention rates under provider success still thin on measured subsets.
+1. Multi-hop title disambiguation (e.g. Mansfield Campus vs primary / CSUDH) under healthy quotas.
 2. Full investigation answer eval needs a quota-healthy window (no early stop).
-3. Render Free latency can still trip budgets or provider TPM; degraded mode must stay honest.
+3. Free-tier daily quotas still force honest `llm_unavailable` on some multi-document paths.
 
 ## 7. Evidence index
 

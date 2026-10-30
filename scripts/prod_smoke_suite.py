@@ -70,7 +70,11 @@ CASES: dict[str, dict[str, Any]] = {
             "dominguez",
             "california state",
             "csudh",
-            "west",
+        ],
+        "forbid_answer_any": [
+            "does not contain sufficient",
+            "insufficient information",
+            "cannot determine",
         ],
         "gold_titles_active": [
             "Ohio State University",
