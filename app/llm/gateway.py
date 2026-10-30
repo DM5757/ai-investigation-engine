@@ -11,6 +11,7 @@ from openai import APIConnectionError, APIStatusError, APITimeoutError, OpenAI
 from app.config import Settings, get_settings
 from app.errors import BudgetExceeded, LLMUnavailable
 from app.llm.cache import InMemoryLLMCache, LLMCache, cache_key
+from app.llm.failure import FailureKind, is_non_retryable, sanitize_provider_error
 from app.llm.openai_format import classify_status_error, messages_to_openai, parse_tool_calls
 from app.llm.retry import FatalLLMError, RetryableLLMError, RetryPolicy, with_retries
 from app.llm.types import ChatMessage, ChatResult, LLMClient, ToolCall
@@ -52,7 +53,11 @@ class OpenAICompatibleClient:
     ) -> ChatResult:
         _ = stage
         if tools and response_format:
-            raise FatalLLMError("do not combine tools with response_format in one call")
+            raise FatalLLMError(
+                "do not combine tools with response_format in one call",
+                kind=FailureKind.BAD_REQUEST,
+                provider=self.name,
+            )
         kwargs: dict[str, Any] = {
             "model": self.model,
             "messages": messages_to_openai(messages),
@@ -67,11 +72,19 @@ class OpenAICompatibleClient:
         try:
             completion = self._client.chat.completions.create(**kwargs)
         except APITimeoutError as exc:
-            raise RetryableLLMError(f"timeout: {exc}") from exc
+            raise RetryableLLMError(
+                f"timeout: {sanitize_provider_error(str(exc))}",
+                kind=FailureKind.TIMEOUT,
+                provider=self.name,
+            ) from exc
         except APIConnectionError as exc:
-            raise RetryableLLMError(f"connection: {exc}") from exc
+            raise RetryableLLMError(
+                f"connection: {sanitize_provider_error(str(exc))}",
+                kind=FailureKind.NETWORK,
+                provider=self.name,
+            ) from exc
         except APIStatusError as exc:
-            raise classify_status_error(exc) from exc
+            raise classify_status_error(exc, provider=self.name) from exc
         choice = completion.choices[0].message
         usage_raw = completion.usage
         usage = UsageStats(
@@ -108,14 +121,19 @@ class LLMGateway:
         self.usage = usage or UsageTracker()
         self.cache = cache
         self._sleeper = sleeper
+        # Request-scoped: providers that hit non-retryable failures this investigation.
+        self._dead_providers: set[str] = set()
+        self.last_failures: list[dict[str, str]] = []
 
     @property
     def available(self) -> bool:
         return bool(self.providers)
 
     def begin_request(self) -> None:
-        """Reset per-request budget counters (call once per investigation)."""
+        """Reset per-request budget counters and provider circuit state."""
         self.budget.reset()
+        self._dead_providers.clear()
+        self.last_failures = []
 
     def chat(
         self,
@@ -144,6 +162,9 @@ class LLMGateway:
 
         errors: list[str] = []
         for provider in self.providers:
+            name = str(getattr(provider, "name", provider) or "provider")
+            if name in self._dead_providers:
+                continue
             try:
                 result = self._chat_one(
                     provider,
@@ -161,11 +182,30 @@ class LLMGateway:
             except BudgetExceeded:
                 raise
             except FatalLLMError as exc:
-                errors.append(f"{getattr(provider, 'name', provider)}:fatal:{exc}")
-                logger.warning("LLM fatal on provider: %s", exc)
+                kind = getattr(exc, "kind", FailureKind.UNKNOWN)
+                errors.append(f"{name}:{kind.value}")
+                self.last_failures.append(
+                    {
+                        "provider": name,
+                        "kind": str(kind.value),
+                        "detail": sanitize_provider_error(str(exc), limit=120),
+                    }
+                )
+                logger.warning("LLM fatal on provider %s: %s", name, kind.value)
+                if is_non_retryable(kind):
+                    self._dead_providers.add(name)
             except RetryableLLMError as exc:
-                errors.append(f"{getattr(provider, 'name', provider)}:retry:{exc}")
-                logger.warning("LLM retries exhausted: %s", exc)
+                kind = getattr(exc, "kind", FailureKind.UNKNOWN)
+                errors.append(f"{name}:{kind.value}")
+                self.last_failures.append(
+                    {
+                        "provider": name,
+                        "kind": str(kind.value),
+                        "detail": sanitize_provider_error(str(exc), limit=120),
+                    }
+                )
+                logger.warning("LLM retries exhausted on %s: %s", name, kind.value)
+
         raise LLMUnavailable("; ".join(errors) or "all providers failed")
 
     def _cache_get(self, key_payload: dict[str, Any]) -> ChatResult | None:
@@ -220,6 +260,7 @@ class LLMGateway:
         kwargs: dict[str, Any] = {
             "policy": self.retry_policy,
             "before_attempt": self.budget.check,
+            "remaining_s": self.budget.remaining_s,
         }
         if self._sleeper is not None:
             kwargs["sleeper"] = self._sleeper

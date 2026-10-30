@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import time
 from collections.abc import Mapping
+from concurrent.futures import ThreadPoolExecutor
 from typing import Any, Literal
 
 from app.config import Settings, get_settings
@@ -103,6 +105,8 @@ class HybridRetriever:
         self.bm25 = bm25
         self.settings = settings or get_settings()
         self.default_mode: RetrievalMode = default_mode
+        # Filled by the most recent retrieve() call (milliseconds, monotonic).
+        self.last_timings: dict[str, float] = {}
 
     def retrieve(
         self,
@@ -115,6 +119,7 @@ class HybridRetriever:
     ) -> list[RetrievalHit]:
         """Retrieve top-k chunks for ``query`` under the selected mode."""
         if k <= 0:
+            self.last_timings = {}
             return []
         mode = mode or self.default_mode
         store_filters = dict(filters) if filters else None
@@ -125,58 +130,107 @@ class HybridRetriever:
 
         n_dense = self.settings.n_dense
         n_sparse = self.settings.n_sparse
+        t_all = time.perf_counter()
+        timings: dict[str, float] = {}
+
+        need_dense = mode in ("dense", "hybrid_rrf", "hybrid_weighted", "hybrid_rerank")
+        need_sparse = mode in ("sparse", "hybrid_rrf", "hybrid_weighted", "hybrid_rerank")
 
         dense_chunks: list[ScoredChunk] = []
         sparse_chunks: list[ScoredChunk] = []
         dense_ranks: dict[str, int] = {}
         sparse_ranks: dict[str, int] = {}
 
-        if mode in ("dense", "hybrid_rrf", "hybrid_weighted", "hybrid_rerank"):
+        def _dense_branch() -> tuple[list[ScoredChunk], dict[str, int], dict[str, float]]:
+            local: dict[str, float] = {}
+            t0 = time.perf_counter()
             dense_vec = self.embedder.embed_query(query)
+            local["embed_ms"] = (time.perf_counter() - t0) * 1000.0
+            t1 = time.perf_counter()
             dense_hits = self.store.search_dense(
                 dense_vec, n_dense, filters=store_filters
             )
-            dense_chunks = [_hit_to_scored(h) for h in dense_hits]
-            dense_chunks = _filter_active_versions(dense_chunks, active_versions)
-            dense_ranks = {c.chunk_id: i + 1 for i, c in enumerate(dense_chunks)}
+            local["qdrant_dense_ms"] = (time.perf_counter() - t1) * 1000.0
+            chunks = [_hit_to_scored(h) for h in dense_hits]
+            chunks = _filter_active_versions(chunks, active_versions)
+            ranks = {c.chunk_id: i + 1 for i, c in enumerate(chunks)}
+            return chunks, ranks, local
 
-        if mode in ("sparse", "hybrid_rrf", "hybrid_weighted", "hybrid_rerank"):
+        def _sparse_branch() -> tuple[list[ScoredChunk], dict[str, int], dict[str, float]]:
+            local: dict[str, float] = {}
+            t0 = time.perf_counter()
             sparse = self.bm25.encode_query(query)
+            local["bm25_encode_ms"] = (time.perf_counter() - t0) * 1000.0
+            t1 = time.perf_counter()
             sparse_hits = self.store.search_sparse(
                 sparse.indices, sparse.values, n_sparse, filters=store_filters
             )
-            sparse_chunks = [_hit_to_scored(h) for h in sparse_hits]
-            sparse_chunks = _filter_active_versions(sparse_chunks, active_versions)
-            sparse_ranks = {c.chunk_id: i + 1 for i, c in enumerate(sparse_chunks)}
+            local["qdrant_sparse_ms"] = (time.perf_counter() - t1) * 1000.0
+            chunks = [_hit_to_scored(h) for h in sparse_hits]
+            chunks = _filter_active_versions(chunks, active_versions)
+            ranks = {c.chunk_id: i + 1 for i, c in enumerate(chunks)}
+            return chunks, ranks, local
+
+        if need_dense and need_sparse:
+            # Overlap embed+dense Qdrant with BM25+sparse Qdrant on free-tier network path.
+            with ThreadPoolExecutor(max_workers=2) as pool:
+                fut_d = pool.submit(_dense_branch)
+                fut_s = pool.submit(_sparse_branch)
+                dense_chunks, dense_ranks, t_d = fut_d.result()
+                sparse_chunks, sparse_ranks, t_s = fut_s.result()
+            timings.update(t_d)
+            timings.update(t_s)
+        elif need_dense:
+            dense_chunks, dense_ranks, t_d = _dense_branch()
+            timings.update(t_d)
+        elif need_sparse:
+            sparse_chunks, sparse_ranks, t_s = _sparse_branch()
+            timings.update(t_s)
 
         if mode == "dense":
-            return _to_hits(dense_chunks[:k], mode=mode, dense_ranks=dense_ranks)
+            hits = _to_hits(dense_chunks[:k], mode=mode, dense_ranks=dense_ranks)
+            timings["retrieve_total_ms"] = (time.perf_counter() - t_all) * 1000.0
+            self.last_timings = {k_: round(v, 3) for k_, v in timings.items()}
+            return hits
         if mode == "sparse":
-            return _to_hits(sparse_chunks[:k], mode=mode, sparse_ranks=sparse_ranks)
+            hits = _to_hits(sparse_chunks[:k], mode=mode, sparse_ranks=sparse_ranks)
+            timings["retrieve_total_ms"] = (time.perf_counter() - t_all) * 1000.0
+            self.last_timings = {k_: round(v, 3) for k_, v in timings.items()}
+            return hits
 
         if mode == "hybrid_rrf":
+            t_f = time.perf_counter()
             fused = rrf_fuse(
                 [dense_chunks, sparse_chunks], k=self.settings.rrf_k
             )
-            return _to_hits(
+            timings["fusion_ms"] = (time.perf_counter() - t_f) * 1000.0
+            hits = _to_hits(
                 fused[:k],
                 mode=mode,
                 dense_ranks=dense_ranks,
                 sparse_ranks=sparse_ranks,
             )
+            timings["retrieve_total_ms"] = (time.perf_counter() - t_all) * 1000.0
+            self.last_timings = {k_: round(v, 3) for k_, v in timings.items()}
+            return hits
 
+        t_f = time.perf_counter()
         fused_weighted = weighted_fuse(
             dense_chunks,
             sparse_chunks,
             alpha=self.settings.fusion_alpha,
         )
+        timings["fusion_ms"] = (time.perf_counter() - t_f) * 1000.0
         if mode == "hybrid_weighted":
-            return _to_hits(
+            hits = _to_hits(
                 fused_weighted[:k],
                 mode=mode,
                 dense_ranks=dense_ranks,
                 sparse_ranks=sparse_ranks,
             )
+            timings["retrieve_total_ms"] = (time.perf_counter() - t_all) * 1000.0
+            self.last_timings = {k_: round(v, 3) for k_, v in timings.items()}
+            return hits
 
         # hybrid_rerank
         weights = RerankerWeights(
@@ -187,6 +241,7 @@ class HybridRetriever:
             proximity=self.settings.rerank_w_proximity,
             mmr_lambda=self.settings.rerank_mmr_lambda,
         )
+        t_r = time.perf_counter()
         hits = rerank(
             query,
             fused_weighted,
@@ -194,8 +249,11 @@ class HybridRetriever:
             per_doc_cap=self.settings.per_doc_cap,
             limit=k,
         )
+        timings["rerank_ms"] = (time.perf_counter() - t_r) * 1000.0
         for hit in hits:
             hit.dense_rank = dense_ranks.get(hit.chunk.chunk_id)
             hit.sparse_rank = sparse_ranks.get(hit.chunk.chunk_id)
             hit.mode = mode
+        timings["retrieve_total_ms"] = (time.perf_counter() - t_all) * 1000.0
+        self.last_timings = {k_: round(v, 3) for k_, v in timings.items()}
         return hits

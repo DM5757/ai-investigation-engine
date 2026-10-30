@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import time
 from typing import Any
 
 from app.config import Settings, get_settings
@@ -58,6 +59,7 @@ class InvestigationEngine:
     def investigate(self, question: str) -> AnswerResponse:
         trace = TraceRecorder()
         usage_total = UsageStats()
+        t_request = time.perf_counter()
         try:
             q = guard_question(question, self.settings.max_question_chars)
         except ValueError as exc:
@@ -83,7 +85,7 @@ class InvestigationEngine:
         )
 
         if self.llm is None:
-            return self._degraded(
+            response = self._degraded(
                 q,
                 None,
                 tools,
@@ -91,32 +93,53 @@ class InvestigationEngine:
                 usage_total,
                 reason="LLM unavailable; returning retrieved evidence only.",
             )
+            return self._finish(response, trace, t_request)
 
         try:
-            plan, plan_usage, used_llm_plan = plan_question(
-                q, self.llm, max_sub_questions=self.settings.max_sub_questions
-            )
+            with trace.stage("plan", inputs_summary=q[:120]) as bag:
+                plan, plan_usage, used_llm_plan = plan_question(
+                    q, self.llm, max_sub_questions=self.settings.max_sub_questions
+                )
+                bag["outputs_summary"] = (
+                    f"type={plan.question_type}; n={len(plan.sub_questions)}; "
+                    f"llm={used_llm_plan}"
+                )
+                bag["tokens"] = plan_usage
+            usage_total = usage_total.add(plan_usage)
         except BudgetExceeded as exc:
             with trace.stage("budget", inputs_summary=str(exc)) as bag:
                 bag["outputs_summary"] = "budget_exceeded_during_plan"
-            return self._degraded(
-                q,
-                None,
-                tools,
-                trace,
-                usage_total,
-                reason=(
-                    f"Local investigation budget exceeded during planning ({exc}). "
-                    "Retrieved evidence only; no synthesized answer."
+            return self._finish(
+                self._degraded(
+                    q,
+                    None,
+                    tools,
+                    trace,
+                    usage_total,
+                    reason=(
+                        f"Local investigation budget exceeded during planning ({exc}). "
+                        "Retrieved evidence only; no synthesized answer."
+                    ),
                 ),
+                trace,
+                t_request,
             )
-
-        usage_total = usage_total.add(plan_usage)
-        with trace.stage("plan", inputs_summary=q[:120]) as bag:
-            bag["outputs_summary"] = (
-                f"type={plan.question_type}; n={len(plan.sub_questions)}; llm={used_llm_plan}"
+        except LLMUnavailable as exc:
+            return self._finish(
+                self._degraded(
+                    q,
+                    None,
+                    tools,
+                    trace,
+                    usage_total,
+                    reason=(
+                        "LLM provider unavailable after retries/fallback "
+                        f"({self._sanitize_fail(exc)}); returning retrieved evidence only."
+                    ),
+                ),
+                trace,
+                t_request,
             )
-            bag["tokens"] = plan_usage
 
         focus = plan.sub_questions[0].text if plan.sub_questions else q
         tool_usage_box: dict[str, UsageStats] = {"usage": UsageStats()}
@@ -127,47 +150,121 @@ class InvestigationEngine:
             usage_total = usage_total.add(tool_usage_box["usage"])
             with trace.stage("budget", inputs_summary=str(exc)) as bag:
                 bag["outputs_summary"] = "budget_exceeded_during_tools"
-            return self._degraded(
-                q,
-                plan,
-                tools,
-                trace,
-                usage_total,
-                reason=(
-                    f"Local investigation budget exceeded during tool use ({exc}). "
-                    "Retrieved evidence only; no synthesized answer."
+            return self._finish(
+                self._degraded(
+                    q,
+                    plan,
+                    tools,
+                    trace,
+                    usage_total,
+                    reason=(
+                        f"Local investigation budget exceeded during tool use ({exc}). "
+                        "Retrieved evidence only; no synthesized answer."
+                    ),
                 ),
-            )
-        except LLMUnavailable:
-            usage_total = usage_total.add(tool_usage_box["usage"])
-            return self._degraded(
-                q,
-                plan,
-                tools,
                 trace,
-                usage_total,
-                reason="LLM provider unavailable after retries/fallback; "
-                "returning retrieved evidence only.",
+                t_request,
+            )
+        except LLMUnavailable as exc:
+            usage_total = usage_total.add(tool_usage_box["usage"])
+            return self._finish(
+                self._degraded(
+                    q,
+                    plan,
+                    tools,
+                    trace,
+                    usage_total,
+                    reason=(
+                        "LLM provider unavailable after retries/fallback "
+                        f"({self._sanitize_fail(exc)}); returning retrieved evidence only."
+                    ),
+                ),
+                trace,
+                t_request,
             )
 
         try:
-            return self._finalize(q, plan, tools, trace, usage_total)
+            return self._finish(
+                self._finalize(q, plan, tools, trace, usage_total),
+                trace,
+                t_request,
+            )
         except BudgetExceeded as exc:
             with trace.stage("budget", inputs_summary=str(exc)) as bag:
                 bag["outputs_summary"] = "budget_exceeded_during_finalize"
-            return self._degraded(
-                q,
-                plan,
-                tools,
-                trace,
-                usage_total,
-                reason=(
-                    f"Local investigation budget exceeded during synthesis ({exc}). "
-                    "Retrieved evidence only; no synthesized answer."
+            return self._finish(
+                self._degraded(
+                    q,
+                    plan,
+                    tools,
+                    trace,
+                    usage_total,
+                    reason=(
+                        f"Local investigation budget exceeded during synthesis ({exc}). "
+                        "Retrieved evidence only; no synthesized answer."
+                    ),
                 ),
+                trace,
+                t_request,
+            )
+        except LLMUnavailable as exc:
+            return self._finish(
+                self._degraded(
+                    q,
+                    plan,
+                    tools,
+                    trace,
+                    usage_total,
+                    reason=(
+                        "LLM provider unavailable after retries/fallback "
+                        f"({self._sanitize_fail(exc)}); returning retrieved evidence only."
+                    ),
+                ),
+                trace,
+                t_request,
             )
 
+    def _finish(
+        self,
+        response: AnswerResponse,
+        trace: TraceRecorder,
+        t_request: float,
+    ) -> AnswerResponse:
+        """Attach total request latency without mutating nested stage clocks."""
+        total_ms = (time.perf_counter() - t_request) * 1000.0
+        # Avoid double-counting if already finished (idempotent).
+        if not any(e.stage == "request" for e in response.trace):
+            failures = []
+            last = getattr(self.llm, "last_failures", None)
+            if isinstance(last, list):
+                failures = list(last)[-6:]
+            trace.append(
+                "request",
+                inputs_summary="",
+                outputs_summary=f"status={response.status}",
+                latency_ms=total_ms,
+                tokens=response.usage,
+                extra={
+                    "total_ms": round(total_ms, 3),
+                    "stage_ms": {
+                        e.stage: round(float(e.latency_ms), 3) for e in response.trace
+                    },
+                    "provider_failures": failures,
+                },
+            )
+            response.trace = list(trace.events)
+        return response
+
+    @staticmethod
+    def _sanitize_fail(exc: BaseException) -> str:
+        text = " ".join(str(exc).split())
+        return text[:160]
+
     def _begin_request_budget(self) -> None:
+        begin = getattr(self.llm, "begin_request", None)
+        if callable(begin):
+            begin()
+            return
         budget = getattr(self.llm, "budget", None)
         reset = getattr(budget, "reset", None)
         if callable(reset):
@@ -191,6 +288,7 @@ class InvestigationEngine:
                     tools.state.chunk_texts[hit.chunk.chunk_id] = hit.chunk.text
                     tools.state.retrieved.append(hit)
                 bag["outputs_summary"] = f"hits={len(hits)}"
+                bag["extra"] = dict(getattr(self.retriever, "last_timings", {}) or {})
 
         focus = extract_question_focus(question)
         ranked = sorted(
@@ -223,6 +321,9 @@ class InvestigationEngine:
                 break
         with trace.stage("llm_unavailable") as bag:
             bag["outputs_summary"] = reason[:160]
+            failures = getattr(self.llm, "last_failures", None)
+            if isinstance(failures, list) and failures:
+                bag["extra"] = {"provider_failures": list(failures)[-6:]}
         return AnswerResponse(
             status="llm_unavailable",
             answer=None,
@@ -244,24 +345,37 @@ class InvestigationEngine:
         usage_box: dict[str, UsageStats],
     ) -> None:
         assert self.llm is not None
+        # Seed with one search so scripted/deterministic paths always have evidence.
+        # Include results in the user message (not a synthetic tool turn) so Gemini
+        # OpenAI-compat thought_signature requirements are not violated.
+        with trace.stage("tools_seed_search", inputs_summary=sub_q[:120]) as bag:
+            seed = tools.execute(
+                "search_documents",
+                {"query": sub_q, "k": self.settings.retrieval_top_k},
+            )
+            bag["outputs_summary"] = f"results={len(seed.get('results', []))}"
+            bag["extra"] = dict(tools.last_timings)
+
         messages: list[ChatMessage] = [
             ChatMessage(role="system", content=TOOL_LOOP_SYSTEM),
-            ChatMessage(role="user", content=f"Question: {question}\nFocus: {sub_q}"),
+            ChatMessage(
+                role="user",
+                content=(
+                    f"Question: {question}\nFocus: {sub_q}\n"
+                    f"Seed search_documents results (reuse when relevant):\n{_json(seed)}"
+                ),
+            ),
         ]
-        # Seed with one search so scripted/deterministic paths always have evidence
-        seed = tools.execute(
-            "search_documents",
-            {"query": sub_q, "k": self.settings.retrieval_top_k},
-        )
-        with trace.stage("tools_seed_search", inputs_summary=sub_q[:120]) as bag:
-            bag["outputs_summary"] = f"results={len(seed.get('results', []))}"
 
         for round_i in range(self.settings.max_tool_rounds):
-            result = self.llm.chat(messages, tools=TOOL_SCHEMAS, stage="tools")
-            usage_box["usage"] = usage_box["usage"].add(result.usage)
-            with trace.stage(f"tools_round_{round_i}", inputs_summary=f"round={round_i}") as bag:
+            with trace.stage(
+                f"tools_llm_round_{round_i}", inputs_summary=f"round={round_i}"
+            ) as bag:
+                result = self.llm.chat(messages, tools=TOOL_SCHEMAS, stage="tools")
+                usage_box["usage"] = usage_box["usage"].add(result.usage)
                 bag["outputs_summary"] = (
-                    f"content={bool(result.content)}; tools={len(result.tool_calls)}"
+                    f"content={bool(result.content)}; tools={len(result.tool_calls)}; "
+                    f"provider={result.provider}"
                 )
                 bag["tokens"] = result.usage
             if not result.tool_calls:
@@ -274,10 +388,19 @@ class InvestigationEngine:
                 )
             )
             for call in result.tool_calls:
-                if self._blocked_tool(call, tools):
-                    payload = {"error": "blocked_injection_chunk"}
-                else:
-                    payload = tools.execute(call.name, call.arguments)
+                with trace.stage(
+                    f"tool_{call.name}",
+                    inputs_summary=str(call.arguments)[:120],
+                ) as bag:
+                    if self._blocked_tool(call, tools):
+                        payload = {"error": "blocked_injection_chunk"}
+                    else:
+                        payload = tools.execute(call.name, call.arguments)
+                    bag["outputs_summary"] = (
+                        f"keys={sorted(payload.keys())[:6]}; err={bool(payload.get('error'))}"
+                    )
+                    if tools.last_timings:
+                        bag["extra"] = dict(tools.last_timings)
                 messages.append(
                     ChatMessage(
                         role="tool",
@@ -355,66 +478,68 @@ class InvestigationEngine:
         *,
         degraded: bool = False,
     ) -> AnswerResponse:
-        raw_claims = self._collect_claims(question, tools)
-        supporting, _weak, focus = filter_claims_for_question(
-            [c for c in raw_claims if c.verified],
-            question,
-            min_support=self.settings.claim_min_support,
-        )
-        claims = assign_source_labels(supporting)
         n_ret = len(tools.state.retrieved)
         with trace.stage("extract", inputs_summary=f"n_retrieved={n_ret}") as bag:
+            raw_claims = self._collect_claims(question, tools)
+            supporting, _weak, focus = filter_claims_for_question(
+                [c for c in raw_claims if c.verified],
+                question,
+                min_support=self.settings.claim_min_support,
+            )
+            claims = assign_source_labels(supporting)
             bag["outputs_summary"] = (
                 f"verified={len(claims)}; raw={sum(1 for c in raw_claims if c.verified)}; "
                 f"focus_phrases={list(focus.phrases)[:3]}"
             )
 
-        conflicts = candidate_conflicts(claims)
-        conflicts, adj_usage = adjudicate_conflicts(conflicts, self.llm)
-        usage_total = usage_total.add(adj_usage)
         with trace.stage("contradictions") as bag:
+            conflicts = candidate_conflicts(claims)
+            conflicts, adj_usage = adjudicate_conflicts(conflicts, self.llm)
+            usage_total = usage_total.add(adj_usage)
             bag["outputs_summary"] = f"conflicts={len(conflicts)}"
             bag["tokens"] = adj_usage
 
-        status, reason = assess_sufficiency(
-            verified_claims=claims,
-            conflicts=conflicts,
-            question=question,
-            focus=focus,
-            min_support=self.settings.claim_min_support,
-        )
         with trace.stage("sufficiency") as bag:
+            status, reason = assess_sufficiency(
+                verified_claims=claims,
+                conflicts=conflicts,
+                question=question,
+                focus=focus,
+                min_support=self.settings.claim_min_support,
+            )
             bag["outputs_summary"] = f"status={status}"
 
-        answer, citations, syn_usage, _ = synthesize_answer(
-            question=question,
-            status=status,
-            claims=claims,
-            conflicts=conflicts,
-            abstention_reason=reason,
-            llm=self.llm,
-        )
-        usage_total = usage_total.add(syn_usage)
         with trace.stage("synthesize") as bag:
-            bag["outputs_summary"] = f"len={len(answer or '')}"
-            bag["tokens"] = syn_usage
-
-        answer, citations, removed, ok = verify_answer_citations(answer, citations, claims)
-        if not ok:
-            # One regeneration attempt via deterministic synthesizer
-            answer2, citations2, _, _ = synthesize_answer(
+            answer, citations, syn_usage, _ = synthesize_answer(
                 question=question,
                 status=status,
                 claims=claims,
                 conflicts=conflicts,
                 abstention_reason=reason,
-                llm=None,
+                llm=self.llm,
             )
-            answer, citations, removed, ok = verify_answer_citations(
-                answer2, citations2, claims
-            )
-            status = downgrade_status(status, citation_failed=not ok or bool(removed))
+            usage_total = usage_total.add(syn_usage)
+            bag["outputs_summary"] = f"len={len(answer or '')}"
+            bag["tokens"] = syn_usage
+
         with trace.stage("verify") as bag:
+            answer, citations, removed, ok = verify_answer_citations(
+                answer, citations, claims
+            )
+            if not ok:
+                # One regeneration attempt via deterministic synthesizer
+                answer2, citations2, _, _ = synthesize_answer(
+                    question=question,
+                    status=status,
+                    claims=claims,
+                    conflicts=conflicts,
+                    abstention_reason=reason,
+                    llm=None,
+                )
+                answer, citations, removed, ok = verify_answer_citations(
+                    answer2, citations2, claims
+                )
+                status = downgrade_status(status, citation_failed=not ok or bool(removed))
             bag["outputs_summary"] = f"ok={ok}; removed={removed}; cites={len(citations)}"
 
         return AnswerResponse(

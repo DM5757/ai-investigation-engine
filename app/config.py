@@ -52,15 +52,17 @@ class Settings(BaseSettings):
     )
 
     # LLM / investigation (Phase 4)
-    llm_timeout_s: float = Field(default=30.0, alias="LLM_TIMEOUT_S")
-    llm_max_retries: int = Field(default=3, alias="LLM_MAX_RETRIES")
+    llm_timeout_s: float = Field(default=45.0, alias="LLM_TIMEOUT_S")
+    # Bounded retries: honour Retry-After up to max_delay, then failover.
+    llm_max_retries: int = Field(default=2, alias="LLM_MAX_RETRIES")
     llm_retry_base_s: float = Field(default=0.5, alias="LLM_RETRY_BASE_S")
-    llm_retry_max_s: float = Field(default=8.0, alias="LLM_RETRY_MAX_S")
-    llm_budget_max_calls: int = Field(default=20, alias="LLM_BUDGET_MAX_CALLS")
+    llm_retry_max_s: float = Field(default=4.0, alias="LLM_RETRY_MAX_S")
+    llm_budget_max_calls: int = Field(default=16, alias="LLM_BUDGET_MAX_CALLS")
     llm_budget_max_tokens: int = Field(default=50_000, alias="LLM_BUDGET_MAX_TOKENS")
     # Render Free cold start + embedding load + multi-step tools often exceeds 2 minutes.
-    llm_budget_wall_clock_s: float = Field(default=300.0, alias="LLM_BUDGET_WALL_CLOCK_S")
-    max_tool_rounds: int = Field(default=6, alias="MAX_TOOL_ROUNDS")
+    # Cap below typical client/proxy ~330s so we return llm_unavailable instead of hanging.
+    llm_budget_wall_clock_s: float = Field(default=240.0, alias="LLM_BUDGET_WALL_CLOCK_S")
+    max_tool_rounds: int = Field(default=4, alias="MAX_TOOL_ROUNDS")
     max_sub_questions: int = Field(default=4, alias="MAX_SUB_QUESTIONS")
     max_question_chars: int = Field(default=2000, alias="MAX_QUESTION_CHARS")
     tau_retrieval: float = Field(default=0.0, alias="TAU_RETRIEVAL")

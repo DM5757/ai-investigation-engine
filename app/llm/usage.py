@@ -42,8 +42,14 @@ class BudgetTracker:
         self.tokens_used = 0
         self.started_at = time.monotonic()
 
+    def elapsed_s(self) -> float:
+        return time.monotonic() - self.started_at
+
+    def remaining_s(self) -> float:
+        return max(0.0, self.max_wall_clock_s - self.elapsed_s())
+
     def check(self) -> None:
-        elapsed = time.monotonic() - self.started_at
+        elapsed = self.elapsed_s()
         if self.calls_used >= self.max_calls:
             raise BudgetExceeded(f"max LLM calls exceeded ({self.max_calls})")
         if self.tokens_used >= self.max_tokens:
@@ -56,7 +62,7 @@ class BudgetTracker:
         self.check()
         self.calls_used += max(1, usage.calls or 1)
         self.tokens_used += usage.total_tokens
-        elapsed = time.monotonic() - self.started_at
+        elapsed = self.elapsed_s()
         if self.tokens_used > self.max_tokens:
             raise BudgetExceeded(f"max tokens exceeded ({self.max_tokens})")
         if elapsed >= self.max_wall_clock_s:

@@ -8,6 +8,8 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import TypeVar
 
+from app.llm.failure import FailureKind, is_non_retryable
+
 T = TypeVar("T")
 
 
@@ -22,15 +24,35 @@ class RetryPolicy:
 
 
 class RetryableLLMError(Exception):
-    """Transient provider failure (429, 5xx, timeout)."""
+    """Transient provider failure (RPM/TPM 429, 5xx, timeout)."""
 
-    def __init__(self, message: str, *, retry_after_s: float | None = None) -> None:
+    def __init__(
+        self,
+        message: str,
+        *,
+        retry_after_s: float | None = None,
+        kind: FailureKind = FailureKind.UNKNOWN,
+        provider: str = "",
+    ) -> None:
         super().__init__(message)
         self.retry_after_s = retry_after_s
+        self.kind = kind
+        self.provider = provider
 
 
 class FatalLLMError(Exception):
-    """Non-retryable provider failure (401, bad request)."""
+    """Non-retryable provider failure (daily quota, auth, context overflow)."""
+
+    def __init__(
+        self,
+        message: str,
+        *,
+        kind: FailureKind = FailureKind.UNKNOWN,
+        provider: str = "",
+    ) -> None:
+        super().__init__(message)
+        self.kind = kind
+        self.provider = provider
 
 
 def compute_delay(
@@ -54,11 +76,15 @@ def with_retries(
     *,
     sleeper: Callable[[float], None] = time.sleep,
     before_attempt: Callable[[], None] | None = None,
+    remaining_s: Callable[[], float] | None = None,
 ) -> T:
     """Call ``fn`` with exponential backoff on ``RetryableLLMError``.
 
     Optional ``before_attempt`` runs before each try (and before backoff sleep)
     so callers can enforce wall-clock budgets instead of hanging past them.
+
+    Optional ``remaining_s`` skips further retries when the next delay would
+    exceed the remaining budget (fail over / fail fast instead).
     """
     last: RetryableLLMError | None = None
     for attempt in range(policy.max_attempts):
@@ -66,12 +92,24 @@ def with_retries(
             before_attempt()
         try:
             return fn()
+        except FatalLLMError:
+            raise
         except RetryableLLMError as exc:
             last = exc
+            if is_non_retryable(exc.kind):
+                raise FatalLLMError(str(exc), kind=exc.kind, provider=exc.provider) from exc
             if attempt + 1 >= policy.max_attempts:
                 break
+            delay = compute_delay(attempt, policy, retry_after_s=exc.retry_after_s)
+            if remaining_s is not None:
+                left = remaining_s()
+                if left <= 0.05:
+                    break
+                if delay > left:
+                    # Prefer failing over / exhausting rather than sleeping past budget.
+                    break
             if before_attempt is not None:
                 before_attempt()
-            sleeper(compute_delay(attempt, policy, retry_after_s=exc.retry_after_s))
+            sleeper(delay)
     assert last is not None
     raise last

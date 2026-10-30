@@ -114,8 +114,10 @@ class ToolExecutor:
     tau_retrieval: float = 0.0
     tau_relative: float = 0.35
     injection_downweight: float = 0.05
+    last_timings: dict[str, float] = field(default_factory=dict)
 
     def execute(self, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
+        self.last_timings = {}
         try:
             if name == "search_documents":
                 return self._search(SearchDocumentsArgs.model_validate(arguments))
@@ -136,6 +138,7 @@ class ToolExecutor:
         # Over-fetch then apply absolute + relative score floors before capping.
         fetch_k = max(k, min(self.top_k * 3, 24))
         hits = self.retriever.retrieve(args.query, k=fetch_k)
+        self.last_timings = dict(getattr(self.retriever, "last_timings", {}) or {})
         scores = [float(hit.fused_score or hit.chunk.score or 0.0) for hit in hits]
         max_score = max(scores) if scores else 0.0
         rel_floor = max_score * max(0.0, min(1.0, self.tau_relative)) if max_score else 0.0

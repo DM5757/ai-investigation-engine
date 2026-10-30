@@ -46,7 +46,11 @@ def plan_question(
         )
     except BudgetExceeded:
         raise
-    except (LLMUnavailable, LLMOutputInvalid, Exception):
+    except LLMUnavailable:
+        # Both providers failed — do not continue into a tool loop that will burn
+        # the same exhausted quota / hang on retries.
+        raise
+    except (LLMOutputInvalid, Exception):
         return deterministic_plan(question), UsageStats(), False
     raw = result.content or ""
     try:

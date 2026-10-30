@@ -77,29 +77,55 @@ def parse_tool_calls(raw: Any) -> list[ToolCall]:
     return out
 
 
-def classify_status_error(exc: APIStatusError) -> Exception:
-    status = getattr(exc, "status_code", None) or 0
+def classify_status_error(exc: APIStatusError, *, provider: str = "") -> Exception:
+    from app.llm.failure import (
+        FailureKind,
+        classify_message,
+        header_retry_after,
+        is_non_retryable,
+        sanitize_provider_error,
+    )
+
+    status = int(getattr(exc, "status_code", None) or 0)
     headers = getattr(exc, "headers", None) or {}
-    retry_after: float | None = None
-    raw_ra = headers.get("retry-after") or headers.get("Retry-After")
-    if raw_ra is not None:
-        try:
-            retry_after = float(raw_ra)
-        except (TypeError, ValueError):
-            retry_after = None
-    msg = str(exc)
-    if status in (401, 403):
-        return FatalLLMError(f"fatal LLM status {status}: {msg}")
+    retry_after = header_retry_after(headers)
+    msg = sanitize_provider_error(str(exc))
+    kind = classify_message(msg, status=status)
+
+    # Gemini sometimes emits 400 for transient tool-schema / signature issues.
     if status == 400:
-        # Some providers (Gemini) emit 400 for transient tool-schema / signature issues.
         lower = msg.lower()
         if "thought_signature" in lower or "extra_content" in lower:
             return RetryableLLMError(
-                f"retryable LLM status {status}: {msg}", retry_after_s=retry_after
+                f"retryable LLM status {status}: {msg}",
+                retry_after_s=retry_after,
+                kind=FailureKind.BAD_REQUEST,
+                provider=provider,
             )
-        return FatalLLMError(f"fatal LLM status {status}: {msg}")
-    if status == 429 or status >= 500:
-        return RetryableLLMError(
-            f"retryable LLM status {status}: {msg}", retry_after_s=retry_after
+
+    if is_non_retryable(kind) or status in (401, 403, 413):
+        return FatalLLMError(
+            f"fatal LLM status {status}: {msg}",
+            kind=kind if kind != FailureKind.UNKNOWN else (
+                FailureKind.AUTH_CONFIG if status in (401, 403) else FailureKind.BAD_REQUEST
+            ),
+            provider=provider,
         )
-    return FatalLLMError(f"LLM status {status}: {msg}")
+    if status == 429 or status >= 500 or kind in {
+        FailureKind.RATE_LIMIT_RPM,
+        FailureKind.RATE_LIMIT_TPM,
+        FailureKind.SERVER_ERROR,
+    }:
+        return RetryableLLMError(
+            f"retryable LLM status {status}: {msg}",
+            retry_after_s=retry_after,
+            kind=kind if kind != FailureKind.UNKNOWN else (
+                FailureKind.SERVER_ERROR if status >= 500 else FailureKind.RATE_LIMIT_RPM
+            ),
+            provider=provider,
+        )
+    return FatalLLMError(
+        f"LLM status {status}: {msg}",
+        kind=kind,
+        provider=provider,
+    )
