@@ -42,6 +42,23 @@ def test_focus_phrases_include_comparison_entities() -> None:
     assert "hills further" not in joined
 
 
+def test_bridge_queries_surface_unretrieved_titles() -> None:
+    from app.investigation.entities import bridge_entity_queries
+
+    bridges = bridge_entity_queries(
+        question="What country was the character Mary Robinson was nicknamed for from?",
+        retrieved_titles=["Mary Robinson (poet)"],
+        retrieved_texts=[
+            "Mary Robinson was nicknamed Perdita after the heroine of "
+            "The Winter's Tale by William Shakespeare."
+        ],
+        known_entities=["Mary Robinson"],
+        max_bridges=3,
+    )
+    joined = " | ".join(bridges).lower()
+    assert "perdita" in joined or "winter" in joined
+
+
 def test_multi_entity_sufficiency_requires_both_sides() -> None:
     q = (
         "Is Ohio State University or California State University, "

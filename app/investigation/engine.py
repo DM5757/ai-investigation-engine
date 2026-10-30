@@ -11,7 +11,7 @@ from app.errors import BudgetExceeded, LLMUnavailable
 from app.index.qdrant_store import ChunkStore
 from app.investigation.aggregator import assign_source_labels
 from app.investigation.contradictions import adjudicate_conflicts, candidate_conflicts
-from app.investigation.entities import extract_focus_entities
+from app.investigation.entities import bridge_entity_queries, extract_focus_entities
 from app.investigation.extractor import claims_from_tool_payload, heuristic_claims_from_chunk
 from app.investigation.planner import plan_question
 from app.investigation.question_focus import (
@@ -401,6 +401,36 @@ class InvestigationEngine:
                 "timings": dict(tools.last_timings),
             }
 
+        # Multi-hop bridge: search entities mentioned in evidence but not yet retrieved.
+        bridge_results: list[dict[str, Any]] = []
+        bridges = bridge_entity_queries(
+            question=question,
+            retrieved_titles=[
+                h.chunk.title or "" for h in tools.state.retrieved if h.chunk.title
+            ],
+            retrieved_texts=[h.chunk.text for h in tools.state.retrieved[:10]],
+            known_entities=entities,
+            max_bridges=2,
+        )
+        if bridges:
+            with trace.stage("tools_bridge_search", inputs_summary=str(bridges)[:120]) as bag:
+                for bq in bridges:
+                    part = tools.execute(
+                        "search_documents",
+                        {"query": bq, "k": self.settings.retrieval_top_k},
+                    )
+                    bridge_results.append(
+                        {
+                            "query": bq,
+                            "results": part.get("results", []),
+                            "cache_hit": part.get("cache_hit", False),
+                        }
+                    )
+                bag["outputs_summary"] = (
+                    f"bridges={bridges}; "
+                    f"results={sum(len(p.get('results', [])) for p in bridge_results)}"
+                )
+
         messages: list[ChatMessage] = [
             ChatMessage(role="system", content=TOOL_LOOP_SYSTEM),
             ChatMessage(
@@ -411,7 +441,7 @@ class InvestigationEngine:
                     "Seed search_documents results (reuse when relevant; "
                     "prefer exact-title documents over similarly named campuses/"
                     "branches):\n"
-                    f"{_json({'seeds': seed_results})}"
+                    f"{_json({'seeds': seed_results, 'bridges': bridge_results})}"
                 ),
             ),
         ]

@@ -63,6 +63,90 @@ _TITLE_PHRASE_RE = re.compile(
 _PAREN_TAIL_RE = re.compile(r"\s*\([^)]*\)\s*$")
 
 
+_SINGLE_NAME_RE = re.compile(r"\b([A-Z][a-zA-Z]{4,})\b")
+_BRIDGE_STOP = frozenset(
+    {
+        "which",
+        "where",
+        "whose",
+        "after",
+        "before",
+        "during",
+        "about",
+        "there",
+        "these",
+        "those",
+        "their",
+        "other",
+        "based",
+        "known",
+        "called",
+        "university",
+        "state",
+        "college",
+        "school",
+        "county",
+        "country",
+        "series",
+        "character",
+        "daughter",
+        "memoirs",
+        "writer",
+        "producer",
+        "shakespeare",
+    }
+)
+
+
+def extract_title_phrases(text: str, *, max_phrases: int = 12) -> list[str]:
+    """Extract title-case phrases and distinctive single CapWords from text."""
+    found: list[str] = []
+    for match in _TITLE_PHRASE_RE.finditer(text or ""):
+        cleaned = _clean_entity_span(match.group(1))
+        if cleaned:
+            found.append(cleaned)
+    for match in _SINGLE_NAME_RE.finditer(text or ""):
+        name = match.group(1)
+        if name.lower() in _STOP or name.lower() in _BRIDGE_STOP:
+            continue
+        found.append(name)
+    return _dedupe(found)[:max_phrases]
+
+
+def bridge_entity_queries(
+    *,
+    question: str,
+    retrieved_titles: list[str],
+    retrieved_texts: list[str],
+    known_entities: list[str],
+    max_bridges: int = 2,
+) -> list[str]:
+    """Propose follow-up searches for entities mentioned in evidence but not retrieved.
+
+    Supports multi-hop jumps (nickname → character title, memoir subject → show title)
+    without hardcoding particular documents.
+    """
+    known: set[str] = {e.lower() for e in known_entities}
+    known.update(t.lower() for t in retrieved_titles if t)
+    known.update(p.lower() for p in extract_title_phrases(question))
+    # Tokens already explicit in the question should not dominate bridges.
+    q_low = question.lower()
+
+    scores: dict[str, float] = {}
+    for text in retrieved_texts:
+        for phrase in extract_title_phrases(text[:1200]):
+            key = phrase.lower()
+            if key in known:
+                continue
+            if key in q_low:
+                continue
+            # Prefer longer, rarer bridge phrases.
+            scores[phrase] = scores.get(phrase, 0.0) + 1.0 + 0.15 * len(phrase.split())
+
+    ranked = sorted(scores.items(), key=lambda kv: (-kv[1], -len(kv[0]), kv[0]))
+    return [p for p, _ in ranked[:max_bridges]]
+
+
 def extract_focus_entities(question: str, *, max_entities: int = 4) -> list[str]:
     """Extract comparable named entities from a natural-language question.
 
@@ -196,7 +280,9 @@ def _dedupe(items: list[str]) -> list[str]:
 
 __all__ = [
     "best_entity_fidelity",
+    "bridge_entity_queries",
     "claim_covers_entity",
     "entity_title_fidelity",
     "extract_focus_entities",
+    "extract_title_phrases",
 ]

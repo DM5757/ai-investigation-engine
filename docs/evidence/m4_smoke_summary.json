@@ -1,0 +1,336 @@
+[
+  {
+    "id": "airport",
+    "status": "answered",
+    "ms": 10962.7,
+    "cites": 1,
+    "titles": [
+      "Roanoke\u2013Blacksburg Regional Airport"
+    ],
+    "answer": "Roanoke\u2013Blacksburg Regional Airport (IATA\u202f:\u202fROA, ICAO\u202f:\u202fKROA, FAA\u202fLID\u202f:\u202fROA), also called Woodrum Field, is a regional airport situated about three nautical miles (\u2248\u202f6\u202fkm) northwest of the central business district of Roanoke, Virginia\u3010S1\u3011.",
+    "reasons": [],
+    "trace": [
+      [
+        "guard",
+        0.0
+      ],
+      [
+        "plan",
+        1211.5
+      ],
+      [
+        "tools_seed_search",
+        1682.8
+      ],
+      [
+        "tools_llm_round_0",
+        988.5
+      ],
+      [
+        "tool_record_finding",
+        0.1
+      ],
+      [
+        "extract",
+        0.8
+      ],
+      [
+        "contradictions",
+        0.0
+      ],
+      [
+        "sufficiency",
+        0.2
+      ],
+      [
+        "synthesize",
+        484.9
+      ],
+      [
+        "verify",
+        0.0
+      ],
+      [
+        "request",
+        4369.6
+      ]
+    ],
+    "usage_calls": 3
+  },
+  {
+    "id": "multihop_ohio_csudh",
+    "status": "answered",
+    "ms": 9765.5,
+    "cites": 2,
+    "titles": [
+      "Ohio State University",
+      "StubHub Center"
+    ],
+    "answer": "Based on the provided claims, the provided sources state that Ohio State University is located in Columbus, Ohio [S1], while California State University, Dominguez Hills is located on the West Coast in Carson, California [S9]. However, the provided claims are insufficient to directly determine which university is further west.",
+    "reasons": [],
+    "trace": [
+      [
+        "guard",
+        0.0
+      ],
+      [
+        "plan",
+        1103.4
+      ],
+      [
+        "tools_seed_search",
+        5097.6
+      ],
+      [
+        "tools_llm_round_0",
+        1181.7
+      ],
+      [
+        "tool_record_finding",
+        0.0
+      ],
+      [
+        "extract",
+        5.8
+      ],
+      [
+        "contradictions",
+        0.2
+      ],
+      [
+        "sufficiency",
+        0.8
+      ],
+      [
+        "synthesize",
+        770.7
+      ],
+      [
+        "verify",
+        0.0
+      ],
+      [
+        "request",
+        8160.8
+      ]
+    ],
+    "usage_calls": 3
+  },
+  {
+    "id": "multihop_lent_irt",
+    "status": "answered",
+    "ms": 12394.6,
+    "cites": 1,
+    "titles": [
+      "Michael Lent (writer and producer)"
+    ],
+    "answer": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star of the series *Ice Road Truckers* [S2]. The provided claims do not contain the premiere date of the television series.",
+    "reasons": [
+      "answer_missing_required_tokens",
+      "too_few_distinct_docs:1<2"
+    ],
+    "trace": [
+      [
+        "guard",
+        0.0
+      ],
+      [
+        "plan",
+        745.1
+      ],
+      [
+        "tools_seed_search",
+        5866.6
+      ],
+      [
+        "tools_llm_round_0",
+        845.1
+      ],
+      [
+        "tool_search_documents",
+        1968.3
+      ],
+      [
+        "tools_llm_round_1",
+        1318.2
+      ],
+      [
+        "tool_record_finding",
+        0.1
+      ],
+      [
+        "extract",
+        4.1
+      ],
+      [
+        "contradictions",
+        0.0
+      ],
+      [
+        "sufficiency",
+        0.4
+      ],
+      [
+        "synthesize",
+        633.1
+      ],
+      [
+        "verify",
+        0.0
+      ],
+      [
+        "request",
+        11381.9
+      ]
+    ],
+    "usage_calls": 4
+  },
+  {
+    "id": "multihop_robinson_perdita",
+    "status": "answered",
+    "ms": 8670.2,
+    "cites": 1,
+    "titles": [
+      "Mary Robinson (poet)"
+    ],
+    "answer": "Based on the provided sources, there is insufficient information to answer the question about the character Mary Robinson was nicknamed for or the country of Leontes.",
+    "reasons": [
+      "answer_missing_required_tokens"
+    ],
+    "trace": [
+      [
+        "guard",
+        0.0
+      ],
+      [
+        "plan",
+        810.4
+      ],
+      [
+        "tools_seed_search",
+        2093.7
+      ],
+      [
+        "tools_llm_round_0",
+        900.1
+      ],
+      [
+        "tool_search_documents",
+        1818.9
+      ],
+      [
+        "tools_llm_round_1",
+        1207.5
+      ],
+      [
+        "tool_record_finding",
+        0.0
+      ],
+      [
+        "extract",
+        3.4
+      ],
+      [
+        "contradictions",
+        0.0
+      ],
+      [
+        "sufficiency",
+        0.2
+      ],
+      [
+        "synthesize",
+        805.7
+      ],
+      [
+        "verify",
+        0.0
+      ],
+      [
+        "request",
+        7640.5
+      ]
+    ],
+    "usage_calls": 4
+  },
+  {
+    "id": "colony_regression",
+    "status": "insufficient",
+    "ms": 25169.8,
+    "cites": 0,
+    "titles": [],
+    "answer": "No verified claims could be grounded in retrieved document quotes.",
+    "reasons": [],
+    "trace": [
+      [
+        "guard",
+        0.0
+      ],
+      [
+        "plan",
+        12453.0
+      ],
+      [
+        "tools_seed_search",
+        2649.6
+      ],
+      [
+        "tools_llm_round_0",
+        917.2
+      ],
+      [
+        "tool_find_documents",
+        1373.3
+      ],
+      [
+        "tools_llm_round_1",
+        868.5
+      ],
+      [
+        "tool_search_documents",
+        2145.0
+      ],
+      [
+        "tools_llm_round_2",
+        763.9
+      ],
+      [
+        "tool_search_documents",
+        2229.7
+      ],
+      [
+        "tools_llm_round_3",
+        1328.1
+      ],
+      [
+        "tool_record_finding",
+        0.0
+      ],
+      [
+        "extract",
+        5.1
+      ],
+      [
+        "contradictions",
+        0.0
+      ],
+      [
+        "sufficiency",
+        0.0
+      ],
+      [
+        "synthesize",
+        0.0
+      ],
+      [
+        "verify",
+        0.0
+      ],
+      [
+        "request",
+        24734.5
+      ]
+    ],
+    "usage_calls": 5
+  }
+]

@@ -76,11 +76,51 @@ CASES: dict[str, dict[str, Any]] = {
             "insufficient information",
             "cannot determine",
         ],
+        "forbid_citation_title_any": ["mansfield"],
+        "prefer_citation_title_any": ["dominguez", "ohio state university"],
+        "min_distinct_docs": 2,
         "gold_titles_active": [
             "Ohio State University",
             "California State University, Dominguez Hills",
         ],
         "notes": "HotpotQA multi-hop; both gold titles verified ACTIVE in Neon.",
+    },
+    "multihop_lent_irt": {
+        "letter": "C2",
+        "category": "entity_relationship_multihop",
+        "question": (
+            "Michael Lent is best known as the co-writer of the memoirs of "
+            "Hugh Rowland, a star on a reality television series that "
+            "premiered on what date?"
+        ),
+        "mode": None,
+        "expect_status": ["answered", "partial"],
+        "accept_degraded": ["llm_unavailable"],
+        "require_answer_any": ["2007", "june", "17"],
+        "min_distinct_docs": 2,
+        "gold_titles_active": [
+            "Michael Lent (writer and producer)",
+            "Ice Road Truckers",
+        ],
+        "notes": "HotpotQA multi-hop across writer + TV series premiere date.",
+    },
+    "multihop_robinson_perdita": {
+        "letter": "C3",
+        "category": "entity_relationship_multihop",
+        "question": (
+            "The character for whom Mary Robinson was nicknamed was the "
+            "daughter of Leontes, king of which country?"
+        ),
+        "mode": None,
+        "expect_status": ["answered", "partial"],
+        "accept_degraded": ["llm_unavailable"],
+        "require_answer_any": ["sicilia", "sicily"],
+        "min_distinct_docs": 1,
+        "gold_titles_active": [
+            "Mary Robinson (poet)",
+            "Perdita (The Winter's Tale)",
+        ],
+        "notes": "HotpotQA multi-hop nickname → Shakespeare character → country.",
     },
     "unanswerable_fraudscorer": {
         "letter": "D",

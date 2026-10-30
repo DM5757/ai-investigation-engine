@@ -1,185 +1,516 @@
 {
-  "created_at": "2026-10-30T05:40:00+00:00",
+  "created_at": "2026-10-30T06:06:16.250046+00:00",
   "base": "https://ai-investigation-engine-scyz.onrender.com",
-  "active_documents": 55081,
-  "runs": [
+  "timeout_s": 280.0,
+  "pause_s": 35.0,
+  "steps": [
     {
-      "id": "baseline_c03b155",
-      "git_commit": "c03b1557d3bb4ee766d1c1d7052177bd6ec6e8a3",
-      "summary": {
-        "n_pass": 3,
-        "n_honest_degraded": 2,
-        "n_fail": 3
-      },
-      "highlights": [
-        "airport answered Woodrum Field / Roanoke VA with 1 citation in 142s",
-        "budget_isolation_2 answered after budget_isolation_1 llm_unavailable",
-        "multihop + unanswerable client timeouts under provider pressure"
-      ]
+      "step": "/api/health",
+      "status": 200,
+      "body": {
+        "status": "ok"
+      }
     },
     {
-      "id": "post_fix_04153fe",
-      "git_commit": "04153fee483d5668a91fff09656219cd1cd102c1",
-      "summary": {
-        "n_pass": 0,
-        "n_honest_degraded": 3,
-        "n_fail": 0
-      },
-      "note": "Providers exhausted; honest llm_unavailable with improved previews."
+      "step": "/api/health/ready",
+      "status": 200,
+      "body": {
+        "status": "ready",
+        "database": "ok",
+        "embedding_model_configured": "BAAI/bge-small-en-v1.5",
+        "embedding_enabled_at_startup": false,
+        "embedding_loaded": false,
+        "embedding_load_ms": null,
+        "embedder_impl": "not_loaded_yet",
+        "llm_groq_configured": true,
+        "llm_gemini_configured": true,
+        "llm_status": "configured",
+        "qdrant_configured": true,
+        "qdrant_status": "configured"
+      }
     },
     {
-      "id": "m3_acceptance_428ed09",
-      "git_commit": "428ed09c4200bd92c79b07584f6a4d06b5189d03",
-      "timeout_s": 300.0,
-      "pause_s": 40.0,
-      "summary": {
-        "n_pass": 4,
-        "n_honest_degraded": 1,
-        "n_fail": 1
-      },
-      "cases": [
-        {
-          "id": "airport",
-          "answer_status": "answered",
-          "ms": 74930.7,
-          "usage_calls": 3,
-          "n_citations": 1,
-          "citation_titles": ["Roanoke–Blacksburg Regional Airport"],
-          "verdict": "PASS",
-          "stage_ms_highlight": {
-            "plan": 1387.8,
-            "tools_seed_search": 64915.3,
-            "tools_llm_round_0": 800.5,
-            "synthesize": 485.6,
-            "request": 67590.5
-          },
-          "note": "Woodrum Field / Roanoke VA; retrieval dominated latency."
-        },
-        {
-          "id": "multi_doc_payment",
-          "answer_status": "llm_unavailable",
-          "ms": 186629.0,
-          "usage_calls": 2,
-          "n_citations": 5,
-          "citation_titles": [
-            "Exec Summary",
-            "Incident Report — Payment Outage March",
-            "Change Log March"
-          ],
-          "verdict": "DEGRADED",
-          "provider_failures": "groq:daily_quota; gemini:bad_request",
-          "note": "Correct synthetic docs retrieved; fail-fast categories reported; no invented answer."
-        },
-        {
-          "id": "multihop_ohio_csudh",
-          "answer_status": "answered",
-          "ms": 232128.5,
-          "usage_calls": 6,
-          "n_citations": 3,
-          "citation_titles": ["Ohio State University, Mansfield Campus"],
-          "verdict": "FAIL",
-          "note": "HTTP answered but content abstained and cited Mansfield Campus instead of gold CSUDH/OSU titles. Smoke judge later tightened."
-        },
-        {
-          "id": "contradiction_deploy",
-          "answer_status": "answered",
-          "ms": 149739.8,
-          "usage_calls": 4,
-          "n_citations": 2,
-          "citation_titles": [
-            "Incident Report — Payment Outage March",
-            "Change Log March"
-          ],
-          "verdict": "PASS",
-          "note": "Surfaced 08:10 UTC vs 14:00 UTC contradiction with correct docs."
-        },
-        {
-          "id": "unanswerable_fraudscorer",
-          "answer_status": "insufficient",
-          "ms": 190913.8,
-          "usage_calls": 5,
-          "n_citations": 0,
-          "verdict": "PASS",
-          "note": "Honest abstention; no invented CPU metric."
-        },
-        {
-          "id": "colony_regression",
-          "answer_status": null,
-          "ms": 300265.6,
-          "verdict": "FAIL",
-          "note": "Client timeout; retrieval not under wall-clock yet (fixed in fecabea)."
-        }
-      ]
+      "step": "/api/version",
+      "status": 200,
+      "body": {
+        "version": "0.1.0",
+        "app": "ai-investigation-engine",
+        "git_commit": "464d8b20f6f9a368746747bc15b5146f822b3c89"
+      }
     },
     {
-      "id": "m3_retest_fecabea",
-      "git_commit": "fecabea6e5336db4cffa56498129e1b1453e057c",
-      "timeout_s": 280.0,
-      "pause_s": 25.0,
-      "summary": {
-        "n_pass": 2,
-        "n_honest_degraded": 0,
-        "n_fail": 0
-      },
-      "cases": [
-        {
-          "id": "airport",
-          "answer_status": "answered",
-          "ms": 66851.2,
-          "usage_calls": 3,
-          "n_citations": 1,
-          "citation_titles": ["Roanoke–Blacksburg Regional Airport"],
-          "verdict": "PASS",
-          "stage_ms_highlight": {
-            "plan": 1045.6,
-            "tools_seed_search": 11655.5,
-            "tools_llm_round_0": 44714.5,
-            "synthesize": 1080.9,
-            "request": 58497.6
-          },
-          "note": "Seed retrieval ~12s after candidate-pool shrink (was ~65s)."
+      "step": "/api/stats",
+      "status": 200,
+      "body": {
+        "documents_by_status": {
+          "ACTIVE": 55081,
+          "DELETED": 5
         },
-        {
-          "id": "colony_regression",
-          "answer_status": "insufficient",
-          "ms": 47991.8,
-          "usage_calls": 5,
-          "n_citations": 0,
-          "verdict": "PASS",
-          "stage_ms_highlight": {
-            "plan": 952.8,
-            "tools_seed_search": 15845.3,
-            "tool_search_documents": 16667.4,
-            "request": 47476.8
-          },
-          "note": "Abstains with zero citations; previously client-timeout / llm_unavailable."
-        }
-      ]
+        "document_total": 55086,
+        "chunk_total": 56900,
+        "collection_name": "chunks__structure_aware__bge_small",
+        "origin_note": "origin field not tracked; counts are by lifecycle status"
+      }
     }
   ],
-  "verified_regressions": {
-    "airport_factual": {
-      "before_ms": 142241.9,
-      "after_ms_428ed09": 74930.7,
-      "after_ms_fecabea": 66851.2,
-      "pass": true
+  "cases": [
+    {
+      "id": "airport",
+      "letter": "A/regression-B",
+      "category": "factual",
+      "question": "What is Roanoke\u2013Blacksburg Regional Airport, and where is it located?",
+      "mode": "default",
+      "expected_behavior": "Concise factual answer about Woodrum Field near Roanoke, VA.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 10962.7,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Roanoke\u2013Blacksburg Regional Airport (IATA\u202f:\u202fROA, ICAO\u202f:\u202fKROA, FAA\u202fLID\u202f:\u202fROA), also called Woodrum Field, is a regional airport situated about three nautical miles (\u2248\u202f6\u202fkm) northwest of the central business district of Roanoke, Virginia\u3010S1\u3011.",
+      "answer_preview": "Roanoke\u2013Blacksburg Regional Airport (IATA\u202f:\u202fROA, ICAO\u202f:\u202fKROA, FAA\u202fLID\u202f:\u202fROA), also called Woodrum Field, is a regional airport situated about three nautical miles (\u2248\u202f6\u202fkm) northwest of the central business district of Roanoke, Virginia\u3010S1\u3011.",
+      "n_citations": 1,
+      "citation_titles": [
+        "Roanoke\u2013Blacksburg Regional Airport"
+      ],
+      "citation_doc_ids": [
+        "b16b4334-f9a7-4ced-99a5-d5f986d8c4ac"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 3,
+      "usage_prompt_tokens": 1558,
+      "usage_completion_tokens": 598,
+      "usage_total_tokens": 2156,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          1211.5
+        ],
+        [
+          "tools_seed_search",
+          1682.8
+        ],
+        [
+          "tools_llm_round_0",
+          988.5
+        ],
+        [
+          "tool_record_finding",
+          0.1
+        ],
+        [
+          "extract",
+          0.8
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.2
+        ],
+        [
+          "synthesize",
+          484.9
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          4369.6
+        ]
+      ]
     },
-    "colony_abstention": {
-      "before": "timeout or llm_unavailable",
-      "after_ms_fecabea": 47991.8,
-      "status": "insufficient",
+    {
+      "id": "multihop_ohio_csudh",
+      "letter": "C",
+      "category": "entity_relationship_multihop",
+      "question": "Is Ohio State University or California State University, Dominguez Hills further west?",
+      "mode": "default",
+      "expected_behavior": "HotpotQA multi-hop; both gold titles verified ACTIVE in Neon.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 9765.5,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Based on the provided claims, the provided sources state that Ohio State University is located in Columbus, Ohio [S1], while California State University, Dominguez Hills is located on the West Coast in Carson, California [S9]. However, the provided claims are insufficient to directly determine which university is further west.",
+      "answer_preview": "Based on the provided claims, the provided sources state that Ohio State University is located in Columbus, Ohio [S1], while California State University, Dominguez Hills is located on the West Coast in Carson, California [S9]. However, the provided claims are insufficient to directly determine which university is further west.",
+      "n_citations": 2,
+      "citation_titles": [
+        "Ohio State University",
+        "StubHub Center"
+      ],
+      "citation_doc_ids": [
+        "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+        "cc662a1d-7816-41bd-83a1-c443af527264"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 3,
+      "usage_prompt_tokens": 5170,
+      "usage_completion_tokens": 704,
+      "usage_total_tokens": 5874,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          1103.4
+        ],
+        [
+          "tools_seed_search",
+          5097.6
+        ],
+        [
+          "tools_llm_round_0",
+          1181.7
+        ],
+        [
+          "tool_record_finding",
+          0.0
+        ],
+        [
+          "extract",
+          5.8
+        ],
+        [
+          "contradictions",
+          0.2
+        ],
+        [
+          "sufficiency",
+          0.8
+        ],
+        [
+          "synthesize",
+          770.7
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          8160.8
+        ]
+      ]
+    },
+    {
+      "id": "multihop_lent_irt",
+      "letter": "C2",
+      "category": "entity_relationship_multihop",
+      "question": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star on a reality television series that premiered on what date?",
+      "mode": "default",
+      "expected_behavior": "HotpotQA multi-hop across writer + TV series premiere date.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 12394.6,
+      "timeout_or_error": false,
+      "pass": false,
+      "honest_degraded": false,
+      "failure_reasons": [
+        "answer_missing_required_tokens",
+        "too_few_distinct_docs:1<2"
+      ],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star of the series *Ice Road Truckers* [S2]. The provided claims do not contain the premiere date of the television series.",
+      "answer_preview": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star of the series *Ice Road Truckers* [S2]. The provided claims do not contain the premiere date of the television series.",
+      "n_citations": 1,
+      "citation_titles": [
+        "Michael Lent (writer and producer)"
+      ],
+      "citation_doc_ids": [
+        "f6ea8155-454d-4885-8b97-51fb6dec9a84"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 4,
+      "usage_prompt_tokens": 9155,
+      "usage_completion_tokens": 556,
+      "usage_total_tokens": 9711,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          745.1
+        ],
+        [
+          "tools_seed_search",
+          5866.6
+        ],
+        [
+          "tools_llm_round_0",
+          845.1
+        ],
+        [
+          "tool_search_documents",
+          1968.3
+        ],
+        [
+          "tools_llm_round_1",
+          1318.2
+        ],
+        [
+          "tool_record_finding",
+          0.1
+        ],
+        [
+          "extract",
+          4.1
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.4
+        ],
+        [
+          "synthesize",
+          633.1
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          11381.9
+        ]
+      ]
+    },
+    {
+      "id": "multihop_robinson_perdita",
+      "letter": "C3",
+      "category": "entity_relationship_multihop",
+      "question": "The character for whom Mary Robinson was nicknamed was the daughter of Leontes, king of which country?",
+      "mode": "default",
+      "expected_behavior": "HotpotQA multi-hop nickname \u2192 Shakespeare character \u2192 country.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 8670.2,
+      "timeout_or_error": false,
+      "pass": false,
+      "honest_degraded": false,
+      "failure_reasons": [
+        "answer_missing_required_tokens"
+      ],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Based on the provided sources, there is insufficient information to answer the question about the character Mary Robinson was nicknamed for or the country of Leontes.",
+      "answer_preview": "Based on the provided sources, there is insufficient information to answer the question about the character Mary Robinson was nicknamed for or the country of Leontes.",
+      "n_citations": 1,
+      "citation_titles": [
+        "Mary Robinson (poet)"
+      ],
+      "citation_doc_ids": [
+        "ffbee402-5430-49de-928f-9d781644fac1"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 4,
+      "usage_prompt_tokens": 3925,
+      "usage_completion_tokens": 533,
+      "usage_total_tokens": 4458,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          810.4
+        ],
+        [
+          "tools_seed_search",
+          2093.7
+        ],
+        [
+          "tools_llm_round_0",
+          900.1
+        ],
+        [
+          "tool_search_documents",
+          1818.9
+        ],
+        [
+          "tools_llm_round_1",
+          1207.5
+        ],
+        [
+          "tool_record_finding",
+          0.0
+        ],
+        [
+          "extract",
+          3.4
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.2
+        ],
+        [
+          "synthesize",
+          805.7
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          7640.5
+        ]
+      ]
+    },
+    {
+      "id": "colony_regression",
+      "letter": "regression-A",
+      "category": "insufficient_missing_entity",
+      "question": "Which evidence connects the investigation of the Roanoke colony disappearance to the key individuals involved, and what conclusions can be drawn from the available documents?",
+      "mode": "default",
+      "expected_behavior": "Roanoke Colony title absent from ACTIVE corpus; must abstain.",
+      "expect_status": [
+        "insufficient"
+      ],
+      "http_status": 200,
+      "ms": 25169.8,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "insufficient",
+      "degraded": false,
+      "answer": "No verified claims could be grounded in retrieved document quotes.",
+      "answer_preview": "No verified claims could be grounded in retrieved document quotes.",
       "n_citations": 0,
-      "pass": true
+      "citation_titles": [],
+      "citation_doc_ids": [],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 5,
+      "usage_prompt_tokens": 18458,
+      "usage_completion_tokens": 629,
+      "usage_total_tokens": 19087,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          12453.0
+        ],
+        [
+          "tools_seed_search",
+          2649.6
+        ],
+        [
+          "tools_llm_round_0",
+          917.2
+        ],
+        [
+          "tool_find_documents",
+          1373.3
+        ],
+        [
+          "tools_llm_round_1",
+          868.5
+        ],
+        [
+          "tool_search_documents",
+          2145.0
+        ],
+        [
+          "tools_llm_round_2",
+          763.9
+        ],
+        [
+          "tool_search_documents",
+          2229.7
+        ],
+        [
+          "tools_llm_round_3",
+          1328.1
+        ],
+        [
+          "tool_record_finding",
+          0.0
+        ],
+        [
+          "extract",
+          5.1
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.0
+        ],
+        [
+          "synthesize",
+          0.0
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          24734.5
+        ]
+      ]
     }
-  },
-  "provider_limitations": [
-    "Groq free-tier daily_quota observed mid-suite (classified and fail-fasted)",
-    "Gemini occasionally returns bad_request on tool turns after primary failure",
-    "Multi-hop retrieval quality still sensitive to title ambiguity (Mansfield Campus vs main campus)"
   ],
-  "latency_root_cause": {
-    "primary": "hybrid retrieval (embed + Qdrant dense/sparse) on Render Free / Qdrant Free",
-    "secondary": "LLM tool rounds when providers healthy",
-    "not_primary": "citation verification / claim extraction (sub-millisecond to low ms)"
-  }
+  "git_commit": "464d8b20f6f9a368746747bc15b5146f822b3c89",
+  "active_documents": 55081,
+  "n_pass": 3,
+  "n_honest_degraded": 0,
+  "n_fail": 2,
+  "ok": false
 }

@@ -1,63 +1,70 @@
 # Production smoke suite results
 
+- Created: `2026-10-30T06:06:16.250046+00:00`
 - Base: `https://ai-investigation-engine-scyz.onrender.com`
-- ACTIVE documents: **55,081**
-- Suite script: `scripts/prod_smoke_suite.py`
+- Deploy: `464d8b20f6f9a368746747bc15b5146f822b3c89`
+- Stats ACTIVE: `55081`
+- Cases pass: **3** / honest_degraded: **0** / fail: **2**
 
-## Milestone 3 acceptance (`428ed09`)
+| ID | Category | Status | ms | calls | cites | Verdict |
+| --- | --- | --- | ---: | ---: | ---: | --- |
+| `airport` | factual | answered | 10962.7 | 3 | 1 | PASS |
+| `multihop_ohio_csudh` | entity_relationship_multihop | answered | 9765.5 | 3 | 2 | PASS |
+| `multihop_lent_irt` | entity_relationship_multihop | answered | 12394.6 | 4 | 1 | FAIL |
+| `multihop_robinson_perdita` | entity_relationship_multihop | answered | 8670.2 | 4 | 1 | FAIL |
+| `colony_regression` | insufficient_missing_entity | insufficient | 25169.8 | 5 | 0 | PASS |
 
-| Case | Status | ms | cites | Verdict |
-| --- | --- | ---: | ---: | --- |
-| airport | answered | 74931 | 1 | PASS — Woodrum Field / Roanoke, VA |
-| multi_doc_payment | llm_unavailable | 186629 | 5 | DEGRADED — `groq:daily_quota`; correct synthetic titles |
-| multihop_ohio_csudh | answered | 232129 | 3 | FAIL — abstention-like answer; Mansfield Campus cites |
-| contradiction_deploy | answered | 149740 | 2 | PASS — 08:10 vs 14:00 UTC |
-| unanswerable_fraudscorer | insufficient | 190914 | 0 | PASS — honest abstention |
-| colony_regression | timeout | 300266 | — | FAIL — client timeout before retrieval wall-clock gate |
+## airport
 
-### Measured stage latency (airport @ `428ed09`)
+- Question: What is Roanoke–Blacksburg Regional Airport, and where is it located?
+- Expected: Concise factual answer about Woodrum Field near Roanoke, VA.
+- Status: `answered` degraded=False
+- Duration: 10962.7 ms
+- Usage: calls=3 tokens=2156
+- Citations (1): ['Roanoke–Blacksburg Regional Airport']
+- Reasons: []
+- Answer preview: 'Roanoke–Blacksburg Regional Airport (IATA\u202f:\u202fROA, ICAO\u202f:\u202fKROA, FAA\u202fLID\u202f:\u202fROA), also called Woodrum Field, is a regional airport situated about three nautical miles (≈\u202f6\u202fkm) northwest of the central business district of Roanoke, Virginia【S1】.'
 
-| Stage | ms |
-| --- | ---: |
-| plan | 1,388 |
-| tools_seed_search | 64,915 |
-| tools_llm_round_0 | 801 |
-| synthesize | 486 |
-| request total | 67,591 |
+## multihop_ohio_csudh
 
-Retrieval dominated successful latency before the candidate-pool change.
+- Question: Is Ohio State University or California State University, Dominguez Hills further west?
+- Expected: HotpotQA multi-hop; both gold titles verified ACTIVE in Neon.
+- Status: `answered` degraded=False
+- Duration: 9765.5 ms
+- Usage: calls=3 tokens=5874
+- Citations (2): ['Ohio State University', 'StubHub Center']
+- Reasons: []
+- Answer preview: 'Based on the provided claims, the provided sources state that Ohio State University is located in Columbus, Ohio [S1], while California State University, Dominguez Hills is located on the West Coast in Carson, California [S9]. However, the provided claims are insufficient to directly determine which university is further west.'
 
-## Follow-up retest (`fecabea`)
+## multihop_lent_irt
 
-| Case | Status | ms | cites | Verdict |
-| --- | --- | ---: | ---: | --- |
-| airport | answered | 66851 | 1 | PASS — Woodrum Field; seed search ~12s |
-| colony_regression | insufficient | 47992 | 0 | PASS — abstains; no unrelated Hotpot previews |
+- Question: Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star on a reality television series that premiered on what date?
+- Expected: HotpotQA multi-hop across writer + TV series premiere date.
+- Status: `answered` degraded=False
+- Duration: 12394.6 ms
+- Usage: calls=4 tokens=9711
+- Citations (1): ['Michael Lent (writer and producer)']
+- Reasons: ['answer_missing_required_tokens', 'too_few_distinct_docs:1<2']
+- Answer preview: 'Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star of the series *Ice Road Truckers* [S2]. The provided claims do not contain the premiere date of the television series.'
 
-### Measured stage latency (airport @ `fecabea`)
+## multihop_robinson_perdita
 
-| Stage | ms |
-| --- | ---: |
-| plan | 1,046 |
-| tools_seed_search | 11,656 |
-| tools_llm_round_0 | 44,715 |
-| synthesize | 1,081 |
-| request total | 58,498 |
+- Question: The character for whom Mary Robinson was nicknamed was the daughter of Leontes, king of which country?
+- Expected: HotpotQA multi-hop nickname → Shakespeare character → country.
+- Status: `answered` degraded=False
+- Duration: 8670.2 ms
+- Usage: calls=4 tokens=4458
+- Citations (1): ['Mary Robinson (poet)']
+- Reasons: ['answer_missing_required_tokens']
+- Answer preview: 'Based on the provided sources, there is insufficient information to answer the question about the character Mary Robinson was nicknamed for or the country of Leontes.'
 
-After shrinking dense/sparse pools and gating retrieval on wall-clock, seed retrieval dropped from ~65s to ~12s. Remaining airport latency is mainly one LLM tool round.
+## colony_regression
 
-## Before / after
-
-| Metric | Before (c03b155 era) | After (`fecabea`) |
-| --- | ---: | ---: |
-| Airport factual | ~142s | ~67s |
-| Colony regression | timeout / llm_unavailable | insufficient @ ~48s |
-| False zero `trace.latency_ms` | present | fixed (monotonic per-stage) |
-| Daily quota handling | retried until hang | `daily_quota` fail-fast + failover |
-
-## Earlier baselines
-
-- `c03b155`: airport PASS @ 142s; several later cases provider-limited.
-- `04153fe`: exhausted-provider retest — honest `llm_unavailable`, improved payment titles, colony preview cites 0.
-
-Full machine-readable record: `docs/evidence/prod_smoke_suite.json`.
+- Question: Which evidence connects the investigation of the Roanoke colony disappearance to the key individuals involved, and what conclusions can be drawn from the available documents?
+- Expected: Roanoke Colony title absent from ACTIVE corpus; must abstain.
+- Status: `insufficient` degraded=False
+- Duration: 25169.8 ms
+- Usage: calls=5 tokens=19087
+- Citations (0): []
+- Reasons: []
+- Answer preview: 'No verified claims could be grounded in retrieved document quotes.'

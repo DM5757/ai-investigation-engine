@@ -240,8 +240,10 @@ def claim_support_score(claim: Claim, focus: QuestionFocus) -> float:
             base = min(1.0, 0.55 + 0.45 * phrase_hits + title_boost)
             if fidelity >= 0.9:
                 return min(1.0, base + 0.1)
-            if 0 < fidelity < 0.4:
-                # Extended campus/branch title for a shorter queried entity.
+            titled = [p for p in focus.phrases if len(p.replace("-", " ").split()) >= 2]
+            if titled and fidelity < 0.4:
+                # Extended campus/branch OR unrelated doc that only mentions the
+                # entity in passing (e.g. StubHub Center vs CSUDH).
                 return min(0.45, base * 0.55)
             return base
         # Multi-token phrase present in question but not in claim → weak at best
