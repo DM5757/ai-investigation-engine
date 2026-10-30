@@ -56,6 +56,7 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Render public @ `0f6adc3` / `c03b155` | Deploy SHA + ACTIVE **55,081** confirmed. Behavioral smoke: airport **PASS** (~142s, 1 cite); budget isolation **PASS**; multi-doc/multi-hop/unanswerable hit provider limits or client timeouts; colony/contradiction returned honest `llm_unavailable`. | `docs/evidence/prod_smoke_suite.json` |
 | Render Milestone 3 @ `428ed09` / `fecabea` | Airport **~67–75s** (was ~142s); contradiction + unanswerable **PASS**; colony **insufficient @ ~48s** (was timeout); multi-doc honest `llm_unavailable` with `groq:daily_quota`; multihop answer quality still weak. Per-stage traces show retrieval then LLM as dominant costs. | `docs/evidence/prod_smoke_suite.json` |
 | Local Milestone 4 multi-hop | OSU/CSUDH **answered** with both gold titles cited (~5–9s); Lent→Ice Road Truckers premiere date **answered**; Robinson→Perdita/Sicilia **answered**; colony abstention + airport factual preserved. Failure mode before fix was claim anaphora + synthesis hedge, not missing Qdrant recall. | local investigation probes |
+| Render Milestone 4 @ `8964e79` | Smoke **7/7 PASS**: airport ~14s; OSU/CSUDH ~14s (2 gold cites); Lent premiere ~22s; Robinson/Sicilia ~11s; colony abstain; contradiction answered; unanswerable abstain. | `docs/evidence/prod_smoke_suite.json` |
 
 ## 5. Quality fixes reflected in metrics intent
 

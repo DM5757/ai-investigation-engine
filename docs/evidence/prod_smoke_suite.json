@@ -1,8 +1,8 @@
 {
-  "created_at": "2026-10-30T06:24:45.630723+00:00",
+  "created_at": "2026-10-30T07:09:53.596134+00:00",
   "base": "https://ai-investigation-engine-scyz.onrender.com",
-  "timeout_s": 280.0,
-  "pause_s": 30.0,
+  "timeout_s": 330.0,
+  "pause_s": 8.0,
   "steps": [
     {
       "step": "/api/health",
@@ -35,7 +35,7 @@
       "body": {
         "version": "0.1.0",
         "app": "ai-investigation-engine",
-        "git_commit": "3738d2daa1e1fbb62f32d6082cc40c34ba3e83f7"
+        "git_commit": "8964e791f460e66190cea28d58c490e0efd69b06"
       }
     },
     {
@@ -66,15 +66,15 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 15286.8,
+      "ms": 13946.8,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "Roanoke\u2013Blacksburg Regional Airport (also known as Woodrum Field) is a regional airport located three nautical miles (6 km) northwest of the central business district of Roanoke, a city in Roanoke County [S1].",
-      "answer_preview": "Roanoke\u2013Blacksburg Regional Airport (also known as Woodrum Field) is a regional airport located three nautical miles (6 km) northwest of the central business district of Roanoke, a city in Roanoke County [S1].",
+      "answer": "Roanoke\u2013Blacksburg Regional Airport (also known as Woodrum Field, with IATA code ROA, ICAO code KROA, and FAA LID: ROA) is a regional airport located three nautical miles (6 km) northwest of the central business district of Roanoke, a city in Roanoke County [S1].",
+      "answer_preview": "Roanoke\u2013Blacksburg Regional Airport (also known as Woodrum Field, with IATA code ROA, ICAO code KROA, and FAA LID: ROA) is a regional airport located three nautical miles (6 km) northwest of the central business district of Roanoke, a city in Roanoke County [S1].",
       "n_citations": 1,
       "citation_titles": [
         "Roanoke\u2013Blacksburg Regional Airport"
@@ -85,9 +85,9 @@
       "n_conflicts": 0,
       "n_evidence_preview": 0,
       "usage_calls": 3,
-      "usage_prompt_tokens": 3435,
-      "usage_completion_tokens": 460,
-      "usage_total_tokens": 3895,
+      "usage_prompt_tokens": 2051,
+      "usage_completion_tokens": 464,
+      "usage_total_tokens": 2515,
       "abstention_reason": null,
       "trace_stages": [
         [
@@ -96,292 +96,15 @@
         ],
         [
           "plan",
-          1140.1
+          1178.4
         ],
         [
           "tools_seed_search",
-          1853.8
-        ],
-        [
-          "tools_bridge_search",
-          3099.9
+          3622.7
         ],
         [
           "tools_llm_round_0",
-          1294.7
-        ],
-        [
-          "tool_record_finding",
-          0.0
-        ],
-        [
-          "extract",
-          1.9
-        ],
-        [
-          "contradictions",
-          0.0
-        ],
-        [
-          "sufficiency",
-          0.2
-        ],
-        [
-          "synthesize",
-          744.0
-        ],
-        [
-          "verify",
-          0.0
-        ],
-        [
-          "request",
-          8135.8
-        ]
-      ]
-    },
-    {
-      "id": "multihop_ohio_csudh",
-      "letter": "C",
-      "category": "entity_relationship_multihop",
-      "question": "Is Ohio State University or California State University, Dominguez Hills further west?",
-      "mode": "default",
-      "expected_behavior": "HotpotQA multi-hop; both gold titles verified ACTIVE in Neon.",
-      "expect_status": [
-        "answered",
-        "partial"
-      ],
-      "http_status": 200,
-      "ms": 13201.0,
-      "timeout_or_error": false,
-      "pass": true,
-      "honest_degraded": false,
-      "failure_reasons": [],
-      "answer_status": "answered",
-      "degraded": false,
-      "answer": "The provided claims are insufficient to determine whether Ohio State University or California State University, Dominguez Hills is further west, as they do not provide the geographical coordinates or locations for California State University, Dominguez Hills (only noting that it is part of the California State University system [S6], while Ohio State University is located in Columbus, Ohio [S1]).",
-      "answer_preview": "The provided claims are insufficient to determine whether Ohio State University or California State University, Dominguez Hills is further west, as they do not provide the geographical coordinates or locations for California State University, Dominguez Hills (only noting that it is part of the California State University system [S6], while Ohio State University is located in Columbus, Ohio [S1]).",
-      "n_citations": 2,
-      "citation_titles": [
-        "Ohio State University",
-        "California State University, Dominguez Hills"
-      ],
-      "citation_doc_ids": [
-        "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
-        "955d5257-0873-47d3-a587-1c54a38242cd"
-      ],
-      "n_conflicts": 0,
-      "n_evidence_preview": 0,
-      "usage_calls": 3,
-      "usage_prompt_tokens": 9488,
-      "usage_completion_tokens": 716,
-      "usage_total_tokens": 10204,
-      "abstention_reason": null,
-      "trace_stages": [
-        [
-          "guard",
-          0.0
-        ],
-        [
-          "plan",
-          1108.0
-        ],
-        [
-          "tools_seed_search",
-          5280.1
-        ],
-        [
-          "tools_bridge_search",
-          2607.8
-        ],
-        [
-          "tools_llm_round_0",
-          1651.3
-        ],
-        [
-          "tool_record_finding",
-          0.0
-        ],
-        [
-          "extract",
-          7.6
-        ],
-        [
-          "contradictions",
-          0.1
-        ],
-        [
-          "sufficiency",
-          0.4
-        ],
-        [
-          "synthesize",
-          719.0
-        ],
-        [
-          "verify",
-          0.0
-        ],
-        [
-          "request",
-          11376.5
-        ]
-      ]
-    },
-    {
-      "id": "multihop_lent_irt",
-      "letter": "C2",
-      "category": "entity_relationship_multihop",
-      "question": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star on a reality television series that premiered on what date?",
-      "mode": "default",
-      "expected_behavior": "HotpotQA multi-hop across writer + TV series premiere date.",
-      "expect_status": [
-        "answered",
-        "partial"
-      ],
-      "http_status": 200,
-      "ms": 14079.5,
-      "timeout_or_error": false,
-      "pass": false,
-      "honest_degraded": false,
-      "failure_reasons": [
-        "answer_missing_required_tokens",
-        "too_few_distinct_docs:1<2"
-      ],
-      "answer_status": "answered",
-      "degraded": false,
-      "answer": "Based on the provided claims, Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, who is a star of the series *Ice Road Truckers* [S2]. However, the provided claims do not contain information regarding the premiere date of that reality television series.",
-      "answer_preview": "Based on the provided claims, Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, who is a star of the series *Ice Road Truckers* [S2]. However, the provided claims do not contain information regarding the premiere date of that reality television series.",
-      "n_citations": 1,
-      "citation_titles": [
-        "Michael Lent (writer and producer)"
-      ],
-      "citation_doc_ids": [
-        "f6ea8155-454d-4885-8b97-51fb6dec9a84"
-      ],
-      "n_conflicts": 0,
-      "n_evidence_preview": 0,
-      "usage_calls": 3,
-      "usage_prompt_tokens": 7401,
-      "usage_completion_tokens": 552,
-      "usage_total_tokens": 7953,
-      "abstention_reason": null,
-      "trace_stages": [
-        [
-          "guard",
-          0.0
-        ],
-        [
-          "plan",
-          798.5
-        ],
-        [
-          "tools_seed_search",
-          5921.5
-        ],
-        [
-          "tools_bridge_search",
-          3796.4
-        ],
-        [
-          "tools_llm_round_0",
-          1512.7
-        ],
-        [
-          "tool_record_finding",
-          0.0
-        ],
-        [
-          "extract",
-          5.1
-        ],
-        [
-          "contradictions",
-          0.0
-        ],
-        [
-          "sufficiency",
-          0.4
-        ],
-        [
-          "synthesize",
-          950.0
-        ],
-        [
-          "verify",
-          0.0
-        ],
-        [
-          "request",
-          12987.1
-        ]
-      ]
-    },
-    {
-      "id": "multihop_robinson_perdita",
-      "letter": "C3",
-      "category": "entity_relationship_multihop",
-      "question": "The character for whom Mary Robinson was nicknamed was the daughter of Leontes, king of which country?",
-      "mode": "default",
-      "expected_behavior": "HotpotQA multi-hop nickname \u2192 Shakespeare character \u2192 country.",
-      "expect_status": [
-        "answered",
-        "partial"
-      ],
-      "http_status": 200,
-      "ms": 12050.4,
-      "timeout_or_error": false,
-      "pass": false,
-      "honest_degraded": false,
-      "failure_reasons": [
-        "answer_missing_required_tokens"
-      ],
-      "answer_status": "answered",
-      "degraded": false,
-      "answer": "The provided claims are insufficient to answer the question about the character Mary Robinson was nicknamed for or the country of Leontes [S1].",
-      "answer_preview": "The provided claims are insufficient to answer the question about the character Mary Robinson was nicknamed for or the country of Leontes [S1].",
-      "n_citations": 1,
-      "citation_titles": [
-        "Mary Robinson (poet)"
-      ],
-      "citation_doc_ids": [
-        "ffbee402-5430-49de-928f-9d781644fac1"
-      ],
-      "n_conflicts": 0,
-      "n_evidence_preview": 0,
-      "usage_calls": 4,
-      "usage_prompt_tokens": 8467,
-      "usage_completion_tokens": 532,
-      "usage_total_tokens": 8999,
-      "abstention_reason": null,
-      "trace_stages": [
-        [
-          "guard",
-          0.0
-        ],
-        [
-          "plan",
-          748.6
-        ],
-        [
-          "tools_seed_search",
-          2333.7
-        ],
-        [
-          "tools_bridge_search",
-          3190.8
-        ],
-        [
-          "tools_llm_round_0",
-          766.2
-        ],
-        [
-          "tool_search_documents",
-          1834.9
-        ],
-        [
-          "tools_llm_round_1",
-          1112.1
+          1272.9
         ],
         [
           "tool_record_finding",
@@ -397,11 +120,11 @@
         ],
         [
           "sufficiency",
-          0.1
+          0.2
         ],
         [
           "synthesize",
-          913.5
+          972.7
         ],
         [
           "verify",
@@ -409,7 +132,273 @@
         ],
         [
           "request",
-          10903.5
+          7050.0
+        ]
+      ]
+    },
+    {
+      "id": "multihop_ohio_csudh",
+      "letter": "C",
+      "category": "entity_relationship_multihop",
+      "question": "Is Ohio State University or California State University, Dominguez Hills further west?",
+      "mode": "default",
+      "expected_behavior": "HotpotQA multi-hop; both gold titles verified ACTIVE in Neon.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 14019.9,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "California State University, Dominguez Hills is located in Carson, California [S4], while Ohio State University is located in Columbus, Ohio [S1]. Because California is further west than Ohio, California State University, Dominguez Hills is further west.",
+      "answer_preview": "California State University, Dominguez Hills is located in Carson, California [S4], while Ohio State University is located in Columbus, Ohio [S1]. Because California is further west than Ohio, California State University, Dominguez Hills is further west.",
+      "n_citations": 2,
+      "citation_titles": [
+        "Ohio State University",
+        "California State University, Dominguez Hills"
+      ],
+      "citation_doc_ids": [
+        "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+        "955d5257-0873-47d3-a587-1c54a38242cd"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 3,
+      "usage_prompt_tokens": 7667,
+      "usage_completion_tokens": 442,
+      "usage_total_tokens": 8109,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          1046.1
+        ],
+        [
+          "tools_seed_search",
+          5291.6
+        ],
+        [
+          "tools_bridge_search",
+          3587.3
+        ],
+        [
+          "tools_llm_round_0",
+          1412.0
+        ],
+        [
+          "tool_record_finding",
+          0.0
+        ],
+        [
+          "extract",
+          90.9
+        ],
+        [
+          "contradictions",
+          0.1
+        ],
+        [
+          "sufficiency",
+          0.6
+        ],
+        [
+          "synthesize",
+          793.7
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          12227.0
+        ]
+      ]
+    },
+    {
+      "id": "multihop_lent_irt",
+      "letter": "C2",
+      "category": "entity_relationship_multihop",
+      "question": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star on a reality television series that premiered on what date?",
+      "mode": "default",
+      "expected_behavior": "HotpotQA multi-hop across writer + TV series premiere date.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 21660.6,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star of the reality television series *Ice Road Truckers*, which premiered on June 17, 2007 [S1, S3].",
+      "answer_preview": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star of the reality television series *Ice Road Truckers*, which premiered on June 17, 2007 [S1, S3].",
+      "n_citations": 3,
+      "citation_titles": [
+        "Ice Road Truckers",
+        "Michael Lent (writer and producer)",
+        "Michael Lent (writer and producer)"
+      ],
+      "citation_doc_ids": [
+        "b99a69b6-2bb4-43d6-84a5-692239268c9b",
+        "f6ea8155-454d-4885-8b97-51fb6dec9a84",
+        "f6ea8155-454d-4885-8b97-51fb6dec9a84"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 3,
+      "usage_prompt_tokens": 5027,
+      "usage_completion_tokens": 391,
+      "usage_total_tokens": 5418,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          877.7
+        ],
+        [
+          "tools_seed_search",
+          3854.2
+        ],
+        [
+          "tools_bridge_search",
+          3298.2
+        ],
+        [
+          "tools_llm_round_0",
+          1464.4
+        ],
+        [
+          "tool_record_finding",
+          0.0
+        ],
+        [
+          "extract",
+          8.6
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.4
+        ],
+        [
+          "synthesize",
+          10192.9
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          19698.0
+        ]
+      ]
+    },
+    {
+      "id": "multihop_robinson_perdita",
+      "letter": "C3",
+      "category": "entity_relationship_multihop",
+      "question": "The character for whom Mary Robinson was nicknamed was the daughter of Leontes, king of which country?",
+      "mode": "default",
+      "expected_behavior": "HotpotQA multi-hop nickname \u2192 Shakespeare character \u2192 country.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 10724.7,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Mary Robinson earned the nickname \"Perdita\" for playing the heroine Perdita in Shakespeare's *The Winter's Tale* [S3]. That character is the daughter of Leontes, the King of Sicilia [S1].",
+      "answer_preview": "Mary Robinson earned the nickname \"Perdita\" for playing the heroine Perdita in Shakespeare's *The Winter's Tale* [S3]. That character is the daughter of Leontes, the King of Sicilia [S1].",
+      "n_citations": 2,
+      "citation_titles": [
+        "Perdita (The Winter's Tale)",
+        "Mary Robinson (poet)"
+      ],
+      "citation_doc_ids": [
+        "449cfb70-eafe-46e0-ab9b-08ddb0d5af7d",
+        "ffbee402-5430-49de-928f-9d781644fac1"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 3,
+      "usage_prompt_tokens": 7244,
+      "usage_completion_tokens": 383,
+      "usage_total_tokens": 7627,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          1011.0
+        ],
+        [
+          "tools_seed_search",
+          3507.0
+        ],
+        [
+          "tools_bridge_search",
+          2599.1
+        ],
+        [
+          "tools_llm_round_0",
+          1391.4
+        ],
+        [
+          "tool_record_finding",
+          0.0
+        ],
+        [
+          "extract",
+          13.7
+        ],
+        [
+          "contradictions",
+          0.1
+        ],
+        [
+          "sufficiency",
+          0.3
+        ],
+        [
+          "synthesize",
+          740.8
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          9265.9
         ]
       ]
     },
@@ -424,31 +413,25 @@
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 38245.7,
+      "ms": 41690.1,
       "timeout_or_error": false,
-      "pass": false,
+      "pass": true,
       "honest_degraded": false,
-      "failure_reasons": [
-        "unexpected_status:answered"
-      ],
-      "answer_status": "answered",
+      "failure_reasons": [],
+      "answer_status": "insufficient",
       "degraded": false,
-      "answer": "Based on the provided claims, there is no information or evidence connecting the investigation of the Roanoke colony disappearance to key individuals or documents. The provided sources only discuss the definition and limitations of anecdotal evidence [S1, S2, S3].",
-      "answer_preview": "Based on the provided claims, there is no information or evidence connecting the investigation of the Roanoke colony disappearance to key individuals or documents. The provided sources only discuss the definition and limitations of anecdotal evidence [S1, S2, S3].",
-      "n_citations": 1,
-      "citation_titles": [
-        "Anecdotal evidence"
-      ],
-      "citation_doc_ids": [
-        "913a4588-ab1b-45fe-9d74-ba5c53c3ad91"
-      ],
+      "answer": "No verified claims could be grounded in retrieved document quotes.",
+      "answer_preview": "No verified claims could be grounded in retrieved document quotes.",
+      "n_citations": 0,
+      "citation_titles": [],
+      "citation_doc_ids": [],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
-      "usage_calls": 6,
-      "usage_prompt_tokens": 23593,
-      "usage_completion_tokens": 403,
-      "usage_total_tokens": 23996,
-      "abstention_reason": null,
+      "usage_calls": 5,
+      "usage_prompt_tokens": 16361,
+      "usage_completion_tokens": 265,
+      "usage_total_tokens": 16626,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
       "trace_stages": [
         [
           "guard",
@@ -456,47 +439,47 @@
         ],
         [
           "plan",
-          2827.6
+          29456.9
         ],
         [
           "tools_seed_search",
-          1684.0
-        ],
-        [
-          "tools_bridge_search",
-          3011.1
+          2033.2
         ],
         [
           "tools_llm_round_0",
-          4536.7
+          985.3
         ],
         [
           "tool_find_documents",
-          1250.0
+          1403.4
         ],
         [
           "tools_llm_round_1",
-          3882.2
+          1009.4
         ],
         [
           "tool_search_documents",
-          1822.0
+          1991.8
         ],
         [
           "tools_llm_round_2",
-          8019.5
+          1234.4
         ],
         [
           "tool_search_documents",
-          2084.7
+          1468.9
         ],
         [
           "tools_llm_round_3",
-          3067.2
+          1808.4
+        ],
+        [
+          "tool_find_documents",
+          0.1
         ],
         [
           "extract",
-          7.2
+          11.9
         ],
         [
           "contradictions",
@@ -504,11 +487,11 @@
         ],
         [
           "sufficiency",
-          0.2
+          0.0
         ],
         [
           "synthesize",
-          4411.4
+          0.0
         ],
         [
           "verify",
@@ -516,7 +499,7 @@
         ],
         [
           "request",
-          36605.7
+          41404.6
         ]
       ]
     },
@@ -533,13 +516,102 @@
         "answered"
       ],
       "http_status": 200,
-      "ms": 19003.3,
+      "ms": 46357.8,
       "timeout_or_error": false,
-      "pass": false,
+      "pass": true,
       "honest_degraded": false,
-      "failure_reasons": [
-        "unexpected_status:insufficient"
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "The documents contain a contradiction regarding the deploy time of the auth-gateway on 2024-03-12:\n\n* The Incident Report states that the auth-gateway deploy occurred at 08:10 UTC [S1].\n* The Change Log states that auth-gateway version 2.4.1 was deployed at 14:00 UTC [S2].",
+      "answer_preview": "The documents contain a contradiction regarding the deploy time of the auth-gateway on 2024-03-12:\n\n* The Incident Report states that the auth-gateway deploy occurred at 08:10 UTC [S1].\n* The Change Log states that auth-gateway version 2.4.1 was deployed at 14:00 UTC [S2].",
+      "n_citations": 2,
+      "citation_titles": [
+        "Incident Report \u2014 Payment Outage March",
+        "Change Log March"
       ],
+      "citation_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 4,
+      "usage_prompt_tokens": 4958,
+      "usage_completion_tokens": 725,
+      "usage_total_tokens": 5683,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          38008.7
+        ],
+        [
+          "tools_seed_search",
+          2100.2
+        ],
+        [
+          "tools_llm_round_0",
+          936.8
+        ],
+        [
+          "tool_search_documents",
+          2064.4
+        ],
+        [
+          "tools_llm_round_1",
+          1067.0
+        ],
+        [
+          "tool_record_finding",
+          0.0
+        ],
+        [
+          "extract",
+          3.5
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.4
+        ],
+        [
+          "synthesize",
+          766.6
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          44948.3
+        ]
+      ]
+    },
+    {
+      "id": "unanswerable_fraudscorer",
+      "letter": "D",
+      "category": "unanswerable",
+      "question": "What was FraudScorer CPU usage during the incident?",
+      "mode": "default",
+      "expected_behavior": "Evidence intentionally absent in synthetic corpus.",
+      "expect_status": [
+        "insufficient"
+      ],
+      "http_status": 200,
+      "ms": 11838.1,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
       "answer_status": "insufficient",
       "degraded": false,
       "answer": "No verified claims could be grounded in retrieved document quotes.",
@@ -549,10 +621,10 @@
       "citation_doc_ids": [],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
-      "usage_calls": 3,
-      "usage_prompt_tokens": 7900,
-      "usage_completion_tokens": 545,
-      "usage_total_tokens": 8445,
+      "usage_calls": 5,
+      "usage_prompt_tokens": 25112,
+      "usage_completion_tokens": 223,
+      "usage_total_tokens": 25335,
       "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
       "trace_stages": [
         [
@@ -561,35 +633,47 @@
         ],
         [
           "plan",
-          3027.8
+          800.2
         ],
         [
           "tools_seed_search",
-          1926.3
-        ],
-        [
-          "tools_bridge_search",
-          3096.2
+          3218.5
         ],
         [
           "tools_llm_round_0",
-          4422.8
+          764.5
         ],
         [
           "tool_search_documents",
-          1489.9
+          1043.2
         ],
         [
           "tools_llm_round_1",
-          4712.9
+          781.8
         ],
         [
-          "tool_record_finding",
-          0.0
+          "tool_find_documents",
+          1817.1
+        ],
+        [
+          "tools_llm_round_2",
+          821.5
+        ],
+        [
+          "tool_get_document_metadata",
+          370.2
+        ],
+        [
+          "tools_llm_round_3",
+          1229.9
+        ],
+        [
+          "tool_read_chunk_context",
+          591.6
         ],
         [
           "extract",
-          1.8
+          9.1
         ],
         [
           "contradictions",
@@ -609,15 +693,15 @@
         ],
         [
           "request",
-          18678.6
+          11532.4
         ]
       ]
     }
   ],
-  "git_commit": "3738d2daa1e1fbb62f32d6082cc40c34ba3e83f7",
+  "git_commit": "8964e791f460e66190cea28d58c490e0efd69b06",
   "active_documents": 55081,
-  "n_pass": 2,
+  "n_pass": 7,
   "n_honest_degraded": 0,
-  "n_fail": 4,
-  "ok": false
+  "n_fail": 0,
+  "ok": true
 }

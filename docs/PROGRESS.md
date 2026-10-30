@@ -74,7 +74,8 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Root cause of OSU/CSUDH failure: hybrid retrieval already returned both gold titles; investigation lost the peer entity through campus-title drift, claim quotes that stopped at naming sentences (location lived in the anaphoric next sentence), and synthesizer hedging despite `answered` status.
 - General fixes: per-entity comparison seeding + title-fidelity rerank; gated bridge-entity hops; anaphoric/relational heuristic claims; second-hop claims kept only when grounded in first-hop quotes; comparison-only dual-entity sufficiency; synthesizer hedge→deterministic fallback; embed/search caches and duplicate-search avoidance.
 - Local multi-hop (Gemini after Groq daily quota): OSU/CSUDH **PASS** (2 cites, CSUDH further west); Lent→Ice Road Truckers premiere **PASS** (June 17, 2007); Robinson→Perdita/Sicilia **PASS**; colony abstention and airport factual preserved; contradiction deploy-time conflict recovered.
-- Tests: **175** passed (non-live). Early tag `submission-2026-10-29` unchanged.
+- Production @ `8964e79`: smoke **7/7 PASS** (airport ~14s; OSU/CSUDH ~14s with both gold cites; Lent ~22s; Robinson ~11s; colony insufficient; contradiction answered; unanswerable insufficient). CI green. Tag `submission-2026-10-29` unchanged.
+- Tests: **175** passed (non-live).
 
 ## Outstanding technical follow-ups
 
