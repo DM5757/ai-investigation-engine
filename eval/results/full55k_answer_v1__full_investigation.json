@@ -1,0 +1,430 @@
+{
+  "summary": {
+    "config_id": "full_investigation",
+    "pipeline": "investigation",
+    "retrieval_mode": "hybrid_rrf",
+    "k": 8,
+    "n_questions_total": 12,
+    "n_questions": 12,
+    "n_scored_retrieval": 5,
+    "n_scored_answer": 5,
+    "n_excluded": 7,
+    "exclusion_reasons": {
+      "provider_rate_limited_skipped": 7
+    },
+    "by_type_total": {
+      "factual": 5,
+      "multi_doc": 1,
+      "contradiction": 2,
+      "unanswerable": 2,
+      "multi_step": 1,
+      "multi_hop": 1
+    },
+    "by_type_scored_retrieval": {
+      "factual": 2,
+      "multi_doc": 1,
+      "contradiction": 2
+    },
+    "by_type_scored_answer": {
+      "factual": 2,
+      "multi_doc": 1,
+      "contradiction": 2
+    },
+    "n_errors": 0,
+    "corpus_active_documents": 55081,
+    "retrieval": {
+      "n_scored": 5,
+      "n": 5,
+      "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+      "recall_at_k": 0.4,
+      "mrr": 0.4,
+      "all_gold_at_k": 0.4,
+      "multi_doc_coverage": 0.4,
+      "mean_latency_s": 83.3128910999978
+    },
+    "answer": {
+      "n_scored": 5,
+      "n": 5,
+      "exact_match": 0.0,
+      "token_f1": 0.09217391304347826,
+      "citation_f1": 0.3333333333333333,
+      "correct_abstention_rate": null,
+      "n_unanswerable_scored": 0,
+      "contradiction_detection_rate": 0.0,
+      "n_contradiction_scored": 2,
+      "mean_latency_s": 83.3128910999978,
+      "mean_llm_calls": 5.0,
+      "mean_tokens": 9335.2,
+      "status_counts": {
+        "answered": 2,
+        "llm_unavailable": 3
+      }
+    },
+    "stopped_for_provider_limits": true,
+    "partial_run": true
+  },
+  "results": [
+    {
+      "question_id": "syn_factual_beta_marker",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The BETA‑POOL‑EXHAUST marker is described in the document where the gold‑span marker “BETA‑POOL‑EXHAUST” appears — see the source that contains that marker [S1].",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 45.75754390005022,
+      "llm_calls": 5,
+      "tokens": 6719,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.19999999999999998,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_factual_jwt",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "gold_doc_titles": [
+        "incident_march"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The March incident was attributed to a misconfigured JWT TTL on AuthGateway, which triggered cascading retries into the PaymentService【S1】.",
+      "citations": [
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 44.44496440002695,
+      "llm_calls": 5,
+      "tokens": 6070,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.2608695652173913,
+        "citation": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "syn_multi_docs_services",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 150.21076579997316,
+      "llm_calls": 5,
+      "tokens": 13078,
+      "abstention_reason": "Local investigation budget exceeded during tool use (wall clock budget exceeded (120.0s)). Retrieved evidence only; no synthesized answer.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "budget",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "provider_limit_likely": true
+    },
+    {
+      "question_id": "syn_contra_c1_deploy_time",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 124.26306689996272,
+      "llm_calls": 7,
+      "tokens": 17069,
+      "abstention_reason": "Local investigation budget exceeded during synthesis (wall clock budget exceeded (120.0s)). Retrieved evidence only; no synthesized answer.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "tools_round_2",
+        "tools_round_3",
+        "tools_round_4",
+        "tools_round_5",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "budget",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "provider_limit_likely": true
+    },
+    {
+      "question_id": "syn_contra_c2_root_cause",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "llm_unavailable",
+      "answer_text": "",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 51.88811449997593,
+      "llm_calls": 3,
+      "tokens": 3740,
+      "abstention_reason": "LLM provider unavailable after retries/fallback; returning retrieved evidence only.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_round_0",
+        "tools_round_1",
+        "llm_unavailable"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      },
+      "provider_limit_likely": true
+    },
+    {
+      "question_id": "syn_unans_4969",
+      "question_type": "unanswerable",
+      "split": "test",
+      "excluded_from_scoring": true,
+      "exclusion_reason": "provider_rate_limited_skipped",
+      "status": "skipped_provider_limit"
+    },
+    {
+      "question_id": "syn_incomplete_inc1_approver",
+      "question_type": "unanswerable",
+      "split": "test",
+      "excluded_from_scoring": true,
+      "exclusion_reason": "provider_rate_limited_skipped",
+      "status": "skipped_provider_limit"
+    },
+    {
+      "question_id": "syn_multistep_latency",
+      "question_type": "multi_step",
+      "split": "test",
+      "excluded_from_scoring": true,
+      "exclusion_reason": "provider_rate_limited_skipped",
+      "status": "skipped_provider_limit"
+    },
+    {
+      "question_id": "hotpot_train_8529",
+      "question_type": "factual",
+      "split": "test",
+      "excluded_from_scoring": true,
+      "exclusion_reason": "provider_rate_limited_skipped",
+      "status": "skipped_provider_limit"
+    },
+    {
+      "question_id": "hotpot_train_7264",
+      "question_type": "factual",
+      "split": "test",
+      "excluded_from_scoring": true,
+      "exclusion_reason": "provider_rate_limited_skipped",
+      "status": "skipped_provider_limit"
+    },
+    {
+      "question_id": "hotpot_validation_2845",
+      "question_type": "multi_hop",
+      "split": "test",
+      "excluded_from_scoring": true,
+      "exclusion_reason": "provider_rate_limited_skipped",
+      "status": "skipped_provider_limit"
+    },
+    {
+      "question_id": "hotpot_validation_3397",
+      "question_type": "factual",
+      "split": "test",
+      "excluded_from_scoring": true,
+      "exclusion_reason": "provider_rate_limited_skipped",
+      "status": "skipped_provider_limit"
+    }
+  ]
+}

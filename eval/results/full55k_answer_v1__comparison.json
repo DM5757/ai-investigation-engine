@@ -1,0 +1,46 @@
+{
+  "created_at": "2026-10-30T03:05:13+00:00",
+  "run_id": "full55k_answer_v1",
+  "split": "test",
+  "limit": 12,
+  "corpus_active_documents": 55081,
+  "preliminary": false,
+  "partial": true,
+  "note": "Controlled subset (limit=12). Investigation stopped after 3 consecutive llm_unavailable (provider 400/parse + rate limits). Session close later hit a Neon ROLLBACK noise error after results were already written — treat JSON artifacts as authoritative.",
+  "summaries": [
+    {
+      "config_id": "baseline_rag",
+      "n_questions_total": 12,
+      "n_scored_answer": 12,
+      "answer": {
+        "n_scored": 12,
+        "token_f1": 0.11459166831493268,
+        "citation_f1": 0.6333333333333333,
+        "correct_abstention_rate": 0.0,
+        "n_unanswerable_scored": 2,
+        "contradiction_detection_rate": 0.0,
+        "n_contradiction_scored": 2,
+        "mean_latency_s": 4.986642483340499,
+        "mean_llm_calls": 1.0,
+        "status_counts": { "answered": 12 }
+      }
+    },
+    {
+      "config_id": "full_investigation",
+      "n_questions_total": 12,
+      "n_scored_answer": 5,
+      "stopped_for_provider_limits": true,
+      "skipped_provider_limit": 7,
+      "answer": {
+        "n_scored": 5,
+        "token_f1": 0.09217391304347826,
+        "citation_f1": 0.3333333333333333,
+        "contradiction_detection_rate": 0.0,
+        "n_contradiction_scored": 2,
+        "mean_latency_s": 83.3128910999978,
+        "mean_llm_calls": 5.0,
+        "status_counts": { "answered": 2, "llm_unavailable": 3 }
+      }
+    }
+  ]
+}

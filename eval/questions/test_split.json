@@ -1,223 +1,7 @@
 {
   "split": "test",
-  "n": 37,
+  "n": 62,
   "questions": [
-    {
-      "id": "hotpot_validation_0004",
-      "question": "who is older, Maria Sharapova or Chanda Rubin?",
-      "gold_answer": "Chanda Rubin (born February 18, 1976)",
-      "gold_doc_titles": [
-        "Chanda Rubin",
-        "Maria Sharapova"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Chanda Rubin",
-        "hotpotqa:Maria Sharapova"
-      ],
-      "question_type": "multi_doc",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "index": 22,
-      "gold_doc_paths": [],
-      "split": "test",
-      "multi_evidence": true
-    },
-    {
-      "id": "hotpot_validation_0000",
-      "question": "What Australian beer is a British style pale ale whose label features a character conceived in 1926? ",
-      "gold_answer": "Ballarat Bitter is a 4.9% (abv) Australian beer",
-      "gold_doc_titles": [
-        "Ballarat Bitter",
-        "Bitter (beer)"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Ballarat Bitter",
-        "hotpotqa:Bitter (beer)"
-      ],
-      "question_type": "multi_doc",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "index": 44,
-      "gold_doc_paths": [],
-      "split": "test",
-      "multi_evidence": true
-    },
-    {
-      "id": "hotpot_validation_0016",
-      "question": "The 2003 South Australian National Football League Grand Final saw the Central District Bulldogs defeat a football club whose home base is currently known as what?",
-      "gold_answer": "City Mazda Stadium",
-      "gold_doc_titles": [
-        "2003 SANFL Grand Final",
-        "West Adelaide Football Club"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:2003 SANFL Grand Final",
-        "hotpotqa:West Adelaide Football Club"
-      ],
-      "question_type": "multi_doc",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 40,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_validation_0005",
-      "question": "In what year was the British actress who starred in a film adaptation of a series of eight children's books written by P. L. Travers born?",
-      "gold_answer": "9 November 1955",
-      "gold_doc_titles": [
-        "Karen Dotrice",
-        "Mary Poppins"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Karen Dotrice",
-        "hotpotqa:Mary Poppins"
-      ],
-      "question_type": "multi_doc",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 47,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_train_0033",
-      "question": "Taglierini is thin pasta like the type that is shaped in what form?",
-      "gold_answer": "rod-shaped",
-      "gold_doc_titles": [
-        "Taglierini",
-        "Capellini"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Taglierini",
-        "hotpotqa:Capellini"
-      ],
-      "question_type": "multi_doc",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "train",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 23,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_validation_0018",
-      "question": "Which Republican Chairman was born June 1, 1956? ",
-      "gold_answer": "Gregg Harper",
-      "gold_doc_titles": [
-        "Charlie Ross (state senator)",
-        "Gregg Harper"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Charlie Ross (state senator)",
-        "hotpotqa:Gregg Harper"
-      ],
-      "question_type": "multi_doc",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 19,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_train_0037",
-      "question": "A former officer of what was a Lieutenant General is notable for being present in the conference room when the 20 July plot bomb exploded in 1944 along with a German general and war criminal during World War II, who served as the Chief of the Operations Staff of the Armed Forces High Command ?",
-      "gold_answer": "German Air Force",
-      "gold_doc_titles": [
-        "Herbert B\u00fcchs",
-        "Alfred Jodl"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Herbert B\u00fcchs",
-        "hotpotqa:Alfred Jodl"
-      ],
-      "question_type": "multi_doc",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "train",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 31,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_train_0031",
-      "question": "Walter Leslie Duncan, director of the Adelaide Steamship Company, resigned from the Senate in what year?",
-      "gold_answer": "1931",
-      "gold_doc_titles": [
-        "Walter Leslie Duncan",
-        "Adelaide Steamship Company"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Walter Leslie Duncan",
-        "hotpotqa:Adelaide Steamship Company"
-      ],
-      "question_type": "multi_doc",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "train",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 43,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
     {
       "id": "syn_multi_docs_services",
       "question": "Which services were affected by the March payment disruption according to incident and status documents?",
@@ -241,16 +25,339 @@
       "split": "test"
     },
     {
-      "id": "hotpot_train_0027",
-      "question": "Diane Ladd's daugther was nominated for the Academy Award for Best Actress for her performance in what film?",
-      "gold_answer": "\"Rambling Rose\"",
+      "id": "hotpot_validation_3397",
+      "question": "Camp Modin moved to the Belgrade Lakes region of Maine from its previous location in what Maine county?",
+      "gold_answer": "Somerset County",
       "gold_doc_titles": [
-        "Diane Ladd",
-        "Laura Dern"
+        "Camp Modin",
+        "Canaan, Maine"
       ],
       "gold_external_keys": [
-        "hotpotqa:Diane Ladd",
-        "hotpotqa:Laura Dern"
+        "hotpotqa:Camp Modin",
+        "hotpotqa:Canaan, Maine"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 17,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_8775",
+      "question": "Are Aram Avakian and David Wall both actors?",
+      "gold_answer": "no",
+      "gold_doc_titles": [
+        "Aram Avakian",
+        "David Wall (actor)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Aram Avakian",
+        "hotpotqa:David Wall (actor)"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 49,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_2845",
+      "question": "Is Ohio State University or California State University, Dominguez Hills further west?",
+      "gold_answer": "California State University, Dominguez Hills",
+      "gold_doc_titles": [
+        "Ohio State University",
+        "California State University, Dominguez Hills"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Ohio State University",
+        "hotpotqa:California State University, Dominguez Hills"
+      ],
+      "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "index": 16,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_4070",
+      "question": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star on a reality television series that premiered on what date?",
+      "gold_answer": "June 17, 2007",
+      "gold_doc_titles": [
+        "Michael Lent (writer and producer)",
+        "Ice Road Truckers"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Michael Lent (writer and producer)",
+        "hotpotqa:Ice Road Truckers"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 93,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_5516",
+      "question": "The character for whom Mary Robinson was nicknamed was the daughter of Leontes, king of which country?",
+      "gold_answer": "Sicilia",
+      "gold_doc_titles": [
+        "Mary Robinson (poet)",
+        "Perdita (The Winter's Tale)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Mary Robinson (poet)",
+        "hotpotqa:Perdita (The Winter's Tale)"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 28,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_4347",
+      "question": "Which record producer from Stockbridge, Georgia is the lead singer of Collective Soul?",
+      "gold_answer": "Edgar Eugene Roland, Jr.",
+      "gold_doc_titles": [
+        "Collective Soul",
+        "Ed Roland"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Collective Soul",
+        "hotpotqa:Ed Roland"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 83,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_8747",
+      "question": "When was the 7th Duke of Westminster which Gerald Grosvenor was his father born ",
+      "gold_answer": "29 January 1991",
+      "gold_doc_titles": [
+        "Gerald Grosvenor, 6th Duke of Westminster",
+        "Hugh Grosvenor, 7th Duke of Westminster"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Gerald Grosvenor, 6th Duke of Westminster",
+        "hotpotqa:Hugh Grosvenor, 7th Duke of Westminster"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 34,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_7170",
+      "question": "On what date did Farshid Karimi's younger brother play his last game of football?",
+      "gold_answer": "11 April 2014",
+      "gold_doc_titles": [
+        "Farshid Karimi",
+        "Ali Karimi"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Farshid Karimi",
+        "hotpotqa:Ali Karimi"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 52,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_7606",
+      "question": "Which band would be classified as Christian nu metal, P.O.D. or Swervedriver?",
+      "gold_answer": "P.O.D.",
+      "gold_doc_titles": [
+        "P.O.D.",
+        "Swervedriver"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:P.O.D.",
+        "hotpotqa:Swervedriver"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 71,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_5322",
+      "question": "What is the irrigation canal in Kern County, California, Kern Island Canal or Cayuga–Seneca Canal?",
+      "gold_answer": "Kern Island Canal",
+      "gold_doc_titles": [
+        "Kern Island Canal",
+        "Cayuga–Seneca Canal"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Kern Island Canal",
+        "hotpotqa:Cayuga–Seneca Canal"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 84,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_7426",
+      "question": "Which American actress, model, voice actress, and singer appeared on \"General Hospital\" and in the 1999 black comedy/drama film \"Five Aces?\"",
+      "gold_answer": "Tia Carrere",
+      "gold_doc_titles": [
+        "Five Aces",
+        "Tia Carrere"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Five Aces",
+        "hotpotqa:Tia Carrere"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 55,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_4467",
+      "question": "Name three common things that are used in playing Monopoly and King of Tokyo?",
+      "gold_answer": "dice, cards, and boards",
+      "gold_doc_titles": [
+        "Monopoly (game)",
+        "King of Tokyo"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Monopoly (game)",
+        "hotpotqa:King of Tokyo"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 70,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_5644",
+      "question": "What type of film was Luc Besson's film (2017) in which Dane William DeHaan had title character?",
+      "gold_answer": "3D science fiction adventure film",
+      "gold_doc_titles": [
+        "Dane DeHaan",
+        "Valerian and the City of a Thousand Planets"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Dane DeHaan",
+        "hotpotqa:Valerian and the City of a Thousand Planets"
       ],
       "question_type": "multi_doc",
       "requires_all_gold_docs": true,
@@ -260,7 +367,141 @@
         "config": "distractor",
         "split": "train",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
+      },
+      "index": 41,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_8381",
+      "question": "What sponsor of the initiative Aman ki Asha was founded in 1939?",
+      "gold_answer": "the Jang group",
+      "gold_doc_titles": [
+        "Beena Sarwar",
+        "Daily Jang"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Beena Sarwar",
+        "hotpotqa:Daily Jang"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 43,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_1551",
+      "question": "What is the weight limit of the weight class that Takeyasu Hirono fights in?",
+      "gold_answer": "125 lb (57 kg)",
+      "gold_doc_titles": [
+        "Takeyasu Hirono",
+        "Flyweight (MMA)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Takeyasu Hirono",
+        "hotpotqa:Flyweight (MMA)"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 78,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_0704",
+      "question": "Which Nigerian footballer who plays as a forward for Shanghai Greenland Shenhua was one of eleven players to have played in the top divisions in Italy, Spain, England and Germany?",
+      "gold_answer": "Obafemi Martins",
+      "gold_doc_titles": [
+        "Pierre Womé",
+        "Obafemi Martins"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Pierre Womé",
+        "hotpotqa:Obafemi Martins"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 61,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_5342",
+      "question": "Madge Ryan had a film role in which CinemaScope and Technicolor musical film featuring Cliff Richard?",
+      "gold_answer": "Summer Holiday",
+      "gold_doc_titles": [
+        "Madge Ryan",
+        "Summer Holiday (1963 film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Madge Ryan",
+        "hotpotqa:Summer Holiday (1963 film)"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 66,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_8698",
+      "question": "Karan Kapoor's sister was born on which day ?",
+      "gold_answer": "27 November 1967",
+      "gold_doc_titles": [
+        "Karan Kapoor",
+        "Sanjana Kapoor"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Karan Kapoor",
+        "hotpotqa:Sanjana Kapoor"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
       "index": 46,
@@ -268,18 +509,93 @@
       "split": "test"
     },
     {
-      "id": "hotpot_train_0030",
-      "question": "Which is a research university in Maryland, Massachusetts Institute of Technology or Johns Hopkins University?",
-      "gold_answer": "Johns Hopkins University",
+      "id": "hotpot_validation_1911",
+      "question": "What genre of composers were both Claudio Monteverdi and Georges Bizet? ",
+      "gold_answer": "opera",
       "gold_doc_titles": [
-        "Massachusetts Institute of Technology",
-        "Johns Hopkins University"
+        "Claudio Monteverdi",
+        "Georges Bizet"
       ],
       "gold_external_keys": [
-        "hotpotqa:Massachusetts Institute of Technology",
-        "hotpotqa:Johns Hopkins University"
+        "hotpotqa:Claudio Monteverdi",
+        "hotpotqa:Georges Bizet"
       ],
-      "question_type": "multi_doc",
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 21,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_1963",
+      "question": "The constituency which is represented by the 2015 elected Minister for Universities and Science is represented in what wing of the UK parliament?",
+      "gold_answer": "House of Commons",
+      "gold_doc_titles": [
+        "Orpington (UK Parliament constituency)",
+        "Jo Johnson"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Orpington (UK Parliament constituency)",
+        "hotpotqa:Jo Johnson"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 56,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "syn_incomplete_inc1_approver",
+      "question": "What is the missing detail regarding: rollback approver identity?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_paths": [
+        "data/synthetic/status_update.txt"
+      ],
+      "gold_doc_titles": [
+        "status_update"
+      ],
+      "gold_external_keys": [],
+      "question_type": "unanswerable",
+      "expected_status": "insufficient",
+      "requires_all_gold_docs": false,
+      "split_hint": "synthetic",
+      "provenance": {
+        "incomplete_id": "inc1_approver"
+      },
+      "index": 11,
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_8529",
+      "question": "Are Curt Smith and Laura Stoica of the same nationality?",
+      "gold_answer": "no",
+      "gold_doc_titles": [
+        "Curt Smith",
+        "Laura Stoica"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Curt Smith",
+        "hotpotqa:Laura Stoica"
+      ],
+      "question_type": "factual",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
@@ -287,17 +603,123 @@
         "config": "distractor",
         "split": "train",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 38,
+      "index": 14,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "syn_factual_alpha_marker",
-      "question": "Where is the ALPHA-OUTAGE-0810 marker described?",
-      "gold_answer": "ALPHA-OUTAGE-0810",
+      "id": "hotpot_train_5771",
+      "question": "Who is the actress who co-stared in the comedy series \"Peter Kay's Car Share\" with actor Peter Kay?",
+      "gold_answer": "Sian Gibson",
+      "gold_doc_titles": [
+        "Sian Gibson",
+        "Peter Kay's Car Share"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Sian Gibson",
+        "hotpotqa:Peter Kay's Car Share"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 32,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_1226",
+      "question": "What party was Johan Henrik Deuntzer a part of before the party that translates to the \"Radical Left?\"",
+      "gold_answer": "Liberal \"Venstre\" party",
+      "gold_doc_titles": [
+        "Johan Henrik Deuntzer",
+        "Danish Social Liberal Party"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Johan Henrik Deuntzer",
+        "hotpotqa:Danish Social Liberal Party"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 75,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_1571",
+      "question": "Where are schools in the athletic association Cardinal Hayes High School is part of located?",
+      "gold_answer": "New York City, Long Island, and Westchester",
+      "gold_doc_titles": [
+        "Cardinal Hayes High School",
+        "Catholic High School Athletic Association"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Cardinal Hayes High School",
+        "hotpotqa:Catholic High School Athletic Association"
+      ],
+      "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "index": 81,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_1800",
+      "question": "The 1966 Football League Cup Final was contested with which team that is based in the West Midlands?",
+      "gold_answer": "West Bromwich Albion Football Club",
+      "gold_doc_titles": [
+        "1966 Football League Cup Final",
+        "West Bromwich Albion F.C."
+      ],
+      "gold_external_keys": [
+        "hotpotqa:1966 Football League Cup Final",
+        "hotpotqa:West Bromwich Albion F.C."
+      ],
+      "question_type": "multi_hop",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "index": 27,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "syn_factual_beta_marker",
+      "question": "Where is the BETA-POOL-EXHAUST marker described?",
+      "gold_answer": "BETA-POOL-EXHAUST",
       "gold_doc_titles": [
         "long_architecture"
       ],
@@ -311,47 +733,20 @@
       "provenance": {
         "source": "chunking_gold_spans"
       },
-      "index": 1,
+      "index": 2,
       "split": "test"
     },
     {
-      "id": "hotpot_validation_0017",
-      "question": "Which college football team for the University of Oregon did Enoka Lucas played for ",
-      "gold_answer": "The Oregon Ducks",
+      "id": "hotpot_train_7662",
+      "question": "Which Walt Disney film was released first, The Adventures of Huck Finn or Herbie Rides Again?",
+      "gold_answer": "Herbie Rides Again",
       "gold_doc_titles": [
-        "Enoka Lucas",
-        "Oregon Ducks football"
+        "The Adventures of Huck Finn (1993 film)",
+        "Herbie Rides Again"
       ],
       "gold_external_keys": [
-        "hotpotqa:Enoka Lucas",
-        "hotpotqa:Oregon Ducks football"
-      ],
-      "question_type": "factual",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 53,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_train_0041",
-      "question": "Which band had more members The Fatima Mansions or  3OH!3 ?",
-      "gold_answer": "The Fatima Mansions",
-      "gold_doc_titles": [
-        "The Fatima Mansions",
-        "3OH!3"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:The Fatima Mansions",
-        "hotpotqa:3OH!3"
+        "hotpotqa:The Adventures of Huck Finn (1993 film)",
+        "hotpotqa:Herbie Rides Again"
       ],
       "question_type": "factual",
       "requires_all_gold_docs": true,
@@ -361,24 +756,24 @@
         "config": "distractor",
         "split": "train",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 41,
+      "index": 87,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_validation_0014",
-      "question": "What is the English translation of the noodle similar to Taglierini that is not tagliatelle?",
-      "gold_answer": "little hairs",
+      "id": "hotpot_validation_2991",
+      "question": "What service is an Amtrak flagship that includes BWI Rail Station as one of its Amtrak intercity services?",
+      "gold_answer": "Acela Express",
       "gold_doc_titles": [
-        "Taglierini",
-        "Capellini"
+        "BWI Rail Station",
+        "Acela Express"
       ],
       "gold_external_keys": [
-        "hotpotqa:Taglierini",
-        "hotpotqa:Capellini"
+        "hotpotqa:BWI Rail Station",
+        "hotpotqa:Acela Express"
       ],
       "question_type": "factual",
       "requires_all_gold_docs": true,
@@ -388,206 +783,63 @@
         "config": "distractor",
         "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 51,
+      "index": 64,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_validation_0011",
-      "question": "Who used a Barrack buster to shoot down a British Army Lynx helicopter",
-      "gold_answer": "IRA",
-      "gold_doc_titles": [
-        "1994 British Army Lynx shootdown",
-        "Barrack buster"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:1994 British Army Lynx shootdown",
-        "hotpotqa:Barrack buster"
-      ],
-      "question_type": "factual",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 25,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_validation_0025",
-      "question": "Which band was formed first, Goldfinger or The Fray?",
-      "gold_answer": "Goldfinger",
-      "gold_doc_titles": [
-        "Goldfinger (band)",
-        "The Fray"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Goldfinger (band)",
-        "hotpotqa:The Fray"
-      ],
-      "question_type": "factual",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 21,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_train_0039",
-      "question": "What is a type of ribbon pasta, long like Spaghetti, two to three mm or roughly a tenth of an inch wide, similar to tagliatelle, but thin like a very thin variety of Italian pasta, with a diameter between 0.85?",
-      "gold_answer": "Taglierini",
-      "gold_doc_titles": [
-        "Taglierini",
-        "Capellini"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Taglierini",
-        "hotpotqa:Capellini"
-      ],
-      "question_type": "factual",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "train",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 37,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_validation_0022",
-      "question": "What is the name for plastic water-filled barriers that you might find along the MacArthur Road highway in Pennsylvania?",
-      "gold_answer": "Jersey barrier",
-      "gold_doc_titles": [
-        "Pennsylvania Route 145",
-        "Jersey barrier"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Pennsylvania Route 145",
-        "hotpotqa:Jersey barrier"
-      ],
-      "question_type": "factual",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 24,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_train_0042",
-      "question": "Jessi Ruth Klein played in many rolls throughout the years. Lucy, the Daughter of the Devil was aired by the Adult Swim Programming block of what channel?",
-      "gold_answer": "Cartoon Network",
-      "gold_doc_titles": [
-        "Jessi Klein",
-        "Lucy, the Daughter of the Devil"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Jessi Klein",
-        "hotpotqa:Lucy, the Daughter of the Devil"
-      ],
-      "question_type": "factual",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "train",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 20,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "syn_exec_summary",
-      "question": "What does the executive summary say about the March outage impact?",
-      "gold_answer": "payment processing disruptions",
+      "id": "syn_multistep_latency",
+      "question": "According to the latency metrics and status updates, which components showed elevated latency during the March incident?",
+      "gold_answer": "payment and auth-related components",
       "gold_doc_paths": [
-        "data/synthetic/exec_summary.pdf"
+        "data/synthetic/latency_metrics.csv",
+        "data/synthetic/status_update.txt"
       ],
       "gold_doc_titles": [
-        "exec_summary"
+        "latency_metrics",
+        "status_update"
       ],
       "gold_external_keys": [],
-      "question_type": "factual",
+      "question_type": "multi_step",
       "requires_all_gold_docs": true,
       "split_hint": "synthetic",
       "provenance": {
         "source": "synthetic_enterprise"
       },
-      "index": 13,
+      "index": 12,
       "split": "test"
     },
     {
-      "id": "hotpot_train_0032",
-      "question": "Chris McKay directed three seasons of the show that was shown on which channel?",
-      "gold_answer": "Adult Swim",
-      "gold_doc_titles": [
-        "Chris McKay",
-        "Robot Chicken"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Chris McKay",
-        "hotpotqa:Robot Chicken"
-      ],
-      "question_type": "factual",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
+      "id": "syn_unans_4969",
+      "question": "What was FraudScorer CPU usage during the incident?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_titles": [],
+      "gold_external_keys": [],
+      "question_type": "unanswerable",
+      "expected_status": "insufficient",
+      "requires_all_gold_docs": false,
+      "split_hint": "synthetic",
       "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "train",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "source": "unanswerable_topics"
       },
-      "multi_evidence": true,
-      "index": 32,
+      "index": 10,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_validation_0002",
-      "question": "The William Ulmer Brewery is located in a neighborhood that is policed by who?",
-      "gold_answer": "NYPD's 83rd Precinct",
+      "id": "hotpot_validation_3584",
+      "question": "Is the U.S. Bank Stadium home to the Minnesota Vikings, open air or fixed-roof?",
+      "gold_answer": "fixed-roof",
       "gold_doc_titles": [
-        "William Ulmer Brewery",
-        "Bushwick, Brooklyn"
+        "2013 Minnesota Vikings season",
+        "U.S. Bank Stadium"
       ],
       "gold_external_keys": [
-        "hotpotqa:William Ulmer Brewery",
-        "hotpotqa:Bushwick, Brooklyn"
+        "hotpotqa:2013 Minnesota Vikings season",
+        "hotpotqa:U.S. Bank Stadium"
       ],
       "question_type": "factual",
       "requires_all_gold_docs": true,
@@ -597,10 +849,118 @@
         "config": "distractor",
         "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 45,
+      "index": 80,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_8082",
+      "question": "Both Carnegie Mellon University and Vanderbilt University are private or public research universities?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "Carnegie Mellon University",
+        "Vanderbilt University"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Carnegie Mellon University",
+        "hotpotqa:Vanderbilt University"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 82,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_3299",
+      "question": "What position in the court does the Professor of Law at the Interdisciplinary Center in Herzliya hold?",
+      "gold_answer": "Supreme Court Judge",
+      "gold_doc_titles": [
+        "Kahan Commission",
+        "Aharon Barak"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Kahan Commission",
+        "hotpotqa:Aharon Barak"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 74,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_7609",
+      "question": "What Cantonese slang term for Westerners is referenced by the title of a 2006 film by Nick Broomfield?",
+      "gold_answer": "Gweilo",
+      "gold_doc_titles": [
+        "Ghosts (2006 film)",
+        "Gweilo"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Ghosts (2006 film)",
+        "hotpotqa:Gweilo"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 35,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_5811",
+      "question": "This British Territorial Army general was succeeded by his son who is estimated to be worth what?",
+      "gold_answer": "US$13 billion",
+      "gold_doc_titles": [
+        "Gerald Grosvenor, 6th Duke of Westminster",
+        "Hugh Grosvenor, 7th Duke of Westminster"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Gerald Grosvenor, 6th Duke of Westminster",
+        "hotpotqa:Hugh Grosvenor, 7th Duke of Westminster"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 76,
       "gold_doc_paths": [],
       "split": "test"
     },
@@ -638,6 +998,457 @@
       "split": "test"
     },
     {
+      "id": "hotpot_validation_2179",
+      "question": "What is the altitude of the town in England that has Leadgate between it and Garrigill?",
+      "gold_answer": "about 1,000 ft above sea level",
+      "gold_doc_titles": [
+        "Leadgate, Cumbria",
+        "Alston, Cumbria"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Leadgate, Cumbria",
+        "hotpotqa:Alston, Cumbria"
+      ],
+      "question_type": "multi_doc",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "index": 20,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_0650",
+      "question": "Which star of \"Chalet Girl\" also appeared in \"The Treasure Seekers\"?",
+      "gold_answer": "Felicity Rose Hadley Jones",
+      "gold_doc_titles": [
+        "Chalet Girl",
+        "Felicity Jones"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Chalet Girl",
+        "hotpotqa:Felicity Jones"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 53,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_6617",
+      "question": "In which province did percussionist Masaki Tanazawa perform in on 7 November 1985?",
+      "gold_answer": "New South Wales",
+      "gold_doc_titles": [
+        "Boxes (Icehouse album)",
+        "Sydney Opera House"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Boxes (Icehouse album)",
+        "hotpotqa:Sydney Opera House"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 86,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_1148",
+      "question": "What career did Markus Feehily and Bobby Fuller have in common?",
+      "gold_answer": "songwriter",
+      "gold_doc_titles": [
+        "Markus Feehily",
+        "Bobby Fuller"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Markus Feehily",
+        "hotpotqa:Bobby Fuller"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 59,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_4793",
+      "question": "Who was born later, Jerry Garcia or Joe Gooch?",
+      "gold_answer": "Joe Gooch",
+      "gold_doc_titles": [
+        "Jerry Garcia",
+        "Joe Gooch"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Jerry Garcia",
+        "hotpotqa:Joe Gooch"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 31,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_6356",
+      "question": "When was the actor born who starred in Pilot as Laurie Keller which premiered on ABC on September 23, 2009?",
+      "gold_answer": "June 25, 1979",
+      "gold_doc_titles": [
+        "Pilot (Cougar Town)",
+        "Busy Philipps"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Pilot (Cougar Town)",
+        "hotpotqa:Busy Philipps"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 90,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_7264",
+      "question": "Tim Rice worked with Elton John on a musical based on an opera by who?",
+      "gold_answer": "Giuseppe Verdi",
+      "gold_doc_titles": [
+        "Tim Rice",
+        "Aida (musical)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Tim Rice",
+        "hotpotqa:Aida (musical)"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 15,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_2182",
+      "question": "Who starred in The Bronze and also showed up on the CBS sitcom \"The Big Bang Theory\"?",
+      "gold_answer": "Melissa Rauch",
+      "gold_doc_titles": [
+        "The Bronze (film)",
+        "Melissa Rauch"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Bronze (film)",
+        "hotpotqa:Melissa Rauch"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 48,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_1485",
+      "question": "Which body of water flows through more states, Tamiami Canal or Genesee River?",
+      "gold_answer": "Genesee River",
+      "gold_doc_titles": [
+        "Tamiami Canal",
+        "Genesee River"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Tamiami Canal",
+        "hotpotqa:Genesee River"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 26,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "syn_factual_jwt",
+      "question": "What misconfiguration on AuthGateway was reported in the March incident?",
+      "gold_answer": "misconfigured JWT TTL",
+      "gold_doc_paths": [
+        "data/synthetic/incident_march.md"
+      ],
+      "gold_doc_titles": [
+        "incident_march"
+      ],
+      "gold_external_keys": [],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "synthetic",
+      "provenance": {
+        "source": "synthetic"
+      },
+      "index": 3,
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_4109",
+      "question": "Which company owned by a Pakistani media mogul produced the Pakistani romantic drama film Dobara Phir Se?",
+      "gold_answer": "ARY Films",
+      "gold_doc_titles": [
+        "Dobara Phir Se",
+        "Salman Iqbal"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Dobara Phir Se",
+        "hotpotqa:Salman Iqbal"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 30,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_3532",
+      "question": "Who would you be more worried about playing a chess game against, Marcel Duchamp or Jiang Wen",
+      "gold_answer": "Duchamp",
+      "gold_doc_titles": [
+        "Marcel Duchamp",
+        "Jiang Wen"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Marcel Duchamp",
+        "hotpotqa:Jiang Wen"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 36,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_1732",
+      "question": "which nuclear reservation in the United States  did  the U.S. Atomic Energy Commission acquired Meyers Mill  as part of ",
+      "gold_answer": "The Savannah River Site",
+      "gold_doc_titles": [
+        "Meyers Mill, South Carolina",
+        "Savannah River Site"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Meyers Mill, South Carolina",
+        "hotpotqa:Savannah River Site"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 33,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_0457",
+      "question": "Which 9th longest-running musical in Broadway history was the 30th Disney animated feature film?",
+      "gold_answer": "Beauty and the Beast",
+      "gold_doc_titles": [
+        "Beauty and the Beast (franchise)",
+        "Beauty and the Beast (1991 film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Beauty and the Beast (franchise)",
+        "hotpotqa:Beauty and the Beast (1991 film)"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 18,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_train_7524",
+      "question": "Like many Twins teams of its half-decade, the 1998 Minnesota Twins neither impressed nor contended, individual players had solid seasons, and which Hall of Fame designated hitter, nicknamed \"Molly\" and \"The Ignitor\", is an American former Major League Baseball (MLB) player and current manager of the Minnesota Twins, how many All-Star Game appearances did he have?",
+      "gold_answer": "seven",
+      "gold_doc_titles": [
+        "1998 Minnesota Twins season",
+        "Paul Molitor"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:1998 Minnesota Twins season",
+        "hotpotqa:Paul Molitor"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 51,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_2025",
+      "question": "How many episodes did the season of The Simpsons which featured the voice of Lisa Kudrow contain?",
+      "gold_answer": "It contains twenty-three episodes",
+      "gold_doc_titles": [
+        "The Simpsons (season 10)",
+        "Lard of the Dance"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Simpsons (season 10)",
+        "hotpotqa:Lard of the Dance"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 68,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
+      "id": "hotpot_validation_3238",
+      "question": "What season of Gilmore Girls featured an actress as a maid of honor who had also played the role of Winnie Foster?",
+      "gold_answer": "thirteenth",
+      "gold_doc_titles": [
+        "Wedding Bell Blues (Gilmore Girls)",
+        "Alexis Bledel"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Wedding Bell Blues (Gilmore Girls)",
+        "hotpotqa:Alexis Bledel"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 45,
+      "gold_doc_paths": [],
+      "split": "test"
+    },
+    {
       "id": "syn_contra_c1_deploy_time",
       "question": "What do the documents say about auth-gateway deploy time on 2024-03-12? Note any contradictions.",
       "gold_answer": "CONFLICTING",
@@ -671,128 +1482,72 @@
       "split": "test"
     },
     {
-      "id": "syn_unans_1758",
-      "question": "What was FraudScorer CPU usage during the incident?",
-      "gold_answer": "INSUFFICIENT",
-      "gold_doc_titles": [],
-      "gold_external_keys": [],
-      "question_type": "unanswerable",
-      "expected_status": "insufficient",
-      "requires_all_gold_docs": false,
-      "split_hint": "synthetic",
-      "provenance": {
-        "source": "unanswerable_topics"
-      },
-      "index": 10,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "syn_unans_149",
-      "question": "Who approved the auth-gateway rollback?",
-      "gold_answer": "INSUFFICIENT",
-      "gold_doc_titles": [],
-      "gold_external_keys": [],
-      "question_type": "unanswerable",
-      "expected_status": "insufficient",
-      "requires_all_gold_docs": false,
-      "split_hint": "synthetic",
-      "provenance": {
-        "source": "unanswerable_topics"
-      },
-      "index": 9,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "syn_multistep_latency",
-      "question": "According to the latency metrics and status updates, which components showed elevated latency during the March incident?",
-      "gold_answer": "payment and auth-related components",
-      "gold_doc_paths": [
-        "data/synthetic/latency_metrics.csv",
-        "data/synthetic/status_update.txt"
-      ],
+      "id": "hotpot_train_5079",
+      "question": "What is the title of Erika Mitchell's novel that reached number 1 on the \"USA Today\" best seller list?",
+      "gold_answer": "Fifty Shades Darker",
       "gold_doc_titles": [
-        "latency_metrics",
-        "status_update"
-      ],
-      "gold_external_keys": [],
-      "question_type": "multi_step",
-      "requires_all_gold_docs": true,
-      "split_hint": "synthetic",
-      "provenance": {
-        "source": "synthetic_enterprise"
-      },
-      "index": 12,
-      "split": "test"
-    },
-    {
-      "id": "hotpot_validation_0026",
-      "question": "Ralph Faudree served as the American equivalent to what United Kingdom and Australian position?",
-      "gold_answer": "pro-vice-chancellor",
-      "gold_doc_titles": [
-        "Ralph Faudree",
-        "Provost (education)"
+        "E. L. James",
+        "Fifty Shades Darker"
       ],
       "gold_external_keys": [
-        "hotpotqa:Ralph Faudree",
-        "hotpotqa:Provost (education)"
+        "hotpotqa:E. L. James",
+        "hotpotqa:Fifty Shades Darker"
       ],
-      "question_type": "multi_hop",
+      "question_type": "factual",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
-        "split": "validation",
+        "split": "train",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 17,
+      "index": 72,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_validation_0012",
-      "question": "Who directed the animated series which featured an American comedy writer as the voice of Lucy?",
-      "gold_answer": "Loren Bouchard",
+      "id": "hotpot_train_5534",
+      "question": "The Ladder of Lies stars what american film actress best known as the estranged wife of silent film star Rudolph Valentino",
+      "gold_answer": "Jean Acker",
       "gold_doc_titles": [
-        "Jessi Klein",
-        "Lucy, the Daughter of the Devil"
+        "The Ladder of Lies",
+        "Jean Acker"
       ],
       "gold_external_keys": [
-        "hotpotqa:Jessi Klein",
-        "hotpotqa:Lucy, the Daughter of the Devil"
+        "hotpotqa:The Ladder of Lies",
+        "hotpotqa:Jean Acker"
       ],
-      "question_type": "multi_hop",
+      "question_type": "factual",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
-        "split": "validation",
+        "split": "train",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 28,
+      "index": 19,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_validation_0010",
-      "question": "What is a difference between Sly Stone and Mary Ramsey?",
-      "gold_answer": "Ramsey has also worked with other well-known artists",
+      "id": "hotpot_validation_3338",
+      "question": "Dane William DeHaan starred in a movie directed by Anton Corbijn along side which actor?",
+      "gold_answer": "Robert Pattinson",
       "gold_doc_titles": [
-        "Sly Stone",
-        "Mary Ramsey"
+        "Dane DeHaan",
+        "Life (2015 film)"
       ],
       "gold_external_keys": [
-        "hotpotqa:Sly Stone",
-        "hotpotqa:Mary Ramsey"
+        "hotpotqa:Dane DeHaan",
+        "hotpotqa:Life (2015 film)"
       ],
-      "question_type": "multi_hop",
+      "question_type": "factual",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
@@ -800,53 +1555,26 @@
         "config": "distractor",
         "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "index": 16,
-      "gold_doc_paths": [],
-      "split": "test",
-      "multi_evidence": true
-    },
-    {
-      "id": "hotpot_validation_0015",
-      "question": "At the 66th Academy Awards, the awards for technical achievements were presented by what host who was nominated for Best Actress for \"Rambling Rose\"?",
-      "gold_answer": "Laura Dern",
-      "gold_doc_titles": [
-        "66th Academy Awards",
-        "Laura Dern"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:66th Academy Awards",
-        "hotpotqa:Laura Dern"
-      ],
-      "question_type": "multi_hop",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 52,
+      "index": 63,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_validation_0006",
-      "question": "The home video game console that was developed by Sony Computer Entertainment is a platform for a racing video game developed by who?",
-      "gold_answer": "Sony Studio Liverpool",
+      "id": "hotpot_validation_3132",
+      "question": "\"Call Me Mañana\" is a song by a group that has sold how many records?",
+      "gold_answer": "over 30 million",
       "gold_doc_titles": [
-        "Formula One 2001 (video game)",
-        "PlayStation 2"
+        "Call Me Mañana",
+        "Scooter (band)"
       ],
       "gold_external_keys": [
-        "hotpotqa:Formula One 2001 (video game)",
-        "hotpotqa:PlayStation 2"
+        "hotpotqa:Call Me Mañana",
+        "hotpotqa:Scooter (band)"
       ],
-      "question_type": "multi_hop",
+      "question_type": "factual",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
@@ -854,53 +1582,53 @@
         "config": "distractor",
         "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 49,
+      "index": 73,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_validation_0003",
-      "question": "In what administrative category are the cities of Beitun, Xinjiang and Wafangdian?",
-      "gold_answer": "county-level",
+      "id": "hotpot_train_8415",
+      "question": "What conference is the team that beat 2016 Auburn Tigers football team in the Sugar Bowl in?",
+      "gold_answer": "the Big 12 Conference",
       "gold_doc_titles": [
-        "Beitun, Xinjiang",
-        "Wafangdian"
+        "2016 Auburn Tigers football team",
+        "2016 Oklahoma Sooners football team"
       ],
       "gold_external_keys": [
-        "hotpotqa:Beitun, Xinjiang",
-        "hotpotqa:Wafangdian"
+        "hotpotqa:2016 Auburn Tigers football team",
+        "hotpotqa:2016 Oklahoma Sooners football team"
       ],
-      "question_type": "multi_hop",
+      "question_type": "factual",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
-        "split": "validation",
+        "split": "train",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 15,
+      "index": 77,
       "gold_doc_paths": [],
       "split": "test"
     },
     {
-      "id": "hotpot_validation_0008",
-      "question": "Which of the following bands is considered \"one of the most accomplished and creative Christian bands of the '90s\": Poor Old Lu or Shudder to Think?",
-      "gold_answer": "Poor Old Lu",
+      "id": "hotpot_validation_0825",
+      "question": "Who was the leading female star in \"The Others\" which marked the final film appearance of Renée Asherson in 2001?",
+      "gold_answer": "Nicole Kidman",
       "gold_doc_titles": [
-        "Poor Old Lu",
-        "Shudder to Think"
+        "Renée Asherson",
+        "The Others (2001 film)"
       ],
       "gold_external_keys": [
-        "hotpotqa:Poor Old Lu",
-        "hotpotqa:Shudder to Think"
+        "hotpotqa:Renée Asherson",
+        "hotpotqa:The Others (2001 film)"
       ],
-      "question_type": "multi_hop",
+      "question_type": "factual",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
@@ -908,64 +1636,10 @@
         "config": "distractor",
         "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 50,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_validation_0020",
-      "question": "The 1998\u201399 Los Angeles Lakers season included the signing of the rebounding specialist who had what nickname?",
-      "gold_answer": "The Worm",
-      "gold_doc_titles": [
-        "1998\u201399 Los Angeles Lakers season",
-        "Dennis Rodman"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:1998\u201399 Los Angeles Lakers season",
-        "hotpotqa:Dennis Rodman"
-      ],
-      "question_type": "multi_hop",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 35,
-      "gold_doc_paths": [],
-      "split": "test"
-    },
-    {
-      "id": "hotpot_validation_0021",
-      "question": "2006 KNVB Cup Final had two goals scored by a player of what nationality?",
-      "gold_answer": "Dutch",
-      "gold_doc_titles": [
-        "2006 KNVB Cup Final",
-        "Klaas-Jan Huntelaar"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:2006 KNVB Cup Final",
-        "hotpotqa:Klaas-Jan Huntelaar"
-      ],
-      "question_type": "multi_hop",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 27,
+      "index": 23,
       "gold_doc_paths": [],
       "split": "test"
     }

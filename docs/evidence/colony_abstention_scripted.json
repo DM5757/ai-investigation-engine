@@ -1,0 +1,11 @@
+{
+  "created_at": "2026-10-30T03:23:41.950337+00:00",
+  "question": "What happened to the Roanoke Colony, and why did it disappear?",
+  "mode": "scripted_llm_against_neon_qdrant",
+  "status": "insufficient",
+  "n_claims": 0,
+  "n_citations": 0,
+  "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+  "answer_preview": "No verified claims could be grounded in retrieved document quotes.",
+  "note": "Question-conditioned sufficiency abstains instead of citing airports when colony evidence is absent."
+}

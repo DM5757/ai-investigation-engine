@@ -1,7 +1,34 @@
 {
   "split": "dev",
-  "n": 20,
+  "n": 32,
   "questions": [
+    {
+      "id": "hotpot_train_8754",
+      "question": "When was the father of Klay Alexander Thompson born?",
+      "gold_answer": "January 30, 1955",
+      "gold_doc_titles": [
+        "Klay Thompson",
+        "Mychal Thompson"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Klay Thompson",
+        "hotpotqa:Mychal Thompson"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 47,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
     {
       "id": "syn_multi_payment_march",
       "question": "Which system changes caused disruptions in payment processing in March, which services were affected, and which documents support this?",
@@ -30,45 +57,18 @@
       "split": "dev"
     },
     {
-      "id": "hotpot_validation_0009",
-      "question": "Which airport served more people in 2015 Asheville Regional Airport or Orlando International Airport ?",
-      "gold_answer": "Orlando International Airport",
+      "id": "hotpot_train_7028",
+      "question": "The woman who directed the movie \"Wonder Woman\" also directed a movie about which female serial killer?",
+      "gold_answer": "Aileen Wuornos",
       "gold_doc_titles": [
-        "Asheville Regional Airport",
-        "Orlando International Airport"
+        "Patty Jenkins",
+        "Monster (2003 film)"
       ],
       "gold_external_keys": [
-        "hotpotqa:Asheville Regional Airport",
-        "hotpotqa:Orlando International Airport"
+        "hotpotqa:Patty Jenkins",
+        "hotpotqa:Monster (2003 film)"
       ],
-      "question_type": "multi_doc",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 14,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_train_0040",
-      "question": "How long was the battle that Bill Blizzard commanded an army of miners in?",
-      "gold_answer": "five days",
-      "gold_doc_titles": [
-        "Bill Blizzard",
-        "Battle of Blair Mountain"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Bill Blizzard",
-        "hotpotqa:Battle of Blair Mountain"
-      ],
-      "question_type": "multi_doc",
+      "question_type": "factual",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
@@ -76,26 +76,53 @@
         "config": "distractor",
         "split": "train",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 56,
+      "index": 29,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "hotpot_validation_0023",
-      "question": " Umaru Mutallab had a son who tried to detonate materials about the flight that took place on what date?",
-      "gold_answer": "December 25, 2009",
+      "id": "hotpot_train_6783",
+      "question": "Are both Leo and Steve Perry a singer?",
+      "gold_answer": "yes",
       "gold_doc_titles": [
-        "Umaru Mutallab",
-        "Northwest Airlines Flight 253"
+        "Leo (singer)",
+        "Steve Perry (Oregon musician)"
       ],
       "gold_external_keys": [
-        "hotpotqa:Umaru Mutallab",
-        "hotpotqa:Northwest Airlines Flight 253"
+        "hotpotqa:Leo (singer)",
+        "hotpotqa:Steve Perry (Oregon musician)"
       ],
-      "question_type": "multi_doc",
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 39,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_3488",
+      "question": "which German philosopher wrote \"The opera \"Lulu\"  ",
+      "gold_answer": "Theodor W. Adorno",
+      "gold_doc_titles": [
+        "Lulu (opera)",
+        "Theodor W. Adorno"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Lulu (opera)",
+        "hotpotqa:Theodor W. Adorno"
+      ],
+      "question_type": "factual",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
@@ -103,26 +130,26 @@
         "config": "distractor",
         "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 34,
+      "index": 22,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "hotpot_validation_0001",
-      "question": "Although a dependent territory remains politically outside of the controlling state's integral area, what else can it contain?",
-      "gold_answer": "the flags",
+      "id": "hotpot_validation_0018",
+      "question": "Which other Mexican Formula One race car driver has held the podium besides the Force India driver born in 1990?",
+      "gold_answer": "Pedro Rodríguez",
       "gold_doc_titles": [
-        "Gallery of flags of dependent territories",
-        "Dependent territory"
+        "Formula One drivers from Mexico",
+        "Sergio Pérez"
       ],
       "gold_external_keys": [
-        "hotpotqa:Gallery of flags of dependent territories",
-        "hotpotqa:Dependent territory"
+        "hotpotqa:Formula One drivers from Mexico",
+        "hotpotqa:Sergio Pérez"
       ],
-      "question_type": "multi_doc",
+      "question_type": "factual",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
@@ -130,7 +157,115 @@
         "config": "distractor",
         "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 42,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_train_8748",
+      "question": "A former University of Oklahoma gymnastics coach recruited a retired olympic gymnast from the 1984 summer games, who is married to what Olympic gold medalist?",
+      "gold_answer": "Nadia Comăneci",
+      "gold_doc_titles": [
+        "Paul Ziert",
+        "Bart Conner"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Paul Ziert",
+        "hotpotqa:Bart Conner"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 50,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_train_8535",
+      "question": "The Little Brown Stein is an example of a type of beer mug made out of what material?",
+      "gold_answer": "stoneware",
+      "gold_doc_titles": [
+        "Little Brown Stein",
+        "Beer stein"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Little Brown Stein",
+        "hotpotqa:Beer stein"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 37,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_0341",
+      "question": "What produces the hormone that promotes sodium retention in the distal nephron?",
+      "gold_answer": "zona glomerulosa",
+      "gold_doc_titles": [
+        "Angiotensin",
+        "Aldosterone"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Angiotensin",
+        "hotpotqa:Aldosterone"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 65,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_train_8314",
+      "question": "While working on \"The Lord of the Rings\", Greg Butler worked on the effects for a fictional character first imagined by what famous author?",
+      "gold_answer": "J. R. R. Tolkien",
+      "gold_doc_titles": [
+        "Greg Butler (visual effects supervisor)",
+        "Gollum"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Greg Butler (visual effects supervisor)",
+        "hotpotqa:Gollum"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
       "index": 54,
@@ -138,18 +273,72 @@
       "split": "dev"
     },
     {
-      "id": "hotpot_validation_0007",
-      "question": "What land elevation does Khunyang Chhish and Ismoil Somoni Peak have in common?",
-      "gold_answer": "mountain",
+      "id": "hotpot_train_7160",
+      "question": "The Cheek to Cheek Tour was a co-headlining tour by American singers Tony Bennett and Lady Gaga in support of their album, \"Cheek to Cheek\" (2014), the tour, which began with a two-night run at the Cosmopolitan of Las Vegas,  a luxury resort casino and hotel on the Las Vegas Strip in Paradise, in which state?",
+      "gold_answer": "Nevada",
       "gold_doc_titles": [
-        "Khunyang Chhish",
-        "Ismoil Somoni Peak"
+        "Cheek to Cheek Tour",
+        "Cosmopolitan of Las Vegas"
       ],
       "gold_external_keys": [
-        "hotpotqa:Khunyang Chhish",
-        "hotpotqa:Ismoil Somoni Peak"
+        "hotpotqa:Cheek to Cheek Tour",
+        "hotpotqa:Cosmopolitan of Las Vegas"
       ],
-      "question_type": "multi_doc",
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 91,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_train_5350",
+      "question": "What is the abbreviation for the movie which starred Saif Ali Khan in 2003?",
+      "gold_answer": "KHNH",
+      "gold_doc_titles": [
+        "Saif Ali Khan",
+        "Kal Ho Naa Ho"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Saif Ali Khan",
+        "hotpotqa:Kal Ho Naa Ho"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 69,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_3961",
+      "question": "What album starring Ed Sheeran was released on 3 March 2017?",
+      "gold_answer": "÷ (pronounced \"divide\") is the third studio album by English singer-songwriter Ed Sheeran.",
+      "gold_doc_titles": [
+        "Castle on the Hill (song)",
+        "÷ (album)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Castle on the Hill (song)",
+        "hotpotqa:÷ (album)"
+      ],
+      "question_type": "multi_hop",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
@@ -157,10 +346,9 @@
         "config": "distractor",
         "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
-      "multi_evidence": true,
-      "index": 55,
+      "index": 60,
       "gold_doc_paths": [],
       "split": "dev"
     },
@@ -185,43 +373,16 @@
       "split": "dev"
     },
     {
-      "id": "hotpot_train_0036",
-      "question": "Who is the director of the film which is based on the novel by John Green and Laura Elizabeth Dern has a role?",
-      "gold_answer": "Josh Boone",
+      "id": "hotpot_validation_1858",
+      "question": "The seventh largest inhabited island in Hawaii has what remote wild beach?",
+      "gold_answer": "Polihale State Park",
       "gold_doc_titles": [
-        "Laura Dern",
-        "The Fault in Our Stars (film)"
+        "Polihale State Park",
+        "Niihau"
       ],
       "gold_external_keys": [
-        "hotpotqa:Laura Dern",
-        "hotpotqa:The Fault in Our Stars (film)"
-      ],
-      "question_type": "factual",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "train",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 30,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_validation_0024",
-      "question": "Where did the steamship company whose former director was an Australian politician born in New South Wales operate for its first 100 years?",
-      "gold_answer": "Australian coast",
-      "gold_doc_titles": [
-        "Walter Leslie Duncan",
-        "Adelaide Steamship Company"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Walter Leslie Duncan",
-        "hotpotqa:Adelaide Steamship Company"
+        "hotpotqa:Polihale State Park",
+        "hotpotqa:Niihau"
       ],
       "question_type": "factual",
       "requires_all_gold_docs": true,
@@ -231,24 +392,24 @@
         "config": "distractor",
         "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 29,
+      "index": 89,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "hotpot_train_0029",
-      "question": "Are Boy George and Florence Welch both from England?",
-      "gold_answer": "yes",
+      "id": "hotpot_validation_0547",
+      "question": "Max Hoffmann along with Hindenburg and Ludendorff, masterminded the devastating defeat of the Russian armies in a battle fought when ?",
+      "gold_answer": "26–30 August 1914",
       "gold_doc_titles": [
-        "Boy George",
-        "Florence Welch"
+        "Max Hoffmann",
+        "Battle of Tannenberg"
       ],
       "gold_external_keys": [
-        "hotpotqa:Boy George",
-        "hotpotqa:Florence Welch"
+        "hotpotqa:Max Hoffmann",
+        "hotpotqa:Battle of Tannenberg"
       ],
       "question_type": "factual",
       "requires_all_gold_docs": true,
@@ -256,26 +417,26 @@
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
-        "split": "train",
+        "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 26,
+      "index": 85,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "hotpot_train_0038",
-      "question": "Name the romantic drama from 2014 about two young cancer patients, featuring Laura Dern from Twin Peaks.",
-      "gold_answer": "Laura Dern",
+      "id": "hotpot_validation_1803",
+      "question": " Procter & Gamble Co. was founded by a British-born American candlemaker who died in what year?",
+      "gold_answer": "1884",
       "gold_doc_titles": [
-        "Laura Dern",
-        "The Fault in Our Stars (film)"
+        "Procter &amp; Gamble",
+        "William Procter (candlemaker)"
       ],
       "gold_external_keys": [
-        "hotpotqa:Laura Dern",
-        "hotpotqa:The Fault in Our Stars (film)"
+        "hotpotqa:Procter &amp; Gamble",
+        "hotpotqa:William Procter (candlemaker)"
       ],
       "question_type": "factual",
       "requires_all_gold_docs": true,
@@ -283,53 +444,39 @@
       "provenance": {
         "dataset": "hotpotqa/hotpot_qa",
         "config": "distractor",
-        "split": "train",
+        "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 18,
+      "index": 79,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "syn_factual_beta_marker",
-      "question": "Where is the BETA-POOL-EXHAUST marker described?",
-      "gold_answer": "BETA-POOL-EXHAUST",
+      "id": "hotpot_train_8443",
+      "question": "Which 2016 animated film stared John Kassir as a voice actor and was directed by Chris Renaud?",
+      "gold_answer": "The Secret Life of Pets",
       "gold_doc_titles": [
-        "long_architecture"
+        "John Kassir",
+        "The Secret Life of Pets"
       ],
-      "gold_doc_paths": [
-        "data/synthetic/long_architecture.md"
+      "gold_external_keys": [
+        "hotpotqa:John Kassir",
+        "hotpotqa:The Secret Life of Pets"
       ],
-      "gold_external_keys": [],
-      "question_type": "factual",
+      "question_type": "multi_hop",
       "requires_all_gold_docs": true,
-      "split_hint": "synthetic",
+      "split_hint": "hotpot",
       "provenance": {
-        "source": "chunking_gold_spans"
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
       },
-      "index": 2,
-      "split": "dev"
-    },
-    {
-      "id": "syn_factual_jwt",
-      "question": "What misconfiguration on AuthGateway was reported in the March incident?",
-      "gold_answer": "misconfigured JWT TTL",
-      "gold_doc_paths": [
-        "data/synthetic/incident_march.md"
-      ],
-      "gold_doc_titles": [
-        "incident_march"
-      ],
-      "gold_external_keys": [],
-      "question_type": "factual",
-      "requires_all_gold_docs": true,
-      "split_hint": "synthetic",
-      "provenance": {
-        "source": "synthetic"
-      },
-      "index": 3,
+      "index": 67,
+      "gold_doc_paths": [],
       "split": "dev"
     },
     {
@@ -356,147 +503,271 @@
       "split": "dev"
     },
     {
-      "id": "syn_incomplete_inc1_approver",
-      "question": "What is the missing detail regarding: rollback approver identity?",
-      "gold_answer": "INSUFFICIENT",
-      "gold_doc_paths": [
-        "data/synthetic/status_update.txt"
-      ],
+      "id": "hotpot_validation_2352",
+      "question": "Where was the 2015 MSA Formula Championship, a multi-event, Formula 4 open-wheel single seater motor racing championship held?",
+      "gold_answer": "England and Scotland",
       "gold_doc_titles": [
-        "status_update"
+        "2015 MSA Formula Championship",
+        "Motorsport"
       ],
+      "gold_external_keys": [
+        "hotpotqa:2015 MSA Formula Championship",
+        "hotpotqa:Motorsport"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 88,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_0529",
+      "question": "Which star in the movie Hush was born April 20, 1949?",
+      "gold_answer": "Jessica Lange",
+      "gold_doc_titles": [
+        "Hush (1998 film)",
+        "Jessica Lange"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Hush (1998 film)",
+        "hotpotqa:Jessica Lange"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 92,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "syn_factual_alpha_marker",
+      "question": "Where is the ALPHA-OUTAGE-0810 marker described?",
+      "gold_answer": "ALPHA-OUTAGE-0810",
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_doc_paths": [
+        "data/synthetic/long_architecture.md"
+      ],
+      "gold_external_keys": [],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "synthetic",
+      "provenance": {
+        "source": "chunking_gold_spans"
+      },
+      "index": 1,
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_1866",
+      "question": "Q:The 7.92×57mm Mauser rifle cartridge was used by which country's military in the 20th century?",
+      "gold_answer": "German service cartridge",
+      "gold_doc_titles": [
+        "7.92×57mm Mauser",
+        "World war"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:7.92×57mm Mauser",
+        "hotpotqa:World war"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 38,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_3095",
+      "question": "Are Myles Kennedy and SafetySuit both associated with rock bands?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "Myles Kennedy",
+        "SafetySuit"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Myles Kennedy",
+        "hotpotqa:SafetySuit"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 58,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_train_6823",
+      "question": "Between The All-American Rejects and Chvrches, which band has Lauren Mayberry as its lead vocalist?",
+      "gold_answer": "Chvrches",
+      "gold_doc_titles": [
+        "The All-American Rejects",
+        "Chvrches"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The All-American Rejects",
+        "hotpotqa:Chvrches"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 57,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_2763",
+      "question": "Which US State, hIstorically dominated by the Republican party from 1860 to 1932 is represented by State Senator George D. Maziarz?",
+      "gold_answer": "New York",
+      "gold_doc_titles": [
+        "George D. Maziarz",
+        "Republican Party (United States)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:George D. Maziarz",
+        "hotpotqa:Republican Party (United States)"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 44,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_3943",
+      "question": "What American actress who died in 2011 starred in Fear Stalk?",
+      "gold_answer": "Sada Thompson",
+      "gold_doc_titles": [
+        "Fear Stalk",
+        "Sada Thompson"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Fear Stalk",
+        "hotpotqa:Sada Thompson"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 25,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_validation_4794",
+      "question": "Joan Bennett Kennedy, who had three children including Kara Kennedy, was known for pursuing which career?",
+      "gold_answer": "former model",
+      "gold_doc_titles": [
+        "Kara Kennedy",
+        "Joan Bennett Kennedy"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Kara Kennedy",
+        "hotpotqa:Joan Bennett Kennedy"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 62,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "syn_unans_7981",
+      "question": "Who approved the auth-gateway rollback?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_titles": [],
       "gold_external_keys": [],
       "question_type": "unanswerable",
       "expected_status": "insufficient",
       "requires_all_gold_docs": false,
       "split_hint": "synthetic",
       "provenance": {
-        "incomplete_id": "inc1_approver"
+        "source": "unanswerable_topics"
       },
-      "index": 11,
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_train_0035",
-      "question": "Jessi Ruth Klein, is an American comedy writer and stand-up comic based out of which city, Klein also provided the voice of Lucy in the animated pilot for Lucy, the Daughter of the Devil is an American computer-animated television series aired by the Adult Swim programming block of Cartoon Network?",
-      "gold_answer": "New York City",
-      "gold_doc_titles": [
-        "Jessi Klein",
-        "Lucy, the Daughter of the Devil"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Jessi Klein",
-        "hotpotqa:Lucy, the Daughter of the Devil"
-      ],
-      "question_type": "multi_hop",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "train",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 42,
+      "index": 9,
       "gold_doc_paths": [],
       "split": "dev"
     },
     {
-      "id": "hotpot_validation_0019",
-      "question": "When was the eighth season renewed for the series starring Al Harrington?",
-      "gold_answer": "March 23, 2017",
-      "gold_doc_titles": [
-        "Al Harrington (actor)",
-        "Hawaii Five-0 (2010 TV series)"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Al Harrington (actor)",
-        "hotpotqa:Hawaii Five-0 (2010 TV series)"
-      ],
-      "question_type": "multi_hop",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "validation",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 39,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_train_0028",
-      "question": "Are K6 and Trivor on different continents?",
+      "id": "hotpot_validation_3877",
+      "question": "Did Yasuzo Masumura and Pitof hail from the same country and professional career?",
       "gold_answer": "no",
       "gold_doc_titles": [
-        "K6 (mountain)",
-        "Trivor"
+        "Yasuzo Masumura",
+        "Pitof"
       ],
       "gold_external_keys": [
-        "hotpotqa:K6 (mountain)",
-        "hotpotqa:Trivor"
+        "hotpotqa:Yasuzo Masumura",
+        "hotpotqa:Pitof"
       ],
-      "question_type": "multi_hop",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "train",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 36,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_train_0034",
-      "question": "What is the nickname of the footballer who scored both of Ajax's goals in the 2006 KNVB Cup Final?",
-      "gold_answer": "\"The Hunter\"",
-      "gold_doc_titles": [
-        "2006 KNVB Cup Final",
-        "Klaas-Jan Huntelaar"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:2006 KNVB Cup Final",
-        "hotpotqa:Klaas-Jan Huntelaar"
-      ],
-      "question_type": "multi_hop",
-      "requires_all_gold_docs": true,
-      "split_hint": "hotpot",
-      "provenance": {
-        "dataset": "hotpotqa/hotpot_qa",
-        "config": "distractor",
-        "split": "train",
-        "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
-      },
-      "multi_evidence": true,
-      "index": 48,
-      "gold_doc_paths": [],
-      "split": "dev"
-    },
-    {
-      "id": "hotpot_validation_0013",
-      "question": "Mr. Wilson's Cabinet of Wonder: Pronged Ants, Horned Humans, Mice on Toast, and Other Marvels of Jurassic Technology is a book about a museum that is located in which city ?",
-      "gold_answer": "Los Angeles",
-      "gold_doc_titles": [
-        "Mr. Wilson's Cabinet of Wonder",
-        "Museum of Jurassic Technology"
-      ],
-      "gold_external_keys": [
-        "hotpotqa:Mr. Wilson's Cabinet of Wonder",
-        "hotpotqa:Museum of Jurassic Technology"
-      ],
-      "question_type": "multi_hop",
+      "question_type": "factual",
       "requires_all_gold_docs": true,
       "split_hint": "hotpot",
       "provenance": {
@@ -504,11 +775,58 @@
         "config": "distractor",
         "split": "validation",
         "license": "CC-BY-SA-4.0",
-        "title_filter": "corpus_jsonl"
+        "title_filter": "active_neon"
       },
       "multi_evidence": true,
-      "index": 33,
+      "index": 24,
       "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "hotpot_train_5303",
+      "question": "What is the nationality of the director of the film based on the 2005 short film \"Monster\"?",
+      "gold_answer": "Australian",
+      "gold_doc_titles": [
+        "Jennifer Kent",
+        "The Babadook"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Jennifer Kent",
+        "hotpotqa:The Babadook"
+      ],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon"
+      },
+      "multi_evidence": true,
+      "index": 40,
+      "gold_doc_paths": [],
+      "split": "dev"
+    },
+    {
+      "id": "syn_exec_summary",
+      "question": "What does the executive summary say about the March outage impact?",
+      "gold_answer": "payment processing disruptions",
+      "gold_doc_paths": [
+        "data/synthetic/exec_summary.pdf"
+      ],
+      "gold_doc_titles": [
+        "exec_summary"
+      ],
+      "gold_external_keys": [],
+      "question_type": "factual",
+      "requires_all_gold_docs": true,
+      "split_hint": "synthetic",
+      "provenance": {
+        "source": "synthetic_enterprise"
+      },
+      "index": 13,
       "split": "dev"
     }
   ]

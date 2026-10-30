@@ -1,0 +1,3750 @@
+{
+  "summary": {
+    "config_id": "dense_only",
+    "pipeline": "retrieval_only",
+    "retrieval_mode": "dense",
+    "k": 10,
+    "n_questions_total": 94,
+    "n_questions": 94,
+    "n_scored_retrieval": 91,
+    "n_scored_answer": 0,
+    "n_excluded": 3,
+    "exclusion_reasons": {
+      "unanswerable_no_retrieval_gold": 3
+    },
+    "by_type_total": {
+      "multi_doc": 4,
+      "factual": 78,
+      "contradiction": 3,
+      "unanswerable": 3,
+      "multi_step": 1,
+      "multi_hop": 5
+    },
+    "by_type_scored_retrieval": {
+      "multi_doc": 4,
+      "factual": 78,
+      "contradiction": 3,
+      "multi_step": 1,
+      "multi_hop": 5
+    },
+    "by_type_scored_answer": {},
+    "n_errors": 0,
+    "corpus_active_documents": 55081,
+    "retrieval": {
+      "n_scored": 91,
+      "n": 91,
+      "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+      "recall_at_k": 0.8901098901098901,
+      "mrr": 0.9038461538461539,
+      "all_gold_at_k": 0.8021978021978022,
+      "multi_doc_coverage": 0.8901098901098901,
+      "mean_latency_s": 0.35028496593272745
+    },
+    "answer": {
+      "n_scored": 0,
+      "n": 0,
+      "exact_match": 0.0,
+      "token_f1": 0.0,
+      "citation_f1": 0.0,
+      "correct_abstention_rate": null,
+      "n_unanswerable_scored": 0,
+      "contradiction_detection_rate": null,
+      "n_contradiction_scored": 0,
+      "mean_latency_s": 0.0,
+      "mean_llm_calls": 0.0,
+      "mean_tokens": 0.0,
+      "status_counts": {}
+    }
+  },
+  "results": [
+    {
+      "question_id": "syn_multi_payment_march",
+      "question_type": "multi_doc",
+      "split": "dev",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log",
+        "status_update",
+        "postmortem_draft"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 4,
+        "resolved_gold": 4
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a7d7392a-a989-40d3-9031-701a073f8bd8",
+        "553fb625-c1fb-4be1-9ff3-7e5d176b7b02",
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "latency_s": 1.4330900999484584,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "syn_factual_alpha_marker",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "a7d7392a-a989-40d3-9031-701a073f8bd8",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "latency_s": 1.3348537000129,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "syn_factual_beta_marker",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "63961e03-5dec-4375-bb32-1b8a3a7c8481",
+        "cd645147-1ccb-4a8c-9a07-6c00939c8b4c"
+      ],
+      "latency_s": 0.8229837000835687,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "syn_factual_jwt",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "gold_doc_titles": [
+        "incident_march"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "958f4943-875a-4c07-9f11-d7a49c65161f",
+        "fc5e0b24-cebc-4c67-be91-4044cd9b5372",
+        "f2b8d6fe-53d9-4548-ba37-da869a237630",
+        "12cb440c-79b5-43ac-bb88-2431ec7b6729"
+      ],
+      "latency_s": 0.6296033000107855,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "syn_factual_pool",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "f8030374-2248-4876-83b3-e587b8cf4c9e",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "19a89a6f-1821-4a45-9fa6-bd23b951108a",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "0b6a70d9-3f9b-423d-b14f-73784a1354bd",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "a7d7392a-a989-40d3-9031-701a073f8bd8",
+        "553fb625-c1fb-4be1-9ff3-7e5d176b7b02"
+      ],
+      "latency_s": 0.4169593999395147,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.25,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "syn_multi_docs_services",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a7d7392a-a989-40d3-9031-701a073f8bd8",
+        "893fa084-3604-4d9e-bf55-2369caf50aef",
+        "04b1e3f7-2dae-427d-938e-811ad973dae1"
+      ],
+      "latency_s": 0.9386985000455752,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "syn_contra_c1_deploy_time",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "418135df-ac25-4620-a241-c0e0125cc0b0",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "a7d7392a-a989-40d3-9031-701a073f8bd8"
+      ],
+      "latency_s": 5.106894300086424,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "syn_contra_c2_root_cause",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "553fb625-c1fb-4be1-9ff3-7e5d176b7b02",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "0ddd58a6-49db-4881-81c1-78142295ce8a",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "a7d7392a-a989-40d3-9031-701a073f8bd8",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "553fb625-c1fb-4be1-9ff3-7e5d176b7b02"
+      ],
+      "latency_s": 0.3394964999752119,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "syn_contra_deploy",
+      "question_type": "contradiction",
+      "split": "dev",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "82d844f9-d67d-4dcd-8f40-e455271b0e61"
+      ],
+      "latency_s": 1.1376738999970257,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "syn_unans_7981",
+      "question_type": "unanswerable",
+      "split": "dev",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "excluded_from_scoring": true,
+      "exclusion_reason": "unanswerable_no_retrieval_gold"
+    },
+    {
+      "question_id": "syn_unans_4969",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "excluded_from_scoring": true,
+      "exclusion_reason": "unanswerable_no_retrieval_gold"
+    },
+    {
+      "question_id": "syn_incomplete_inc1_approver",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "excluded_from_scoring": true,
+      "exclusion_reason": "unanswerable_no_retrieval_gold"
+    },
+    {
+      "question_id": "syn_multistep_latency",
+      "question_type": "multi_step",
+      "split": "test",
+      "gold_doc_ids": [
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "latency_metrics",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "7d5fd41f-9315-4a74-afd2-903d6b3571b8",
+        "893fa084-3604-4d9e-bf55-2369caf50aef",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "ad31e77a-9066-407d-aac2-4c83b4214bc0",
+        "ad31e77a-9066-407d-aac2-4c83b4214bc0",
+        "d7776547-bc26-46db-a01c-21fda4757724"
+      ],
+      "latency_s": 0.787388400058262,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "syn_exec_summary",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884"
+      ],
+      "gold_doc_titles": [
+        "exec_summary"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "cf60289d-e64c-40ae-a385-ac652128ce75",
+        "893fa084-3604-4d9e-bf55-2369caf50aef",
+        "0b1f9601-832f-44d4-8e9f-bd2c7b0f8c72",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "590abbfc-3c32-46b0-ac15-034fa5d3517a",
+        "5de222af-aae5-4bd5-8ed5-c0e6e53958c8"
+      ],
+      "latency_s": 0.5054643000476062,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_8529",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "06a185da-c4f0-4795-a732-f56a62648e0e",
+        "04f360b5-5464-45f0-914a-a45d1157ee2b"
+      ],
+      "gold_doc_titles": [
+        "Curt Smith",
+        "Laura Stoica"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "04f360b5-5464-45f0-914a-a45d1157ee2b",
+        "06a185da-c4f0-4795-a732-f56a62648e0e",
+        "704494e8-3bc0-4c9b-9ecb-319a2fb6d26f",
+        "4d3e6769-353c-489b-8077-ffc2b3787d03",
+        "afc44fb8-9ae2-4e52-944d-464a1628998b",
+        "14656b9f-ad2c-48d2-b8d8-2d10698eff02",
+        "89c105ec-eaf0-44f2-8c60-5456c440d018",
+        "1e389b71-423c-402e-b4b8-a90f6ca33151",
+        "3ef5eb9f-4920-4590-bd5e-4d12ba998cb8",
+        "14e1e27b-2527-44e6-9827-d0e9bda9c137"
+      ],
+      "latency_s": 0.29456850001588464,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_7264",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "71379eff-7562-4ee4-862b-14d497b8c99f",
+        "a5e8134c-49aa-4bce-98c5-5217e0af5d11"
+      ],
+      "gold_doc_titles": [
+        "Tim Rice",
+        "Aida (musical)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "a5e8134c-49aa-4bce-98c5-5217e0af5d11",
+        "71379eff-7562-4ee4-862b-14d497b8c99f",
+        "c5663084-2cfb-4b5c-96a5-a21eede05ec6",
+        "e2a78f73-3564-4840-bcac-7ae5e31a2eba",
+        "c6736e69-a353-42ca-bc9e-ea4d24e1c0ad",
+        "cc2a62ea-8cd8-4f01-a107-284a20c8fdd3",
+        "f3afc951-a3d6-484e-997e-440501dcef1b",
+        "dd99097d-a477-4347-ac2a-17f62cec30c7",
+        "ec62201a-d6e8-4ea7-88e4-9fa66051facf",
+        "715db543-f131-41e4-9c8e-7e4692fd27d9"
+      ],
+      "latency_s": 0.19622000004164875,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2845",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+        "955d5257-0873-47d3-a587-1c54a38242cd"
+      ],
+      "gold_doc_titles": [
+        "Ohio State University",
+        "California State University, Dominguez Hills"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "955d5257-0873-47d3-a587-1c54a38242cd",
+        "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+        "28ae16dc-94f2-4ea5-a409-3527ee8731c4",
+        "22250f82-3a6e-476b-93a1-43e22d554dea",
+        "13ac6d4e-9d7b-4c3d-b8f8-f25545eaf9b7",
+        "3f694112-3a3d-4b67-9c1b-a772a57bf804",
+        "d4f18256-e52c-42e8-b2ed-6d031eed55f9",
+        "0e265c2b-8770-4d5b-b9ae-1d97fa6de6da",
+        "c7e8a1ca-07e0-48a7-9806-f5353ff81a2e",
+        "f722abef-7a10-4fe8-8cd9-e1c51594f823"
+      ],
+      "latency_s": 0.23189419996924698,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3397",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "20f6899a-40b5-4bf5-b53d-c0afca33d9af",
+        "f9ed890f-209d-4388-8daf-075fdd815e14"
+      ],
+      "gold_doc_titles": [
+        "Camp Modin",
+        "Canaan, Maine"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "2e6f7e42-aa67-45e3-b6a5-afba8852e717",
+        "20f6899a-40b5-4bf5-b53d-c0afca33d9af",
+        "7c933580-657d-459d-9b1f-7e7252953e45",
+        "fe27042c-e6d3-4e25-a6be-a20e81d5984e",
+        "dee1d836-a494-4a12-bc68-9393583e6656",
+        "10ca2e13-7bd5-4599-8339-836d913d2a8a",
+        "d81ba5fc-4813-4032-bd2f-307f2d36ff8e",
+        "c401df92-fe79-44fe-9085-04fcfbf154e2",
+        "e317321d-07cf-4573-b750-7957bf9f3779",
+        "f9ed890f-209d-4388-8daf-075fdd815e14"
+      ],
+      "latency_s": 0.19481769995763898,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0457",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "f29c139f-c2c3-4063-b86f-fe530c81761b",
+        "58c9f531-8cfa-4c16-a447-c0c5ec6043a3"
+      ],
+      "gold_doc_titles": [
+        "Beauty and the Beast (franchise)",
+        "Beauty and the Beast (1991 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "f29c139f-c2c3-4063-b86f-fe530c81761b",
+        "58c9f531-8cfa-4c16-a447-c0c5ec6043a3",
+        "bb75e33d-f2a5-4f0b-9dd5-c428b3e585ef",
+        "c282016a-924f-4e3c-a4da-4346fd757849",
+        "4f05b943-12ad-4ab3-a84a-d33ea69c41bf",
+        "70008cf1-e6e1-4b0b-abc7-d007915ae9ba",
+        "e09f3676-9a5d-4ec4-bb96-17816707ebb1",
+        "3a6096cf-e8fa-4566-9fe7-189c89378ca8",
+        "383033ae-5496-4eb9-bf8c-0f148c818b5b",
+        "eae6789d-40db-4da6-84d8-bf7cf9667ba0"
+      ],
+      "latency_s": 0.1787156000500545,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_5534",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "8ad411e1-f35a-4ff8-93a6-31663fbb5f8e",
+        "7131af2b-f974-4227-b41f-f4f576df4f5e"
+      ],
+      "gold_doc_titles": [
+        "The Ladder of Lies",
+        "Jean Acker"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "7131af2b-f974-4227-b41f-f4f576df4f5e",
+        "8ad411e1-f35a-4ff8-93a6-31663fbb5f8e",
+        "af81e746-31ee-4785-a4cb-9f95832ec5a2",
+        "7153d095-c2f0-4bba-84b9-67d596a1cd50",
+        "b29c0a2d-8194-448d-9c30-65f53183ec3a",
+        "3066f10f-300a-4790-9e6f-e98996d7e657",
+        "4c44d722-3023-41b9-85b8-48177e9ee635",
+        "be0d33c8-5dfe-4de4-9011-0c3c60ddeec8",
+        "0c5b0249-9337-442b-8135-10dbde79e63e",
+        "bc738d42-36e0-4248-9b6c-e62221fae096"
+      ],
+      "latency_s": 0.18398450000677258,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2179",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "7bf1c9f6-505e-44e4-98f7-606c5e358e9c",
+        "a77bf725-7b94-46a0-ac59-f0d0af0f3bc4"
+      ],
+      "gold_doc_titles": [
+        "Leadgate, Cumbria",
+        "Alston, Cumbria"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "7bf1c9f6-505e-44e4-98f7-606c5e358e9c",
+        "202a9fc8-c998-44b1-a6f0-91ba48f6d74c",
+        "5b8193cc-8b10-417d-9cbf-831c6311c7b9",
+        "3b5b0749-9e24-4fee-ba74-1bd33cfcf90d",
+        "185052c8-90aa-4ddf-b6ab-0e30b62dc1f2",
+        "2a63a768-eea8-44ee-a04c-c693d8c6ad77",
+        "62d4bc61-dfc4-4a90-9f67-881784dd5dcb",
+        "b34d8a4b-c01a-48e7-90bc-031a6083edcb",
+        "887670de-bbfc-4e41-95d4-65cd166c119d",
+        "a87ede3d-113f-46f2-9e05-0f6aaf7d93b5"
+      ],
+      "latency_s": 0.29944900004193187,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1911",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "5036105a-5931-46ea-a5a4-9cc9eb9eaf9d",
+        "028a11cb-2f27-4ff6-a358-d0c8be71cc8a"
+      ],
+      "gold_doc_titles": [
+        "Claudio Monteverdi",
+        "Georges Bizet"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "028a11cb-2f27-4ff6-a358-d0c8be71cc8a",
+        "5036105a-5931-46ea-a5a4-9cc9eb9eaf9d",
+        "728d12a7-4a35-4628-8682-5968b09e7ee2",
+        "4ce66d98-f0f3-458c-8f16-75245c5c2902",
+        "9b87dc5e-91e8-4b65-92be-7fb0c8a6259c",
+        "c3c5765f-1541-4b93-99fd-3a797c966b84",
+        "1c78c372-8356-477f-8f4b-b3dd968c0666",
+        "23772283-925b-4cdd-9cef-baf408c318d8",
+        "9afd2878-16b3-4158-8a0b-8aa4fe20fe8f",
+        "288a6b4e-e024-4675-aa23-f36316801e04"
+      ],
+      "latency_s": 0.28797369997482747,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3488",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "7312c8d3-b046-4815-be42-ba873bf3e731",
+        "230add81-5fe5-49f7-80ba-d7b6b5fcf0d4"
+      ],
+      "gold_doc_titles": [
+        "Lulu (opera)",
+        "Theodor W. Adorno"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "7312c8d3-b046-4815-be42-ba873bf3e731",
+        "1f02b885-270d-43be-8486-b7f5843e5dfc",
+        "230add81-5fe5-49f7-80ba-d7b6b5fcf0d4",
+        "47669d05-d22d-49c4-b2d7-a027e68083bc",
+        "2b380e2f-b538-464a-b963-5c3ae53cf440",
+        "398fe062-37a0-40a2-a458-dafdcba00b3e",
+        "b40bb2de-0deb-4d19-b7a0-bffdc1d00711",
+        "5f9b6abb-ab6e-4299-bdb7-9c67d2fa37fc",
+        "686997b2-d0ec-4546-858d-4c56b43ac8cf",
+        "98b8103e-c07b-40f1-a39d-c0027f0bc21a"
+      ],
+      "latency_s": 0.3722478999989107,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0825",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "6f677619-5df1-4658-b6c4-f3b0aedc7304",
+        "9015a187-2ae9-48b3-82dc-88f937eb2529"
+      ],
+      "gold_doc_titles": [
+        "Renée Asherson",
+        "The Others (2001 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "6f677619-5df1-4658-b6c4-f3b0aedc7304",
+        "9015a187-2ae9-48b3-82dc-88f937eb2529",
+        "6b3ebeee-2809-4e32-bef5-6abeb7237d67",
+        "b1df3161-6d4b-4e3a-a64b-7bc4d6603c19",
+        "b44c0d74-9fd8-40e0-b909-8fb4eeedff89",
+        "b2cf854a-ca4d-4ea0-a5c2-cf611d5ea060",
+        "0c5b0249-9337-442b-8135-10dbde79e63e",
+        "659be600-3677-4794-a96e-0b00a1fab7c4",
+        "5c6d77b1-b290-4af9-8dd5-71361d94dd2a",
+        "af81e746-31ee-4785-a4cb-9f95832ec5a2"
+      ],
+      "latency_s": 0.23633230000268668,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3877",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "ed05d61b-d83d-4ed0-b503-9b8a4f3809de",
+        "266af38f-26dc-4dc7-856b-2cb9b2f11773"
+      ],
+      "gold_doc_titles": [
+        "Yasuzo Masumura",
+        "Pitof"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "f18b59ce-3865-40c9-b945-0b692c5c687b",
+        "1e392fa0-e960-437a-9e98-5fecc3b85414",
+        "5272dd88-f32a-4324-8234-2023736fe475",
+        "c45601ef-3646-46e1-a945-e07b1f144340",
+        "1a145c95-dfbf-4d4f-aee8-616785d37d3d",
+        "2f80df0b-eb37-41f0-9b30-56a4e6ef4533",
+        "4b4358ed-2681-4d99-ad51-47b2b1297b57",
+        "f2e0708f-e3d1-4939-aad0-131a6d151ea0",
+        "4091c4a2-9569-4c11-bf4c-9b593aabeef7",
+        "cdee9af4-5023-45b2-960f-61e7b8b6efd3"
+      ],
+      "latency_s": 0.5602701999014243,
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3943",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "4e52e011-6d67-4589-a21b-d6475e16238e",
+        "9b55c3a3-12b4-4c6c-83c8-78801847895a"
+      ],
+      "gold_doc_titles": [
+        "Fear Stalk",
+        "Sada Thompson"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "4e52e011-6d67-4589-a21b-d6475e16238e",
+        "72759218-7ae8-44a7-954c-6a923a23b3ed",
+        "e8173d26-262a-4bfe-9d3e-6b0ba5e5449d",
+        "bd4398fb-d13f-4b14-96e7-2a30dabbbc85",
+        "0c1711eb-feb6-454d-982b-e9e61f526e57",
+        "34414567-5c84-4292-b644-7f674df556eb",
+        "14812feb-d782-4c9c-8356-669d9e4131a6",
+        "24f98133-7d41-4769-96c0-2fb5e892b47f",
+        "19fc18be-8d62-4374-aa9f-5da5b23ad51f",
+        "090ee297-865c-4e74-943a-e85685472e19"
+      ],
+      "latency_s": 0.8611616999842227,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1485",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "39b4a09d-76e8-4c58-b228-c5a30c173dfc",
+        "63056aab-6ed5-473f-a029-42b0fdd554f1"
+      ],
+      "gold_doc_titles": [
+        "Tamiami Canal",
+        "Genesee River"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "39b4a09d-76e8-4c58-b228-c5a30c173dfc",
+        "63056aab-6ed5-473f-a029-42b0fdd554f1",
+        "fbe9aaf2-d93d-4c4e-96fb-fda82844de84",
+        "e40cae96-1728-433b-9a26-029cc1fd582c",
+        "2dc1bad0-6121-4d28-88f7-f0957b0c7c6c",
+        "ed319488-ea6e-48ac-8ac7-7860910df03f",
+        "541cca01-0cff-4358-be98-e4f01c5355fe",
+        "4034d8f7-f954-40e3-865e-07358f28c117",
+        "4cc6e849-16f7-4c7b-af64-8121c73a96a5",
+        "644840d9-9393-46b0-ae18-941751a3ad3a"
+      ],
+      "latency_s": 0.23880269995424896,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1800",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "108fa944-37d4-4d37-8a7a-e046feda0f69",
+        "0fb940d0-1d65-42ed-83e3-a0daa925df70"
+      ],
+      "gold_doc_titles": [
+        "1966 Football League Cup Final",
+        "West Bromwich Albion F.C."
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "108fa944-37d4-4d37-8a7a-e046feda0f69",
+        "d2375e0b-741d-4490-98ff-d3bbf7c9ee7c",
+        "0fb940d0-1d65-42ed-83e3-a0daa925df70",
+        "0f6a38b8-25b7-467d-8599-2daca6a799ae",
+        "115bc17f-cd08-4ba0-887c-f58ca365bdd4",
+        "6a742977-5d10-4ebc-8914-f26144651078",
+        "ac86ac0e-75f1-40bf-af63-c87526e73086",
+        "4aa3c82b-d0d8-4e06-8645-173b2a377fd1",
+        "eec58b3f-552a-4667-bb33-d00a142f24fa",
+        "aa3b618a-57db-45f1-8428-6b4cdcf9fe84"
+      ],
+      "latency_s": 0.19041969999670982,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_5516",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ffbee402-5430-49de-928f-9d781644fac1",
+        "449cfb70-eafe-46e0-ab9b-08ddb0d5af7d"
+      ],
+      "gold_doc_titles": [
+        "Mary Robinson (poet)",
+        "Perdita (The Winter's Tale)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "ffbee402-5430-49de-928f-9d781644fac1",
+        "26b85189-cc08-4011-85c9-4564ef441a4d",
+        "ba62fc13-11a1-4e6b-b727-39d63c67ed8d",
+        "449cfb70-eafe-46e0-ab9b-08ddb0d5af7d",
+        "e35be5ed-3c95-47bc-ae8c-e60f478039d8",
+        "fd8bf90f-aeaf-48ee-9d34-0ea3f141d50d",
+        "3f290169-659b-4730-935c-a1df6cac2417",
+        "6e02ab0b-dc7b-480a-8184-4dbd1ae3838a",
+        "4a8b84ac-aa84-45bc-8e76-eeb41b30c011",
+        "3f432c4d-775e-4105-98f8-c2d128d2ab9e"
+      ],
+      "latency_s": 0.28777609998360276,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_7028",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "4e498328-c3a9-452e-bcf0-4328e2624c60",
+        "84d268a3-8274-4d8d-9d94-b157dfc90fa3"
+      ],
+      "gold_doc_titles": [
+        "Patty Jenkins",
+        "Monster (2003 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "7bf0d199-14bd-4708-8e9c-3a3fe3ee8289",
+        "e92eac20-a3ef-4ec0-8190-4c6c45e21820",
+        "4e498328-c3a9-452e-bcf0-4328e2624c60",
+        "0c1711eb-feb6-454d-982b-e9e61f526e57",
+        "c675ca24-03e9-41b3-b2ce-7735ec40395b",
+        "981c815a-a49c-4f6c-9ac4-542259d04c75",
+        "6b2ae0c8-c6e2-471e-8d48-92e2f56e70b2",
+        "35c3e835-cce0-41d1-8bcc-43763c0c2ae1",
+        "84d268a3-8274-4d8d-9d94-b157dfc90fa3",
+        "933b32de-216d-40e9-81ad-a41aa9ebb10a"
+      ],
+      "latency_s": 0.36108959990087897,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4109",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "54424812-8ddb-4d37-8dcf-63c80b313b09",
+        "640dcea6-37b5-4c5a-bcfe-08b2c2afa481"
+      ],
+      "gold_doc_titles": [
+        "Dobara Phir Se",
+        "Salman Iqbal"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "54424812-8ddb-4d37-8dcf-63c80b313b09",
+        "c8ded57c-7063-4cdd-979b-57eaefb29a1f",
+        "640dcea6-37b5-4c5a-bcfe-08b2c2afa481",
+        "7453680a-1228-4437-ad1b-a6913d2ad1a4",
+        "d5c8710c-8bf8-41e8-a7a4-07cac4a5ce2d",
+        "7464fe91-838e-47dd-84bf-4fbb37e8a147",
+        "a4f3037e-0823-4f4e-a7d5-9845d7a54547",
+        "9bfc24a3-b7ea-4e3e-b96d-a3769fbefd76",
+        "d9a3b5d1-9124-43f6-b04a-e23d55ce9711",
+        "f288d08e-2b45-42a4-a6d9-2d303466f120"
+      ],
+      "latency_s": 0.1861351999687031,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4793",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "e7b9f32e-025e-4ded-a6c9-b55c3f1101c8",
+        "646de7a4-8dc2-4e4e-9688-70e679e09f32"
+      ],
+      "gold_doc_titles": [
+        "Jerry Garcia",
+        "Joe Gooch"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "646de7a4-8dc2-4e4e-9688-70e679e09f32",
+        "e7b9f32e-025e-4ded-a6c9-b55c3f1101c8",
+        "e03deacd-2511-4c79-98ca-d463224ed769",
+        "b7bdd2b6-2b2c-43a0-a3b4-11dfc00cf249",
+        "f196a2c8-52c9-4227-b1ba-0a97ae305df1",
+        "13e565dd-ec68-474c-990a-044113b60305",
+        "2d10e4e2-19e0-4daa-a31a-c649537e8950",
+        "e4db1636-3f52-4a4e-9219-c20cb621fc84",
+        "98506c78-5916-480c-aa1d-1bfbf80614d3",
+        "f4a0d961-4a15-4cdb-beeb-1526dfe12bf8"
+      ],
+      "latency_s": 0.19070010003633797,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_5771",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "80bf82be-8965-432d-be95-9a18cff2bfb0",
+        "48f52f6b-8d86-45ad-bb9d-afbd584adea9"
+      ],
+      "gold_doc_titles": [
+        "Sian Gibson",
+        "Peter Kay's Car Share"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "48f52f6b-8d86-45ad-bb9d-afbd584adea9",
+        "80bf82be-8965-432d-be95-9a18cff2bfb0",
+        "33fc74c2-c7a4-4a50-9941-99eaab3cc3c7",
+        "793fdf08-3913-4cf0-b44d-855dc86db560",
+        "9c295b3d-1603-4f37-95d1-cf9c817b6a36",
+        "2972cee7-8e05-4d99-838f-07ceed0aad57",
+        "72860425-f394-4880-9403-290dbd9cbf64",
+        "073b4ae5-6711-439f-aac3-cf017e6df608",
+        "80cb3f01-6762-4e92-b78f-b18dfc920499",
+        "87d5898a-8592-4eae-863a-e886fa9b3aff"
+      ],
+      "latency_s": 0.1880335999885574,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1732",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "d0d48035-7550-45fc-9102-55a40fd375e3",
+        "3a919a1f-1ab7-434f-9c22-8f3990299214"
+      ],
+      "gold_doc_titles": [
+        "Meyers Mill, South Carolina",
+        "Savannah River Site"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "d0d48035-7550-45fc-9102-55a40fd375e3",
+        "b876cb37-499f-4f4c-bee7-60c7362e42f0",
+        "3a919a1f-1ab7-434f-9c22-8f3990299214",
+        "21eb94ea-6f4a-46ee-bd4e-5f0994535bdc",
+        "d395b91c-40b2-493b-8b31-cd2faf783f59",
+        "d90936ae-de3b-4ba0-a0b4-1414d4c3c59a",
+        "ccb1cce0-d7f2-42b0-bfab-51c0a4490654",
+        "21318326-f9c0-4098-8ae5-abb45a16e6d3",
+        "1c9f4ca1-ae31-40b9-87d5-67c8fc5245c6",
+        "f7883c2d-2c47-436f-9429-eee4d40f43a7"
+      ],
+      "latency_s": 0.17130350007209927,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_8747",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "c2a5c92d-9335-4385-8991-6f10fa251ba3",
+        "60bb6155-1df4-45a4-bcbb-5373163dd813"
+      ],
+      "gold_doc_titles": [
+        "Gerald Grosvenor, 6th Duke of Westminster",
+        "Hugh Grosvenor, 7th Duke of Westminster"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "60bb6155-1df4-45a4-bcbb-5373163dd813",
+        "24ef6537-d8bf-47b6-b915-273ba08156dc",
+        "c2a5c92d-9335-4385-8991-6f10fa251ba3",
+        "708b4089-2b1d-477d-8c82-4c4ce6961059",
+        "7df4fd5b-47e2-4833-8b88-2c321a575114",
+        "67fb7a8f-683f-48d6-80ca-2b5a74662e2e",
+        "0178f051-4d19-4c60-87ee-0d8c9c526b29",
+        "65baabfd-506b-44df-9b88-a9a386171baf",
+        "1fdad96f-5e35-43df-ab4e-14704c1c06ff",
+        "29f7ebc0-ec62-4db6-9dcf-2cf96de674f1"
+      ],
+      "latency_s": 0.2342820999911055,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_7609",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "8624ba21-0e65-44c0-bef1-0c7f40dc22c6",
+        "db3602ab-fe71-4e46-9c1d-35576f1a5b24"
+      ],
+      "gold_doc_titles": [
+        "Ghosts (2006 film)",
+        "Gweilo"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "8624ba21-0e65-44c0-bef1-0c7f40dc22c6",
+        "cb051f66-6e9f-425a-aae3-6e9309b7eab2",
+        "74d11110-39ee-44a2-9ad4-caef7bbf2ec6",
+        "5b09d73b-6c37-4d0a-b9ac-7176071eefbd",
+        "8bbef0b9-946c-47f1-b324-3c5e4f9a58fe",
+        "67df2754-bd5e-49ee-97ba-126c73938e0f",
+        "fda256da-35e9-48b6-a0c7-2b194818a815",
+        "39f5efcd-a84c-45fb-9abb-f0006d75745c",
+        "013ff2ef-bf1a-42af-81d0-97ca35dc081d",
+        "8f60e4f2-64a5-418d-919f-be97259036c9"
+      ],
+      "latency_s": 0.1871009999886155,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3532",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "8bdeb9e1-9cb9-4bde-9a35-2bbcaf760363",
+        "84e110c8-4bcd-4b2d-90ce-39bb93e78455"
+      ],
+      "gold_doc_titles": [
+        "Marcel Duchamp",
+        "Jiang Wen"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "8bdeb9e1-9cb9-4bde-9a35-2bbcaf760363",
+        "84e110c8-4bcd-4b2d-90ce-39bb93e78455",
+        "66425686-3a13-400b-9b18-88754f9a6241",
+        "81640bbb-a786-40a7-acc6-6605eb3fad85",
+        "9fe6d184-930b-4e0d-8c50-bdb282ca8d31",
+        "c86a307f-4c35-43f3-b224-ebd76e3f1846",
+        "55dab3c2-1402-4e54-a508-b9b629fc0fe3",
+        "c7fbe0a0-6081-4f3b-b2ab-e3ec9fb4c3a6",
+        "056cc0f3-d1a5-4f9a-90e2-98dc85d08731",
+        "4091c4a2-9569-4c11-bf4c-9b593aabeef7"
+      ],
+      "latency_s": 0.4759198999963701,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_8535",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "b6ee4ca4-4e03-4d93-8085-b407530f15e6",
+        "7e671fc9-8c47-4617-9596-a6009124c219"
+      ],
+      "gold_doc_titles": [
+        "Little Brown Stein",
+        "Beer stein"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "7e671fc9-8c47-4617-9596-a6009124c219",
+        "0cafcab7-f93c-4593-8448-9179bbfc7473",
+        "b8ff0028-4d7f-4944-854b-5e5e1b01c742",
+        "087dfd64-99c2-48bb-bbe2-248a5ea9de53",
+        "4cc94e35-343c-408a-a28b-210e5b9999be",
+        "307228da-0eb8-4923-b7cf-0bb40e5033fe",
+        "500bde14-4668-4fc9-b95a-1d4933532fc8",
+        "8f3b3bcd-4b99-4f82-bb3d-2b87d868e1e3",
+        "33ed8805-be36-4de7-97c1-4499769695ed",
+        "02e0a27e-a832-4800-b516-2ba0d01b8173"
+      ],
+      "latency_s": 0.2556835999712348,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1866",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "064496fe-3cc4-41b3-abb4-aec29ea643e9",
+        "9ef6b795-c01f-4d0e-b4a0-b2d101c99526"
+      ],
+      "gold_doc_titles": [
+        "7.92×57mm Mauser",
+        "World war"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "064496fe-3cc4-41b3-abb4-aec29ea643e9",
+        "bf915f86-4632-4086-8ebc-721414004812",
+        "2af41573-919f-4f96-a3a7-c9ee23be8828",
+        "585c277c-fca0-45bb-8bdd-90b07c9ff4a3",
+        "a8adc023-af9e-4802-8946-fac474dee2ca",
+        "01cc138e-92bd-433c-bb15-c517d4bc2ce8",
+        "0cc3b006-a933-4191-b9ea-b4219d7e0856",
+        "4763e7f8-4154-4053-b61b-6e157072967c",
+        "bcd488c5-ebdc-4ae9-87ac-fa8e344c620c",
+        "b969ebdc-bef4-433f-a9a1-bdfd300e2595"
+      ],
+      "latency_s": 0.2304867000784725,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_train_6783",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "ef9fcdd8-0e03-4943-a926-938ab0d98ae6",
+        "d1d23f65-3188-4337-aae1-21793fda8539"
+      ],
+      "gold_doc_titles": [
+        "Leo (singer)",
+        "Steve Perry (Oregon musician)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "d1d23f65-3188-4337-aae1-21793fda8539",
+        "ef9fcdd8-0e03-4943-a926-938ab0d98ae6",
+        "d56c2e65-722d-487a-a43d-87ca18df8408",
+        "0db0b8b0-5a81-481b-a4cb-1393e044a701",
+        "842a12b4-3119-41bc-8174-2b84bf818bb6",
+        "db033155-51c2-4760-bb84-dd455901d902",
+        "6439ad81-3760-4277-92aa-808b0c705d1e",
+        "67252bea-36eb-454a-a19b-9dbcf92b6212",
+        "93bd0a05-fff9-472a-a84c-74425152fbb9",
+        "7a12c4a1-63a4-4061-8a81-e9c3beafa0a1"
+      ],
+      "latency_s": 0.3137920000590384,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_5303",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "764837fa-77ca-45c0-bbe5-6368ce41788e",
+        "b07000a5-bd5c-46e0-b10c-87d4f14dd1a3"
+      ],
+      "gold_doc_titles": [
+        "Jennifer Kent",
+        "The Babadook"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "84d268a3-8274-4d8d-9d94-b157dfc90fa3",
+        "d9f37c6e-4641-4c7c-bc65-d18ac678a441",
+        "b07000a5-bd5c-46e0-b10c-87d4f14dd1a3",
+        "40f988c2-d646-4e77-9f37-c7eaec32b528",
+        "8490890e-8484-4f79-ac47-66a6e12fcfa1",
+        "4e498328-c3a9-452e-bcf0-4328e2624c60",
+        "4870bb9d-82d2-4029-be4f-03359f8f9733",
+        "a5f25158-c4a3-4912-bb26-a9a2c14fa3e2",
+        "31aa0f0a-b84f-4dea-95da-2307c39a8cc2",
+        "8944fafd-e78e-4244-9432-999768429d77"
+      ],
+      "latency_s": 0.24420469999313354,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.3333333333333333,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_train_5644",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "84433bd9-0765-41c6-a669-bf41a99467c0",
+        "4769f05e-18d4-4a60-bb1e-c8705d141433"
+      ],
+      "gold_doc_titles": [
+        "Dane DeHaan",
+        "Valerian and the City of a Thousand Planets"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "4769f05e-18d4-4a60-bb1e-c8705d141433",
+        "84433bd9-0765-41c6-a669-bf41a99467c0",
+        "83568646-30c2-4f4b-afb9-fb213ec18fa4",
+        "8a1c94c4-b07c-436b-b76c-d4a0d97a1b8e",
+        "10ca79dd-ddb0-42cb-ac68-6214c5996d61",
+        "82c69fce-2c92-4966-b8e8-adbfb9369cea",
+        "b6a562d5-c351-4c11-98d7-84b6982a2b06",
+        "ce06d572-5cea-4ac4-bad6-a1aa1a8d2280",
+        "17407215-73f0-4b4a-a60c-91daad1d879b",
+        "d1bb8b2a-35d2-4362-8046-d70baf73f737"
+      ],
+      "latency_s": 0.22045350004918873,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0018",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "75dde24d-2b76-4215-ade3-eeda29c7c468",
+        "d4ed5d28-d63a-4078-a071-480c49d4a383"
+      ],
+      "gold_doc_titles": [
+        "Formula One drivers from Mexico",
+        "Sergio Pérez"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "d4ed5d28-d63a-4078-a071-480c49d4a383",
+        "75dde24d-2b76-4215-ade3-eeda29c7c468",
+        "e01f0b3b-5f1e-4a22-9e8f-2309fdd8edf8",
+        "265ab62e-079f-41c8-a19a-a324732d4497",
+        "304dc777-6bd1-4e07-8320-a5000e8c77af",
+        "2aff9405-6e7c-4486-853a-379ed47f6315",
+        "d8dfad6e-191c-4633-8532-3c197392ce64",
+        "7f9fa354-f331-4071-9b56-ddbfd59f8854",
+        "47d4cea5-45b5-4b73-9b6f-bb389e008b10",
+        "5fe037c5-2b44-4fdb-a2c9-86f70a377762"
+      ],
+      "latency_s": 0.24656379991210997,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_8381",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "cd2d84a7-c359-4dd3-8ada-a56475a8f2b8",
+        "c5fc74e0-18cb-4416-8ec4-f230c406d54b"
+      ],
+      "gold_doc_titles": [
+        "Beena Sarwar",
+        "Daily Jang"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "7276b048-4d0c-45f5-88fe-8628f484fe43",
+        "cd2d84a7-c359-4dd3-8ada-a56475a8f2b8",
+        "2b01811c-8e38-4ab1-ae55-b39c8a527744",
+        "bfd5e30d-1e8b-4581-b48d-8df2b086534e",
+        "88d9f489-317b-476e-a2d0-cae8ec65a963",
+        "304d37e4-b03b-46fb-bdbc-cc2f546bb715",
+        "128401a2-3bbe-4df4-8d44-58d5e77982a5",
+        "2ad60351-7327-43f6-a4f4-d2dbcd0ac625",
+        "9b272fba-6a17-4fc1-8e37-3f4cf496b02e",
+        "8bb80eb3-1320-42d7-990e-b1d6bc6bcff7"
+      ],
+      "latency_s": 0.3083900000201538,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2763",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "a285424b-aa14-4bb5-9ad2-0df4d6f991ea",
+        "2378ed2c-80d0-416c-b832-208d740a4da6"
+      ],
+      "gold_doc_titles": [
+        "George D. Maziarz",
+        "Republican Party (United States)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "a285424b-aa14-4bb5-9ad2-0df4d6f991ea",
+        "796857b5-f3ce-447c-babf-2b6c7ff02cb7",
+        "2378ed2c-80d0-416c-b832-208d740a4da6",
+        "04254c3a-a5a1-4a14-8044-45489e7b148e",
+        "2fb58fb0-05bb-4152-95b9-9cea179031ae",
+        "1cb20d4c-32aa-47ae-bc1f-ae06214d2c43",
+        "41f35d43-88ae-4ec8-af53-2adb8f07f54f",
+        "34d2ff27-d874-4a59-b5a3-3be4820173cb",
+        "522f372b-fbae-4993-a926-37e3822bd8f8",
+        "08283efe-ce3f-4d66-8fd6-5c89482574f4"
+      ],
+      "latency_s": 0.1778275000397116,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3238",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "3444c4e5-eef6-4252-9d6b-2c0fded2521f",
+        "7a5463ad-8d9c-479d-860b-2598fe7efaf6"
+      ],
+      "gold_doc_titles": [
+        "Wedding Bell Blues (Gilmore Girls)",
+        "Alexis Bledel"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "7a5463ad-8d9c-479d-860b-2598fe7efaf6",
+        "e60a0b8d-492c-4515-86c1-2a18dc577260",
+        "3444c4e5-eef6-4252-9d6b-2c0fded2521f",
+        "9fa4fd0b-4ff3-46ff-b11e-bae3a346084b",
+        "ab85713d-3c76-4909-bbdc-2ba59cfdc36f",
+        "8421e728-eec1-410c-87af-85d722466968",
+        "eb3dcfba-748e-46f2-ad37-778f23f6184a",
+        "f2280af0-e2b9-42ef-9521-d7a2f0f5069b",
+        "4ad0f7ea-9a97-4177-8003-eb20facf6521",
+        "9f42c62e-95d3-4916-9e6d-04b51f2fc03a"
+      ],
+      "latency_s": 0.2343701000791043,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_8698",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ff8ab9b4-773f-43e5-bd60-3ebcd7e947a4",
+        "f26b9595-d7b3-4207-8026-b167f645b5ea"
+      ],
+      "gold_doc_titles": [
+        "Karan Kapoor",
+        "Sanjana Kapoor"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "ff8ab9b4-773f-43e5-bd60-3ebcd7e947a4",
+        "e246b722-367f-4410-99d6-e01b7235b76c",
+        "f26b9595-d7b3-4207-8026-b167f645b5ea",
+        "6cd94873-dfd5-4ea7-9535-06a6a3453aa2",
+        "669a2c1b-6082-4f80-ac5e-f8b7737d62c1",
+        "02e9e777-e682-479b-a49d-a95168a39466",
+        "88a6697c-4dcd-4d2d-ac02-efd112165e85",
+        "23aad148-ca77-4946-a7fd-5bc892d4a670",
+        "790a061a-9188-4234-9d57-bd55801a696b",
+        "13f1972d-5056-49bf-85f4-48d803ff2564"
+      ],
+      "latency_s": 0.255792299984023,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_8754",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+        "0758e708-c51a-40c1-bbf8-122eca993764"
+      ],
+      "gold_doc_titles": [
+        "Klay Thompson",
+        "Mychal Thompson"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+        "0758e708-c51a-40c1-bbf8-122eca993764",
+        "9c8e5e5f-a499-4d45-a7f3-ef17cdc71694",
+        "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+        "7acf8d36-db3c-4c63-af07-012af36c3971",
+        "efc41f82-f03b-4881-ac22-6d86477d2209",
+        "d046d9f0-24aa-46eb-9c71-a97413780456",
+        "57f43810-943a-452e-bc3f-a8d5f4044127",
+        "42fc70a3-03a4-4058-8b71-fa4413133613",
+        "4f675c4f-cfa9-470d-8e5b-d07e7cda5e14"
+      ],
+      "latency_s": 0.19130009994842112,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2182",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "7c9f3544-b50c-4b45-b1fe-125751c66051",
+        "a9c57c1e-fba6-426b-9256-40f3ec4addc9"
+      ],
+      "gold_doc_titles": [
+        "The Bronze (film)",
+        "Melissa Rauch"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "7c9f3544-b50c-4b45-b1fe-125751c66051",
+        "465fa1e2-c4c7-4879-8f92-47f4cf6feda2",
+        "59b7017e-aaa4-4dc6-8af6-648268fca7b9",
+        "d74b6f81-c0b2-4050-9677-9aec9584fa21",
+        "3dbe9e67-9eb6-4cd8-a91b-fc2f38067b1a",
+        "3b31af40-01fc-45e4-af79-c62666fd75c0",
+        "a9c57c1e-fba6-426b-9256-40f3ec4addc9",
+        "4825590e-e512-49d3-9d2c-4f534c7c27dc",
+        "9266eed0-25c9-47e0-a712-64b7f6bedb66",
+        "3471043f-43ac-4049-a255-7361453b42e3"
+      ],
+      "latency_s": 0.13909279997460544,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_8775",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "287bc2ce-1d9a-4e6c-b0ca-5ce2f0a0865a",
+        "3c2316bb-9221-4944-850c-6c6f61deeb20"
+      ],
+      "gold_doc_titles": [
+        "Aram Avakian",
+        "David Wall (actor)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "287bc2ce-1d9a-4e6c-b0ca-5ce2f0a0865a",
+        "f2da9e70-9186-4c2f-a1d5-ec899809ef2a",
+        "3c2316bb-9221-4944-850c-6c6f61deeb20",
+        "3daa24bc-883b-42e0-b9c2-8116f814ed78",
+        "4870bb9d-82d2-4029-be4f-03359f8f9733",
+        "11f799c6-dade-4a21-9275-0a5a5aef082a",
+        "bcdfc94c-de28-4c68-b70a-dcd322fbb1ec",
+        "0eb23c08-714e-4def-b5fc-c3fdb62299b8",
+        "a0fe2bc2-2617-4b88-a843-b138001588b9",
+        "b591686f-9509-4235-a7c2-c061af0e4b3c"
+      ],
+      "latency_s": 0.10216459992807359,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_8748",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "e16139fe-b5b1-4561-bd00-2e892755d6cd",
+        "7b8037a2-1a6c-4b80-9a2b-b41248484a32"
+      ],
+      "gold_doc_titles": [
+        "Paul Ziert",
+        "Bart Conner"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "7b8037a2-1a6c-4b80-9a2b-b41248484a32",
+        "ce737d67-2fd8-4083-8845-b8ea2d65453d",
+        "4810c7c8-485d-4484-9268-b5e07245dbd0",
+        "782a216d-167c-4e29-9a3a-e250bc828118",
+        "3655d058-b621-46f6-b8a6-8adf47859e9e",
+        "dbf90e50-3249-4371-914e-efd6847dc767",
+        "6ed04c61-03ab-4935-b6b7-2ed51a887f05",
+        "65157fd5-6260-4e4f-aec0-4981b1ada9dc",
+        "9808ca98-af3e-4de3-b466-feddc2d11d1b",
+        "7af9e7ff-683e-43a3-bd7d-51ea40928a44"
+      ],
+      "latency_s": 0.11456409993115813,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_train_7524",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ebe2a7fe-4c46-4ee4-af5f-0727e001583d",
+        "8cae4091-3136-417c-af0e-5b0b87050e00"
+      ],
+      "gold_doc_titles": [
+        "1998 Minnesota Twins season",
+        "Paul Molitor"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "8cae4091-3136-417c-af0e-5b0b87050e00",
+        "ebe2a7fe-4c46-4ee4-af5f-0727e001583d",
+        "799ad60e-1254-44cd-a15e-5fe1d61d6563",
+        "86750233-1556-4aef-bb06-28b734cd52f5",
+        "f03b9bbc-d005-44d7-9292-907a4d334b8a",
+        "ffa5a432-f35e-4945-9213-a009052d6d87",
+        "c288c62f-132a-4294-b1a9-3951fdbb918d",
+        "e165a342-c488-4800-8f9a-011c21d82fe9",
+        "096aa619-21ce-434f-a5f5-326e3345f568",
+        "42a5168b-8b71-4741-81b4-8146d66fb1f1"
+      ],
+      "latency_s": 0.8959574999753386,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_7170",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "836b354b-6134-4d9e-9229-008ac6043b7b",
+        "cb0caf24-f802-466c-9d45-032c27e1095d"
+      ],
+      "gold_doc_titles": [
+        "Farshid Karimi",
+        "Ali Karimi"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "836b354b-6134-4d9e-9229-008ac6043b7b",
+        "cb0caf24-f802-466c-9d45-032c27e1095d",
+        "2e5e5b69-2c6e-49a3-aca6-7df4f91f3dcc",
+        "49c4a38b-b708-4d7a-878d-bcb9235fb2d8",
+        "1ba32f66-a12d-4b78-ae48-f8075382e3f1",
+        "e46fcf98-f625-4339-bf0f-e70a0d8dfae1",
+        "eaa66fc3-3f4b-4379-9ac8-26a7b2d1a094",
+        "103e834f-a6d0-4c45-ba74-8720c237794a",
+        "97b5cdf0-e5e2-4bd3-ac2e-330eacfbea65",
+        "c72e725d-518d-45c2-8365-4eef14c500ec"
+      ],
+      "latency_s": 0.14509370003361255,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0650",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "4fc529fc-c8cf-4811-8ac7-7c79694c677d",
+        "5b73d2e1-a4c1-4ab7-9c76-bafec910c1fa"
+      ],
+      "gold_doc_titles": [
+        "Chalet Girl",
+        "Felicity Jones"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "4fc529fc-c8cf-4811-8ac7-7c79694c677d",
+        "b5be1b4a-f9c2-4a6e-b1c2-cc99ba3528c9",
+        "70e0f555-062d-4856-b128-ffaeb21ce491",
+        "e489564f-f49e-44d4-a30f-610b5109e108",
+        "30e56947-2e3d-4be6-82c8-de9c30e361fa",
+        "5d861f6d-0a01-414f-91e9-8caeaf118a04",
+        "be1ade62-38bd-4a14-83a0-afcc2310cc90",
+        "c38c573a-0e3b-4ffa-9502-6582b11e5b33",
+        "cb24cd53-19a2-44db-baaa-cc77c995858b",
+        "4b72aab6-1ef0-4ec9-a6c7-5966a81c6f4a"
+      ],
+      "latency_s": 0.3417498000198975,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_train_8314",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "8ae7a678-449c-4e28-abb7-626b72d0f647",
+        "5b5c0c16-8c42-480d-8974-573d4fc2b2ed"
+      ],
+      "gold_doc_titles": [
+        "Greg Butler (visual effects supervisor)",
+        "Gollum"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "8ae7a678-449c-4e28-abb7-626b72d0f647",
+        "5b5c0c16-8c42-480d-8974-573d4fc2b2ed",
+        "8ae7a678-449c-4e28-abb7-626b72d0f647",
+        "08ef3caf-ad2f-4b50-a606-794508fa0598",
+        "e8abd84b-5dda-4d08-b931-6244cde57696",
+        "86597cb9-1772-4e33-85d7-0a88fefcfee4",
+        "c3afbdc3-64de-4c68-94c6-2cfa17435d5c",
+        "cb435584-de13-412f-bd3a-7837d7131b94",
+        "b35e7705-b24f-423d-bb0e-6a9f165f25b5",
+        "e4ecbff6-c7b8-4b6c-ba89-55b7d1aa458c"
+      ],
+      "latency_s": 0.1784540000371635,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_7426",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "c4d199c6-04fd-470d-8bd8-88d50b67d4f6",
+        "1c96e87b-d7f8-4a73-a282-717b8e02db37"
+      ],
+      "gold_doc_titles": [
+        "Five Aces",
+        "Tia Carrere"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "c4d199c6-04fd-470d-8bd8-88d50b67d4f6",
+        "1c96e87b-d7f8-4a73-a282-717b8e02db37",
+        "fd1525ba-ac40-456a-923a-8cbcf9d8d272",
+        "9b46b88c-0902-4822-9f34-9903919584f1",
+        "21d6959a-384c-4f74-84ae-db2b0fe0adcd",
+        "e64af82c-b370-4454-9e33-55a4bc4fd604",
+        "faa3658a-0996-4152-a2cf-35ddf70aef77",
+        "36cb3bb0-409f-4c98-963d-8da8f117a32f",
+        "0fefc647-6471-47d8-8460-74a5a17f7186",
+        "be1ade62-38bd-4a14-83a0-afcc2310cc90"
+      ],
+      "latency_s": 0.21241019992157817,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1963",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "3213f94b-5deb-49e9-91c0-d95807eca7bc",
+        "78dc1143-8f11-41fc-b661-a2f92f05a870"
+      ],
+      "gold_doc_titles": [
+        "Orpington (UK Parliament constituency)",
+        "Jo Johnson"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "0be7f14d-f71a-44bd-811e-e6835bdca503",
+        "78dc1143-8f11-41fc-b661-a2f92f05a870",
+        "0a8a4a8c-c9af-4242-8bfe-376b430faeaf",
+        "569108ad-45d9-4221-908f-d8fe1976462a",
+        "a642ae4c-5307-4a8b-a629-0e403dc04dee",
+        "2ff74963-dd30-4823-82ca-fe0fb4e62369",
+        "c58846e9-5dcb-40e2-a0a8-b8fd96db04d2",
+        "bac41fd7-1792-4fc2-8ef7-daa616435c2b",
+        "91fad563-ac82-47d2-8895-53c9582eb8b3",
+        "96df9dc4-0b2c-4c4c-8cc0-dde4d8c5c502"
+      ],
+      "latency_s": 0.4196047999430448,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_train_6823",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "4a043673-f70b-4881-b954-6eb3fde00761",
+        "14ab2944-543a-46ab-9ad1-ae130017c725"
+      ],
+      "gold_doc_titles": [
+        "The All-American Rejects",
+        "Chvrches"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "14ab2944-543a-46ab-9ad1-ae130017c725",
+        "4a043673-f70b-4881-b954-6eb3fde00761",
+        "c689c5f3-20a5-4dcf-a8d2-29dbcb3fc97b",
+        "944fcb71-9b8f-4cee-bac8-cb7293fc2e90",
+        "3030ddba-ae41-4dc3-ad3b-d5b87c85f659",
+        "27609916-bf51-41d2-85be-0d98c6820172",
+        "16888c79-d83a-4bb9-9096-467b67e2c231",
+        "9bba5964-8e2c-4ca8-b16c-f1201cb7aeae",
+        "83fb8e9a-de8d-445e-842d-7bee989c716d",
+        "83e450ec-a36e-4fa6-b522-41cd70a55c48"
+      ],
+      "latency_s": 0.16085370001383126,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3095",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "c86a75b2-5947-4a41-b87f-7f9a05410ea4",
+        "a5eca930-b9c4-425c-88de-e0db875bb633"
+      ],
+      "gold_doc_titles": [
+        "Myles Kennedy",
+        "SafetySuit"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "a5eca930-b9c4-425c-88de-e0db875bb633",
+        "3fe091dc-5fc8-44af-a1df-2cce3aa731a6",
+        "c86a75b2-5947-4a41-b87f-7f9a05410ea4",
+        "c6a71506-e820-45b0-bead-73132e3ef8a2",
+        "cce01f3a-3fee-4249-940b-c14648c83b07",
+        "78a8db81-9a5b-4ace-99d0-3677a3540408",
+        "e6647646-c23f-4738-ae3d-0838c664d454",
+        "fb28f3e6-1498-485c-b120-3c9d6c267245",
+        "b42d3d72-ca4f-4b79-9d16-19dd3f50860f",
+        "1b3d5ee9-14b8-4884-996d-455de9ee6ff3"
+      ],
+      "latency_s": 0.12960530002601445,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1148",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a37912a1-c978-4e78-9361-315bbe6357ad",
+        "eda0ba11-27ea-4d75-a1d3-dc1b8d90d32c"
+      ],
+      "gold_doc_titles": [
+        "Markus Feehily",
+        "Bobby Fuller"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "eda0ba11-27ea-4d75-a1d3-dc1b8d90d32c",
+        "a37912a1-c978-4e78-9361-315bbe6357ad",
+        "764c1e5b-f246-4cfa-b253-8f3e1acf1f86",
+        "11d2cfe0-902d-4a1b-aad6-1222c901f1cc",
+        "b83dce14-d332-46de-b861-8187f400d94b",
+        "c32c7c10-cff5-4db6-816d-68e006e4c4f4",
+        "18c7d0bf-2ac9-4846-aa82-cf950ef562c7",
+        "8726b956-7f45-4c0e-93c5-00ef3a50e1b2",
+        "cc29aab1-d341-46de-8e35-7d3989d04fc0",
+        "8f6ba7f7-c605-47b7-82c3-f0f91e2cc76a"
+      ],
+      "latency_s": 0.34963740000966936,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3961",
+      "question_type": "multi_hop",
+      "split": "dev",
+      "gold_doc_ids": [
+        "67edf070-38f3-490d-9605-03dcbedd8edf",
+        "5e56e7ac-fe9c-40ba-b59f-dfc6a8e12a09"
+      ],
+      "gold_doc_titles": [
+        "Castle on the Hill (song)",
+        "÷ (album)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "5e56e7ac-fe9c-40ba-b59f-dfc6a8e12a09",
+        "67edf070-38f3-490d-9605-03dcbedd8edf",
+        "bcc447fe-da0c-4f32-95a9-581e847c29d3",
+        "56dad90c-a633-43ba-94d6-bb7972af9e14",
+        "772b9e89-28ed-4e9e-8048-85e6ea822d77",
+        "960cf048-ec29-461f-b546-9cbc4f3c0def",
+        "6698c006-da02-48de-8ca8-c9405dbd34c5",
+        "3cf5baa5-dae3-4407-88c3-9b256071e156",
+        "f2b9d160-2940-4f01-ac13-38d7954da5e9",
+        "99d56c7d-b2fe-421a-9536-b1977d3a4725"
+      ],
+      "latency_s": 0.19590189994778484,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0704",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "cd9c7b73-dd7b-4e67-bcf2-e7398256b597",
+        "4628d93c-8a0c-499a-b0fa-76d0648b2afa"
+      ],
+      "gold_doc_titles": [
+        "Pierre Womé",
+        "Obafemi Martins"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "4628d93c-8a0c-499a-b0fa-76d0648b2afa",
+        "6b33b2bc-d019-4c5d-98e4-5a676f2e942e",
+        "7164a506-c0fc-4e50-b1f5-8ee4a229aeb6",
+        "053dc88d-5110-45a0-8540-117d4b7860ad",
+        "c72e725d-518d-45c2-8365-4eef14c500ec",
+        "b46c77d3-0860-4fe1-adb8-f3b272be9e68",
+        "48b7ce59-83f2-4e0d-81ae-73cd5507130b",
+        "341ceeac-c891-4240-acd9-6b30eeb57871",
+        "b96207bd-8b63-4405-833e-cc4904c75494",
+        "6e668d40-f38b-4099-9813-c73e1968ee68"
+      ],
+      "latency_s": 0.24222439993172884,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4794",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "f8e59a92-228b-4f33-a8dc-06e84667755a",
+        "ded6bc83-9f10-4503-81b1-925a5cb23e71"
+      ],
+      "gold_doc_titles": [
+        "Kara Kennedy",
+        "Joan Bennett Kennedy"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "f8e59a92-228b-4f33-a8dc-06e84667755a",
+        "ded6bc83-9f10-4503-81b1-925a5cb23e71",
+        "5300eb36-7904-46a7-9e11-74272c37078f",
+        "cfa8d9b7-c635-43bb-88c0-27c9e1f5586b",
+        "4b3f45e4-236e-421b-b6cf-7260080513b9",
+        "2f8d5f65-a0d7-4f47-a3fe-04c085071c40",
+        "85489b45-0bbf-41ca-ae94-1101617f5660",
+        "dd978285-9c0e-433b-9316-0855527809f0",
+        "031bd4f5-44ca-4399-bcaf-ee343c38096c",
+        "b59721a5-2595-4da2-b0c9-9380982cd455"
+      ],
+      "latency_s": 0.3397430001059547,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3338",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "84433bd9-0765-41c6-a669-bf41a99467c0",
+        "dfa8cfae-3250-400a-a3b5-76e33fcac27c"
+      ],
+      "gold_doc_titles": [
+        "Dane DeHaan",
+        "Life (2015 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "84433bd9-0765-41c6-a669-bf41a99467c0",
+        "dfa8cfae-3250-400a-a3b5-76e33fcac27c",
+        "86e50a08-658a-4628-9b18-37929b218612",
+        "20cd4d7c-afc5-4b10-b10a-14ecbfde1ea1",
+        "10ca79dd-ddb0-42cb-ac68-6214c5996d61",
+        "fab97a3b-d9d2-4229-a235-c9e722201c44",
+        "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+        "c1d74088-3634-4370-aafb-5eee2a2f4192",
+        "d1bb8b2a-35d2-4362-8046-d70baf73f737",
+        "da052f78-fd8d-465d-845e-dabee4257b39"
+      ],
+      "latency_s": 0.3073801000136882,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2991",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "2d2c906b-78d0-42ac-8784-e6291c47a74e",
+        "acd882b2-7c60-477c-ba6c-17809b17aea1"
+      ],
+      "gold_doc_titles": [
+        "BWI Rail Station",
+        "Acela Express"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "2d2c906b-78d0-42ac-8784-e6291c47a74e",
+        "acd882b2-7c60-477c-ba6c-17809b17aea1",
+        "8ea66daf-805e-4c05-bd62-4c5da19c8044",
+        "6fa0be96-ed8e-4ac4-85e8-b47c4711292a",
+        "5df39279-f886-470a-81e7-803eb1c96493",
+        "ea3be8a0-e6c1-46f0-96ce-815b2b51def0",
+        "719142e4-79d5-4d52-b5fc-569406b932f7",
+        "cccc85ee-0198-481a-9f12-a9fece884890",
+        "c80a7fb6-5b62-475e-b7fb-b606c3608524",
+        "6e6c7cad-5f8d-4ae2-848a-62fd6bfdae19"
+      ],
+      "latency_s": 0.30176000006031245,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0341",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "2a973b36-ea7f-4094-8601-ffe09b66cb6a",
+        "eaf57b18-29f3-45d4-b746-86c4c6764d0a"
+      ],
+      "gold_doc_titles": [
+        "Angiotensin",
+        "Aldosterone"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "eaf57b18-29f3-45d4-b746-86c4c6764d0a",
+        "2a973b36-ea7f-4094-8601-ffe09b66cb6a",
+        "fdb09919-4cbe-4d2e-b67d-2785a07a72b9",
+        "63961e03-5dec-4375-bb32-1b8a3a7c8481",
+        "c592154d-d2aa-4096-9c6a-49a20590be23",
+        "fe548b11-ab55-4eae-abcd-fb6fd10cb29f",
+        "3bf970f1-531e-4c6b-ba19-f02b7acb4f0c",
+        "23503232-06ad-4df3-a1b5-68176dc1c72d",
+        "a29ea536-cec5-40d5-b069-014c9bb98241",
+        "cfc31598-5408-4b38-9f05-d7144490e10d"
+      ],
+      "latency_s": 0.11875949997920543,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_5342",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "620b6401-dc8e-448e-856a-9cfcbf8c2735",
+        "e55119aa-fb52-425c-82ad-3135429e8ecc"
+      ],
+      "gold_doc_titles": [
+        "Madge Ryan",
+        "Summer Holiday (1963 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "e55119aa-fb52-425c-82ad-3135429e8ecc",
+        "75939579-7c96-4ccb-8742-84dafbd32b8f",
+        "620b6401-dc8e-448e-856a-9cfcbf8c2735",
+        "8db4047b-38be-415b-a8f8-b5757974ce78",
+        "b73956c5-aac0-4f39-92ec-b154a2270979",
+        "6213f132-9524-4d75-971a-a0a0e82e50c6",
+        "b78c58d1-7ab4-4474-9ca8-ba4674dfaaff",
+        "3d2868f0-3214-48d7-b63b-973897474fa4",
+        "7bc21fe9-9e87-4c50-b1a9-e142a27d0ce6",
+        "a7f84240-36f5-438a-8e89-baf34cbeab07"
+      ],
+      "latency_s": 0.1200908999890089,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_8443",
+      "question_type": "multi_hop",
+      "split": "dev",
+      "gold_doc_ids": [
+        "a620144c-acda-4071-936c-d79c310c06f6",
+        "f6d5750a-7862-474e-b010-76354725da5c"
+      ],
+      "gold_doc_titles": [
+        "John Kassir",
+        "The Secret Life of Pets"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "a620144c-acda-4071-936c-d79c310c06f6",
+        "25e90dc5-58b3-4950-9526-044e23baa2d5",
+        "f6d5750a-7862-474e-b010-76354725da5c",
+        "7f26413e-261e-4ddb-bb83-c968a7e5b841",
+        "c0be1c49-daa4-4895-9993-ab31edadcb4b",
+        "64f05961-304c-4842-8dd0-af534d8ca4bd",
+        "e93948f0-9a8f-49be-87b4-1736d8c14492",
+        "a3b999f4-d706-443a-9cea-e27756078e89",
+        "e7d7c58c-80b4-4aed-8bb6-51add44dafc0",
+        "05aa7ace-c055-4566-b582-b806fe84e7bc"
+      ],
+      "latency_s": 0.1740230000577867,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2025",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "635eb9a6-92e9-4059-a834-f01ec86d2b8a",
+        "e9d704b1-6e8c-4dac-bae8-4eb2602d91d4"
+      ],
+      "gold_doc_titles": [
+        "The Simpsons (season 10)",
+        "Lard of the Dance"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "e9d704b1-6e8c-4dac-bae8-4eb2602d91d4",
+        "4df8a63e-4f83-459a-914c-87eef67a8a4e",
+        "3b69cc14-0519-4379-96b1-fdb9200b81ed",
+        "dea18a76-07bd-42e7-b102-8ba9a9278e9d",
+        "f75303d9-0bef-48e2-a981-d5f7f7651a5d",
+        "635eb9a6-92e9-4059-a834-f01ec86d2b8a",
+        "841a35ca-4a57-4ae7-99bd-4b418f2c41ab",
+        "e295bbbc-3ef5-4fee-8076-0fe4ce7a1cef",
+        "2632f2d7-1518-450c-bb48-fbbd1f19acff",
+        "ee81f497-515b-4eb7-8cc4-6d211426876c"
+      ],
+      "latency_s": 0.11573789990507066,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_5350",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "a13f41e1-cacf-40ec-adbd-acb6daddc79e",
+        "40395b0b-1f46-4826-972c-d7e32dea7c60"
+      ],
+      "gold_doc_titles": [
+        "Saif Ali Khan",
+        "Kal Ho Naa Ho"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "a13f41e1-cacf-40ec-adbd-acb6daddc79e",
+        "375107b6-3104-4fd0-adcf-34aa0cc0a991",
+        "35d28c5e-7987-409d-b5b5-c5c9572abf39",
+        "1a098713-2756-48e6-9728-bdb7c62492ef",
+        "e40bbb63-24c4-40b4-ad1a-84a72b96dbb4",
+        "0804c102-71b7-4aa4-9e73-38242262c008",
+        "40395b0b-1f46-4826-972c-d7e32dea7c60",
+        "88739b78-2ae8-493e-92e9-1f8a34fe86c7",
+        "615a2010-cabb-42c5-b6db-2fd06f99084c",
+        "99f0e745-e18c-4973-89e1-8e020f70d038"
+      ],
+      "latency_s": 0.11677780002355576,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4467",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "e7453352-9f56-4c42-92b0-8b70016c2030",
+        "6695cb59-50e7-45bd-b025-c65313aa1dd0"
+      ],
+      "gold_doc_titles": [
+        "Monopoly (game)",
+        "King of Tokyo"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "6695cb59-50e7-45bd-b025-c65313aa1dd0",
+        "b56ff8f9-23ad-49fa-b34c-0193ad3ecf0a",
+        "e7453352-9f56-4c42-92b0-8b70016c2030",
+        "74a05e5e-29a0-42c7-8908-bb7e9b1598d1",
+        "64664b7d-90c8-48aa-b401-b40f08f6d6f3",
+        "9a157c13-14d3-4b4b-a0d4-f3f7d97547f8",
+        "69068db0-98a5-49af-9a43-e3fa31c0b342",
+        "9d18fc59-407d-45f1-8c8a-35fe2a1b12c5",
+        "974653f5-94be-4ac2-a5b0-5bb1fc67185b",
+        "d0c95db1-6144-4754-889f-ce41e287f663"
+      ],
+      "latency_s": 0.1747847000369802,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_7606",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "565e9be8-e7c0-4e2c-a4f2-89b0d3f9790c",
+        "8fe6cf5b-5e30-4ed5-b678-2cad5d3bb2f3"
+      ],
+      "gold_doc_titles": [
+        "P.O.D.",
+        "Swervedriver"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "8fe6cf5b-5e30-4ed5-b678-2cad5d3bb2f3",
+        "565e9be8-e7c0-4e2c-a4f2-89b0d3f9790c",
+        "de0c2a45-c305-462e-bcbf-c017309e0b25",
+        "e27f5fc0-4721-4b9c-a003-927fbf51fc90",
+        "2e4ee5ca-2683-468d-ac71-31f11f0d2aab",
+        "0e6702b6-e8a9-445d-ab01-09d03ab4b2a2",
+        "937a0e75-5465-4e1c-8638-76772c988ede",
+        "442676e5-e3ca-4924-9535-a33634d24b3f",
+        "f66d6ce6-61da-455b-b7d8-b2a25f83563a",
+        "2126e64e-0d04-41c8-bd5f-08887862232d"
+      ],
+      "latency_s": 0.17283279995899647,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_5079",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "9e4640ba-5f71-426d-a3e0-aec47d9ae0a8",
+        "1d4330f2-2592-493e-8a7f-3f2b96fdaa01"
+      ],
+      "gold_doc_titles": [
+        "E. L. James",
+        "Fifty Shades Darker"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "9e4640ba-5f71-426d-a3e0-aec47d9ae0a8",
+        "64f0fc6c-9839-4d0b-b12e-0a68c92c9f74",
+        "c038163a-20b3-438c-8349-69bb7a506d8d",
+        "8d14ab7c-7557-48f9-8835-ff5a680d5e25",
+        "b24d70a9-2ba2-4cf2-a74b-f7f06bb00956",
+        "a3316fcb-539e-48e1-9a68-a7a076ba5811",
+        "1d4330f2-2592-493e-8a7f-3f2b96fdaa01",
+        "9e3ad7d3-e24f-4074-bca5-2dc900e8ee2d",
+        "5226a595-8292-4ca1-8c1e-c8944b258012",
+        "4d5fbdbc-32dc-4a22-8241-7cb3be2d6e63"
+      ],
+      "latency_s": 0.1354806999443099,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3132",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a1c86e23-c010-4eb8-9652-9634e400feee",
+        "65b70965-64fb-42fe-9fe8-4baa497e2259"
+      ],
+      "gold_doc_titles": [
+        "Call Me Mañana",
+        "Scooter (band)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "a1c86e23-c010-4eb8-9652-9634e400feee",
+        "6dbec0bb-297d-411e-9112-e42ef126b2fb",
+        "c421e646-8fe6-4dd9-b899-0012ee5cf849",
+        "c122412e-fb9b-4ea7-819e-7c9091c0643b",
+        "a2774a1c-bba9-4232-be6c-9ed268cdf9a9",
+        "454c6398-5bd4-41c9-b3d2-35fd6d08e41f",
+        "f3c90542-6844-4781-a842-200625a1ef5b",
+        "fd02a2ab-8bc8-4a7b-9edb-8c8678dc900c",
+        "3be9e62d-c4cd-4ec8-8613-2de536952f0f",
+        "7fb136c2-ddc3-43bf-a73c-d23b6048a479"
+      ],
+      "latency_s": 0.16414720006287098,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3299",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "00df4972-8517-40ee-8183-799d1c3c7417",
+        "9cfde6a8-5d19-4365-b1f0-b26031d6baf7"
+      ],
+      "gold_doc_titles": [
+        "Kahan Commission",
+        "Aharon Barak"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "f1276e37-aa85-483f-8416-1e54c42d5391",
+        "9cfde6a8-5d19-4365-b1f0-b26031d6baf7",
+        "8ac060cf-caf8-4ca1-b7f6-ef3710377d8e",
+        "a3c0400d-28d2-4bd1-bba1-f67158cff7b1",
+        "967dd698-7c91-4b6c-9282-58642904e38b",
+        "059597d0-1928-47f9-a5d2-638c5f0cd485",
+        "57cdc2ba-96aa-4cec-be72-cb3ef59bc3fa",
+        "fca0d9f2-8ff3-4bd0-9d9f-a4f2448b1bba",
+        "07333ca8-0d4b-44d1-98ee-c492fdaa7b48",
+        "3440fb3d-0030-413a-b934-359317dabe38"
+      ],
+      "latency_s": 0.16868369991425425,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1226",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "e55dde83-f94b-4c2a-817d-66906423da0e",
+        "f7bd9cd0-2b30-469e-99ad-41be9f5dc123"
+      ],
+      "gold_doc_titles": [
+        "Johan Henrik Deuntzer",
+        "Danish Social Liberal Party"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "e55dde83-f94b-4c2a-817d-66906423da0e",
+        "540f417a-ca49-44f3-982c-4c3b75e9ee38",
+        "d44bffa1-9aea-42a5-a851-71eef59f5f26",
+        "6509e6fb-1799-4449-b30f-4f493f3dde17",
+        "aa7d6d26-5e12-4014-b52a-fa63e186d508",
+        "6b2e78a0-7b9c-4e9c-aad8-81bb9815b105",
+        "656c67c0-d924-4477-8a35-cad91d19bf93",
+        "f498acce-a0d8-47a3-ab5a-6feafa007a6b",
+        "1bfdc002-e594-41a6-870b-caebd40e3b32",
+        "f7bd9cd0-2b30-469e-99ad-41be9f5dc123"
+      ],
+      "latency_s": 0.17624060006346554,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_5811",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "c2a5c92d-9335-4385-8991-6f10fa251ba3",
+        "60bb6155-1df4-45a4-bcbb-5373163dd813"
+      ],
+      "gold_doc_titles": [
+        "Gerald Grosvenor, 6th Duke of Westminster",
+        "Hugh Grosvenor, 7th Duke of Westminster"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "c2a5c92d-9335-4385-8991-6f10fa251ba3",
+        "7210dc84-21ea-4831-88d5-44fa2a45dfc1",
+        "60bb6155-1df4-45a4-bcbb-5373163dd813",
+        "1fdad96f-5e35-43df-ab4e-14704c1c06ff",
+        "6f33bcb8-e797-4387-b6a8-5d018e09edaf",
+        "50586bfd-cbae-44be-bf4b-f80fd96a093e",
+        "767ebc61-f4ce-4144-9828-c37bffef53b1",
+        "e539c7da-0298-4d2f-b073-68bcab766c35",
+        "b1378018-f7f9-4e2b-a18c-aff5f1f178b9",
+        "ce929a93-4c0a-4d2c-b6b8-253bc502e287"
+      ],
+      "latency_s": 0.12625999993178993,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_8415",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "9ecd39d9-3d50-4c61-9302-ece87ccf70b5",
+        "3c440ab4-8537-4eed-8666-c655d3b7fb1e"
+      ],
+      "gold_doc_titles": [
+        "2016 Auburn Tigers football team",
+        "2016 Oklahoma Sooners football team"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "9ecd39d9-3d50-4c61-9302-ece87ccf70b5",
+        "35a3ad8e-634e-4795-a4d7-2ce3c6f2d03d",
+        "a847e2a3-2bae-4076-b842-901db87feb0c",
+        "a37c2d12-e3a6-4e66-b901-c2a2d1cd2879",
+        "576c08c1-63b9-439b-a8ee-86eb524719b3",
+        "95c753bf-c553-4078-878c-addb2f106e8b",
+        "f623334b-45f6-4de0-9718-cda1c93e34f3",
+        "65c2c4ec-0309-4b00-9b50-6e903c5100f9",
+        "ec887275-a151-4259-bd93-b564198fdff6",
+        "3c440ab4-8537-4eed-8666-c655d3b7fb1e"
+      ],
+      "latency_s": 0.11914760002400726,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1551",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "09ba5550-8e31-439d-a894-e07089468ce7",
+        "d5e55ba7-05e4-4fb3-9cd0-11b644fc49dc"
+      ],
+      "gold_doc_titles": [
+        "Takeyasu Hirono",
+        "Flyweight (MMA)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "09ba5550-8e31-439d-a894-e07089468ce7",
+        "b2f06e26-c516-4417-8a0b-4647cfcc93d8",
+        "e1302abf-0e8c-4ba6-9bca-8acb66c26afa",
+        "9fd6750c-c530-43fb-8ecb-8d4fb0bfb436",
+        "a1862718-efd4-42e0-90c2-09a1dbe8602b",
+        "d5e55ba7-05e4-4fb3-9cd0-11b644fc49dc",
+        "58474821-0897-4302-a1ad-78b642b25de8",
+        "9b68dbf6-88cc-4292-9a13-3ae1b838b13c",
+        "91a27af0-acc7-4824-815c-795e555d254a",
+        "388afe9d-a084-44e5-9a8b-580b799e6206"
+      ],
+      "latency_s": 0.16948749998118728,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1803",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "da2b4e2e-d1f3-4eca-9b87-3d423d125ff0",
+        "3d5d9147-af3e-4781-8265-fb8e7e75a438"
+      ],
+      "gold_doc_titles": [
+        "Procter &amp; Gamble",
+        "William Procter (candlemaker)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "3d5d9147-af3e-4781-8265-fb8e7e75a438",
+        "da2b4e2e-d1f3-4eca-9b87-3d423d125ff0",
+        "df4b5a33-3b66-498d-9b70-9e4cb1082fdf",
+        "712dfc6e-c8a5-4ee1-b427-d4494bff71f5",
+        "104a7fd7-566d-4663-8253-612eae345275",
+        "af265642-d8fe-4aba-8d10-21410a5359a8",
+        "786dbb49-d376-49dd-ac8d-9321137fa742",
+        "913e7b0a-da47-488f-afcc-1e94304b07c1",
+        "30117906-7ccf-46ce-adbb-726371f5e157",
+        "651ee291-0e09-4759-a38b-f200fde0261f"
+      ],
+      "latency_s": 0.18858400010503829,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3584",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "53fcf8ee-ff03-4945-a326-ffe0c6e65b62",
+        "03a726a0-af69-451f-85e4-e4dc4a7bd19b"
+      ],
+      "gold_doc_titles": [
+        "2013 Minnesota Vikings season",
+        "U.S. Bank Stadium"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "03a726a0-af69-451f-85e4-e4dc4a7bd19b",
+        "9d31938a-5f0c-4ca4-bc0e-0b7c5e4b03f3",
+        "8a671010-ce38-48ea-9bbf-c0edbf08c672",
+        "78f3eda2-2b57-4489-80a3-592facc288e6",
+        "dee34f73-dcd3-49eb-bfb8-c5a1e15cc79e",
+        "53fcf8ee-ff03-4945-a326-ffe0c6e65b62",
+        "ee893eba-1711-448e-aa56-31fe1643fada",
+        "62755110-bf9f-41b5-bedc-758bf88035a0",
+        "c63eea4e-23f9-4fc4-92ae-51f49359d776",
+        "1c2620e6-f661-47f1-9aa3-85f95fee3880"
+      ],
+      "latency_s": 0.17563970002811402,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1571",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "bded95e2-8c23-42ac-aa61-890823e6a81f",
+        "a3c25993-ad7a-4d39-bafe-f1a71d05578b"
+      ],
+      "gold_doc_titles": [
+        "Cardinal Hayes High School",
+        "Catholic High School Athletic Association"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "a3c25993-ad7a-4d39-bafe-f1a71d05578b",
+        "bded95e2-8c23-42ac-aa61-890823e6a81f",
+        "a23bb26c-eba4-40d9-9f2b-8f2ad969b378",
+        "621fd130-95f0-44c5-bd7e-1b66287836bd",
+        "800df20f-50f4-4917-b15b-c610093be52d",
+        "79c397fd-13ac-4577-a891-70a79f96dcd8",
+        "b734018e-368b-4aec-8083-f640ae5ed2b9",
+        "95c753bf-c553-4078-878c-addb2f106e8b",
+        "009d2fcb-c7f3-4b03-922a-e9e4bc43203e",
+        "4d08724d-834c-45d3-95b3-527f2253a70d"
+      ],
+      "latency_s": 0.1885887999087572,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_8082",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "711b7e83-d319-41a3-8b67-8ba87124f3c9",
+        "9f86cebc-bebf-4767-ad72-b810f4527bf1"
+      ],
+      "gold_doc_titles": [
+        "Carnegie Mellon University",
+        "Vanderbilt University"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "711b7e83-d319-41a3-8b67-8ba87124f3c9",
+        "9f86cebc-bebf-4767-ad72-b810f4527bf1",
+        "5193ef5b-9780-459b-9271-ea9c403fabf3",
+        "31a86f76-d585-427b-9d55-88bd823e8aaf",
+        "142d040d-04a4-4bce-9b52-c9e1632cbf23",
+        "d243140c-43ec-4013-958f-3f07c7bf72d4",
+        "1d6ca67c-588f-43a2-b1d1-16d27a6e97f1",
+        "0eeead00-eaee-4189-94d9-4873ca82816c",
+        "d0549316-ce62-462a-88b7-59dc21a1c9b2",
+        "a665cd0b-85fe-47cf-af81-528cc6f11b4f"
+      ],
+      "latency_s": 0.11538540001492947,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4347",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a5a3c42a-74ea-4083-986d-5f3ab732226d",
+        "085667b9-3c39-465d-9060-494c7345689a"
+      ],
+      "gold_doc_titles": [
+        "Collective Soul",
+        "Ed Roland"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "df9f1e15-9dfb-4f5c-875c-03752974b07c",
+        "a5a3c42a-74ea-4083-986d-5f3ab732226d",
+        "085667b9-3c39-465d-9060-494c7345689a",
+        "374f8973-7b87-497e-8e55-5985c243355d",
+        "f25d76e7-b20f-4451-95b1-3030fb7f0ad9",
+        "eea0bff2-06d0-4e49-a4dc-b4db4f3f10bd",
+        "c566013b-6f71-4619-985d-8521b58f5de6",
+        "7d0c37cc-8b0a-4316-80a5-2b7a56dbf02f",
+        "f905d46c-be5d-4e77-a24f-2005e6eeadc3",
+        "b3179dea-7916-4b62-9fa1-9fcf386bd72b"
+      ],
+      "latency_s": 0.1219632999273017,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_5322",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "91a3283c-359a-4a72-a1ea-0baca8f4829b",
+        "57845d37-5483-4f14-b890-1eda6363d6c3"
+      ],
+      "gold_doc_titles": [
+        "Kern Island Canal",
+        "Cayuga–Seneca Canal"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "91a3283c-359a-4a72-a1ea-0baca8f4829b",
+        "57845d37-5483-4f14-b890-1eda6363d6c3",
+        "8c651163-019e-48ef-bf18-f6dc87298d38",
+        "a811635c-b5b8-4693-9f52-633a0aca091d",
+        "6b0e204f-48eb-40c2-9bff-f2c22cc4d249",
+        "a50e2abb-ccec-4b33-9750-563fb15f5f57",
+        "9bec9886-8717-403c-80c4-c245026b30f1",
+        "00e4caad-1d87-4f18-b804-49d78049f9b0",
+        "e96eb101-5cd5-469d-a1d4-0a36577f72c4",
+        "8525af16-2998-40e9-b4d1-fe82b19245d4"
+      ],
+      "latency_s": 0.22701079992111772,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0547",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "f98e1f51-0439-49e1-9890-91f28c708c01",
+        "42d47870-40da-4f42-8086-4c14c7600f11"
+      ],
+      "gold_doc_titles": [
+        "Max Hoffmann",
+        "Battle of Tannenberg"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "f98e1f51-0439-49e1-9890-91f28c708c01",
+        "42d47870-40da-4f42-8086-4c14c7600f11",
+        "163675fa-ddfb-4a43-abcf-9932296c1806",
+        "462511b4-cedd-41e8-89de-18df13cf5eca",
+        "c3865e8a-a0b7-478d-b291-f66d5b85c6c4",
+        "216e909d-e13e-457b-b5f0-3528e1b0d116",
+        "c2f5ef81-945c-43ec-91ba-f84b483f88de",
+        "3785558c-2486-45d6-97ed-3c70957b1749",
+        "72d58f7d-69d7-49e0-93ec-605651c0f80b",
+        "2a18d26b-eb42-4562-ace7-996137b2a180"
+      ],
+      "latency_s": 0.250652699964121,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_6617",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a2631307-0644-4fc4-8fd8-1fc0d5076224",
+        "c9d447dc-d599-41e1-a9f8-439708a3c3d9"
+      ],
+      "gold_doc_titles": [
+        "Boxes (Icehouse album)",
+        "Sydney Opera House"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "59ff3083-a1b1-4a08-8f7e-eec81708071e",
+        "ca2b5972-fb76-4d2f-9637-4db9bc403fa8",
+        "a4529319-a543-473b-a93f-f418b6d63d23",
+        "c74174b7-60a5-44ef-a3e8-edcbeb703a2b",
+        "c3a45169-15eb-416a-9de3-3ae77314e7aa",
+        "231a831e-4665-443f-8d83-69f748ab74a4",
+        "aedde9f7-a9c3-45a9-ad1b-aaabd5bdc7e9",
+        "d94e1fbd-0393-4c0b-bb3c-13f621506728",
+        "f5038ea8-ed5d-4656-a8d4-d60a885ba5a4",
+        "585b6a42-fa74-43d3-995f-b376755be051"
+      ],
+      "latency_s": 0.1712034000083804,
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_7662",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "3a8438f3-0da4-4217-ad14-bb61e981f13f",
+        "49476c09-e27c-4ba7-809e-db5b7da5842c"
+      ],
+      "gold_doc_titles": [
+        "The Adventures of Huck Finn (1993 film)",
+        "Herbie Rides Again"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "49476c09-e27c-4ba7-809e-db5b7da5842c",
+        "3a8438f3-0da4-4217-ad14-bb61e981f13f",
+        "cc6833a2-ce35-4a0c-a917-79e5a399235d",
+        "7d6c0498-2ee7-4077-a250-e72985b9509b",
+        "8ebc8a2e-04e0-4a5b-b946-bcb4d8835037",
+        "1f922ade-7dfe-4b9a-901a-4d6f629290c2",
+        "7806a154-989b-4167-944e-8a58a9660e2c",
+        "1558b819-4003-41af-8d86-ce256c14c2b3",
+        "26980f67-ff08-46fc-bde6-c75b50ea984a",
+        "aaab2af2-86d6-4ad4-b14c-aaa0d360bbbe"
+      ],
+      "latency_s": 0.11954350001178682,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2352",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "ea11cde4-0ada-4591-a06c-7ee954dc52ba",
+        "7235dd0a-e0a1-4f98-904e-f6d36f2a81b6"
+      ],
+      "gold_doc_titles": [
+        "2015 MSA Formula Championship",
+        "Motorsport"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "ea11cde4-0ada-4591-a06c-7ee954dc52ba",
+        "75b9039e-280d-418b-bc8d-7106bcfbd9cb",
+        "a482dd17-bbb4-479a-92e4-83eab45e3744",
+        "ee7e8d4a-b19b-4954-83e4-544fb0866b91",
+        "3afbfc9e-c8a7-4fc5-b525-aa3c45b1886e",
+        "2d1215f0-f83f-4286-849f-96c2fde33101",
+        "0f63555e-0715-4913-ad84-b51e266c8059",
+        "5eb44414-ea6d-4bdc-bf74-d1825f5f80cc",
+        "5fe037c5-2b44-4fdb-a2c9-86f70a377762",
+        "39adb79f-6f3b-4640-b695-5c72dc450fea"
+      ],
+      "latency_s": 0.12798500002827495,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1858",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "3fcfded2-8cfa-4f4a-9326-d4e004cc9b67",
+        "67a2aac1-cfe3-438d-8af4-81979481860a"
+      ],
+      "gold_doc_titles": [
+        "Polihale State Park",
+        "Niihau"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "67a2aac1-cfe3-438d-8af4-81979481860a",
+        "3fcfded2-8cfa-4f4a-9326-d4e004cc9b67",
+        "e7f9bb72-7bb6-42f4-bef1-099f8600006e",
+        "6941806d-6314-4ee6-a591-56bd423a4f66",
+        "45313b25-d4fb-4dcf-bb68-6cd4df29e960",
+        "446c1e6f-5003-4f48-be78-61a7220d7d3c",
+        "3ec8baff-6821-42f7-bea2-802d6bd63280",
+        "a496556e-39b1-4232-8dc8-d43def408891",
+        "16ba224d-42a7-4880-9b52-adeb4868bbb7",
+        "7af1d8fa-595a-42bd-8089-7e84515d8956"
+      ],
+      "latency_s": 0.16608340002130717,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_6356",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a3c8a554-00ba-4dce-be94-3b63ea87e096",
+        "de3ec539-e4ff-4571-94fb-a18ec6b16faf"
+      ],
+      "gold_doc_titles": [
+        "Pilot (Cougar Town)",
+        "Busy Philipps"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "a3c8a554-00ba-4dce-be94-3b63ea87e096",
+        "de3ec539-e4ff-4571-94fb-a18ec6b16faf",
+        "60aa9e03-2154-4d67-8213-489b8bea2ea0",
+        "34414567-5c84-4292-b644-7f674df556eb",
+        "def8b985-ee95-4b3a-9349-fa9079e03447",
+        "a8ef839c-db09-4de5-912b-002db55c3db9",
+        "13944177-080d-4dc5-bb8f-7f6f025e2104",
+        "8ccefdcc-9b11-4081-83c8-0246aa6d0d3b",
+        "648b50de-17c0-41bd-9d8c-f997cb3922fa",
+        "138d65c0-3272-4b5d-aa95-66d15366322d"
+      ],
+      "latency_s": 0.1942453000228852,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_train_7160",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "1422cfd9-1c1d-40c4-a445-8a9579947f4f",
+        "5e2e6fa1-3576-4071-9ada-555672025e0a"
+      ],
+      "gold_doc_titles": [
+        "Cheek to Cheek Tour",
+        "Cosmopolitan of Las Vegas"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "1422cfd9-1c1d-40c4-a445-8a9579947f4f",
+        "5e2e6fa1-3576-4071-9ada-555672025e0a",
+        "cd111fcf-d77c-4028-9b82-136d0fee9707",
+        "d4059314-5dfa-46f2-9651-ea896f9a8bbd",
+        "314415c1-874a-4dfc-81a2-8251ef6d60b4",
+        "8975d8db-b350-431a-81b1-4aedd1c3f965",
+        "9a3a46fd-0791-4a91-b762-52df208d113a",
+        "28e45757-9486-4c2e-b343-540347580ac1",
+        "712b0ed1-98ed-479c-839a-259bef7fde86",
+        "259bf834-ce45-482f-ab41-3e2889c83bef"
+      ],
+      "latency_s": 0.16816550004296005,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0529",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "67c26971-6a06-42fa-ab1b-cc390cee09c0",
+        "30a3d0fe-2382-4977-8cf2-8792e4d0fac3"
+      ],
+      "gold_doc_titles": [
+        "Hush (1998 film)",
+        "Jessica Lange"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "67c26971-6a06-42fa-ab1b-cc390cee09c0",
+        "72ac7fda-974d-47c4-81ea-8a491b404021",
+        "a1e04189-79e1-486f-8bcf-4e1911492795",
+        "550852e2-fda4-4e8c-9d84-3b9a6dca709b",
+        "56d4104b-4c91-48d9-b2f3-84da4854d08e",
+        "ab24c0bb-d260-410b-b03f-a1b3968a1ad6",
+        "e6a32fd9-ee65-47ca-b526-e1eb69adff49",
+        "2fe426d6-c426-4ef0-958a-4f3449a23908",
+        "0c5b0249-9337-442b-8135-10dbde79e63e",
+        "020684ff-4730-446f-a6e3-e9e619063810"
+      ],
+      "latency_s": 0.12738740001805127,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4070",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "f6ea8155-454d-4885-8b97-51fb6dec9a84",
+        "b99a69b6-2bb4-43d6-84a5-692239268c9b"
+      ],
+      "gold_doc_titles": [
+        "Michael Lent (writer and producer)",
+        "Ice Road Truckers"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "retrieved_doc_ids": [
+        "f6ea8155-454d-4885-8b97-51fb6dec9a84",
+        "358b01f6-a3cb-4af3-8301-f7cd9411f683",
+        "91d1089d-734b-42a0-a285-30d6be564885",
+        "e7c34da3-4802-4e45-a67f-8ac317d35ca6",
+        "c4147b84-3b37-43e1-8a22-d2415cf32b63",
+        "67169415-dad4-4715-9fc4-d295ebb512d6",
+        "7d5cc44f-0ade-4083-b544-ce6e398b2377",
+        "de08af80-3478-4525-bfbf-4a943690bf7d",
+        "082e2664-466b-4dc9-9e11-99c41e3754a0",
+        "9f42c62e-95d3-4916-9e6d-04b51f2fc03a"
+      ],
+      "latency_s": 0.16367329994682223,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      }
+    }
+  ]
+}

@@ -13,6 +13,8 @@ services:
         value: "false"
       - key: ENABLE_BENCH_ENDPOINTS
         value: "false"
+      - key: LLM_BUDGET_WALL_CLOCK_S
+        value: "300"
       - key: FASTEMBED_CACHE_PATH
         value: /app/model_cache
       - key: DATABASE_URL

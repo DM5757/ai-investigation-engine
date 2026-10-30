@@ -1,0 +1,149 @@
+{
+  "created_at": "2026-10-30T03:07:52.666863+00:00",
+  "base": "https://ai-investigation-engine-scyz.onrender.com",
+  "steps": [
+    {
+      "step": "/api/health",
+      "status": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "step": "/api/health/ready",
+      "status": 200,
+      "body": {
+        "status": "ready",
+        "database": "ok",
+        "embedding_model_configured": "BAAI/bge-small-en-v1.5",
+        "embedding_enabled_at_startup": false,
+        "embedding_loaded": false,
+        "embedding_load_ms": null,
+        "embedder_impl": "FastEmbedProvider",
+        "llm_groq_configured": true,
+        "llm_gemini_configured": true,
+        "llm_status": "configured",
+        "qdrant_configured": true,
+        "qdrant_status": "configured"
+      }
+    },
+    {
+      "step": "/api/version",
+      "status": 200,
+      "body": {
+        "version": "0.1.0",
+        "app": "ai-investigation-engine",
+        "git_commit": "00360038c7b9e4f20f5ecb59a2ab5f1559486fe7"
+      }
+    },
+    {
+      "step": "/api/stats",
+      "status": 200,
+      "body": {
+        "documents_by_status": {
+          "ACTIVE": 55081,
+          "DELETED": 5
+        },
+        "document_total": 55086,
+        "chunk_total": 56900,
+        "collection_name": "chunks__structure_aware__bge_small",
+        "origin_note": "origin field not tracked; counts are by lifecycle status"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "roanoke_colony",
+      "http_status": 200,
+      "ms": 210087.9,
+      "answer_status": "llm_unavailable",
+      "degraded": true,
+      "n_citations": 5,
+      "citation_titles": [
+        "56b2afb1-b964-4c3d-81c0-78972a0edce4",
+        "b16b4334-f9a7-4ced-99a5-d5f986d8c4ac",
+        "f60a17b6-144a-4a43-a69a-b5f11934b3c1",
+        "0c08a71d-544c-4b83-95c2-5d274e53cbcb",
+        "df035599-8ce9-451a-b7ff-7087ae7661d3"
+      ],
+      "usage_calls": 1,
+      "abstention_reason": "Local investigation budget exceeded during tool use (wall clock budget exceeded (120.0s)). Retrieved evidence only; no synthesized answer.",
+      "answer_preview": "",
+      "expect_status_in": [
+        "insufficient",
+        "llm_unavailable"
+      ],
+      "ok": true
+    },
+    {
+      "id": "roanoke_airport",
+      "http_status": 200,
+      "ms": 140099.1,
+      "answer_status": "llm_unavailable",
+      "degraded": true,
+      "n_citations": 1,
+      "citation_titles": [
+        "b16b4334-f9a7-4ced-99a5-d5f986d8c4ac"
+      ],
+      "usage_calls": 1,
+      "abstention_reason": "Local investigation budget exceeded during tool use (wall clock budget exceeded (120.0s)). Retrieved evidence only; no synthesized answer.",
+      "answer_preview": "",
+      "expect_status_in": [
+        "answered",
+        "partial",
+        "llm_unavailable"
+      ],
+      "ok": true
+    },
+    {
+      "id": "multi_doc_payment",
+      "http_status": 200,
+      "ms": 211206.9,
+      "answer_status": "llm_unavailable",
+      "degraded": true,
+      "n_citations": 2,
+      "citation_titles": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "usage_calls": 1,
+      "abstention_reason": "Local investigation budget exceeded during tool use (wall clock budget exceeded (120.0s)). Retrieved evidence only; no synthesized answer.",
+      "answer_preview": "",
+      "expect_status_in": [
+        "answered",
+        "partial",
+        "insufficient",
+        "conflicting",
+        "llm_unavailable"
+      ],
+      "ok": true
+    },
+    {
+      "id": "contradiction_probe",
+      "http_status": 200,
+      "ms": 155498.5,
+      "answer_status": "llm_unavailable",
+      "degraded": true,
+      "n_citations": 5,
+      "citation_titles": [
+        "9129ff0b-be04-4f79-9039-0f8c367fd283",
+        "bf64ac5b-0086-4060-8bf8-49fc3c59e6ac",
+        "bf4ff24f-cc4e-4c4b-9c1a-5dcdbb3b7c7f",
+        "9ac17fd1-bfda-417a-a917-82ef74e84e2b",
+        "0b5ab730-5c14-4a39-a6c1-cc262d8f7cf1"
+      ],
+      "usage_calls": 1,
+      "abstention_reason": "Local investigation budget exceeded during tool use (wall clock budget exceeded (120.0s)). Retrieved evidence only; no synthesized answer.",
+      "answer_preview": "",
+      "expect_status_in": [
+        "conflicting",
+        "partial",
+        "insufficient",
+        "answered",
+        "llm_unavailable"
+      ],
+      "ok": true
+    }
+  ],
+  "ok": true
+}

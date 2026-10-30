@@ -1,0 +1,989 @@
+{
+  "summary": {
+    "config_id": "baseline_rag",
+    "pipeline": "baseline_rag",
+    "retrieval_mode": "hybrid_rrf",
+    "k": 8,
+    "n_questions_total": 12,
+    "n_questions": 12,
+    "n_scored_retrieval": 10,
+    "n_scored_answer": 12,
+    "n_excluded": 0,
+    "exclusion_reasons": {},
+    "by_type_total": {
+      "factual": 5,
+      "multi_doc": 1,
+      "contradiction": 2,
+      "unanswerable": 2,
+      "multi_step": 1,
+      "multi_hop": 1
+    },
+    "by_type_scored_retrieval": {
+      "factual": 5,
+      "multi_doc": 1,
+      "contradiction": 2,
+      "multi_step": 1,
+      "multi_hop": 1
+    },
+    "by_type_scored_answer": {
+      "factual": 5,
+      "multi_doc": 1,
+      "contradiction": 2,
+      "unanswerable": 2,
+      "multi_step": 1,
+      "multi_hop": 1
+    },
+    "n_errors": 0,
+    "corpus_active_documents": 55081,
+    "retrieval": {
+      "n_scored": 10,
+      "n": 10,
+      "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+      "recall_at_k": 0.85,
+      "mrr": 0.95,
+      "all_gold_at_k": 0.7,
+      "multi_doc_coverage": 0.85,
+      "mean_latency_s": 4.7423217199975625
+    },
+    "answer": {
+      "n_scored": 12,
+      "n": 12,
+      "exact_match": 0.0,
+      "token_f1": 0.11459166831493268,
+      "citation_f1": 0.6333333333333333,
+      "correct_abstention_rate": 0.0,
+      "n_unanswerable_scored": 2,
+      "contradiction_detection_rate": 0.0,
+      "n_contradiction_scored": 2,
+      "mean_latency_s": 4.986642483340499,
+      "mean_llm_calls": 1.0,
+      "mean_tokens": 1449.4166666666667,
+      "status_counts": {
+        "answered": 12
+      }
+    }
+  },
+  "results": [
+    {
+      "question_id": "syn_factual_beta_marker",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The BETA‑POOL‑EXHAUST marker is described in the documentation for **Service Component 14**【S1】.",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S2"
+        },
+        {
+          "doc_id": "f8030374-2248-4876-83b3-e587b8cf4c9e",
+          "chunk_id": "520d4090-42c0-42b6-9bed-dcd8f1b71d92",
+          "label": "S3"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 8.844300299999304,
+      "llm_calls": 1,
+      "tokens": 1485,
+      "retrieved_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "f8030374-2248-4876-83b3-e587b8cf4c9e",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "5ce61074-0e79-4602-b0d8-b2dc95bd89b9",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+        "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+        "520d4090-42c0-42b6-9bed-dcd8f1b71d92",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "60e23f24-d946-400b-beae-b726666020b2",
+        "57b9df29-0d2a-4b49-9841-4a0a38417bd7",
+        "b0f15fd4-50f0-486d-8b7a-5c21e761d728",
+        "66f66289-a0a5-4114-9146-f0870d8759bd"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.33333333333333337,
+        "citation": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "syn_factual_jwt",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "gold_doc_titles": [
+        "incident_march"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The March incident was attributed to a misconfigured JWT TTL on AuthGateway, which triggered cascading retries into the PaymentService【S1】.",
+      "citations": [
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        },
+        {
+          "doc_id": "8988e599-6f5e-44be-a827-8cac40d4ab09",
+          "chunk_id": "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+          "label": "S3"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.5930315000005066,
+      "llm_calls": 1,
+      "tokens": 1333,
+      "retrieved_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "a7d7392a-a989-40d3-9031-701a073f8bd8",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "ca6175cd-864a-45e6-9f34-70ad2b54108d",
+        "42f1b1e7-543d-4603-90d3-f14957b8dcee",
+        "2dad8203-b865-41d9-84e5-054eaff1205b",
+        "e0dcca0d-b51f-49b9-b665-7b9aacc1afb4",
+        "fd6bc225-aa15-4c15-937d-ff1e598365ea"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.2608695652173913,
+        "citation": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "syn_multi_docs_services",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The March outage hit the **PaymentService** – it timed‑out for six hours after the auth‑gateway deployment and caused checkout failures across the EU region【S2】【S5】.",
+      "citations": [
+        {
+          "doc_id": "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+          "chunk_id": "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        },
+        {
+          "doc_id": "04b1e3f7-2dae-427d-938e-811ad973dae1",
+          "chunk_id": "f1095ca6-fea5-459f-85e6-331630bfe718",
+          "label": "S3"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.3425208000699058,
+      "llm_calls": 1,
+      "tokens": 1449,
+      "retrieved_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "04b1e3f7-2dae-427d-938e-811ad973dae1",
+        "472f1cd6-66a5-4efd-8de0-43fd78ffc40e",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "f1095ca6-fea5-459f-85e6-331630bfe718",
+        "78c8d25f-3319-4e64-a55d-a6ac1814fd3c",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+        "21d9f81a-0431-4cee-89d8-ce958e2eecfc",
+        "2dad8203-b865-41d9-84e5-054eaff1205b"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.06451612903225806,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c1_deploy_time",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The documents give two different timestamps for the auth‑gateway deployment on 2024‑03‑12. One source says the auth‑gateway 2.4.1 was deployed at **14:00 UTC**【S1】, while two other sources place the deployment at **08:10 UTC**【S2】【S6】. These statements are contradictory.",
+      "citations": [
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        },
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S3"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.5595802000025287,
+      "llm_calls": 1,
+      "tokens": 1595,
+      "retrieved_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "63086155-cb42-4d68-8b5b-e8f89042239f",
+        "0b22929b-7bc2-4d5f-a9d5-950669b97774"
+      ],
+      "retrieved_chunk_ids": [
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "ea468d8c-6e8f-4b99-bd4e-c68f8fd9d3c5",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "6cb95793-5758-4fa0-8239-605c94773b48",
+        "4016a1a6-0777-4c17-9cd9-2263e2aad53e"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c2_root_cause",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The incident report links the six‑hour PaymentService timeout to the **auth‑gateway** deployment (08:10 UTC) [S1].  Operations later identified the root cause as a **mis‑configured JWT TTL** on AuthGateway that triggered cascading retries into PaymentService [S3].  However, the release notes for the same auth‑gateway version (2.4.1, deployed at 14:00 UTC) attribute the outage to a **Neon connection‑pool exhaustion**, explicitly stating it was not a JWT‑TTL issue [S2].  The service‑component guide also advises checking Neon pool metrics when the service fails [S4].  \n\n**Contradictions:**  \n- Deploy time: 08:10 UTC (incident report) vs 14:00 UTC (change log) [S1][S2].  \n- Root‑cause attribution: ops claim (JWT TTL) vs release notes (Neon pool exhaustion) [S3][S2].",
+      "citations": [
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S1"
+        },
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S2"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+          "label": "S3"
+        },
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S4"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 2.622687099967152,
+      "llm_calls": 1,
+      "tokens": 1601,
+      "retrieved_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "553fb625-c1fb-4be1-9ff3-7e5d176b7b02",
+        "553fb625-c1fb-4be1-9ff3-7e5d176b7b02",
+        "553fb625-c1fb-4be1-9ff3-7e5d176b7b02",
+        "ae941827-7015-4a72-b259-c854a0cf468b"
+      ],
+      "retrieved_chunk_ids": [
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+        "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+        "0537a20c-08a4-4c98-b0a9-fabc73ca9dea",
+        "83bb4793-5816-4823-9dbb-b9429cc6d1b6",
+        "4d969b72-6c3d-4e24-986e-c6788805c4c3",
+        "abc69609-b558-406d-b922-729221028779"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_4969",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The provided evidence does not contain any information about the CPU usage of FraudScorer during the incident. No claim mentions a CPU usage value or metric for FraudScorer. Consequently, the answer cannot be determined from the available sources.",
+      "citations": [
+        {
+          "doc_id": "fe8e6e44-bff0-4f01-b70f-d2ff3913b549",
+          "chunk_id": "64dc9ae9-df9f-444a-8b68-43730c344e41",
+          "label": "S1"
+        },
+        {
+          "doc_id": "ab81ff55-75d4-42f1-90ca-e93e7759200c",
+          "chunk_id": "1545565d-07c4-4ee0-8f1d-7d2d9a93205b",
+          "label": "S2"
+        },
+        {
+          "doc_id": "fe8e6e44-bff0-4f01-b70f-d2ff3913b549",
+          "chunk_id": "3b30e933-06eb-4f96-9fb0-7cdaf6885d19",
+          "label": "S3"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 9.417493800050579,
+      "llm_calls": 1,
+      "tokens": 1377,
+      "retrieved_doc_ids": [
+        "fe8e6e44-bff0-4f01-b70f-d2ff3913b549",
+        "ab81ff55-75d4-42f1-90ca-e93e7759200c",
+        "fe8e6e44-bff0-4f01-b70f-d2ff3913b549",
+        "fe8e6e44-bff0-4f01-b70f-d2ff3913b549",
+        "90d3bd36-60de-4670-add5-bc08baaa3f95",
+        "a16a2bc4-aa2e-462b-9bd9-f171990b6e12",
+        "553fb625-c1fb-4be1-9ff3-7e5d176b7b02",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09"
+      ],
+      "retrieved_chunk_ids": [
+        "64dc9ae9-df9f-444a-8b68-43730c344e41",
+        "1545565d-07c4-4ee0-8f1d-7d2d9a93205b",
+        "3b30e933-06eb-4f96-9fb0-7cdaf6885d19",
+        "df19814f-a835-4d68-b3c2-cae1ac806033",
+        "1ca59ef2-e653-43c4-bfb2-f961601c8a77",
+        "edfd2f4c-cf7c-4b8a-af21-1e8992abf5bd",
+        "83bb4793-5816-4823-9dbb-b9429cc6d1b6",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 0.0,
+        "soft_abstention": 0.0,
+        "false_answer_on_unanswerable": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_incomplete_inc1_approver",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The rollback approver’s identity is not provided—it is redacted/incomplete in the record【S1】.",
+      "citations": [
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "0984d7a8-6378-4c9f-a6d4-447054537bf4",
+          "chunk_id": "79c91d69-68f6-4a1f-bd12-fdb24cc1c813",
+          "label": "S2"
+        },
+        {
+          "doc_id": "81901c5a-460a-46ce-b96f-5b022b926be1",
+          "chunk_id": "68fc815f-caac-4d1e-b6a4-3a11921912bb",
+          "label": "S3"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 2.9989988000597805,
+      "llm_calls": 1,
+      "tokens": 1259,
+      "retrieved_doc_ids": [
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "0984d7a8-6378-4c9f-a6d4-447054537bf4",
+        "81901c5a-460a-46ce-b96f-5b022b926be1",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "d288701b-83a5-4820-9308-dd97769dbbfa",
+        "d528bdbd-bb42-4791-9896-9c2d75f23126",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "29963fd9-0587-4a6d-bb01-f47a61428ac3"
+      ],
+      "retrieved_chunk_ids": [
+        "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+        "79c91d69-68f6-4a1f-bd12-fdb24cc1c813",
+        "68fc815f-caac-4d1e-b6a4-3a11921912bb",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "89979aaa-5b9e-4336-8837-e1770730e6ad",
+        "f53a01c4-8a6b-430d-9d35-5bb2dc0ef7bc",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "d0c48c2e-e55e-49b2-92c2-33cdd01e19bd"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 0.0,
+        "soft_abstention": 0.0,
+        "false_answer_on_unanswerable": 1.0,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "syn_multistep_latency",
+      "question_type": "multi_step",
+      "split": "test",
+      "gold_doc_ids": [
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "latency_metrics",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The provided evidence describes a six‑hour timeout of **PaymentService** after the auth‑gateway deployment and a status update indicating that PaymentService was recovering, but it does not contain any latency metrics or mention elevated latency for any specific service components. Therefore, the available records do not identify which components experienced elevated latency during the March incident. [S1][S6]",
+      "citations": [
+        {
+          "doc_id": "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+          "chunk_id": "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S6"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 1.1447833999991417,
+      "llm_calls": 1,
+      "tokens": 1480,
+      "retrieved_doc_ids": [
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "472f1cd6-66a5-4efd-8de0-43fd78ffc40e",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+        "90d93451-2d49-48d9-b1f1-ee2747a430b9",
+        "fd6bc225-aa15-4c15-937d-ff1e598365ea",
+        "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+        "bf400e08-1e4b-4a53-afe0-a2a9f203fef2",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "78c8d25f-3319-4e64-a55d-a6ac1814fd3c",
+        "7094967c-9a1b-4366-8910-f70d640fc217"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.09375000000000001,
+        "citation": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8529",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "06a185da-c4f0-4795-a732-f56a62648e0e",
+        "04f360b5-5464-45f0-914a-a45d1157ee2b"
+      ],
+      "gold_doc_titles": [
+        "Curt Smith",
+        "Laura Stoica"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "No. Curt Smith is English, while Laura Stoica was Romanian【S2】【S1】.",
+      "citations": [
+        {
+          "doc_id": "04f360b5-5464-45f0-914a-a45d1157ee2b",
+          "chunk_id": "5d9fd915-86cf-4b58-bd8d-30ef57158714",
+          "label": "S1"
+        },
+        {
+          "doc_id": "06a185da-c4f0-4795-a732-f56a62648e0e",
+          "chunk_id": "79fa0789-14ed-43c9-ae5a-d39a543180cb",
+          "label": "S2"
+        },
+        {
+          "doc_id": "c41671b6-e462-44fa-9b4c-2f754ba2bf5b",
+          "chunk_id": "8d525288-4251-4da5-9a62-1969a95a4772",
+          "label": "S3"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 3.9257866999832913,
+      "llm_calls": 1,
+      "tokens": 1379,
+      "retrieved_doc_ids": [
+        "04f360b5-5464-45f0-914a-a45d1157ee2b",
+        "06a185da-c4f0-4795-a732-f56a62648e0e",
+        "c41671b6-e462-44fa-9b4c-2f754ba2bf5b",
+        "d2ed7c58-35b3-4c38-9bd0-dd671b5e772f",
+        "704494e8-3bc0-4c9b-9ecb-319a2fb6d26f",
+        "d4662303-88ea-4a44-8263-218ce5b46d12",
+        "4d3e6769-353c-489b-8077-ffc2b3787d03",
+        "9cda97fd-6cc6-403e-b7af-7539d69714ec"
+      ],
+      "retrieved_chunk_ids": [
+        "5d9fd915-86cf-4b58-bd8d-30ef57158714",
+        "79fa0789-14ed-43c9-ae5a-d39a543180cb",
+        "8d525288-4251-4da5-9a62-1969a95a4772",
+        "6761b350-1a0c-4510-97bd-7ccee971e6ad",
+        "61d9b6fc-e165-46f5-95e3-df38ced61167",
+        "e8fe5a94-e594-47ae-ae98-cd131e2f4d97",
+        "18a190bf-6bb8-4142-b46d-182df2295885",
+        "a28037b9-10ee-46a0-ba2d-823732e09c74"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.15384615384615385,
+        "citation": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7264",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "71379eff-7562-4ee4-862b-14d497b8c99f",
+        "a5e8134c-49aa-4bce-98c5-5217e0af5d11"
+      ],
+      "gold_doc_titles": [
+        "Tim Rice",
+        "Aida (musical)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Tim Rice collaborated with Elton John on the musical Aida, which is based on the opera Aida by Giuseppe Verdi【S1】.",
+      "citations": [
+        {
+          "doc_id": "a5e8134c-49aa-4bce-98c5-5217e0af5d11",
+          "chunk_id": "6507a28b-fd1c-4ffb-a355-69df0c5c111f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "71379eff-7562-4ee4-862b-14d497b8c99f",
+          "chunk_id": "45032da9-dca5-416d-b8eb-161f370ebd29",
+          "label": "S2"
+        },
+        {
+          "doc_id": "c5663084-2cfb-4b5c-96a5-a21eede05ec6",
+          "chunk_id": "524be26f-ec9e-4176-b465-167ae943367f",
+          "label": "S3"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 7.199128199950792,
+      "llm_calls": 1,
+      "tokens": 1398,
+      "retrieved_doc_ids": [
+        "a5e8134c-49aa-4bce-98c5-5217e0af5d11",
+        "71379eff-7562-4ee4-862b-14d497b8c99f",
+        "c5663084-2cfb-4b5c-96a5-a21eede05ec6",
+        "f3afc951-a3d6-484e-997e-440501dcef1b",
+        "e2a78f73-3564-4840-bcac-7ae5e31a2eba",
+        "cc2a62ea-8cd8-4f01-a107-284a20c8fdd3",
+        "715db543-f131-41e4-9c8e-7e4692fd27d9",
+        "c6736e69-a353-42ca-bc9e-ea4d24e1c0ad"
+      ],
+      "retrieved_chunk_ids": [
+        "6507a28b-fd1c-4ffb-a355-69df0c5c111f",
+        "45032da9-dca5-416d-b8eb-161f370ebd29",
+        "524be26f-ec9e-4176-b465-167ae943367f",
+        "8f388254-c986-4c6d-a788-b9fb1d74b27b",
+        "4db14f6c-52e8-447e-ae74-85296399619f",
+        "5e696365-325e-42d7-86f3-0ac43eb704ed",
+        "553867e7-7be8-4b97-a126-b8084f7bd073",
+        "c4331d1f-b54f-4165-b6b3-49a40fd9ae0f"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.17391304347826084,
+        "citation": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2845",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+        "955d5257-0873-47d3-a587-1c54a38242cd"
+      ],
+      "gold_doc_titles": [
+        "Ohio State University",
+        "California State University, Dominguez Hills"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "California State University, Dominguez Hills is farther west—it is located in Carson, California on the West Coast, whereas The Ohio State University is in Columbus, Ohio, which lies east of California [S1][S2].",
+      "citations": [
+        {
+          "doc_id": "955d5257-0873-47d3-a587-1c54a38242cd",
+          "chunk_id": "5d1d07db-fa05-443d-bc85-6a044d9369eb",
+          "label": "S1"
+        },
+        {
+          "doc_id": "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+          "chunk_id": "81a0cced-b260-467f-85b3-d889482f1465",
+          "label": "S2"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 9.713569000014104,
+      "llm_calls": 1,
+      "tokens": 1439,
+      "retrieved_doc_ids": [
+        "955d5257-0873-47d3-a587-1c54a38242cd",
+        "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+        "22250f82-3a6e-476b-93a1-43e22d554dea",
+        "245ba734-d3d3-4d21-870a-fe0383d27fe5",
+        "cc662a1d-7816-41bd-83a1-c443af527264",
+        "28ae16dc-94f2-4ea5-a409-3527ee8731c4",
+        "4bc687fb-2839-4e4b-aa6e-bc0794260135",
+        "0e265c2b-8770-4d5b-b9ae-1d97fa6de6da"
+      ],
+      "retrieved_chunk_ids": [
+        "5d1d07db-fa05-443d-bc85-6a044d9369eb",
+        "81a0cced-b260-467f-85b3-d889482f1465",
+        "c2317a25-6e66-481b-a920-34a9863be357",
+        "9947162c-448a-4d2b-b9f6-54ffe389dce3",
+        "b4abb537-3a99-40dd-8855-d9b9ffe6f591",
+        "792db4ff-583e-4b92-a79c-cbf79e0c259d",
+        "efed1990-275c-4366-9276-26aa9eebbc67",
+        "bd434613-394a-43e6-95e0-4990e9cfe2f4"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.25641025641025644,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3397",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "20f6899a-40b5-4bf5-b53d-c0afca33d9af",
+        "f9ed890f-209d-4388-8daf-075fdd815e14"
+      ],
+      "gold_doc_titles": [
+        "Camp Modin",
+        "Canaan, Maine"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The provided sources state that Camp Modin was originally established in Canaan, Maine, and moved in 1992 to Salmon Lake in the Belgrade Lakes region [S1]. However, none of the cited evidence identifies the county in which Canaan is located, so the answer cannot be determined from the available claims.",
+      "citations": [
+        {
+          "doc_id": "20f6899a-40b5-4bf5-b53d-c0afca33d9af",
+          "chunk_id": "adc4ae3d-994d-41a9-bee8-2e3443d6b96b",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 9.477829999988899,
+      "llm_calls": 1,
+      "tokens": 1598,
+      "retrieved_doc_ids": [
+        "20f6899a-40b5-4bf5-b53d-c0afca33d9af",
+        "2e6f7e42-aa67-45e3-b6a5-afba8852e717",
+        "dee1d836-a494-4a12-bc68-9393583e6656",
+        "7c933580-657d-459d-9b1f-7e7252953e45",
+        "fe27042c-e6d3-4e25-a6be-a20e81d5984e",
+        "c401df92-fe79-44fe-9085-04fcfbf154e2",
+        "d81ba5fc-4813-4032-bd2f-307f2d36ff8e",
+        "67780af2-dbb9-4511-9c09-3ab610df772d"
+      ],
+      "retrieved_chunk_ids": [
+        "adc4ae3d-994d-41a9-bee8-2e3443d6b96b",
+        "6c9ada8e-3431-4fc3-bc43-94011fed1f19",
+        "3a8d2c62-f10f-4bc1-aedb-90016d58a7d5",
+        "2cfcb157-1a79-4280-aa8f-bb0914f74cb0",
+        "57f2f1ce-fbe9-4dd0-bb9c-828d51eb5c8e",
+        "454dd613-004c-4e86-8845-18e11c9cdd93",
+        "fbbb08fc-dd3f-4c0a-8773-ed34c769aa79",
+        "0b420bf7-e88e-4a97-9eb8-c1b44c924596"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.038461538461538464,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    }
+  ]
+}

@@ -19,9 +19,9 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | RAG-2 | Combine info from different documents | engine + aggregator + synthesizer | live citations live_a+live_b | Done-verified | Live trace cites ≥2 docs |
 | RAG-3 | Multi-step complex questions | planner + tool loop | live plan n=2 + 4 tool rounds | Done-verified | Live plan type=causal; tools used |
 | RAG-4 | Evidence-based answers; citations | synthesizer + verifier + quote check | live verify ok=True | Done-verified | Quotes match chunks; fabricated path unit-tested |
-| RAG-5 | Detect contradictory information | `contradictions.py` | unit + scripted + `behavioral_rag_smoke.json` | Partial | Deterministic gates pass; live investigation still returns `answered` on planted conflicts |
-| RAG-6 | Abstain when insufficient | `sufficiency.py` | unit + scripted + behavioral smoke | Partial | Deterministic empty→insufficient; live unanswerable still often `answered`/`partial` |
-| RAG-7 | Handle LLM errors/limits | gateway retry/fallback/budget + degraded | `test_gateway` + eval stop-on-429 | Partial | Live Groq TPD exhaustion observed; Gemini thought_signature round-trip fixed |
+| RAG-5 | Detect contradictory information | `contradictions.py` | unit + scripted + `behavioral_rag_smoke.json` | Partial | Deterministic gates pass; live contradiction rate still low under provider limits |
+| RAG-6 | Abstain when insufficient | `sufficiency.py` + `question_focus.py` | unit + colony abstention probe | Partial→improved | Question-conditioned support; colony→`insufficient` (scripted); baseline_rag still over-answers |
+| RAG-7 | Handle LLM errors/limits | gateway + per-request budget reset | `test_budget_per_request` + prod probe | Partial→improved | Budget/provider → `llm_unavailable` + evidence preview; wall-clock default 300s |
 | RAG-8 | Tool-calling / structured tools | `investigation/tools.py` | live tool rounds + schemas | Done-verified | Live tools_round_0..3 with tool calls |
 
 | EVAL-1 | Automated evaluation harness | `eval/run_eval.py`, `eval/metrics.py` | `tests/unit/test_eval_metrics.py` + result JSONs | Done-verified | Resumable; `--scorable-only` + exclusion reasons |
@@ -39,7 +39,7 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | DEP-2 | Hosting and DB integration | Neon + app ready | `docs/evidence/prod_e2e_smoke.json` | Done-verified | Render ready + upload/query/update/delete/401 E2E 2026-10-29 |
 | DEP-3 | Data persists across restarts | external Neon/Qdrant | restart test | Partial | Architecture chosen for persistence; local tests use temp SQLite + memory store |
 | DEP-4 | Secrets protected | env/secrets; admin token; no CORS `*` | secret scan + UI | Partial | `.env` gitignored; admin token not stored in localStorage; keys never returned in API |
-| DEP-5 | Deployment architecture, costs, free-tier limits documented | `FREE_TIER_NOTES.md`, DEPLOYMENT | docs | Partial | Phase 0 notes written; Deploy smoke pending |
+| DEP-5 | Deployment architecture, costs, free-tier limits documented | `FREE_TIER_NOTES.md`, DEPLOYMENT | docs + `/api/version` | Partial→improved | `git_commit` exposed; Render verified against `0036003` |
 | TECH-1 | Clean modular code, SoC, errors | `app/` layout | review/tests | Partial | API → services → repos; modules kept thin |
 | TECH-2 | Automated tests; DB/API integration | `tests/` | local pytest 119 passed | Partial | Phase 5 API/UI covered; Render E2E for new routes pending |
 | TECH-3 | Secure env config; technical docs | config + docs | TBD | Partial | Phase 0–1 docs started |

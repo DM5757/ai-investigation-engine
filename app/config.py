@@ -58,7 +58,8 @@ class Settings(BaseSettings):
     llm_retry_max_s: float = Field(default=8.0, alias="LLM_RETRY_MAX_S")
     llm_budget_max_calls: int = Field(default=20, alias="LLM_BUDGET_MAX_CALLS")
     llm_budget_max_tokens: int = Field(default=50_000, alias="LLM_BUDGET_MAX_TOKENS")
-    llm_budget_wall_clock_s: float = Field(default=120.0, alias="LLM_BUDGET_WALL_CLOCK_S")
+    # Render Free cold start + embedding load + multi-step tools often exceeds 2 minutes.
+    llm_budget_wall_clock_s: float = Field(default=300.0, alias="LLM_BUDGET_WALL_CLOCK_S")
     max_tool_rounds: int = Field(default=6, alias="MAX_TOOL_ROUNDS")
     max_sub_questions: int = Field(default=4, alias="MAX_SUB_QUESTIONS")
     max_question_chars: int = Field(default=2000, alias="MAX_QUESTION_CHARS")
