@@ -16,8 +16,9 @@ Given a large document corpus, answer questions that may require combining multi
 | ACTIVE documents | **55,081** | `docs/evidence/dataset_counts.json` + live `/api/stats` |
 | FAILED records | **0** | same |
 | Qdrant points | **56,890** (= ACTIVE chunk rows) | same |
-| Automated tests | **150** passing (1 live test deselected by default) | `pytest` |
+| Automated tests | **175** passing (1 live test deselected by default) | `pytest` |
 | Retrieval eval | **91** scored questions; dense R@10 **0.890**; hybrid MRR **0.919** | `docs/EVALUATION_REPORT.md` |
+| Multi-hop (local, Gemini fallback) | OSU/CSUDH, Lent→Ice Road Truckers, Robinson→Perdita/Sicilia correct with citations | Milestone 4 |
 | Deployed commit | reported by `/api/version` | Render Free |
 
 Trust measured artifacts over narrative claims. Do not claim ≥50k indexed documents unless `dataset_counts.json` reports `meets_data1_50k: true`.
@@ -105,7 +106,8 @@ Report: `docs/EVALUATION_REPORT.md` · Results: `eval/results/` · DOC-6: `eval/
 ## Known limitations
 
 - Render Free cold starts and free LLM rate limits affect demo latency and can force `llm_unavailable` (with sanitized failure categories such as `daily_quota`).
-- Measured successful factual queries are typically dominated by hybrid retrieval then LLM tool rounds; traces expose per-stage `latency_ms`.
+- Groq free-tier daily quota often exhausts during multi-document runs; Gemini fallback continues when RPM allows.
+- Measured successful factual queries are typically dominated by hybrid retrieval then LLM tool rounds; traces expose per-stage `latency_ms`. Seed/entity retrieval caching reduces repeat embed/search cost within a request.
 - Investigation answer evaluation is provider-limited on free tiers; report scored vs skipped honestly.
 - Contradiction detection is strong in unit/scripted tests; live contradiction rates depend on retrieval coverage and LLM availability.
 - Baseline RAG can still over-answer unanswerable items relative to the full investigation path.

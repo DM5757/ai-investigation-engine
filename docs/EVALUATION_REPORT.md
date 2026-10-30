@@ -55,6 +55,7 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Render public @ `0036003` (pre-300s budget) | All four cases returned explicit **`llm_unavailable`** with evidence preview after **120s wall-clock** on Free tier (no fake partial essays). | `docs/evidence/prod_quality_probe.json` |
 | Render public @ `0f6adc3` / `c03b155` | Deploy SHA + ACTIVE **55,081** confirmed. Behavioral smoke: airport **PASS** (~142s, 1 cite); budget isolation **PASS**; multi-doc/multi-hop/unanswerable hit provider limits or client timeouts; colony/contradiction returned honest `llm_unavailable`. | `docs/evidence/prod_smoke_suite.json` |
 | Render Milestone 3 @ `428ed09` / `fecabea` | Airport **~67–75s** (was ~142s); contradiction + unanswerable **PASS**; colony **insufficient @ ~48s** (was timeout); multi-doc honest `llm_unavailable` with `groq:daily_quota`; multihop answer quality still weak. Per-stage traces show retrieval then LLM as dominant costs. | `docs/evidence/prod_smoke_suite.json` |
+| Local Milestone 4 multi-hop | OSU/CSUDH **answered** with both gold titles cited (~5–9s); Lent→Ice Road Truckers premiere date **answered**; Robinson→Perdita/Sicilia **answered**; colony abstention + airport factual preserved. Failure mode before fix was claim anaphora + synthesis hedge, not missing Qdrant recall. | local investigation probes |
 
 ## 5. Quality fixes reflected in metrics intent
 
@@ -62,12 +63,13 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 - Question-conditioned sufficiency → missing-entity questions abstain
 - Citation pruning to answer labels; relative retrieval floor; phrase-aware rerank
 - `/api/version` exposes `git_commit`
+- Multi-hop: entity seeding, title fidelity, bridge hops, anaphoric claims, grounded second-hop filtering
 
 ## 6. Remaining gaps
 
-1. Multi-hop title disambiguation (e.g. Mansfield Campus vs primary / CSUDH) under healthy quotas.
-2. Full investigation answer eval needs a quota-healthy window (no early stop).
-3. Free-tier daily quotas still force honest `llm_unavailable` on some multi-document paths.
+1. Full investigation answer eval needs a quota-healthy window (no early stop).
+2. Free-tier daily quotas / Gemini RPM still force fallbacks and occasional slow tool rounds.
+3. Production multi-hop latency still LLM-bound after retrieval optimizations.
 
 ## 7. Evidence index
 

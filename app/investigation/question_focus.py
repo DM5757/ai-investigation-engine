@@ -296,6 +296,52 @@ def claim_support_score(claim: Claim, focus: QuestionFocus) -> float:
 
     return _token_coverage(hay, focus.tokens)
 
+_SECOND_HOP_RELATION = re.compile(
+    r"\b("
+    r"located|based|founded|born|died|premiered|premiere|nicknamed|known as|"
+    r"daughter of|son of|star of|star on|co-writer|king of|queen of|"
+    r"january|february|march|april|may|june|july|august|september|"
+    r"october|november|december|\d{4}"
+    r")\b",
+    re.IGNORECASE,
+)
+
+
+def _second_hop_claim_useful(claim: Claim, question: str, focus: QuestionFocus) -> bool:
+    """Keep relational bridge-document claims that answer the asked slot.
+
+    Second-hop pages (e.g. Perdita, Ice Road Truckers) often omit the first-hop
+    entity name, so ordinary focus scoring would drop them even when they hold
+    the date/country/relationship the question asks for.
+    """
+    from app.investigation.entities import extract_focus_entities, should_attempt_bridge
+
+    entities = extract_focus_entities(question)
+    if not should_attempt_bridge(question, entities):
+        return False
+    hay = (
+        f"{claim.source_title or ''} {claim.subject} {claim.attribute} "
+        f"{claim.value} {claim.quote}"
+    ).lower()
+    if not _SECOND_HOP_RELATION.search(hay):
+        return False
+    q_low = question.lower()
+    asks_country = bool(re.search(r"\b(?:which country|king of|queen of)\b", q_low))
+    asks_date = bool(re.search(r"\b(?:what date|premiered|premiere date)\b", q_low))
+    if asks_country and re.search(r"\b(?:king of|queen of)\b", hay):
+        return True
+    # Date slots need an explicit premiere/date cue — bare years match too many
+    # distractor TV/film pages.
+    if asks_date and re.search(r"\b(?:premiered|premiere)\b", hay):
+        return True
+    # Residual non-entity focus tokens that appear in the claim.
+    entity_toks: set[str] = set()
+    for ent in entities:
+        entity_toks.update(re.findall(r"[a-z0-9]{3,}", ent.lower()))
+    residual = [t for t in focus.tokens if t not in entity_toks]
+    return sum(1 for t in residual if t in hay) >= 2
+
+
 def filter_claims_for_question(
     claims: list[Claim],
     question: str,
@@ -305,13 +351,44 @@ def filter_claims_for_question(
     """Split claims into supporting vs weak/generic keyword-only matches."""
     focus = extract_question_focus(question)
     supporting: list[Claim] = []
+    second_hop: list[Claim] = []
     weak: list[Claim] = []
     for claim in claims:
         score = claim_support_score(claim, focus)
         if score >= min_support:
             supporting.append(claim)
+        elif _second_hop_claim_useful(claim, question, focus):
+            second_hop.append(claim)
         else:
             weak.append(claim)
+    # Only keep second-hop claims whose title is grounded in first-hop quotes
+    # (e.g. Michael Lent → Ice Road Truckers; Mary Robinson → Perdita).
+    if second_hop and supporting:
+        primary_text = " ".join(
+            f"{c.source_title or ''} {c.subject} {c.value} {c.quote}" for c in supporting
+        ).lower()
+        for claim in second_hop:
+            title = (claim.source_title or claim.subject or "").lower()
+            bare = re.sub(r"\s*\([^)]*\)\s*", " ", title).strip()
+            bare = re.sub(r"\s+", " ", bare)
+            linked = bool(bare) and bare in primary_text
+            if not linked:
+                parts = [
+                    p
+                    for p in re.findall(r"[a-z0-9]{5,}", bare)
+                    if p not in _STOP
+                ]
+                longest = max(parts, key=len) if parts else ""
+                # Require a distinctive title token (≥6 chars) so short overlaps
+                # like ``thin``/``ice`` from "On Thin Ice" do not admit distractors.
+                linked = len(longest) >= 6 and longest in primary_text
+            if linked:
+                supporting.append(claim)
+            else:
+                weak.append(claim)
+    elif second_hop and not supporting:
+        # No first-hop support — do not promote orphan bridge pages.
+        weak.extend(second_hop)
     return supporting, weak, focus
 
 

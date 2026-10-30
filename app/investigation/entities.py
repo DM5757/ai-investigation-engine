@@ -176,17 +176,29 @@ def bridge_entity_queries(
             parts = [
                 p
                 for p in re.split(r"[\s\-–,，]+", key)
-                if p and p not in _STOP and len(p) > 2
+                if p
+                and p not in _STOP
+                and p not in _BRIDGE_STOP
+                and p not in _GENERIC_ENTITY_TOKENS
+                and len(p) > 2
             ]
             shares_question = bool(q_tokens & set(parts))
             if key not in linked and not shares_question:
                 continue
+            # Prefer single coherent titles linked by relational cues over
+            # comma-joined actor lists pulled from distractor film pages.
+            comma_penalty = 0.75 if "," in phrase else 0.0
             scores[phrase] = scores.get(phrase, 0.0) + (
-                1.5 if key in linked else 1.0
-            ) + 0.15 * len(phrase.split())
+                2.0 if key in linked else 1.0
+            ) + 0.15 * len(phrase.split()) - comma_penalty
 
     ranked = sorted(scores.items(), key=lambda kv: (-kv[1], -len(kv[0]), kv[0]))
     return [p for p, _ in ranked[:max_bridges]]
+
+
+def is_comparison_question(question: str) -> bool:
+    """True when the question explicitly compares alternatives (or/versus)."""
+    return bool(_SPLIT_RE.search(question or ""))
 
 
 def extract_focus_entities(question: str, *, max_entities: int = 4) -> list[str]:
@@ -199,7 +211,7 @@ def extract_focus_entities(question: str, *, max_entities: int = 4) -> list[str]
     if not q:
         return []
 
-    # Prefer explicit alternatives joined by or/versus/and.
+    # Prefer explicit alternatives joined by or/versus.
     parts = [p.strip(" ?.") for p in _SPLIT_RE.split(q) if p.strip(" ?.")]
     entities: list[str] = []
     if len(parts) >= 2:
@@ -254,6 +266,27 @@ def best_entity_fidelity(entities: list[str], title: str | None) -> float:
     return max(entity_title_fidelity(e, title) for e in entities)
 
 
+# Shared institutional words that must not alone prove entity coverage
+# (e.g. "State University" matching both Ohio State and CSU Dominguez Hills).
+_GENERIC_ENTITY_TOKENS = frozenset(
+    {
+        "state",
+        "university",
+        "college",
+        "school",
+        "campus",
+        "institute",
+        "center",
+        "city",
+        "county",
+        "district",
+        "national",
+        "public",
+        "private",
+    }
+)
+
+
 def claim_covers_entity(claim_haystack: str, entity: str) -> bool:
     """True when a claim text/title supports the entity with distinctive tokens."""
     hay = claim_haystack.lower()
@@ -261,16 +294,16 @@ def claim_covers_entity(claim_haystack: str, entity: str) -> bool:
     if ent and ent in hay:
         return True
     parts = [
-        p for p in re.split(r"[\s\-–,，]+", ent) if p and p not in _STOP and len(p) > 2
+        p
+        for p in re.split(r"[\s\-–,，]+", ent)
+        if p and p not in _STOP and p not in _GENERIC_ENTITY_TOKENS and len(p) > 2
     ]
     if not parts:
         return False
-    # Require the longest distinctive token (avoids "State University" cross-hits).
+    # Require the longest distinctive non-generic tokens (avoids cross-hits
+    # between similarly typed institutions that share "State"/"University").
     distinctive = sorted(parts, key=len, reverse=True)[:2]
-    if not all(p in hay for p in distinctive):
-        return False
-    covered = sum(1 for p in parts if p in hay)
-    return (covered / len(parts)) >= 0.6
+    return all(p in hay for p in distinctive)
 
 
 def _norm_phrase(raw: str) -> str:
@@ -327,5 +360,6 @@ __all__ = [
     "entity_title_fidelity",
     "extract_focus_entities",
     "extract_title_phrases",
+    "is_comparison_question",
     "should_attempt_bridge",
 ]

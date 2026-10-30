@@ -62,6 +62,15 @@ def claims_from_tool_payload(
 
 
 _SENTENCE_SPLIT = re.compile(r"(?<=[.!?])\s+")
+_RELATION_CUE = re.compile(
+    r"\b("
+    r"located|location|based|headquartered|founded|born|died|premiered|"
+    r"nicknamed|nickname|known as|daughter of|son of|star of|star on|"
+    r"co-writer|west|east|north|south|city of|county|country|date|in the|"
+    r"king of|queen of|role as"
+    r")\b",
+    re.IGNORECASE,
+)
 
 
 def heuristic_claims_from_chunk(
@@ -73,19 +82,52 @@ def heuristic_claims_from_chunk(
     claim_prefix: str,
     source_title: str | None = None,
 ) -> list[Claim]:
-    """Deterministic fallback: treat short sentences mentioning subject as claims."""
+    """Deterministic fallback: subject-mention sentences plus anaphoric follow-ons.
+
+    Wiki-style abstracts often name an entity in sentence 1 and put the asked
+    fact (location, premiere date, parentage) in sentence 2 with ``It``/``The``.
+    Capture that continuation when it carries a relational cue.
+    """
     claims: list[Claim] = []
     hint = subject_hint.lower().strip()
-    for i, sentence in enumerate(_SENTENCE_SPLIT.split(text.strip())):
-        s = sentence.strip()
-        if len(s) < 20 or len(s) > 280:
+    title_l = (source_title or "").lower().strip()
+    sentences = [s.strip() for s in _SENTENCE_SPLIT.split(text.strip()) if s.strip()]
+    selected: list[tuple[int, str]] = []
+    for i, s in enumerate(sentences):
+        if len(s) < 20 or len(s) > 320:
             continue
-        if hint and hint not in s.lower():
+        low = s.lower()
+        mentions = bool(hint and hint in low) or bool(title_l and title_l in low)
+        if mentions:
+            selected.append((i, s))
+            # Anaphoric continuation: the next 1–2 sentences often hold the
+            # asked fact after a wiki-style entity intro.
+            for j in (i + 1, i + 2):
+                if j >= len(sentences):
+                    break
+                nxt = sentences[j]
+                if 20 <= len(nxt) <= 320 and _RELATION_CUE.search(nxt):
+                    selected.append((j, nxt))
             continue
+        # Title-aligned chunks: keep strongly relational sentences even when the
+        # entity name is elided (``It is located in Carson, California``).
+        if (
+            title_l
+            and hint
+            and (hint in title_l or title_l in hint)
+            and _RELATION_CUE.search(s)
+        ):
+            selected.append((i, s))
+
+    seen_i: set[int] = set()
+    for i, s in selected:
+        if i in seen_i:
+            continue
+        seen_i.add(i)
         quote = s[:240]
         claim = Claim(
             claim_id=f"{claim_prefix}-{i}",
-            subject=subject_hint or doc_id,
+            subject=subject_hint or source_title or doc_id,
             attribute="statement",
             value=s[:200],
             quote=quote,
@@ -96,4 +138,4 @@ def heuristic_claims_from_chunk(
         verified = verify_claim_quote(claim, text)
         if verified.verified:
             claims.append(verified)
-    return claims[:3]
+    return claims[:5]

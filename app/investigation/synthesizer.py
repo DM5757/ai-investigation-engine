@@ -104,8 +104,9 @@ def llm_synthesize(
     labeled = assign_source_labels([c for c in claims if c.verified])
     citations = claims_to_citations(labeled)
     claim_lines = "\n".join(
-        f"[{c.source_label}] subject={c.subject} attr={c.attribute} "
-        f"value={c.value} quote={c.quote!r} doc={c.doc_id}"
+        f"[{c.source_label}] title={c.source_title or c.doc_id!r} "
+        f"subject={c.subject} attr={c.attribute} "
+        f"value={c.value} quote={c.quote!r}"
         for c in labeled
     )
     conflict_lines = "\n".join(
@@ -117,7 +118,9 @@ def llm_synthesize(
         f"Question: {question}\nStatus: {status}\nClaims:\n{claim_lines}\n"
         f"Conflicts:\n{conflict_lines or '(none)'}\n"
         "Write a concise answer with only the [Sn] citations that support it. "
-        "Do not cite unrelated sources."
+        "Do not cite unrelated sources. When Status is answered or partial and "
+        "claims cover each compared entity, give the comparative conclusion; "
+        "do not refuse as insufficient."
     )
     result = llm.chat(
         [
@@ -158,6 +161,15 @@ def synthesize_answer(
             status=status,
             llm=llm,
         )
+        if status in ("answered", "partial") and _llm_hedged_insufficient(text):
+            # Status already established evidence; do not ship an LLM refusal.
+            text2, cites2 = deterministic_synthesize(
+                status=status,
+                claims=claims,
+                conflicts=conflicts,
+                abstention_reason=abstention_reason,
+            )
+            return text2, cites2, usage, True
         return text, cites, usage, True
     except BudgetExceeded:
         raise
@@ -169,6 +181,21 @@ def synthesize_answer(
             abstention_reason=abstention_reason,
         )
         return text, cites, UsageStats(), False
+
+
+_HEDGE_INSUFFICIENT = re.compile(
+    r"\b("
+    r"insufficient(?:\s+information|\s+evidence|\s+to)?|"
+    r"cannot\s+determine|do\s+not\s+provide|"
+    r"not\s+(?:enough|sufficient)\s+(?:information|evidence)|"
+    r"claims\s+are\s+insufficient"
+    r")\b",
+    re.IGNORECASE,
+)
+
+
+def _llm_hedged_insufficient(text: str | None) -> bool:
+    return bool(text and _HEDGE_INSUFFICIENT.search(text))
 
 
 def citation_labels_in_text(text: str) -> set[str]:

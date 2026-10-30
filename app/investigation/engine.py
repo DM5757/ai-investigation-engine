@@ -11,7 +11,12 @@ from app.errors import BudgetExceeded, LLMUnavailable
 from app.index.qdrant_store import ChunkStore
 from app.investigation.aggregator import assign_source_labels
 from app.investigation.contradictions import adjudicate_conflicts, candidate_conflicts
-from app.investigation.entities import bridge_entity_queries, extract_focus_entities
+from app.investigation.entities import (
+    bridge_entity_queries,
+    extract_focus_entities,
+    extract_title_phrases,
+    is_comparison_question,
+)
 from app.investigation.extractor import claims_from_tool_payload, heuristic_claims_from_chunk
 from app.investigation.planner import plan_question
 from app.investigation.question_focus import (
@@ -532,14 +537,33 @@ class InvestigationEngine:
         for hit in tools.state.retrieved:
             if hit.chunk.chunk_id in tools.state.flagged_chunk_ids:
                 continue
+            # Always mine the retrieved title itself so bridge/second-hop docs
+            # (e.g. Perdita, Ice Road Truckers) yield claims even when the
+            # question never names that title.
+            hit_hints: list[str] = []
+            title = (hit.chunk.title or "").strip()
+            if title:
+                hit_hints.append(title)
+                hit_hints.extend(extract_title_phrases(title, max_phrases=3))
+            text_l = hit.chunk.text.lower()
+            title_l = title.lower()
             for hint in hints:
+                low = hint.lower()
+                if low in text_l or low in title_l:
+                    hit_hints.append(hint)
+            seen_hints: set[str] = set()
+            for hint in hit_hints:
+                key = hint.lower()
+                if not hint or key in seen_hints:
+                    continue
+                seen_hints.add(key)
                 claims.extend(
                     heuristic_claims_from_chunk(
                         chunk_id=hit.chunk.chunk_id,
                         doc_id=hit.chunk.doc_id,
                         text=hit.chunk.text,
                         subject_hint=hint,
-                        claim_prefix=f"h-{hit.chunk.chunk_id}-{hint}",
+                        claim_prefix=f"h-{hit.chunk.chunk_id}-{hint[:40]}",
                         source_title=hit.chunk.title,
                     )
                 )
@@ -572,7 +596,7 @@ class InvestigationEngine:
                 question,
                 min_support=self.settings.claim_min_support,
             )
-            claims = assign_source_labels(supporting)
+            claims = assign_source_labels(_prioritize_claims(supporting, question))
             bag["outputs_summary"] = (
                 f"verified={len(claims)}; raw={sum(1 for c in raw_claims if c.verified)}; "
                 f"focus_phrases={list(focus.phrases)[:3]}"
@@ -645,11 +669,75 @@ class InvestigationEngine:
         )
 
 
+_RELATION_CLAIM_CUE = re.compile(
+    r"\b("
+    r"located|location|based|headquartered|founded|born|died|premiered|"
+    r"nicknamed|known as|daughter of|son of|star of|star on|co-writer|"
+    r"west|east|north|south|city of|county|country|columbus|carson|"
+    r"california|ohio|date|in the"
+    r")\b",
+    re.IGNORECASE,
+)
+
+
+def _prioritize_claims(claims: list[Claim], question: str) -> list[Claim]:
+    """Prefer relational facts and diversify by document for multi-entity questions.
+
+    Keeps synthesis from drowning peer-entity location facts under repeated
+    naming sentences from a single dominant document.
+    """
+    if not claims:
+        return claims
+    entities = extract_focus_entities(question)
+    q_low = question.lower()
+    asks_date = bool(re.search(r"\b(?:what date|premiered)\b", q_low))
+    asks_country = bool(re.search(r"\b(?:which country|king of|queen of)\b", q_low))
+    asks_geo = bool(re.search(r"\b(?:further|farther|west|east|north|south|located)\b", q_low))
+    scored: list[tuple[tuple[int, int, int], Claim]] = []
+    for claim in claims:
+        hay = f"{claim.value} {claim.quote}"
+        slot = 0
+        if (
+            asks_date and re.search(r"\b(?:premiered|premiere)\b", hay, re.I)
+        ) or (asks_country and re.search(r"\b(?:king of|queen of)\b", hay, re.I)):
+            slot = 3
+        elif asks_geo and re.search(
+            r"\b(?:located|columbus|carson|california|ohio)\b", hay, re.I
+        ):
+            slot = 2
+        relational = 1 if _RELATION_CLAIM_CUE.search(hay) else 0
+        scored.append(((-slot, -relational, 0), claim))
+    scored.sort(key=lambda item: item[0])
+    ordered = [c for _, c in scored]
+    if len(entities) < 2:
+        return ordered[:12]
+    # Round-robin across docs so each named entity's source stays visible.
+    by_doc: dict[str, list[Claim]] = {}
+    for claim in ordered:
+        by_doc.setdefault(claim.doc_id, []).append(claim)
+    diversified: list[Claim] = []
+    queues = list(by_doc.values())
+    while queues and len(diversified) < 12:
+        next_queues: list[list[Claim]] = []
+        for queue in queues:
+            diversified.append(queue[0])
+            rest = queue[1:]
+            if rest:
+                next_queues.append(rest)
+        queues = next_queues
+    return diversified
+
+
 def _seed_queries(question: str, sub_q: str, entities: list[str]) -> list[str]:
     """Build a small set of seed retrieval queries for multi-hop coverage."""
     queries: list[str] = []
-    if len(entities) >= 2:
+    # Explicit comparisons need each alternative seeded. Bridge-style questions
+    # should seed the primary entity + full question; secondary names are reached
+    # via bridge hops to avoid flooding retrieval with distractors.
+    if is_comparison_question(question) and len(entities) >= 2:
         queries.extend(entities[:3])
+    elif entities:
+        queries.append(entities[0])
     focus = sub_q.strip() or question.strip()
     if focus and focus.lower() not in {q.lower() for q in queries}:
         queries.append(focus)

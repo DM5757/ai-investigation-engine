@@ -69,8 +69,15 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Live retest @ `fecabea`: airport PASS ~67s (seed search ~12s, was ~65s); colony PASS `insufficient` @ ~48s with 0 cites.
 - Tests: **163** passed (non-live). Early tag `submission-2026-10-29` unchanged.
 
+## Milestone 4 — multi-hop reasoning / retrieval efficiency (2026-10-30)
+
+- Root cause of OSU/CSUDH failure: hybrid retrieval already returned both gold titles; investigation lost the peer entity through campus-title drift, claim quotes that stopped at naming sentences (location lived in the anaphoric next sentence), and synthesizer hedging despite `answered` status.
+- General fixes: per-entity comparison seeding + title-fidelity rerank; gated bridge-entity hops; anaphoric/relational heuristic claims; second-hop claims kept only when grounded in first-hop quotes; comparison-only dual-entity sufficiency; synthesizer hedge→deterministic fallback; embed/search caches and duplicate-search avoidance.
+- Local multi-hop (Gemini after Groq daily quota): OSU/CSUDH **PASS** (2 cites, CSUDH further west); Lent→Ice Road Truckers premiere **PASS** (June 17, 2007); Robinson→Perdita/Sicilia **PASS**; colony abstention and airport factual preserved; contradiction deploy-time conflict recovered.
+- Tests: **175** passed (non-live). Early tag `submission-2026-10-29` unchanged.
+
 ## Outstanding technical follow-ups
 
-1. Multi-hop title disambiguation (Mansfield Campus vs primary campus / CSUDH) under healthy quotas.
-2. Full investigation answer eval in a quota-healthy window (no early `--stop-after-llm-unavailable`).
-3. Optional TPM-aware backoff tuning beyond current Retry-After + wall-clock gate.
+1. Full investigation answer eval in a quota-healthy window (no early `--stop-after-llm-unavailable`).
+2. Optional TPM-aware backoff tuning beyond current Retry-After + wall-clock gate.
+3. Further cut free-tier LLM round latency (planner/tool rounds still dominate wall-clock).

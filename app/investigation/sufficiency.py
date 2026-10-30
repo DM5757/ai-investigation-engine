@@ -2,7 +2,12 @@
 
 from __future__ import annotations
 
-from app.investigation.entities import claim_covers_entity, extract_focus_entities
+from app.investigation.entities import (
+    claim_covers_entity,
+    entity_title_fidelity,
+    extract_focus_entities,
+    is_comparison_question,
+)
 from app.investigation.question_focus import (
     QuestionFocus,
     claim_support_score,
@@ -52,7 +57,9 @@ def assess_sufficiency(
         )
 
     entities = extract_focus_entities(question)
-    if len(entities) >= 2:
+    # Dual-entity coverage applies to explicit comparisons (A or B / versus),
+    # not bridge-style multi-hops that merely mention multiple proper names.
+    if is_comparison_question(question) and len(entities) >= 2:
         covered: list[str] = []
         for ent in entities:
             for claim in supporting:
@@ -60,7 +67,15 @@ def assess_sufficiency(
                     f"{claim.source_title or ''} {claim.subject} {claim.attribute} "
                     f"{claim.value} {claim.quote}"
                 )
-                if claim_covers_entity(hay, ent):
+                if not claim_covers_entity(hay, ent):
+                    continue
+                fidelity = entity_title_fidelity(ent, claim.source_title)
+                # Prefer claims from a title that faithfully names this entity so
+                # a peer institution page cannot satisfy both sides of a comparison.
+                if fidelity >= 0.9:
+                    covered.append(ent)
+                    break
+                if fidelity >= 0.45 and ent.lower() in hay:
                     covered.append(ent)
                     break
         if len(covered) < 2:

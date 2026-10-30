@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from app.investigation.entities import (
+    claim_covers_entity,
     entity_title_fidelity,
     extract_focus_entities,
 )
@@ -74,6 +75,18 @@ def test_bridge_skipped_for_ordinary_factual_questions() -> None:
         max_bridges=3,
     )
     assert bridges == []
+
+
+def test_claim_covers_entity_rejects_shared_institutional_tokens() -> None:
+    csudh = (
+        "California State University, Dominguez Hills is a public university "
+        "in Carson, California."
+    )
+    osu = "Ohio State University is a public research university in Columbus, Ohio."
+    assert claim_covers_entity(csudh, "California State University, Dominguez Hills")
+    assert claim_covers_entity(osu, "Ohio State University")
+    assert not claim_covers_entity(csudh, "Ohio State University")
+    assert not claim_covers_entity(osu, "California State University, Dominguez Hills")
 
 
 def test_multi_entity_sufficiency_requires_both_sides() -> None:
