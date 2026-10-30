@@ -263,8 +263,27 @@ def claim_support_score(claim: Claim, focus: QuestionFocus) -> float:
             base = min(1.0, 0.55 + 0.45 * phrase_hits + title_boost)
             if fidelity >= 0.9:
                 return min(1.0, base + 0.1)
-            titled = [p for p in scored_phrases if len(p.replace("-", " ").split()) >= 2]
-            if titled and fidelity < 0.4:
+            # Only penalize when the question names entity-like multi-word phrases
+            # that could match a document title. Skip technical tokens
+            # (auth-gateway) and imperative fragments ("Note any").
+            title_like = [
+                p
+                for p in scored_phrases
+                if " " in p
+                and p[:1].isupper()
+                and p.split()[0].lower()
+                not in _QUESTION_STARTERS
+                | {
+                    "note",
+                    "consider",
+                    "include",
+                    "provide",
+                    "list",
+                    "describe",
+                    "explain",
+                }
+            ]
+            if title_like and fidelity < 0.4:
                 # Extended campus/branch OR unrelated doc that only mentions the
                 # entity in passing (e.g. StubHub Center vs CSUDH).
                 return min(0.45, base * 0.55)
