@@ -43,6 +43,7 @@ class Claim(BaseModel):
     doc_id: str
     verified: bool = False
     source_label: str | None = None
+    source_title: str | None = None
     confidence: float = 1.0
 
 

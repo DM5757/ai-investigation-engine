@@ -36,6 +36,7 @@ def claims_from_tool_payload(
     chunk_id: str,
     doc_id: str,
     claim_id: str,
+    source_title: str | None = None,
 ) -> Claim | None:
     """Build and verify a claim from a structured tool/LLM payload."""
     subject = str(payload.get("subject", "")).strip()
@@ -44,6 +45,9 @@ def claims_from_tool_payload(
     quote = str(payload.get("quote", "")).strip()
     if not (subject and attribute and value and quote):
         return None
+    title = source_title
+    if title is None and isinstance(payload.get("title"), str):
+        title = payload["title"]
     claim = Claim(
         claim_id=claim_id,
         subject=subject,
@@ -52,6 +56,7 @@ def claims_from_tool_payload(
         quote=quote,
         chunk_id=chunk_id,
         doc_id=doc_id,
+        source_title=title,
     )
     return verify_claim_quote(claim, chunk_text)
 
@@ -66,6 +71,7 @@ def heuristic_claims_from_chunk(
     text: str,
     subject_hint: str,
     claim_prefix: str,
+    source_title: str | None = None,
 ) -> list[Claim]:
     """Deterministic fallback: treat short sentences mentioning subject as claims."""
     claims: list[Claim] = []
@@ -85,6 +91,7 @@ def heuristic_claims_from_chunk(
             quote=quote,
             chunk_id=chunk_id,
             doc_id=doc_id,
+            source_title=source_title,
         )
         verified = verify_claim_quote(claim, text)
         if verified.verified:

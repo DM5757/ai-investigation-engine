@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from app.investigation.entities import claim_covers_entity, extract_focus_entities
 from app.investigation.question_focus import (
     QuestionFocus,
     claim_support_score,
@@ -50,10 +51,29 @@ def assess_sufficiency(
             "No verified claims could be grounded in retrieved document quotes.",
         )
 
+    entities = extract_focus_entities(question)
+    if len(entities) >= 2:
+        covered: list[str] = []
+        for ent in entities:
+            for claim in supporting:
+                hay = (
+                    f"{claim.source_title or ''} {claim.subject} {claim.attribute} "
+                    f"{claim.value} {claim.quote}"
+                )
+                if claim_covers_entity(hay, ent):
+                    covered.append(ent)
+                    break
+        if len(covered) < 2:
+            return (
+                "insufficient",
+                "Comparison or multi-hop question requires grounded evidence for "
+                "each named entity; retrieved claims cover fewer than two entities.",
+            )
+
     scores = [claim_support_score(c, q_focus) for c in supporting]
     best = max(scores) if scores else 0.0
     multi = [p for p in q_focus.phrases if len(p.replace("-", " ").split()) >= 2]
-    if multi and best < 0.75:
+    if multi and best < 0.75 and len(entities) < 2:
         return (
             "partial",
             "Evidence partially overlaps the question but does not clearly "

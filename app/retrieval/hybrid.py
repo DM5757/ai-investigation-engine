@@ -107,6 +107,8 @@ class HybridRetriever:
         self.default_mode: RetrievalMode = default_mode
         # Filled by the most recent retrieve() call (milliseconds, monotonic).
         self.last_timings: dict[str, float] = {}
+        # Request/process-local query embedding cache (identical tool queries).
+        self._query_embed_cache: dict[str, list[float]] = {}
 
     def retrieve(
         self,
@@ -144,7 +146,14 @@ class HybridRetriever:
         def _dense_branch() -> tuple[list[ScoredChunk], dict[str, int], dict[str, float]]:
             local: dict[str, float] = {}
             t0 = time.perf_counter()
-            dense_vec = self.embedder.embed_query(query)
+            cache_key = query.strip()
+            dense_vec = self._query_embed_cache.get(cache_key)
+            if dense_vec is None:
+                dense_vec = self.embedder.embed_query(query)
+                self._query_embed_cache[cache_key] = dense_vec
+                local["embed_cache_hit"] = 0.0
+            else:
+                local["embed_cache_hit"] = 1.0
             local["embed_ms"] = (time.perf_counter() - t0) * 1000.0
             t1 = time.perf_counter()
             dense_hits = self.store.search_dense(

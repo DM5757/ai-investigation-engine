@@ -80,16 +80,35 @@ _STOP = frozenset(
     }
 )
 
-# Title-case multi-token entities: "California State University", "Roanoke Colony".
+# Title-case multi-token entities, including comma-titles.
 _PHRASE_TITLE_RE = re.compile(
-    r"\b([A-Z][A-Za-z0-9]*(?:[\s\-–—][A-Z][A-Za-z0-9]*)+)\b"
+    r"\b([A-Z][A-Za-z0-9]*(?:(?:\s+|,\s*|[\-–—])[A-Z][A-Za-z0-9]*)+)\b"
 )
 # Mixed-case two-token entities: "Roanoke colony" (not whole questions).
 _PHRASE_MIXED_RE = re.compile(
     r"\b([A-Z][A-Za-z0-9]+[\s\-–—][a-z][A-Za-z0-9]{2,})\b"
 )
 _QUESTION_STARTERS = frozenset(
-    {"which", "what", "when", "where", "who", "whom", "whose", "why", "how"}
+    {
+        "which",
+        "what",
+        "when",
+        "where",
+        "who",
+        "whom",
+        "whose",
+        "why",
+        "how",
+        "is",
+        "are",
+        "was",
+        "were",
+        "does",
+        "did",
+        "do",
+        "can",
+        "could",
+    }
 )
 _TOKEN_RE = re.compile(r"[A-Za-z][A-Za-z0-9_-]{2,}")
 _QUOTE_RE = re.compile(r"[\"“”']([^\"“”']{3,80})[\"“”']")
@@ -109,7 +128,11 @@ class QuestionFocus:
 
 def extract_question_focus(question: str) -> QuestionFocus:
     """Pull multi-token proper phrases and content tokens from ``question``."""
+    from app.investigation.entities import extract_focus_entities
+
     phrases: list[str] = []
+    # Multi-hop / comparison entities first (handles comma-titles and "A or B").
+    phrases.extend(extract_focus_entities(question))
     for match in _QUOTE_RE.finditer(question):
         phrases.append(_norm_phrase(match.group(1)))
     for match in _PHRASE_TITLE_RE.finditer(question):
@@ -133,7 +156,8 @@ def extract_question_focus(question: str) -> QuestionFocus:
     uniq_phrases: list[str] = []
     seen_p: set[str] = set()
     for phrase in phrases:
-        key = phrase.lower()
+        cleaned = _strip_leading_aux(phrase)
+        key = cleaned.lower()
         if len(key) < 4 or key in seen_p:
             continue
         parts_all = [p for p in re.split(r"[\s\-–—]+", key) if p]
@@ -147,8 +171,18 @@ def extract_question_focus(question: str) -> QuestionFocus:
             continue
         if len(parts) == 1 and parts[0] in _STOP:
             continue
+        # Drop adverbial leftovers like "Hills further"
+        if len(parts) == 2 and parts[-1] in {
+            "further",
+            "farther",
+            "west",
+            "east",
+            "north",
+            "south",
+        }:
+            continue
         seen_p.add(key)
-        uniq_phrases.append(phrase)
+        uniq_phrases.append(cleaned)
 
     tokens: list[str] = []
     seen_t: set[str] = set()
@@ -166,11 +200,24 @@ def extract_question_focus(question: str) -> QuestionFocus:
     return QuestionFocus(phrases=tuple(uniq_phrases[:8]), tokens=tuple(tokens[:12]))
 
 
+def _strip_leading_aux(phrase: str) -> str:
+    parts = phrase.split()
+    while parts and parts[0].lower().rstrip("?,.") in _QUESTION_STARTERS:
+        parts = parts[1:]
+    return " ".join(parts).strip()
+
 def claim_support_score(claim: Claim, focus: QuestionFocus) -> float:
     """Return 0..1 how well a claim supports the question's subject/focus."""
     if focus.empty:
         return 0.5
+    from app.investigation.entities import best_entity_fidelity
+
     hay = f"{claim.subject} {claim.attribute} {claim.value} {claim.quote}".lower()
+    # Prefer claims grounded in titles that faithfully match focus entities
+    # (exact "Ohio State University" over "Ohio State University, Mansfield Campus").
+    fidelity = best_entity_fidelity(
+        list(focus.phrases), claim.source_title or claim.subject
+    )
     title_boost = 0.0
     if focus.phrases:
         phrase_hits = 0.0
@@ -190,7 +237,13 @@ def claim_support_score(claim: Claim, focus: QuestionFocus) -> float:
                 if ratio >= 0.99:
                     title_boost = 0.15
         if phrase_hits >= 0.6:
-            return min(1.0, 0.55 + 0.45 * phrase_hits + title_boost)
+            base = min(1.0, 0.55 + 0.45 * phrase_hits + title_boost)
+            if fidelity >= 0.9:
+                return min(1.0, base + 0.1)
+            if 0 < fidelity < 0.4:
+                # Extended campus/branch title for a shorter queried entity.
+                return min(0.45, base * 0.55)
+            return base
         # Multi-token phrase present in question but not in claim → weak at best
         if any(len(p.split()) >= 2 or "-" in p or "–" in p for p in focus.phrases):
             token_hits = _token_coverage(hay, focus.tokens)
@@ -198,7 +251,6 @@ def claim_support_score(claim: Claim, focus: QuestionFocus) -> float:
             return min(0.35, token_hits * 0.35)
 
     return _token_coverage(hay, focus.tokens)
-
 
 def filter_claims_for_question(
     claims: list[Claim],

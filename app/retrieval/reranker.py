@@ -18,11 +18,12 @@ _NUMBER_RE = re.compile(r"\b\d+(?:\.\d+)?\b")
 class RerankerWeights:
     """Linear weights for explainable reranker features."""
 
-    fused: float = 0.40
-    coverage: float = 0.20
+    fused: float = 0.35
+    coverage: float = 0.15
     title_heading: float = 0.15
-    entity_number: float = 0.15
-    proximity: float = 0.10
+    entity_number: float = 0.12
+    proximity: float = 0.08
+    title_fidelity: float = 0.15
     mmr_lambda: float = 0.7
 
 
@@ -52,6 +53,28 @@ def feature_title_heading_match(query: str, title: str | None, heading: str | No
         return 0.0
     f_terms = set(tokenize(fields))
     return len(q_terms & f_terms) / len(q_terms)
+
+
+def feature_title_fidelity(
+    query: str,
+    title: str | None,
+    *,
+    entities: list[str] | None = None,
+) -> float:
+    """Prefer exact entity titles over longer campus/branch extensions."""
+    from app.investigation.entities import (
+        best_entity_fidelity,
+        extract_focus_entities,
+    )
+
+    ents = entities
+    if ents is None:
+        ents = extract_focus_entities(query)
+        if not ents:
+            ents = _multi_token_phrases(query)
+    if not ents or not title:
+        return 0.0
+    return best_entity_fidelity(ents, title)
 
 
 def feature_entity_number_overlap(query: str, text: str) -> float:
@@ -184,6 +207,7 @@ def score_features(
     *,
     max_fused: float,
     weights: RerankerWeights,
+    entities: list[str] | None = None,
 ) -> tuple[float, dict[str, float]]:
     """Compute weighted linear score and per-feature breakdown."""
     feats = {
@@ -194,6 +218,9 @@ def score_features(
         ),
         "entity_number": feature_entity_number_overlap(query, chunk.text),
         "proximity": feature_proximity(query, chunk.text),
+        "title_fidelity": feature_title_fidelity(
+            query, chunk.title, entities=entities
+        ),
     }
     total = (
         weights.fused * feats["fused"]
@@ -201,12 +228,12 @@ def score_features(
         + weights.title_heading * feats["title_heading"]
         + weights.entity_number * feats["entity_number"]
         + weights.proximity * feats["proximity"]
+        + weights.title_fidelity * feats["title_fidelity"]
     )
     return total, feats
 
 
-def _token_jaccard(a: str, b: str) -> float:
-    sa, sb = set(tokenize(a)), set(tokenize(b))
+def _token_jaccard_sets(sa: set[str], sb: set[str]) -> float:
     if not sa or not sb:
         return 0.0
     return len(sa & sb) / len(sa | sb)
@@ -219,24 +246,31 @@ def diversify_mmr(
     limit: int,
 ) -> list[tuple[ScoredChunk, float, dict[str, float]]]:
     """MMR-style selection using token Jaccard as similarity proxy."""
-    remaining = list(scored)
-    selected: list[tuple[ScoredChunk, float, dict[str, float]]] = []
+    # Pre-tokenize once — repeated stemming dominated rerank latency on free CPU.
+    token_sets = [set(tokenize(chunk.text)) for chunk, _rel, _feats in scored]
+    remaining = list(range(len(scored)))
+    selected: list[int] = []
     while remaining and len(selected) < limit:
         best_i = 0
         best_val = -math.inf
-        for i, (chunk, rel, _feats) in enumerate(remaining):
+        for pos, idx in enumerate(remaining):
+            rel = scored[idx][1]
             if not selected:
                 mmr = rel
             else:
-                sim = max(_token_jaccard(chunk.text, s[0].text) for s in selected)
+                sim = max(
+                    _token_jaccard_sets(token_sets[idx], token_sets[s]) for s in selected
+                )
                 mmr = mmr_lambda * rel - (1.0 - mmr_lambda) * sim
+            chunk_id = scored[idx][0].chunk_id
             if mmr > best_val or (
-                math.isclose(mmr, best_val) and chunk.chunk_id < remaining[best_i][0].chunk_id
+                math.isclose(mmr, best_val)
+                and chunk_id < scored[remaining[best_i]][0].chunk_id
             ):
                 best_val = mmr
-                best_i = i
+                best_i = pos
         selected.append(remaining.pop(best_i))
-    return selected
+    return [scored[i] for i in selected]
 
 
 def collapse_near_duplicates(
@@ -288,13 +322,26 @@ def rerank(
         return []
     w = weights or RerankerWeights()
     max_fused = max(c.score for c in chunks) or 1.0
+    from app.investigation.entities import extract_focus_entities
+
+    entities = extract_focus_entities(query) or _multi_token_phrases(query)
     scored: list[tuple[ScoredChunk, float, dict[str, float]]] = []
     for chunk in chunks:
-        total, feats = score_features(query, chunk, max_fused=max_fused, weights=w)
+        total, feats = score_features(
+            query,
+            chunk,
+            max_fused=max_fused,
+            weights=w,
+            entities=entities,
+        )
         scored.append((chunk, total, feats))
     scored.sort(key=lambda t: (-t[1], t[0].chunk_id))
     take = limit if limit is not None else len(scored)
-    diversified = diversify_mmr(scored, mmr_lambda=w.mmr_lambda, limit=max(take * 3, take))
+    # Bound MMR input — full-pool MMR was ~1s+ on free-tier CPU for ~40 chunks.
+    preselect = scored[: max(take * 4, min(len(scored), 24))]
+    diversified = diversify_mmr(
+        preselect, mmr_lambda=w.mmr_lambda, limit=max(take * 2, take)
+    )
     collapsed = collapse_near_duplicates(diversified)
     capped = apply_per_doc_cap(collapsed, per_doc_cap=per_doc_cap)
     capped = capped[:take]

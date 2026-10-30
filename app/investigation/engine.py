@@ -11,6 +11,7 @@ from app.errors import BudgetExceeded, LLMUnavailable
 from app.index.qdrant_store import ChunkStore
 from app.investigation.aggregator import assign_source_labels
 from app.investigation.contradictions import adjudicate_conflicts, candidate_conflicts
+from app.investigation.entities import extract_focus_entities
 from app.investigation.extractor import claims_from_tool_payload, heuristic_claims_from_chunk
 from app.investigation.planner import plan_question
 from app.investigation.question_focus import (
@@ -143,6 +144,10 @@ class InvestigationEngine:
             )
 
         focus = plan.sub_questions[0].text if plan.sub_questions else q
+        # Keep the full question as tool focus for multi-entity comparisons so
+        # the model does not narrow to a single campus/branch peer.
+        if len(extract_focus_entities(q)) >= 2:
+            focus = q
         tool_usage_box: dict[str, UsageStats] = {"usage": UsageStats()}
         try:
             self._tool_loop(q, focus, tools, trace, tool_usage_box)
@@ -366,16 +371,35 @@ class InvestigationEngine:
         usage_box: dict[str, UsageStats],
     ) -> None:
         assert self.llm is not None
-        # Seed with one search so scripted/deterministic paths always have evidence.
+        # Seed retrieval: for multi-entity / comparison questions, search each
+        # named entity so peer documents are covered before the tool loop.
         # Include results in the user message (not a synthetic tool turn) so Gemini
         # OpenAI-compat thought_signature requirements are not violated.
+        entities = extract_focus_entities(question)
+        seed_queries = _seed_queries(question, sub_q, entities)
+        seed_results: list[dict[str, Any]] = []
         with trace.stage("tools_seed_search", inputs_summary=sub_q[:120]) as bag:
-            seed = tools.execute(
-                "search_documents",
-                {"query": sub_q, "k": self.settings.retrieval_top_k},
+            for sq in seed_queries:
+                part = tools.execute(
+                    "search_documents",
+                    {"query": sq, "k": self.settings.retrieval_top_k},
+                )
+                seed_results.append(
+                    {
+                        "query": sq,
+                        "results": part.get("results", []),
+                        "cache_hit": part.get("cache_hit", False),
+                    }
+                )
+            n_hits = sum(len(p.get("results", [])) for p in seed_results)
+            bag["outputs_summary"] = (
+                f"queries={len(seed_queries)}; results={n_hits}; "
+                f"entities={entities[:3]}"
             )
-            bag["outputs_summary"] = f"results={len(seed.get('results', []))}"
-            bag["extra"] = dict(tools.last_timings)
+            bag["extra"] = {
+                "seed_queries": seed_queries,
+                "timings": dict(tools.last_timings),
+            }
 
         messages: list[ChatMessage] = [
             ChatMessage(role="system", content=TOOL_LOOP_SYSTEM),
@@ -383,7 +407,11 @@ class InvestigationEngine:
                 role="user",
                 content=(
                     f"Question: {question}\nFocus: {sub_q}\n"
-                    f"Seed search_documents results (reuse when relevant):\n{_json(seed)}"
+                    f"Named entities to cover: {entities or ['(none detected)']}\n"
+                    "Seed search_documents results (reuse when relevant; "
+                    "prefer exact-title documents over similarly named campuses/"
+                    "branches):\n"
+                    f"{_json({'seeds': seed_results})}"
                 ),
             ),
         ]
@@ -449,12 +477,18 @@ class InvestigationEngine:
             if isinstance(data, dict) and data.get("quote"):
                 cid = (data.get("chunk_id") or (finding.related_chunk_ids or ["?"])[0])
                 text = tools.state.chunk_texts.get(str(cid), "")
+                title = None
+                for hit in tools.state.retrieved:
+                    if hit.chunk.chunk_id == str(cid):
+                        title = hit.chunk.title
+                        break
                 built = claims_from_tool_payload(
                     data,
                     chunk_text=text,
                     chunk_id=str(cid),
                     doc_id=str(data.get("doc_id") or (finding.related_doc_ids or ["?"])[0]),
                     claim_id=finding.finding_id,
+                    source_title=title,
                 )
                 if built and built.verified:
                     claims.append(built)
@@ -476,6 +510,7 @@ class InvestigationEngine:
                         text=hit.chunk.text,
                         subject_hint=hint,
                         claim_prefix=f"h-{hit.chunk.chunk_id}-{hint}",
+                        source_title=hit.chunk.title,
                     )
                 )
         # Deduplicate by quote
@@ -578,6 +613,28 @@ class InvestigationEngine:
             degraded=degraded,
             trace=trace.events,
         )
+
+
+def _seed_queries(question: str, sub_q: str, entities: list[str]) -> list[str]:
+    """Build a small set of seed retrieval queries for multi-hop coverage."""
+    queries: list[str] = []
+    if len(entities) >= 2:
+        queries.extend(entities[:3])
+    focus = sub_q.strip() or question.strip()
+    if focus and focus.lower() not in {q.lower() for q in queries}:
+        queries.append(focus)
+    if not queries:
+        queries.append(question.strip())
+    # De-dupe while preserving order
+    out: list[str] = []
+    seen: set[str] = set()
+    for q in queries:
+        key = q.lower()
+        if not q or key in seen:
+            continue
+        seen.add(key)
+        out.append(q)
+    return out[:4]
 
 
 def _keyword_hints(question: str, *, prefer_in_text: str | None = None) -> list[str]:

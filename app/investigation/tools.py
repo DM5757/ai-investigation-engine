@@ -118,6 +118,7 @@ class ToolExecutor:
     last_timings: dict[str, float] = field(default_factory=dict)
     # Optional wall-clock / call budget gate (e.g. BudgetTracker.check).
     before_call: Callable[[], None] | None = None
+    _search_cache: dict[str, dict[str, Any]] = field(default_factory=dict)
 
     def execute(self, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         if self.before_call is not None:
@@ -140,21 +141,40 @@ class ToolExecutor:
 
     def _search(self, args: SearchDocumentsArgs) -> dict[str, Any]:
         k = max(1, min(args.k, self.top_k))
+        cache_key = f"{args.query.strip().lower()}::{k}"
+        cached = self._search_cache.get(cache_key)
+        if cached is not None:
+            self.last_timings = {"search_cache_hit": 1.0}
+            # Re-attach known hits into state without another remote round-trip.
+            for row in cached.get("results", []):
+                cid = str(row.get("chunk_id", ""))
+                if cid and cid not in self.state.chunk_texts and isinstance(row.get("text"), str):
+                    self.state.chunk_texts[cid] = str(row["text"])
+            return {
+                "results": list(cached.get("results", [])),
+                "cache_hit": True,
+            }
+
         # Over-fetch then apply absolute + relative score floors before capping.
         fetch_k = max(k, min(self.top_k * 3, 24))
         hits = self.retriever.retrieve(args.query, k=fetch_k)
         self.last_timings = dict(getattr(self.retriever, "last_timings", {}) or {})
+        self.last_timings["search_cache_hit"] = 0.0
         scores = [float(hit.fused_score or hit.chunk.score or 0.0) for hit in hits]
         max_score = max(scores) if scores else 0.0
         rel_floor = max_score * max(0.0, min(1.0, self.tau_relative)) if max_score else 0.0
         floor = max(self.tau_retrieval, rel_floor)
 
         results: list[dict[str, Any]] = []
+        seen_docs: set[str] = set()
         for hit in hits:
             score = float(hit.fused_score or hit.chunk.score or 0.0)
             if score < floor and score < self.tau_retrieval:
                 continue
             if floor > 0 and score < floor:
+                continue
+            # Prefer first chunk per doc in the search response to widen coverage.
+            if hit.chunk.doc_id in seen_docs and len(results) >= max(2, k // 2):
                 continue
             scan = scan_injection(hit.chunk.text)
             if scan.flagged:
@@ -162,6 +182,7 @@ class ToolExecutor:
                 score *= self.injection_downweight
             self.state.chunk_texts[hit.chunk.chunk_id] = hit.chunk.text
             self.state.retrieved.append(hit)
+            seen_docs.add(hit.chunk.doc_id)
             results.append(
                 {
                     "chunk_id": hit.chunk.chunk_id,
@@ -175,7 +196,9 @@ class ToolExecutor:
             if len(results) >= k:
                 break
         results.sort(key=lambda r: (-float(r["score"]), str(r["chunk_id"])))
-        return {"results": results}
+        payload = {"results": results, "cache_hit": False}
+        self._search_cache[cache_key] = {"results": list(results)}
+        return payload
 
     def _read_context(self, args: ReadChunkContextArgs) -> dict[str, Any]:
         if args.chunk_id in self.state.flagged_chunk_ids:
@@ -240,7 +263,7 @@ class ToolExecutor:
 
     def _find(self, args: FindDocumentsArgs) -> dict[str, Any]:
         needle = args.title_contains.lower().strip()
-        # Scan known retrieved payloads + store via retrieved docs
+        # Scan known retrieved payloads first.
         seen: dict[str, dict[str, Any]] = {}
         for hit in self.state.retrieved:
             title = (hit.chunk.title or "").lower()
@@ -251,6 +274,26 @@ class ToolExecutor:
                 "title": hit.chunk.title,
                 "version": hit.chunk.version,
             }
+        # If the title was not already retrieved, run a bounded search for it
+        # (critical for multi-hop entity resolution when seed missed a peer).
+        if needle and len(seen) < max(1, args.limit):
+            probe = self._search(
+                SearchDocumentsArgs(query=args.title_contains, k=min(5, self.top_k))
+            )
+            for row in probe.get("results", []):
+                title = str(row.get("title") or "").lower()
+                if needle and needle not in title:
+                    continue
+                did = str(row.get("doc_id") or "")
+                if not did or did in seen:
+                    continue
+                seen[did] = {
+                    "doc_id": did,
+                    "title": row.get("title"),
+                    "version": None,
+                }
+                if len(seen) >= max(1, args.limit):
+                    break
         docs = list(seen.values())[: max(1, args.limit)]
         return {"documents": docs}
 

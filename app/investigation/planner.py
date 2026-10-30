@@ -10,10 +10,32 @@ from app.schemas.evidence import Plan, SubQuestion, UsageStats
 
 
 def deterministic_plan(question: str) -> Plan:
-    """Single sub-question plan used when LLM is unavailable or fails."""
+    """Plan used when LLM is unavailable or fails.
+
+    Comparison / multi-entity questions get one sub-question per entity so
+    retrieval can cover each peer document without inventing facts.
+    """
+    from app.investigation.entities import extract_focus_entities
+
+    q = question.strip()
+    entities = extract_focus_entities(q)
+    if len(entities) >= 2:
+        subs = [
+            SubQuestion(
+                id=f"q{i}",
+                text=f"What evidence describes {ent} that is relevant to: {q}",
+                depends_on=[],
+            )
+            for i, ent in enumerate(entities[:3], start=1)
+        ]
+        return Plan(
+            question_type="comparison",
+            sub_questions=subs,
+            expected_answer_shape="short_paragraph",
+        )
     return Plan(
         question_type="factual",
-        sub_questions=[SubQuestion(id="q1", text=question.strip(), depends_on=[])],
+        sub_questions=[SubQuestion(id="q1", text=q, depends_on=[])],
         expected_answer_shape="short_paragraph",
     )
 
