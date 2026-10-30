@@ -2,7 +2,7 @@
 
 ## Phase 0 — Complete
 
-Render Free + Neon + Qdrant. Northflank rejected (card).
+Render Free + Neon + Qdrant. Northflank rejected (payment card required).
 
 ## Phase 1 — Complete (2026-10-29)
 
@@ -35,6 +35,7 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Measured 2026-10-30: ACTIVE **55,081**, FAILED **0**, Qdrant **56,890**, `meets_data1_50k: true`
 - Chunk gap explained: total chunk_rows 56,900 = ACTIVE 56,890 + DELETED-doc rows 10
 - Evidence: `docs/evidence/dataset_counts.json`, `docs/evidence/bulk_ingest.json`
+- Live `/api/stats` on Render reconfirmed ACTIVE **55,081** (2026-10-30)
 
 ## Phase 7 — Evaluation
 
@@ -47,12 +48,12 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Per-request LLM budget reset; budget/provider failure → explicit `llm_unavailable` (no fake partial essays)
 - Question-conditioned sufficiency + claim filtering; colony abstention verified scripted
 - Relative retrieval floor, phrase-aware rerank, citation prune-to-answer
-- `/api/version` includes `git_commit` (Render verified `0036003…`)
-- Default wall-clock budget raised **120→300s** for Render Free latency (follow-up deploy)
+- `/api/version` includes `git_commit` (Render verified `0f6adc3…`)
+- Default wall-clock budget raised **120→300s** for Render Free latency
 - Early tag `submission-2026-10-29` @ `1ab164d` **unchanged**
 
-## Human actions still required
+## Outstanding technical follow-ups
 
-1. Own interview defense of AI-assisted work.
-2. After wall-clock 300s deploy, re-check Roanoke airport on public URL when providers are healthy.
-3. Optional: quota window for full investigation answer eval without early stop.
+1. Re-validate Roanoke airport and colony regression cases on the public URL when LLM providers are healthy.
+2. Run a full investigation answer eval in a quota-healthy window (no early `--stop-after-llm-unavailable`).
+3. Production smoke suite for representative factual / multi-doc / entity / unanswerable / contradiction / budget-isolation cases.

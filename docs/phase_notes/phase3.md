@@ -1,6 +1,6 @@
 # Phase 3 notes — hybrid retrieval
 
-## Key functions (interview map)
+## Key modules
 
 1. `app.retrieval.tokenizer.tokenize` — NFKC + `\w+` + stopwords + Snowball (`PyStemmer`).
 2. `app.retrieval.bm25_sparse.term_id` / `bm25_tf_weight` / `Bm25Encoder` — stable CRC32 ids; document TF weights; query unique terms @ 1.0.
@@ -11,18 +11,16 @@
 7. `HybridRetriever.retrieve` — modes `dense|sparse|hybrid_rrf|hybrid_weighted|hybrid_rerank`; defensive active-version filter.
 8. `DocumentLifecycle` optional `sparse_encoder` — fills sparse indices/values on upsert.
 
-## Interview questions
+## Design notes
 
-1. Why not Python `hash()` for sparse term ids?
-2. Where does IDF live if our BM25 encoder only emits TF weights?
-3. How does RRF differ from weighted score fusion, and when does each win?
-4. Walk the five reranker features; which would fire on a rare SKU + title match?
-5. How do you keep deleted / stale versions out of answers without trusting Qdrant alone?
-6. Prove that dense-only can fail and sparse can rescue (and vice versa) — what does the test corpus look like?
-7. Why is `InMemoryChunkStore` allowed in Protocol tests but insufficient for VEC-1 adapter proof?
+- Prefer CRC32 term ids over Python `hash()` for cross-process stability.
+- Sparse encoder emits TF weights; Qdrant IDF modifier supplies collection-level IDF.
+- RRF favors rank agreement; weighted fusion needs calibrated score scales.
+- Deleted / stale versions are excluded via `active_versions` at store and again defensively in the retriever.
+- Dense-only vs sparse-rescue fixtures prove complementary failure modes without claiming BGE failure in production.
 
 ## Limits
 
 - `bm25_avgdl` defaults to 100 until corpus stats are computed at bulk ingest.
-- Qdrant Cloud remote path not smoked in Phase 3 evidence (embedded `:memory:` was).
-- Reranker weights are defaults; tune on a held-out **dev** set in Phase 6 eval, not by peeking at the final test set.
+- Phase 3 evidence used embedded `:memory:` extensively; Qdrant Cloud path verified later via pilot/bulk + live `/api/stats`.
+- Reranker weights are defaults; tune on a held-out **dev** set, not by peeking at the final test set.

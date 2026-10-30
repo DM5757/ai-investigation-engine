@@ -1,6 +1,6 @@
 # Phase 5 notes — Ask API + vanilla JS UI
 
-## Key modules (interview map)
+## Key modules
 
 1. `app.api.security.require_admin_token` — constant-time `X-Admin-Token` compare.
 2. `app.api.ratelimit.TokenBucketLimiter` — per-IP query rate limit; optional `DailyCounter`.
@@ -23,17 +23,16 @@
 `InvestigationEngine.investigate` → enrich citations from chunk store/DB →
 `QueryResponse` (+ `sources`, `missing_information`).
 
-## Interview questions
+## Design notes
 
-1. Why mutating document routes need constant-time token compare, while `/api/query` is public?
-2. How does the UI avoid XSS when rendering answers and chunk text?
-3. What happens on `/api/query` when no LLM keys are configured?
-4. How are retrieval `mode` overrides constrained, and what is the API default?
-5. Where do in-memory `/api/metrics` counters live, and what do they *not* survive?
-6. Why is `/api/eval/runs` an honest empty stub instead of fake scores?
+- Mutating document routes need constant-time token compare; `/api/query` is public and rate-limited.
+- UI uses `textContent` to avoid XSS when rendering answers and chunk text.
+- Missing LLM keys yield degraded status with evidence preview, not invented essays.
+- Retrieval `mode` overrides are whitelisted; API default follows settings.
+- In-memory `/api/metrics` counters do not survive process restart.
+- `/api/eval/runs` is an honest empty stub rather than fabricated scores.
 
 ## Limits
 
-- Qdrant Cloud remote still unverified; bm25_avgdl default; CRC32 collisions pending; retrieval eval pending.
-- Render public URL may not expose fully wired Phase 5 cloud deps — local TestClient is the Phase 5 proof.
 - SSE streaming intentionally skipped.
+- Production query quality depends on live Neon/Qdrant corpus + free LLM quotas.

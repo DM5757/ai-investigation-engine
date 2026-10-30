@@ -13,7 +13,7 @@ The specification says to use “the dataset attached to this assignment,” but
 | Record definition | Each unique context paragraph → `{id: "hotpotqa:<title>", title, text, meta}` |
 | Build | Seeded (`seed=42`), deterministic shuffle; `--limit` for pilots; `--target 55000` for full |
 | Manifest | `data/manifests/corpus_manifest.json` (sha256, load method, counts) |
-| Offline fallback | `data/samples/hotpot_sample.jsonl` if all download paths fail (HUMAN ACTION in manifest) |
+| Offline fallback | `data/samples/hotpot_sample.jsonl` if all download paths fail (noted in corpus manifest) |
 
 **Subset justification:** Target **55,000** unique titles (buffer above DATA-1’s 50,000). The Hotpot **validation** distractor split alone yields **66,581** unique titles after dedup (measured 2026-10-29); the build caps to 55,000 with `seed=42`. Train shards remain cached under `data/cache/hotpot_hf/` if a larger pool is needed later. Exact count and sha256 are only those written in the manifest after a successful build — never invent counts.
 

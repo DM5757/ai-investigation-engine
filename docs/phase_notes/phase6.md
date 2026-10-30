@@ -1,6 +1,6 @@
 # Phase 6 notes — Corpus scale + DOC-6 chunking
 
-## Key modules (interview map)
+## Key modules
 
 1. `scripts/build_corpus.py` — HotpotQA distractor → unique `hotpotqa:<title>` JSONL (HF parquet + pyarrow; CMU/datasets fallbacks).
 2. `scripts/generate_synthetic.py` — multi-format enterprise docs + `synthetic_truth.json` (contradictions, injection, gold spans).
@@ -20,26 +20,22 @@
 
 ## Storage decision
 
-Pilot deltas → `docs/evidence/storage_estimate_55k.json`. Full ingest **go** on Neon/Qdrant free headroom (marginal bytes). Wall-clock at ~0.3–0.6 docs/s is the binding constraint; bulk is resumable via `data/checkpoints/bulk_ingest.json`.
+Pilot deltas → `docs/evidence/storage_estimate_55k.json`. Full ingest completed: ACTIVE **55,081**, Qdrant **56,890** (`docs/evidence/dataset_counts.json`). Wall-clock at ~0.3–0.6 docs/s was the binding constraint; bulk is resumable via `data/checkpoints/bulk_ingest.json`.
 
-## Interview questions
+## Design notes
 
-1. Why pilot-then-estimate before claiming 50k fits free tier?
-2. Why CRC32 term ids instead of Python `hash()`?
-3. Why cache `ensure_collection` for cloud Qdrant?
-4. When would you keep `structure_aware` as default even if `fixed_window` wins DOC-6 on chunk count?
-5. How does bulk resume without re-embedding unchanged `external_key`s?
+- Pilot-then-estimate before claiming 50k fits free tier.
+- CRC32 term ids remain stable across restarts (unlike Python `hash()`).
+- Cache `ensure_collection` for cloud Qdrant to avoid per-upsert index PUTs.
+- `structure_aware` can remain the default production strategy even if `fixed_window` wins DOC-6 on chunk count.
+- Bulk resume skips unchanged `external_key`s to avoid re-embedding.
 
 ## Limits
 
 - Do not claim ≥50k without `dataset_counts.json` measured ACTIVE ≥50k.
 - Qdrant Free disk/RAM API fields often unavailable; use lower-bound estimates + monitor.
 - Windows App Control may block `datasets`/pandas DLLs — parquet+pyarrow path preferred
-  (see `docs/evidence/windows_parquet_block.txt`). The blocked `.pyd` is
-  `pyarrow/_dataset_parquet.cp313-win_amd64.pyd`; basic `pyarrow.parquet` streaming works.
-- Bulk wall-clock (~0.5–0.7 creates/s) is the binding free-tier constraint; use
-  `scripts/watch_bulk_ingest.ps1` for overnight resume. Keep **one** bulk process
-  (file lock in `bulk_ingest.py`) to avoid UniqueViolation races.
+  (see `docs/evidence/windows_parquet_block.txt`).
+- Keep **one** bulk process (file lock in `bulk_ingest.py`) to avoid UniqueViolation races.
 - `reconcile.py` must not call Qdrant version-cleanup for every ACTIVE doc (O(n)
   remote deletes); only multi-version docs.
-- Phase 7 (eval harness) not started.

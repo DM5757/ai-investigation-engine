@@ -1,6 +1,6 @@
 # Phase 4 notes — LLM gateway + investigation engine
 
-## Key functions (interview map)
+## Key modules
 
 1. `app.llm.gateway.LLMGateway.chat` — Groq→Gemini provider chain, retries, budget, optional cache.
 2. `app.llm.gateway.OpenAICompatibleClient` — OpenAI SDK with Groq / Gemini OpenAI base_url.
@@ -16,15 +16,14 @@
 12. `app.investigation.synthesizer` + `verifier` — cite only verified claims; strip fabricated [Sn].
 13. `app.investigation.injection.scan_injection` — wrap + heuristic down-weight / block tools.
 
-## Interview questions
+## Design notes
 
-1. Why never combine Groq tools with `response_format` json_schema in one call?
-2. How does degraded mode behave when no API keys are configured?
-3. Walk quote verification: what normalization prevents fabricated citations?
-4. How do contradiction candidates avoid flagging mere paraphrases as conflicts?
-5. Where does the budget raise `BudgetExceeded`, and what status does the engine return?
-6. How does the injection scanner interact with `read_chunk_context`?
-7. Why is `ScriptedLLM` sufficient to prove RAG-2..RAG-8 without burning free-tier quota?
+- Never combine Groq tools with `response_format` json_schema in one call.
+- When no API keys are configured, return degraded `llm_unavailable` with retrieved evidence rather than inventing answers.
+- Quote verification normalizes whitespace/case so fabricated citations fail closed.
+- Contradiction candidates require polarity/numeric disagreement, not mere paraphrase.
+- Budget exhaustion raises `BudgetExceeded` and maps to explicit degraded status.
+- `ScriptedLLM` proves RAG behavior without burning free-tier quota.
 
 ## Live evidence (2026-10-29)
 
@@ -35,6 +34,5 @@
 
 ## Limits
 
-- Dedicated live smokes for abstention / contradiction / injection not re-run on Groq this session (scripted coverage exists).
-- Qdrant Cloud remote unverified; bm25_avgdl default; CRC32 collisions pending; retrieval eval pending.
-- Phase 5 (API/UI) not started until owner reviews Phase 4.
+- Dedicated live smokes for abstention / contradiction / injection are covered primarily by scripted tests; production re-validation is quota-sensitive.
+- Free-tier TPM/TPD can interrupt investigation mid-run; answer eval must report skips honestly.

@@ -39,5 +39,6 @@ Sources:
 ## Policy
 
 Free tiers only — no paid services in default path.
-Live smoke on owner account: PENDING (keys absent this session).
-See docs/evidence/phase4.txt HUMAN ACTION REQUIRED.
+Historical note (2026-10-29 drafting session): live smoke was pending while keys were absent.
+Later verified: live Groq investigation in docs/evidence/phase4_live_trace.json;
+production probes in docs/evidence/prod_quality_probe.json (quota-sensitive).

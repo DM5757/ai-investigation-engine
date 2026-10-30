@@ -25,28 +25,27 @@ Seeded in Phase 0 from the official assignment and master checklist. Status valu
 | RAG-8 | Tool-calling / structured tools | `investigation/tools.py` | live tool rounds + schemas | Done-verified | Live tools_round_0..3 with tool calls |
 
 | EVAL-1 | Automated evaluation harness | `eval/run_eval.py`, `eval/metrics.py` | `tests/unit/test_eval_metrics.py` + result JSONs | Done-verified | Resumable; `--scorable-only` + exclusion reasons |
-| EVAL-2 | ≥40 questions across required types | `eval/questions/eval_set.json` (57 active-gold) | type_counts + `--require-active` | Done-verified | Hotpot titles must be ACTIVE; synthetic for contra/unans |
-| EVAL-3 | Quantitative retrieval + answer metrics | `eval/metrics.py` + runners | `active_retrieval_v1` (n_scored=54), `active_investigation_v2` (partial) | Done-verified | Transparent denominators; 27/37 investigation rows provider-limited |
+| EVAL-2 | ≥40 questions across required types | `eval/questions/eval_set.json` (94 active-gold @55k) | type_counts + `--require-active` | Done-verified | Hotpot titles must be ACTIVE; synthetic for contra/unans |
+| EVAL-3 | Quantitative retrieval + answer metrics | `eval/metrics.py` + runners | `full55k_retrieval_v1` (n_scored=91), `full55k_answer_v1` (partial) | Done-verified | Transparent denominators; investigation answer subset provider-limited |
 | EVAL-4 | Compare ≥2 configurations | dense vs hybrid; baseline vs investigation | comparison JSONs | Done-verified | DOC-6 chunking also compared |
 | EVAL-5 | Error analysis | `docs/EVALUATION_REPORT.md` | report §§1,4,5 | Done-verified | Documents unresolved-gold root cause + budget bug |
 | APP-1 | Python backend | FastAPI routes + deps (`documents`/`query`/`stats`) | `test_api_*` + phase5.txt | Done-verified | Thin handlers → lifecycle/engine |
 | APP-2 | Functional UI (docs, ask, sources) | `app/ui/static/` | `test_api_ui_static` + phase5_ui_checklist | Done-verified | textContent-only; admin token in JS memory |
 | DATA-1 | Process ≥50,000 documents/records | HotpotQA corpus + lifecycle ingest | `verify_counts.py` / `dataset_counts.json` | Done-verified | Measured 2026-10-30: ACTIVE **55081**, FAILED **0**, Qdrant **56890**; ACTIVE chunks == points; total chunk_rows 56900 includes 10 DELETED-doc rows; `meets_data1_50k: true` |
-| DATA-2 | Cross-document retrieval; identifiable sources | `hotpotqa:<title>` external_key + citations | pilot/bulk + Phase 4 citations | Partial | Sources keyed; full-corpus retrieval eval follow-up after quality fixes |
+| DATA-2 | Cross-document retrieval; identifiable sources | `hotpotqa:<title>` external_key + citations | pilot/bulk + `full55k_retrieval_v1` | Done-verified | Sources keyed; full-corpus retrieval scored n=91 |
 | DATA-3 | Incomplete and contradictory information | `data/manifests/synthetic_truth.json` | synthetic generator | Done-verified | Planted contradictions, incompleteness, injection samples |
 | DATA-4 | Reproducible evaluation / subset justification | `docs/DATASET.md` + manifests | manifests sha256/seed | Done-verified | Seed 42; subset/scale justified in DATASET.md + storage estimate |
 | DEP-1 | Public URL on free hosting | Render Free | `docs/evidence/phase1_deploy.txt` | Done-verified | Live: https://ai-investigation-engine-scyz.onrender.com (2026-10-29) |
 | DEP-2 | Hosting and DB integration | Neon + app ready | `docs/evidence/prod_e2e_smoke.json` | Done-verified | Render ready + upload/query/update/delete/401 E2E 2026-10-29 |
 | DEP-3 | Data persists across restarts | external Neon/Qdrant | restart test | Partial | Architecture chosen for persistence; local tests use temp SQLite + memory store |
 | DEP-4 | Secrets protected | env/secrets; admin token; no CORS `*` | secret scan + UI | Partial | `.env` gitignored; admin token not stored in localStorage; keys never returned in API |
-| DEP-5 | Deployment architecture, costs, free-tier limits documented | `FREE_TIER_NOTES.md`, DEPLOYMENT | docs + `/api/version` | Partial→improved | `git_commit` exposed; Render verified against `0036003` |
+| DEP-5 | Deployment architecture, costs, free-tier limits documented | `FREE_TIER_NOTES.md`, DEPLOYMENT | docs + `/api/version` | Done-verified | `git_commit` exposed; Render verified against `0f6adc3` |
 | TECH-1 | Clean modular code, SoC, errors | `app/` layout | review/tests | Partial | API → services → repos; modules kept thin |
-| TECH-2 | Automated tests; DB/API integration | `tests/` | local pytest 119 passed | Partial | Phase 5 API/UI covered; Render E2E for new routes pending |
-| TECH-3 | Secure env config; technical docs | config + docs | TBD | Partial | Phase 0–1 docs started |
-| TECH-4 | Performance and LLM cost understanding | PERFORMANCE_AND_COST | measured | Partial | Embed RSS/512m bench recorded; LLM cost TBD |
+| TECH-2 | Automated tests; DB/API integration | `tests/` | local pytest **150** passed (1 live deselected) | Done-verified | Unit/integration covered; live LLM opt-in via `make test-live` |
+| TECH-3 | Secure env config; technical docs | config + docs | review | Done-verified | `.env.example`, DEPLOYMENT, FREE_TIER_NOTES, DESIGN_DECISIONS |
+| TECH-4 | Performance and LLM cost understanding | FREE_TIER_NOTES + evidence | measured | Partial | Embed RSS/512m bench recorded; free LLM quotas documented; dollar cost N/A on free path |
 | SUB-1 | GitHub repo with history | git | `origin/main` + tag `submission-2026-10-29` | Done-verified | Early tag @ `1ab164d` preserved; continuation commits pushed to `origin/main` |
 | SUB-2 | Live demo link | README | `phase1_deploy.txt` | Done-verified | https://ai-investigation-engine-scyz.onrender.com |
 | SUB-3 | README | README.md | review | Done-verified | Describes implemented system + honesty rules |
-| SUB-4 | Evaluation report | `docs/EVALUATION_REPORT.md` | evidence paths | Done-verified | Preliminary metrics; owner should re-read |
-| SUB-5 | AI usage report | `docs/AI_USAGE_REPORT.md` | owner fill-in | Partial | AI disclosure written; **candidate must complete independent-verification section** |
-| INT-1 | Interview/docs/exercises | guides + drills | TBD | Not started | — |
+| SUB-4 | Evaluation report | `docs/EVALUATION_REPORT.md` | evidence paths | Done-verified | Full-corpus retrieval + controlled answer subset; provider limits disclosed |
+| SUB-5 | AI usage report | `docs/AI_USAGE_REPORT.md` | disclosure review | Done-verified | Extensive AI assistance disclosed; integrity rules retained |

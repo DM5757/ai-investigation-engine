@@ -180,6 +180,6 @@ Synthetic enterprise corpus (multi-format, contradictions, injections) remains P
 
 ---
 
-## 9. Human actions required for free tiers
+## 9. Required accounts for free-tier reproduction
 
-See the consolidated **HUMAN ACTION REQUIRED** block in `docs/PROGRESS.md`. Accounts: **Render**, Neon, Qdrant Cloud, Groq, Google AI Studio, GitHub (repo + Actions). Hugging Face account optional for dataset download via `datasets` (no Spaces needed). Northflank rejected for this account.
+Accounts used by this project: **Render**, Neon, Qdrant Cloud, Groq, Google AI Studio, GitHub (repo + Actions). A Hugging Face account is optional for dataset download via `datasets` (no Spaces needed). Northflank was rejected for this account (payment card required). See `docs/DEPLOYMENT.md` and `.env.example` for wiring.

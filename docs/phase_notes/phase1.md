@@ -1,4 +1,4 @@
-# Phase 1 notes (scaffold + local benchmarks + walking-skeleton deploy)
+# Phase 1 notes — scaffold, benchmarks, walking-skeleton deploy
 
 ## What was built
 
@@ -6,12 +6,12 @@
 - Settings (`app/config.py`), JSON logging, error hierarchy
 - Health/ready/version endpoints
 - SQLAlchemy + Alembic baseline (`health_probes`)
-- Candidate FastEmbed provider (not loaded at app startup by default)
+- FastEmbed provider (not loaded at app startup by default)
 - Dockerfile, Makefile, GitHub Actions CI, `render.yaml`
 - RSS/latency bench script: `scripts/bench_embeddings_rss.py`
 - Public deploy on Render Free
 
-## Key functions / modules
+## Key modules
 
 1. `app.main.create_app` — app factory
 2. `app.config.get_settings` — validated env config
@@ -26,11 +26,9 @@
 - Deploy: `docs/evidence/phase1_deploy.txt`
 - Public URL: https://ai-investigation-engine-scyz.onrender.com
 
-## Interview questions to practice
+## Design notes
 
-1. Why is app disk treated as ephemeral on Render Free?
-2. What does `/api/health` vs `/api/health/ready` guarantee?
-3. Why is `EMBEDDING_ENABLED_AT_STARTUP` default false?
-4. How will keep-alive interact with Render’s 15-minute sleep and 750 instance-hours?
-5. What happens if peak RSS exceeds ~450 MB under a 512 MB budget?
-6. Why did a mistyped hostname (`sqyz` vs `scyz`) look like a total outage (`x-render-routing: no-server`)?
+- Render Free disk is ephemeral; durable state belongs in Neon + Qdrant.
+- `/api/health` is liveness; `/api/health/ready` checks dependency wiring.
+- `EMBEDDING_ENABLED_AT_STARTUP=false` avoids loading ONNX during cold boot; first query pays lazy-load cost.
+- Keep-alive mitigates sleep but consumes Free instance-hours.

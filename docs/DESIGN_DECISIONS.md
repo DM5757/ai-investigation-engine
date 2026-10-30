@@ -1,8 +1,8 @@
 # Design decisions (Phase 0 draft)
 
-Format for each decision: **selection**, **why**, **alternatives**, **why-not**, **trade-offs and limits**, **free-tier fit (verified date)**, **effect on maintainability / scalability / interview explainability**.
+Format for each decision: **selection**, **why**, **alternatives**, **why-not**, **trade-offs and limits**, **free-tier fit (verified date)**, **effect on maintainability / scalability / explainability**.
 
-Status: **Hosting = Render Free**. Phase 1 container gate under **512 MB** passed (`docs/evidence/container_512m_bench.json`, peak **284.6 MiB**, no OOM). Candidate embedding `fastembed`/`bge-small` is **provisionally approved** for Render; keep bench endpoints off in production.
+Status: **Hosting = Render Free**. Phase 1 container gate under **512 MB** passed (`docs/evidence/container_512m_bench.json`, peak **284.6 MiB**, no OOM). Embedding `fastembed`/`bge-small` is approved for Render under measured headroom; keep bench endpoints off in production. Corpus scale verified ACTIVE **55,081** (`docs/evidence/dataset_counts.json`).
 
 ---
 
@@ -20,7 +20,7 @@ Status: **Hosting = Render Free**. Phase 1 container gate under **512 MB** passe
   - **Oracle:** more RAM but account friction; fallback if 512 MB cannot work even after measured embedding contingency.
 - **Trade-offs and limits:** **512 MB RAM / 0.1 CPU**; sleep + ~1 min cold start; ephemeral disk; 750 Free instance-hours/month. In-process BGE-small may not fit — embedding decision deferred to Phase 1 benchmarks. Bulk ingest off-host.
 - **Free-tier fit:** Verified 28 Oct 2026 — [Render free docs](https://render.com/docs/free).
-- **Maintainability / scalability / interview:** Explain sleep/cold-start, Neon+Qdrant persistence, keep-alive mitigations.
+- **Maintainability / scalability / explainability:** Sleep/cold-start, Neon+Qdrant persistence, and keep-alive trade-offs must remain explicit in ops docs.
 
 **Fallback:** Koyeb Free → Oracle Always Free if measured needs exceed 512 MB after documented contingencies.
 
@@ -34,7 +34,7 @@ Status: **Hosting = Render Free**. Phase 1 container gate under **512 MB** passe
 - **Why-not:** Render Free Postgres expires after 30 days; Koyeb Free DB only 5 active hours/month; Supabase Free has 500 MB and week-long pause; SQLite on free hosts does not survive redeploys without paid disks.
 - **Trade-offs:** Cold starts after 5 min idle; storage discipline (text once per document, chunk offsets not full duplicate text in PG).
 - **Free-tier fit:** Verified 28 Oct 2026 — [Neon plans](https://neon.com/docs/introduction/plans).
-- **Interview:** Clear SoT vs derived index; transactions for lifecycle states.
+- **Explainability:** Clear source-of-truth vs derived index; transactions for lifecycle states.
 
 ---
 
@@ -46,7 +46,7 @@ Status: **Hosting = Render Free**. Phase 1 container gate under **512 MB** passe
 - **Why-not:** Neon 1 GB cannot comfortably hold full text + 384-d vectors + HNSW + BM25 for 50k+ chunks; Pinecone free limits and weaker sparse control; Chroma persistence on ephemeral hosts is weak.
 - **Trade-offs:** Two stores to reconcile; free cluster suspend/delete on long inactivity; 1 GB RAM / 4 GB disk hard caps.
 - **Free-tier fit:** Verified 28 Oct 2026 — [Create a Cluster](https://qdrant.tech/documentation/cloud/create-cluster/).
-- **Interview:** Rebuild-from-Postgres story; sync protocol is a strength.
+- **Explainability:** Rebuild-from-Postgres story; sync protocol is a strength.
 
 ---
 
@@ -58,7 +58,7 @@ Status: **Hosting = Render Free**. Phase 1 container gate under **512 MB** passe
 - **Trade-offs:** CPU latency on 0.1 vCPU under load; English-centric; image ~1.3 GB with baked model; Render sleep/cold start still applies.
 - **Hard rules:** Custom BM25 + custom reranker remain; do not pay for larger hosts. Re-measure if dependencies grow.
 - **Free-tier fit:** Verified locally in Linux container with 512 MB hard limit — see `docs/evidence/container_512m_bench.json`.
-- **Interview:** Explain baking the model, why RSS ≠ disk image size, and Neon/Qdrant for persistence.
+- **Explainability:** Baking the model, why RSS ≠ disk image size, and Neon/Qdrant for persistence.
 
 ---
 
@@ -68,9 +68,9 @@ Status: **Hosting = Render Free**. Phase 1 container gate under **512 MB** passe
 - **Why:** Free quotas; docs confirm tool use + JSON mode on gpt-oss-120b; one OpenAI SDK client with `base_url`; automatic Groq→Gemini fallback; hand-written investigation state machine (no LangChain/LlamaIndex).
 - **Alternatives:** OpenRouter free; Mistral/Cohere trials; local Ollama on free CPU; google-genai native SDK.
 - **Why-not:** Master prompt’s Llama 3.3 70B **removed from Groq free/Developer** (shutdown 16 Aug 2026). Prefer OpenAI-compatible Gemini endpoint over a second SDK. Ollama quality/latency on free PaaS is poor.
-- **Trade-offs:** Tight RPD/TPM; **never combine tools + `response_format` in one Groq call**; no parallel tool calls on gpt-oss-120b; free-tier prompts may train models — public/synthetic data only. **Owner-account live smoke still pending (keys absent 2026-10-29).**
+- **Trade-offs:** Tight RPD/TPM; **never combine tools + `response_format` in one Groq call**; no parallel tool calls on gpt-oss-120b; free-tier prompts may train models — public/synthetic data only. Live Groq investigation smoke recorded in `docs/evidence/phase4_live_trace.json`; production probes remain quota-sensitive.
 - **Free-tier fit:** Model IDs + tool/JSON capabilities recorded in `docs/evidence/llm_models_verified.txt` (2026-10-29).
-- **Interview:** Gateway, retries, budgets, degraded `llm_unavailable` with retrieved evidence, quote-verified citations.
+- **Explainability:** Gateway, retries, budgets, degraded `llm_unavailable` with retrieved evidence, quote-verified citations.
 
 ---
 
@@ -82,19 +82,19 @@ Status: **Hosting = Render Free**. Phase 1 container gate under **512 MB** passe
 - **Why-not:** Flask lacks native validation; Django heavy; full async adds complexity without benefit at demo load.
 - **Trade-offs:** Threadpool concurrency limits under load — documented.
 - **Free-tier fit:** Yes.
-- **Interview:** Explicit layering; easy to debug live.
+- **Explainability:** Explicit layering; easy to debug live.
 
 ---
 
 ## D2. UI
 
 - **Selection:** Static HTML + vanilla ES modules served by FastAPI. No Node build.
-- **Why:** One deployable; every line readable in interview.
+- **Why:** One deployable; no build toolchain; every line is inspectable.
 - **Alternatives:** React/Vite; Streamlit/Gradio.
 - **Why-not:** Build toolchain; Gradio/Streamlit weaker for citation/document UX and would push toward HF Spaces (paid).
 - **Trade-offs:** Less polish (allowed by assignment).
 - **Free-tier fit:** Yes.
-- **Interview:** Escape `textContent`, no framework magic.
+- **Explainability:** Escape via `textContent`; no framework magic.
 
 ---
 
@@ -106,7 +106,7 @@ Status: **Hosting = Render Free**. Phase 1 container gate under **512 MB** passe
 - **Why-not:** Ready-made-only keyword path weakens custom requirement; ES not free-hostable; in-memory RAM cost.
 - **Trade-offs:** `avgdl` fixed at bulk-build; document drift.
 - **Free-tier fit:** Yes — compute on ingest machine; store sparse vectors in Qdrant Free.
-- **Interview:** Hand-derived BM25 formula and tests.
+- **Explainability:** Hand-derived BM25 formula and tests.
 
 ---
 
@@ -118,7 +118,7 @@ Status: **Hosting = Render Free**. Phase 1 container gate under **512 MB** passe
 - **Why-not:** Built-in fusion alone removes our custom centrepiece (may benchmark as baseline).
 - **Trade-offs:** Feature weights tuned on **dev** only.
 - **Free-tier fit:** CPU-only; fine on 0.5–2 vCPU.
-- **Interview:** Walk features and ablation modes.
+- **Explainability:** Feature walkthrough and ablation modes.
 
 ---
 
@@ -139,7 +139,7 @@ Each dependency will be justified in one line when `pyproject.toml` is created i
 - **Why:** Versioned text makes update/diff clear; Protocol keeps lifecycle testable when host WDAC blocks embedded Qdrant gRPC (`cygrpc`).
 - **Trade-offs:** Chunk text duplication vs master “offsets only in PG” ideal — acceptable for Phase 2; slim later if Neon storage pressure appears. In-memory store is tests-only; Render uses Qdrant Cloud URL when configured.
 - **Free-tier fit:** No extra paid dependency.
-- **Interview:** Explain crash windows + `reconcile_session`, and why retrieval must filter `version == active_version`.
+- **Explainability:** Crash windows + `reconcile_session`; retrieval must filter `version == active_version`.
 
 ---
 
@@ -150,7 +150,7 @@ Each dependency will be justified in one line when `pyproject.toml` is created i
 - **Change vs Phase 2:** Search APIs added to `ChunkStore`; zero-vector default embed still allowed for old lifecycle tests, but semantic claims require FastEmbed (integration skips if model missing).
 - **Trade-offs:** Fixed `bm25_avgdl` until bulk stats; adversarial dense used in sparse-rescue test (honest: not BGE failure).
 - **Free-tier fit:** Same Qdrant Free + local ONNX path.
-- **Interview:** Walk BM25 weight, RRF k=60, and why deleted docs never appear when caller passes only active version map.
+- **Explainability:** BM25 weight, RRF k=60, and why deleted docs never appear when the caller passes only the active version map.
 
 ---
 

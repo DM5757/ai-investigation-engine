@@ -12,7 +12,7 @@
 - `reconcile_session` / `scripts/reconcile.py` for crash windows
 - `ChunkStore` Protocol: `QdrantChunkStore` + `InMemoryChunkStore`
 
-## Key functions / modules
+## Key modules
 
 1. `app.ingestion.parsers.registry.parse_document` — extension → parser
 2. `app.ingestion.normalize.normalize_text`
@@ -23,11 +23,10 @@
 7. `app.ingestion.reconcile.reconcile_session`
 8. `app.index.qdrant_store.make_local_chunk_store`
 
-## Interview questions to practice
+## Design notes
 
-1. Walk PENDING → INDEXING → ACTIVE and what is transactional vs external (Qdrant).
-2. Exact duplicate vs near-duplicate: when do we refuse to index vs flag?
-3. How do chunk offsets prove the chunker did not invent text?
-4. Why is SimHash banded, and what does Hamming distance mean here?
-5. If the process dies after Qdrant upsert but before ACTIVE, what does reconcile do?
-6. Why can tests pass without a live Qdrant process on Windows?
+- PENDING → INDEXING → ACTIVE: Postgres transitions are transactional; Qdrant upsert is external and reconciled on crash.
+- Exact duplicates are refused; near-duplicates are flagged/skipped by policy.
+- Chunk offsets must ground chunk text in the version body.
+- SimHash banding enables approximate near-dup candidate lookup; Hamming distance ranks closeness.
+- Tests can use `InMemoryChunkStore` when host security policy blocks embedded Qdrant gRPC.
