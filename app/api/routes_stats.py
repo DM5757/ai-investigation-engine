@@ -1,7 +1,10 @@
-"""Corpus stats, in-memory metrics, and eval stub."""
+"""Corpus stats, in-memory metrics, and published evaluation summary."""
 
 from __future__ import annotations
 
+import json
+from functools import lru_cache
+from pathlib import Path
 from typing import Any
 
 from fastapi import APIRouter, Request
@@ -13,6 +16,26 @@ from app.index.qdrant_store import collection_name
 from app.schemas.query import MetricsResponse, StatsResponse
 
 router = APIRouter(tags=["stats"])
+
+_PUBLISHED_EVAL = Path(__file__).resolve().parents[1] / "data" / "published_eval.json"
+
+
+@lru_cache(maxsize=1)
+def _load_published_eval() -> dict[str, Any]:
+    if not _PUBLISHED_EVAL.is_file():
+        return {
+            "runs": [],
+            "note": "Published evaluation artifact missing from image.",
+            "limitations": [],
+        }
+    raw: Any = json.loads(_PUBLISHED_EVAL.read_text(encoding="utf-8"))
+    if not isinstance(raw, dict):
+        return {
+            "runs": [],
+            "note": "Published evaluation artifact is invalid JSON object.",
+            "limitations": [],
+        }
+    return raw
 
 
 @router.get("/api/stats", response_model=StatsResponse)
@@ -54,8 +77,10 @@ def metrics(request: Request, settings: SettingsDep) -> MetricsResponse:
 
 @router.get("/api/eval/runs")
 def eval_runs() -> dict[str, Any]:
-    """Honest stub — evaluation harness is Phase 7."""
-    return {
-        "runs": [],
-        "note": "Evaluation runs are Phase 7; no harness wired yet.",
-    }
+    """Serve measured evaluation summary baked into the image (not live re-scoring)."""
+    data = dict(_load_published_eval())
+    data.setdefault(
+        "note",
+        "Held-out metrics from committed artifacts. Smoke demos are not overall accuracy.",
+    )
+    return data

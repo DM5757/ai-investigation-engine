@@ -104,8 +104,16 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Production @ `611b0d4`: smoke **10/10 PASS**; unseen JWT/causal/LLM multi-hop probes verified.
 - Tests: **191** passed (non-live). CI green. Tag `submission-2026-10-29` unchanged.
 
+## Milestone 8 — reviewer demo UI / public presentation (2026-11-02)
+
+- Polished vanilla Investigate UI: sample chips (verified cases only), progress + elapsed time, citation scroll-to-source, conflict/steps panels, status legend, Corpus + Evaluation transparency tabs.
+- `/api/eval/runs` serves measured summary from `app/data/published_eval.json` (sourced from `full55k_retrieval_v1` + `m7_test_adapt_v3`); explicitly not smoke-as-accuracy.
+- README / AI usage / evaluation docs updated for Milestone 7 metrics and Milestone 8 presentation. Tag `submission-2026-10-29` unchanged.
+- Backend investigation path unchanged unless a correctness defect appears during demo verification.
+- Tests: **193** passed (non-live).
+
 ## Outstanding technical follow-ups
 
 1. Further Hotpot EM/alias normalization without gaming metrics.
 2. Optional TPM-aware backoff under adaptive load.
-3. UI sample-question chips once production demos stay green across deploys.
+3. Multi-hop recall / general answer accuracy beyond curated demos (held-out token F1 0.183).

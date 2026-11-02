@@ -2,11 +2,11 @@
 
 **Project:** Applied AI Investigation Engine  
 **Repository:** https://github.com/DM5757/ai-investigation-engine  
-**Report date:** 2026-10-29 (updated 2026-10-30)
+**Report date:** 2026-10-29 (updated 2026-11-02)
 
 ## Disclosure
 
-This project was built with **extensive AI assistance**. Cursor Agent (Composer / agent mode) was the primary co-pilot for architecture, implementation, debugging, evaluation, deployment wiring, and documentation across Phases 0–7 and post-submission quality work. This report describes how AI was used; it does not claim that every line was independently authored without assistance. Accountability for submitted artifacts, measured claims, and live demo behavior remains with the project owner.
+This project was built with **extensive AI assistance**. Cursor Agent (Composer / agent mode) was the primary co-pilot for architecture, implementation, debugging, evaluation, deployment wiring, documentation, and the Milestone 8 reviewer demo UI across Phases 0–7 and post-submission quality work. This report describes how AI was used; it does not claim that every line was independently authored without assistance. Accountability for submitted artifacts, measured claims, and live demo behavior remains with the project owner.
 
 ## Tools used
 
@@ -18,9 +18,9 @@ This project was built with **extensive AI assistance**. Cursor Agent (Composer 
 
 ## How AI was used
 
-AI helped compare free hosting options and settle on Render Free with Neon and Qdrant Cloud under a no-paid-card constraint. It drafted and iterated much of the application stack: document ingestion and lifecycle, hybrid retrieval (dense embeddings with custom BM25 and reranking), the investigation tool loop and LLM gateway, the FastAPI API and static UI, and the evaluation harness built on HotpotQA plus synthetic questions.
+AI helped compare free hosting options and settle on Render Free with Neon and Qdrant Cloud under a no-paid-card constraint. It drafted and iterated much of the application stack: document ingestion and lifecycle, hybrid retrieval (dense embeddings with custom BM25 and reranking), the investigation tool loop and LLM gateway, the FastAPI API and static UI (including Milestone 8 sample chips, progress/error handling, citation presentation, and evaluation transparency), and the evaluation harness built on HotpotQA plus synthetic questions.
 
-AI was also used heavily for debugging—including the Psycopg 3 / Neon dialect issue, Windows tooling and Parquet streaming workarounds, Render memory limits for FastEmbed, and Qdrant bulk-upsert timeouts—and for producing README, design notes, requirements traceability, and evaluation report drafts. Human direction set goals, constraints, and honesty rules (especially around measured corpus size and provider-limited evaluation); AI produced most of the concrete artifacts under those constraints.
+AI was also used heavily for debugging—including the Psycopg 3 / Neon dialect issue, Windows tooling and Parquet streaming workarounds, Render memory limits for FastEmbed, and Qdrant bulk-upsert timeouts—and for producing README, design notes, requirements traceability, and evaluation report drafts. Human direction set goals, constraints, and honesty rules (especially around measured corpus size, provider-limited evaluation, and not presenting smoke success as overall accuracy); AI produced most of the concrete artifacts under those constraints.
 
 ## Integrity
 

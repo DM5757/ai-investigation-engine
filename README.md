@@ -16,13 +16,14 @@ Given a large document corpus, answer questions that may require combining multi
 | ACTIVE documents | **55,081** | `docs/evidence/dataset_counts.json` + live `/api/stats` |
 | FAILED records | **0** | same |
 | Qdrant points | **56,890** (= ACTIVE chunk rows) | same |
-| Automated tests | **191** passing (1 live test deselected by default) | `pytest` |
+| Automated tests | **193** passing (1 live test deselected by default) | `pytest` |
 | Retrieval eval | **91** scored questions; dense R@10 **0.890**; hybrid MRR **0.919** | `docs/EVALUATION_REPORT.md` |
 | Answer eval (test split) | **62** questions; adaptive token F1 **0.183**; cite F1 **0.365**; abstention **1.0**; contradiction **1.0** | `eval/results/m7_test_adapt_v3__*` |
-| Reviewer demos | factual, multi-hop×3, contradiction, abstention×2 | `docs/evidence/reviewer_demo_cases.md` |
-| Deployed commit | `611b0d4` (Milestone 7) | `/api/version` on Render Free |
+| Reviewer demos | factual, multi-doc comparison, multi-hop, contradiction, abstention | `docs/evidence/reviewer_demo_cases.md` + Investigate tab samples |
+| Behavioral core | Milestone 7 (`611b0d4`) | production smoke 10/10 |
+| UI / presentation | Milestone 8 (reviewer demo) | this repo + live `/` |
 
-Trust measured artifacts over narrative claims. Do not claim ≥50k indexed documents unless `dataset_counts.json` reports `meets_data1_50k: true`.
+Trust measured artifacts over narrative claims. Do not claim ≥50k indexed documents unless `dataset_counts.json` reports `meets_data1_50k: true`. Curated smoke success is **not** overall accuracy — held-out token F1 is **0.183**.
 
 ## How the pipeline works
 
@@ -41,7 +42,7 @@ Trust measured artifacts over narrative claims. Do not claim ≥50k indexed docu
 
 | Layer | Choice |
 | --- | --- |
-| API / UI | FastAPI + static HTML/CSS/JS |
+| API / UI | FastAPI + static HTML/CSS/JS (no SPA framework) |
 | Metadata DB | Neon PostgreSQL (SQLAlchemy 2 + Alembic, Psycopg 3) |
 | Vectors | Qdrant Cloud (named dense + sparse) |
 | Embeddings | `BAAI/bge-small-en-v1.5` via FastEmbed |
@@ -52,10 +53,11 @@ Further detail: `docs/DESIGN_DECISIONS.md`, `docs/DATABASE_DESIGN.md`, `docs/FRE
 
 ## Try the live demo
 
-1. Open https://ai-investigation-engine-scyz.onrender.com (cold start after ~15 minutes idle can take ~1 minute).
-2. Ask a factual or multi-document question on the Ask tab.
-3. Inspect citations, status, and usage metadata in the response.
-4. Confirm deploy SHA via `/api/version` and corpus size via `/api/stats`.
+1. Open https://ai-investigation-engine-scyz.onrender.com (cold start after idle can take ~1 minute).
+2. Use a **Sample investigation** chip or type a question on the Investigate tab, then **Run investigation**.
+3. Inspect status, answer, supporting citations (click to scroll), conflicts, and stage latency.
+4. Open **Corpus** for live ACTIVE counts and **Evaluation** for held-out metrics with denominators and limitations.
+5. Confirm deploy SHA via `/api/version`.
 
 Document mutation routes require `X-Admin-Token` and are not intended for anonymous public use.
 
@@ -102,15 +104,16 @@ uv run python eval/run_eval.py --configs baseline_rag,full_investigation --split
 ```
 
 Always report **n_total / n_scored / exclusions / provider skips**.  
+UI summary is served from `app/data/published_eval.json` (sourced from committed `eval/results/`).  
 Report: `docs/EVALUATION_REPORT.md` · Results: `eval/results/` · DOC-6: `eval/results/chunking_comparison.*`
 
 ## Known limitations
 
 - Render Free cold starts remain; cold `/api/health` can take ~1 minute after idle.
-- Groq free-tier daily quota / Gemini RPM can still force `llm_unavailable` when the LLM path is required.
-- Milestone 5 defaults to evidence-backed deterministic plan/synthesis after seed+bridge retrieval (**0 LLM calls** on the verified demo set). Exact-match Hotpot answer strings remain low because answers are quote-grounded, not gold-string normalized.
-- Baseline RAG still over-answers unanswerable items (abstention rate 0.0 on the M5 test sample); investigation abstains more honestly.
-- Windows App Control can block `datasets`/pandas; corpus build uses PyArrow parquet streaming.
+- Groq free-tier daily quota / Gemini RPM can force `llm_unavailable` when the LLM path is required.
+- Held-out token F1 is **0.183** and exact match ~0 — quote-grounded answers often differ from Hotpot short gold strings.
+- Multi-hop recall and general answer accuracy still leave room for improvement beyond the curated demo set.
+- Sample chips only cover verified production cases; arbitrary questions may abstain or degrade honestly.
 
 ## Documentation index
 

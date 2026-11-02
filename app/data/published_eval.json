@@ -1,0 +1,96 @@
+{
+  "generated_from": [
+    "eval/results/full55k_retrieval_v1__comparison.json",
+    "eval/results/m7_test_adapt_v3__comparison.json",
+    "docs/evidence/m7_report.md"
+  ],
+  "note": "Held-out metrics from committed artifacts. Curated production smoke success is not overall accuracy.",
+  "corpus_at_eval": {
+    "active_documents": 55081,
+    "chunk_rows": 56900
+  },
+  "limitations": [
+    "Token F1 remains modest (0.183) — Hotpot short gold vs quote-grounded phrasing still diverge.",
+    "Exact match is ~0; do not treat curated demo success as representative accuracy.",
+    "Multi-hop recall and general answer accuracy still leave room for improvement.",
+    "Adaptive synthesis may hit free-tier LLM quota and return llm_unavailable.",
+    "Render Free cold starts can add ~30–60s before the first response."
+  ],
+  "synthesis_modes": {
+    "deterministic": "High-confidence short spans extracted from verified claims; 0 LLM calls.",
+    "llm_assisted": "Used when span confidence is below threshold; still quote-checked and citation-pruned."
+  },
+  "runs": [
+    {
+      "run_id": "full55k_retrieval_v1",
+      "kind": "retrieval",
+      "split": "all",
+      "created_at": "2026-10-30T02:53:05.107406+00:00",
+      "preliminary": false,
+      "headline": "Full-corpus retrieval comparison",
+      "configs": [
+        {
+          "config_id": "dense_only",
+          "n_questions_total": 94,
+          "n_scored_retrieval": 91,
+          "n_excluded": 3,
+          "exclusion_note": "3 unanswerable items excluded from retrieval scoring",
+          "recall_at_k": 0.890,
+          "mrr": 0.904,
+          "all_gold_at_k": 0.802,
+          "k": 10,
+          "mean_latency_s": 0.350
+        },
+        {
+          "config_id": "hybrid_rrf",
+          "n_questions_total": 94,
+          "n_scored_retrieval": 91,
+          "n_excluded": 3,
+          "exclusion_note": "3 unanswerable items excluded from retrieval scoring",
+          "recall_at_k": 0.887,
+          "mrr": 0.919,
+          "all_gold_at_k": 0.769,
+          "k": 10,
+          "mean_latency_s": 1.155
+        }
+      ]
+    },
+    {
+      "run_id": "m7_test_adapt_v3",
+      "kind": "answer",
+      "split": "test",
+      "created_at": "2026-11-02T10:54:26.933517+00:00",
+      "preliminary": false,
+      "headline": "Milestone 7 adaptive investigation (held-out test)",
+      "status_label": "measured",
+      "configs": [
+        {
+          "config_id": "full_investigation",
+          "pipeline": "investigation",
+          "retrieval_mode": "hybrid_rrf",
+          "n_questions_total": 62,
+          "n_scored_answer": 62,
+          "n_scored_retrieval": 60,
+          "n_excluded": 0,
+          "token_f1": 0.183,
+          "citation_f1": 0.365,
+          "citation_f1_answered_only": 0.528,
+          "exact_match": 0.0,
+          "correct_abstention_rate": 1.0,
+          "n_unanswerable_scored": 2,
+          "contradiction_detection_rate": 1.0,
+          "n_contradiction_scored": 2,
+          "mean_latency_s": 3.221,
+          "mean_llm_calls": 0.435,
+          "status_counts": {
+            "answered": 34,
+            "partial": 5,
+            "insufficient": 21,
+            "conflicting": 2
+          },
+          "denominator_note": "Answer metrics over all 62 test questions; retrieval over 60 with resolved gold docs."
+        }
+      ]
+    }
+  ]
+}

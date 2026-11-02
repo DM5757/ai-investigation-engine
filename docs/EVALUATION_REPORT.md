@@ -78,7 +78,7 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 
 1. Exact match still ~0; token F1 improved but Hotpot alias/format gaps remain.
 2. Free-tier quotas still constrain large adaptive runs.
-3. UI sample chips deferred until demos remain green across deploys.
+3. UI sample chips shipped in Milestone 8 (Investigate tab); they hit the live API and do not hardcode answers.
 
 ## 7. Evidence index
 
