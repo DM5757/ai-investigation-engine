@@ -69,7 +69,17 @@ class Settings(BaseSettings):
         default=True, alias="PREFER_DETERMINISTIC_PLAN"
     )
     prefer_deterministic_synthesis: bool = Field(
-        default=True, alias="PREFER_DETERMINISTIC_SYNTHESIS"
+        default=False,
+        alias="PREFER_DETERMINISTIC_SYNTHESIS",
+        description="Force deterministic synthesis for all questions when true.",
+    )
+    adaptive_synthesis: bool = Field(
+        default=True,
+        alias="ADAPTIVE_SYNTHESIS",
+        description=(
+            "When true and prefer_deterministic_synthesis is false, use short "
+            "deterministic spans for high-confidence evidence and LLM otherwise."
+        ),
     )
     skip_tool_llm_when_seeded: bool = Field(
         default=True, alias="SKIP_TOOL_LLM_WHEN_SEEDED"

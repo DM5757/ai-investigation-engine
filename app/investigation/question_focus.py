@@ -110,6 +110,20 @@ _QUESTION_STARTERS = frozenset(
         "could",
     }
 )
+_IMPERATIVE_HEADS = frozenset(
+    {
+        "note",
+        "report",
+        "consider",
+        "include",
+        "provide",
+        "list",
+        "describe",
+        "explain",
+        "mention",
+        "ignore",
+    }
+)
 _TOKEN_RE = re.compile(r"[A-Za-z][A-Za-z0-9_-]{2,}")
 _QUOTE_RE = re.compile(r"[\"“”']([^\"“”']{3,80})[\"“”']")
 
@@ -162,6 +176,9 @@ def extract_question_focus(question: str) -> QuestionFocus:
             continue
         parts_all = [p for p in re.split(r"[\s\-–—]+", key) if p]
         if parts_all and parts_all[0] in _QUESTION_STARTERS:
+            continue
+        if parts_all and parts_all[0] in _IMPERATIVE_HEADS:
+            # "Report contradictions" / "Note any" are instructions, not entities.
             continue
         # Drop phrases that are only stopwords / stop-inflated (e.g. "March according")
         parts = [p for p in parts_all if p not in _STOP]

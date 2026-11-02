@@ -1,0 +1,4428 @@
+{
+  "summary": {
+    "config_id": "full_investigation",
+    "pipeline": "investigation",
+    "retrieval_mode": "hybrid_rrf",
+    "k": 8,
+    "n_questions_total": 62,
+    "n_questions": 62,
+    "n_scored_retrieval": 60,
+    "n_scored_answer": 62,
+    "n_excluded": 0,
+    "exclusion_reasons": {},
+    "by_type_total": {
+      "factual": 51,
+      "multi_doc": 3,
+      "contradiction": 2,
+      "unanswerable": 2,
+      "multi_step": 1,
+      "multi_hop": 3
+    },
+    "by_type_scored_retrieval": {
+      "factual": 51,
+      "multi_doc": 3,
+      "contradiction": 2,
+      "multi_step": 1,
+      "multi_hop": 3
+    },
+    "by_type_scored_answer": {
+      "factual": 51,
+      "multi_doc": 3,
+      "contradiction": 2,
+      "unanswerable": 2,
+      "multi_step": 1,
+      "multi_hop": 3
+    },
+    "n_errors": 0,
+    "corpus_active_documents": 55081,
+    "retrieval": {
+      "n_scored": 60,
+      "n": 60,
+      "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+      "recall_at_k": 0.525,
+      "mrr": 0.5223809523809524,
+      "all_gold_at_k": 0.36666666666666664,
+      "multi_doc_coverage": 0.525,
+      "mean_latency_s": 2.2676002416623913
+    },
+    "answer": {
+      "n_scored": 62,
+      "n": 62,
+      "exact_match": 0.0,
+      "token_f1": 0.15246303394558489,
+      "citation_f1": 0.30913978494623656,
+      "citation_f1_answered_only": 0.5190476190476191,
+      "correct_abstention_rate": 1.0,
+      "n_unanswerable_scored": 2,
+      "contradiction_detection_rate": 0.5,
+      "n_contradiction_scored": 2,
+      "mean_latency_s": 2.2006745580602587,
+      "mean_llm_calls": 0.3709677419354839,
+      "mean_tokens": 452.0806451612903,
+      "status_counts": {
+        "answered": 34,
+        "insufficient": 27,
+        "conflicting": 1
+      }
+    }
+  },
+  "results": [
+    {
+      "question_id": "syn_factual_beta_marker",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "BETA-POOL-EXHAUST [S1].",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.34106160001829267,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8571428571428571,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_factual_jwt",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "gold_doc_titles": [
+        "incident_march"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.16157090000342578,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_multi_docs_services",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.1071918000234291,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c1_deploy_time",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "conflicting",
+      "answer_text": "Sources conflict:\n- authgateway/deploy_time: 14:00 UTC [S1]\n- authgateway/deploy_time: 08:10 UTC [S2]",
+      "citations": [
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 1,
+      "latency_s": 0.10534330003429204,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 1.0,
+        "contradiction_detected": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c2_root_cause",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "ALPHA-OUTAGE-0810 [S1].",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.0931470999494195,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "9129ff0b-be04-4f79-9039-0f8c367fd283",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_4969",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.27077790000475943,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 1.0,
+        "correct_abstention": 1.0,
+        "soft_abstention": 1.0,
+        "false_answer_on_unanswerable": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_incomplete_inc1_approver",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Documents mention the topic but do not name the requested approver.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.11503019998781383,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Documents mention the topic but do not name the requested approver.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "81901c5a-460a-46ce-b96f-5b022b926be1",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "d288701b-83a5-4820-9308-dd97769dbbfa",
+        "d528bdbd-bb42-4791-9896-9c2d75f23126",
+        "29963fd9-0587-4a6d-bb01-f47a61428ac3"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 1.0,
+        "correct_abstention": 1.0,
+        "soft_abstention": 1.0,
+        "false_answer_on_unanswerable": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_multistep_latency",
+      "question_type": "multi_step",
+      "split": "test",
+      "gold_doc_ids": [
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "latency_metrics",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.1100252999458462,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8529",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "06a185da-c4f0-4795-a732-f56a62648e0e",
+        "04f360b5-5464-45f0-914a-a45d1157ee2b"
+      ],
+      "gold_doc_titles": [
+        "Curt Smith",
+        "Laura Stoica"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "yes [S1, S2].",
+      "citations": [
+        {
+          "doc_id": "06a185da-c4f0-4795-a732-f56a62648e0e",
+          "chunk_id": "79fa0789-14ed-43c9-ae5a-d39a543180cb",
+          "label": "S1"
+        },
+        {
+          "doc_id": "04f360b5-5464-45f0-914a-a45d1157ee2b",
+          "chunk_id": "5d9fd915-86cf-4b58-bd8d-30ef57158714",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.46585319994483143,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "06a185da-c4f0-4795-a732-f56a62648e0e",
+        "04f360b5-5464-45f0-914a-a45d1157ee2b"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7264",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "71379eff-7562-4ee4-862b-14d497b8c99f",
+        "a5e8134c-49aa-4bce-98c5-5217e0af5d11"
+      ],
+      "gold_doc_titles": [
+        "Tim Rice",
+        "Aida (musical)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Giuseppe Verdi [​S2]",
+      "citations": [
+        {
+          "doc_id": "71379eff-7562-4ee4-862b-14d497b8c99f",
+          "chunk_id": "45032da9-dca5-416d-b8eb-161f370ebd29",
+          "label": "S1"
+        },
+        {
+          "doc_id": "a5e8134c-49aa-4bce-98c5-5217e0af5d11",
+          "chunk_id": "6507a28b-fd1c-4ffb-a355-69df0c5c111f",
+          "label": "S2"
+        },
+        {
+          "doc_id": "c6736e69-a353-42ca-bc9e-ea4d24e1c0ad",
+          "chunk_id": "c4331d1f-b54f-4165-b6b3-49a40fd9ae0f",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 1.6270402999361977,
+      "llm_calls": 1,
+      "tokens": 796,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "71379eff-7562-4ee4-862b-14d497b8c99f",
+        "a5e8134c-49aa-4bce-98c5-5217e0af5d11",
+        "c6736e69-a353-42ca-bc9e-ea4d24e1c0ad"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8,
+        "citation": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2845",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+        "955d5257-0873-47d3-a587-1c54a38242cd"
+      ],
+      "gold_doc_titles": [
+        "Ohio State University",
+        "California State University, Dominguez Hills"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "California State University, Dominguez Hills [S1, S2].",
+      "citations": [
+        {
+          "doc_id": "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+          "chunk_id": "81a0cced-b260-467f-85b3-d889482f1465",
+          "label": "S1"
+        },
+        {
+          "doc_id": "955d5257-0873-47d3-a587-1c54a38242cd",
+          "chunk_id": "5d1d07db-fa05-443d-bc85-6a044d9369eb",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.625975799979642,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+        "955d5257-0873-47d3-a587-1c54a38242cd"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8333333333333333,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3397",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "20f6899a-40b5-4bf5-b53d-c0afca33d9af",
+        "f9ed890f-209d-4388-8daf-075fdd815e14"
+      ],
+      "gold_doc_titles": [
+        "Camp Modin",
+        "Canaan, Maine"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The claims do not specify the Maine county of Camp Modin’s previous location; they only note it was in Canaan, Maine【S8】. Therefore, the county cannot be determined from the provided evidence.",
+      "citations": [
+        {
+          "doc_id": "67780af2-dbb9-4511-9c09-3ab610df772d",
+          "chunk_id": "0b420bf7-e88e-4a97-9eb8-c1b44c924596",
+          "label": "S1"
+        },
+        {
+          "doc_id": "dee1d836-a494-4a12-bc68-9393583e6656",
+          "chunk_id": "3a8d2c62-f10f-4bc1-aedb-90016d58a7d5",
+          "label": "S2"
+        },
+        {
+          "doc_id": "20f6899a-40b5-4bf5-b53d-c0afca33d9af",
+          "chunk_id": "adc4ae3d-994d-41a9-bee8-2e3443d6b96b",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 2.041440600063652,
+      "llm_calls": 1,
+      "tokens": 1634,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "67780af2-dbb9-4511-9c09-3ab610df772d",
+        "dee1d836-a494-4a12-bc68-9393583e6656",
+        "20f6899a-40b5-4bf5-b53d-c0afca33d9af"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.3333333333333333,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.05714285714285715,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0457",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "f29c139f-c2c3-4063-b86f-fe530c81761b",
+        "58c9f531-8cfa-4c16-a447-c0c5ec6043a3"
+      ],
+      "gold_doc_titles": [
+        "Beauty and the Beast (franchise)",
+        "Beauty and the Beast (1991 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.12698509998153895,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5534",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "8ad411e1-f35a-4ff8-93a6-31663fbb5f8e",
+        "7131af2b-f974-4227-b41f-f4f576df4f5e"
+      ],
+      "gold_doc_titles": [
+        "The Ladder of Lies",
+        "Jean Acker"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.2763508999487385,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2179",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "7bf1c9f6-505e-44e4-98f7-606c5e358e9c",
+        "a77bf725-7b94-46a0-ac59-f0d0af0f3bc4"
+      ],
+      "gold_doc_titles": [
+        "Leadgate, Cumbria",
+        "Alston, Cumbria"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The town is Alston, which lies at an altitude of over 1,000 feet [ S3 ].",
+      "citations": [
+        {
+          "doc_id": "7bf1c9f6-505e-44e4-98f7-606c5e358e9c",
+          "chunk_id": "f0c74477-c535-4fa9-877f-910c5b8bf938",
+          "label": "S1"
+        },
+        {
+          "doc_id": "62d4bc61-dfc4-4a90-9f67-881784dd5dcb",
+          "chunk_id": "8a6ea38a-43fe-4d03-ba0d-7049ff02a02c",
+          "label": "S2"
+        },
+        {
+          "doc_id": "62d4bc61-dfc4-4a90-9f67-881784dd5dcb",
+          "chunk_id": "8a6ea38a-43fe-4d03-ba0d-7049ff02a02c",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.9844073998974636,
+      "llm_calls": 1,
+      "tokens": 1571,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "7bf1c9f6-505e-44e4-98f7-606c5e358e9c",
+        "62d4bc61-dfc4-4a90-9f67-881784dd5dcb",
+        "a87ede3d-113f-46f2-9e05-0f6aaf7d93b5",
+        "a77bf725-7b94-46a0-ac59-f0d0af0f3bc4",
+        "202a9fc8-c998-44b1-a6f0-91ba48f6d74c",
+        "2a8f579d-142d-49a2-84f4-ec596c29773d",
+        "999d054e-2688-4fd3-85b9-49fe450cea88"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.18181818181818182,
+        "citation": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1911",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "5036105a-5931-46ea-a5a4-9cc9eb9eaf9d",
+        "028a11cb-2f27-4ff6-a358-d0c8be71cc8a"
+      ],
+      "gold_doc_titles": [
+        "Claudio Monteverdi",
+        "Georges Bizet"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Both were composers of opera — Monteverdi was a pioneer in opera development and Bizet is best known for his operas【S1】【S2】",
+      "citations": [
+        {
+          "doc_id": "5036105a-5931-46ea-a5a4-9cc9eb9eaf9d",
+          "chunk_id": "c09e49bf-761b-455c-ac34-e6402149a41c",
+          "label": "S1"
+        },
+        {
+          "doc_id": "028a11cb-2f27-4ff6-a358-d0c8be71cc8a",
+          "chunk_id": "4c434a0b-3a62-40cf-8da0-8dc35d6ddfe3",
+          "label": "S2"
+        },
+        {
+          "doc_id": "5036105a-5931-46ea-a5a4-9cc9eb9eaf9d",
+          "chunk_id": "c09e49bf-761b-455c-ac34-e6402149a41c",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.8855779999867082,
+      "llm_calls": 1,
+      "tokens": 894,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "5036105a-5931-46ea-a5a4-9cc9eb9eaf9d",
+        "028a11cb-2f27-4ff6-a358-d0c8be71cc8a"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.08695652173913045,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0825",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "6f677619-5df1-4658-b6c4-f3b0aedc7304",
+        "9015a187-2ae9-48b3-82dc-88f937eb2529"
+      ],
+      "gold_doc_titles": [
+        "Renée Asherson",
+        "The Others (2001 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Sanjh Aur Savera [S1].",
+      "citations": [
+        {
+          "doc_id": "f74abe5f-c886-413e-a28f-88fe82ed6609",
+          "chunk_id": "477c6bfe-cef4-4f17-ad0f-58011b1f9510",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 1.1383536000503227,
+      "llm_calls": 1,
+      "tokens": 1536,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "53b4277a-24fa-416a-aa56-c1c75744129e",
+        "f74abe5f-c886-413e-a28f-88fe82ed6609",
+        "1fb53eda-b48d-4d25-b068-0699b3a7cb5b",
+        "b1df3161-6d4b-4e3a-a64b-7bc4d6603c19",
+        "6f677619-5df1-4658-b6c4-f3b0aedc7304",
+        "9015a187-2ae9-48b3-82dc-88f937eb2529"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.2,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1485",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "39b4a09d-76e8-4c58-b228-c5a30c173dfc",
+        "63056aab-6ed5-473f-a029-42b0fdd554f1"
+      ],
+      "gold_doc_titles": [
+        "Tamiami Canal",
+        "Genesee River"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.552235099952668,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "63056aab-6ed5-473f-a029-42b0fdd554f1",
+        "e40cae96-1728-433b-9a26-029cc1fd582c",
+        "39b4a09d-76e8-4c58-b228-c5a30c173dfc"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1800",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "108fa944-37d4-4d37-8a7a-e046feda0f69",
+        "0fb940d0-1d65-42ed-83e3-a0daa925df70"
+      ],
+      "gold_doc_titles": [
+        "1966 Football League Cup Final",
+        "West Bromwich Albion F.C."
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "West Bromwich Albion [​S3]",
+      "citations": [
+        {
+          "doc_id": "a489c11a-092e-43fe-a43f-77d6d2565625",
+          "chunk_id": "b8b5b5a2-3a63-45bb-8fd1-2a022b10bb48",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b1d15ef1-2ed3-4e08-b17d-61cecaf0a225",
+          "chunk_id": "dbbfc536-d015-40e7-8379-cf60e62f33fd",
+          "label": "S2"
+        },
+        {
+          "doc_id": "108fa944-37d4-4d37-8a7a-e046feda0f69",
+          "chunk_id": "7f936bb3-c155-4641-9ba6-ae04c9168a05",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.8566867000190541,
+      "llm_calls": 1,
+      "tokens": 1194,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "a489c11a-092e-43fe-a43f-77d6d2565625",
+        "b1d15ef1-2ed3-4e08-b17d-61cecaf0a225",
+        "108fa944-37d4-4d37-8a7a-e046feda0f69",
+        "0f6a38b8-25b7-467d-8599-2daca6a799ae"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.3333333333333333,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.6666666666666665,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5516",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ffbee402-5430-49de-928f-9d781644fac1",
+        "449cfb70-eafe-46e0-ab9b-08ddb0d5af7d"
+      ],
+      "gold_doc_titles": [
+        "Mary Robinson (poet)",
+        "Perdita (The Winter's Tale)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Sicilia [S1, S2].",
+      "citations": [
+        {
+          "doc_id": "ffbee402-5430-49de-928f-9d781644fac1",
+          "chunk_id": "f267e036-49bd-45d0-ad37-5fb16254ad71",
+          "label": "S1"
+        },
+        {
+          "doc_id": "449cfb70-eafe-46e0-ab9b-08ddb0d5af7d",
+          "chunk_id": "e62f5dad-2c08-4c81-96e9-5c6676dd2116",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.42103760002646595,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "449cfb70-eafe-46e0-ab9b-08ddb0d5af7d",
+        "ffbee402-5430-49de-928f-9d781644fac1"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4109",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "54424812-8ddb-4d37-8dcf-63c80b313b09",
+        "640dcea6-37b5-4c5a-bcfe-08b2c2afa481"
+      ],
+      "gold_doc_titles": [
+        "Dobara Phir Se",
+        "Salman Iqbal"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "ARY Films [S1].",
+      "citations": [
+        {
+          "doc_id": "54424812-8ddb-4d37-8dcf-63c80b313b09",
+          "chunk_id": "68d9a22b-c845-4f3e-bd34-9de9e739f117",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.21629919996485114,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "54424812-8ddb-4d37-8dcf-63c80b313b09"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4793",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "e7b9f32e-025e-4ded-a6c9-b55c3f1101c8",
+        "646de7a4-8dc2-4e4e-9688-70e679e09f32"
+      ],
+      "gold_doc_titles": [
+        "Jerry Garcia",
+        "Joe Gooch"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Joe Gooch was born later (May 3 1977) than Jerry Garcia (August 1 1942)【S2】【S3】",
+      "citations": [
+        {
+          "doc_id": "b7bdd2b6-2b2c-43a0-a3b4-11dfc00cf249",
+          "chunk_id": "73b2dfc1-7a26-4a9a-96d9-79a25eb11d2a",
+          "label": "S1"
+        },
+        {
+          "doc_id": "646de7a4-8dc2-4e4e-9688-70e679e09f32",
+          "chunk_id": "f9d5eabd-6d09-437c-b141-1aa4440dd86d",
+          "label": "S2"
+        },
+        {
+          "doc_id": "e7b9f32e-025e-4ded-a6c9-b55c3f1101c8",
+          "chunk_id": "be596a46-1271-4505-a727-7a7dc7505a81",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 1.214533400023356,
+      "llm_calls": 1,
+      "tokens": 775,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "b7bdd2b6-2b2c-43a0-a3b4-11dfc00cf249",
+        "646de7a4-8dc2-4e4e-9688-70e679e09f32",
+        "e7b9f32e-025e-4ded-a6c9-b55c3f1101c8"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.2222222222222222,
+        "citation": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5771",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "80bf82be-8965-432d-be95-9a18cff2bfb0",
+        "48f52f6b-8d86-45ad-bb9d-afbd584adea9"
+      ],
+      "gold_doc_titles": [
+        "Sian Gibson",
+        "Peter Kay's Car Share"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Sian Gibson [​S2]",
+      "citations": [
+        {
+          "doc_id": "6354e0e5-9f5d-4299-beed-ce948355809e",
+          "chunk_id": "c7f46ab2-8de9-4cfe-ab3f-afff7820ab06",
+          "label": "S1"
+        },
+        {
+          "doc_id": "48f52f6b-8d86-45ad-bb9d-afbd584adea9",
+          "chunk_id": "695519e5-bb69-4755-a660-8c09d1713082",
+          "label": "S2"
+        },
+        {
+          "doc_id": "6354e0e5-9f5d-4299-beed-ce948355809e",
+          "chunk_id": "c7f46ab2-8de9-4cfe-ab3f-afff7820ab06",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 1.0301100999349728,
+      "llm_calls": 1,
+      "tokens": 860,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "6354e0e5-9f5d-4299-beed-ce948355809e",
+        "48f52f6b-8d86-45ad-bb9d-afbd584adea9"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8,
+        "citation": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1732",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "d0d48035-7550-45fc-9102-55a40fd375e3",
+        "3a919a1f-1ab7-434f-9c22-8f3990299214"
+      ],
+      "gold_doc_titles": [
+        "Meyers Mill, South Carolina",
+        "Savannah River Site"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Retrieved claims do not cover the distinctive terms of the asked subject closely enough to support an answer.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.4351143999956548,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Retrieved claims do not cover the distinctive terms of the asked subject closely enough to support an answer.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "576c58ff-4708-4c66-9a23-3f237567a371",
+        "d90936ae-de3b-4ba0-a0b4-1414d4c3c59a",
+        "85e9ed25-93a8-41b5-84a8-916bc962bd6a",
+        "3ee5eaa4-e1d7-406a-b416-ac2be9acecc1",
+        "e574a85f-5767-4fcb-a864-b83a8b48293d",
+        "30002c74-d61b-46bf-8376-b814bb464308",
+        "566aa26a-82ea-49b1-932b-cdacd1096cb2"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0909090909090909,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8747",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "c2a5c92d-9335-4385-8991-6f10fa251ba3",
+        "60bb6155-1df4-45a4-bcbb-5373163dd813"
+      ],
+      "gold_doc_titles": [
+        "Gerald Grosvenor, 6th Duke of Westminster",
+        "Hugh Grosvenor, 7th Duke of Westminster"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.2523236999986693,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7609",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "8624ba21-0e65-44c0-bef1-0c7f40dc22c6",
+        "db3602ab-fe71-4e46-9c1d-35576f1a5b24"
+      ],
+      "gold_doc_titles": [
+        "Ghosts (2006 film)",
+        "Gweilo"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Retrieved claims do not cover the distinctive terms of the asked subject closely enough to support an answer.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.5021786000579596,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Retrieved claims do not cover the distinctive terms of the asked subject closely enough to support an answer.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "2e7e8d5a-9596-48a6-87eb-468b94ba4c6d"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3532",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "8bdeb9e1-9cb9-4bde-9a35-2bbcaf760363",
+        "84e110c8-4bcd-4b2d-90ce-39bb93e78455"
+      ],
+      "gold_doc_titles": [
+        "Marcel Duchamp",
+        "Jiang Wen"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.5554240000201389,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "84e110c8-4bcd-4b2d-90ce-39bb93e78455",
+        "8bdeb9e1-9cb9-4bde-9a35-2bbcaf760363",
+        "81640bbb-a786-40a7-acc6-6605eb3fad85",
+        "21f06c5f-b3be-4668-93f3-b0be2135bda9"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5644",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "84433bd9-0765-41c6-a669-bf41a99467c0",
+        "4769f05e-18d4-4a60-bb1e-c8705d141433"
+      ],
+      "gold_doc_titles": [
+        "Dane DeHaan",
+        "Valerian and the City of a Thousand Planets"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.403964199940674,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8381",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "cd2d84a7-c359-4dd3-8ada-a56475a8f2b8",
+        "c5fc74e0-18cb-4416-8ec4-f230c406d54b"
+      ],
+      "gold_doc_titles": [
+        "Beena Sarwar",
+        "Daily Jang"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The sponsor founded in 1939 is the Jang group [​S5].",
+      "citations": [
+        {
+          "doc_id": "2b01811c-8e38-4ab1-ae55-b39c8a527744",
+          "chunk_id": "2e28b9ca-62de-4049-ade8-21efbebce32e",
+          "label": "S1"
+        },
+        {
+          "doc_id": "cbcfa6c2-9546-42f3-8222-71def2cee068",
+          "chunk_id": "ac7053f0-f32a-445c-881a-c6c36c846537",
+          "label": "S2"
+        },
+        {
+          "doc_id": "bfd5e30d-1e8b-4581-b48d-8df2b086534e",
+          "chunk_id": "78a4fd36-3fc9-4653-9070-977276f30706",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 1.896741300006397,
+      "llm_calls": 1,
+      "tokens": 1373,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "2b01811c-8e38-4ab1-ae55-b39c8a527744",
+        "cbcfa6c2-9546-42f3-8222-71def2cee068",
+        "bfd5e30d-1e8b-4581-b48d-8df2b086534e",
+        "cd2d84a7-c359-4dd3-8ada-a56475a8f2b8"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.25,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.4615384615384615,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3238",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "3444c4e5-eef6-4252-9d6b-2c0fded2521f",
+        "7a5463ad-8d9c-479d-860b-2598fe7efaf6"
+      ],
+      "gold_doc_titles": [
+        "Wedding Bell Blues (Gilmore Girls)",
+        "Alexis Bledel"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Lauren Graham [S1].",
+      "citations": [
+        {
+          "doc_id": "e60a0b8d-492c-4515-86c1-2a18dc577260",
+          "chunk_id": "f224ce8d-ce02-4565-9b86-3e8fbbfe9376",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.43746129993814975,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "ab85713d-3c76-4909-bbdc-2ba59cfdc36f",
+        "3444c4e5-eef6-4252-9d6b-2c0fded2521f",
+        "e60a0b8d-492c-4515-86c1-2a18dc577260",
+        "5933378c-7ff1-4db7-ac28-ed6c5dfee1da"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8698",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ff8ab9b4-773f-43e5-bd60-3ebcd7e947a4",
+        "f26b9595-d7b3-4207-8026-b167f645b5ea"
+      ],
+      "gold_doc_titles": [
+        "Karan Kapoor",
+        "Sanjana Kapoor"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The provided claims do not include information about the birth day of Karan Kapoor’s sister. Therefore, the answer cannot be determined from the available sources.",
+      "citations": [
+        {
+          "doc_id": "ff8ab9b4-773f-43e5-bd60-3ebcd7e947a4",
+          "chunk_id": "74ded4c9-f423-46bf-baee-4514356ab2af",
+          "label": "S1"
+        },
+        {
+          "doc_id": "ff8ab9b4-773f-43e5-bd60-3ebcd7e947a4",
+          "chunk_id": "74ded4c9-f423-46bf-baee-4514356ab2af",
+          "label": "S2"
+        },
+        {
+          "doc_id": "ff8ab9b4-773f-43e5-bd60-3ebcd7e947a4",
+          "chunk_id": "74ded4c9-f423-46bf-baee-4514356ab2af",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 6.889644600101747,
+      "llm_calls": 1,
+      "tokens": 1330,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "ff8ab9b4-773f-43e5-bd60-3ebcd7e947a4",
+        "6cd94873-dfd5-4ea7-9535-06a6a3453aa2"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2182",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "7c9f3544-b50c-4b45-b1fe-125751c66051",
+        "a9c57c1e-fba6-426b-9256-40f3ec4addc9"
+      ],
+      "gold_doc_titles": [
+        "The Bronze (film)",
+        "Melissa Rauch"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The Big Bang Theory (season 1) [S1].",
+      "citations": [
+        {
+          "doc_id": "a8c56fdf-5eea-45f2-814f-6610c732949d",
+          "chunk_id": "4fa6e91a-cbde-441e-897f-5f8f76aeb85c",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 10.553126299986616,
+      "llm_calls": 1,
+      "tokens": 1333,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "fceaf306-2753-4737-b0e3-86410529290f",
+        "20adead6-94ab-4d62-a4da-be22fadfa68d",
+        "9266eed0-25c9-47e0-a712-64b7f6bedb66",
+        "a8c56fdf-5eea-45f2-814f-6610c732949d"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8775",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "287bc2ce-1d9a-4e6c-b0ca-5ce2f0a0865a",
+        "3c2316bb-9221-4944-850c-6c6f61deeb20"
+      ],
+      "gold_doc_titles": [
+        "Aram Avakian",
+        "David Wall (actor)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "yes [S1, S2].",
+      "citations": [
+        {
+          "doc_id": "287bc2ce-1d9a-4e6c-b0ca-5ce2f0a0865a",
+          "chunk_id": "7e12e653-363b-43a8-bcda-dd35fb4b6916",
+          "label": "S1"
+        },
+        {
+          "doc_id": "eea328fe-c87e-416e-b69b-36e1dc56f38c",
+          "chunk_id": "8bf95ab9-e3bf-4239-b87a-682725b707f1",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.5765570000512525,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "287bc2ce-1d9a-4e6c-b0ca-5ce2f0a0865a",
+        "eea328fe-c87e-416e-b69b-36e1dc56f38c",
+        "3c2316bb-9221-4944-850c-6c6f61deeb20"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7524",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ebe2a7fe-4c46-4ee4-af5f-0727e001583d",
+        "8cae4091-3136-417c-af0e-5b0b87050e00"
+      ],
+      "gold_doc_titles": [
+        "1998 Minnesota Twins season",
+        "Paul Molitor"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The provided claims do not state how many All‑Star Game appearances Paul Molitor had.",
+      "citations": [
+        {
+          "doc_id": "adf07761-19c7-4e94-bb51-689ea1808af0",
+          "chunk_id": "9f863c84-5494-4daa-b534-964d88c25dfe",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86750233-1556-4aef-bb06-28b734cd52f5",
+          "chunk_id": "db768f34-3c80-4164-841f-32098666493b",
+          "label": "S2"
+        },
+        {
+          "doc_id": "ebe2a7fe-4c46-4ee4-af5f-0727e001583d",
+          "chunk_id": "df406ad0-6599-4301-8290-451973973464",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 10.1233619999839,
+      "llm_calls": 1,
+      "tokens": 1730,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "adf07761-19c7-4e94-bb51-689ea1808af0",
+        "86750233-1556-4aef-bb06-28b734cd52f5",
+        "ebe2a7fe-4c46-4ee4-af5f-0727e001583d"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.3333333333333333,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7170",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "836b354b-6134-4d9e-9229-008ac6043b7b",
+        "cb0caf24-f802-466c-9d45-032c27e1095d"
+      ],
+      "gold_doc_titles": [
+        "Farshid Karimi",
+        "Ali Karimi"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "May 10, 1976 [S1].",
+      "citations": [
+        {
+          "doc_id": "836b354b-6134-4d9e-9229-008ac6043b7b",
+          "chunk_id": "531fd193-01d4-457d-a437-498b3137e300",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 1.1076974000316113,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "836b354b-6134-4d9e-9229-008ac6043b7b",
+        "cb0caf24-f802-466c-9d45-032c27e1095d"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0650",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "4fc529fc-c8cf-4811-8ac7-7c79694c677d",
+        "5b73d2e1-a4c1-4ab7-9c76-bafec910c1fa"
+      ],
+      "gold_doc_titles": [
+        "Chalet Girl",
+        "Felicity Jones"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Felicity Jones 【S5】【S6】",
+      "citations": [
+        {
+          "doc_id": "4fc529fc-c8cf-4811-8ac7-7c79694c677d",
+          "chunk_id": "f3f02921-00f6-48a8-ac57-f221eb094ce6",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b5be1b4a-f9c2-4a6e-b1c2-cc99ba3528c9",
+          "chunk_id": "891522e9-6875-4acc-8b44-b2c35d3f45d5",
+          "label": "S2"
+        },
+        {
+          "doc_id": "70e0f555-062d-4856-b128-ffaeb21ce491",
+          "chunk_id": "17525ec5-2f7d-4a07-8341-0ffc14834308",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 9.2052590000676,
+      "llm_calls": 1,
+      "tokens": 1209,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "4fc529fc-c8cf-4811-8ac7-7c79694c677d",
+        "b5be1b4a-f9c2-4a6e-b1c2-cc99ba3528c9",
+        "70e0f555-062d-4856-b128-ffaeb21ce491",
+        "0f5b6627-d3fc-4ebf-b295-23198d3f74ce"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7426",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "c4d199c6-04fd-470d-8bd8-88d50b67d4f6",
+        "1c96e87b-d7f8-4a73-a282-717b8e02db37"
+      ],
+      "gold_doc_titles": [
+        "Five Aces",
+        "Tia Carrere"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Retrieved claims do not cover the distinctive terms of the asked subject closely enough to support an answer.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.6664204000262544,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Retrieved claims do not cover the distinctive terms of the asked subject closely enough to support an answer.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "6dee9673-e4e9-4f6e-b112-d5d579712159",
+        "ec23a44c-c930-4f20-95ec-b8d676c7319f",
+        "bac97d78-119a-4545-9a14-c56b4c2a9ccd",
+        "78b5d4c3-c3fb-4abd-a311-ca8cdd3fd4db",
+        "3ae358d7-73a4-4ab5-a375-a7415d344673",
+        "c4d199c6-04fd-470d-8bd8-88d50b67d4f6"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.16666666666666666,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1963",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "3213f94b-5deb-49e9-91c0-d95807eca7bc",
+        "78dc1143-8f11-41fc-b661-a2f92f05a870"
+      ],
+      "gold_doc_titles": [
+        "Orpington (UK Parliament constituency)",
+        "Jo Johnson"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "House of Commons [S4][S1]",
+      "citations": [
+        {
+          "doc_id": "78dc1143-8f11-41fc-b661-a2f92f05a870",
+          "chunk_id": "ce3fc8ab-c268-44bb-9cd9-e7d4a6688894",
+          "label": "S1"
+        },
+        {
+          "doc_id": "3213f94b-5deb-49e9-91c0-d95807eca7bc",
+          "chunk_id": "557f4901-c397-4a99-8cfb-1f089932a115",
+          "label": "S4"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 10.020644399919547,
+      "llm_calls": 1,
+      "tokens": 1454,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "78dc1143-8f11-41fc-b661-a2f92f05a870",
+        "bac41fd7-1792-4fc2-8ef7-daa616435c2b",
+        "8e469ab8-526a-4dbb-9bcd-97ded1d74a4f",
+        "3213f94b-5deb-49e9-91c0-d95807eca7bc",
+        "0be7f14d-f71a-44bd-811e-e6835bdca503",
+        "d742e595-e980-4c66-b463-575688a7deaf",
+        "569108ad-45d9-4221-908f-d8fe1976462a"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.7499999999999999,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1148",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a37912a1-c978-4e78-9361-315bbe6357ad",
+        "eda0ba11-27ea-4d75-a1d3-dc1b8d90d32c"
+      ],
+      "gold_doc_titles": [
+        "Markus Feehily",
+        "Bobby Fuller"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Both were singers and songwriters【S1】【S4】",
+      "citations": [
+        {
+          "doc_id": "a37912a1-c978-4e78-9361-315bbe6357ad",
+          "chunk_id": "04f1a754-3cfc-41dd-8dee-e7c8d4575b36",
+          "label": "S1"
+        },
+        {
+          "doc_id": "01f89dac-a1da-4e0a-8ac5-8313e565639d",
+          "chunk_id": "54c204e6-9145-4a22-bb89-4a9c283d46b1",
+          "label": "S2"
+        },
+        {
+          "doc_id": "fe897c42-c111-483a-9b0e-d8dfbf8fc82d",
+          "chunk_id": "daf079a9-de27-4b41-8f82-a98af24068c2",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 7.27928660006728,
+      "llm_calls": 1,
+      "tokens": 1093,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "a37912a1-c978-4e78-9361-315bbe6357ad",
+        "01f89dac-a1da-4e0a-8ac5-8313e565639d",
+        "fe897c42-c111-483a-9b0e-d8dfbf8fc82d",
+        "eda0ba11-27ea-4d75-a1d3-dc1b8d90d32c",
+        "11d2cfe0-902d-4a1b-aad6-1222c901f1cc"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0704",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "cd9c7b73-dd7b-4e67-bcf2-e7398256b597",
+        "4628d93c-8a0c-499a-b0fa-76d0648b2afa"
+      ],
+      "gold_doc_titles": [
+        "Pierre Womé",
+        "Obafemi Martins"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "2014 Shanghai Greenland Shenhua F.C. season [S1].",
+      "citations": [
+        {
+          "doc_id": "48b7ce59-83f2-4e0d-81ae-73cd5507130b",
+          "chunk_id": "fb8c7350-78ac-430b-831e-a2071b20b7c8",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 8.180883500026539,
+      "llm_calls": 1,
+      "tokens": 1363,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "6b33b2bc-d019-4c5d-98e4-5a676f2e942e",
+        "7164a506-c0fc-4e50-b1f5-8ee4a229aeb6",
+        "053dc88d-5110-45a0-8540-117d4b7860ad",
+        "48b7ce59-83f2-4e0d-81ae-73cd5507130b"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3338",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "84433bd9-0765-41c6-a669-bf41a99467c0",
+        "dfa8cfae-3250-400a-a3b5-76e33fcac27c"
+      ],
+      "gold_doc_titles": [
+        "Dane DeHaan",
+        "Life (2015 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.5786395999602973,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2991",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "2d2c906b-78d0-42ac-8784-e6291c47a74e",
+        "acd882b2-7c60-477c-ba6c-17809b17aea1"
+      ],
+      "gold_doc_titles": [
+        "BWI Rail Station",
+        "Acela Express"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Acela Express (Amtrak’s flagship service) includes BWI Rail Station among its intercity stops【S2】",
+      "citations": [
+        {
+          "doc_id": "2d2c906b-78d0-42ac-8784-e6291c47a74e",
+          "chunk_id": "2f5a5387-9944-49b3-a99a-ef020384a127",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 4.9994605999672785,
+      "llm_calls": 1,
+      "tokens": 709,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "2d2c906b-78d0-42ac-8784-e6291c47a74e"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.23529411764705882,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5342",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "620b6401-dc8e-448e-856a-9cfcbf8c2735",
+        "e55119aa-fb52-425c-82ad-3135429e8ecc"
+      ],
+      "gold_doc_titles": [
+        "Madge Ryan",
+        "Summer Holiday (1963 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Retrieved claims do not cover the distinctive terms of the asked subject closely enough to support an answer.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.7619967999635264,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Retrieved claims do not cover the distinctive terms of the asked subject closely enough to support an answer.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "620b6401-dc8e-448e-856a-9cfcbf8c2735"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2025",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "635eb9a6-92e9-4059-a834-f01ec86d2b8a",
+        "e9d704b1-6e8c-4dac-bae8-4eb2602d91d4"
+      ],
+      "gold_doc_titles": [
+        "The Simpsons (season 10)",
+        "Lard of the Dance"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.4600264999317005,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4467",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "e7453352-9f56-4c42-92b0-8b70016c2030",
+        "6695cb59-50e7-45bd-b025-c65313aa1dd0"
+      ],
+      "gold_doc_titles": [
+        "Monopoly (game)",
+        "King of Tokyo"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.10348309995606542,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7606",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "565e9be8-e7c0-4e2c-a4f2-89b0d3f9790c",
+        "8fe6cf5b-5e30-4ed5-b678-2cad5d3bb2f3"
+      ],
+      "gold_doc_titles": [
+        "P.O.D.",
+        "Swervedriver"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.5853813000721857,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "add0b11a-2d9e-4aeb-b416-ca7e1d62d2fd",
+        "8fe6cf5b-5e30-4ed5-b678-2cad5d3bb2f3"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5079",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "9e4640ba-5f71-426d-a3e0-aec47d9ae0a8",
+        "1d4330f2-2592-493e-8a7f-3f2b96fdaa01"
+      ],
+      "gold_doc_titles": [
+        "E. L. James",
+        "Fifty Shades Darker"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.44434179994277656,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3132",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a1c86e23-c010-4eb8-9652-9634e400feee",
+        "65b70965-64fb-42fe-9fe8-4baa497e2259"
+      ],
+      "gold_doc_titles": [
+        "Call Me Mañana",
+        "Scooter (band)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The provided claims do not include how many records the German group Scooter has sold, so the answer cannot be determined from the given information.",
+      "citations": [
+        {
+          "doc_id": "0f0effe9-e38e-4226-9fe0-9a3cec6ef54d",
+          "chunk_id": "1eacb4c7-2092-46b3-9681-cf7a2fff88a6",
+          "label": "S1"
+        },
+        {
+          "doc_id": "0f0effe9-e38e-4226-9fe0-9a3cec6ef54d",
+          "chunk_id": "1eacb4c7-2092-46b3-9681-cf7a2fff88a6",
+          "label": "S2"
+        },
+        {
+          "doc_id": "0f0effe9-e38e-4226-9fe0-9a3cec6ef54d",
+          "chunk_id": "1eacb4c7-2092-46b3-9681-cf7a2fff88a6",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 3.2407630999805406,
+      "llm_calls": 1,
+      "tokens": 1303,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "0f0effe9-e38e-4226-9fe0-9a3cec6ef54d",
+        "6da9a2a3-3984-41ef-b087-2af3af956f1a",
+        "a1c86e23-c010-4eb8-9652-9634e400feee"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.3333333333333333,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3299",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "00df4972-8517-40ee-8183-799d1c3c7417",
+        "9cfde6a8-5d19-4365-b1f0-b26031d6baf7"
+      ],
+      "gold_doc_titles": [
+        "Kahan Commission",
+        "Aharon Barak"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.2222619999665767,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1226",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "e55dde83-f94b-4c2a-817d-66906423da0e",
+        "f7bd9cd0-2b30-469e-99ad-41be9f5dc123"
+      ],
+      "gold_doc_titles": [
+        "Johan Henrik Deuntzer",
+        "Danish Social Liberal Party"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "He was a member of the Liberal “Venstre” party before joining the Danish Social Liberal Party (“Radikale Venstre”) [S2].",
+      "citations": [
+        {
+          "doc_id": "e55dde83-f94b-4c2a-817d-66906423da0e",
+          "chunk_id": "ddec5c63-f0a4-4506-9f9d-7f3b987a100a",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 7.238791599986143,
+      "llm_calls": 1,
+      "tokens": 1013,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "6509e6fb-1799-4449-b30f-4f493f3dde17",
+        "e55dde83-f94b-4c2a-817d-66906423da0e",
+        "f7bd9cd0-2b30-469e-99ad-41be9f5dc123",
+        "6b2e78a0-7b9c-4e9c-aad8-81bb9815b105"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.2727272727272727,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5811",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "c2a5c92d-9335-4385-8991-6f10fa251ba3",
+        "60bb6155-1df4-45a4-bcbb-5373163dd813"
+      ],
+      "gold_doc_titles": [
+        "Gerald Grosvenor, 6th Duke of Westminster",
+        "Hugh Grosvenor, 7th Duke of Westminster"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 1.0661966999759898,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8415",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "9ecd39d9-3d50-4c61-9302-ece87ccf70b5",
+        "3c440ab4-8537-4eed-8666-c655d3b7fb1e"
+      ],
+      "gold_doc_titles": [
+        "2016 Auburn Tigers football team",
+        "2016 Oklahoma Sooners football team"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "SEC Championship Game, Afterward, LSU [S1, S2].",
+      "citations": [
+        {
+          "doc_id": "8c23482c-4f69-4159-bbf7-8e30acb0ebe5",
+          "chunk_id": "5911ef21-442e-46df-813a-d2e491ba196f",
+          "label": "S1"
+        },
+        {
+          "doc_id": "c393966f-9e41-4a6d-8959-ef6e2d58d1a7",
+          "chunk_id": "f7e4a754-6043-4a18-a5b4-1d4fe923db8e",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 11.844095499953255,
+      "llm_calls": 1,
+      "tokens": 2284,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "8c23482c-4f69-4159-bbf7-8e30acb0ebe5",
+        "ee10bdb3-1c3e-4fa9-b9b1-0ef62e313167",
+        "6c0e7ad8-0d82-42cd-80b0-086f02a2f891",
+        "9ecd39d9-3d50-4c61-9302-ece87ccf70b5",
+        "e6d06158-a3f1-4d9a-a95d-7cd7f8f534b3",
+        "3f2884f1-7fd0-4f97-a8cf-8b5f73968291",
+        "576c08c1-63b9-439b-a8ee-86eb524719b3",
+        "c393966f-9e41-4a6d-8959-ef6e2d58d1a7",
+        "df716884-40c0-4508-a706-bbfc6430ebe7",
+        "10169bdc-3bff-4b35-9d16-3423b9d27090",
+        "95c753bf-c553-4078-878c-addb2f106e8b",
+        "a847e2a3-2bae-4076-b842-901db87feb0c",
+        "06bfcc40-8707-4e56-ad47-b905ef9a9f3f"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.25,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1551",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "09ba5550-8e31-439d-a894-e07089468ce7",
+        "d5e55ba7-05e4-4fb3-9cd0-11b644fc49dc"
+      ],
+      "gold_doc_titles": [
+        "Takeyasu Hirono",
+        "Flyweight (MMA)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The weight limit of the Flyweight division is not specified in the provided claims.",
+      "citations": [
+        {
+          "doc_id": "09ba5550-8e31-439d-a894-e07089468ce7",
+          "chunk_id": "514598e1-e830-4369-aae8-e133551f1230",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 7.319008899969049,
+      "llm_calls": 1,
+      "tokens": 731,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "09ba5550-8e31-439d-a894-e07089468ce7"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3584",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "53fcf8ee-ff03-4945-a326-ffe0c6e65b62",
+        "03a726a0-af69-451f-85e4-e4dc4a7bd19b"
+      ],
+      "gold_doc_titles": [
+        "2013 Minnesota Vikings season",
+        "U.S. Bank Stadium"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.6899719000793993,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "e8022fd4-aec8-4a9d-8afd-a19119c6f1dd",
+        "78f3eda2-2b57-4489-80a3-592facc288e6",
+        "19656f41-29c6-4012-9cb2-0d8c92cd749b",
+        "1863ec8e-cae9-4647-b88c-04a2758bb708",
+        "0a856d94-6db7-46d5-998f-46b68e22e8c0",
+        "8a671010-ce38-48ea-9bbf-c0edbf08c672",
+        "53fcf8ee-ff03-4945-a326-ffe0c6e65b62",
+        "03a726a0-af69-451f-85e4-e4dc4a7bd19b",
+        "9d31938a-5f0c-4ca4-bc0e-0b7c5e4b03f3",
+        "dee34f73-dcd3-49eb-bfb8-c5a1e15cc79e",
+        "ee893eba-1711-448e-aa56-31fe1643fada",
+        "c6b14f04-38e7-437d-af68-977753c58360"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.14285714285714285,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1571",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "bded95e2-8c23-42ac-aa61-890823e6a81f",
+        "a3c25993-ad7a-4d39-bafe-f1a71d05578b"
+      ],
+      "gold_doc_titles": [
+        "Cardinal Hayes High School",
+        "Catholic High School Athletic Association"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Bronx, New York City【S1】",
+      "citations": [
+        {
+          "doc_id": "bded95e2-8c23-42ac-aa61-890823e6a81f",
+          "chunk_id": "415cc7b7-40a2-48e1-a884-8b980ad2ba14",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 4.692326900083572,
+      "llm_calls": 1,
+      "tokens": 968,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "bded95e2-8c23-42ac-aa61-890823e6a81f"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8082",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "711b7e83-d319-41a3-8b67-8ba87124f3c9",
+        "9f86cebc-bebf-4767-ad72-b810f4527bf1"
+      ],
+      "gold_doc_titles": [
+        "Carnegie Mellon University",
+        "Vanderbilt University"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.7187584999483079,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "9f86cebc-bebf-4767-ad72-b810f4527bf1"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4347",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a5a3c42a-74ea-4083-986d-5f3ab732226d",
+        "085667b9-3c39-465d-9060-494c7345689a"
+      ],
+      "gold_doc_titles": [
+        "Collective Soul",
+        "Ed Roland"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Ed Roland – an American record producer from Stockbridge, Georgia who is the lead vocalist of Collective Soul【S4】【S2】",
+      "citations": [
+        {
+          "doc_id": "df9f1e15-9dfb-4f5c-875c-03752974b07c",
+          "chunk_id": "4495bd81-338e-482c-9111-5267b0abb4db",
+          "label": "S1"
+        },
+        {
+          "doc_id": "a5a3c42a-74ea-4083-986d-5f3ab732226d",
+          "chunk_id": "39ebf04e-9ee7-482c-aec3-1ac23ed5218f",
+          "label": "S2"
+        },
+        {
+          "doc_id": "c566013b-6f71-4619-985d-8521b58f5de6",
+          "chunk_id": "301f2cc8-5205-4bcf-9ae7-cbec568819f8",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 6.222812500083819,
+      "llm_calls": 1,
+      "tokens": 876,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "df9f1e15-9dfb-4f5c-875c-03752974b07c",
+        "a5a3c42a-74ea-4083-986d-5f3ab732226d",
+        "c566013b-6f71-4619-985d-8521b58f5de6",
+        "085667b9-3c39-465d-9060-494c7345689a"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.08695652173913043,
+        "citation": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5322",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "91a3283c-359a-4a72-a1ea-0baca8f4829b",
+        "57845d37-5483-4f14-b890-1eda6363d6c3"
+      ],
+      "gold_doc_titles": [
+        "Kern Island Canal",
+        "Cayuga–Seneca Canal"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.7129852999933064,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "57845d37-5483-4f14-b890-1eda6363d6c3"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_6617",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a2631307-0644-4fc4-8fd8-1fc0d5076224",
+        "c9d447dc-d599-41e1-a9f8-439708a3c3d9"
+      ],
+      "gold_doc_titles": [
+        "Boxes (Icehouse album)",
+        "Sydney Opera House"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.23178779997397214,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7662",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "3a8438f3-0da4-4217-ad14-bb61e981f13f",
+        "49476c09-e27c-4ba7-809e-db5b7da5842c"
+      ],
+      "gold_doc_titles": [
+        "The Adventures of Huck Finn (1993 film)",
+        "Herbie Rides Again"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.5734004999976605,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "49476c09-e27c-4ba7-809e-db5b7da5842c",
+        "3a8438f3-0da4-4217-ad14-bb61e981f13f",
+        "cc6833a2-ce35-4a0c-a917-79e5a399235d",
+        "8ebc8a2e-04e0-4a5b-b946-bcb4d8835037",
+        "145d8e9a-1f37-4cea-ad0d-07e4584f3e10",
+        "1558b819-4003-41af-8d86-ce256c14c2b3"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_6356",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a3c8a554-00ba-4dce-be94-3b63ea87e096",
+        "de3ec539-e4ff-4571-94fb-a18ec6b16faf"
+      ],
+      "gold_doc_titles": [
+        "Pilot (Cougar Town)",
+        "Busy Philipps"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "October 18, 1980 [S1, S2].",
+      "citations": [
+        {
+          "doc_id": "676af373-5437-4ab6-9d8c-0204f241baa5",
+          "chunk_id": "678eb50d-0f25-41d3-a42b-b212837fd2de",
+          "label": "S1"
+        },
+        {
+          "doc_id": "13944177-080d-4dc5-bb8f-7f6f025e2104",
+          "chunk_id": "cad0b0c1-ed08-414a-a623-9e49cb4dbf0f",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.4711744000669569,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "13944177-080d-4dc5-bb8f-7f6f025e2104",
+        "676af373-5437-4ab6-9d8c-0204f241baa5"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4070",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "f6ea8155-454d-4885-8b97-51fb6dec9a84",
+        "b99a69b6-2bb4-43d6-84a5-692239268c9b"
+      ],
+      "gold_doc_titles": [
+        "Michael Lent (writer and producer)",
+        "Ice Road Truckers"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "June 17, 2007 [S1, S2].",
+      "citations": [
+        {
+          "doc_id": "f6ea8155-454d-4885-8b97-51fb6dec9a84",
+          "chunk_id": "3a81cf1e-9560-48fa-9502-25f75e3e9a01",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b99a69b6-2bb4-43d6-84a5-692239268c9b",
+          "chunk_id": "5f7bda26-aa49-41dd-a384-7317d0022b9d",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.4110334999859333,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "b99a69b6-2bb4-43d6-84a5-692239268c9b",
+        "f6ea8155-454d-4885-8b97-51fb6dec9a84"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.7499999999999999,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    }
+  ]
+}

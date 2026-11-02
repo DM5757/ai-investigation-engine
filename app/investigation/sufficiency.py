@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 from app.investigation.entities import (
     claim_covers_entity,
     entity_title_fidelity,
@@ -15,6 +17,36 @@ from app.investigation.question_focus import (
     filter_claims_for_question,
 )
 from app.schemas.evidence import AnswerStatus, Claim, Conflict
+
+_STOP = frozenset(
+    {
+        "what",
+        "which",
+        "when",
+        "where",
+        "who",
+        "the",
+        "a",
+        "an",
+        "and",
+        "or",
+        "of",
+        "in",
+        "on",
+        "to",
+        "for",
+        "from",
+        "with",
+        "about",
+        "regarding",
+        "detail",
+        "missing",
+        "documents",
+        "say",
+        "note",
+        "any",
+    }
+)
 
 
 def assess_sufficiency(
@@ -85,9 +117,72 @@ def assess_sufficiency(
                 "each named entity; retrieved claims cover fewer than two entities.",
             )
 
+    # Distinctive question terms must appear in supporting claims so unrelated
+    # pages that share a single token (e.g. "identity") cannot answer
+    # "missing … rollback approver identity".
+    hay = " ".join(
+        f"{c.source_title or ''} {c.subject} {c.value} {c.quote}" for c in supporting
+    ).lower()
+    multi = [p for p in q_focus.phrases if len(p.replace("-", " ").split()) >= 2]
+    focus_parts: list[str] = []
+    if multi:
+        phrase = max(multi, key=lambda p: len(p.split()))
+        focus_parts = [
+            p
+            for p in re.split(r"[\s\-–—]+", phrase.lower())
+            if p and p not in _STOP and len(p) > 3
+        ]
+    used_token_fallback = False
+    if len(focus_parts) < 2:
+        focus_parts = [
+            t for t in q_focus.tokens if t not in _STOP and len(t) >= 7
+        ]
+        used_token_fallback = len(focus_parts) >= 2
+    if len(focus_parts) >= 2:
+        phrase_hits = sum(1 for p in focus_parts if p in hay)
+        missing_detail = bool(
+            re.search(
+                r"\b(?:missing|unknown|not (?:stated|found|recorded)|absent)\b",
+                question,
+                re.I,
+            )
+        )
+        if used_token_fallback and missing_detail:
+            # Token fallback on "missing detail" questions: require ≥2 distinctive
+            # hits so a single shared word (e.g. identity) cannot invent an answer.
+            need = min(2, len(focus_parts))
+            weak_focus = phrase_hits < need
+        elif not used_token_fallback:
+            weak_focus = phrase_hits / len(focus_parts) < 0.5
+        else:
+            weak_focus = False
+        if weak_focus:
+            return (
+                "insufficient",
+                "Retrieved claims do not cover the distinctive terms of the "
+                "asked subject closely enough to support an answer.",
+            )
+
+    # Explicit incomplete / redacted slots (e.g. "Approver: [REDACTED]") mean the
+    # asked identity is not available even if topic words overlap.
+    if re.search(r"\b(?:approver|who approved|who authorized)\b", question, re.I) and (
+        re.search(
+            r"(?:approver\s*:\s*\[?\s*REDACTED|incomplete record|\bTBD\b)",
+            hay,
+            re.I,
+        )
+        or not re.search(
+            r"(?:approver\s*:\s*[A-Z][a-z]+|approved by\s+[A-Z][a-z]+)",
+            hay,
+        )
+    ):
+        return (
+            "insufficient",
+            "Documents mention the topic but do not name the requested approver.",
+        )
+
     scores = [claim_support_score(c, q_focus) for c in supporting]
     best = max(scores) if scores else 0.0
-    multi = [p for p in q_focus.phrases if len(p.replace("-", " ").split()) >= 2]
     if multi and best < 0.75 and len(entities) < 2:
         return (
             "partial",

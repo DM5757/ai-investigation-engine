@@ -1,0 +1,2281 @@
+{
+  "summary": {
+    "config_id": "baseline_rag",
+    "pipeline": "baseline_rag",
+    "retrieval_mode": "hybrid_rrf",
+    "k": 8,
+    "n_questions_total": 32,
+    "n_questions": 32,
+    "n_scored_retrieval": 31,
+    "n_scored_answer": 32,
+    "n_excluded": 0,
+    "exclusion_reasons": {},
+    "by_type_total": {
+      "multi_doc": 1,
+      "factual": 27,
+      "contradiction": 1,
+      "unanswerable": 1,
+      "multi_hop": 2
+    },
+    "by_type_scored_retrieval": {
+      "multi_doc": 1,
+      "factual": 27,
+      "contradiction": 1,
+      "multi_hop": 2
+    },
+    "by_type_scored_answer": {
+      "multi_doc": 1,
+      "factual": 27,
+      "contradiction": 1,
+      "unanswerable": 1,
+      "multi_hop": 2
+    },
+    "n_errors": 0,
+    "corpus_active_documents": 55081,
+    "retrieval": {
+      "n_scored": 31,
+      "n": 31,
+      "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+      "recall_at_k": 0.8548387096774194,
+      "mrr": 0.8870967741935484,
+      "all_gold_at_k": 0.7096774193548387,
+      "multi_doc_coverage": 0.8548387096774194,
+      "mean_latency_s": 0.14883535806345002
+    },
+    "answer": {
+      "n_scored": 32,
+      "n": 32,
+      "exact_match": 0.0,
+      "token_f1": 0.027272206959706963,
+      "citation_f1": 0.22395833333333331,
+      "citation_f1_answered_only": 0.22395833333333331,
+      "correct_abstention_rate": 0.0,
+      "n_unanswerable_scored": 1,
+      "contradiction_detection_rate": 0.0,
+      "n_contradiction_scored": 1,
+      "mean_latency_s": 0.14758244687254773,
+      "mean_llm_calls": 0.0,
+      "mean_tokens": 0.0,
+      "status_counts": {
+        "answered": 32
+      }
+    }
+  },
+  "results": [
+    {
+      "question_id": "syn_multi_payment_march",
+      "question_type": "multi_doc",
+      "split": "dev",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log",
+        "status_update",
+        "postmortem_draft"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 4,
+        "resolved_gold": 4
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Marine Corps Total Force System [S1].",
+      "citations": [
+        {
+          "doc_id": "5f7911bf-1339-4d93-9aeb-ddbfdf99517f",
+          "chunk_id": "88a0f245-398b-4b23-9b9e-5ecafcb1d863",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.3130994999082759,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "04b1e3f7-2dae-427d-938e-811ad973dae1",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "9129ff0b-be04-4f79-9039-0f8c367fd283",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "5f7911bf-1339-4d93-9aeb-ddbfdf99517f",
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "ac0c4d84-d7dc-49b1-bc6e-5fe763c11182"
+      ],
+      "retrieved_chunk_ids": [
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "f1095ca6-fea5-459f-85e6-331630bfe718",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "2b057cc0-227d-4880-9aec-98782385488c",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "88a0f245-398b-4b23-9b9e-5ecafcb1d863",
+        "ea468d8c-6e8f-4b99-bd4e-c68f8fd9d3c5",
+        "7ac13fc6-4875-43ab-ae2a-9746ec47310e"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.3333333333333333,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_factual_alpha_marker",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "ALPHA-OUTAGE-08 [S1].",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.11175949999596924,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "8f7ddbe0-bde6-4d74-87e9-5c2a986deb42",
+        "ef6fe91c-ead4-4a3c-b104-9748b1780b47",
+        "1221f9a6-c688-4814-8a63-cd061a0cd4c4",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "6a115ac6-0f33-4510-a846-3d8d5808fe0b",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+        "e6d890ee-ee6f-423c-be7e-91d9cca2ed30",
+        "9d4b5135-2c9f-4f0e-b0cf-9739d3a2be65",
+        "0e2c1575-2e77-44c1-b98f-e04551343631",
+        "d8c274be-5131-4b92-8e1a-8bf3d1f8d9a4"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5714285714285715,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_factual_pool",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "BETA-POOL-EX [S1].",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.12027169996872544,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "f8030374-2248-4876-83b3-e587b8cf4c9e",
+        "19a89a6f-1821-4a45-9fa6-bd23b951108a",
+        "223aef4f-c416-4e8e-ba13-b959598f0c88",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "1590bfac-4ef3-4dd4-93b9-7dab66c77a3a",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "retrieved_chunk_ids": [
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+        "520d4090-42c0-42b6-9bed-dcd8f1b71d92",
+        "765cfa51-8f78-4c37-a86c-9b8fd76d7d3f",
+        "ad9e2d0b-0cb0-48a9-9231-d352e16b5e3a",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "61ef04e4-f957-4924-974d-467c9fc74b33",
+        "cd92ca97-7dcf-4dc1-887d-d102eca09cf0"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.25,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_deploy",
+      "question_type": "contradiction",
+      "split": "dev",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Change Log March\n\nDeployed [S1].",
+      "citations": [
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.11939229990821332,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "b053f87a-2b5e-4053-9fbd-5753d59189d3",
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "retrieved_chunk_ids": [
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "ea468d8c-6e8f-4b99-bd4e-c68f8fd9d3c5",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "5ed4d179-112e-4ab2-a0f3-8fe0cca3156c",
+        "dd9e862a-dd2d-4730-b446-8ba5cb3052a3"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_7981",
+      "question_type": "unanswerable",
+      "split": "dev",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Change Log March\n\nDeployed [S1].",
+      "citations": [
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.10874219995457679,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "5eaec471-4b59-4606-91a2-60096a310edc",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "b053f87a-2b5e-4053-9fbd-5753d59189d3"
+      ],
+      "retrieved_chunk_ids": [
+        "36b16a83-74cc-48f2-b639-57a2ade8c02f",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "8d3ae635-3822-41ec-a0db-e4360e7ae1f4",
+        "802f829f-3971-48ab-98d6-51ee6c3e7db6",
+        "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+        "5ed4d179-112e-4ab2-a0f3-8fe0cca3156c"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 0.0,
+        "soft_abstention": 0.0,
+        "false_answer_on_unanswerable": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_exec_summary",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884"
+      ],
+      "gold_doc_titles": [
+        "exec_summary"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "So Amazing About Grace [S1].",
+      "citations": [
+        {
+          "doc_id": "dbbc08da-82a4-4dc0-b3f5-ff9622e8bc3c",
+          "chunk_id": "88327c4f-b540-477c-af2f-8c11887deb57",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.2836285000666976,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "cf60289d-e64c-40ae-a385-ac652128ce75",
+        "dbbc08da-82a4-4dc0-b3f5-ff9622e8bc3c",
+        "55d07922-cc9c-4fa8-a8f9-8056ba249fd9",
+        "893fa084-3604-4d9e-bf55-2369caf50aef",
+        "65b2311e-714e-42ff-8c58-60306e6c5199"
+      ],
+      "retrieved_chunk_ids": [
+        "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+        "bc9b49a6-9020-4537-8d1c-4c3ea3533f2b",
+        "388f767c-0289-41d0-a3b8-74f0efac2278",
+        "160709d3-40af-4b71-abcc-ba4ad8bfdae9",
+        "88327c4f-b540-477c-af2f-8c11887deb57",
+        "ac88cc27-6bd4-4a4e-be01-38310343b70b",
+        "f81f3819-6b47-45c5-8f80-19dc3ec0c106",
+        "80c880ce-396c-474f-a9f0-51a422037470"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3488",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "7312c8d3-b046-4815-be42-ba873bf3e731",
+        "230add81-5fe5-49f7-80ba-d7b6b5fcf0d4"
+      ],
+      "gold_doc_titles": [
+        "Lulu (opera)",
+        "Theodor W. Adorno"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Nippon Animation [S1].",
+      "citations": [
+        {
+          "doc_id": "330e08a6-3fea-428b-b87e-9dfcf0e87d18",
+          "chunk_id": "01f81a19-42af-4039-a3b8-8f2ab2c73c47",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.1687175000552088,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "7312c8d3-b046-4815-be42-ba873bf3e731",
+        "398fe062-37a0-40a2-a458-dafdcba00b3e",
+        "2b380e2f-b538-464a-b963-5c3ae53cf440",
+        "47669d05-d22d-49c4-b2d7-a027e68083bc",
+        "520e3821-e4d9-4265-ab81-00a9e3976abc",
+        "1f02b885-270d-43be-8486-b7f5843e5dfc",
+        "330e08a6-3fea-428b-b87e-9dfcf0e87d18",
+        "230add81-5fe5-49f7-80ba-d7b6b5fcf0d4"
+      ],
+      "retrieved_chunk_ids": [
+        "25419688-3042-42fe-b12c-6de53ac1026b",
+        "64bd8699-8c5a-4bcc-a8a4-37a82aa6023a",
+        "f1be97ea-ac94-4ccb-904f-b141be945d4d",
+        "8a1d8c98-89e9-4693-b6e7-1b7664c474d3",
+        "db38f4e8-d857-4ebc-9b1e-4b1cddf2278b",
+        "4dc08a28-56ac-4fbd-a72e-8d4b27b26894",
+        "01f81a19-42af-4039-a3b8-8f2ab2c73c47",
+        "c9ae22cf-790e-484a-9ef4-e949b7efbb05"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3877",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "ed05d61b-d83d-4ed0-b503-9b8a4f3809de",
+        "266af38f-26dc-4dc7-856b-2cb9b2f11773"
+      ],
+      "gold_doc_titles": [
+        "Yasuzo Masumura",
+        "Pitof"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Raimund Emmanuel Parcon Marasigan [S1].",
+      "citations": [
+        {
+          "doc_id": "1e392fa0-e960-437a-9e98-5fecc3b85414",
+          "chunk_id": "182d146f-5333-45cd-831a-fa550ade033e",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.12196749995928258,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "f18b59ce-3865-40c9-b945-0b692c5c687b",
+        "ed05d61b-d83d-4ed0-b503-9b8a4f3809de",
+        "1e392fa0-e960-437a-9e98-5fecc3b85414",
+        "74cf1fd1-701a-489f-aff1-456b87efadf2",
+        "0aa24f4f-b70e-402e-96c5-fe4e222935b2",
+        "5272dd88-f32a-4324-8234-2023736fe475",
+        "5bc9d5e0-7928-4507-9d9e-76190fe1a8d9",
+        "c45601ef-3646-46e1-a945-e07b1f144340"
+      ],
+      "retrieved_chunk_ids": [
+        "017b09d8-0e7b-4d8f-aa6c-f86d00f499ef",
+        "8aab3566-2802-4681-bfff-2ca13cb1a4fa",
+        "182d146f-5333-45cd-831a-fa550ade033e",
+        "e71ca556-7aca-4033-aa76-484698e5b56d",
+        "172a975d-8055-4135-9e75-b31ce6262e08",
+        "1e6e9e1c-c243-4037-ba7a-d3557443720e",
+        "b60f8a32-f76f-47c0-b33f-39bfc687f3a1",
+        "dce9c727-d2ac-47ed-b02a-c22072f7db5a"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3943",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "4e52e011-6d67-4589-a21b-d6475e16238e",
+        "9b55c3a3-12b4-4c6c-83c8-78801847895a"
+      ],
+      "gold_doc_titles": [
+        "Fear Stalk",
+        "Sada Thompson"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Jill Clayburgh [S1].",
+      "citations": [
+        {
+          "doc_id": "4e52e011-6d67-4589-a21b-d6475e16238e",
+          "chunk_id": "134c377b-fd86-4f60-b0a8-5bc431cf84b1",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.10940659989137203,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "4e52e011-6d67-4589-a21b-d6475e16238e",
+        "72759218-7ae8-44a7-954c-6a923a23b3ed",
+        "a0138c00-b4a3-4b71-bc3c-2abd79494c95",
+        "e8173d26-262a-4bfe-9d3e-6b0ba5e5449d",
+        "40d7149f-8f09-4162-a331-a8f1f495711a",
+        "bd4398fb-d13f-4b14-96e7-2a30dabbbc85",
+        "3c2494e6-b239-458e-bbbc-189c0b09ed96",
+        "d51a168a-2781-4768-acd4-b079464e1af4"
+      ],
+      "retrieved_chunk_ids": [
+        "134c377b-fd86-4f60-b0a8-5bc431cf84b1",
+        "95167c4d-b4bb-4fa1-a0c0-debae9549442",
+        "f8cf2668-f35f-4a2f-b7b1-15735d245f38",
+        "4d5b6c93-71f8-429d-af41-81464651065e",
+        "8f90c0ff-d4a7-491a-bd33-882a53e3d2ec",
+        "1a10427c-d33d-4421-bcb5-4458b4f2e859",
+        "54171b4b-0f49-43dc-8212-794ebbbe59ff",
+        "0896d272-f647-49ca-9991-c6a3e0c84e39"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7028",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "4e498328-c3a9-452e-bcf0-4328e2624c60",
+        "84d268a3-8274-4d8d-9d94-b157dfc90fa3"
+      ],
+      "gold_doc_titles": [
+        "Patty Jenkins",
+        "Monster (2003 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Patty Jenkins [S1].",
+      "citations": [
+        {
+          "doc_id": "7bf0d199-14bd-4708-8e9c-3a3fe3ee8289",
+          "chunk_id": "89eeee0f-b5ac-4f04-8bc9-47cd4b9b4677",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.12619980005547404,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "e92eac20-a3ef-4ec0-8190-4c6c45e21820",
+        "7bf0d199-14bd-4708-8e9c-3a3fe3ee8289",
+        "933b32de-216d-40e9-81ad-a41aa9ebb10a",
+        "d4ec80c2-a20a-4fdd-8283-d709a122103a",
+        "6b2ae0c8-c6e2-471e-8d48-92e2f56e70b2",
+        "84d268a3-8274-4d8d-9d94-b157dfc90fa3",
+        "0f21f1bc-1e24-4407-abf6-3dfae8b12bed",
+        "4e498328-c3a9-452e-bcf0-4328e2624c60"
+      ],
+      "retrieved_chunk_ids": [
+        "fb1d1cf7-c929-43ba-8af2-ce2aac72ad6c",
+        "89eeee0f-b5ac-4f04-8bc9-47cd4b9b4677",
+        "e8fe01a7-6c33-41e1-8e1a-cc03180eb305",
+        "6d3881e8-2139-4237-9e5b-ba31b5b348a4",
+        "9f78f3d3-c5a9-4f7b-bcc7-7d414ab211a4",
+        "de21732c-a7ca-46f5-8d7d-421f7803eff4",
+        "76af1c12-a78c-4c57-9678-8f05c6322eb6",
+        "575958f1-225c-46de-af70-f5d32bf4ca47"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.16666666666666666,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8535",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "b6ee4ca4-4e03-4d93-8085-b407530f15e6",
+        "7e671fc9-8c47-4617-9596-a6009124c219"
+      ],
+      "gold_doc_titles": [
+        "Little Brown Stein",
+        "Beer stein"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "MUG Root Beer, A PepsiCo Subsidiary [S1].",
+      "citations": [
+        {
+          "doc_id": "33ed8805-be36-4de7-97c1-4499769695ed",
+          "chunk_id": "18d9c234-b40a-4b94-894f-5fb7af83ab98",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.1360185999656096,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "7e671fc9-8c47-4617-9596-a6009124c219",
+        "33ed8805-be36-4de7-97c1-4499769695ed",
+        "4cc94e35-343c-408a-a28b-210e5b9999be",
+        "0cafcab7-f93c-4593-8448-9179bbfc7473",
+        "b6ee4ca4-4e03-4d93-8085-b407530f15e6",
+        "b8ff0028-4d7f-4944-854b-5e5e1b01c742",
+        "47ee6f97-8550-41e4-b04c-c0117696ef99",
+        "087dfd64-99c2-48bb-bbe2-248a5ea9de53"
+      ],
+      "retrieved_chunk_ids": [
+        "e2217ba1-25a9-4419-8a9f-2cff09de71d1",
+        "18d9c234-b40a-4b94-894f-5fb7af83ab98",
+        "eb3440d7-a0a4-400a-9e53-0af693191b58",
+        "24e6f858-04e0-49bf-86f3-36b7af7acda8",
+        "56c992c6-5835-4cb7-817a-db8e287b5b2b",
+        "be32e37d-cea9-4d1b-baff-195367c14cbc",
+        "15f82743-97b4-4ab5-898f-2f4c5527e399",
+        "56a4ffb7-e48c-497f-a88a-b165ff0d93b6"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1866",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "064496fe-3cc4-41b3-abb4-aec29ea643e9",
+        "9ef6b795-c01f-4d0e-b4a0-b2d101c99526"
+      ],
+      "gold_doc_titles": [
+        "7.92×57mm Mauser",
+        "World war"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The 7.92×57mm Mauser (designated as the 8mm Mauser or 8×57mm by the SAAMI and 8 × 57 IS by the C.I.P.) is a rimless bottlenecked rifle cartridge. The 7.92×57... [S1].",
+      "citations": [
+        {
+          "doc_id": "064496fe-3cc4-41b3-abb4-aec29ea643e9",
+          "chunk_id": "4b0ea49b-3f7f-4432-8079-759f17c6b31b",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.18672900006640702,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "064496fe-3cc4-41b3-abb4-aec29ea643e9",
+        "bf915f86-4632-4086-8ebc-721414004812",
+        "0cc3b006-a933-4191-b9ea-b4219d7e0856",
+        "b969ebdc-bef4-433f-a9a1-bdfd300e2595",
+        "dec15206-7072-44a8-9fc1-5853b4035f80",
+        "2af41573-919f-4f96-a3a7-c9ee23be8828",
+        "4deb8c1a-a0f0-4f69-a928-8c688e3fca4c",
+        "a8adc023-af9e-4802-8946-fac474dee2ca"
+      ],
+      "retrieved_chunk_ids": [
+        "4b0ea49b-3f7f-4432-8079-759f17c6b31b",
+        "18e47e64-11e6-44fd-a4c7-f4639c86c289",
+        "fad8ee67-0d3b-4c2c-a60a-51b5825c4163",
+        "3d0a17b7-52ce-4bb0-be63-c949ffb7469b",
+        "2303aed3-c6ce-4716-a18c-3476acfdfb4b",
+        "dc0e60c2-90e2-45cd-9e48-d452d3c1d0a4",
+        "ec2f97da-4f06-4147-8171-ff08078d641d",
+        "008f7ef2-d8f2-48dc-ad45-6e70711cde34"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.05128205128205128,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_6783",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "ef9fcdd8-0e03-4943-a926-938ab0d98ae6",
+        "d1d23f65-3188-4337-aae1-21793fda8539"
+      ],
+      "gold_doc_titles": [
+        "Leo (singer)",
+        "Steve Perry (Oregon musician)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "All Away David Courtney [S1].",
+      "citations": [
+        {
+          "doc_id": "8b7af775-fcdb-4a3b-b76a-101e7b0701bf",
+          "chunk_id": "be32ece1-6153-46a9-be14-0452d371f40c",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.22768120002001524,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "d56c2e65-722d-487a-a43d-87ca18df8408",
+        "d1d23f65-3188-4337-aae1-21793fda8539",
+        "ef9fcdd8-0e03-4943-a926-938ab0d98ae6",
+        "0db0b8b0-5a81-481b-a4cb-1393e044a701",
+        "2e0366f7-35b5-46d3-a0fc-9c730a9f9d9a",
+        "6439ad81-3760-4277-92aa-808b0c705d1e",
+        "f571c0b3-2525-4dbd-b5c7-37d65e7da471",
+        "8b7af775-fcdb-4a3b-b76a-101e7b0701bf"
+      ],
+      "retrieved_chunk_ids": [
+        "02003f84-ea95-4282-9c44-87a698105122",
+        "3565774f-c934-4e3b-bf36-2a04d4f24e64",
+        "c85b52fd-e747-459a-a2ae-503d7a263940",
+        "091318b5-8376-43e0-88e9-dd6508fcb914",
+        "4fe07908-a90f-43c0-925d-8e747528343d",
+        "75d78ad6-dbe0-4844-883b-34187ff2dc09",
+        "7e282052-a4f4-4063-9ca3-10af1bfa184d",
+        "be32ece1-6153-46a9-be14-0452d371f40c"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5303",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "764837fa-77ca-45c0-bbe5-6368ce41788e",
+        "b07000a5-bd5c-46e0-b10c-87d4f14dd1a3"
+      ],
+      "gold_doc_titles": [
+        "Jennifer Kent",
+        "The Babadook"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Kristina Ceyton [S1].",
+      "citations": [
+        {
+          "doc_id": "b07000a5-bd5c-46e0-b10c-87d4f14dd1a3",
+          "chunk_id": "f7276140-e7e0-4c05-bc39-ca732dbfe816",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.1213014000095427,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "b07000a5-bd5c-46e0-b10c-87d4f14dd1a3",
+        "4e498328-c3a9-452e-bcf0-4328e2624c60",
+        "84d268a3-8274-4d8d-9d94-b157dfc90fa3",
+        "d9f37c6e-4641-4c7c-bc65-d18ac678a441",
+        "65145766-0ed3-4886-938a-c1148e6a46a8",
+        "3cf35972-0343-43d1-9d4b-dae1937a00dd",
+        "40f988c2-d646-4e77-9f37-c7eaec32b528",
+        "76e21e67-7dad-44de-b5b4-4df74b87fba4"
+      ],
+      "retrieved_chunk_ids": [
+        "f7276140-e7e0-4c05-bc39-ca732dbfe816",
+        "575958f1-225c-46de-af70-f5d32bf4ca47",
+        "de21732c-a7ca-46f5-8d7d-421f7803eff4",
+        "960128e8-1f34-4451-9ac2-0a9b87fbc372",
+        "a38fffa7-7822-46a9-9389-44c5031e870f",
+        "474e87fa-164a-441c-aecf-2d47777000bd",
+        "80b93a4e-ae70-4191-aa0d-e16003feec07",
+        "c6af3bbe-30ca-4a72-9e25-4294b88458a5"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0018",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "75dde24d-2b76-4215-ade3-eeda29c7c468",
+        "d4ed5d28-d63a-4078-a071-480c49d4a383"
+      ],
+      "gold_doc_titles": [
+        "Formula One drivers from Mexico",
+        "Sergio Pérez"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Sahara Force India F1 Team [S1, S2].",
+      "citations": [
+        {
+          "doc_id": "75dde24d-2b76-4215-ade3-eeda29c7c468",
+          "chunk_id": "712ada32-a9ee-4f76-8051-4e46dd6d3abc",
+          "label": "S1"
+        },
+        {
+          "doc_id": "47d4cea5-45b5-4b73-9b6f-bb389e008b10",
+          "chunk_id": "ac837f4b-d7e7-4879-9627-eb8a6f0bcd9b",
+          "label": "S2"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.1225741000380367,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "75dde24d-2b76-4215-ade3-eeda29c7c468",
+        "d4ed5d28-d63a-4078-a071-480c49d4a383",
+        "2aff9405-6e7c-4486-853a-379ed47f6315",
+        "47d4cea5-45b5-4b73-9b6f-bb389e008b10",
+        "304dc777-6bd1-4e07-8320-a5000e8c77af",
+        "d5d099aa-53c0-4695-8908-f8662d2cd1f2",
+        "e01f0b3b-5f1e-4a22-9e8f-2309fdd8edf8",
+        "d8dfad6e-191c-4633-8532-3c197392ce64"
+      ],
+      "retrieved_chunk_ids": [
+        "712ada32-a9ee-4f76-8051-4e46dd6d3abc",
+        "6648542f-48f6-43e3-9514-6cc9d0545964",
+        "11f8ce30-5230-4795-8054-1ef7fc5e6598",
+        "ac837f4b-d7e7-4879-9627-eb8a6f0bcd9b",
+        "8aba20a3-e5ef-44f2-9fb6-9a8ef0bdfee6",
+        "696f9340-1813-464b-ac25-2c444aef1826",
+        "a97a3610-22b4-4356-a7cd-17d25d2dfbe6",
+        "427cbb94-85a4-4125-b722-f7ce0eb03118"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2763",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "a285424b-aa14-4bb5-9ad2-0df4d6f991ea",
+        "2378ed2c-80d0-416c-b832-208d740a4da6"
+      ],
+      "gold_doc_titles": [
+        "George D. Maziarz",
+        "Republican Party (United States)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The State The Democratic Party [S1].",
+      "citations": [
+        {
+          "doc_id": "1cb20d4c-32aa-47ae-bc1f-ae06214d2c43",
+          "chunk_id": "2fc2244c-3d87-4750-b89c-c4c686e232d1",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.1341518999543041,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "a285424b-aa14-4bb5-9ad2-0df4d6f991ea",
+        "2378ed2c-80d0-416c-b832-208d740a4da6",
+        "04254c3a-a5a1-4a14-8044-45489e7b148e",
+        "1cb20d4c-32aa-47ae-bc1f-ae06214d2c43",
+        "9ea1e0fd-7c77-40ca-a5ed-c9bb0d418e66",
+        "ed110e8f-b197-4f44-941d-17008e938ab2",
+        "796857b5-f3ce-447c-babf-2b6c7ff02cb7",
+        "ed1e54f0-5122-4193-a13d-ab566dfa5b79"
+      ],
+      "retrieved_chunk_ids": [
+        "57b45bfc-03d5-4bc5-b741-077156b586cc",
+        "efa6db9c-ef25-4db0-ab3b-1090ce243097",
+        "b94b0712-0ebd-4d55-b1e0-1abb5ca1a6e6",
+        "2fc2244c-3d87-4750-b89c-c4c686e232d1",
+        "e9c94004-c876-4ae8-8e8d-90d7d4dc8ac4",
+        "97761850-c9a4-4985-a460-9490ee3a02eb",
+        "dfa5ccd4-0b89-473b-b6c7-0891915b812b",
+        "057d2d0a-ca61-4964-9510-59de5717efb5"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8754",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+        "0758e708-c51a-40c1-bbf8-122eca993764"
+      ],
+      "gold_doc_titles": [
+        "Klay Thompson",
+        "Mychal Thompson"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "February 8, 1990 [S1].",
+      "citations": [
+        {
+          "doc_id": "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+          "chunk_id": "5eae9ed5-84a9-4884-a183-bcce4134f254",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.1312679999973625,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+        "0758e708-c51a-40c1-bbf8-122eca993764",
+        "7acf8d36-db3c-4c63-af07-012af36c3971",
+        "57f43810-943a-452e-bc3f-a8d5f4044127",
+        "9c8e5e5f-a499-4d45-a7f3-ef17cdc71694",
+        "a609183c-02d0-4f67-a997-6dc1bfa1742a",
+        "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+        "738e87cf-57bf-4848-9508-6d85027d6c3c"
+      ],
+      "retrieved_chunk_ids": [
+        "5eae9ed5-84a9-4884-a183-bcce4134f254",
+        "9d019f30-f1e6-4eae-a621-3bc1d2110e52",
+        "0846cafb-c584-490a-b5aa-6691ed1bc46a",
+        "57b880ed-89b3-472c-827c-c2650de6dd8d",
+        "a4f88955-205e-47cc-b961-8538e807cb33",
+        "e4509b54-6faa-42ea-8711-c22c4a2f0542",
+        "a2682390-0092-4c9a-85bc-d1167b8a7f8e",
+        "cdd229de-2eb9-4577-8221-c1da9e1b20b6"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8748",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "e16139fe-b5b1-4561-bd00-2e892755d6cd",
+        "7b8037a2-1a6c-4b80-9a2b-b41248484a32"
+      ],
+      "gold_doc_titles": [
+        "Paul Ziert",
+        "Bart Conner"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Bart Conner Gymnastics Academ Bart Conner [S1].",
+      "citations": [
+        {
+          "doc_id": "7b8037a2-1a6c-4b80-9a2b-b41248484a32",
+          "chunk_id": "e714d7bd-f775-4401-80dc-3170d3d489ab",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.13509559992235154,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "7b8037a2-1a6c-4b80-9a2b-b41248484a32",
+        "ce737d67-2fd8-4083-8845-b8ea2d65453d",
+        "59362da7-f3ba-479b-82f9-3ae7b984d3ff",
+        "4392971f-936d-477f-911a-7ea38ae435b3",
+        "7af9e7ff-683e-43a3-bd7d-51ea40928a44",
+        "023d7437-7b57-4e6b-94c9-ba2f00e87fe3",
+        "fb73be27-fcb2-4962-a288-00bd26876e3a",
+        "af1b8e20-933b-4ff8-8ddc-cab4b000ff59"
+      ],
+      "retrieved_chunk_ids": [
+        "e714d7bd-f775-4401-80dc-3170d3d489ab",
+        "f4bc6053-aa60-4c51-b7cf-43225b5a4a2b",
+        "17e07770-08e8-458d-8f9a-cebabc49a86f",
+        "caefc1bc-13ce-48b0-89ef-d2d82d9d1100",
+        "07fcbf9b-8d68-4a0e-bdca-ff4d9e5723d2",
+        "e9fa4742-a0a6-4968-b0c2-f07566c5a70d",
+        "7f4af4c6-d7b1-42b1-b971-bbc4cc2d0643",
+        "71d5d0b5-1233-4ab9-926c-b7aa6e36d5bb"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8314",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "8ae7a678-449c-4e28-abb7-626b72d0f647",
+        "5b5c0c16-8c42-480d-8974-573d4fc2b2ed"
+      ],
+      "gold_doc_titles": [
+        "Greg Butler (visual effects supervisor)",
+        "Gollum"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Written  The Lord [S1].",
+      "citations": [
+        {
+          "doc_id": "08ef3caf-ad2f-4b50-a606-794508fa0598",
+          "chunk_id": "077c84ae-b7f0-4f32-a689-2b29f4976f70",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.15881479997187853,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "8ae7a678-449c-4e28-abb7-626b72d0f647",
+        "5b5c0c16-8c42-480d-8974-573d4fc2b2ed",
+        "08ef3caf-ad2f-4b50-a606-794508fa0598",
+        "86597cb9-1772-4e33-85d7-0a88fefcfee4",
+        "8ae7a678-449c-4e28-abb7-626b72d0f647",
+        "b35e7705-b24f-423d-bb0e-6a9f165f25b5",
+        "46ab8c5e-c204-4ab7-bcf6-a6d9e8e97ffe",
+        "e8abd84b-5dda-4d08-b931-6244cde57696"
+      ],
+      "retrieved_chunk_ids": [
+        "cef6a433-7787-40ea-b851-991424ef1861",
+        "3394e6dd-a47f-4b44-bca4-e91cdea4a3d6",
+        "077c84ae-b7f0-4f32-a689-2b29f4976f70",
+        "a44a07f9-8e3d-4e90-b8b0-f01159a01676",
+        "442083ba-a4c8-439b-b28d-0402c0f7e67e",
+        "43ab4909-abe0-4e48-9be9-da07d9220b5d",
+        "2421dc04-bc8c-47bf-a686-05817e7624e2",
+        "724e8bfc-836f-49ad-beff-00b4994b981f"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_6823",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "4a043673-f70b-4881-b954-6eb3fde00761",
+        "14ab2944-543a-46ab-9ad1-ae130017c725"
+      ],
+      "gold_doc_titles": [
+        "The All-American Rejects",
+        "Chvrches"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Jimmy Chamb The Smashing Pumpkins [S1].",
+      "citations": [
+        {
+          "doc_id": "c689c5f3-20a5-4dcf-a8d2-29dbcb3fc97b",
+          "chunk_id": "0c83f829-e0d9-4f50-993d-de612eb9616a",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.19399210007395595,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "14ab2944-543a-46ab-9ad1-ae130017c725",
+        "4a043673-f70b-4881-b954-6eb3fde00761",
+        "27609916-bf51-41d2-85be-0d98c6820172",
+        "c689c5f3-20a5-4dcf-a8d2-29dbcb3fc97b",
+        "d0affdce-f682-4c9f-bd52-7562069ca8c6",
+        "944fcb71-9b8f-4cee-bac8-cb7293fc2e90",
+        "3030ddba-ae41-4dc3-ad3b-d5b87c85f659",
+        "60ff9b91-8c79-4f48-84f6-790edf6abb18"
+      ],
+      "retrieved_chunk_ids": [
+        "b2b15c41-7012-4ffb-b1bb-64f323385edd",
+        "50988953-3c67-47bb-b50b-412edf65c2e3",
+        "05d14c19-d5a8-4553-96df-8e810e2b45eb",
+        "0c83f829-e0d9-4f50-993d-de612eb9616a",
+        "84a92629-b6d7-4f5a-9eb3-56a3621d03bc",
+        "bf3cf83d-517a-46fc-8c2b-b2b045215981",
+        "c4473b96-6b49-4755-9933-4f567b4cbebf",
+        "df160b65-dafb-4d5f-8823-845c196172b2"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3095",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "c86a75b2-5947-4a41-b87f-7f9a05410ea4",
+        "a5eca930-b9c4-425c-88de-e0db875bb633"
+      ],
+      "gold_doc_titles": [
+        "Myles Kennedy",
+        "SafetySuit"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The Let Rock Rule Tour [S1].",
+      "citations": [
+        {
+          "doc_id": "5b4230ba-c783-4d52-a2af-85481be2864d",
+          "chunk_id": "db8ec3a4-1ff2-4c67-801f-4da87916af6a",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.1505763999884948,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "c86a75b2-5947-4a41-b87f-7f9a05410ea4",
+        "3fe091dc-5fc8-44af-a1df-2cce3aa731a6",
+        "cce01f3a-3fee-4249-940b-c14648c83b07",
+        "a5eca930-b9c4-425c-88de-e0db875bb633",
+        "78a8db81-9a5b-4ace-99d0-3677a3540408",
+        "c6a71506-e820-45b0-bead-73132e3ef8a2",
+        "5b4230ba-c783-4d52-a2af-85481be2864d",
+        "83982985-ed6d-472c-a85a-1c1f456a9941"
+      ],
+      "retrieved_chunk_ids": [
+        "2dc98e5c-4e05-476f-9d69-b01311665f53",
+        "8778856d-29f5-4946-a750-5b193a5a644c",
+        "17f64eef-a4de-4315-b9b1-44eceb3f6845",
+        "7337472e-5697-43e5-9488-3d167eeec316",
+        "0c755897-3c4b-48b0-9b56-b789147ab8b6",
+        "ca6eceec-0a40-4c56-8364-53d3143af463",
+        "db8ec3a4-1ff2-4c67-801f-4da87916af6a",
+        "2815a1d0-47e7-4f1e-803b-b3fcd106eec0"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3961",
+      "question_type": "multi_hop",
+      "split": "dev",
+      "gold_doc_ids": [
+        "67edf070-38f3-490d-9605-03dcbedd8edf",
+        "5e56e7ac-fe9c-40ba-b59f-dfc6a8e12a09"
+      ],
+      "gold_doc_titles": [
+        "Castle on the Hill (song)",
+        "÷ (album)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Gosling [S1].",
+      "citations": [
+        {
+          "doc_id": "bcc447fe-da0c-4f32-95a9-581e847c29d3",
+          "chunk_id": "2b676d73-f27b-4e79-bc37-1b195b148ea2",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.10279490007087588,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "5e56e7ac-fe9c-40ba-b59f-dfc6a8e12a09",
+        "67edf070-38f3-490d-9605-03dcbedd8edf",
+        "bcc447fe-da0c-4f32-95a9-581e847c29d3",
+        "56dad90c-a633-43ba-94d6-bb7972af9e14",
+        "4332ceb3-f8e9-4b53-993e-8fa418ea88f0",
+        "513080c2-bfb0-4bea-aba2-37fcd5de8b74",
+        "2b9381be-c16b-4a3b-abc6-0eb20ca10b68",
+        "772b9e89-28ed-4e9e-8048-85e6ea822d77"
+      ],
+      "retrieved_chunk_ids": [
+        "42c38671-f4a7-414a-8488-45c3b36ebab9",
+        "b5c7908e-a5cc-4d45-bc30-9ad3ef322f33",
+        "2b676d73-f27b-4e79-bc37-1b195b148ea2",
+        "9c3d691a-1686-44cd-a94c-7f896d5d83a4",
+        "6ff77c3d-3b80-4781-9a95-15f30d377b48",
+        "35fe9843-2793-4873-ac8a-40a44b625a4e",
+        "c96b645b-6e1d-45d9-ba38-113ae736c52f",
+        "f47e2a11-da30-4262-bb9b-138b4cbc9047"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4794",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "f8e59a92-228b-4f33-a8dc-06e84667755a",
+        "ded6bc83-9f10-4503-81b1-925a5cb23e71"
+      ],
+      "gold_doc_titles": [
+        "Kara Kennedy",
+        "Joan Bennett Kennedy"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Countess Rose Elizabeth Fitzgerald Kennedy [S1, S2].",
+      "citations": [
+        {
+          "doc_id": "f8e59a92-228b-4f33-a8dc-06e84667755a",
+          "chunk_id": "27e2a413-ce05-415b-a052-1595f6e8e2da",
+          "label": "S1"
+        },
+        {
+          "doc_id": "cfa8d9b7-c635-43bb-88c0-27c9e1f5586b",
+          "chunk_id": "c0ea2adb-337d-4003-aab9-04da9c71289f",
+          "label": "S2"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.12179440003819764,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "f8e59a92-228b-4f33-a8dc-06e84667755a",
+        "ded6bc83-9f10-4503-81b1-925a5cb23e71",
+        "cfa8d9b7-c635-43bb-88c0-27c9e1f5586b",
+        "dd978285-9c0e-433b-9316-0855527809f0",
+        "c2f91c65-63fd-417d-87f7-d28952a54404",
+        "b27cd33d-a56c-44b6-b443-dabc29b994a5",
+        "5300eb36-7904-46a7-9e11-74272c37078f",
+        "4b3f45e4-236e-421b-b6cf-7260080513b9"
+      ],
+      "retrieved_chunk_ids": [
+        "27e2a413-ce05-415b-a052-1595f6e8e2da",
+        "702fbd82-fb7a-45ae-9397-e0ee7176463a",
+        "c0ea2adb-337d-4003-aab9-04da9c71289f",
+        "c4264383-3496-4133-8197-780fce6b6759",
+        "e3c098be-c724-4ed2-b9fd-c50d3705198c",
+        "21042bd3-a4c0-4ece-82e0-cd671403d840",
+        "c4fcb7d4-acad-4b0d-a55c-0ebc28e5a6ee",
+        "e8006e16-c5e5-4d2e-aee9-687d97c47ec9"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0341",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "2a973b36-ea7f-4094-8601-ffe09b66cb6a",
+        "eaf57b18-29f3-45d4-b746-86c4c6764d0a"
+      ],
+      "gold_doc_titles": [
+        "Angiotensin",
+        "Aldosterone"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Distal RTA [S1].",
+      "citations": [
+        {
+          "doc_id": "3bf970f1-531e-4c6b-ba19-f02b7acb4f0c",
+          "chunk_id": "b97d2b88-e3bf-42c1-a27e-dc4c994d3025",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.19207140000071377,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "2a973b36-ea7f-4094-8601-ffe09b66cb6a",
+        "eaf57b18-29f3-45d4-b746-86c4c6764d0a",
+        "fdb09919-4cbe-4d2e-b67d-2785a07a72b9",
+        "63961e03-5dec-4375-bb32-1b8a3a7c8481",
+        "3bf970f1-531e-4c6b-ba19-f02b7acb4f0c",
+        "fe548b11-ab55-4eae-abcd-fb6fd10cb29f",
+        "c592154d-d2aa-4096-9c6a-49a20590be23",
+        "23503232-06ad-4df3-a1b5-68176dc1c72d"
+      ],
+      "retrieved_chunk_ids": [
+        "0cb2c840-ed6e-4e15-85e9-f02b3f1449c4",
+        "15b99dda-2734-461b-94e4-c7d8a2221c51",
+        "2affdcb4-caf0-44d3-988f-e68b0474dd30",
+        "7c7d79c1-324b-4310-8396-539825f865cb",
+        "b97d2b88-e3bf-42c1-a27e-dc4c994d3025",
+        "70e1b4dc-55ea-4413-8f7f-163ce2d88c84",
+        "d1da7c5c-3a8c-4b51-857a-20e010dbfc73",
+        "ec05ae01-c1f9-4546-9e5d-5d731c73f711"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8443",
+      "question_type": "multi_hop",
+      "split": "dev",
+      "gold_doc_ids": [
+        "a620144c-acda-4071-936c-d79c310c06f6",
+        "f6d5750a-7862-474e-b010-76354725da5c"
+      ],
+      "gold_doc_titles": [
+        "John Kassir",
+        "The Secret Life of Pets"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Illumination Entertainment [S1].",
+      "citations": [
+        {
+          "doc_id": "f6d5750a-7862-474e-b010-76354725da5c",
+          "chunk_id": "9dded178-8352-4cfa-bd95-c5e310904692",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.1303256000392139,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "25e90dc5-58b3-4950-9526-044e23baa2d5",
+        "a620144c-acda-4071-936c-d79c310c06f6",
+        "f6d5750a-7862-474e-b010-76354725da5c",
+        "c0be1c49-daa4-4895-9993-ab31edadcb4b",
+        "e93948f0-9a8f-49be-87b4-1736d8c14492",
+        "a3b999f4-d706-443a-9cea-e27756078e89",
+        "30424151-5a95-4250-a674-3a4425bfe194",
+        "4af6187d-775d-4edb-b696-43ba9b1f1dd4"
+      ],
+      "retrieved_chunk_ids": [
+        "d2123442-0f4f-4f4f-9205-f5c9f61ccb37",
+        "fdbf8435-91db-4992-a1d4-ef47aad3b6fd",
+        "9dded178-8352-4cfa-bd95-c5e310904692",
+        "5fb50462-cde6-47a7-bd0e-151eb7e4c670",
+        "6faa5456-a700-4352-a47f-65e701a38e37",
+        "8a47dd07-58e7-4885-befa-46eea6af15ba",
+        "96aad499-f1c2-4813-8059-3ee69233ecb1",
+        "16934873-2a22-4420-b342-ada93f390c4a"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5350",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "a13f41e1-cacf-40ec-adbd-acb6daddc79e",
+        "40395b0b-1f46-4826-972c-d7e32dea7c60"
+      ],
+      "gold_doc_titles": [
+        "Saif Ali Khan",
+        "Kal Ho Naa Ho"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Rajshri Productions [S1].",
+      "citations": [
+        {
+          "doc_id": "1a098713-2756-48e6-9728-bdb7c62492ef",
+          "chunk_id": "7352f90e-62d8-4aa7-8582-8d1db76d3948",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.14688339992426336,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "a13f41e1-cacf-40ec-adbd-acb6daddc79e",
+        "2430d3e4-bad4-44cb-9436-999a6dd30ad3",
+        "c14154a1-7b3a-4c7e-8672-4f8e4a6ffbb6",
+        "72670f51-bed7-4c1d-b351-aae4c6aa089f",
+        "375107b6-3104-4fd0-adcf-34aa0cc0a991",
+        "58e4781c-5a2e-4e16-b39e-fb87ce345f5a",
+        "35d28c5e-7987-409d-b5b5-c5c9572abf39",
+        "1a098713-2756-48e6-9728-bdb7c62492ef"
+      ],
+      "retrieved_chunk_ids": [
+        "805aca94-8094-484e-808b-a2f311b08048",
+        "cace75cc-b061-4eb3-9db9-86cfcaf8eb07",
+        "04b0f640-ca0d-4e55-b850-0f9e6b7d939a",
+        "2fe3e067-2ef1-42cb-8cc4-4cf26d26c79d",
+        "66912a2b-90b4-4633-90b9-6b219e6c4a1d",
+        "b1c528a4-b81e-4d11-a49a-dd1232ba5c76",
+        "c5a4d331-bbe0-4ec0-b612-a50ef081a827",
+        "7352f90e-62d8-4aa7-8582-8d1db76d3948"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1803",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "da2b4e2e-d1f3-4eca-9b87-3d423d125ff0",
+        "3d5d9147-af3e-4781-8265-fb8e7e75a438"
+      ],
+      "gold_doc_titles": [
+        "Procter &amp; Gamble",
+        "William Procter (candlemaker)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Pathfinder Internati Clarence James Gamble [S1].",
+      "citations": [
+        {
+          "doc_id": "df4b5a33-3b66-498d-9b70-9e4cb1082fdf",
+          "chunk_id": "3ce72457-4d5b-4d40-ae3e-99543e3c393a",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.10917030007112771,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "3d5d9147-af3e-4781-8265-fb8e7e75a438",
+        "da2b4e2e-d1f3-4eca-9b87-3d423d125ff0",
+        "df4b5a33-3b66-498d-9b70-9e4cb1082fdf",
+        "712dfc6e-c8a5-4ee1-b427-d4494bff71f5",
+        "6667a4ee-8114-48ad-b16c-e079c665e993",
+        "104a7fd7-566d-4663-8253-612eae345275",
+        "af265642-d8fe-4aba-8d10-21410a5359a8",
+        "3b5b87b0-aa3d-49f2-99eb-0407e154d75d"
+      ],
+      "retrieved_chunk_ids": [
+        "a58508cf-5b67-47a1-adec-4861b34a3de2",
+        "2b4679c5-2163-4431-ba58-56ab31903aaf",
+        "3ce72457-4d5b-4d40-ae3e-99543e3c393a",
+        "6c899d2f-cccf-4823-909f-7ea9d51dfeff",
+        "b369e057-e02e-472a-8c47-39ecf2feae85",
+        "44333a94-60be-4207-a9d6-6698803e6258",
+        "4eb766c3-e287-48e3-96cf-5b6388562556",
+        "7f7fe17b-2a54-414d-bad8-879abc3ee14e"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0547",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "f98e1f51-0439-49e1-9890-91f28c708c01",
+        "42d47870-40da-4f42-8086-4c14c7600f11"
+      ],
+      "gold_doc_titles": [
+        "Max Hoffmann",
+        "Battle of Tannenberg"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Erster Generalquartierme Erich Friedrich Wilhelm Ludendorff [S1].",
+      "citations": [
+        {
+          "doc_id": "462511b4-cedd-41e8-89de-18df13cf5eca",
+          "chunk_id": "3a29342d-fc5c-4d35-8e58-b34ebaea9a9a",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.12353610002901405,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "f98e1f51-0439-49e1-9890-91f28c708c01",
+        "42d47870-40da-4f42-8086-4c14c7600f11",
+        "462511b4-cedd-41e8-89de-18df13cf5eca",
+        "c2f5ef81-945c-43ec-91ba-f84b483f88de",
+        "163675fa-ddfb-4a43-abcf-9932296c1806",
+        "c3865e8a-a0b7-478d-b291-f66d5b85c6c4",
+        "7f9bd1b2-d882-4fd9-8763-154a4bd540c8",
+        "2a306876-8cc0-4426-bdd1-f9e237ac89ab"
+      ],
+      "retrieved_chunk_ids": [
+        "7ce56026-8435-4ec8-9f68-601bc5837a7f",
+        "c58b89cf-8618-4ad9-aa36-c4d3d69baa6f",
+        "3a29342d-fc5c-4d35-8e58-b34ebaea9a9a",
+        "a8a84e47-8ae3-4ac8-92e5-8291537b3f4f",
+        "bc647fe2-eb54-473f-a648-8675b3a36df0",
+        "2e26e521-bdbf-49d1-8fee-96383aaaef45",
+        "989b1614-c0d3-466f-84e7-51608532df94",
+        "42b4302c-df39-4f22-8ffe-eea3f611f25f"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2352",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "ea11cde4-0ada-4591-a06c-7ee954dc52ba",
+        "7235dd0a-e0a1-4f98-904e-f6d36f2a81b6"
+      ],
+      "gold_doc_titles": [
+        "2015 MSA Formula Championship",
+        "Motorsport"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "FIA Formula One World Championship [S1].",
+      "citations": [
+        {
+          "doc_id": "2d1215f0-f83f-4286-849f-96c2fde33101",
+          "chunk_id": "c704d7ba-ae7a-4441-8647-434c91610b7c",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.11931350000668317,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "ea11cde4-0ada-4591-a06c-7ee954dc52ba",
+        "75b9039e-280d-418b-bc8d-7106bcfbd9cb",
+        "a482dd17-bbb4-479a-92e4-83eab45e3744",
+        "ee7e8d4a-b19b-4954-83e4-544fb0866b91",
+        "3afbfc9e-c8a7-4fc5-b525-aa3c45b1886e",
+        "2d1215f0-f83f-4286-849f-96c2fde33101",
+        "5eb44414-ea6d-4bdc-bf74-d1825f5f80cc",
+        "9d6e85e8-a00d-4c16-b0e8-a0778bf6e31a"
+      ],
+      "retrieved_chunk_ids": [
+        "c1cfbf70-751e-4bb6-b0e2-ae550f6ff376",
+        "ea1ae7d3-6148-46e3-b188-ace4bdf2e958",
+        "8ebb1702-582a-46ba-9de5-73cedb5e5ba4",
+        "1b21a6d3-98d2-426d-9712-18880f50aaf2",
+        "a766dfda-c112-473e-91bd-11ed2fc2f63c",
+        "c704d7ba-ae7a-4441-8647-434c91610b7c",
+        "b706fe19-58f0-44fb-8ccf-d4e3db228178",
+        "9498894f-b8cc-4a13-8d45-cc577612a78b"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1858",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "3fcfded2-8cfa-4f4a-9326-d4e004cc9b67",
+        "67a2aac1-cfe3-438d-8af4-81979481860a"
+      ],
+      "gold_doc_titles": [
+        "Polihale State Park",
+        "Niihau"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Phoenix Isl Kanton Island [S1].",
+      "citations": [
+        {
+          "doc_id": "3ec8baff-6821-42f7-bea2-802d6bd63280",
+          "chunk_id": "867b2e98-51b8-431e-867b-5bc098733b4a",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.1496777000138536,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "3fcfded2-8cfa-4f4a-9326-d4e004cc9b67",
+        "67a2aac1-cfe3-438d-8af4-81979481860a",
+        "6941806d-6314-4ee6-a591-56bd423a4f66",
+        "16ba224d-42a7-4880-9b52-adeb4868bbb7",
+        "3ec8baff-6821-42f7-bea2-802d6bd63280",
+        "446c1e6f-5003-4f48-be78-61a7220d7d3c",
+        "7d54a479-42ae-41ff-9979-5414cdb634c3",
+        "c2980992-7d51-4ac2-a892-2334007f03b2"
+      ],
+      "retrieved_chunk_ids": [
+        "9eed92fb-87dc-4b43-a7e8-9e4b05094887",
+        "a2e8f0d0-24b6-4ece-bc3e-515b29bbed36",
+        "23fef91c-0cc6-4882-9abe-3db4257273b6",
+        "392c273c-64d6-4b55-87a4-f63a97c7fd89",
+        "867b2e98-51b8-431e-867b-5bc098733b4a",
+        "81930bb7-d9da-4697-a2fb-713aa9f4a15a",
+        "acbb38b8-544e-424b-a273-2f6996b83675",
+        "2fca19fc-7da8-4945-b268-15c10fee87a7"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7160",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "1422cfd9-1c1d-40c4-a445-8a9579947f4f",
+        "5e2e6fa1-3576-4071-9ada-555672025e0a"
+      ],
+      "gold_doc_titles": [
+        "Cheek to Cheek Tour",
+        "Cosmopolitan of Las Vegas"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The MGM Grand Las Vegas [S1, S2].",
+      "citations": [
+        {
+          "doc_id": "1422cfd9-1c1d-40c4-a445-8a9579947f4f",
+          "chunk_id": "6cb01678-6622-48ce-b5bc-9f82e074ce07",
+          "label": "S1"
+        },
+        {
+          "doc_id": "cd111fcf-d77c-4028-9b82-136d0fee9707",
+          "chunk_id": "db2c3dd8-02c7-45eb-9bc8-198b7918f157",
+          "label": "S2"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.13477399991825223,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "1422cfd9-1c1d-40c4-a445-8a9579947f4f",
+        "5e2e6fa1-3576-4071-9ada-555672025e0a",
+        "712b0ed1-98ed-479c-839a-259bef7fde86",
+        "314415c1-874a-4dfc-81a2-8251ef6d60b4",
+        "74993c02-929d-4ffa-b74a-fc9d6b4384c4",
+        "8975d8db-b350-431a-81b1-4aedd1c3f965",
+        "3f65beda-1dc0-4fb4-bde3-437658496617",
+        "cd111fcf-d77c-4028-9b82-136d0fee9707"
+      ],
+      "retrieved_chunk_ids": [
+        "6cb01678-6622-48ce-b5bc-9f82e074ce07",
+        "c20f3f0c-0001-438b-a86e-bca807fc1d4b",
+        "b3004d1b-fcaf-4bce-985a-0dab70a12901",
+        "49025082-d069-4275-981b-19bca8f441fb",
+        "38cae742-66f5-4b33-8aaf-9175f6ec2c65",
+        "48e7ceaa-7eb8-4741-bc3c-893fe4d5b9f8",
+        "6a015c1e-cc03-41c9-aee6-6815e987893d",
+        "db2c3dd8-02c7-45eb-9bc8-198b7918f157"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0529",
+      "question_type": "factual",
+      "split": "dev",
+      "gold_doc_ids": [
+        "67c26971-6a06-42fa-ab1b-cc390cee09c0",
+        "30a3d0fe-2382-4977-8cf2-8792e4d0fac3"
+      ],
+      "gold_doc_titles": [
+        "Hush (1998 film)",
+        "Jessica Lange"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Robert Aldrich [S1].",
+      "citations": [
+        {
+          "doc_id": "72ac7fda-974d-47c4-81ea-8a491b404021",
+          "chunk_id": "155b4b6b-6bcc-4bec-b1ce-726afa568709",
+          "label": "S1"
+        }
+      ],
+      "verify_ok": true,
+      "latency_s": 0.11090880003757775,
+      "llm_calls": 0,
+      "tokens": 0,
+      "retrieved_doc_ids": [
+        "67c26971-6a06-42fa-ab1b-cc390cee09c0",
+        "72ac7fda-974d-47c4-81ea-8a491b404021",
+        "1f3493bd-db10-4fc0-b30d-32580142f545",
+        "c14c0cc4-5287-4d73-927f-4d042dc38aef",
+        "feca48bb-706f-4527-b0f0-151ac81c2e9d",
+        "7767ad02-974d-4688-b6b9-a1dddca63fba",
+        "a1e04189-79e1-486f-8bcf-4e1911492795",
+        "550852e2-fda4-4e8c-9d84-3b9a6dca709b"
+      ],
+      "retrieved_chunk_ids": [
+        "2752be6e-9b07-41fb-a512-840a25d91ea5",
+        "155b4b6b-6bcc-4bec-b1ce-726afa568709",
+        "6b7dba23-28ee-4784-8ce5-5cc45935eac2",
+        "b5eb40ae-3283-4990-84f0-eed7a51d497c",
+        "bd62ebcd-9274-4233-80fe-5dfa0fd87218",
+        "494a8b5c-4b3d-4f2f-a823-cc51ec56c86f",
+        "aaff5732-bedf-4a26-bd11-da124615b12b",
+        "cf17dffa-c3bd-4cb7-b6c1-6074bcece0d9"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "created_at": "2026-11-02T10:02:01.447827+00:00",
+  "run_id": "m6_dev_adapt_v1",
+  "split": "dev",
+  "corpus": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "preliminary": false,
+  "summaries": [
+    {
+      "config_id": "full_investigation",
+      "pipeline": "investigation",
+      "retrieval_mode": "hybrid_rrf",
+      "k": 8,
+      "n_questions_total": 32,
+      "n_questions": 32,
+      "n_scored_retrieval": 31,
+      "n_scored_answer": 32,
+      "n_excluded": 0,
+      "exclusion_reasons": {},
+      "by_type_total": {
+        "multi_doc": 1,
+        "factual": 27,
+        "contradiction": 1,
+        "unanswerable": 1,
+        "multi_hop": 2
+      },
+      "by_type_scored_retrieval": {
+        "multi_doc": 1,
+        "factual": 27,
+        "contradiction": 1,
+        "multi_hop": 2
+      },
+      "by_type_scored_answer": {
+        "multi_doc": 1,
+        "factual": 27,
+        "contradiction": 1,
+        "unanswerable": 1,
+        "multi_hop": 2
+      },
+      "n_errors": 0,
+      "corpus_active_documents": 55081,
+      "retrieval": {
+        "n_scored": 31,
+        "n": 31,
+        "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+        "recall_at_k": 0.43548387096774194,
+        "mrr": 0.5967741935483871,
+        "all_gold_at_k": 0.1935483870967742,
+        "multi_doc_coverage": 0.43548387096774194,
+        "mean_latency_s": 0.4159796806352754
+      },
+      "answer": {
+        "n_scored": 32,
+        "n": 32,
+        "exact_match": 0.0,
+        "token_f1": 0.05357142857142857,
+        "citation_f1": 0.30416666666666664,
+        "citation_f1_answered_only": 0.4424242424242424,
+        "correct_abstention_rate": 0.0,
+        "n_unanswerable_scored": 1,
+        "contradiction_detection_rate": 0.0,
+        "n_contradiction_scored": 1,
+        "mean_latency_s": 0.40799863749271026,
+        "mean_llm_calls": 0.09375,
+        "mean_tokens": 78.0625,
+        "status_counts": {
+          "answered": 21,
+          "insufficient": 10,
+          "conflicting": 1
+        }
+      }
+    },
+    {
+      "config_id": "baseline_rag",
+      "pipeline": "baseline_rag",
+      "retrieval_mode": "hybrid_rrf",
+      "k": 8,
+      "n_questions_total": 32,
+      "n_questions": 32,
+      "n_scored_retrieval": 31,
+      "n_scored_answer": 32,
+      "n_excluded": 0,
+      "exclusion_reasons": {},
+      "by_type_total": {
+        "multi_doc": 1,
+        "factual": 27,
+        "contradiction": 1,
+        "unanswerable": 1,
+        "multi_hop": 2
+      },
+      "by_type_scored_retrieval": {
+        "multi_doc": 1,
+        "factual": 27,
+        "contradiction": 1,
+        "multi_hop": 2
+      },
+      "by_type_scored_answer": {
+        "multi_doc": 1,
+        "factual": 27,
+        "contradiction": 1,
+        "unanswerable": 1,
+        "multi_hop": 2
+      },
+      "n_errors": 0,
+      "corpus_active_documents": 55081,
+      "retrieval": {
+        "n_scored": 31,
+        "n": 31,
+        "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+        "recall_at_k": 0.8548387096774194,
+        "mrr": 0.8870967741935484,
+        "all_gold_at_k": 0.7096774193548387,
+        "multi_doc_coverage": 0.8548387096774194,
+        "mean_latency_s": 0.14883535806345002
+      },
+      "answer": {
+        "n_scored": 32,
+        "n": 32,
+        "exact_match": 0.0,
+        "token_f1": 0.027272206959706963,
+        "citation_f1": 0.22395833333333331,
+        "citation_f1_answered_only": 0.22395833333333331,
+        "correct_abstention_rate": 0.0,
+        "n_unanswerable_scored": 1,
+        "contradiction_detection_rate": 0.0,
+        "n_contradiction_scored": 1,
+        "mean_latency_s": 0.14758244687254773,
+        "mean_llm_calls": 0.0,
+        "mean_tokens": 0.0,
+        "status_counts": {
+          "answered": 32
+        }
+      }
+    }
+  ]
+}

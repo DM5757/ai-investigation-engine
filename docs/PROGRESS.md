@@ -86,8 +86,16 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Production @ `283bfc3`: smoke **7/7 PASS**, **0 LLM calls** each (airport ~11s; OSU/CSUDH ~11s; Lent ~11s; Robinson ~9s; colony ~3s; contradiction `conflicting` ~3s; unanswerable ~4s). CI green.
 - Tests: **180** passed (non-live). Tag `submission-2026-10-29` unchanged.
 
+## Milestone 6 — answer quality / adaptive synthesis (2026-11-02)
+
+- Audited eval validity first (`docs/evidence/m6_eval_audit.md`); metrics unchanged; M5 results preserved.
+- Span-oriented deterministic answers + adaptive LLM when confidence &lt; 0.7; question-gated conflicts; redacted-approver abstention.
+- Held-out test (62, ACTIVE 55081): token F1 **0.031 → 0.080 (det) → 0.153 (adapt)**; abstention **0.5 → 1.0**; adaptive used **23** LLM / **39** det syntheses.
+- Evidence: `docs/evidence/m6_report.md`, `eval/results/m6_test_*`.
+- Tests: **186** passed (non-live). Tag `submission-2026-10-29` unchanged.
+
 ## Outstanding technical follow-ups
 
-1. Raise Hotpot token-F1 / exact-match without inventing facts (better claim selection + optional LLM polish when quota allows).
-2. Optional TPM-aware backoff when the LLM path is re-enabled for hard questions.
+1. Further Hotpot EM/alias normalization without gaming metrics.
+2. Optional TPM-aware backoff under adaptive load.
 3. UI sample-question chips once production demos stay green across deploys.

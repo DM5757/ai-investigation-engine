@@ -59,6 +59,7 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Render Milestone 4 @ `8964e79` | Smoke **7/7 PASS**: airport ~14s; OSU/CSUDH ~14s (2 gold cites); Lent premiere ~22s; Robinson/Sicilia ~11s; colony abstain; contradiction answered; unanswerable abstain. | `docs/evidence/prod_smoke_suite.json` |
 | Answer eval Milestone 5 `m5_answer_v1/v2` | Test split **62** questions on ACTIVE 55,081. Investigation: mean LLM calls **0.0**, mean latency **~0.44–0.82s**, abstention **0.5**, contradiction detection **0.5**. Baseline: always `answered` (abstention **0.0**, contradiction **0.0**), higher citation F1 from unrestricted snippet dumps. 1 Qdrant timeout in v2. | `eval/results/m5_answer_v2__*` |
 | Render Milestone 5 @ `283bfc3` | Smoke **7/7 PASS**, **0 LLM calls**/case: airport ~11s; three multi-hops ~9–11s; colony/unanswerable abstain ~3–4s; contradiction **`conflicting`** ~3s with 08:10 vs 14:00. | `docs/evidence/prod_smoke_suite.json` |
+| Answer eval Milestone 6 (`m6_test_*`) | Same test **62** / ACTIVE 55,081. Deterministic token F1 **0.080**; adaptive **0.153** (23 LLM / 39 det); abstention **1.0**; answered-only cite F1 **0.519**. Baseline F1 0.092, abstention 0.0. M5 baseline preserved. | `eval/results/m6_test_adapt_v1__*`, `docs/evidence/m6_report.md` |
 
 ## 5. Quality fixes reflected in metrics intent
 
@@ -68,11 +69,12 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 - `/api/version` exposes `git_commit`
 - Multi-hop: entity seeding, title fidelity, bridge hops, anaphoric claims, grounded second-hop filtering
 - Milestone 5: deterministic plan/synthesis + seed/bridge short-circuit; temporal deploy-time conflict detection; trace `synthesis_mode`
+- Milestone 6: short span extraction; adaptive LLM when span confidence &lt; 0.7; question-gated temporal conflicts; approver redaction abstention; answered-only citation diagnostic
 
 ## 6. Remaining gaps
 
-1. Hotpot exact-match / token-F1 stay low under quote-grounded deterministic answers (not gold-string normalized).
-2. Free-tier quotas still matter when LLM polish is re-enabled for hard questions.
+1. Exact match still ~0; token F1 improved but Hotpot alias/format gaps remain.
+2. Free-tier quotas still constrain large adaptive runs.
 3. UI sample chips deferred until demos remain green across deploys.
 
 ## 7. Evidence index
@@ -86,4 +88,6 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Local RAG probe | `docs/evidence/local_rag_quality_probe.json` |
 | Colony abstention | `docs/evidence/colony_abstention_scripted.json` |
 | M5 answer eval | `eval/results/m5_answer_v2__*` |
+| M6 audit + report | `docs/evidence/m6_eval_audit.md`, `docs/evidence/m6_report.md` |
+| M6 answer eval | `eval/results/m6_test_det_v1__*`, `eval/results/m6_test_adapt_v1__*` |
 | Reviewer demos | `docs/evidence/reviewer_demo_cases.md` |

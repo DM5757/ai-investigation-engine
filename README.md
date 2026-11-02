@@ -16,9 +16,9 @@ Given a large document corpus, answer questions that may require combining multi
 | ACTIVE documents | **55,081** | `docs/evidence/dataset_counts.json` + live `/api/stats` |
 | FAILED records | **0** | same |
 | Qdrant points | **56,890** (= ACTIVE chunk rows) | same |
-| Automated tests | **180** passing (1 live test deselected by default) | `pytest` |
+| Automated tests | **186** passing (1 live test deselected by default) | `pytest` |
 | Retrieval eval | **91** scored questions; dense R@10 **0.890**; hybrid MRR **0.919** | `docs/EVALUATION_REPORT.md` |
-| Answer eval (test split) | **62** questions; investigation mean LLM calls **0.0**, mean latency **~0.8s**; baseline over-answers unanswerables | `eval/results/m5_answer_v2__*` |
+| Answer eval (test split) | **62** questions; adaptive token F1 **0.153** (det **0.080**); abstention **1.0**; mean LLM calls **0.37** adaptive | `eval/results/m6_test_adapt_v1__*` |
 | Reviewer demos | factual, multi-hop×3, contradiction, abstention×2 | `docs/evidence/reviewer_demo_cases.md` |
 | Deployed commit | reported by `/api/version` | Render Free |
 
@@ -28,7 +28,7 @@ Trust measured artifacts over narrative claims. Do not claim ≥50k indexed docu
 
 1. **Ingest** — parse TXT/MD/PDF/DOCX/HTML/JSONL/CSV; normalize; chunk; exact/near-dup detect; persist versions in Neon; upsert dense + sparse vectors to Qdrant.
 2. **Retrieve** — FastEmbed `bge-small-en-v1.5` dense search + custom BM25 sparse; RRF / weighted fusion; custom feature-based reranker (coverage, title/heading, entity/number, proximity, MMR, per-doc cap).
-3. **Investigate** — hand-written stages (deterministic plan → seed/bridge retrieval → extract/verify → sufficiency → synthesize). When seed evidence already covers the asked entities, the LLM tool loop is skipped; synthesis mode (`deterministic` \| `llm`) is recorded in the trace.
+3. **Investigate** — hand-written stages (deterministic plan → seed/bridge retrieval → extract/verify → sufficiency → synthesize). When seed evidence already covers the asked entities, the LLM tool loop is skipped. Synthesis is adaptive: high-confidence short spans stay deterministic; uncertain questions use verified LLM phrasing. Mode (`deterministic` \| `llm`) is recorded in the trace.
 4. **Respond** — answered / partial / conflicting / insufficient / `llm_unavailable`, with quote-checked citations when an answer is produced.
 
 ## Custom algorithms

@@ -689,6 +689,12 @@ def _summarize(
             "citation_f1": mean(
                 float((r["answer"].get("citation") or {}).get("f1") or 0) for r in answer_rows
             ),
+            # Diagnostic only — same formula, answered/partial/conflicting rows.
+            "citation_f1_answered_only": mean(
+                float((r["answer"].get("citation") or {}).get("f1") or 0)
+                for r in answer_rows
+                if str(r.get("status") or "") in {"answered", "partial", "conflicting"}
+            ),
             "correct_abstention_rate": mean(
                 float(r["answer"].get("correct_abstention") or 0) for r in unans
             )

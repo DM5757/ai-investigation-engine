@@ -45,7 +45,11 @@ def _values_conflict(a: str, b: str) -> bool:
     return (a_neg and b_pos) or (b_neg and a_pos)
 
 
-def candidate_conflicts(claims: list[Claim]) -> list[Conflict]:
+def candidate_conflicts(
+    claims: list[Claim],
+    *,
+    question: str | None = None,
+) -> list[Conflict]:
     """Build conflicts when independent docs disagree on same subject/attribute."""
     out: list[Conflict] = []
     for (subject, attribute), group in aggregate_claims(claims).items():
@@ -73,57 +77,77 @@ def candidate_conflicts(claims: list[Claim]) -> list[Conflict]:
             out.append(
                 Conflict(subject=subject, attribute=attribute, sides=uniq)
             )
-    out.extend(_temporal_conflicts(claims))
+    # Temporal deploy-time conflicts only when the question asks about time /
+    # deploy / contradictions — not for unrelated "who approved" questions.
+    q = (question or "").lower()
+    if re.search(r"\b(?:time|when|utc|o'?clock|contradict|deploy(?:ed|ment)?)\b", q):
+        out.extend(_temporal_conflicts(claims))
     return out
 
 
-_DEPLOY_TOPIC_RE = re.compile(r"\b(?:deploy|deployed|auth[\s\-]?gateway|gateway)\b", re.I)
+_DEPLOY_TOPIC_RE = re.compile(
+    r"\b(?:deploy(?:ed|ment)?|auth[\s\-]?gateway|authgateway)\b", re.I
+)
+
+
+def _normalize_entity_keys(text: str) -> set[str]:
+    """Shared keys so AuthGateway and auth-gateway collide."""
+    low = text.lower()
+    keys = {m.group(0).replace("-", "").replace(" ", "") for m in _ENTITY_TOKEN_RE.finditer(low)}
+    if re.search(r"auth[\s\-]?gateway|authgateway", low):
+        keys.add("authgateway")
+    return {k for k in keys if len(k) >= 6}
 
 
 def _temporal_conflicts(claims: list[Claim]) -> list[Conflict]:
-    """Detect disagreeing clock times across docs on the same deploy topic.
+    """Detect disagreeing clock times across docs for the same deploy entity.
 
-    Heuristic claim subjects often differ (``Change Log`` vs ``gateway``) even
-    when quotes clearly state alternate deploy times for the same service.
+    Requires a shared normalized entity key (e.g. authgateway) plus deploy context
+    so unrelated timestamps in different topics do not become false conflicts.
     """
-    pairs: list[tuple[str, Claim]] = []
+    # entity_key -> list[(time, claim)]
+    by_key: dict[str, list[tuple[str, Claim]]] = {}
     for claim in claims:
         if not claim.verified:
             continue
         hay = f"{claim.subject} {claim.value} {claim.quote}"
         found_times = _TIME_UTC_RE.findall(hay)
-        if not found_times:
+        if not found_times or not _DEPLOY_TOPIC_RE.search(hay):
             continue
-        # Prefer deploy/auth-gateway context; fall back to hyphenated entity tokens.
-        topical = bool(_DEPLOY_TOPIC_RE.search(hay)) or bool(_ENTITY_TOKEN_RE.search(hay))
-        if not topical:
+        keys = _normalize_entity_keys(hay) or {"deploy"}
+        for key in keys:
+            for tval in found_times:
+                by_key.setdefault(key, []).append((tval, claim))
+    out: list[Conflict] = []
+    seen: set[tuple[str, ...]] = set()
+    for key, pairs in by_key.items():
+        distinct_times = {t for t, _ in pairs}
+        docs = {c.doc_id for _, c in pairs}
+        if len(distinct_times) < 2 or len(docs) < 2:
             continue
-        for tval in found_times:
-            pairs.append((tval, claim))
-    distinct_times = {t for t, _ in pairs}
-    docs = {c.doc_id for _, c in pairs}
-    if len(distinct_times) < 2 or len(docs) < 2:
-        return []
-    sides: list[Claim] = []
-    used_times: set[str] = set()
-    used_docs: set[str] = set()
-    for tval, claim in pairs:
-        if tval in used_times or claim.doc_id in used_docs:
-            continue
-        used_times.add(tval)
-        used_docs.add(claim.doc_id)
-        sides.append(
-            claim.model_copy(
-                update={"attribute": "deploy_time", "value": f"{tval} UTC"}
+        sides: list[Claim] = []
+        used_times: set[str] = set()
+        used_docs: set[str] = set()
+        for tval, claim in pairs:
+            if tval in used_times or claim.doc_id in used_docs:
+                continue
+            used_times.add(tval)
+            used_docs.add(claim.doc_id)
+            sides.append(
+                claim.model_copy(
+                    update={"attribute": "deploy_time", "value": f"{tval} UTC"}
+                )
             )
-        )
-        if len(sides) >= 2:
-            break
-    if len(sides) < 2:
-        return []
-    return [
-        Conflict(subject="deploy", attribute="deploy_time", sides=sides)
-    ]
+            if len(sides) >= 2:
+                break
+        if len(sides) < 2:
+            continue
+        doc_key = tuple(sorted(c.doc_id for c in sides))
+        if doc_key in seen:
+            continue
+        seen.add(doc_key)
+        out.append(Conflict(subject=key, attribute="deploy_time", sides=sides))
+    return out
 
 
 class _Adjudication(BaseModel):

@@ -626,7 +626,7 @@ class InvestigationEngine:
             )
 
         with trace.stage("contradictions") as bag:
-            conflicts = candidate_conflicts(claims)
+            conflicts = candidate_conflicts(claims, question=question)
             adj_llm = (
                 None
                 if self.settings.skip_conflict_adjudication_llm
@@ -659,12 +659,17 @@ class InvestigationEngine:
                 abstention_reason=reason,
                 llm=self.llm,
                 prefer_deterministic=self.settings.prefer_deterministic_synthesis,
+                adaptive=self.settings.adaptive_synthesis,
             )
             usage_total = usage_total.add(syn_usage)
             mode = "llm" if used_llm_synth else "deterministic"
             bag["outputs_summary"] = f"mode={mode}; len={len(answer or '')}"
             bag["tokens"] = syn_usage
-            bag["extra"] = {"synthesis_mode": mode}
+            bag["extra"] = {
+                "synthesis_mode": mode,
+                "adaptive": self.settings.adaptive_synthesis,
+                "prefer_deterministic": self.settings.prefer_deterministic_synthesis,
+            }
 
         with trace.stage("verify") as bag:
             answer, citations, removed, ok = verify_answer_citations(
