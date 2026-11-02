@@ -273,10 +273,8 @@ def _date_span(
     q_wants_series = bool(
         re.search(r"\b(?:reality|television|tv|series|show)\b", q_low)
     )
-    # Titles mentioned in other claims are grounded second hops (e.g. Lent → IRT).
-    grounded_titles = " ".join(
-        f"{c.quote} {c.value}" for c in claims
-    ).lower()
+    # Prefer premiere dates from titles mentioned in other documents
+    # (grounded second hops, e.g. Lent → Ice Road Truckers).
     for claim in claims:
         hay = f"{claim.source_title or ''} {claim.quote} {claim.value}"
         premiere = _PREMIERE_DATE_RE.search(hay)
@@ -366,13 +364,6 @@ _JWT_MISCONFIG_RE = re.compile(
     r"misconfigured\s+JWT|JWT\s+TTL)",
     re.IGNORECASE,
 )
-_SERVICES_AFFECTED_RE = re.compile(
-    r"\b((?:payment|authentication|auth)(?:\s+and\s+(?:payment|authentication|auth))?"
-    r"(?:\s+services?)?)\b",
-    re.IGNORECASE,
-)
-
-
 def _jwt_misconfig_span(
     claims: list[Claim],
 ) -> tuple[str, list[Claim], float] | None:
