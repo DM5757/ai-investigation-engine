@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-11-02T11:01:15.677759+00:00",
+  "created_at": "2026-11-02T11:15:37.962002+00:00",
   "base": "https://ai-investigation-engine-scyz.onrender.com",
   "timeout_s": 330.0,
   "pause_s": 2.0,
@@ -21,7 +21,7 @@
         "embedding_enabled_at_startup": false,
         "embedding_loaded": false,
         "embedding_load_ms": null,
-        "embedder_impl": "not_loaded_yet",
+        "embedder_impl": "FastEmbedProvider",
         "llm_groq_configured": true,
         "llm_gemini_configured": true,
         "llm_status": "configured",
@@ -35,7 +35,7 @@
       "body": {
         "version": "0.1.0",
         "app": "ai-investigation-engine",
-        "git_commit": "611b0d438dbbad91149d10c090ca312f0d470782"
+        "git_commit": "cbaa46b5a8e815f3435a895ed4fe454449ef4c6d"
       }
     },
     {
@@ -66,7 +66,7 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 11971.9,
+      "ms": 4768.2,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -96,11 +96,11 @@
         ],
         [
           "plan",
-          0.4
+          0.1
         ],
         [
           "tools_seed_search",
-          3906.0
+          3743.1
         ],
         [
           "tools_llm_skipped",
@@ -108,19 +108,19 @@
         ],
         [
           "extract",
-          5.6
+          2.2
         ],
         [
           "contradictions",
-          0.4
+          0.0
         ],
         [
           "sufficiency",
-          0.9
+          0.2
         ],
         [
           "synthesize",
-          0.8
+          0.2
         ],
         [
           "verify",
@@ -128,7 +128,7 @@
         ],
         [
           "request",
-          3914.7
+          3746.4
         ]
       ]
     },
@@ -145,7 +145,7 @@
         "conflicting"
       ],
       "http_status": 200,
-      "ms": 3484.6,
+      "ms": 3800.3,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -181,7 +181,7 @@
         ],
         [
           "tools_seed_search",
-          2143.6
+          2185.1
         ],
         [
           "tools_llm_skipped",
@@ -189,7 +189,7 @@
         ],
         [
           "extract",
-          3.5
+          7.3
         ],
         [
           "contradictions",
@@ -197,11 +197,11 @@
         ],
         [
           "sufficiency",
-          4.9
+          1.9
         ],
         [
           "synthesize",
-          2.9
+          0.2
         ],
         [
           "verify",
@@ -209,7 +209,7 @@
         ],
         [
           "request",
-          2155.5
+          2195.2
         ]
       ]
     },
@@ -225,7 +225,7 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 10493.5,
+      "ms": 10396.3,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -261,11 +261,11 @@
         ],
         [
           "tools_seed_search",
-          5355.0
+          5023.3
         ],
         [
           "tools_bridge_search",
-          3593.9
+          3702.9
         ],
         [
           "tools_llm_skipped",
@@ -273,7 +273,7 @@
         ],
         [
           "extract",
-          203.6
+          206.4
         ],
         [
           "contradictions",
@@ -281,11 +281,11 @@
         ],
         [
           "sufficiency",
-          1.0
+          0.9
         ],
         [
           "synthesize",
-          3.2
+          86.8
         ],
         [
           "verify",
@@ -293,7 +293,7 @@
         ],
         [
           "request",
-          9162.0
+          9025.7
         ]
       ]
     },
@@ -309,7 +309,7 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 8683.7,
+      "ms": 9102.0,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -345,11 +345,11 @@
         ],
         [
           "tools_seed_search",
-          3712.2
+          3779.0
         ],
         [
           "tools_bridge_search",
-          2998.6
+          3902.8
         ],
         [
           "tools_llm_skipped",
@@ -357,7 +357,7 @@
         ],
         [
           "extract",
-          101.0
+          101.2
         ],
         [
           "contradictions",
@@ -365,11 +365,11 @@
         ],
         [
           "sufficiency",
-          1.3
+          1.0
         ],
         [
           "synthesize",
-          1.1
+          0.6
         ],
         [
           "verify",
@@ -377,7 +377,7 @@
         ],
         [
           "request",
-          6817.8
+          7786.3
         ]
       ]
     },
@@ -393,7 +393,7 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 9096.1,
+      "ms": 9087.4,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -429,11 +429,11 @@
         ],
         [
           "tools_seed_search",
-          3927.6
+          3674.7
         ],
         [
           "tools_bridge_search",
-          3300.7
+          3189.7
         ],
         [
           "tools_llm_skipped",
@@ -441,7 +441,7 @@
         ],
         [
           "extract",
-          320.7
+          526.3
         ],
         [
           "contradictions",
@@ -449,11 +449,11 @@
         ],
         [
           "sufficiency",
-          84.7
+          79.7
         ],
         [
           "synthesize",
-          0.7
+          0.5
         ],
         [
           "verify",
@@ -461,7 +461,7 @@
         ],
         [
           "request",
-          7722.7
+          7474.7
         ]
       ]
     },
@@ -476,7 +476,7 @@
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 4262.5,
+      "ms": 3572.4,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -506,7 +506,7 @@
         ],
         [
           "tools_seed_search",
-          3436.1
+          3166.5
         ],
         [
           "tools_llm_skipped",
@@ -514,7 +514,7 @@
         ],
         [
           "extract",
-          93.7
+          93.8
         ],
         [
           "contradictions",
@@ -522,7 +522,7 @@
         ],
         [
           "sufficiency",
-          0.7
+          0.9
         ],
         [
           "synthesize",
@@ -534,7 +534,7 @@
         ],
         [
           "request",
-          3531.3
+          3262.0
         ]
       ]
     },
@@ -551,7 +551,7 @@
         "answered"
       ],
       "http_status": 200,
-      "ms": 3637.2,
+      "ms": 3824.6,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -587,7 +587,7 @@
         ],
         [
           "tools_seed_search",
-          2288.0
+          2519.8
         ],
         [
           "tools_llm_skipped",
@@ -595,11 +595,11 @@
         ],
         [
           "extract",
-          4.3
+          3.9
         ],
         [
           "contradictions",
-          0.5
+          0.2
         ],
         [
           "sufficiency",
@@ -607,7 +607,7 @@
         ],
         [
           "synthesize",
-          1.3
+          0.3
         ],
         [
           "verify",
@@ -615,7 +615,7 @@
         ],
         [
           "request",
-          2294.6
+          2524.7
         ]
       ]
     },
@@ -630,7 +630,7 @@
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 2866.7,
+      "ms": 2878.2,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -660,7 +660,7 @@
         ],
         [
           "tools_seed_search",
-          2485.7
+          2505.8
         ],
         [
           "tools_llm_skipped",
@@ -668,7 +668,7 @@
         ],
         [
           "extract",
-          98.1
+          96.8
         ],
         [
           "contradictions",
@@ -688,7 +688,7 @@
         ],
         [
           "request",
-          2584.5
+          2603.2
         ]
       ]
     },
@@ -706,7 +706,7 @@
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 5038.0,
+      "ms": 5128.1,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -740,7 +740,7 @@
         ],
         [
           "tools_seed_search",
-          3995.2
+          3645.3
         ],
         [
           "tools_llm_skipped",
@@ -748,7 +748,7 @@
         ],
         [
           "extract",
-          5.3
+          2.7
         ],
         [
           "contradictions",
@@ -756,7 +756,7 @@
         ],
         [
           "sufficiency",
-          0.4
+          0.3
         ],
         [
           "synthesize",
@@ -768,7 +768,7 @@
         ],
         [
           "request",
-          4001.8
+          3649.1
         ]
       ]
     },
@@ -786,7 +786,7 @@
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 4791.0,
+      "ms": 4584.5,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -820,7 +820,7 @@
         ],
         [
           "tools_seed_search",
-          3756.2
+          3461.3
         ],
         [
           "tools_llm_skipped",
@@ -828,7 +828,7 @@
         ],
         [
           "extract",
-          5.8
+          89.9
         ],
         [
           "contradictions",
@@ -836,11 +836,11 @@
         ],
         [
           "sufficiency",
-          2.0
+          1.6
         ],
         [
           "synthesize",
-          0.2
+          0.3
         ],
         [
           "verify",
@@ -848,13 +848,13 @@
         ],
         [
           "request",
-          3764.8
+          3553.8
         ]
       ],
       "budget_isolation_ok": true
     }
   ],
-  "git_commit": "611b0d438dbbad91149d10c090ca312f0d470782",
+  "git_commit": "cbaa46b5a8e815f3435a895ed4fe454449ef4c6d",
   "active_documents": 55081,
   "n_pass": 10,
   "n_honest_degraded": 0,

@@ -110,7 +110,8 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - `/api/eval/runs` serves measured summary from `app/data/published_eval.json` (sourced from `full55k_retrieval_v1` + `m7_test_adapt_v3`); explicitly not smoke-as-accuracy.
 - README / AI usage / evaluation docs updated for Milestone 7 metrics and Milestone 8 presentation. Tag `submission-2026-10-29` unchanged.
 - Backend investigation path unchanged unless a correctness defect appears during demo verification.
-- Tests: **193** passed (non-live).
+- Production @ `cbaa46b`: sample investigations **5/5 PASS**; full smoke **10/10 PASS**; `/api/eval/runs` live; ACTIVE **55,081**. Evidence: `docs/evidence/m8_report.md`, `m8_sample_smoke.*`, `prod_smoke_suite.*`.
+- Tests: **193** passed (non-live). CI green.
 
 ## Outstanding technical follow-ups
 

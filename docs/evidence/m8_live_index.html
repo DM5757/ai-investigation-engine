@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Evidence-backed multi-document investigation engine with citations, contradictions, and honest abstention." />
+  <title>AI Investigation Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="top">
+    <div class="brand-block">
+      <p class="eyebrow">Applied AI · Evidence-grounded RAG</p>
+      <h1>AI Investigation Engine</h1>
+      <p class="tagline">
+        Ask questions over a large indexed corpus. Answers stay tied to retrieved
+        quotes, surface conflicts when sources disagree, and abstain when evidence
+        is insufficient.
+      </p>
+    </div>
+    <dl class="header-meta" aria-label="Live deployment signals">
+      <div>
+        <dt>Corpus</dt>
+        <dd id="header-active">…</dd>
+      </div>
+      <div>
+        <dt>Deploy</dt>
+        <dd id="header-sha" class="mono">…</dd>
+      </div>
+    </dl>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Primary">
+    <button type="button" class="tab active" data-tab="ask" role="tab" aria-selected="true">Investigate</button>
+    <button type="button" class="tab" data-tab="stats" role="tab" aria-selected="false">Corpus</button>
+    <button type="button" class="tab" data-tab="eval" role="tab" aria-selected="false">Evaluation</button>
+    <button type="button" class="tab" data-tab="documents" role="tab" aria-selected="false">Documents</button>
+    <button type="button" class="tab" data-tab="health" role="tab" aria-selected="false">Health</button>
+  </nav>
+
+  <main id="main">
+    <section id="panel-ask" class="panel active" role="tabpanel">
+      <div class="ask-layout">
+        <div class="ask-primary">
+          <div class="samples" aria-label="Verified sample investigations">
+            <p class="section-label">Sample investigations</p>
+            <p class="hint">
+              One-click examples from production-verified cases. Each run hits the
+              live API — answers are not hardcoded in the browser.
+            </p>
+            <div id="sample-chips" class="sample-chips"></div>
+          </div>
+
+          <label for="question">Question</label>
+          <textarea
+            id="question"
+            rows="4"
+            maxlength="4000"
+            placeholder="Ask a factual, multi-document, or contradiction-aware question…"
+          ></textarea>
+
+          <div class="row controls">
+            <div class="field">
+              <label for="mode">Retrieval mode</label>
+              <select id="mode" aria-describedby="mode-hint">
+                <option value="hybrid_rerank" selected>hybrid_rerank (default)</option>
+                <option value="hybrid_rrf">hybrid_rrf</option>
+                <option value="hybrid_weighted">hybrid_weighted</option>
+                <option value="dense">dense</option>
+                <option value="sparse">sparse</option>
+              </select>
+            </div>
+            <button type="button" id="ask-btn" class="primary">Run investigation</button>
+          </div>
+          <p id="mode-hint" class="hint">Hybrid modes combine dense vectors with BM25 sparse search.</p>
+
+          <div id="progress" class="progress" hidden>
+            <div class="progress-row">
+              <span id="progress-label">Working…</span>
+              <span id="progress-elapsed" class="mono">0.0s</span>
+            </div>
+            <div class="progress-bar" aria-hidden="true"><span id="progress-bar-fill"></span></div>
+            <p id="progress-note" class="hint">Cold starts on free hosting can take up to about a minute.</p>
+          </div>
+
+          <div class="result-header">
+            <div id="ask-status" class="status-badge idle" aria-live="polite">idle</div>
+            <div id="result-meta" class="result-meta muted" aria-live="polite"></div>
+          </div>
+
+          <h2>Answer</h2>
+          <div id="answer-text" class="answer-box" role="status"></div>
+          <p id="missing-info" class="callout" hidden></p>
+          <p id="error-banner" class="error-banner" hidden role="alert"></p>
+
+          <h2>Supporting citations</h2>
+          <p class="hint">Click a label to jump to that source. Only cited evidence is listed here.</p>
+          <div id="citation-chips" class="chips"></div>
+          <div id="sources-panel" class="sources-list"></div>
+
+          <div class="split">
+            <div>
+              <h2>Conflicts</h2>
+              <div id="conflicts-panel"></div>
+            </div>
+            <div>
+              <h2>Investigation steps</h2>
+              <ol id="steps-panel" class="steps"></ol>
+              <details id="trace-details">
+                <summary>Raw trace JSON</summary>
+                <pre id="trace-panel" class="raw"></pre>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <aside class="ask-side" aria-label="How to read results">
+          <h2>Status meanings</h2>
+          <ul class="legend">
+            <li><span class="pill answered">answered</span> Evidence supports a concise claim.</li>
+            <li><span class="pill partial">partial</span> Related evidence found; answer may be incomplete.</li>
+            <li><span class="pill conflicting">conflicting</span> Independent sources disagree on the same fact.</li>
+            <li><span class="pill insufficient">insufficient</span> Evidence does not support a reliable answer.</li>
+            <li><span class="pill llm_unavailable">llm_unavailable</span> Provider quota/timeout; no invented fill-in.</li>
+          </ul>
+          <p class="hint">
+            Sample success does not imply every query succeeds. Held-out token F1
+            on 62 test questions is still modest — see Evaluation.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="panel-stats" class="panel" role="tabpanel" hidden>
+      <div class="panel-head">
+        <div>
+          <h2>Corpus statistics</h2>
+          <p class="hint">Live counts from Neon metadata and the active Qdrant collection.</p>
+        </div>
+        <button type="button" id="refresh-stats" class="secondary">Refresh</button>
+      </div>
+      <div id="stats-cards" class="metric-grid"></div>
+      <pre id="stats-panel" class="raw" hidden></pre>
+    </section>
+
+    <section id="panel-eval" class="panel" role="tabpanel" hidden>
+      <div class="panel-head">
+        <div>
+          <h2>Evaluation summary</h2>
+          <p class="hint">
+            Measured held-out results from committed artifacts — not smoke-test pass rates.
+          </p>
+        </div>
+        <button type="button" id="refresh-eval" class="secondary">Refresh</button>
+      </div>
+      <div id="eval-summary" class="eval-summary"></div>
+      <pre id="eval-panel" class="raw" hidden></pre>
+    </section>
+
+    <section id="panel-documents" class="panel" role="tabpanel" hidden>
+      <div class="panel-head">
+        <div>
+          <h2>Document administration</h2>
+          <p class="hint">Mutation routes require an admin token. Token stays in memory only.</p>
+        </div>
+      </div>
+      <div class="admin-bar">
+        <label for="admin-token">Admin token</label>
+        <input id="admin-token" type="password" autocomplete="off" placeholder="X-Admin-Token" />
+        <button type="button" id="save-token" class="secondary">Use token</button>
+        <span id="token-state" class="muted">not set</span>
+      </div>
+      <div class="upload-row">
+        <input id="upload-file" type="file" />
+        <input id="external-key" type="text" placeholder="optional external_key" />
+        <button type="button" id="upload-btn" class="primary">Upload</button>
+      </div>
+      <p id="docs-msg" class="muted" aria-live="polite"></p>
+      <table id="docs-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Version</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <h3>Chunks</h3>
+      <pre id="chunks-panel" class="raw"></pre>
+    </section>
+
+    <section id="panel-health" class="panel" role="tabpanel" hidden>
+      <div class="panel-head">
+        <div>
+          <h2>Service health</h2>
+          <p class="hint">Liveness, readiness, and deployed git commit.</p>
+        </div>
+        <button type="button" id="refresh-health" class="secondary">Refresh</button>
+      </div>
+      <div id="health-cards" class="metric-grid"></div>
+      <h3>/api/health</h3>
+      <pre id="health-panel" class="raw"></pre>
+      <h3>/api/health/ready</h3>
+      <pre id="ready-panel" class="raw"></pre>
+      <h3>/api/version</h3>
+      <pre id="version-panel" class="raw"></pre>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Evidence-backed investigation demo ·
+      <a href="https://github.com/DM5757/ai-investigation-engine">Source</a>
+      · HotpotQA paragraphs CC BY-SA 4.0
+    </p>
+  </footer>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>

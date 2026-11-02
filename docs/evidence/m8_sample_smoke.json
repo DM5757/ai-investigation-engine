@@ -1,0 +1,464 @@
+{
+  "created_at": "2026-11-02T11:14:10.716578+00:00",
+  "base": "https://ai-investigation-engine-scyz.onrender.com",
+  "timeout_s": 330.0,
+  "pause_s": 3.0,
+  "steps": [
+    {
+      "step": "/api/health",
+      "status": 200,
+      "body": {
+        "status": "ok"
+      }
+    },
+    {
+      "step": "/api/health/ready",
+      "status": 200,
+      "body": {
+        "status": "ready",
+        "database": "ok",
+        "embedding_model_configured": "BAAI/bge-small-en-v1.5",
+        "embedding_enabled_at_startup": false,
+        "embedding_loaded": false,
+        "embedding_load_ms": null,
+        "embedder_impl": "not_loaded_yet",
+        "llm_groq_configured": true,
+        "llm_gemini_configured": true,
+        "llm_status": "configured",
+        "qdrant_configured": true,
+        "qdrant_status": "configured"
+      }
+    },
+    {
+      "step": "/api/version",
+      "status": 200,
+      "body": {
+        "version": "0.1.0",
+        "app": "ai-investigation-engine",
+        "git_commit": "cbaa46b5a8e815f3435a895ed4fe454449ef4c6d"
+      }
+    },
+    {
+      "step": "/api/stats",
+      "status": 200,
+      "body": {
+        "documents_by_status": {
+          "ACTIVE": 55081,
+          "DELETED": 5
+        },
+        "document_total": 55086,
+        "chunk_total": 56900,
+        "collection_name": "chunks__structure_aware__bge_small",
+        "origin_note": "origin field not tracked; counts are by lifecycle status"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "airport",
+      "letter": "A/regression-B",
+      "category": "factual",
+      "question": "What is Roanoke\u2013Blacksburg Regional Airport, and where is it located?",
+      "mode": "default",
+      "expected_behavior": "Concise factual answer about Woodrum Field near Roanoke, VA.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 11483.8,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Woodrum Field [S1].",
+      "answer_preview": "Woodrum Field [S1].",
+      "n_citations": 1,
+      "citation_titles": [
+        "Roanoke\u2013Blacksburg Regional Airport"
+      ],
+      "citation_doc_ids": [
+        "b16b4334-f9a7-4ced-99a5-d5f986d8c4ac"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.4
+        ],
+        [
+          "tools_seed_search",
+          3978.8
+        ],
+        [
+          "tools_llm_skipped",
+          0.0
+        ],
+        [
+          "extract",
+          5.2
+        ],
+        [
+          "contradictions",
+          0.3
+        ],
+        [
+          "sufficiency",
+          1.0
+        ],
+        [
+          "synthesize",
+          0.9
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          3987.1
+        ]
+      ]
+    },
+    {
+      "id": "multihop_ohio_csudh",
+      "letter": "C",
+      "category": "entity_relationship_multihop",
+      "question": "Is Ohio State University or California State University, Dominguez Hills further west?",
+      "mode": "default",
+      "expected_behavior": "HotpotQA multi-hop; both gold titles verified ACTIVE in Neon.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 10893.3,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "California State University, Dominguez Hills [S1, S2].",
+      "answer_preview": "California State University, Dominguez Hills [S1, S2].",
+      "n_citations": 2,
+      "citation_titles": [
+        "Ohio State University",
+        "California State University, Dominguez Hills"
+      ],
+      "citation_doc_ids": [
+        "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+        "955d5257-0873-47d3-a587-1c54a38242cd"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.1
+        ],
+        [
+          "tools_seed_search",
+          5466.3
+        ],
+        [
+          "tools_bridge_search",
+          3794.0
+        ],
+        [
+          "tools_llm_skipped",
+          0.0
+        ],
+        [
+          "extract",
+          301.3
+        ],
+        [
+          "contradictions",
+          0.1
+        ],
+        [
+          "sufficiency",
+          1.2
+        ],
+        [
+          "synthesize",
+          3.0
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          9569.5
+        ]
+      ]
+    },
+    {
+      "id": "multihop_lent_irt",
+      "letter": "C2",
+      "category": "entity_relationship_multihop",
+      "question": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star on a reality television series that premiered on what date?",
+      "mode": "default",
+      "expected_behavior": "HotpotQA multi-hop across writer + TV series premiere date.",
+      "expect_status": [
+        "answered",
+        "partial"
+      ],
+      "http_status": 200,
+      "ms": 9589.7,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "June 17, 2007 [S1, S2].",
+      "answer_preview": "June 17, 2007 [S1, S2].",
+      "n_citations": 2,
+      "citation_titles": [
+        "Michael Lent (writer and producer)",
+        "Ice Road Truckers"
+      ],
+      "citation_doc_ids": [
+        "f6ea8155-454d-4885-8b97-51fb6dec9a84",
+        "b99a69b6-2bb4-43d6-84a5-692239268c9b"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.1
+        ],
+        [
+          "tools_seed_search",
+          4458.2
+        ],
+        [
+          "tools_bridge_search",
+          3707.1
+        ],
+        [
+          "tools_llm_skipped",
+          0.0
+        ],
+        [
+          "extract",
+          99.2
+        ],
+        [
+          "contradictions",
+          0.1
+        ],
+        [
+          "sufficiency",
+          0.9
+        ],
+        [
+          "synthesize",
+          0.8
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          8267.7
+        ]
+      ]
+    },
+    {
+      "id": "contradiction_deploy",
+      "letter": "E",
+      "category": "contradiction",
+      "question": "What do the documents say about auth-gateway deploy time on 2024-03-12? Note any contradictions.",
+      "mode": "default",
+      "expected_behavior": "Synthetic planted conflict: 08:10 UTC vs 14:00 UTC.",
+      "expect_status": [
+        "conflicting",
+        "partial",
+        "answered"
+      ],
+      "http_status": 200,
+      "ms": 3394.5,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "conflicting",
+      "degraded": false,
+      "answer": "Sources conflict:\n- 20240312/deploy_time: 14:00 UTC [S1]\n- 20240312/deploy_time: 08:10 UTC [S2]",
+      "answer_preview": "Sources conflict:\n- 20240312/deploy_time: 14:00 UTC [S1]\n- 20240312/deploy_time: 08:10 UTC [S2]",
+      "n_citations": 2,
+      "citation_titles": [
+        "Change Log March",
+        "Incident Report \u2014 Payment Outage March"
+      ],
+      "citation_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "n_conflicts": 1,
+      "n_evidence_preview": 0,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.1
+        ],
+        [
+          "tools_seed_search",
+          2087.5
+        ],
+        [
+          "tools_llm_skipped",
+          0.0
+        ],
+        [
+          "extract",
+          2.6
+        ],
+        [
+          "contradictions",
+          0.3
+        ],
+        [
+          "sufficiency",
+          0.0
+        ],
+        [
+          "synthesize",
+          1.0
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          2092.0
+        ]
+      ]
+    },
+    {
+      "id": "unanswerable_fraudscorer",
+      "letter": "D",
+      "category": "unanswerable",
+      "question": "What was FraudScorer CPU usage during the incident?",
+      "mode": "default",
+      "expected_behavior": "Evidence intentionally absent in synthetic corpus.",
+      "expect_status": [
+        "insufficient"
+      ],
+      "http_status": 200,
+      "ms": 3852.6,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "insufficient",
+      "degraded": false,
+      "answer": "The asked measurement or attribute is not present in the retrieved evidence.",
+      "answer_preview": "The asked measurement or attribute is not present in the retrieved evidence.",
+      "n_citations": 0,
+      "citation_titles": [],
+      "citation_doc_ids": [],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
+      "abstention_reason": "The asked measurement or attribute is not present in the retrieved evidence.",
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.1
+        ],
+        [
+          "tools_seed_search",
+          3457.3
+        ],
+        [
+          "tools_llm_skipped",
+          0.0
+        ],
+        [
+          "extract",
+          8.5
+        ],
+        [
+          "contradictions",
+          0.1
+        ],
+        [
+          "sufficiency",
+          0.8
+        ],
+        [
+          "synthesize",
+          0.0
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          3467.3
+        ]
+      ]
+    }
+  ],
+  "git_commit": "cbaa46b5a8e815f3435a895ed4fe454449ef4c6d",
+  "active_documents": 55081,
+  "n_pass": 5,
+  "n_honest_degraded": 0,
+  "n_fail": 0,
+  "ok": true
+}
