@@ -10,6 +10,7 @@ from app.investigation.answer_span import (
     extract_span_from_claims,
     needs_llm_synthesis,
 )
+from app.investigation.citations import extract_citation_labels
 from app.investigation.entities import (
     extract_focus_entities,
     is_comparison_question,
@@ -23,8 +24,6 @@ from app.investigation.fast_path import (
 from app.llm.prompts.synthesizer import SYNTHESIZER_SYSTEM
 from app.llm.types import ChatMessage, LLMClient
 from app.schemas.evidence import AnswerStatus, Citation, Claim, Conflict, UsageStats
-
-_CITE_RE = re.compile(r"\[(S\d+)\]")
 
 
 def claims_to_citations(claims: list[Claim]) -> list[Citation]:
@@ -303,4 +302,5 @@ def _llm_hedged_insufficient(text: str | None) -> bool:
 
 
 def citation_labels_in_text(text: str) -> set[str]:
-    return set(_CITE_RE.findall(text))
+    """Labels referenced in answer text (grouped / Unicode-safe)."""
+    return extract_citation_labels(text)

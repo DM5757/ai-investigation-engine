@@ -113,8 +113,17 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Production @ `cbaa46b`: sample investigations **5/5 PASS**; full smoke **10/10 PASS**; `/api/eval/runs` live; ACTIVE **55,081**. Evidence: `docs/evidence/m8_report.md`, `m8_sample_smoke.*`, `prod_smoke_suite.*`.
 - Tests: **193** passed (non-live). CI green.
 
+## Phase A — evaluation integrity (2026-11-02)
+
+- Confirmed audit issues: cite tokens in F1, grouped-cite verifier gap, prod `hybrid_rerank` vs eval `hybrid_rrf`, test-set reuse, Hotpot type mislabel, post-retrieval gold drop (esp. claim filtering).
+- Fixed scoring + citation parsing; re-scored M7 predictions (F1 0.183→0.223 cite-stripped; EM 0→0.145) without changing answers.
+- Measured dense / RRF / rerank on legacy test; built `heldout_v1` (85 q); retention instrumentation + probe.
+- Evidence: `docs/evidence/phase_a_eval_integrity.md`. Tag `submission-2026-10-29` unchanged. Production default mode unchanged.
+- Tests: **200** passed (non-live).
+
 ## Outstanding technical follow-ups
 
-1. Further Hotpot EM/alias normalization without gaming metrics.
+1. Phase B: passage-level verified LLM reader (pending review of Phase A report).
 2. Optional TPM-aware backoff under adaptive load.
-3. Multi-hop recall / general answer accuracy beyond curated demos (held-out token F1 0.183).
+3. Answer-eval on frozen `heldout_v1` test only (no tuning).
+4. Decide whether prod should keep `hybrid_rerank` given lower R@10 vs RRF.

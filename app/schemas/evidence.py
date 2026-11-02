@@ -117,3 +117,5 @@ class AnswerResponse(BaseModel):
     usage: UsageStats = Field(default_factory=UsageStats)
     degraded: bool = False
     trace: list[TraceEvent] = Field(default_factory=list)
+    # Eval-only provenance; null/omitted in normal production responses.
+    retention: dict[str, Any] | None = None

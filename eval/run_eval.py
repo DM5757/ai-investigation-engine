@@ -1,12 +1,14 @@
 """Resumable evaluation harness.
 
 Comparisons:
-  - dense_only vs hybrid_rrf (retrieval)
+  - dense_only vs hybrid_rrf vs hybrid_rerank (retrieval; production default is hybrid_rerank)
   - baseline_rag vs full_investigation (answer quality; optional LLM)
 
 Usage:
-  uv run python eval/run_eval.py --configs dense_only,hybrid_rrf --split test --retrieval-only
-  uv run python eval/run_eval.py --configs baseline_rag,full_investigation --split test --limit 20
+  uv run python eval/run_eval.py --configs dense_only,hybrid_rrf,hybrid_rerank \\
+      --split test --retrieval-only
+  uv run python eval/run_eval.py --configs baseline_rag,full_investigation \\
+      --split test --limit 20
 """
 
 from __future__ import annotations
@@ -27,6 +29,7 @@ from eval.metrics import (  # noqa: E402
     all_gold_at_k,
     citation_accuracy,
     exact_match,
+    gold_coverage,
     mean,
     mrr,
     multi_doc_coverage,
@@ -250,7 +253,35 @@ def _run_baseline_rag(
     }
 
 
-def _run_investigation(engine: Any, question: str) -> dict[str, Any]:
+def _retention_coverage(
+    retention: dict[str, Any] | None,
+    gold_doc_ids: list[str],
+) -> list[dict[str, Any]]:
+    """Eval-only gold support at each recorded stage (gold never enters the engine)."""
+    if not retention:
+        return []
+    out: list[dict[str, Any]] = []
+    for stage in retention.get("stages") or []:
+        cov = gold_coverage(stage.get("doc_ids") or [], gold_doc_ids)
+        out.append(
+            {
+                "stage": stage.get("stage"),
+                "n_docs": stage.get("n_docs"),
+                "n_items": stage.get("n_items"),
+                "note": stage.get("note"),
+                "titles": stage.get("titles") or [],
+                **cov,
+            }
+        )
+    return out
+
+
+def _run_investigation(
+    engine: Any,
+    question: str,
+    *,
+    gold_doc_ids: list[str] | None = None,
+) -> dict[str, Any]:
     t0 = time.perf_counter()
     ans = engine.investigate(question)
     latency = time.perf_counter() - t0
@@ -261,7 +292,21 @@ def _run_investigation(engine: Any, question: str) -> dict[str, Any]:
         for p in (ans.evidence_preview or [])
         if isinstance(p, dict) and p.get("doc_id")
     ]
-    retrieved_docs = list(dict.fromkeys([*claim_docs, *cite_docs, *preview_docs]))
+    # Prefer initial-retrieval stage from retention when available (honest retrieval).
+    retrieved_docs: list[str] = []
+    retention = getattr(ans, "retention", None)
+    if isinstance(retention, dict):
+        for stage in retention.get("stages") or []:
+            if stage.get("stage") == "evidence_pool":
+                retrieved_docs = list(stage.get("doc_ids") or [])
+                break
+        if not retrieved_docs:
+            for stage in retention.get("stages") or []:
+                if stage.get("stage") == "initial_retrieval":
+                    retrieved_docs = list(stage.get("doc_ids") or [])
+                    break
+    if not retrieved_docs:
+        retrieved_docs = list(dict.fromkeys([*claim_docs, *cite_docs, *preview_docs]))
     synth_modes = []
     for event in ans.trace or []:
         stage = getattr(event, "stage", None)
@@ -270,6 +315,7 @@ def _run_investigation(engine: Any, question: str) -> dict[str, Any]:
             mode = extra.get("synthesis_mode")
             if mode:
                 synth_modes.append(str(mode))
+    gold_ids = gold_doc_ids or []
     return {
         "status": ans.status,
         "answer_text": ans.answer or "",
@@ -285,6 +331,8 @@ def _run_investigation(engine: Any, question: str) -> dict[str, Any]:
         "trace_stages": [e.stage for e in (ans.trace or [])],
         "retrieved_doc_ids": retrieved_docs,
         "synthesis_modes": synth_modes,
+        "retention": retention,
+        "retention_gold_coverage": _retention_coverage(retention, gold_ids),
     }
 
 
@@ -340,8 +388,19 @@ def main() -> None:
     parser.add_argument(
         "--configs",
         type=str,
-        default="dense_only,hybrid_rrf",
+        default="dense_only,hybrid_rrf,hybrid_rerank",
         help="Comma-separated config ids under eval/configs/",
+    )
+    parser.add_argument(
+        "--questions",
+        type=Path,
+        default=QUESTIONS_PATH,
+        help="Path to eval question JSON (default: eval/questions/eval_set.json)",
+    )
+    parser.add_argument(
+        "--record-retention",
+        action="store_true",
+        help="Enable eval-only per-stage evidence retention on investigation runs",
     )
     parser.add_argument("--split", choices=["all", "dev", "test"], default="test")
     parser.add_argument("--limit", type=int, default=0, help="Max questions (0=all)")
@@ -372,11 +431,16 @@ def main() -> None:
     CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-    if not QUESTIONS_PATH.exists():
-        print("ERROR: missing eval_set.json — run scripts/build_eval_questions.py", file=sys.stderr)
+    questions_path = Path(args.questions)
+    if not questions_path.exists():
+        print(
+            f"ERROR: missing {questions_path} — run scripts/build_eval_questions.py "
+            "or scripts/build_heldout_eval.py",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
-    payload = _load_json(QUESTIONS_PATH)
+    payload = _load_json(questions_path)
     questions = list(payload["questions"])
     if args.split != "all":
         questions = [q for q in questions if q.get("split") == args.split]
@@ -392,6 +456,9 @@ def main() -> None:
     from scripts._phase6_common import open_session
 
     settings = get_settings()
+    if args.record_retention:
+        # Eval-only provenance; never feeds gold into the engine.
+        object.__setattr__(settings, "eval_record_retention", True)
     reset_process_singletons()
     session = open_session(settings)
     title_to, path_to, ext_to = _build_doc_maps(session)
@@ -465,6 +532,7 @@ def main() -> None:
                 "question_id": qid,
                 "question_type": q.get("question_type"),
                 "split": q.get("split"),
+                "gold_answer": q.get("gold_answer"),
                 "gold_doc_ids": gold_docs,
                 "gold_doc_titles": q.get("gold_doc_titles"),
                 "gold_resolution": resolution,
@@ -538,7 +606,11 @@ def main() -> None:
                         llm.budget.reset()
                     # Align retriever default mode
                     engine.retriever.default_mode = mode  # type: ignore[assignment]
-                    result = _run_investigation(engine, str(q["question"]))
+                    result = _run_investigation(
+                        engine,
+                        str(q["question"]),
+                        gold_doc_ids=gold_docs,
+                    )
                     result["gold_doc_ids"] = gold_docs
                     row.update(result)
                     if resolution["eligible_retrieval"]:

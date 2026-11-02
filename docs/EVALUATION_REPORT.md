@@ -1,18 +1,58 @@
 # Evaluation Report
 
 **Project:** Applied AI Investigation Engine  
-**Updated:** 2026-11-02  
+**Updated:** 2026-11-02 (Phase A eval integrity)  
 **Corpus:** ACTIVE **55,081** / Qdrant **56,890** (`meets_data1_50k: true`). Ingestion complete; earlier pre-50k runs remain historical only.
 
-## 1. Dataset (active-gold rebuild @ full corpus)
+## 0. Phase A — evaluation integrity (2026-11-02)
+
+Full write-up: `docs/evidence/phase_a_eval_integrity.md`.
+
+### Scoring correction (predictions unchanged)
+
+M7 adaptive predictions re-scored with citation markers stripped:
+
+| | Legacy (cite tokens in F1) | Corrected | Delta |
+| --- | ---: | ---: | ---: |
+| token F1 (n=62) | 0.183 | **0.223** | +0.040 |
+| exact match | 0.000 | **0.145** | +0.145 |
+
+Artifact: `eval/results/m7_test_adapt_v3__full_investigation__rescored_cite_strip.json`.  
+**Do not treat the delta as a model improvement.**
+
+### Retrieval mode alignment (legacy test, k=10, n_scored=60)
+
+Production API default = **`hybrid_rerank`**. Historical answer eval used **`hybrid_rrf`**.
+
+| Mode | R@10 | MRR | all-gold@10 | latency (s) |
+| --- | ---: | ---: | ---: | ---: |
+| dense_only | 0.908 | 0.914 | 0.833 | 0.105 |
+| hybrid_rrf | **0.925** | 0.939 | **0.850** | 0.109 |
+| hybrid_rerank | 0.858 | **0.958** | 0.717 | 0.213 |
+
+Reranker helps MRR, hurts set coverage. Production default **unchanged** pending explicit decision.  
+Artifact: `eval/results/phase_a_retrieval_v1__comparison.json`.
+
+### Held-out redesign
+
+- Legacy `eval_set.json` (94 / test 62): **contaminated by M6–M7 tuning** — diagnostic only.
+- New `eval/questions/heldout_v1.json`: **85** questions (dev 26 / frozen test **59**); Hotpot native bridge/comparison labels; excludes legacy question texts; expanded unanswerable×3 + contradiction×2 (still small-n).
+
+### Evidence retention (diagnostic)
+
+On 8 multi-gold cases, mean gold-doc recall: retrieval/extract **0.81** → after claim filtering **0.56** → citations **0.31**.  
+Artifact: `docs/evidence/phase_a_retention.json`.
+
+## 1. Dataset (active-gold rebuild @ full corpus) — legacy
 
 | Field | Value |
 | --- | --- |
-| Artifact | `eval/questions/eval_set.json` |
+| Artifact | `eval/questions/eval_set.json` (**legacy / diagnostic**) |
 | Filter | `title_filter=active_neon` (55,081 ACTIVE Hotpot titles) |
 | **n_questions** | **94** (≥40) |
 | Types | factual 78, multi_doc 4, multi_hop 5, contradiction 3, unanswerable 3, multi_step 1 |
 | Splits | dev 32 / test 62 |
+| Label caveat | Many Hotpot items labeled `factual` via short answer length; native Hotpot `type` ignored (fixed in heldout_v1) |
 
 ## 2. Full-corpus retrieval (`full55k_retrieval_v1`)
 
@@ -61,8 +101,9 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Render Milestone 5 @ `283bfc3` | Smoke **7/7 PASS**, **0 LLM calls**/case: airport ~11s; three multi-hops ~9–11s; colony/unanswerable abstain ~3–4s; contradiction **`conflicting`** ~3s with 08:10 vs 14:00. | `docs/evidence/prod_smoke_suite.json` |
 | Answer eval Milestone 6 (`m6_test_*`) | Same test **62** / ACTIVE 55,081. Deterministic token F1 **0.080**; adaptive **0.153** (23 LLM / 39 det); abstention **1.0**; answered-only cite F1 **0.519**. Baseline F1 0.092, abstention 0.0. M5 baseline preserved. | `eval/results/m6_test_adapt_v1__*`, `docs/evidence/m6_report.md` |
 | Render Milestone 6 @ `a748661` | Smoke **10/10 PASS** (7 curated demos + multi-doc + budget isolation). LLM path live on multi-doc/budget cases; curated multi-hops stay **0 LLM** short spans. | `docs/evidence/prod_smoke_suite.json` |
-| Answer eval Milestone 7 (`m7_test_adapt_v3`) | Same test **62** / ACTIVE 55,081. Token F1 **0.183** (M6 0.153); cite F1 **0.365** (M6 0.309); abstention **1.0**; contradiction **1.0** (M6 0.50). | `eval/results/m7_test_adapt_v3__*`, `docs/evidence/m7_report.md` |
+| Answer eval Milestone 7 (`m7_test_adapt_v3`) | Same test **62** / ACTIVE 55,081. Token F1 **0.183** legacy / **0.223** cite-stripped re-score; cite F1 **0.365**; abstention **1.0**; contradiction **1.0**. Retrieval mode was `hybrid_rrf` (not prod `hybrid_rerank`). | `eval/results/m7_test_adapt_v3__*`, rescored cite-strip JSON, `docs/evidence/m7_report.md` |
 | Render Milestone 7 @ `611b0d4` | Smoke **10/10 PASS**. Unseen: JWT span, causal conflict, Genesee LLM multi-hop, Hush LLM birth-date, approver abstain. | `docs/evidence/prod_smoke_suite.json` |
+| Phase A eval integrity | Scoring + citation parser fixes; retrieval mode comparison; retention probe; heldout_v1. | `docs/evidence/phase_a_eval_integrity.md` |
 
 ## 5. Quality fixes reflected in metrics intent
 
@@ -76,9 +117,11 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 
 ## 6. Remaining gaps
 
-1. Exact match still ~0; token F1 improved but Hotpot alias/format gaps remain.
+1. Cite-stripped EM is 0.145 on legacy M7 predictions; Hotpot alias/format gaps remain.
 2. Free-tier quotas still constrain large adaptive runs.
-3. UI sample chips shipped in Milestone 8 (Investigate tab); they hit the live API and do not hardcode answers.
+3. Legacy test set is tuning-contaminated; final claims must use `heldout_v1` (not yet answer-evaluated).
+4. Claim filtering / citation prune lose gold docs after retrieval (Phase B reader candidate).
+5. Unanswerable/contradiction counts remain small even after heldout expansion.
 
 ## 7. Evidence index
 
@@ -94,3 +137,8 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | M6 audit + report | `docs/evidence/m6_eval_audit.md`, `docs/evidence/m6_report.md` |
 | M6 answer eval | `eval/results/m6_test_det_v1__*`, `eval/results/m6_test_adapt_v1__*` |
 | Reviewer demos | `docs/evidence/reviewer_demo_cases.md` |
+| Phase A integrity | `docs/evidence/phase_a_eval_integrity.md` |
+| Phase A retention | `docs/evidence/phase_a_retention.json` |
+| Phase A retrieval | `eval/results/phase_a_retrieval_v1__*` |
+| M7 cite-strip rescore | `eval/results/m7_test_adapt_v3__full_investigation__rescored_cite_strip.json` |
+| Held-out v1 | `eval/questions/heldout_v1.json` |

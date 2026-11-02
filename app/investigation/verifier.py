@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-import re
-
-from app.investigation.synthesizer import citation_labels_in_text
+from app.investigation.citations import (
+    extract_citation_labels,
+    find_malformed_citations,
+    strip_disallowed_citations,
+)
 from app.schemas.evidence import AnswerStatus, Citation, Claim
-
-_CITE_TOKEN = re.compile(r"\[(S\d+)\]")
 
 
 def allowed_labels(citations: list[Citation]) -> set[str]:
@@ -15,19 +15,8 @@ def allowed_labels(citations: list[Citation]) -> set[str]:
 
 
 def strip_fabricated_citations(answer: str, allowed: set[str]) -> tuple[str, list[str]]:
-    """Remove [Sn] tokens that are not in ``allowed``; return cleaned text + removed."""
-    removed: list[str] = []
-
-    def _repl(match: re.Match[str]) -> str:
-        label = match.group(1)
-        if label in allowed:
-            return match.group(0)
-        removed.append(label)
-        return ""
-
-    cleaned = _CITE_TOKEN.sub(_repl, answer)
-    cleaned = re.sub(r"[ \t]{2,}", " ", cleaned).strip()
-    return cleaned, removed
+    """Remove citation markers that are not in ``allowed``; return cleaned + removed."""
+    return strip_disallowed_citations(answer, allowed)
 
 
 def verify_answer_citations(
@@ -36,22 +25,29 @@ def verify_answer_citations(
     claims: list[Claim],
 ) -> tuple[str | None, list[Citation], list[str], bool]:
     """
-    Verify citation labels appear in the claim set.
+    Verify citation labels appear in the claim/citation set.
+
+    Detects grouped markers ([S1, S2]), Unicode/invisible variants, and
+    malformed citation-like tokens. Invented labels are stripped, not ignored.
 
     Returns (answer, citations, removed_labels, ok).
     """
     if not answer:
         return answer, citations, [], True
     allowed = allowed_labels(citations)
-    # Also allow labels from claims directly
     for claim in claims:
         if claim.source_label:
             allowed.add(claim.source_label)
-    used = citation_labels_in_text(answer)
+    used = extract_citation_labels(answer)
+    malformed = find_malformed_citations(answer)
     fabricated = sorted(used - allowed)
-    if not fabricated:
+    if not fabricated and not malformed:
         return answer, citations, [], True
     cleaned, removed = strip_fabricated_citations(answer, allowed)
+    # Include malformed tokens in the removed list for diagnostics.
+    for m in malformed:
+        if m not in removed:
+            removed.append(m)
     return cleaned, citations, removed, False
 
 

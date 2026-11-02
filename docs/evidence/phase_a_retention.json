@@ -1,0 +1,949 @@
+{
+  "created_at": "2026-11-02T11:52:23.955975+00:00",
+  "mode": "hybrid_rerank",
+  "corpus": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "note": "Diagnostic probe on legacy multi-gold test items. Gold labels used only after the engine returns.",
+  "stage_summary": {
+    "initial_retrieval": {
+      "n": 8,
+      "mean_gold_recall": 0.8125,
+      "mean_gold_loss": 0.1875
+    },
+    "evidence_pool": {
+      "n": 8,
+      "mean_gold_recall": 0.8125,
+      "mean_gold_loss": 0.1875
+    },
+    "claim_extraction": {
+      "n": 8,
+      "mean_gold_recall": 0.8125,
+      "mean_gold_loss": 0.1875
+    },
+    "claim_filtering": {
+      "n": 8,
+      "mean_gold_recall": 0.5625,
+      "mean_gold_loss": 0.4375
+    },
+    "sufficiency_assessment": {
+      "n": 8,
+      "mean_gold_recall": 0.5625,
+      "mean_gold_loss": 0.4375
+    },
+    "final_selected_evidence": {
+      "n": 8,
+      "mean_gold_recall": 0.5625,
+      "mean_gold_loss": 0.4375
+    },
+    "actual_citations": {
+      "n": 8,
+      "mean_gold_recall": 0.3125,
+      "mean_gold_loss": 0.6875
+    },
+    "bridge_retrieval": {
+      "n": 1,
+      "mean_gold_recall": 1.0,
+      "mean_gold_loss": 0.0
+    }
+  },
+  "cases": [
+    {
+      "question_id": "syn_multi_docs_services",
+      "question_type": "multi_doc",
+      "status": "insufficient",
+      "n_gold": 2,
+      "gold_titles": [
+        "incident_march",
+        "status_update"
+      ],
+      "stages": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 2,
+          "n_items": 2,
+          "titles": [
+            "Exec Summary",
+            "Incident Report — Payment Outage March"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 2,
+          "n_items": 2,
+          "titles": [
+            "Exec Summary",
+            "Incident Report — Payment Outage March"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 2,
+          "n_items": 2,
+          "titles": [
+            "Exec Summary",
+            "Incident Report — Payment Outage March"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 0,
+          "n_items": 0,
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 0,
+          "n_items": 0,
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 0,
+          "n_items": 0,
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 0,
+          "n_items": 0,
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        }
+      ]
+    },
+    {
+      "question_id": "hotpot_train_8529",
+      "question_type": "factual",
+      "status": "answered",
+      "n_gold": 2,
+      "gold_titles": [
+        "Curt Smith",
+        "Laura Stoica"
+      ],
+      "stages": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 2,
+          "n_items": 3,
+          "titles": [
+            "Laura Stoica",
+            "Curt Smith"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 2,
+          "n_items": 3,
+          "titles": [
+            "Laura Stoica",
+            "Curt Smith"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 2,
+          "n_items": 2,
+          "titles": [
+            "Laura Stoica",
+            "Curt Smith"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 2,
+          "n_items": 2,
+          "titles": [
+            "Laura Stoica",
+            "Curt Smith"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 2,
+          "n_items": 2,
+          "titles": [
+            "Curt Smith",
+            "Laura Stoica"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 2,
+          "n_items": 2,
+          "titles": [
+            "Curt Smith",
+            "Laura Stoica"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 2,
+          "n_items": 2,
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        }
+      ]
+    },
+    {
+      "question_id": "hotpot_train_7264",
+      "question_type": "factual",
+      "status": "answered",
+      "n_gold": 2,
+      "gold_titles": [
+        "Tim Rice",
+        "Aida (musical)"
+      ],
+      "stages": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 5,
+          "n_items": 5,
+          "titles": [
+            "Aida (musical)",
+            "Tim Rice",
+            "Jesus Christ Superstar",
+            "Elton John",
+            "Superstar (Jesus Christ Superstar song)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 5,
+          "n_items": 5,
+          "titles": [
+            "Aida (musical)",
+            "Tim Rice",
+            "Jesus Christ Superstar",
+            "Elton John",
+            "Superstar (Jesus Christ Superstar song)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 5,
+          "n_items": 15,
+          "titles": [
+            "Aida (musical)",
+            "Tim Rice",
+            "Jesus Christ Superstar",
+            "Elton John",
+            "Superstar (Jesus Christ Superstar song)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 2,
+          "n_items": 7,
+          "titles": [
+            "Tim Rice",
+            "Elton John"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 2,
+          "n_items": 7,
+          "titles": [
+            "Tim Rice",
+            "Elton John"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 2,
+          "n_items": 7,
+          "titles": [
+            "Tim Rice",
+            "Elton John"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        }
+      ]
+    },
+    {
+      "question_id": "hotpot_validation_2845",
+      "question_type": "multi_hop",
+      "status": "answered",
+      "n_gold": 2,
+      "gold_titles": [
+        "Ohio State University",
+        "California State University, Dominguez Hills"
+      ],
+      "stages": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 8,
+          "n_items": 11,
+          "titles": [
+            "Ohio State University",
+            "Ohio State University, Mansfield Campus",
+            "Ohio State University, Lima Campus",
+            "Central State University",
+            "Cleveland State University",
+            "California State University, Dominguez Hills",
+            "Willie J. Hagan",
+            "StubHub Center"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "bridge_retrieval",
+          "n_docs": 15,
+          "n_items": 20,
+          "titles": [
+            "Ohio State University",
+            "Ohio State University, Mansfield Campus",
+            "Ohio State University, Lima Campus",
+            "Central State University",
+            "Cleveland State University",
+            "California State University, Dominguez Hills",
+            "Willie J. Hagan",
+            "StubHub Center",
+            "Henry Elijah Alvord",
+            "1892 Auburn Tigers football team",
+            "Jyothy Institute of Technology",
+            "Edward Thomson Fairchild",
+            "University of Georgia College of Engineering",
+            "Work college",
+            "John Mason (American football)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 15,
+          "n_items": 20,
+          "titles": [
+            "Ohio State University",
+            "Ohio State University, Mansfield Campus",
+            "Ohio State University, Lima Campus",
+            "Central State University",
+            "Cleveland State University",
+            "California State University, Dominguez Hills",
+            "Willie J. Hagan",
+            "StubHub Center",
+            "Henry Elijah Alvord",
+            "1892 Auburn Tigers football team",
+            "Jyothy Institute of Technology",
+            "Edward Thomson Fairchild",
+            "University of Georgia College of Engineering",
+            "Work college",
+            "John Mason (American football)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 15,
+          "n_items": 52,
+          "titles": [
+            "Ohio State University",
+            "Ohio State University, Mansfield Campus",
+            "Ohio State University, Lima Campus",
+            "Central State University",
+            "Cleveland State University",
+            "California State University, Dominguez Hills",
+            "Willie J. Hagan",
+            "StubHub Center",
+            "Henry Elijah Alvord",
+            "1892 Auburn Tigers football team",
+            "Jyothy Institute of Technology",
+            "Edward Thomson Fairchild",
+            "University of Georgia College of Engineering",
+            "Work college",
+            "John Mason (American football)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 2,
+          "n_items": 8,
+          "titles": [
+            "Ohio State University",
+            "California State University, Dominguez Hills"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 2,
+          "n_items": 8,
+          "titles": [
+            "Ohio State University",
+            "California State University, Dominguez Hills"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 2,
+          "n_items": 8,
+          "titles": [
+            "Ohio State University",
+            "California State University, Dominguez Hills"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 2,
+          "n_items": 2,
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        }
+      ]
+    },
+    {
+      "question_id": "hotpot_validation_3397",
+      "question_type": "factual",
+      "status": "answered",
+      "n_gold": 2,
+      "gold_titles": [
+        "Camp Modin",
+        "Canaan, Maine"
+      ],
+      "stages": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 5,
+          "n_items": 7,
+          "titles": [
+            "Belgrade, Maine",
+            "Messalonskee Lake",
+            "Camp Modin",
+            "New England Music Camp",
+            "Mount Vernon, Maine"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 5,
+          "n_items": 7,
+          "titles": [
+            "Belgrade, Maine",
+            "Messalonskee Lake",
+            "Camp Modin",
+            "New England Music Camp",
+            "Mount Vernon, Maine"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 5,
+          "n_items": 16,
+          "titles": [
+            "Belgrade, Maine",
+            "Messalonskee Lake",
+            "Camp Modin",
+            "New England Music Camp",
+            "Mount Vernon, Maine"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 3,
+          "n_items": 6,
+          "titles": [
+            "Belgrade, Maine",
+            "Messalonskee Lake",
+            "Camp Modin"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 3,
+          "n_items": 6,
+          "titles": [
+            "Belgrade, Maine",
+            "Messalonskee Lake",
+            "Camp Modin"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 3,
+          "n_items": 6,
+          "titles": [
+            "Belgrade, Maine",
+            "Messalonskee Lake",
+            "Camp Modin"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        }
+      ]
+    },
+    {
+      "question_id": "hotpot_validation_0457",
+      "question_type": "factual",
+      "status": "partial",
+      "n_gold": 2,
+      "gold_titles": [
+        "Beauty and the Beast (franchise)",
+        "Beauty and the Beast (1991 film)"
+      ],
+      "stages": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 5,
+          "n_items": 5,
+          "titles": [
+            "Beauty and the Beast (franchise)",
+            "The Lion King (franchise)",
+            "Beauty and the Beast (1991 film)",
+            "Pocahontas (1995 film)",
+            "9 to 5 (musical)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 5,
+          "n_items": 5,
+          "titles": [
+            "Beauty and the Beast (franchise)",
+            "The Lion King (franchise)",
+            "Beauty and the Beast (1991 film)",
+            "Pocahontas (1995 film)",
+            "9 to 5 (musical)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 5,
+          "n_items": 19,
+          "titles": [
+            "Beauty and the Beast (franchise)",
+            "The Lion King (franchise)",
+            "Beauty and the Beast (1991 film)",
+            "Pocahontas (1995 film)",
+            "9 to 5 (musical)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 1,
+          "n_items": 2,
+          "titles": [
+            "9 to 5 (musical)"
+          ],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 1,
+          "n_items": 2,
+          "titles": [
+            "9 to 5 (musical)"
+          ],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 1,
+          "n_items": 2,
+          "titles": [
+            "9 to 5 (musical)"
+          ],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        }
+      ]
+    },
+    {
+      "question_id": "hotpot_train_5534",
+      "question_type": "factual",
+      "status": "insufficient",
+      "n_gold": 2,
+      "gold_titles": [
+        "The Ladder of Lies",
+        "Jean Acker"
+      ],
+      "stages": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 6,
+          "n_items": 7,
+          "titles": [
+            "Jean Acker",
+            "John Gilbert (actor)",
+            "Valentino's",
+            "Valentino SpA",
+            "Rudolph the Red-Nosed Reindeer (TV special)",
+            "The Ladder of Lies"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 6,
+          "n_items": 7,
+          "titles": [
+            "Jean Acker",
+            "John Gilbert (actor)",
+            "Valentino's",
+            "Valentino SpA",
+            "Rudolph the Red-Nosed Reindeer (TV special)",
+            "The Ladder of Lies"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 6,
+          "n_items": 21,
+          "titles": [
+            "Jean Acker",
+            "John Gilbert (actor)",
+            "Valentino's",
+            "Valentino SpA",
+            "Rudolph the Red-Nosed Reindeer (TV special)",
+            "The Ladder of Lies"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 3,
+          "n_items": 3,
+          "titles": [
+            "Jean Acker",
+            "John Gilbert (actor)",
+            "The Ladder of Lies"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 3,
+          "n_items": 3,
+          "titles": [
+            "John Gilbert (actor)",
+            "Jean Acker",
+            "The Ladder of Lies"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 3,
+          "n_items": 3,
+          "titles": [
+            "John Gilbert (actor)",
+            "Jean Acker",
+            "The Ladder of Lies"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 0,
+          "n_items": 0,
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        }
+      ]
+    },
+    {
+      "question_id": "hotpot_validation_2179",
+      "question_type": "multi_doc",
+      "status": "answered",
+      "n_gold": 2,
+      "gold_titles": [
+        "Leadgate, Cumbria",
+        "Alston, Cumbria"
+      ],
+      "stages": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 2,
+          "n_items": 2,
+          "titles": [
+            "Leadgate, Cumbria",
+            "Alston Moor"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 2,
+          "n_items": 2,
+          "titles": [
+            "Leadgate, Cumbria",
+            "Alston Moor"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 2,
+          "n_items": 5,
+          "titles": [
+            "Leadgate, Cumbria",
+            "Alston Moor"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 2,
+          "n_items": 5,
+          "titles": [
+            "Leadgate, Cumbria",
+            "Alston Moor"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 2,
+          "n_items": 5,
+          "titles": [
+            "Leadgate, Cumbria",
+            "Alston Moor"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 2,
+          "n_items": 5,
+          "titles": [
+            "Leadgate, Cumbria",
+            "Alston Moor"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 2,
+          "n_items": 3,
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        }
+      ]
+    }
+  ]
+}

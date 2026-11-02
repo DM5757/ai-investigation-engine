@@ -1,0 +1,819 @@
+{
+  "split": "dev",
+  "n": 26,
+  "questions": [
+    {
+      "id": "heldout_unans_approver_name",
+      "question": "Who approved the emergency rollback of auth-gateway on 2024-03-12?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_titles": [],
+      "gold_external_keys": [],
+      "gold_doc_paths": [],
+      "question_type": "unanswerable",
+      "expected_status": "insufficient",
+      "requires_all_gold_docs": false,
+      "split_hint": "heldout_synthetic",
+      "provenance": {
+        "source": "heldout_synthetic",
+        "grounding": "redacted_or_absent_approver"
+      },
+      "index": 1,
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5ab1f3d3554299449642c825",
+      "question": "What city does the movie for which Divergent: Original Motion Picture Soundtrack is a soundtrack for take place?",
+      "gold_answer": "Chicago",
+      "gold_doc_titles": [
+        "Divergent: Original Motion Picture Soundtrack",
+        "Divergent (film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Divergent: Original Motion Picture Soundtrack",
+        "hotpotqa:Divergent (film)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ab1f3d3554299449642c825",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 42,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a7b3fc155429931da12ca3a",
+      "question": "Wexner Graduate Fellowships are given to students who show an ability of an individual to \"lead\" or guide who?",
+      "gold_answer": "other individuals, teams, or entire organizations",
+      "gold_doc_titles": [
+        "Wexner Graduate Fellowship",
+        "Leadership"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Wexner Graduate Fellowship",
+        "hotpotqa:Leadership"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a7b3fc155429931da12ca3a",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 61,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5add2dae5542992c1e3a2558",
+      "question": "Which building was completed first the W. R. Grace Building or 10 Hudson Yards?",
+      "gold_answer": "W. R. Grace Building",
+      "gold_doc_titles": [
+        "W. R. Grace Building",
+        "10 Hudson Yards"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:W. R. Grace Building",
+        "hotpotqa:10 Hudson Yards"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5add2dae5542992c1e3a2558",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 49,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5adf0d955542993a75d263e2",
+      "question": "Who starred in the film that inspired the Dukes of Hazzard series",
+      "gold_answer": "James Mitchum",
+      "gold_doc_titles": [
+        "The Dukes of Hazzard",
+        "Moonrunners"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Dukes of Hazzard",
+        "hotpotqa:Moonrunners"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5adf0d955542993a75d263e2",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 19,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a77afcd5542997042120adf",
+      "question": "Who is older Carrie Akre or Shifty Shellshock?",
+      "gold_answer": "Carrie Akre",
+      "gold_doc_titles": [
+        "Carrie Akre",
+        "Shifty Shellshock"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Carrie Akre",
+        "hotpotqa:Shifty Shellshock"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a77afcd5542997042120adf",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 7,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a89e3995542992e4fca844d",
+      "question": "H-63 is a highway that runs near the county seat of what Michigan county?",
+      "gold_answer": "Chippewa County",
+      "gold_doc_titles": [
+        "H-63 (Michigan county highway)",
+        "Sault Ste. Marie, Michigan"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:H-63 (Michigan county highway)",
+        "hotpotqa:Sault Ste. Marie, Michigan"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a89e3995542992e4fca844d",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 76,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a85cead5542997175ce2030",
+      "question": "This boxer was defeated in the first round by a Ghanaian boxer who lost in the second round against what Irish boxer?",
+      "gold_answer": "Michael Conlan",
+      "gold_doc_titles": [
+        "Oliver Lavigilante",
+        "Duke Micah"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Oliver Lavigilante",
+        "hotpotqa:Duke Micah"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a85cead5542997175ce2030",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 35,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a8325b35542990548d0b18f",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "gold_answer": "Kathryn Jean Martin",
+      "gold_doc_titles": [
+        "Kathy Sullivan (Australian politician)",
+        "Bronwyn Bishop"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Kathy Sullivan (Australian politician)",
+        "hotpotqa:Bronwyn Bishop"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a8325b35542990548d0b18f",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 65,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5abfb13a5542990832d3a1a8",
+      "question": "who directed 1987 romantic fantasy film which City of Angels has a  loose remake for",
+      "gold_answer": "Wim Wenders",
+      "gold_doc_titles": [
+        "City of Angels (film)",
+        "Wings of Desire"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:City of Angels (film)",
+        "hotpotqa:Wings of Desire"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5abfb13a5542990832d3a1a8",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 38,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5adccdab5542994d58a2f6db",
+      "question": "What year was the album featuring the trio made up of Posdnuos, Dave, and Maseo, alongside Lebanese-Syrian rapper Eslam Jawaad release?",
+      "gold_answer": "2009",
+      "gold_doc_titles": [
+        "The Mammoth Tusk",
+        "De La Soul"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Mammoth Tusk",
+        "hotpotqa:De La Soul"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5adccdab5542994d58a2f6db",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 75,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5ab97cd0554299753720f81a",
+      "question": "Elizabeth Austin wrote for a fitness magazine founded by who?",
+      "gold_answer": "Christine MacIntyre",
+      "gold_doc_titles": [
+        "Elizabeth Austin (writer)",
+        "Shape (magazine)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Elizabeth Austin (writer)",
+        "hotpotqa:Shape (magazine)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ab97cd0554299753720f81a",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 45,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a83282a5542990548d0b1a4",
+      "question": "Stewart Nozette is serving time at what prison for male inmates in Indiana?",
+      "gold_answer": "Federal Correctional Institution, Terre Haute",
+      "gold_doc_titles": [
+        "Stewart Nozette",
+        "Federal Correctional Institution, Terre Haute"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Stewart Nozette",
+        "hotpotqa:Federal Correctional Institution, Terre Haute"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a83282a5542990548d0b1a4",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 21,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_contra_deploy_alt",
+      "question": "According to the change log and the incident report, when was auth-gateway deployed on 2024-03-12? Identify any disagreement.",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_titles": [
+        "change_log",
+        "incident_march"
+      ],
+      "gold_doc_paths": [
+        "data/synthetic/change_log.html",
+        "data/synthetic/incident_march.md"
+      ],
+      "gold_external_keys": [],
+      "question_type": "contradiction",
+      "expected_status": "conflicting",
+      "requires_all_gold_docs": false,
+      "split_hint": "heldout_synthetic",
+      "provenance": {
+        "source": "heldout_synthetic",
+        "grounding": "planted_08:10_vs_14:00",
+        "truth_seed": 42
+      },
+      "index": 3,
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a85b71c5542994c784ddb5d",
+      "question": "The DC Comic movie that features Ike Barinholtz is what number installment in the DC Extended Universe?",
+      "gold_answer": "third",
+      "gold_doc_titles": [
+        "Ike Barinholtz",
+        "Suicide Squad (film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Ike Barinholtz",
+        "hotpotqa:Suicide Squad (film)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a85b71c5542994c784ddb5d",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 71,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5ae1bf46554299234fd042e6",
+      "question": "Are both Jack and Coke and Clover Club Cocktail cocktails?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "Jack and Coke",
+        "Clover Club Cocktail"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Jack and Coke",
+        "hotpotqa:Clover Club Cocktail"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ae1bf46554299234fd042e6",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 70,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a823fc055429940e5e1a810",
+      "question": "The Norse-Gaels language emerged from the intermarriage of the Norsemen and what other ethnic group?",
+      "gold_answer": "Gaelic",
+      "gold_doc_titles": [
+        "Norse–Gaels",
+        "Norsemen"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Norse–Gaels",
+        "hotpotqa:Norsemen"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a823fc055429940e5e1a810",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 36,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a8de02b554299068b959e13",
+      "question": "What team did Robbie Keane play for after Inter Milan?",
+      "gold_answer": "Republic of Ireland national team",
+      "gold_doc_titles": [
+        "2000–01 Inter Milan season",
+        "Robbie Keane"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:2000–01 Inter Milan season",
+        "hotpotqa:Robbie Keane"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a8de02b554299068b959e13",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 58,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5ab9b1fd5542996be202058e",
+      "question": "What is the most populous city in the county where Caleb Stegall served as District attorney?",
+      "gold_answer": "Valley Falls",
+      "gold_doc_titles": [
+        "Caleb Stegall",
+        "Jefferson County, Kansas"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Caleb Stegall",
+        "hotpotqa:Jefferson County, Kansas"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ab9b1fd5542996be202058e",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 46,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a74a8fa55429929fddd8497",
+      "question": "After his curacy at the village that is a suburb of Scunthorpe, who was Industrial Chaplain to the Bishop of Lincoln?",
+      "gold_answer": "Dudman",
+      "gold_doc_titles": [
+        "Bill Dudman",
+        "Frodingham, Lincolnshire"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Bill Dudman",
+        "hotpotqa:Frodingham, Lincolnshire"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a74a8fa55429929fddd8497",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 72,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a77a7695542997042120ac4",
+      "question": "Which documentary is the oldest, The Private Life of Plants or Marx Reloaded?",
+      "gold_answer": "The Private Life of Plants",
+      "gold_doc_titles": [
+        "The Private Life of Plants",
+        "Marx Reloaded"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Private Life of Plants",
+        "hotpotqa:Marx Reloaded"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a77a7695542997042120ac4",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 39,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a82bc7455429940e5e1a926",
+      "question": "In what movie did the male star of a movie about a widowed 37-year-old woman also star in in the year 1993?",
+      "gold_answer": "\"Red Rock West\"",
+      "gold_doc_titles": [
+        "Nicolas Cage",
+        "Moonstruck"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Nicolas Cage",
+        "hotpotqa:Moonstruck"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a82bc7455429940e5e1a926",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 29,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a851eb25542997175ce1f8e",
+      "question": "Are The Graveyard Book and The Lizzie McGuire Movie both aimed at young adults?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "The Graveyard Book",
+        "The Lizzie McGuire Movie"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Graveyard Book",
+        "hotpotqa:The Lizzie McGuire Movie"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a851eb25542997175ce1f8e",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 17,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a7f253a5542993067513661",
+      "question": "During the promotion of her sixth album, \"Talk That Talk,\" Which singer song writer recorded the song, \"Half of Me\"?",
+      "gold_answer": "Rihanna",
+      "gold_doc_titles": [
+        "Half of Me (Rihanna song)",
+        "Unapologetic"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Half of Me (Rihanna song)",
+        "hotpotqa:Unapologetic"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a7f253a5542993067513661",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 18,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5abd8eda5542996e802b47cd",
+      "question": "Desperado was on the album recorded at what London studio?",
+      "gold_answer": "Island Studios",
+      "gold_doc_titles": [
+        "Desperado (song)",
+        "Desperado (Eagles album)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Desperado (song)",
+        "hotpotqa:Desperado (Eagles album)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5abd8eda5542996e802b47cd",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 62,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a8b17545542992d82986fda",
+      "question": "In what erotic romatic drama, starring Dakota Johnson and directed by James Foley, did Robinne Lee act?",
+      "gold_answer": "Fifty Shades Darker",
+      "gold_doc_titles": [
+        "Robinne Lee",
+        "Fifty Shades Darker (film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Robinne Lee",
+        "hotpotqa:Fifty Shades Darker (film)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a8b17545542992d82986fda",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 64,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    }
+  ]
+}

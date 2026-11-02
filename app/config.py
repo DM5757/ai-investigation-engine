@@ -102,6 +102,14 @@ class Settings(BaseSettings):
     )
     retrieval_top_k: int = Field(default=8, alias="RETRIEVAL_TOP_K")
     injection_downweight: float = Field(default=0.05, alias="INJECTION_DOWNWEIGHT")
+    eval_record_retention: bool = Field(
+        default=False,
+        alias="EVAL_RECORD_RETENTION",
+        description=(
+            "When true, record per-stage document IDs/titles for evaluation "
+            "provenance (no gold labels; no passage text in ordinary logs)."
+        ),
+    )
     git_commit: str | None = Field(default=None, alias="GIT_COMMIT")
 
     admin_token: SecretStr | None = Field(default=None, alias="ADMIN_TOKEN")

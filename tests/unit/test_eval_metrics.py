@@ -25,6 +25,12 @@ def test_token_f1_partial() -> None:
     assert 0.0 < score < 1.0
 
 
+def test_token_f1_strips_citation_markers_by_default() -> None:
+    assert token_f1("Paris [S1, S2]", "Paris") == 1.0
+    assert exact_match("Paris [S1]", "Paris") == 1.0
+    assert normalize_answer("Paris [S1]") == "paris"
+
+
 def test_retrieval_metrics() -> None:
     retrieved = ["a", "b", "c", "d"]
     gold = ["c", "z"]

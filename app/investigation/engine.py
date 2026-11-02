@@ -25,6 +25,7 @@ from app.investigation.question_focus import (
     extract_question_focus,
     filter_claims_for_question,
 )
+from app.investigation.retention import RetentionTracker
 from app.investigation.sufficiency import assess_sufficiency
 from app.investigation.synthesizer import synthesize_answer
 from app.investigation.tools import TOOL_SCHEMAS, ToolExecutor
@@ -67,6 +68,8 @@ class InvestigationEngine:
         trace = TraceRecorder()
         usage_total = UsageStats()
         t_request = time.perf_counter()
+        retention = RetentionTracker(enabled=bool(self.settings.eval_record_retention))
+        self._retention = retention
         try:
             q = guard_question(question, self.settings.max_question_chars)
         except ValueError as exc:
@@ -74,6 +77,7 @@ class InvestigationEngine:
                 status="insufficient",
                 abstention_reason=str(exc),
                 trace=trace.events,
+                retention=retention.as_dict(),
             )
 
         # Independent per-request budget (does not leak across questions/users).
@@ -268,6 +272,9 @@ class InvestigationEngine:
                 },
             )
             response.trace = list(trace.events)
+        retention = getattr(self, "_retention", None)
+        if retention is not None and response.retention is None:
+            response.retention = retention.as_dict()
         return response
 
     @staticmethod
@@ -409,6 +416,13 @@ class InvestigationEngine:
                 "seed_queries": seed_queries,
                 "timings": dict(tools.last_timings),
             }
+        retention = getattr(self, "_retention", None)
+        if isinstance(retention, RetentionTracker):
+            retention.record_hits(
+                "initial_retrieval",
+                list(tools.state.retrieved),
+                note=f"seed_queries={len(seed_queries)}",
+            )
 
         # Multi-hop bridge: search entities mentioned in evidence but not yet retrieved.
         bridge_results: list[dict[str, Any]] = []
@@ -439,6 +453,19 @@ class InvestigationEngine:
                     f"bridges={bridges}; "
                     f"results={sum(len(p.get('results', [])) for p in bridge_results)}"
                 )
+            if isinstance(retention, RetentionTracker):
+                # Docs added by bridge only (approx: full pool after bridge).
+                retention.record_hits(
+                    "bridge_retrieval",
+                    list(tools.state.retrieved),
+                    note=f"bridges={bridges}",
+                )
+        if isinstance(retention, RetentionTracker):
+            retention.record_hits(
+                "evidence_pool",
+                list(tools.state.retrieved),
+                note="post_seed_bridge_pool",
+            )
 
         # After seed (+bridge) retrieval, skip the LLM tool loop by default.
         # Claim/sufficiency gates still abstain or conflict-detect honestly;
@@ -612,13 +639,26 @@ class InvestigationEngine:
         degraded: bool = False,
     ) -> AnswerResponse:
         n_ret = len(tools.state.retrieved)
+        retention = getattr(self, "_retention", None)
         with trace.stage("extract", inputs_summary=f"n_retrieved={n_ret}") as bag:
             raw_claims = self._collect_claims(question, tools)
+            if isinstance(retention, RetentionTracker):
+                retention.record_claims(
+                    "claim_extraction",
+                    [c for c in raw_claims if c.verified],
+                    note="verified_raw",
+                )
             supporting, _weak, focus = filter_claims_for_question(
                 [c for c in raw_claims if c.verified],
                 question,
                 min_support=self.settings.claim_min_support,
             )
+            if isinstance(retention, RetentionTracker):
+                retention.record_claims(
+                    "claim_filtering",
+                    supporting,
+                    note=f"min_support={self.settings.claim_min_support}",
+                )
             claims = assign_source_labels(_prioritize_claims(supporting, question))
             bag["outputs_summary"] = (
                 f"verified={len(claims)}; raw={sum(1 for c in raw_claims if c.verified)}; "
@@ -649,6 +689,17 @@ class InvestigationEngine:
                 min_support=self.settings.claim_min_support,
             )
             bag["outputs_summary"] = f"status={status}"
+            if isinstance(retention, RetentionTracker):
+                retention.record_claims(
+                    "sufficiency_assessment",
+                    claims,
+                    note=f"status={status}",
+                )
+                retention.record_claims(
+                    "final_selected_evidence",
+                    claims,
+                    note="claims_entering_synthesis",
+                )
 
         with trace.stage("synthesize") as bag:
             answer, citations, syn_usage, used_llm_synth = synthesize_answer(
@@ -691,6 +742,12 @@ class InvestigationEngine:
                 )
                 status = downgrade_status(status, citation_failed=not ok or bool(removed))
             bag["outputs_summary"] = f"ok={ok}; removed={removed}; cites={len(citations)}"
+            if isinstance(retention, RetentionTracker):
+                retention.record_citations(
+                    "actual_citations",
+                    citations,
+                    note=f"ok={ok}; removed={removed}",
+                )
 
         return AnswerResponse(
             status=status,
@@ -706,6 +763,7 @@ class InvestigationEngine:
             usage=usage_total,
             degraded=degraded,
             trace=trace.events,
+            retention=retention.as_dict() if isinstance(retention, RetentionTracker) else None,
         )
 
 

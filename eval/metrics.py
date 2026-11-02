@@ -5,29 +5,42 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable, Sequence
 
+from app.investigation.citations import strip_citation_markers
+
 _WS_RE = re.compile(r"\s+")
 _PUNCT_RE = re.compile(r"[^\w\s]", re.UNICODE)
 
 
-def normalize_answer(text: str) -> str:
-    """Lowercase, strip punctuation, collapse whitespace (Hotpot-style)."""
-    t = text.lower().strip()
+def normalize_answer(text: str, *, strip_citations: bool = True) -> str:
+    """Lowercase, strip punctuation, collapse whitespace (Hotpot-style).
+
+    By default citation markers ([S1], [S1, S2], …) are removed before
+    normalization so EM/token F1 score answer content, not citation syntax.
+    """
+    t = strip_citation_markers(text) if strip_citations else text
+    t = t.lower().strip()
     t = _PUNCT_RE.sub(" ", t)
     t = _WS_RE.sub(" ", t).strip()
     return t
 
 
-def tokenize(text: str) -> list[str]:
-    return [tok for tok in normalize_answer(text).split(" ") if tok]
+def tokenize(text: str, *, strip_citations: bool = True) -> list[str]:
+    norm = normalize_answer(text, strip_citations=strip_citations)
+    return [tok for tok in norm.split(" ") if tok]
 
 
-def exact_match(prediction: str, gold: str) -> float:
-    return 1.0 if normalize_answer(prediction) == normalize_answer(gold) else 0.0
+def exact_match(prediction: str, gold: str, *, strip_citations: bool = True) -> float:
+    return (
+        1.0
+        if normalize_answer(prediction, strip_citations=strip_citations)
+        == normalize_answer(gold, strip_citations=strip_citations)
+        else 0.0
+    )
 
 
-def token_f1(prediction: str, gold: str) -> float:
-    pred_toks = tokenize(prediction)
-    gold_toks = tokenize(gold)
+def token_f1(prediction: str, gold: str, *, strip_citations: bool = True) -> float:
+    pred_toks = tokenize(prediction, strip_citations=strip_citations)
+    gold_toks = tokenize(gold, strip_citations=strip_citations)
     if not pred_toks and not gold_toks:
         return 1.0
     if not pred_toks or not gold_toks:
@@ -109,3 +122,22 @@ def citation_accuracy(
 def mean(values: Iterable[float]) -> float:
     vals = list(values)
     return sum(vals) / len(vals) if vals else 0.0
+
+
+def gold_coverage(
+    stage_doc_ids: Sequence[str],
+    gold_doc_ids: Sequence[str],
+) -> dict[str, float | int]:
+    """Eval-only: how many gold docs remain at a pipeline stage."""
+    gold = list(dict.fromkeys(g for g in gold_doc_ids if g))
+    present = list(dict.fromkeys(d for d in stage_doc_ids if d))
+    if not gold:
+        return {"n_gold": 0, "n_present": 0, "recall": 0.0, "all_present": 0.0}
+    gold_set = set(gold)
+    n_present = sum(1 for d in present if d in gold_set)
+    return {
+        "n_gold": len(gold),
+        "n_present": n_present,
+        "recall": n_present / len(gold),
+        "all_present": 1.0 if n_present == len(gold) else 0.0,
+    }

@@ -1,0 +1,7 @@
+{
+  "id": "hybrid_rerank",
+  "description": "Hybrid dense+BM25 with feature reranker (production API default)",
+  "retrieval_mode": "hybrid_rerank",
+  "pipeline": "retrieval_only",
+  "top_k": 10
+}

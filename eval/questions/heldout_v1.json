@@ -1,0 +1,2708 @@
+{
+  "created_at": "2026-11-02T11:49:58.146595+00:00",
+  "seed": 20261102,
+  "n_questions": 85,
+  "n_dev": 26,
+  "n_test": 59,
+  "type_counts": {
+    "unanswerable": 3,
+    "contradiction": 2,
+    "multi_hop": 64,
+    "multi_doc": 16
+  },
+  "title_filter": "active_neon",
+  "active_meta": {
+    "active_documents": 55081,
+    "hotpot_titles": 55081,
+    "neon_counts": {
+      "active_documents": 55081,
+      "non_deleted_documents": 55081,
+      "chunk_rows": 56900,
+      "by_status": {
+        "ACTIVE": 55081,
+        "DELETED": 5
+      }
+    }
+  },
+  "excludes_legacy_eval_set": true,
+  "legacy_eval_set": "C:/Users/datom/IdeaProjects/ai-investigation-engine/eval/questions/eval_set.json",
+  "legacy_questions_excluded": 94,
+  "methodology": {
+    "hotpot_labels": "native Hotpot type field (bridge→multi_hop, comparison→multi_doc)",
+    "legacy_set_status": "development/diagnostic only; do not treat as clean held-out",
+    "tuning_rule": "Do not tune against frozen heldout_v1 test answers",
+    "unanswerable_contradiction_note": "Expanded synthetic coverage; still small-n — do not claim high confidence from two legacy cases alone."
+  },
+  "questions": [
+    {
+      "id": "heldout_unans_disk_pressure",
+      "question": "What was the disk utilization percentage on FraudScorer during the March outage?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_titles": [],
+      "gold_external_keys": [],
+      "gold_doc_paths": [],
+      "question_type": "unanswerable",
+      "expected_status": "insufficient",
+      "requires_all_gold_docs": false,
+      "split_hint": "heldout_synthetic",
+      "provenance": {
+        "source": "heldout_synthetic",
+        "grounding": "attribute_absent"
+      },
+      "index": 0,
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_unans_approver_name",
+      "question": "Who approved the emergency rollback of auth-gateway on 2024-03-12?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_titles": [],
+      "gold_external_keys": [],
+      "gold_doc_paths": [],
+      "question_type": "unanswerable",
+      "expected_status": "insufficient",
+      "requires_all_gold_docs": false,
+      "split_hint": "heldout_synthetic",
+      "provenance": {
+        "source": "heldout_synthetic",
+        "grounding": "redacted_or_absent_approver"
+      },
+      "index": 1,
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_unans_customer_count",
+      "question": "How many paying customers were affected by the March payment outage?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_titles": [],
+      "gold_external_keys": [],
+      "gold_doc_paths": [],
+      "question_type": "unanswerable",
+      "expected_status": "insufficient",
+      "requires_all_gold_docs": false,
+      "split_hint": "heldout_synthetic",
+      "provenance": {
+        "source": "heldout_synthetic",
+        "grounding": "metric_absent"
+      },
+      "index": 2,
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_contra_deploy_alt",
+      "question": "According to the change log and the incident report, when was auth-gateway deployed on 2024-03-12? Identify any disagreement.",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_titles": [
+        "change_log",
+        "incident_march"
+      ],
+      "gold_doc_paths": [
+        "data/synthetic/change_log.html",
+        "data/synthetic/incident_march.md"
+      ],
+      "gold_external_keys": [],
+      "question_type": "contradiction",
+      "expected_status": "conflicting",
+      "requires_all_gold_docs": false,
+      "split_hint": "heldout_synthetic",
+      "provenance": {
+        "source": "heldout_synthetic",
+        "grounding": "planted_08:10_vs_14:00",
+        "truth_seed": 42
+      },
+      "index": 3,
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_contra_root_cause",
+      "question": "Do the March incident documents agree on the root cause of the payment disruption? Note contradictions if present.",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_titles": [
+        "incident_march",
+        "postmortem_draft",
+        "status_update"
+      ],
+      "gold_doc_paths": [
+        "data/synthetic/incident_march.md",
+        "data/synthetic/postmortem_draft.docx",
+        "data/synthetic/status_update.txt"
+      ],
+      "gold_external_keys": [],
+      "question_type": "contradiction",
+      "expected_status": "conflicting",
+      "requires_all_gold_docs": false,
+      "split_hint": "heldout_synthetic",
+      "provenance": {
+        "source": "heldout_synthetic",
+        "grounding": "causal_conflict_probe"
+      },
+      "index": 4,
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5abbcfaf5542993f40c73ba9",
+      "question": "Nicole Gordon won a silver medal with Sara Petersen int he women's doubles at a competition held in what city?",
+      "gold_answer": "Manchester",
+      "gold_doc_titles": [
+        "Nicole Gordon (badminton)",
+        "2002 Commonwealth Games"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Nicole Gordon (badminton)",
+        "hotpotqa:2002 Commonwealth Games"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5abbcfaf5542993f40c73ba9",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 5,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a7da0725542995ed0d1664c",
+      "question": "When did the original location of The History of Ranching mural eventually close?",
+      "gold_answer": "2001",
+      "gold_doc_titles": [
+        "The History of Ranching (Winn)",
+        "Pearl Brewing Company"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The History of Ranching (Winn)",
+        "hotpotqa:Pearl Brewing Company"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a7da0725542995ed0d1664c",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 6,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a77afcd5542997042120adf",
+      "question": "Who is older Carrie Akre or Shifty Shellshock?",
+      "gold_answer": "Carrie Akre",
+      "gold_doc_titles": [
+        "Carrie Akre",
+        "Shifty Shellshock"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Carrie Akre",
+        "hotpotqa:Shifty Shellshock"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a77afcd5542997042120adf",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 7,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5abe84a95542991f6610619b",
+      "question": "Which contributor to the CBS News program \"60 Minutes\" also contributed to The Great American Dream Machine?",
+      "gold_answer": "Andy Rooney",
+      "gold_doc_titles": [
+        "The Great American Dream Machine",
+        "Andy Rooney"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Great American Dream Machine",
+        "hotpotqa:Andy Rooney"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5abe84a95542991f6610619b",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 8,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a80ee5055429938b614225b",
+      "question": "Which film was produced first, Frozen or The Great Locomotive Chase?",
+      "gold_answer": "The Great Locomotive Chase",
+      "gold_doc_titles": [
+        "The Great Locomotive Chase",
+        "Frozen (2013 film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Great Locomotive Chase",
+        "hotpotqa:Frozen (2013 film)"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a80ee5055429938b614225b",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 9,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ab9c3e1554299753720f852",
+      "question": "The pavilion that the Biergarten Restaurant is a part of is in between which other pavilions at Epcot's World Showcase?",
+      "gold_answer": "Chinese and Italian pavilions",
+      "gold_doc_titles": [
+        "Biergarten Restaurant",
+        "Germany Pavilion at Epcot"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Biergarten Restaurant",
+        "hotpotqa:Germany Pavilion at Epcot"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ab9c3e1554299753720f852",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 10,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a8841a35542994846c1ce69",
+      "question": "What format does a 1170 kHz AM station that Jim Angel presented the news for have?",
+      "gold_answer": "an oldies format",
+      "gold_doc_titles": [
+        "Jim Angel",
+        "2CH"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Jim Angel",
+        "hotpotqa:2CH"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a8841a35542994846c1ce69",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 11,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a85b0c85542994c784ddb40",
+      "question": "What institution does 2017 Texas Tech Red Raiders baseball team and Dan Law Field at Rip Griffin Park have in common?",
+      "gold_answer": "Texas Tech University",
+      "gold_doc_titles": [
+        "2017 Texas Tech Red Raiders baseball team",
+        "Dan Law Field at Rip Griffin Park"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:2017 Texas Tech Red Raiders baseball team",
+        "hotpotqa:Dan Law Field at Rip Griffin Park"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a85b0c85542994c784ddb40",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 12,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ac4291b5542995c82c4acd9",
+      "question": "What film is Liev Schreiber known for acting in just before the film about the troubled production of the 1941 film \"Citizen Kane\" came out?",
+      "gold_answer": "\"Phantoms\"",
+      "gold_doc_titles": [
+        "RKO 281",
+        "Liev Schreiber"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:RKO 281",
+        "hotpotqa:Liev Schreiber"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ac4291b5542995c82c4acd9",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 13,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ab32024554299233954ff16",
+      "question": "Mike is one of the main characters in which movie, Monsters, Inc. or Shipwrecked?",
+      "gold_answer": "Monsters, Inc.",
+      "gold_doc_titles": [
+        "Monsters, Inc.",
+        "Shipwrecked (1990 film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Monsters, Inc.",
+        "hotpotqa:Shipwrecked (1990 film)"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ab32024554299233954ff16",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 14,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a72abb95542992359bc3162",
+      "question": "Which film was not a 3D computer-animation Cars 3 or Smith!?",
+      "gold_answer": "Smith!",
+      "gold_doc_titles": [
+        "Smith!",
+        "Cars 3"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Smith!",
+        "hotpotqa:Cars 3"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a72abb95542992359bc3162",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 15,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ae01b8855429925eb1afc14",
+      "question": "When was the German actress born who is best known for her role as the Borg Seven of Nine and who has role in  \"Body of Proof\" as Dr. Kate Murphy?",
+      "gold_answer": "February 22, 1968",
+      "gold_doc_titles": [
+        "Body of Proof (season 2)",
+        "Jeri Ryan"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Body of Proof (season 2)",
+        "hotpotqa:Jeri Ryan"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ae01b8855429925eb1afc14",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 16,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a851eb25542997175ce1f8e",
+      "question": "Are The Graveyard Book and The Lizzie McGuire Movie both aimed at young adults?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "The Graveyard Book",
+        "The Lizzie McGuire Movie"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Graveyard Book",
+        "hotpotqa:The Lizzie McGuire Movie"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a851eb25542997175ce1f8e",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 17,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a7f253a5542993067513661",
+      "question": "During the promotion of her sixth album, \"Talk That Talk,\" Which singer song writer recorded the song, \"Half of Me\"?",
+      "gold_answer": "Rihanna",
+      "gold_doc_titles": [
+        "Half of Me (Rihanna song)",
+        "Unapologetic"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Half of Me (Rihanna song)",
+        "hotpotqa:Unapologetic"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a7f253a5542993067513661",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 18,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5adf0d955542993a75d263e2",
+      "question": "Who starred in the film that inspired the Dukes of Hazzard series",
+      "gold_answer": "James Mitchum",
+      "gold_doc_titles": [
+        "The Dukes of Hazzard",
+        "Moonrunners"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Dukes of Hazzard",
+        "hotpotqa:Moonrunners"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5adf0d955542993a75d263e2",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 19,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5ab31dfe554299233954ff11",
+      "question": "Are the Stephens Cur and Billy scent hounds from the same region?",
+      "gold_answer": "no",
+      "gold_doc_titles": [
+        "Stephens Cur",
+        "Billy (dog)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Stephens Cur",
+        "hotpotqa:Billy (dog)"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ab31dfe554299233954ff11",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 20,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a83282a5542990548d0b1a4",
+      "question": "Stewart Nozette is serving time at what prison for male inmates in Indiana?",
+      "gold_answer": "Federal Correctional Institution, Terre Haute",
+      "gold_doc_titles": [
+        "Stewart Nozette",
+        "Federal Correctional Institution, Terre Haute"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Stewart Nozette",
+        "hotpotqa:Federal Correctional Institution, Terre Haute"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a83282a5542990548d0b1a4",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 21,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a89df265542992e4fca840d",
+      "question": "Which was developed first, Dick Smith Super-80 Computer or Pecom 32?",
+      "gold_answer": "Dick Smith Super-80",
+      "gold_doc_titles": [
+        "Dick Smith Super-80 Computer",
+        "Pecom 32"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Dick Smith Super-80 Computer",
+        "hotpotqa:Pecom 32"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a89df265542992e4fca840d",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 22,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5abcc69f5542996583600482",
+      "question": "What type of work was being performed by African men in the real-life events portrayed in the movie The Ghost and the Darkness?",
+      "gold_answer": "construction workers",
+      "gold_doc_titles": [
+        "The Ghost and the Darkness",
+        "Tsavo Man-Eaters"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Ghost and the Darkness",
+        "hotpotqa:Tsavo Man-Eaters"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5abcc69f5542996583600482",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 23,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ab943ac554299753720f7bf",
+      "question": "Which armory features the world's largest collection of historical American firearms and produced the Springfield Model 1812 Musket?",
+      "gold_answer": "The Springfield Armory",
+      "gold_doc_titles": [
+        "Springfield Model 1812 Musket",
+        "Springfield Armory"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Springfield Model 1812 Musket",
+        "hotpotqa:Springfield Armory"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ab943ac554299753720f7bf",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 24,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a75aff95542992d0ec05fe0",
+      "question": "\"Teletubbies say \"Eh-oh!\" is a single which contains a nursery rhyme that has been used in literature and popular culture as what?",
+      "gold_answer": "a metaphor and allusion",
+      "gold_doc_titles": [
+        "Teletubbies say &quot;Eh-oh!&quot;",
+        "Baa, Baa, Black Sheep"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Teletubbies say &quot;Eh-oh!&quot;",
+        "hotpotqa:Baa, Baa, Black Sheep"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a75aff95542992d0ec05fe0",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 25,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ab8ecf45542991b5579f044",
+      "question": "What was the nationality of the concentration camp commandant who was succeeded by Arnold Büscher?",
+      "gold_answer": "Austrian",
+      "gold_doc_titles": [
+        "Arnold Büscher",
+        "Amon Göth"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Arnold Büscher",
+        "hotpotqa:Amon Göth"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ab8ecf45542991b5579f044",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 26,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ac164e55542994d76dcce0a",
+      "question": "Are Lilys and +44 both a type of rock band or group?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "Lilys",
+        "+44 (band)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Lilys",
+        "hotpotqa:+44 (band)"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ac164e55542994d76dcce0a",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 27,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ade45c75542992fa25da720",
+      "question": "Is Rice University or Stanford University further west?",
+      "gold_answer": "Stanford University",
+      "gold_doc_titles": [
+        "Rice University",
+        "Stanford University"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Rice University",
+        "hotpotqa:Stanford University"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ade45c75542992fa25da720",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 28,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a82bc7455429940e5e1a926",
+      "question": "In what movie did the male star of a movie about a widowed 37-year-old woman also star in in the year 1993?",
+      "gold_answer": "\"Red Rock West\"",
+      "gold_doc_titles": [
+        "Nicolas Cage",
+        "Moonstruck"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Nicolas Cage",
+        "hotpotqa:Moonstruck"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a82bc7455429940e5e1a926",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 29,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a8b770f5542995d1e6f13a7",
+      "question": "Where is the singer of \"B Boy\" raised?",
+      "gold_answer": "Philadelphia",
+      "gold_doc_titles": [
+        "B Boy (song)",
+        "Meek Mill"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:B Boy (song)",
+        "hotpotqa:Meek Mill"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a8b770f5542995d1e6f13a7",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 30,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a8c52685542995e66a475bb",
+      "question": "The We The People Amendment was introduced by the U.S. Representative for what congressional district?",
+      "gold_answer": "Minnesota's 8th congressional district",
+      "gold_doc_titles": [
+        "We the People Amendment",
+        "Rick Nolan"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:We the People Amendment",
+        "hotpotqa:Rick Nolan"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a8c52685542995e66a475bb",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 31,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5add564a5542990dbb2f7e38",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "gold_answer": "MGM Resorts International",
+      "gold_doc_titles": [
+        "Las Vegas Festival Grounds",
+        "Circus Circus Las Vegas"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Las Vegas Festival Grounds",
+        "hotpotqa:Circus Circus Las Vegas"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5add564a5542990dbb2f7e38",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 32,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a88f0d455429946c8d6e8dc",
+      "question": "In what county is the General Motors Technical Center located?",
+      "gold_answer": "Macomb County",
+      "gold_doc_titles": [
+        "General Motors Technical Center",
+        "Warren, Michigan"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:General Motors Technical Center",
+        "hotpotqa:Warren, Michigan"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a88f0d455429946c8d6e8dc",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 33,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ade1a2755429975fa854e47",
+      "question": "News UK is an owned subsidiary of which American mass media conglomerate?",
+      "gold_answer": "News Corp",
+      "gold_doc_titles": [
+        "News UK",
+        "News Corp"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:News UK",
+        "hotpotqa:News Corp"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ade1a2755429975fa854e47",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 34,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a85cead5542997175ce2030",
+      "question": "This boxer was defeated in the first round by a Ghanaian boxer who lost in the second round against what Irish boxer?",
+      "gold_answer": "Michael Conlan",
+      "gold_doc_titles": [
+        "Oliver Lavigilante",
+        "Duke Micah"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Oliver Lavigilante",
+        "hotpotqa:Duke Micah"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a85cead5542997175ce2030",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 35,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a823fc055429940e5e1a810",
+      "question": "The Norse-Gaels language emerged from the intermarriage of the Norsemen and what other ethnic group?",
+      "gold_answer": "Gaelic",
+      "gold_doc_titles": [
+        "Norse–Gaels",
+        "Norsemen"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Norse–Gaels",
+        "hotpotqa:Norsemen"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a823fc055429940e5e1a810",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 36,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5ade154f55429939a52fe800",
+      "question": "What is the name of the book that Michael Cremo wrote with a mathematician born in 1947?",
+      "gold_answer": "\"Forbidden Archeology\"",
+      "gold_doc_titles": [
+        "Michael Cremo",
+        "Richard L. Thompson"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Michael Cremo",
+        "hotpotqa:Richard L. Thompson"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ade154f55429939a52fe800",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 37,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5abfb13a5542990832d3a1a8",
+      "question": "who directed 1987 romantic fantasy film which City of Angels has a  loose remake for",
+      "gold_answer": "Wim Wenders",
+      "gold_doc_titles": [
+        "City of Angels (film)",
+        "Wings of Desire"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:City of Angels (film)",
+        "hotpotqa:Wings of Desire"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5abfb13a5542990832d3a1a8",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 38,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a77a7695542997042120ac4",
+      "question": "Which documentary is the oldest, The Private Life of Plants or Marx Reloaded?",
+      "gold_answer": "The Private Life of Plants",
+      "gold_doc_titles": [
+        "The Private Life of Plants",
+        "Marx Reloaded"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Private Life of Plants",
+        "hotpotqa:Marx Reloaded"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a77a7695542997042120ac4",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 39,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5ade0ec15542995b365fabf7",
+      "question": "on Wednesdays and Thursdays",
+      "gold_answer": "on Wednesdays and Thursdays at 22:00",
+      "gold_doc_titles": [
+        "Kim Ji-won (actress)",
+        "Descendants of the Sun"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Kim Ji-won (actress)",
+        "hotpotqa:Descendants of the Sun"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ade0ec15542995b365fabf7",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 40,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ae087c65542993d6555eb9d",
+      "question": "Joe Cornish made his directorial debut in the comedy film that starred whom?",
+      "gold_answer": "John Boyega, Nick Frost, Jodie Whittaker and Luke Treadaway",
+      "gold_doc_titles": [
+        "Joe Cornish",
+        "Attack the Block"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Joe Cornish",
+        "hotpotqa:Attack the Block"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ae087c65542993d6555eb9d",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 41,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ab1f3d3554299449642c825",
+      "question": "What city does the movie for which Divergent: Original Motion Picture Soundtrack is a soundtrack for take place?",
+      "gold_answer": "Chicago",
+      "gold_doc_titles": [
+        "Divergent: Original Motion Picture Soundtrack",
+        "Divergent (film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Divergent: Original Motion Picture Soundtrack",
+        "hotpotqa:Divergent (film)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ab1f3d3554299449642c825",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 42,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a77174f55429966f1a36c4c",
+      "question": "Simone de Beauvoir partnered with the person whose journal would be called what?",
+      "gold_answer": "Les Temps modernes",
+      "gold_doc_titles": [
+        "The Ethics of Ambiguity",
+        "Les Temps modernes"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Ethics of Ambiguity",
+        "hotpotqa:Les Temps modernes"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a77174f55429966f1a36c4c",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 43,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a86a9115542996432c571e0",
+      "question": "Dear Socks, Dear Buddy: Kids' Letters to the First Pets is a 1998 children's book concerning a male chocolate-colored Labrador Retriever and one of two pets kept while Bill Clinton was what?",
+      "gold_answer": "President of the United States",
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Dear Socks, Dear Buddy",
+        "hotpotqa:Buddy (dog)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a86a9115542996432c571e0",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 44,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ab97cd0554299753720f81a",
+      "question": "Elizabeth Austin wrote for a fitness magazine founded by who?",
+      "gold_answer": "Christine MacIntyre",
+      "gold_doc_titles": [
+        "Elizabeth Austin (writer)",
+        "Shape (magazine)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Elizabeth Austin (writer)",
+        "hotpotqa:Shape (magazine)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ab97cd0554299753720f81a",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 45,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5ab9b1fd5542996be202058e",
+      "question": "What is the most populous city in the county where Caleb Stegall served as District attorney?",
+      "gold_answer": "Valley Falls",
+      "gold_doc_titles": [
+        "Caleb Stegall",
+        "Jefferson County, Kansas"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Caleb Stegall",
+        "hotpotqa:Jefferson County, Kansas"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ab9b1fd5542996be202058e",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 46,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5abd573c55429924427fcfb7",
+      "question": "Zach Parise's father played in which league?",
+      "gold_answer": "NHL",
+      "gold_doc_titles": [
+        "Jordan Parise",
+        "Zach Parise"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Jordan Parise",
+        "hotpotqa:Zach Parise"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5abd573c55429924427fcfb7",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 47,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a8bac185542997f31a41d9f",
+      "question": "Anastasia is a 1997 American animated epic musical alternative history film produced by Fox Animation Studios and distributed by 20th Century Fox, directed by which former Walt Disney Animation Studios director, and is also an American actor, voice actor, comedian and producer?",
+      "gold_answer": "Henry Albert \"Hank\" Azaria",
+      "gold_doc_titles": [
+        "Anastasia (1997 film)",
+        "Hank Azaria"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Anastasia (1997 film)",
+        "hotpotqa:Hank Azaria"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a8bac185542997f31a41d9f",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 48,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5add2dae5542992c1e3a2558",
+      "question": "Which building was completed first the W. R. Grace Building or 10 Hudson Yards?",
+      "gold_answer": "W. R. Grace Building",
+      "gold_doc_titles": [
+        "W. R. Grace Building",
+        "10 Hudson Yards"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:W. R. Grace Building",
+        "hotpotqa:10 Hudson Yards"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5add2dae5542992c1e3a2558",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 49,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5ae5086d55429908b63264eb",
+      "question": "What date was the movie originally supposed to be released that was delayed due to the unlawful distribution of private photographs of Edison Chen with various women?",
+      "gold_answer": "The film was originally set to be released in May 2008",
+      "gold_doc_titles": [
+        "The Sniper (2009 film)",
+        "Edison Chen photo scandal"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Sniper (2009 film)",
+        "hotpotqa:Edison Chen photo scandal"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ae5086d55429908b63264eb",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 50,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a90bd7b55429916514e7547",
+      "question": "Which has more species, Aichryson or Polypodium?",
+      "gold_answer": "Polypodium",
+      "gold_doc_titles": [
+        "Aichryson",
+        "Polypodium"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Aichryson",
+        "hotpotqa:Polypodium"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a90bd7b55429916514e7547",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 51,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a7732dc55429972597f149b",
+      "question": "What 1944 Bollywood film was the mother of Bollywood actor Govinda in?",
+      "gold_answer": "Geet or The Song",
+      "gold_doc_titles": [
+        "Geet (1944 film)",
+        "Nirmala Devi"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Geet (1944 film)",
+        "hotpotqa:Nirmala Devi"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a7732dc55429972597f149b",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 52,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ae2157d5542997283cd23ca",
+      "question": "What writing principle is relevant in a novel with Allison Gross?",
+      "gold_answer": "rule of three",
+      "gold_doc_titles": [
+        "Allison Gross",
+        "Rule of three (writing)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Allison Gross",
+        "hotpotqa:Rule of three (writing)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ae2157d5542997283cd23ca",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 53,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ab5fcae554299110f2199ad",
+      "question": "Which son of Rick Barry was born first, Brent Robert Barry or Drew William Barry?",
+      "gold_answer": "Brent Robert Barry",
+      "gold_doc_titles": [
+        "Drew Barry",
+        "Brent Barry"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Drew Barry",
+        "hotpotqa:Brent Barry"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ab5fcae554299110f2199ad",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 54,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ac2a55b55429921a00ab018",
+      "question": "Who developed the jet fighters operated by the 41st Tactical Squadron of the Polish Air Force?",
+      "gold_answer": "the Mikoyan design bureau",
+      "gold_doc_titles": [
+        "41st Tactical Squadron",
+        "Mikoyan MiG-29"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:41st Tactical Squadron",
+        "hotpotqa:Mikoyan MiG-29"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ac2a55b55429921a00ab018",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 55,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5abb61c0554299642a094a86",
+      "question": "Are both Trace Cyrus and Jizzy Pearl vocalists?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "Trace Cyrus",
+        "Jizzy Pearl"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Trace Cyrus",
+        "hotpotqa:Jizzy Pearl"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5abb61c0554299642a094a86",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 56,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ae73eca5542991e8301cc37",
+      "question": "What other notable role did the star actor from Jeremy perform?",
+      "gold_answer": "the voice of The Beast",
+      "gold_doc_titles": [
+        "Jeremy (film)",
+        "Robby Benson"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Jeremy (film)",
+        "hotpotqa:Robby Benson"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ae73eca5542991e8301cc37",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 57,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a8de02b554299068b959e13",
+      "question": "What team did Robbie Keane play for after Inter Milan?",
+      "gold_answer": "Republic of Ireland national team",
+      "gold_doc_titles": [
+        "2000–01 Inter Milan season",
+        "Robbie Keane"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:2000–01 Inter Milan season",
+        "hotpotqa:Robbie Keane"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a8de02b554299068b959e13",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 58,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a7309a15542992359bc320c",
+      "question": "Which writer of the song \"Money, Money, Money\" by pop group ABBA was born on 16 December 1946 ?",
+      "gold_answer": "Benny Andersson",
+      "gold_doc_titles": [
+        "Money, Money, Money",
+        "Benny Andersson"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Money, Money, Money",
+        "hotpotqa:Benny Andersson"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a7309a15542992359bc320c",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 59,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a754b1455429916b01642e5",
+      "question": "Who is the older brother of the fourth Iranian player to win the Asian Footballer of the Year?",
+      "gold_answer": "Farshid Karimi",
+      "gold_doc_titles": [
+        "Farshid Karimi",
+        "Ali Karimi"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Farshid Karimi",
+        "hotpotqa:Ali Karimi"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a754b1455429916b01642e5",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 60,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a7b3fc155429931da12ca3a",
+      "question": "Wexner Graduate Fellowships are given to students who show an ability of an individual to \"lead\" or guide who?",
+      "gold_answer": "other individuals, teams, or entire organizations",
+      "gold_doc_titles": [
+        "Wexner Graduate Fellowship",
+        "Leadership"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Wexner Graduate Fellowship",
+        "hotpotqa:Leadership"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a7b3fc155429931da12ca3a",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 61,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5abd8eda5542996e802b47cd",
+      "question": "Desperado was on the album recorded at what London studio?",
+      "gold_answer": "Island Studios",
+      "gold_doc_titles": [
+        "Desperado (song)",
+        "Desperado (Eagles album)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Desperado (song)",
+        "hotpotqa:Desperado (Eagles album)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5abd8eda5542996e802b47cd",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 62,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a7f4e865542994857a766e4",
+      "question": "Who's roles include Danny Tanner on the ABC sitcom \"Full House\" and was in a 2004 American teen comedy film starring Mary-Kate Olsen, Ashley Olsen and Eugene Levy.?",
+      "gold_answer": "Robert Lane \"Bob\" Saget",
+      "gold_doc_titles": [
+        "New York Minute (film)",
+        "Bob Saget"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:New York Minute (film)",
+        "hotpotqa:Bob Saget"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a7f4e865542994857a766e4",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 63,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a8b17545542992d82986fda",
+      "question": "In what erotic romatic drama, starring Dakota Johnson and directed by James Foley, did Robinne Lee act?",
+      "gold_answer": "Fifty Shades Darker",
+      "gold_doc_titles": [
+        "Robinne Lee",
+        "Fifty Shades Darker (film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Robinne Lee",
+        "hotpotqa:Fifty Shades Darker (film)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a8b17545542992d82986fda",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 64,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a8325b35542990548d0b18f",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "gold_answer": "Kathryn Jean Martin",
+      "gold_doc_titles": [
+        "Kathy Sullivan (Australian politician)",
+        "Bronwyn Bishop"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Kathy Sullivan (Australian politician)",
+        "hotpotqa:Bronwyn Bishop"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a8325b35542990548d0b18f",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 65,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a89ba85554299669944a585",
+      "question": "Are the Toy Trawler Spaniel and the Taigan breeds both extinct?",
+      "gold_answer": "no",
+      "gold_doc_titles": [
+        "Toy Trawler Spaniel",
+        "Taigan"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Toy Trawler Spaniel",
+        "hotpotqa:Taigan"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a89ba85554299669944a585",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 66,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a7df8fb5542995f4f40235f",
+      "question": "What is the real name of the Soviet KGB spy whose release in exchange for U.S. Air Force pilot Francis Gary Powers was portrayed in the movie Bridge of Spies?",
+      "gold_answer": "Vilyam \"Willie\" Genrikhovich Fisher",
+      "gold_doc_titles": [
+        "Bridge of Spies (film)",
+        "Rudolf Abel"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Bridge of Spies (film)",
+        "hotpotqa:Rudolf Abel"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a7df8fb5542995f4f40235f",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 67,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a807181554299485f5985ec",
+      "question": "Bob Edwards was the host of what show, that later was hosted by Renee Montagne?",
+      "gold_answer": "Morning Edition",
+      "gold_doc_titles": [
+        "Renée Montagne",
+        "Bob Edwards"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Renée Montagne",
+        "hotpotqa:Bob Edwards"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a807181554299485f5985ec",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 68,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a8325c35542990548d0b190",
+      "question": "The Bronze was written by the comedian who is best known for what role on \"The Big Bang Theory\"?",
+      "gold_answer": "Dr. Bernadette Rostenkowski-Wolowitz",
+      "gold_doc_titles": [
+        "The Bronze (film)",
+        "Melissa Rauch"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Bronze (film)",
+        "hotpotqa:Melissa Rauch"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a8325c35542990548d0b190",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 69,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ae1bf46554299234fd042e6",
+      "question": "Are both Jack and Coke and Clover Club Cocktail cocktails?",
+      "gold_answer": "yes",
+      "gold_doc_titles": [
+        "Jack and Coke",
+        "Clover Club Cocktail"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Jack and Coke",
+        "hotpotqa:Clover Club Cocktail"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ae1bf46554299234fd042e6",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 70,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a85b71c5542994c784ddb5d",
+      "question": "The DC Comic movie that features Ike Barinholtz is what number installment in the DC Extended Universe?",
+      "gold_answer": "third",
+      "gold_doc_titles": [
+        "Ike Barinholtz",
+        "Suicide Squad (film)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Ike Barinholtz",
+        "hotpotqa:Suicide Squad (film)"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a85b71c5542994c784ddb5d",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 71,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a74a8fa55429929fddd8497",
+      "question": "After his curacy at the village that is a suburb of Scunthorpe, who was Industrial Chaplain to the Bishop of Lincoln?",
+      "gold_answer": "Dudman",
+      "gold_doc_titles": [
+        "Bill Dudman",
+        "Frodingham, Lincolnshire"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Bill Dudman",
+        "hotpotqa:Frodingham, Lincolnshire"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a74a8fa55429929fddd8497",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 72,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5ac00278554299012d1db56b",
+      "question": "What profession do Raj Kapoor and Mike Cahill share?",
+      "gold_answer": "director",
+      "gold_doc_titles": [
+        "Raj Kapoor",
+        "Mike Cahill (director)"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Raj Kapoor",
+        "hotpotqa:Mike Cahill (director)"
+      ],
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ac00278554299012d1db56b",
+        "hotpot_type": "comparison",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 73,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a8074065542992bc0c4a71e",
+      "question": "In which country was Mykolas Dluskis a priest in 1788?",
+      "gold_answer": "Lithuania",
+      "gold_doc_titles": [
+        "Mykolas Dluskis",
+        "Vilnius Cathedral"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Mykolas Dluskis",
+        "hotpotqa:Vilnius Cathedral"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a8074065542992bc0c4a71e",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 74,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5adccdab5542994d58a2f6db",
+      "question": "What year was the album featuring the trio made up of Posdnuos, Dave, and Maseo, alongside Lebanese-Syrian rapper Eslam Jawaad release?",
+      "gold_answer": "2009",
+      "gold_doc_titles": [
+        "The Mammoth Tusk",
+        "De La Soul"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:The Mammoth Tusk",
+        "hotpotqa:De La Soul"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5adccdab5542994d58a2f6db",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 75,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a89e3995542992e4fca844d",
+      "question": "H-63 is a highway that runs near the county seat of what Michigan county?",
+      "gold_answer": "Chippewa County",
+      "gold_doc_titles": [
+        "H-63 (Michigan county highway)",
+        "Sault Ste. Marie, Michigan"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:H-63 (Michigan county highway)",
+        "hotpotqa:Sault Ste. Marie, Michigan"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a89e3995542992e4fca844d",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 76,
+      "gold_doc_paths": [],
+      "split": "dev",
+      "frozen": false
+    },
+    {
+      "id": "heldout_hotpot_5a714c025542994082a3e793",
+      "question": "When was the Supreme Court Judge that was a member of the Kahan Commission born?",
+      "gold_answer": "16 September 1936",
+      "gold_doc_titles": [
+        "Kahan Commission",
+        "Aharon Barak"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Kahan Commission",
+        "hotpotqa:Aharon Barak"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a714c025542994082a3e793",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 77,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ab5820e554299488d4d99c3",
+      "question": "What is the capacity, for basketball games, of the venue for the 2014 FIBA Basketball World Cup Final ?",
+      "gold_answer": "15,000 people",
+      "gold_doc_titles": [
+        "2014 FIBA Basketball World Cup Final",
+        "Palacio de Deportes de la Comunidad de Madrid"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:2014 FIBA Basketball World Cup Final",
+        "hotpotqa:Palacio de Deportes de la Comunidad de Madrid"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ab5820e554299488d4d99c3",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 78,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ab8abca5542991b5579efd1",
+      "question": "In what year was the film released in which Daniel John Pollock played the role of Davey?",
+      "gold_answer": "1992",
+      "gold_doc_titles": [
+        "Daniel Pollock",
+        "Romper Stomper"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Daniel Pollock",
+        "hotpotqa:Romper Stomper"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5ab8abca5542991b5579efd1",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 79,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a87d8355542993e715abfe4",
+      "question": "Which film was released first, Jawbreaker or Havenhurst?",
+      "gold_answer": "Jawbreaker",
+      "gold_doc_titles": [
+        "Havenhurst",
+        "Julie Benz"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Havenhurst",
+        "hotpotqa:Julie Benz"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a87d8355542993e715abfe4",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 80,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5aba4be85542994dbf0198cb",
+      "question": "KGOT broadcasts from studios in a shopping mall that is located on the southwest corner of East Dimond Boulevard and the Old Seward Highway, and his how big?",
+      "gold_answer": "728,000 ft²",
+      "gold_doc_titles": [
+        "KGOT",
+        "Dimond Center"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:KGOT",
+        "hotpotqa:Dimond Center"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5aba4be85542994dbf0198cb",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 81,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a79fef15542996c55b2dcca",
+      "question": "\"A Rickle in Time\" was the first episode of an animated television sitcom that aired on what network?",
+      "gold_answer": "Cartoon Network",
+      "gold_doc_titles": [
+        "A Rickle in Time",
+        "Rick and Morty"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:A Rickle in Time",
+        "hotpotqa:Rick and Morty"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "train",
+        "native_id": "5a79fef15542996c55b2dcca",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 82,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5a7543d555429916b01642ce",
+      "question": "Who was born more recently, Flula Borg, or Dirk Nowitzki?",
+      "gold_answer": "Flula Borg",
+      "gold_doc_titles": [
+        "Flula Borg",
+        "Dirk Nowitzki"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Flula Borg",
+        "hotpotqa:Dirk Nowitzki"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5a7543d555429916b01642ce",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 83,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    },
+    {
+      "id": "heldout_hotpot_5ae7525f5542991e8301cc60",
+      "question": "Kristine Moore Gebbie is a professor at a university founded in what year?",
+      "gold_answer": "1966",
+      "gold_doc_titles": [
+        "Kristine Gebbie",
+        "Flinders University"
+      ],
+      "gold_external_keys": [
+        "hotpotqa:Kristine Gebbie",
+        "hotpotqa:Flinders University"
+      ],
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "requires_all_gold_docs": true,
+      "split_hint": "heldout_hotpot",
+      "provenance": {
+        "dataset": "hotpotqa/hotpot_qa",
+        "config": "distractor",
+        "split": "validation",
+        "native_id": "5ae7525f5542991e8301cc60",
+        "hotpot_type": "bridge",
+        "license": "CC-BY-SA-4.0",
+        "title_filter": "active_neon",
+        "heldout": true
+      },
+      "index": 84,
+      "gold_doc_paths": [],
+      "split": "test",
+      "frozen": true
+    }
+  ]
+}
