@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-11-02T10:19:16.944317+00:00",
+  "created_at": "2026-11-02T11:01:15.677759+00:00",
   "base": "https://ai-investigation-engine-scyz.onrender.com",
   "timeout_s": 330.0,
   "pause_s": 2.0,
@@ -35,7 +35,7 @@
       "body": {
         "version": "0.1.0",
         "app": "ai-investigation-engine",
-        "git_commit": "a748661d8f85a0b7e8d46e745c8afda808ac0af3"
+        "git_commit": "611b0d438dbbad91149d10c090ca312f0d470782"
       }
     },
     {
@@ -66,7 +66,7 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 13950.7,
+      "ms": 11971.9,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -100,7 +100,7 @@
         ],
         [
           "tools_seed_search",
-          4199.1
+          3906.0
         ],
         [
           "tools_llm_skipped",
@@ -108,19 +108,19 @@
         ],
         [
           "extract",
-          2.9
+          5.6
         ],
         [
           "contradictions",
-          0.2
-        ],
-        [
-          "sufficiency",
           0.4
         ],
         [
+          "sufficiency",
+          0.9
+        ],
+        [
           "synthesize",
-          0.5
+          0.8
         ],
         [
           "verify",
@@ -128,7 +128,7 @@
         ],
         [
           "request",
-          4204.1
+          3914.7
         ]
       ]
     },
@@ -145,15 +145,15 @@
         "conflicting"
       ],
       "http_status": 200,
-      "ms": 5352.7,
+      "ms": 3484.6,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "The March disruption was caused by an\u202fauth\u2011gateway\u202fchange, affecting the\u202fPaymentService; this is documented in the Exec Summary and the \u201cIncident Report\u202f\u2014\u202fPayment Outage March\u201d\u202f[S1][S2].",
-      "answer_preview": "The March disruption was caused by an\u202fauth\u2011gateway\u202fchange, affecting the\u202fPaymentService; this is documented in the Exec Summary and the \u201cIncident Report\u202f\u2014\u202fPayment Outage March\u201d\u202f[S1][S2].",
+      "answer": "payment and authentication services [S1, S2].",
+      "answer_preview": "payment and authentication services [S1, S2].",
       "n_citations": 2,
       "citation_titles": [
         "Exec Summary",
@@ -165,10 +165,10 @@
       ],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
-      "usage_calls": 1,
-      "usage_prompt_tokens": 515,
-      "usage_completion_tokens": 169,
-      "usage_total_tokens": 684,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
       "abstention_reason": null,
       "trace_stages": [
         [
@@ -181,7 +181,7 @@
         ],
         [
           "tools_seed_search",
-          2470.9
+          2143.6
         ],
         [
           "tools_llm_skipped",
@@ -189,19 +189,19 @@
         ],
         [
           "extract",
-          0.6
+          3.5
         ],
         [
           "contradictions",
-          0.0
-        ],
-        [
-          "sufficiency",
           0.1
         ],
         [
+          "sufficiency",
+          4.9
+        ],
+        [
           "synthesize",
-          1498.4
+          2.9
         ],
         [
           "verify",
@@ -209,7 +209,7 @@
         ],
         [
           "request",
-          3970.6
+          2155.5
         ]
       ]
     },
@@ -225,7 +225,7 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 10800.2,
+      "ms": 10493.5,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -257,15 +257,15 @@
         ],
         [
           "plan",
-          0.1
+          0.2
         ],
         [
           "tools_seed_search",
-          5672.9
+          5355.0
         ],
         [
           "tools_bridge_search",
-          3590.6
+          3593.9
         ],
         [
           "tools_llm_skipped",
@@ -273,7 +273,7 @@
         ],
         [
           "extract",
-          197.7
+          203.6
         ],
         [
           "contradictions",
@@ -285,7 +285,7 @@
         ],
         [
           "synthesize",
-          3.7
+          3.2
         ],
         [
           "verify",
@@ -293,7 +293,7 @@
         ],
         [
           "request",
-          9471.9
+          9162.0
         ]
       ]
     },
@@ -309,7 +309,7 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 9699.4,
+      "ms": 8683.7,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -345,11 +345,11 @@
         ],
         [
           "tools_seed_search",
-          3788.4
+          3712.2
         ],
         [
           "tools_bridge_search",
-          3707.0
+          2998.6
         ],
         [
           "tools_llm_skipped",
@@ -357,7 +357,7 @@
         ],
         [
           "extract",
-          95.8
+          101.0
         ],
         [
           "contradictions",
@@ -365,11 +365,11 @@
         ],
         [
           "sufficiency",
-          0.8
+          1.3
         ],
         [
           "synthesize",
-          0.7
+          1.1
         ],
         [
           "verify",
@@ -377,7 +377,7 @@
         ],
         [
           "request",
-          7594.5
+          6817.8
         ]
       ]
     },
@@ -393,7 +393,7 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 8285.8,
+      "ms": 9096.1,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -429,11 +429,11 @@
         ],
         [
           "tools_seed_search",
-          3558.2
+          3927.6
         ],
         [
           "tools_bridge_search",
-          2802.3
+          3300.7
         ],
         [
           "tools_llm_skipped",
@@ -441,7 +441,7 @@
         ],
         [
           "extract",
-          405.3
+          320.7
         ],
         [
           "contradictions",
@@ -449,11 +449,11 @@
         ],
         [
           "sufficiency",
-          91.2
+          84.7
         ],
         [
           "synthesize",
-          0.3
+          0.7
         ],
         [
           "verify",
@@ -461,7 +461,7 @@
         ],
         [
           "request",
-          6944.4
+          7722.7
         ]
       ]
     },
@@ -476,15 +476,15 @@
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 3860.5,
+      "ms": 4262.5,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "insufficient",
       "degraded": false,
-      "answer": "No verified claims could be grounded in retrieved document quotes.",
-      "answer_preview": "No verified claims could be grounded in retrieved document quotes.",
+      "answer": "The asked measurement or attribute is not present in the retrieved evidence.",
+      "answer_preview": "The asked measurement or attribute is not present in the retrieved evidence.",
       "n_citations": 0,
       "citation_titles": [],
       "citation_doc_ids": [],
@@ -494,7 +494,7 @@
       "usage_prompt_tokens": 0,
       "usage_completion_tokens": 0,
       "usage_total_tokens": 0,
-      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "abstention_reason": "The asked measurement or attribute is not present in the retrieved evidence.",
       "trace_stages": [
         [
           "guard",
@@ -506,7 +506,7 @@
         ],
         [
           "tools_seed_search",
-          3508.5
+          3436.1
         ],
         [
           "tools_llm_skipped",
@@ -514,15 +514,15 @@
         ],
         [
           "extract",
-          92.9
+          93.7
         ],
         [
           "contradictions",
-          0.0
+          0.1
         ],
         [
           "sufficiency",
-          0.0
+          0.7
         ],
         [
           "synthesize",
@@ -534,7 +534,7 @@
         ],
         [
           "request",
-          3602.2
+          3531.3
         ]
       ]
     },
@@ -551,15 +551,15 @@
         "answered"
       ],
       "http_status": 200,
-      "ms": 3360.1,
+      "ms": 3637.2,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "conflicting",
       "degraded": false,
-      "answer": "Sources conflict:\n- authgateway/deploy_time: 14:00 UTC [S1]\n- authgateway/deploy_time: 08:10 UTC [S2]",
-      "answer_preview": "Sources conflict:\n- authgateway/deploy_time: 14:00 UTC [S1]\n- authgateway/deploy_time: 08:10 UTC [S2]",
+      "answer": "Sources conflict:\n- 20240312/deploy_time: 14:00 UTC [S1]\n- 20240312/deploy_time: 08:10 UTC [S2]",
+      "answer_preview": "Sources conflict:\n- 20240312/deploy_time: 14:00 UTC [S1]\n- 20240312/deploy_time: 08:10 UTC [S2]",
       "n_citations": 2,
       "citation_titles": [
         "Change Log March",
@@ -587,7 +587,7 @@
         ],
         [
           "tools_seed_search",
-          2036.5
+          2288.0
         ],
         [
           "tools_llm_skipped",
@@ -595,11 +595,11 @@
         ],
         [
           "extract",
-          1.6
+          4.3
         ],
         [
           "contradictions",
-          0.4
+          0.5
         ],
         [
           "sufficiency",
@@ -607,7 +607,7 @@
         ],
         [
           "synthesize",
-          0.2
+          1.3
         ],
         [
           "verify",
@@ -615,7 +615,7 @@
         ],
         [
           "request",
-          2039.3
+          2294.6
         ]
       ]
     },
@@ -630,7 +630,7 @@
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 3151.6,
+      "ms": 2866.7,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -660,7 +660,7 @@
         ],
         [
           "tools_seed_search",
-          2865.9
+          2485.7
         ],
         [
           "tools_llm_skipped",
@@ -668,7 +668,7 @@
         ],
         [
           "extract",
-          6.1
+          98.1
         ],
         [
           "contradictions",
@@ -688,7 +688,7 @@
         ],
         [
           "request",
-          2872.6
+          2584.5
         ]
       ]
     },
@@ -706,7 +706,7 @@
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 4626.4,
+      "ms": 5038.0,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -740,7 +740,7 @@
         ],
         [
           "tools_seed_search",
-          3608.4
+          3995.2
         ],
         [
           "tools_llm_skipped",
@@ -748,7 +748,7 @@
         ],
         [
           "extract",
-          3.1
+          5.3
         ],
         [
           "contradictions",
@@ -756,7 +756,7 @@
         ],
         [
           "sufficiency",
-          0.3
+          0.4
         ],
         [
           "synthesize",
@@ -768,7 +768,7 @@
         ],
         [
           "request",
-          3612.8
+          4001.8
         ]
       ]
     },
@@ -786,28 +786,28 @@
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 6142.8,
+      "ms": 4791.0,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "Bronx, New\u202fCity, New\u202fYork\u202fState\u202f[\u200bS1]",
-      "answer_preview": "Bronx, New\u202fCity, New\u202fYork\u202fState\u202f[\u200bS1]",
+      "answer": "Hancock, Putnam, Seneca [S1].",
+      "answer_preview": "Hancock, Putnam, Seneca [S1].",
       "n_citations": 1,
       "citation_titles": [
-        "Cardinal Hayes High School"
+        "Blanchard Valley Conference"
       ],
       "citation_doc_ids": [
-        "bded95e2-8c23-42ac-aa61-890823e6a81f"
+        "61dcdc82-ff52-4d44-804e-912c5d820d00"
       ],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
-      "usage_calls": 1,
-      "usage_prompt_tokens": 462,
-      "usage_completion_tokens": 446,
-      "usage_total_tokens": 908,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
       "abstention_reason": null,
       "trace_stages": [
         [
@@ -820,7 +820,7 @@
         ],
         [
           "tools_seed_search",
-          3663.0
+          3756.2
         ],
         [
           "tools_llm_skipped",
@@ -828,19 +828,19 @@
         ],
         [
           "extract",
-          5.0
+          5.8
         ],
         [
           "contradictions",
-          0.0
+          0.1
         ],
         [
           "sufficiency",
-          0.3
+          2.0
         ],
         [
           "synthesize",
-          1429.8
+          0.2
         ],
         [
           "verify",
@@ -848,13 +848,13 @@
         ],
         [
           "request",
-          5098.7
+          3764.8
         ]
       ],
       "budget_isolation_ok": true
     }
   ],
-  "git_commit": "a748661d8f85a0b7e8d46e745c8afda808ac0af3",
+  "git_commit": "611b0d438dbbad91149d10c090ca312f0d470782",
   "active_documents": 55081,
   "n_pass": 10,
   "n_honest_degraded": 0,

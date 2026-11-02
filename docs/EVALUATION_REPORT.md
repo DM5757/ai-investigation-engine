@@ -62,6 +62,7 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Answer eval Milestone 6 (`m6_test_*`) | Same test **62** / ACTIVE 55,081. Deterministic token F1 **0.080**; adaptive **0.153** (23 LLM / 39 det); abstention **1.0**; answered-only cite F1 **0.519**. Baseline F1 0.092, abstention 0.0. M5 baseline preserved. | `eval/results/m6_test_adapt_v1__*`, `docs/evidence/m6_report.md` |
 | Render Milestone 6 @ `a748661` | Smoke **10/10 PASS** (7 curated demos + multi-doc + budget isolation). LLM path live on multi-doc/budget cases; curated multi-hops stay **0 LLM** short spans. | `docs/evidence/prod_smoke_suite.json` |
 | Answer eval Milestone 7 (`m7_test_adapt_v3`) | Same test **62** / ACTIVE 55,081. Token F1 **0.183** (M6 0.153); cite F1 **0.365** (M6 0.309); abstention **1.0**; contradiction **1.0** (M6 0.50). | `eval/results/m7_test_adapt_v3__*`, `docs/evidence/m7_report.md` |
+| Render Milestone 7 @ `611b0d4` | Smoke **10/10 PASS**. Unseen: JWT span, causal conflict, Genesee LLM multi-hop, Hush LLM birth-date, approver abstain. | `docs/evidence/prod_smoke_suite.json` |
 
 ## 5. Quality fixes reflected in metrics intent
 

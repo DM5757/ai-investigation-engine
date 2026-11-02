@@ -28,6 +28,12 @@ Retrieval on the same run also improved (investigation R@k **0.525 → 0.608**) 
 
 Artifacts: `eval/results/m7_test_adapt_v3__*`, `m7_dev_adapt_v1__*`.
 
+## Production @ `611b0d4`
+
+Smoke **10/10 PASS** (ACTIVE 55,081). Curated demos preserved (airport, OSU/CSUDH, Lent June 17 2007, Robinson/Sicilia, colony abstain, deploy conflict, FraudScorer abstain).
+
+Unseen live probes: JWT misconfig → `misconfigured JWT TTL`; root-cause → `conflicting`; Genesee comparison → LLM answer with both canals cited; Hush birth-date → LLM `Jessica Lange`; rollback approver → `insufficient`.
+
 ## Limitations
 
 - Exact match remains ~0.
