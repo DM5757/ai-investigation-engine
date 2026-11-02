@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 from pydantic import BaseModel
 
 from app.errors import BudgetExceeded
@@ -21,6 +23,8 @@ _POS = (
     "failed",
     "outage",
 )
+_TIME_UTC_RE = re.compile(r"\b(\d{1,2}:\d{2})\s*UTC\b", re.IGNORECASE)
+_ENTITY_TOKEN_RE = re.compile(r"\b[a-z0-9]+(?:-[a-z0-9]+)+\b", re.IGNORECASE)
 
 
 def _values_conflict(a: str, b: str) -> bool:
@@ -69,7 +73,57 @@ def candidate_conflicts(claims: list[Claim]) -> list[Conflict]:
             out.append(
                 Conflict(subject=subject, attribute=attribute, sides=uniq)
             )
+    out.extend(_temporal_conflicts(claims))
     return out
+
+
+_DEPLOY_TOPIC_RE = re.compile(r"\b(?:deploy|deployed|auth[\s\-]?gateway|gateway)\b", re.I)
+
+
+def _temporal_conflicts(claims: list[Claim]) -> list[Conflict]:
+    """Detect disagreeing clock times across docs on the same deploy topic.
+
+    Heuristic claim subjects often differ (``Change Log`` vs ``gateway``) even
+    when quotes clearly state alternate deploy times for the same service.
+    """
+    pairs: list[tuple[str, Claim]] = []
+    for claim in claims:
+        if not claim.verified:
+            continue
+        hay = f"{claim.subject} {claim.value} {claim.quote}"
+        found_times = _TIME_UTC_RE.findall(hay)
+        if not found_times:
+            continue
+        # Prefer deploy/auth-gateway context; fall back to hyphenated entity tokens.
+        topical = bool(_DEPLOY_TOPIC_RE.search(hay)) or bool(_ENTITY_TOKEN_RE.search(hay))
+        if not topical:
+            continue
+        for tval in found_times:
+            pairs.append((tval, claim))
+    distinct_times = {t for t, _ in pairs}
+    docs = {c.doc_id for _, c in pairs}
+    if len(distinct_times) < 2 or len(docs) < 2:
+        return []
+    sides: list[Claim] = []
+    used_times: set[str] = set()
+    used_docs: set[str] = set()
+    for tval, claim in pairs:
+        if tval in used_times or claim.doc_id in used_docs:
+            continue
+        used_times.add(tval)
+        used_docs.add(claim.doc_id)
+        sides.append(
+            claim.model_copy(
+                update={"attribute": "deploy_time", "value": f"{tval} UTC"}
+            )
+        )
+        if len(sides) >= 2:
+            break
+    if len(sides) < 2:
+        return []
+    return [
+        Conflict(subject="deploy", attribute="deploy_time", sides=sides)
+    ]
 
 
 class _Adjudication(BaseModel):

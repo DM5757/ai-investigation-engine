@@ -66,7 +66,17 @@ def test_consecutive_investigations_reset_budget() -> None:
         retriever,
         store,
         llm=gw,
-        settings=Settings(retrieval_top_k=5, max_tool_rounds=2, tau_relative=0.0),
+        settings=Settings(
+            retrieval_top_k=5,
+            max_tool_rounds=2,
+            tau_relative=0.0,
+            # Force the LLM path so this test exercises budget reset, not the
+            # seed-sufficient deterministic short-circuit.
+            prefer_deterministic_plan=False,
+            prefer_deterministic_synthesis=False,
+            skip_tool_llm_when_seeded=False,
+            skip_conflict_adjudication_llm=True,
+        ),
     )
     first = eng.investigate("What caused PaymentService disruptions in March?")
     second = eng.investigate(
@@ -96,7 +106,15 @@ def test_budget_exhaustion_is_llm_unavailable_not_fake_answer() -> None:
         retriever,
         store,
         llm=gw,
-        settings=Settings(retrieval_top_k=5, max_tool_rounds=2, tau_relative=0.0),
+        settings=Settings(
+            retrieval_top_k=5,
+            max_tool_rounds=2,
+            tau_relative=0.0,
+            prefer_deterministic_plan=False,
+            prefer_deterministic_synthesis=False,
+            skip_tool_llm_when_seeded=False,
+            skip_conflict_adjudication_llm=True,
+        ),
     )
     result = eng.investigate("What caused PaymentService disruptions in March?")
     assert result.status == "llm_unavailable"

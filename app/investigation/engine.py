@@ -18,6 +18,7 @@ from app.investigation.entities import (
     is_comparison_question,
 )
 from app.investigation.extractor import claims_from_tool_payload, heuristic_claims_from_chunk
+from app.investigation.fast_path import seed_retrieval_sufficient
 from app.investigation.planner import plan_question
 from app.investigation.question_focus import (
     evidence_text_support,
@@ -105,7 +106,10 @@ class InvestigationEngine:
         try:
             with trace.stage("plan", inputs_summary=q[:120]) as bag:
                 plan, plan_usage, used_llm_plan = plan_question(
-                    q, self.llm, max_sub_questions=self.settings.max_sub_questions
+                    q,
+                    self.llm,
+                    max_sub_questions=self.settings.max_sub_questions,
+                    prefer_deterministic=self.settings.prefer_deterministic_plan,
                 )
                 bag["outputs_summary"] = (
                     f"type={plan.question_type}; n={len(plan.sub_questions)}; "
@@ -436,6 +440,25 @@ class InvestigationEngine:
                     f"results={sum(len(p.get('results', [])) for p in bridge_results)}"
                 )
 
+        # After seed (+bridge) retrieval, skip the LLM tool loop by default.
+        # Claim/sufficiency gates still abstain or conflict-detect honestly;
+        # this avoids burning free-tier quota on reformulation rounds.
+        if self.settings.skip_tool_llm_when_seeded:
+            sufficient = seed_retrieval_sufficient(question, tools)
+            with trace.stage(
+                "tools_llm_skipped",
+                inputs_summary="seed_bridge_complete",
+            ) as bag:
+                bag["outputs_summary"] = (
+                    f"skipped=true; seed_sufficient={sufficient}; "
+                    f"retrieved={len(tools.state.retrieved)}; entities={entities[:3]}"
+                )
+                bag["extra"] = {
+                    "reason": "seed_bridge_complete",
+                    "seed_sufficient": sufficient,
+                }
+            return
+
         messages: list[ChatMessage] = [
             ChatMessage(role="system", content=TOOL_LOOP_SYSTEM),
             ChatMessage(
@@ -604,9 +627,17 @@ class InvestigationEngine:
 
         with trace.stage("contradictions") as bag:
             conflicts = candidate_conflicts(claims)
-            conflicts, adj_usage = adjudicate_conflicts(conflicts, self.llm)
+            adj_llm = (
+                None
+                if self.settings.skip_conflict_adjudication_llm
+                else self.llm
+            )
+            conflicts, adj_usage = adjudicate_conflicts(conflicts, adj_llm)
             usage_total = usage_total.add(adj_usage)
-            bag["outputs_summary"] = f"conflicts={len(conflicts)}"
+            bag["outputs_summary"] = (
+                f"conflicts={len(conflicts)}; "
+                f"adjudication_llm={adj_llm is not None}"
+            )
             bag["tokens"] = adj_usage
 
         with trace.stage("sufficiency") as bag:
@@ -620,17 +651,20 @@ class InvestigationEngine:
             bag["outputs_summary"] = f"status={status}"
 
         with trace.stage("synthesize") as bag:
-            answer, citations, syn_usage, _ = synthesize_answer(
+            answer, citations, syn_usage, used_llm_synth = synthesize_answer(
                 question=question,
                 status=status,
                 claims=claims,
                 conflicts=conflicts,
                 abstention_reason=reason,
                 llm=self.llm,
+                prefer_deterministic=self.settings.prefer_deterministic_synthesis,
             )
             usage_total = usage_total.add(syn_usage)
-            bag["outputs_summary"] = f"len={len(answer or '')}"
+            mode = "llm" if used_llm_synth else "deterministic"
+            bag["outputs_summary"] = f"mode={mode}; len={len(answer or '')}"
             bag["tokens"] = syn_usage
+            bag["extra"] = {"synthesis_mode": mode}
 
         with trace.stage("verify") as bag:
             answer, citations, removed, ok = verify_answer_citations(
@@ -645,6 +679,7 @@ class InvestigationEngine:
                     conflicts=conflicts,
                     abstention_reason=reason,
                     llm=None,
+                    prefer_deterministic=True,
                 )
                 answer, citations, removed, ok = verify_answer_citations(
                     answer2, citations2, claims

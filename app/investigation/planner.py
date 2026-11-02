@@ -52,9 +52,10 @@ def plan_question(
     llm: LLMClient | None,
     *,
     max_sub_questions: int = 4,
+    prefer_deterministic: bool = True,
 ) -> tuple[Plan, UsageStats, bool]:
     """Return (plan, usage, used_llm)."""
-    if llm is None:
+    if llm is None or prefer_deterministic:
         return deterministic_plan(question), UsageStats(), False
     messages = [
         ChatMessage(role="system", content=PLANNER_SYSTEM),

@@ -1,0 +1,147 @@
+{
+  "created_at": "2026-11-02T08:48:28.338841+00:00",
+  "run_id": "m5_answer_v1",
+  "split": "test",
+  "corpus": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "preliminary": false,
+  "summaries": [
+    {
+      "config_id": "full_investigation",
+      "pipeline": "investigation",
+      "retrieval_mode": "hybrid_rrf",
+      "k": 8,
+      "n_questions_total": 62,
+      "n_questions": 62,
+      "n_scored_retrieval": 60,
+      "n_scored_answer": 62,
+      "n_excluded": 0,
+      "exclusion_reasons": {},
+      "by_type_total": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "unanswerable": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "by_type_scored_retrieval": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "by_type_scored_answer": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "unanswerable": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "n_errors": 0,
+      "corpus_active_documents": 55081,
+      "retrieval": {
+        "n_scored": 60,
+        "n": 60,
+        "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+        "recall_at_k": 0.225,
+        "mrr": 0.35,
+        "all_gold_at_k": 0.1,
+        "multi_doc_coverage": 0.225,
+        "mean_latency_s": 0.45303590999683363
+      },
+      "answer": {
+        "n_scored": 62,
+        "n": 62,
+        "exact_match": 0.0,
+        "token_f1": 0.03025197591387779,
+        "citation_f1": 0.27419354838709675,
+        "correct_abstention_rate": 0.5,
+        "n_unanswerable_scored": 2,
+        "contradiction_detection_rate": 0.5,
+        "n_contradiction_scored": 2,
+        "mean_latency_s": 0.44346108709484516,
+        "mean_llm_calls": 0.0,
+        "mean_tokens": 0.0,
+        "status_counts": {
+          "answered": 38,
+          "insufficient": 23,
+          "conflicting": 1
+        }
+      }
+    },
+    {
+      "config_id": "baseline_rag",
+      "pipeline": "baseline_rag",
+      "retrieval_mode": "hybrid_rrf",
+      "k": 8,
+      "n_questions_total": 62,
+      "n_questions": 62,
+      "n_scored_retrieval": 60,
+      "n_scored_answer": 62,
+      "n_excluded": 0,
+      "exclusion_reasons": {},
+      "by_type_total": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "unanswerable": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "by_type_scored_retrieval": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "by_type_scored_answer": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "unanswerable": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "n_errors": 0,
+      "corpus_active_documents": 55081,
+      "retrieval": {
+        "n_scored": 60,
+        "n": 60,
+        "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+        "recall_at_k": 0.9,
+        "mrr": 0.9388888888888889,
+        "all_gold_at_k": 0.8,
+        "multi_doc_coverage": 0.9,
+        "mean_latency_s": 0.17037895666241334
+      },
+      "answer": {
+        "n_scored": 62,
+        "n": 62,
+        "exact_match": 0.0,
+        "token_f1": 0.0555635710805313,
+        "citation_f1": 0.618279569892473,
+        "correct_abstention_rate": 0.0,
+        "n_unanswerable_scored": 2,
+        "contradiction_detection_rate": 0.0,
+        "n_contradiction_scored": 2,
+        "mean_latency_s": 0.17921044193058006,
+        "mean_llm_calls": 0.0,
+        "mean_tokens": 0.0,
+        "status_counts": {
+          "answered": 62
+        }
+      }
+    }
+  ]
+}

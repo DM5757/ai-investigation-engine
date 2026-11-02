@@ -63,6 +63,20 @@ class Settings(BaseSettings):
     # Cap below typical client/proxy ~330s so we return llm_unavailable instead of hanging.
     llm_budget_wall_clock_s: float = Field(default=240.0, alias="LLM_BUDGET_WALL_CLOCK_S")
     max_tool_rounds: int = Field(default=4, alias="MAX_TOOL_ROUNDS")
+    # Prefer deterministic plan / synthesis and skip tool-LLM when seed+bridge
+    # already covered the asked entities — cuts free-tier quota burn.
+    prefer_deterministic_plan: bool = Field(
+        default=True, alias="PREFER_DETERMINISTIC_PLAN"
+    )
+    prefer_deterministic_synthesis: bool = Field(
+        default=True, alias="PREFER_DETERMINISTIC_SYNTHESIS"
+    )
+    skip_tool_llm_when_seeded: bool = Field(
+        default=True, alias="SKIP_TOOL_LLM_WHEN_SEEDED"
+    )
+    skip_conflict_adjudication_llm: bool = Field(
+        default=True, alias="SKIP_CONFLICT_ADJUDICATION_LLM"
+    )
     max_sub_questions: int = Field(default=4, alias="MAX_SUB_QUESTIONS")
     max_question_chars: int = Field(default=2000, alias="MAX_QUESTION_CHARS")
     tau_retrieval: float = Field(default=0.0, alias="TAU_RETRIEVAL")

@@ -228,6 +228,9 @@ def _run_baseline_rag(
         conflicts=[],
         abstention_reason=None if claims else "no retrieved evidence",
         llm=llm,
+        # Prefer evidence-backed deterministic phrasing so baseline stays
+        # quota-safe and comparable to the investigation fast-path.
+        prefer_deterministic=True,
     )
     text, citations, _removed, verify_ok = verify_answer_citations(text, citations, claims)
     latency = time.perf_counter() - t0
@@ -251,6 +254,22 @@ def _run_investigation(engine: Any, question: str) -> dict[str, Any]:
     t0 = time.perf_counter()
     ans = engine.investigate(question)
     latency = time.perf_counter() - t0
+    claim_docs = [c.doc_id for c in (ans.claims or []) if c.doc_id]
+    cite_docs = [c.doc_id for c in (ans.citations or []) if c.doc_id]
+    preview_docs = [
+        str(p.get("doc_id"))
+        for p in (ans.evidence_preview or [])
+        if isinstance(p, dict) and p.get("doc_id")
+    ]
+    retrieved_docs = list(dict.fromkeys([*claim_docs, *cite_docs, *preview_docs]))
+    synth_modes = []
+    for event in ans.trace or []:
+        stage = getattr(event, "stage", None)
+        extra = getattr(event, "extra", None) or {}
+        if stage == "synthesize" and isinstance(extra, dict):
+            mode = extra.get("synthesis_mode")
+            if mode:
+                synth_modes.append(str(mode))
     return {
         "status": ans.status,
         "answer_text": ans.answer or "",
@@ -264,6 +283,8 @@ def _run_investigation(engine: Any, question: str) -> dict[str, Any]:
         "tokens": ans.usage.total_tokens if ans.usage else 0,
         "abstention_reason": ans.abstention_reason,
         "trace_stages": [e.stage for e in (ans.trace or [])],
+        "retrieved_doc_ids": retrieved_docs,
+        "synthesis_modes": synth_modes,
     }
 
 
@@ -519,11 +540,11 @@ def main() -> None:
                     engine.retriever.default_mode = mode  # type: ignore[assignment]
                     result = _run_investigation(engine, str(q["question"]))
                     result["gold_doc_ids"] = gold_docs
-                    # Approximate retrieval from citations if no retrieve list
-                    cited_docs = [c["doc_id"] for c in result.get("citations") or []]
                     row.update(result)
                     if resolution["eligible_retrieval"]:
-                        row["retrieval"] = _score_retrieval(q, cited_docs, gold_docs, k)
+                        row["retrieval"] = _score_retrieval(
+                            q, result.get("retrieved_doc_ids") or [], gold_docs, k
+                        )
                     row["answer"] = _score_answer(q, result)
             except Exception as exc:  # noqa: BLE001
                 row["error"] = str(exc)[:400]

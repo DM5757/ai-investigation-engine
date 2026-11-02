@@ -1,8 +1,8 @@
 # Evaluation Report
 
 **Project:** Applied AI Investigation Engine  
-**Updated:** 2026-10-30  
-**Corpus:** ACTIVE **55,081** / Qdrant **56,890** (`meets_data1_50k: true`). Earlier pre-50k runs remain historical.
+**Updated:** 2026-11-02  
+**Corpus:** ACTIVE **55,081** / Qdrant **56,890** (`meets_data1_50k: true`). Ingestion complete; earlier pre-50k runs remain historical only.
 
 ## 1. Dataset (active-gold rebuild @ full corpus)
 
@@ -57,6 +57,7 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Render Milestone 3 @ `428ed09` / `fecabea` | Airport **~67–75s** (was ~142s); contradiction + unanswerable **PASS**; colony **insufficient @ ~48s** (was timeout); multi-doc honest `llm_unavailable` with `groq:daily_quota`; multihop answer quality still weak. Per-stage traces show retrieval then LLM as dominant costs. | `docs/evidence/prod_smoke_suite.json` |
 | Local Milestone 4 multi-hop | OSU/CSUDH **answered** with both gold titles cited (~5–9s); Lent→Ice Road Truckers premiere date **answered**; Robinson→Perdita/Sicilia **answered**; colony abstention + airport factual preserved. Failure mode before fix was claim anaphora + synthesis hedge, not missing Qdrant recall. | local investigation probes |
 | Render Milestone 4 @ `8964e79` | Smoke **7/7 PASS**: airport ~14s; OSU/CSUDH ~14s (2 gold cites); Lent premiere ~22s; Robinson/Sicilia ~11s; colony abstain; contradiction answered; unanswerable abstain. | `docs/evidence/prod_smoke_suite.json` |
+| Answer eval Milestone 5 `m5_answer_v1/v2` | Test split **62** questions on ACTIVE 55,081. Investigation: mean LLM calls **0.0**, mean latency **~0.44–0.82s**, abstention **0.5**, contradiction detection **0.5**. Baseline: always `answered` (abstention **0.0**, contradiction **0.0**), higher citation F1 from unrestricted snippet dumps. 1 Qdrant timeout in v2. | `eval/results/m5_answer_v2__*` |
 
 ## 5. Quality fixes reflected in metrics intent
 
@@ -65,12 +66,13 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 - Citation pruning to answer labels; relative retrieval floor; phrase-aware rerank
 - `/api/version` exposes `git_commit`
 - Multi-hop: entity seeding, title fidelity, bridge hops, anaphoric claims, grounded second-hop filtering
+- Milestone 5: deterministic plan/synthesis + seed/bridge short-circuit; temporal deploy-time conflict detection; trace `synthesis_mode`
 
 ## 6. Remaining gaps
 
-1. Full investigation answer eval needs a quota-healthy window (no early stop).
-2. Free-tier daily quotas / Gemini RPM still force fallbacks and occasional slow tool rounds.
-3. Production multi-hop latency still LLM-bound after retrieval optimizations.
+1. Hotpot exact-match / token-F1 stay low under quote-grounded deterministic answers (not gold-string normalized).
+2. Free-tier quotas still matter when LLM polish is re-enabled for hard questions.
+3. UI sample chips deferred until demos remain green across deploys.
 
 ## 7. Evidence index
 
@@ -82,3 +84,5 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Prod probe | `docs/evidence/prod_quality_probe.json` |
 | Local RAG probe | `docs/evidence/local_rag_quality_probe.json` |
 | Colony abstention | `docs/evidence/colony_abstention_scripted.json` |
+| M5 answer eval | `eval/results/m5_answer_v2__*` |
+| Reviewer demos | `docs/evidence/reviewer_demo_cases.md` |

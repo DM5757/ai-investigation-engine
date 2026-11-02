@@ -77,8 +77,16 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Production @ `8964e79`: smoke **7/7 PASS** (airport ~14s; OSU/CSUDH ~14s with both gold cites; Lent ~22s; Robinson ~11s; colony insufficient; contradiction answered; unanswerable insufficient). CI green. Tag `submission-2026-10-29` unchanged.
 - Tests: **175** passed (non-live).
 
+## Milestone 5 — reliable investigation / eval / reviewer demos (2026-11-02)
+
+- Deterministic plan + seed/bridge retrieval; skip LLM tool loop when seeded; prefer deterministic synthesis; skip conflict-adjudication LLM. Trace records `synthesis_mode` and `tools_llm_skipped`.
+- Local demo set: **0 LLM calls**, typically **0.1–1.6s** per case (was multi-second with 3–5 provider calls).
+- Answer eval `m5_answer_v2` on test split (**62** questions, ACTIVE 55081): investigation mean LLM calls **0.0**, mean latency **~0.82s**; abstention **0.5** vs baseline **0.0**; contradiction detection **0.5** vs baseline **0.0**. One Qdrant timeout recorded as error.
+- Reviewer demo catalogue: `docs/evidence/reviewer_demo_cases.md`.
+- Tests: **180** passed (non-live). Tag `submission-2026-10-29` unchanged.
+
 ## Outstanding technical follow-ups
 
-1. Full investigation answer eval in a quota-healthy window (no early `--stop-after-llm-unavailable`).
-2. Optional TPM-aware backoff tuning beyond current Retry-After + wall-clock gate.
-3. Further cut free-tier LLM round latency (planner/tool rounds still dominate wall-clock).
+1. Raise Hotpot token-F1 / exact-match without inventing facts (better claim selection + optional LLM polish when quota allows).
+2. Optional TPM-aware backoff when the LLM path is re-enabled for hard questions.
+3. UI sample-question chips once production demos stay green across deploys.

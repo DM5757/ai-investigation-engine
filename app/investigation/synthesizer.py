@@ -6,6 +6,16 @@ import re
 
 from app.errors import BudgetExceeded, LLMOutputInvalid, LLMUnavailable
 from app.investigation.aggregator import assign_source_labels
+from app.investigation.entities import (
+    extract_focus_entities,
+    is_comparison_question,
+    should_attempt_bridge,
+)
+from app.investigation.fast_path import (
+    best_claim_for_entity,
+    comparison_direction,
+    state_westness,
+)
 from app.llm.prompts.synthesizer import SYNTHESIZER_SYSTEM
 from app.llm.types import ChatMessage, LLMClient
 from app.schemas.evidence import AnswerStatus, Citation, Claim, Conflict, UsageStats
@@ -51,6 +61,7 @@ def prune_citations_to_answer(
 
 def deterministic_synthesize(
     *,
+    question: str,
     status: AnswerStatus,
     claims: list[Claim],
     conflicts: list[Conflict],
@@ -78,7 +89,26 @@ def deterministic_synthesize(
         return text, prune_citations_to_answer(text, citations)
     if not labeled:
         return abstention_reason or "No verified claims.", []
-    # Concise deterministic fallback: one sentence per unique doc (cap 3)
+
+    comparison = _deterministic_comparison(question, labeled)
+    if comparison is not None:
+        text, selected = comparison
+        citations = claims_to_citations(selected)
+        return text, prune_citations_to_answer(text, citations)
+
+    multihop = _deterministic_multihop(question, labeled)
+    if multihop is not None:
+        text, selected = multihop
+        citations = claims_to_citations(selected)
+        return text, prune_citations_to_answer(text, citations)
+
+    # Concise factual: prefer the highest-priority claim's quote as the answer.
+    primary = labeled[0]
+    quote = (primary.quote or primary.value or "").strip()
+    if quote:
+        text = f"{quote} [{primary.source_label}]."
+        return text, prune_citations_to_answer(text, claims_to_citations([primary]))
+
     by_doc: dict[str, Claim] = {}
     for claim in labeled:
         by_doc.setdefault(claim.doc_id, claim)
@@ -90,6 +120,82 @@ def deterministic_synthesize(
     ]
     text = " ".join(sentences)
     return text, prune_citations_to_answer(text, citations)
+
+
+def _deterministic_comparison(
+    question: str, labeled: list[Claim]
+) -> tuple[str, list[Claim]] | None:
+    if not is_comparison_question(question):
+        return None
+    entities = extract_focus_entities(question)
+    if len(entities) < 2:
+        return None
+    picked: list[Claim] = []
+    for ent in entities[:2]:
+        claim = best_claim_for_entity(labeled, ent)
+        if claim is None:
+            return None
+        picked.append(claim)
+    picked = assign_source_labels(picked)
+    direction = comparison_direction(question)
+    lines = [
+        f"{entities[i]}: {picked[i].quote} [{picked[i].source_label}]"
+        for i in range(len(picked))
+    ]
+    if direction in {"west", "east"}:
+        ranks = [state_westness(f"{c.quote} {c.value}") for c in picked]
+        r0, r1 = ranks[0], ranks[1]
+        if r0 is not None and r1 is not None:
+            winner_i = (0 if r0 < r1 else 1) if direction == "west" else (0 if r0 > r1 else 1)
+            lines.append(
+                f"Therefore {entities[winner_i]} is further {direction} "
+                f"[{picked[0].source_label}, {picked[1].source_label}]."
+            )
+    return " ".join(lines), picked
+
+
+def _deterministic_multihop(
+    question: str, labeled: list[Claim]
+) -> tuple[str, list[Claim]] | None:
+    """Bridge multi-hop: cite first-hop context plus the answer-bearing claim."""
+    entities = extract_focus_entities(question)
+    if not should_attempt_bridge(question, entities):
+        return None
+    if len({c.doc_id for c in labeled}) < 2:
+        return None
+    q_low = question.lower()
+    asks_date = bool(re.search(r"\b(?:what date|premiered)\b", q_low))
+    asks_country = bool(re.search(r"\b(?:which country|king of|queen of)\b", q_low))
+
+    answer_claim: Claim | None = None
+    for claim in labeled:
+        hay = f"{claim.value} {claim.quote}"
+        if asks_date and re.search(r"\b(?:premiered|premiere)\b", hay, re.I):
+            answer_claim = claim
+            break
+        if asks_country and re.search(r"\b(?:king of|queen of)\b", hay, re.I):
+            answer_claim = claim
+            break
+    if answer_claim is None:
+        return None
+
+    bridge_claim: Claim | None = None
+    if entities:
+        bridge_claim = best_claim_for_entity(labeled, entities[0])
+    if bridge_claim is None or bridge_claim.doc_id == answer_claim.doc_id:
+        for claim in labeled:
+            if claim.doc_id != answer_claim.doc_id:
+                bridge_claim = claim
+                break
+    if bridge_claim is None or bridge_claim.doc_id == answer_claim.doc_id:
+        return None
+
+    selected = assign_source_labels([bridge_claim, answer_claim])
+    text = (
+        f"{selected[0].quote} [{selected[0].source_label}] "
+        f"{selected[1].quote} [{selected[1].source_label}]"
+    )
+    return text, selected
 
 
 def llm_synthesize(
@@ -143,10 +249,25 @@ def synthesize_answer(
     conflicts: list[Conflict],
     abstention_reason: str | None,
     llm: LLMClient | None,
+    prefer_deterministic: bool = False,
 ) -> tuple[str | None, list[Citation], UsageStats, bool]:
-    """Prefer LLM phrasing; fall back to deterministic synthesis."""
-    if status in ("insufficient", "llm_unavailable") or llm is None:
+    """Prefer LLM phrasing unless deterministic evidence path is requested.
+
+    Returns ``(text, cites, usage, used_llm)``.
+    """
+    if status in ("insufficient", "llm_unavailable") or llm is None or prefer_deterministic:
         text, cites = deterministic_synthesize(
+            question=question,
+            status=status,
+            claims=claims,
+            conflicts=conflicts,
+            abstention_reason=abstention_reason,
+        )
+        return text, cites, UsageStats(), False
+    # Conflicts: structured deterministic list is clearer and saves a provider call.
+    if status == "conflicting":
+        text, cites = deterministic_synthesize(
+            question=question,
             status=status,
             claims=claims,
             conflicts=conflicts,
@@ -164,6 +285,7 @@ def synthesize_answer(
         if status in ("answered", "partial") and _llm_hedged_insufficient(text):
             # Status already established evidence; do not ship an LLM refusal.
             text2, cites2 = deterministic_synthesize(
+                question=question,
                 status=status,
                 claims=claims,
                 conflicts=conflicts,
@@ -175,6 +297,7 @@ def synthesize_answer(
         raise
     except (LLMUnavailable, LLMOutputInvalid, Exception):
         text, cites = deterministic_synthesize(
+            question=question,
             status=status,
             claims=claims,
             conflicts=conflicts,

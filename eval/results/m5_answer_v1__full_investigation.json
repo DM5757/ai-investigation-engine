@@ -1,0 +1,3825 @@
+{
+  "summary": {
+    "config_id": "full_investigation",
+    "pipeline": "investigation",
+    "retrieval_mode": "hybrid_rrf",
+    "k": 8,
+    "n_questions_total": 62,
+    "n_questions": 62,
+    "n_scored_retrieval": 60,
+    "n_scored_answer": 62,
+    "n_excluded": 0,
+    "exclusion_reasons": {},
+    "by_type_total": {
+      "factual": 51,
+      "multi_doc": 3,
+      "contradiction": 2,
+      "unanswerable": 2,
+      "multi_step": 1,
+      "multi_hop": 3
+    },
+    "by_type_scored_retrieval": {
+      "factual": 51,
+      "multi_doc": 3,
+      "contradiction": 2,
+      "multi_step": 1,
+      "multi_hop": 3
+    },
+    "by_type_scored_answer": {
+      "factual": 51,
+      "multi_doc": 3,
+      "contradiction": 2,
+      "unanswerable": 2,
+      "multi_step": 1,
+      "multi_hop": 3
+    },
+    "n_errors": 0,
+    "corpus_active_documents": 55081,
+    "retrieval": {
+      "n_scored": 60,
+      "n": 60,
+      "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+      "recall_at_k": 0.225,
+      "mrr": 0.35,
+      "all_gold_at_k": 0.1,
+      "multi_doc_coverage": 0.225,
+      "mean_latency_s": 0.45303590999683363
+    },
+    "answer": {
+      "n_scored": 62,
+      "n": 62,
+      "exact_match": 0.0,
+      "token_f1": 0.03025197591387779,
+      "citation_f1": 0.27419354838709675,
+      "correct_abstention_rate": 0.5,
+      "n_unanswerable_scored": 2,
+      "contradiction_detection_rate": 0.5,
+      "n_contradiction_scored": 2,
+      "mean_latency_s": 0.44346108709484516,
+      "mean_llm_calls": 0.0,
+      "mean_tokens": 0.0,
+      "status_counts": {
+        "answered": 38,
+        "insufficient": 23,
+        "conflicting": 1
+      }
+    }
+  },
+  "results": [
+    {
+      "question_id": "syn_factual_beta_marker",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba"
+      ],
+      "gold_doc_titles": [
+        "long_architecture"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Gold span marker BETA-POOL-EXHAUST appears here. [S1].",
+      "citations": [
+        {
+          "doc_id": "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+          "chunk_id": "cd92ca97-7dcf-4dc1-887d-d102eca09cf0",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.46047539997380227,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_factual_jwt",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "gold_doc_titles": [
+        "incident_march"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 1,
+        "resolved_gold": 1
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.15617370000109076,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_multi_docs_services",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.14768609998282045,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c1_deploy_time",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "conflicting",
+      "answer_text": "Sources conflict:\n- deploy/deploy_time: 14:00 UTC [S1]\n- deploy/deploy_time: 08:10 UTC [S2]",
+      "citations": [
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S1"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 1,
+      "latency_s": 0.09414469997864217,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 1.0,
+        "contradiction_detected": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_contra_c2_root_cause",
+      "question_type": "contradiction",
+      "split": "test",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "change_log"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.09383649996016175,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_unans_4969",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.21170480002183467,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 1.0,
+        "correct_abstention": 1.0,
+        "soft_abstention": 1.0,
+        "false_answer_on_unanswerable": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_incomplete_inc1_approver",
+      "question_type": "unanswerable",
+      "split": "test",
+      "gold_doc_ids": [
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": false,
+        "eligible_answer": true,
+        "reason": "unanswerable_no_retrieval_gold",
+        "expected_gold": 0,
+        "resolved_gold": 0
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Identity Control Theory was created based on traditional symbolic interaction views where people choose their own behaviors and how their behaviors correspond to the meanings of their identity. [S1].",
+      "citations": [
+        {
+          "doc_id": "81901c5a-460a-46ce-b96f-5b022b926be1",
+          "chunk_id": "68fc815f-caac-4d1e-b6a4-3a11921912bb",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.10072800004854798,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "status_match": 0.0,
+        "correct_abstention": 0.0,
+        "soft_abstention": 0.0,
+        "false_answer_on_unanswerable": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "syn_multistep_latency",
+      "question_type": "multi_step",
+      "split": "test",
+      "gold_doc_ids": [
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "gold_doc_titles": [
+        "latency_metrics",
+        "status_update"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.10256510006729513,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8529",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "06a185da-c4f0-4795-a732-f56a62648e0e",
+        "04f360b5-5464-45f0-914a-a45d1157ee2b"
+      ],
+      "gold_doc_titles": [
+        "Curt Smith",
+        "Laura Stoica"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Curt Smith (born 24 June 1961) is an English musician. [S1].",
+      "citations": [
+        {
+          "doc_id": "06a185da-c4f0-4795-a732-f56a62648e0e",
+          "chunk_id": "79fa0789-14ed-43c9-ae5a-d39a543180cb",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.8129117001080886,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7264",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "71379eff-7562-4ee4-862b-14d497b8c99f",
+        "a5e8134c-49aa-4bce-98c5-5217e0af5d11"
+      ],
+      "gold_doc_titles": [
+        "Tim Rice",
+        "Aida (musical)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Sir Timothy Miles Bindon \"Tim\" Rice (born 10 November 1944) is an English author and Academy Award, Golden Globe Award, Tony Award, and Grammy Award-winning lyricist. [S1].",
+      "citations": [
+        {
+          "doc_id": "71379eff-7562-4ee4-862b-14d497b8c99f",
+          "chunk_id": "45032da9-dca5-416d-b8eb-161f370ebd29",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.6677194000221789,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2845",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+        "955d5257-0873-47d3-a587-1c54a38242cd"
+      ],
+      "gold_doc_titles": [
+        "Ohio State University",
+        "California State University, Dominguez Hills"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Ohio State University: The Ohio State University, commonly referred to as Ohio State or OSU, is a large, primarily residential, public university in Columbus, Ohio. [S1] California State University, Dominguez Hills: It is located in the city of Carson, California in the South Bay region of Los Angeles County and was founded in 1960. [S2] Therefore California State University, Dominguez Hills is further west [S1, S2].",
+      "citations": [
+        {
+          "doc_id": "6f1509ca-2706-45fc-a1f1-eef6dc61a16a",
+          "chunk_id": "81a0cced-b260-467f-85b3-d889482f1465",
+          "label": "S1"
+        },
+        {
+          "doc_id": "955d5257-0873-47d3-a587-1c54a38242cd",
+          "chunk_id": "5d1d07db-fa05-443d-bc85-6a044d9369eb",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.7099459000164643,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.14084507042253522,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3397",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "20f6899a-40b5-4bf5-b53d-c0afca33d9af",
+        "f9ed890f-209d-4388-8daf-075fdd815e14"
+      ],
+      "gold_doc_titles": [
+        "Camp Modin",
+        "Canaan, Maine"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The area comprises all of Belknap County, the southern portion of Carroll County, the eastern portion of Grafton County, and the northern portions of Strafford County and Merrimack County. [S1].",
+      "citations": [
+        {
+          "doc_id": "67780af2-dbb9-4511-9c09-3ab610df772d",
+          "chunk_id": "0b420bf7-e88e-4a97-9eb8-c1b44c924596",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.47782250004820526,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0625,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0457",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "f29c139f-c2c3-4063-b86f-fe530c81761b",
+        "58c9f531-8cfa-4c16-a447-c0c5ec6043a3"
+      ],
+      "gold_doc_titles": [
+        "Beauty and the Beast (franchise)",
+        "Beauty and the Beast (1991 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.12881599995307624,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5534",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "8ad411e1-f35a-4ff8-93a6-31663fbb5f8e",
+        "7131af2b-f974-4227-b41f-f4f576df4f5e"
+      ],
+      "gold_doc_titles": [
+        "The Ladder of Lies",
+        "Jean Acker"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.208942599943839,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2179",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "7bf1c9f6-505e-44e4-98f7-606c5e358e9c",
+        "a77bf725-7b94-46a0-ac59-f0d0af0f3bc4"
+      ],
+      "gold_doc_titles": [
+        "Leadgate, Cumbria",
+        "Alston, Cumbria"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Leadgate is a small hamlet located at the foot of Hartside Fell between the town of Alston and the village of Garrigill in the parish of Alston Moor in Cumbria, England. [S1].",
+      "citations": [
+        {
+          "doc_id": "7bf1c9f6-505e-44e4-98f7-606c5e358e9c",
+          "chunk_id": "f0c74477-c535-4fa9-877f-910c5b8bf938",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.1878431000513956,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1911",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "5036105a-5931-46ea-a5a4-9cc9eb9eaf9d",
+        "028a11cb-2f27-4ff6-a358-d0c8be71cc8a"
+      ],
+      "gold_doc_titles": [
+        "Claudio Monteverdi",
+        "Georges Bizet"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "A composer of both secular and sacred music, and a pioneer in the development of opera, he is considered a crucial transitional figure between the Renaissance and the Baroque periods of music history. [S1].",
+      "citations": [
+        {
+          "doc_id": "5036105a-5931-46ea-a5a4-9cc9eb9eaf9d",
+          "chunk_id": "c09e49bf-761b-455c-ac34-e6402149a41c",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.417965600034222,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.05714285714285715,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0825",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "6f677619-5df1-4658-b6c4-f3b0aedc7304",
+        "9015a187-2ae9-48b3-82dc-88f937eb2529"
+      ],
+      "gold_doc_titles": [
+        "Renée Asherson",
+        "The Others (2001 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The story is largely fictionalized, although some of the events leading up to Rasputin's assassination are very loosely based on Prince Yusupov's account of the story. [S1].",
+      "citations": [
+        {
+          "doc_id": "53b4277a-24fa-416a-aa56-c1c75744129e",
+          "chunk_id": "b5d5e58b-6971-476d-9d89-dc5dbf0cfde8",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.10662480001337826,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1485",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "39b4a09d-76e8-4c58-b228-c5a30c173dfc",
+        "63056aab-6ed5-473f-a029-42b0fdd554f1"
+      ],
+      "gold_doc_titles": [
+        "Tamiami Canal",
+        "Genesee River"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.7413485000142828,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1800",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "108fa944-37d4-4d37-8a7a-e046feda0f69",
+        "0fb940d0-1d65-42ed-83e3-a0daa925df70"
+      ],
+      "gold_doc_titles": [
+        "1966 Football League Cup Final",
+        "West Bromwich Albion F.C."
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The 1988 Football League Cup Final (also known as the Littlewoods Challenge Cup Final for sponsorship reasons) was an association football match between Luton Town and Arsenal on 24 April 1988 at Wembley Stadium, London. [S1].",
+      "citations": [
+        {
+          "doc_id": "a489c11a-092e-43fe-a43f-77d6d2565625",
+          "chunk_id": "b8b5b5a2-3a63-45bb-8fd1-2a022b10bb48",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.4986872998997569,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.048780487804878044,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5516",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ffbee402-5430-49de-928f-9d781644fac1",
+        "449cfb70-eafe-46e0-ab9b-08ddb0d5af7d"
+      ],
+      "gold_doc_titles": [
+        "Mary Robinson (poet)",
+        "Perdita (The Winter's Tale)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "During her lifetime she was known as \"the English Sappho\". [S1] She is the daughter of Leontes, King of Sicilia, and his wife Hermione. [S2]",
+      "citations": [
+        {
+          "doc_id": "ffbee402-5430-49de-928f-9d781644fac1",
+          "chunk_id": "f267e036-49bd-45d0-ad37-5fb16254ad71",
+          "label": "S1"
+        },
+        {
+          "doc_id": "449cfb70-eafe-46e0-ab9b-08ddb0d5af7d",
+          "chunk_id": "e62f5dad-2c08-4c81-96e9-5c6676dd2116",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.5318398999515921,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.07692307692307693,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4109",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "54424812-8ddb-4d37-8dcf-63c80b313b09",
+        "640dcea6-37b5-4c5a-bcfe-08b2c2afa481"
+      ],
+      "gold_doc_titles": [
+        "Dobara Phir Se",
+        "Salman Iqbal"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Dobara Phir Se is a 2016 Pakistani romantic drama film directed by Mehreen Jabbar and a production of ARY Films. [S1].",
+      "citations": [
+        {
+          "doc_id": "54424812-8ddb-4d37-8dcf-63c80b313b09",
+          "chunk_id": "68d9a22b-c845-4f3e-bd34-9de9e739f117",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.21882870001718402,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.17391304347826084,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4793",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "e7b9f32e-025e-4ded-a6c9-b55c3f1101c8",
+        "646de7a4-8dc2-4e4e-9688-70e679e09f32"
+      ],
+      "gold_doc_titles": [
+        "Jerry Garcia",
+        "Joe Gooch"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Jerry Garcia: Jerome John Garcia (August 1, 1942 – August 9, 1995) was an American singer-songwriter and guitarist, best known for his work as the lead guitarist and as a vocalist with the band the Grateful Dead, which came to prominence during the count [S1] Joe Gooch: Joe Gooch (born 3 May 1977) was Ten Years After's most recent lead vocalist and lead guitarist. [S2]",
+      "citations": [
+        {
+          "doc_id": "e7b9f32e-025e-4ded-a6c9-b55c3f1101c8",
+          "chunk_id": "be596a46-1271-4505-a727-7a7dc7505a81",
+          "label": "S1"
+        },
+        {
+          "doc_id": "646de7a4-8dc2-4e4e-9688-70e679e09f32",
+          "chunk_id": "f9d5eabd-6d09-437c-b141-1aa4440dd86d",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.632376000052318,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.05882352941176471,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5771",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "80bf82be-8965-432d-be95-9a18cff2bfb0",
+        "48f52f6b-8d86-45ad-bb9d-afbd584adea9"
+      ],
+      "gold_doc_titles": [
+        "Sian Gibson",
+        "Peter Kay's Car Share"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "UhaulCarShare (formerly \"UCarShare\") is a for-profit carsharing service offered by U-Haul in nearly 40 cities in the United States. [S1].",
+      "citations": [
+        {
+          "doc_id": "6354e0e5-9f5d-4299-beed-ce948355809e",
+          "chunk_id": "c7f46ab2-8de9-4cfe-ab3f-afff7820ab06",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.4657738000387326,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1732",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "d0d48035-7550-45fc-9102-55a40fd375e3",
+        "3a919a1f-1ab7-434f-9c22-8f3990299214"
+      ],
+      "gold_doc_titles": [
+        "Meyers Mill, South Carolina",
+        "Savannah River Site"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The United States of America (USA), commonly known as the United States (U.S.) or America ( ), is a federal republic composed of 50 states, a federal district, five major self-governing territories, and various possessions. [S1].",
+      "citations": [
+        {
+          "doc_id": "576c58ff-4708-4c66-9a23-3f237567a371",
+          "chunk_id": "b6c1e28d-f8a1-4a20-9f15-1ac145884a14",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.594091400038451,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.049999999999999996,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8747",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "c2a5c92d-9335-4385-8991-6f10fa251ba3",
+        "60bb6155-1df4-45a4-bcbb-5373163dd813"
+      ],
+      "gold_doc_titles": [
+        "Gerald Grosvenor, 6th Duke of Westminster",
+        "Hugh Grosvenor, 7th Duke of Westminster"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.24192199995741248,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7609",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "8624ba21-0e65-44c0-bef1-0c7f40dc22c6",
+        "db3602ab-fe71-4e46-9c1d-35576f1a5b24"
+      ],
+      "gold_doc_titles": [
+        "Ghosts (2006 film)",
+        "Gweilo"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Cantonese slang is a type of slang used in areas where Cantonese language is spoken. [S1].",
+      "citations": [
+        {
+          "doc_id": "2e7e8d5a-9596-48a6-87eb-468b94ba4c6d",
+          "chunk_id": "f40c4c3e-1755-40e3-a99b-40aea20b2532",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.6731769999023527,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3532",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "8bdeb9e1-9cb9-4bde-9a35-2bbcaf760363",
+        "84e110c8-4bcd-4b2d-90ce-39bb93e78455"
+      ],
+      "gold_doc_titles": [
+        "Marcel Duchamp",
+        "Jiang Wen"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.9226233999943361,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5644",
+      "question_type": "multi_doc",
+      "split": "test",
+      "gold_doc_ids": [
+        "84433bd9-0765-41c6-a669-bf41a99467c0",
+        "4769f05e-18d4-4a60-bb1e-c8705d141433"
+      ],
+      "gold_doc_titles": [
+        "Dane DeHaan",
+        "Valerian and the City of a Thousand Planets"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.4989988000597805,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8381",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "cd2d84a7-c359-4dd3-8ada-a56475a8f2b8",
+        "c5fc74e0-18cb-4416-8ec4-f230c406d54b"
+      ],
+      "gold_doc_titles": [
+        "Beena Sarwar",
+        "Daily Jang"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "It was founded in 2004 by Franklin Cudjoe, who currently serves as the president and chief executive officer. [S1].",
+      "citations": [
+        {
+          "doc_id": "2b01811c-8e38-4ab1-ae55-b39c8a527744",
+          "chunk_id": "2e28b9ca-62de-4049-ade8-21efbebce32e",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.1279149999609217,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.09090909090909091,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3238",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "3444c4e5-eef6-4252-9d6b-2c0fded2521f",
+        "7a5463ad-8d9c-479d-860b-2598fe7efaf6"
+      ],
+      "gold_doc_titles": [
+        "Wedding Bell Blues (Gilmore Girls)",
+        "Alexis Bledel"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Gilmore Girls: A Year in the Life is an American web television series on the streaming service Netflix. [S1].",
+      "citations": [
+        {
+          "doc_id": "ab85713d-3c76-4909-bbdc-2ba59cfdc36f",
+          "chunk_id": "aa0da99d-013c-4ca9-9d11-fdb1c8de925e",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.44456980004906654,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8698",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ff8ab9b4-773f-43e5-bd60-3ebcd7e947a4",
+        "f26b9595-d7b3-4207-8026-b167f645b5ea"
+      ],
+      "gold_doc_titles": [
+        "Karan Kapoor",
+        "Sanjana Kapoor"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Karan Kapoor (born 18 January 1962) is a former Indian film actor and model of British and Indian descent. [S1].",
+      "citations": [
+        {
+          "doc_id": "ff8ab9b4-773f-43e5-bd60-3ebcd7e947a4",
+          "chunk_id": "74ded4c9-f423-46bf-baee-4514356ab2af",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.2262217999668792,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2182",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "7c9f3544-b50c-4b45-b1fe-125751c66051",
+        "a9c57c1e-fba6-426b-9256-40f3ec4addc9"
+      ],
+      "gold_doc_titles": [
+        "The Bronze (film)",
+        "Melissa Rauch"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Since the emergence of the Big Bang theory as the dominant physical cosmological paradigm, there have been a variety of reactions by religious groups regarding its implications for religious cosmologies. [S1].",
+      "citations": [
+        {
+          "doc_id": "fceaf306-2753-4737-b0e3-86410529290f",
+          "chunk_id": "55cf0b7f-653e-447b-b7c6-178135276d58",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.36184750008396804,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8775",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "287bc2ce-1d9a-4e6c-b0ca-5ce2f0a0865a",
+        "3c2316bb-9221-4944-850c-6c6f61deeb20"
+      ],
+      "gold_doc_titles": [
+        "Aram Avakian",
+        "David Wall (actor)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "His work in the latter role includes \"Jazz on a Summer's Day\" (1960) and the indie film \"End of the Road\" (1970). [S1].",
+      "citations": [
+        {
+          "doc_id": "287bc2ce-1d9a-4e6c-b0ca-5ce2f0a0865a",
+          "chunk_id": "7e12e653-363b-43a8-bcda-dd35fb4b6916",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.5947121999925002,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7524",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "ebe2a7fe-4c46-4ee4-af5f-0727e001583d",
+        "8cae4091-3136-417c-af0e-5b0b87050e00"
+      ],
+      "gold_doc_titles": [
+        "1998 Minnesota Twins season",
+        "Paul Molitor"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The 2005 Major League Baseball season was notable for the league's new steroid policy in the wake of the BALCO scandal, which enforced harsher penalties ever than before for steroid use in Major League Baseball. [S1].",
+      "citations": [
+        {
+          "doc_id": "adf07761-19c7-4e94-bb51-689ea1808af0",
+          "chunk_id": "9f863c84-5494-4daa-b534-964d88c25dfe",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.4676810000091791,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7170",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "836b354b-6134-4d9e-9229-008ac6043b7b",
+        "cb0caf24-f802-466c-9d45-032c27e1095d"
+      ],
+      "gold_doc_titles": [
+        "Farshid Karimi",
+        "Ali Karimi"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Farshid Karimi (Persian: فرشید كریمی‎ ‎ , born May 10, 1976) is an Iranian football goalkeeper who currently plays for Aluminium in Azadegan League. [S1].",
+      "citations": [
+        {
+          "doc_id": "836b354b-6134-4d9e-9229-008ac6043b7b",
+          "chunk_id": "531fd193-01d4-457d-a437-498b3137e300",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.8497048999415711,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0650",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "4fc529fc-c8cf-4811-8ac7-7c79694c677d",
+        "5b73d2e1-a4c1-4ab7-9c76-bafec910c1fa"
+      ],
+      "gold_doc_titles": [
+        "Chalet Girl",
+        "Felicity Jones"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "It was filmed on location in Sankt Anton am Arlberg, Austria and in Garmisch-Partenkirchen, Germany. [S1].",
+      "citations": [
+        {
+          "doc_id": "4fc529fc-c8cf-4811-8ac7-7c79694c677d",
+          "chunk_id": "f3f02921-00f6-48a8-ac57-f221eb094ce6",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.4754708999535069,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7426",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "c4d199c6-04fd-470d-8bd8-88d50b67d4f6",
+        "1c96e87b-d7f8-4a73-a282-717b8e02db37"
+      ],
+      "gold_doc_titles": [
+        "Five Aces",
+        "Tia Carrere"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Italian Americans are the fourth largest European ethnic group in the United States (not including American ethnicity, an ethnonym used by many in the United States; overall, Italian Americans rank seventh, behind German American, Irish Ame [S1].",
+      "citations": [
+        {
+          "doc_id": "6dee9673-e4e9-4f6e-b112-d5d579712159",
+          "chunk_id": "baeaf762-fed1-4277-9541-eba3977c4381",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.5109776000026613,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1963",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "3213f94b-5deb-49e9-91c0-d95807eca7bc",
+        "78dc1143-8f11-41fc-b661-a2f92f05a870"
+      ],
+      "gold_doc_titles": [
+        "Orpington (UK Parliament constituency)",
+        "Jo Johnson"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "He was elected the Member of Parliament (MP) for Orpington in the General Election in May 2010, and re-elected in 2015 and 2017. [S1].",
+      "citations": [
+        {
+          "doc_id": "78dc1143-8f11-41fc-b661-a2f92f05a870",
+          "chunk_id": "ce3fc8ab-c268-44bb-9cd9-e7d4a6688894",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.11830940004438162,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.07142857142857142,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1148",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a37912a1-c978-4e78-9361-315bbe6357ad",
+        "eda0ba11-27ea-4d75-a1d3-dc1b8d90d32c"
+      ],
+      "gold_doc_titles": [
+        "Markus Feehily",
+        "Bobby Fuller"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Markus Michael Patrick Feehily (formerly known as Mark Feehily, born 28 May 1980) is an Irish singer and songwriter. [S1].",
+      "citations": [
+        {
+          "doc_id": "a37912a1-c978-4e78-9361-315bbe6357ad",
+          "chunk_id": "04f1a754-3cfc-41dd-8dee-e7c8d4575b36",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.4506391999311745,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.09523809523809523,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_0704",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "cd9c7b73-dd7b-4e67-bcf2-e7398256b597",
+        "4628d93c-8a0c-499a-b0fa-76d0648b2afa"
+      ],
+      "gold_doc_titles": [
+        "Pierre Womé",
+        "Obafemi Martins"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The 2015 Shanghai Greenland Shenhua season is Shanghai Greenland Shenhua's 12th season in the Chinese Super League and 53rd overall in the Chinese top flight. [S1].",
+      "citations": [
+        {
+          "doc_id": "6b33b2bc-d019-4c5d-98e4-5a676f2e942e",
+          "chunk_id": "53e8c44e-c4c2-485f-9242-43254cd2c777",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.5146364999236539,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3338",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "84433bd9-0765-41c6-a669-bf41a99467c0",
+        "dfa8cfae-3250-400a-a3b5-76e33fcac27c"
+      ],
+      "gold_doc_titles": [
+        "Dane DeHaan",
+        "Life (2015 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.5028164000250399,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2991",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "2d2c906b-78d0-42ac-8784-e6291c47a74e",
+        "acd882b2-7c60-477c-ba6c-17809b17aea1"
+      ],
+      "gold_doc_titles": [
+        "BWI Rail Station",
+        "Acela Express"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "BWI Airport station is a train station located in an unincorporated area within Anne Arundel County, Maryland. [S1].",
+      "citations": [
+        {
+          "doc_id": "2d2c906b-78d0-42ac-8784-e6291c47a74e",
+          "chunk_id": "2f5a5387-9944-49b3-a99a-ef020384a127",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.247730000060983,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5342",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "620b6401-dc8e-448e-856a-9cfcbf8c2735",
+        "e55119aa-fb52-425c-82ad-3135429e8ecc"
+      ],
+      "gold_doc_titles": [
+        "Madge Ryan",
+        "Summer Holiday (1963 film)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Madge Ryan (8 January 1919 – 9 January 1994) was an Australian actress, known for her stage roles in the United Kingdom, including London productions of \"Entertaining Mr Sloane\" (1964), \"Philadelphia, Here I Come\" (1967), and \"Medea\" (1993) [S1].",
+      "citations": [
+        {
+          "doc_id": "620b6401-dc8e-448e-856a-9cfcbf8c2735",
+          "chunk_id": "84fd5632-a7b0-4ebe-a7dc-0eeb6e0d8fc8",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.8933962000301108,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_2025",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "635eb9a6-92e9-4059-a834-f01ec86d2b8a",
+        "e9d704b1-6e8c-4dac-bae8-4eb2602d91d4"
+      ],
+      "gold_doc_titles": [
+        "The Simpsons (season 10)",
+        "Lard of the Dance"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.9986961999675259,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4467",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "e7453352-9f56-4c42-92b0-8b70016c2030",
+        "6695cb59-50e7-45bd-b025-c65313aa1dd0"
+      ],
+      "gold_doc_titles": [
+        "Monopoly (game)",
+        "King of Tokyo"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.10236669995356351,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7606",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "565e9be8-e7c0-4e2c-a4f2-89b0d3f9790c",
+        "8fe6cf5b-5e30-4ed5-b678-2cad5d3bb2f3"
+      ],
+      "gold_doc_titles": [
+        "P.O.D.",
+        "Swervedriver"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.5257485000183806,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5079",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "9e4640ba-5f71-426d-a3e0-aec47d9ae0a8",
+        "1d4330f2-2592-493e-8a7f-3f2b96fdaa01"
+      ],
+      "gold_doc_titles": [
+        "E. L. James",
+        "Fifty Shades Darker"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.588905300013721,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3132",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a1c86e23-c010-4eb8-9652-9634e400feee",
+        "65b70965-64fb-42fe-9fe8-4baa497e2259"
+      ],
+      "gold_doc_titles": [
+        "Call Me Mañana",
+        "Scooter (band)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Released in the US in early 1980 as a single, \"Call Me\" was number one for six consecutive weeks on the \"Billboard\" Hot 100 chart, where it became the band's biggest single and second #1. [S1].",
+      "citations": [
+        {
+          "doc_id": "0f0effe9-e38e-4226-9fe0-9a3cec6ef54d",
+          "chunk_id": "1eacb4c7-2092-46b3-9681-cf7a2fff88a6",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.3058248000452295,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3299",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "00df4972-8517-40ee-8183-799d1c3c7417",
+        "9cfde6a8-5d19-4365-b1f0-b26031d6baf7"
+      ],
+      "gold_doc_titles": [
+        "Kahan Commission",
+        "Aharon Barak"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.2450898999813944,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1226",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "e55dde83-f94b-4c2a-817d-66906423da0e",
+        "f7bd9cd0-2b30-469e-99ad-41be9f5dc123"
+      ],
+      "gold_doc_titles": [
+        "Johan Henrik Deuntzer",
+        "Danish Social Liberal Party"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The Radical Left (\"Gauche radicale\") was a French parliamentary group in the Chamber of Deputies of France during the French Third Republic. [S1].",
+      "citations": [
+        {
+          "doc_id": "6509e6fb-1799-4449-b30f-4f493f3dde17",
+          "chunk_id": "3d899062-75f9-4557-8fed-a229765acddd",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.4659055999945849,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5811",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "c2a5c92d-9335-4385-8991-6f10fa251ba3",
+        "60bb6155-1df4-45a4-bcbb-5373163dd813"
+      ],
+      "gold_doc_titles": [
+        "Gerald Grosvenor, 6th Duke of Westminster",
+        "Hugh Grosvenor, 7th Duke of Westminster"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.2719954999629408,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8415",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "9ecd39d9-3d50-4c61-9302-ece87ccf70b5",
+        "3c440ab4-8537-4eed-8666-c655d3b7fb1e"
+      ],
+      "gold_doc_titles": [
+        "2016 Auburn Tigers football team",
+        "2016 Oklahoma Sooners football team"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "The 2011 Auburn Tigers football team represented Auburn University in the 2011 NCAA Division I FBS football season. [S1].",
+      "citations": [
+        {
+          "doc_id": "8c23482c-4f69-4159-bbf7-8e30acb0ebe5",
+          "chunk_id": "5911ef21-442e-46df-813a-d2e491ba196f",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.5693197000073269,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.08695652173913043,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1551",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "09ba5550-8e31-439d-a894-e07089468ce7",
+        "d5e55ba7-05e4-4fb3-9cd0-11b644fc49dc"
+      ],
+      "gold_doc_titles": [
+        "Takeyasu Hirono",
+        "Flyweight (MMA)"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Takeyasu Hirono (born July 18, 1971) is a Japanese mixed martial artist. [S1].",
+      "citations": [
+        {
+          "doc_id": "09ba5550-8e31-439d-a894-e07089468ce7",
+          "chunk_id": "514598e1-e830-4369-aae8-e133551f1230",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.20531210000626743,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_3584",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "53fcf8ee-ff03-4945-a326-ffe0c6e65b62",
+        "03a726a0-af69-451f-85e4-e4dc4a7bd19b"
+      ],
+      "gold_doc_titles": [
+        "2013 Minnesota Vikings season",
+        "U.S. Bank Stadium"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.7559948000125587,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_1571",
+      "question_type": "multi_hop",
+      "split": "test",
+      "gold_doc_ids": [
+        "bded95e2-8c23-42ac-aa61-890823e6a81f",
+        "a3c25993-ad7a-4d39-bafe-f1a71d05578b"
+      ],
+      "gold_doc_titles": [
+        "Cardinal Hayes High School",
+        "Catholic High School Athletic Association"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Cardinal Hayes High School is a Catholic high school for boys in the Concourse Village neighborhood of the Bronx, New York City. [S1].",
+      "citations": [
+        {
+          "doc_id": "bded95e2-8c23-42ac-aa61-890823e6a81f",
+          "chunk_id": "415cc7b7-40a2-48e1-a884-8b980ad2ba14",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.2402472998946905,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.5
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.2,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_8082",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "711b7e83-d319-41a3-8b67-8ba87124f3c9",
+        "9f86cebc-bebf-4767-ad72-b810f4527bf1"
+      ],
+      "gold_doc_titles": [
+        "Carnegie Mellon University",
+        "Vanderbilt University"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.7553628999739885,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4347",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a5a3c42a-74ea-4083-986d-5f3ab732226d",
+        "085667b9-3c39-465d-9060-494c7345689a"
+      ],
+      "gold_doc_titles": [
+        "Collective Soul",
+        "Ed Roland"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Collective Soul are an American rock band originally formed in Stockbridge, Georgia, and now based in Atlanta. [S1].",
+      "citations": [
+        {
+          "doc_id": "df9f1e15-9dfb-4f5c-875c-03752974b07c",
+          "chunk_id": "4495bd81-338e-482c-9111-5267b0abb4db",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.5188370000105351,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_5322",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "91a3283c-359a-4a72-a1ea-0baca8f4829b",
+        "57845d37-5483-4f14-b890-1eda6363d6c3"
+      ],
+      "gold_doc_titles": [
+        "Kern Island Canal",
+        "Cayuga–Seneca Canal"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.6844820000696927,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_6617",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a2631307-0644-4fc4-8fd8-1fc0d5076224",
+        "c9d447dc-d599-41e1-a9f8-439708a3c3d9"
+      ],
+      "gold_doc_titles": [
+        "Boxes (Icehouse album)",
+        "Sydney Opera House"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "No verified claims could be grounded in retrieved document quotes.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.2489876999752596,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_7662",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "3a8438f3-0da4-4217-ad14-bb61e981f13f",
+        "49476c09-e27c-4ba7-809e-db5b7da5842c"
+      ],
+      "gold_doc_titles": [
+        "The Adventures of Huck Finn (1993 film)",
+        "Herbie Rides Again"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "insufficient",
+      "answer_text": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "citations": [],
+      "conflicts": 0,
+      "latency_s": 0.7101832999614999,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": "Comparison or multi-hop question requires grounded evidence for each named entity; retrieved claims cover fewer than two entities.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_train_6356",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "a3c8a554-00ba-4dce-be94-3b63ea87e096",
+        "de3ec539-e4ff-4571-94fb-a18ec6b16faf"
+      ],
+      "gold_doc_titles": [
+        "Pilot (Cougar Town)",
+        "Busy Philipps"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Colby Keller (born October 18, 1980) is an American visual artist, blogger, and pornographic film actor. [S1].",
+      "citations": [
+        {
+          "doc_id": "13944177-080d-4dc5-bb8f-7f6f025e2104",
+          "chunk_id": "cad0b0c1-ed08-414a-a623-9e49cb4dbf0f",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.8366474999347702,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0,
+        "multi_doc_coverage": 0.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "hotpot_validation_4070",
+      "question_type": "factual",
+      "split": "test",
+      "gold_doc_ids": [
+        "f6ea8155-454d-4885-8b97-51fb6dec9a84",
+        "b99a69b6-2bb4-43d6-84a5-692239268c9b"
+      ],
+      "gold_doc_titles": [
+        "Michael Lent (writer and producer)",
+        "Ice Road Truckers"
+      ],
+      "gold_resolution": {
+        "eligible_retrieval": true,
+        "eligible_answer": true,
+        "reason": "resolved",
+        "expected_gold": 2,
+        "resolved_gold": 2
+      },
+      "gold_resolved": true,
+      "status": "answered",
+      "answer_text": "Michael Lent is a mixed media writer and producer based in Los Angeles. [S1] Ice Road Truckers (commercially abbreviated IRT) is a reality television series that premiered on History, on June 17, 2007. [S2]",
+      "citations": [
+        {
+          "doc_id": "f6ea8155-454d-4885-8b97-51fb6dec9a84",
+          "chunk_id": "3a81cf1e-9560-48fa-9502-25f75e3e9a01",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b99a69b6-2bb4-43d6-84a5-692239268c9b",
+          "chunk_id": "5f7bda26-aa49-41dd-a384-7317d0022b9d",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.5724794999696314,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0,
+        "multi_doc_coverage": 1.0
+      },
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.1621621621621622,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    }
+  ]
+}

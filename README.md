@@ -16,9 +16,10 @@ Given a large document corpus, answer questions that may require combining multi
 | ACTIVE documents | **55,081** | `docs/evidence/dataset_counts.json` + live `/api/stats` |
 | FAILED records | **0** | same |
 | Qdrant points | **56,890** (= ACTIVE chunk rows) | same |
-| Automated tests | **175** passing (1 live test deselected by default) | `pytest` |
+| Automated tests | **180** passing (1 live test deselected by default) | `pytest` |
 | Retrieval eval | **91** scored questions; dense R@10 **0.890**; hybrid MRR **0.919** | `docs/EVALUATION_REPORT.md` |
-| Multi-hop (local, Gemini fallback) | OSU/CSUDH, Lent→Ice Road Truckers, Robinson→Perdita/Sicilia correct with citations | Milestone 4 |
+| Answer eval (test split) | **62** questions; investigation mean LLM calls **0.0**, mean latency **~0.8s**; baseline over-answers unanswerables | `eval/results/m5_answer_v2__*` |
+| Reviewer demos | factual, multi-hop×3, contradiction, abstention×2 | `docs/evidence/reviewer_demo_cases.md` |
 | Deployed commit | reported by `/api/version` | Render Free |
 
 Trust measured artifacts over narrative claims. Do not claim ≥50k indexed documents unless `dataset_counts.json` reports `meets_data1_50k: true`.
@@ -27,7 +28,7 @@ Trust measured artifacts over narrative claims. Do not claim ≥50k indexed docu
 
 1. **Ingest** — parse TXT/MD/PDF/DOCX/HTML/JSONL/CSV; normalize; chunk; exact/near-dup detect; persist versions in Neon; upsert dense + sparse vectors to Qdrant.
 2. **Retrieve** — FastEmbed `bge-small-en-v1.5` dense search + custom BM25 sparse; RRF / weighted fusion; custom feature-based reranker (coverage, title/heading, entity/number, proximity, MMR, per-doc cap).
-3. **Investigate** — hand-written stages (plan → tool loop → extract/verify → sufficiency → synthesize). No LangChain/LlamaIndex orchestration.
+3. **Investigate** — hand-written stages (deterministic plan → seed/bridge retrieval → extract/verify → sufficiency → synthesize). When seed evidence already covers the asked entities, the LLM tool loop is skipped; synthesis mode (`deterministic` \| `llm`) is recorded in the trace.
 4. **Respond** — answered / partial / conflicting / insufficient / `llm_unavailable`, with quote-checked citations when an answer is produced.
 
 ## Custom algorithms
@@ -105,12 +106,10 @@ Report: `docs/EVALUATION_REPORT.md` · Results: `eval/results/` · DOC-6: `eval/
 
 ## Known limitations
 
-- Render Free cold starts and free LLM rate limits affect demo latency and can force `llm_unavailable` (with sanitized failure categories such as `daily_quota`).
-- Groq free-tier daily quota often exhausts during multi-document runs; Gemini fallback continues when RPM allows.
-- Measured successful factual queries are typically dominated by hybrid retrieval then LLM tool rounds; traces expose per-stage `latency_ms`. Seed/entity retrieval caching reduces repeat embed/search cost within a request.
-- Investigation answer evaluation is provider-limited on free tiers; report scored vs skipped honestly.
-- Contradiction detection is strong in unit/scripted tests; live contradiction rates depend on retrieval coverage and LLM availability.
-- Baseline RAG can still over-answer unanswerable items relative to the full investigation path.
+- Render Free cold starts remain; cold `/api/health` can take ~1 minute after idle.
+- Groq free-tier daily quota / Gemini RPM can still force `llm_unavailable` when the LLM path is required.
+- Milestone 5 defaults to evidence-backed deterministic plan/synthesis after seed+bridge retrieval (**0 LLM calls** on the verified demo set). Exact-match Hotpot answer strings remain low because answers are quote-grounded, not gold-string normalized.
+- Baseline RAG still over-answers unanswerable items (abstention rate 0.0 on the M5 test sample); investigation abstains more honestly.
 - Windows App Control can block `datasets`/pandas; corpus build uses PyArrow parquet streaming.
 
 ## Documentation index
