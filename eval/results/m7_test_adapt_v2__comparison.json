@@ -1,0 +1,150 @@
+{
+  "created_at": "2026-11-02T10:46:51.155820+00:00",
+  "run_id": "m7_test_adapt_v2",
+  "split": "test",
+  "corpus": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "preliminary": false,
+  "summaries": [
+    {
+      "config_id": "full_investigation",
+      "pipeline": "investigation",
+      "retrieval_mode": "hybrid_rrf",
+      "k": 8,
+      "n_questions_total": 62,
+      "n_questions": 62,
+      "n_scored_retrieval": 60,
+      "n_scored_answer": 62,
+      "n_excluded": 0,
+      "exclusion_reasons": {},
+      "by_type_total": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "unanswerable": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "by_type_scored_retrieval": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "by_type_scored_answer": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "unanswerable": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "n_errors": 0,
+      "corpus_active_documents": 55081,
+      "retrieval": {
+        "n_scored": 60,
+        "n": 60,
+        "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+        "recall_at_k": 0.6166666666666667,
+        "mrr": 0.5434066859066858,
+        "all_gold_at_k": 0.43333333333333335,
+        "multi_doc_coverage": 0.6166666666666667,
+        "mean_latency_s": 3.2120917599978083
+      },
+      "answer": {
+        "n_scored": 62,
+        "n": 62,
+        "exact_match": 0.0,
+        "token_f1": 0.1603029130949169,
+        "citation_f1": 0.3741935483870968,
+        "citation_f1_answered_only": 0.5414634146341464,
+        "correct_abstention_rate": 1.0,
+        "n_unanswerable_scored": 2,
+        "contradiction_detection_rate": 1.0,
+        "n_contradiction_scored": 2,
+        "mean_latency_s": 3.1144512016119648,
+        "mean_llm_calls": 0.43548387096774194,
+        "mean_tokens": 575.1612903225806,
+        "status_counts": {
+          "answered": 34,
+          "partial": 5,
+          "insufficient": 21,
+          "conflicting": 2
+        }
+      }
+    },
+    {
+      "config_id": "baseline_rag",
+      "pipeline": "baseline_rag",
+      "retrieval_mode": "hybrid_rrf",
+      "k": 8,
+      "n_questions_total": 62,
+      "n_questions": 62,
+      "n_scored_retrieval": 60,
+      "n_scored_answer": 62,
+      "n_excluded": 0,
+      "exclusion_reasons": {},
+      "by_type_total": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "unanswerable": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "by_type_scored_retrieval": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "by_type_scored_answer": {
+        "factual": 51,
+        "multi_doc": 3,
+        "contradiction": 2,
+        "unanswerable": 2,
+        "multi_step": 1,
+        "multi_hop": 3
+      },
+      "n_errors": 0,
+      "corpus_active_documents": 55081,
+      "retrieval": {
+        "n_scored": 60,
+        "n": 60,
+        "denominator_note": "Metrics averaged only over questions with fully resolved gold docs",
+        "recall_at_k": 0.9,
+        "mrr": 0.9388888888888889,
+        "all_gold_at_k": 0.8,
+        "multi_doc_coverage": 0.9,
+        "mean_latency_s": 0.1085737749914794
+      },
+      "answer": {
+        "n_scored": 62,
+        "n": 62,
+        "exact_match": 0.0,
+        "token_f1": 0.11230755601203052,
+        "citation_f1": 0.44086021505376344,
+        "citation_f1_answered_only": 0.44086021505376344,
+        "correct_abstention_rate": 0.0,
+        "n_unanswerable_scored": 2,
+        "contradiction_detection_rate": 0.0,
+        "n_contradiction_scored": 2,
+        "mean_latency_s": 0.10925135644520784,
+        "mean_llm_calls": 0.0,
+        "mean_tokens": 0.0,
+        "status_counts": {
+          "answered": 62
+        }
+      }
+    }
+  ]
+}

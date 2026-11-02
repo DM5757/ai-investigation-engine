@@ -305,11 +305,20 @@ def claim_support_score(claim: Claim, focus: QuestionFocus) -> float:
                 # entity in passing (e.g. StubHub Center vs CSUDH).
                 return min(0.45, base * 0.55)
             return base
-        # Multi-token phrase present in question but not in claim → weak at best
-        if any(len(p.split()) >= 2 or "-" in p or "–" in p for p in scored_phrases):
-            token_hits = _token_coverage(hay, focus.tokens)
-            # Single shared token (e.g. only "roanoke") is not enough
-            return min(0.35, token_hits * 0.35)
+        # Multi-token phrase present in question but not in claim.
+        # Allow recovery only when a long distinctive token matches
+        # (e.g. AuthGateway / misconfiguration vs focus phrase "March incident").
+        # A short shared token like "roanoke" alone must stay weak.
+        token_hits = _token_coverage(hay, focus.tokens)
+        long_ok = any(
+            len(t) >= 8
+            and t not in _NON_DISTINCTIVE
+            and _token_matches(t, hay)
+            for t in focus.tokens
+        )
+        if long_ok and token_hits >= 0.55:
+            return token_hits
+        return min(0.35, token_hits * 0.35)
 
     return _token_coverage(hay, focus.tokens)
 
@@ -424,17 +433,74 @@ def evidence_text_support(text: str, title: str | None, focus: QuestionFocus) ->
     return claim_support_score(fake, focus)
 
 
+_INFLECT_SUFFIXES = frozenset({"", "s", "es", "ed", "ing", "er", "est"})
+# Generic long tokens that must not alone promote weak/distractor claims.
+_NON_DISTINCTIVE = frozenset(
+    {
+        "investigation",
+        "investigations",
+        "evidence",
+        "individuals",
+        "documents",
+        "document",
+        "information",
+        "disappearance",
+        "regarding",
+        "according",
+        "connects",
+        "involved",
+        "services",
+        "disruption",
+        "disruptions",
+    }
+)
+
+
+def _token_matches(token: str, hay: str) -> bool:
+    """Exact or soft morphological match (misconfiguration ≈ misconfigured)."""
+    if re.search(rf"(?<![a-z0-9_-]){re.escape(token)}(?![a-z0-9_-])", hay):
+        return True
+    if len(token) < 8:
+        return False
+    stems = {token}
+    for suf in ("ation", "tion", "sion", "ing", "ied", "ed", "es", "s"):
+        if token.endswith(suf) and len(token) - len(suf) >= 5:
+            stems.add(token[: -len(suf)])
+    for word in re.findall(r"[a-z0-9][a-z0-9_-]{4,}", hay):
+        for stem in stems:
+            if word.startswith(stem) and word[len(stem) :] in _INFLECT_SUFFIXES:
+                return True
+            if stem.startswith(word) and stem[len(word) :] in _INFLECT_SUFFIXES:
+                return True
+            # Stem-level morphology for -ation/-ed pairs (misconfigur*).
+            if (
+                stem != token
+                and word.startswith(stem)
+                and len(word) - len(stem) <= 3
+            ):
+                return True
+    return False
+
+
 def _token_coverage(hay: str, tokens: tuple[str, ...]) -> float:
     if not tokens:
         return 0.0
-    hits = sum(1 for t in tokens if t in hay)
+    hits = sum(1 for t in tokens if _token_matches(t, hay))
     frac = hits / len(tokens)
     # A long distinctive token (named entity / technical term) is enough to
     # count as subject support even when other question tokens are absent.
-    long_hits = [t for t in tokens if len(t) >= 8 and t in hay]
+    long_hits = [
+        t
+        for t in tokens
+        if len(t) >= 8 and t not in _NON_DISTINCTIVE and _token_matches(t, hay)
+    ]
     if long_hits:
         return max(frac, 0.7)
-    mid_hits = [t for t in tokens if len(t) >= 6 and t in hay]
+    mid_hits = [
+        t
+        for t in tokens
+        if len(t) >= 6 and t not in _NON_DISTINCTIVE and _token_matches(t, hay)
+    ]
     if mid_hits:
         return max(frac, 0.55)
     return frac

@@ -290,7 +290,9 @@ _HEDGE_INSUFFICIENT = re.compile(
     r"insufficient(?:\s+information|\s+evidence|\s+to)?|"
     r"cannot\s+determine|do\s+not\s+provide|"
     r"not\s+(?:enough|sufficient)\s+(?:information|evidence)|"
-    r"claims\s+are\s+insufficient"
+    r"claims\s+are\s+insufficient|"
+    r"not\s+(?:mentioned|present|stated|recorded|found)|"
+    r"no\s+(?:information|evidence|mention|data)\s+(?:about|on|for|regarding)"
     r")\b",
     re.IGNORECASE,
 )

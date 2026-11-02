@@ -112,6 +112,23 @@ def test_high_confidence_span_skips_llm() -> None:
     )
 
 
+def test_jwt_misconfig_span() -> None:
+    hit = extract_span_from_claims(
+        "What misconfiguration on AuthGateway was reported in the March incident?",
+        [
+            _c(
+                "1",
+                "Incident Report — Payment Outage March",
+                "A misconfigured JWT TTL on AuthGateway caused cascading retries "
+                "into PaymentService.",
+            )
+        ],
+    )
+    assert hit is not None
+    assert "JWT" in hit[0]
+    assert "TTL" in hit[0]
+
+
 def test_abbrev_and_born_spans() -> None:
     abbr = extract_span_from_claims(
         "What is the abbreviation for the movie which starred Saif Ali Khan in 2003?",

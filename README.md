@@ -16,9 +16,9 @@ Given a large document corpus, answer questions that may require combining multi
 | ACTIVE documents | **55,081** | `docs/evidence/dataset_counts.json` + live `/api/stats` |
 | FAILED records | **0** | same |
 | Qdrant points | **56,890** (= ACTIVE chunk rows) | same |
-| Automated tests | **186** passing (1 live test deselected by default) | `pytest` |
+| Automated tests | **191** passing (1 live test deselected by default) | `pytest` |
 | Retrieval eval | **91** scored questions; dense R@10 **0.890**; hybrid MRR **0.919** | `docs/EVALUATION_REPORT.md` |
-| Answer eval (test split) | **62** questions; adaptive token F1 **0.153** (det **0.080**); abstention **1.0**; mean LLM calls **0.37** adaptive | `eval/results/m6_test_adapt_v1__*` |
+| Answer eval (test split) | **62** questions; adaptive token F1 **0.183**; cite F1 **0.365**; abstention **1.0**; contradiction **1.0** | `eval/results/m7_test_adapt_v3__*` |
 | Reviewer demos | factual, multi-hop×3, contradiction, abstention×2 | `docs/evidence/reviewer_demo_cases.md` |
 | Deployed commit | `a748661` (Milestone 6) | `/api/version` on Render Free |
 

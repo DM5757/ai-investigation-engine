@@ -94,7 +94,7 @@ def heuristic_claims_from_chunk(
     sentences = [s.strip() for s in _SENTENCE_SPLIT.split(text.strip()) if s.strip()]
     selected: list[tuple[int, str]] = []
     for i, s in enumerate(sentences):
-        if len(s) < 20 or len(s) > 320:
+        if len(s) < 20 or len(s) > 420:
             continue
         low = s.lower()
         mentions = bool(hint and hint in low) or bool(title_l and title_l in low)
@@ -106,7 +106,7 @@ def heuristic_claims_from_chunk(
                 if j >= len(sentences):
                     break
                 nxt = sentences[j]
-                if 20 <= len(nxt) <= 320 and _RELATION_CUE.search(nxt):
+                if 20 <= len(nxt) <= 420 and _RELATION_CUE.search(nxt):
                     selected.append((j, nxt))
             continue
         # Title-aligned chunks: keep strongly relational sentences even when the
@@ -124,12 +124,13 @@ def heuristic_claims_from_chunk(
         if i in seen_i:
             continue
         seen_i.add(i)
-        quote = s[:240]
+        # Keep enough characters for premiere/date tails ("…History, on June 17, 2007").
+        quote = s[:360]
         claim = Claim(
             claim_id=f"{claim_prefix}-{i}",
             subject=subject_hint or source_title or doc_id,
             attribute="statement",
-            value=s[:200],
+            value=s[:280],
             quote=quote,
             chunk_id=chunk_id,
             doc_id=doc_id,

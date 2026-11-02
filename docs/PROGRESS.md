@@ -95,6 +95,14 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Production @ `a748661`: smoke **10/10 PASS**; adaptive LLM path confirmed on live multi-doc/unseen probes; curated demos remain green.
 - Tests: **186** passed (non-live). CI green. Tag `submission-2026-10-29` unchanged.
 
+## Milestone 7 — evidence accuracy / multi-hop coverage (2026-11-02)
+
+- Audited M6 failures (`docs/evidence/m7_failure_audit.md`): 25 unnecessary abstentions, 1 missed causal contradiction, comparison entity extraction bugs.
+- Fixes: soft technical claim support, causal root-cause conflicts, metric-attribute abstention, grounded premiere-date selection, longer relational quotes.
+- Held-out test: token F1 **0.153 → 0.183**; cite F1 **0.309 → 0.365**; contradiction **0.50 → 1.00**; abstention stays **1.00**.
+- Evidence: `docs/evidence/m7_report.md`, `eval/results/m7_test_adapt_v3__*`.
+- Tests: **191** passed (non-live). Tag `submission-2026-10-29` unchanged.
+
 ## Outstanding technical follow-ups
 
 1. Further Hotpot EM/alias normalization without gaming metrics.

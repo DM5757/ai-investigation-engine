@@ -14,6 +14,28 @@ def test_insufficient_when_no_claims() -> None:
     assert reason is not None
 
 
+def test_missing_metric_attribute_is_insufficient() -> None:
+    claims = [
+        Claim(
+            claim_id="1",
+            subject="FraudScorer",
+            attribute="statement",
+            value="FraudScorer is not listed among root-cause systems.",
+            quote="FraudScorer is not listed among root-cause systems.",
+            chunk_id="c1",
+            doc_id="d1",
+            verified=True,
+        )
+    ]
+    status, reason = assess_sufficiency(
+        verified_claims=claims,
+        conflicts=[],
+        question="What was FraudScorer CPU usage during the incident?",
+    )
+    assert status == "insufficient"
+    assert reason is not None
+
+
 def test_conflicting_status() -> None:
     c = Claim(
         claim_id="1",

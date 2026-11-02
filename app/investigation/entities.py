@@ -216,6 +216,12 @@ def extract_focus_entities(question: str, *, max_entities: int = 4) -> list[str]
     entities: list[str] = []
     if len(parts) >= 2:
         for part in parts:
+            # Prefer a proper-name phrase inside the clause. Trail-junk stripping
+            # of "… more states, Tamiami Canal" otherwise drops the real entity.
+            titled = extract_title_phrases(part, max_phrases=3)
+            if titled:
+                entities.append(titled[0])
+                continue
             ent = _clean_entity_span(part)
             if ent:
                 entities.append(ent)
@@ -312,11 +318,13 @@ def _norm_phrase(raw: str) -> str:
 
 def _clean_entity_span(raw: str) -> str | None:
     text = _LEAD_AUX_RE.sub("", raw.strip())
-    text = _TRAIL_JUNK_RE.sub("", text).strip(" ?,.;:")
-    # Keep the longest title-case phrase inside the span when present.
+    # Prefer title-case names before stripping comparison tails so
+    # "…more states, Tamiami Canal" keeps "Tamiami Canal".
     matches = list(_TITLE_PHRASE_RE.finditer(text))
     if matches:
         text = max((m.group(1) for m in matches), key=lambda s: (len(s), s))
+    else:
+        text = _TRAIL_JUNK_RE.sub("", text).strip(" ?,.;:")
     text = _norm_phrase(text)
     if len(text) < 4:
         return None
@@ -325,6 +333,9 @@ def _clean_entity_span(raw: str) -> str | None:
     if len(content) < 1:
         return None
     if len(parts) >= 2 and len(content) < 2 and len(content[0]) < 8:
+        return None
+    # Reject clause fragments that are mostly function words / verbs.
+    if len(content) >= 2 and all(len(p) <= 5 for p in content):
         return None
     return text
 

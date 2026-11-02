@@ -139,7 +139,9 @@ def assess_sufficiency(
         ]
         used_token_fallback = len(focus_parts) >= 2
     if len(focus_parts) >= 2:
-        phrase_hits = sum(1 for p in focus_parts if p in hay)
+        from app.investigation.question_focus import _token_matches
+
+        phrase_hits = sum(1 for p in focus_parts if _token_matches(p, hay))
         missing_detail = bool(
             re.search(
                 r"\b(?:missing|unknown|not (?:stated|found|recorded)|absent)\b",
@@ -179,6 +181,20 @@ def assess_sufficiency(
         return (
             "insufficient",
             "Documents mention the topic but do not name the requested approver.",
+        )
+
+    # Asked measurements / attributes must appear in evidence. Sharing a rare
+    # entity name (e.g. FraudScorer) is not enough to answer "CPU usage".
+    metric_cues = re.findall(
+        r"\b(cpu|gpu|memory|latency|throughput|usage|utilisation|"
+        r"utilization|temperature|percent(?:age)?)\b",
+        question.lower(),
+    )
+    if metric_cues and not any(cue in hay for cue in metric_cues):
+        return (
+            "insufficient",
+            "The asked measurement or attribute is not present in the "
+            "retrieved evidence.",
         )
 
     scores = [claim_support_score(c, q_focus) for c in supporting]

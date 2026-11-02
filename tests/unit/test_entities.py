@@ -23,6 +23,28 @@ def test_extracts_or_comparison_entities() -> None:
     assert not any(e.lower().startswith("is ") for e in ents)
 
 
+def test_extracts_named_alternatives_from_long_or_clauses() -> None:
+    q = (
+        "Which body of water flows through more states, "
+        "Tamiami Canal or Genesee River?"
+    )
+    ents = extract_focus_entities(q)
+    joined = " | ".join(ents).lower()
+    assert "tamiami" in joined
+    assert "genesee" in joined
+    assert "body of water flows" not in joined
+
+    q2 = (
+        "Who would you be more worried about playing a chess game against, "
+        "Marcel Duchamp or Jiang Wen"
+    )
+    ents2 = extract_focus_entities(q2)
+    joined2 = " | ".join(ents2).lower()
+    assert "duchamp" in joined2
+    assert "jiang" in joined2
+    assert "would you be" not in joined2
+
+
 def test_title_fidelity_prefers_exact_over_campus_extension() -> None:
     entity = "Ohio State University"
     exact = entity_title_fidelity(entity, "Ohio State University")

@@ -72,6 +72,85 @@ def test_temporal_deploy_time_conflict_across_docs() -> None:
     assert "08:10" in values
 
 
+def test_causal_root_cause_conflict_across_docs() -> None:
+    jwt_quote = (
+        "A misconfigured JWT TTL on AuthGateway caused cascading "
+        "retries into PaymentService."
+    )
+    neon_quote = (
+        "Release notes claim the outage was caused by a Neon connection "
+        "pool exhaustion, not JWT TTL."
+    )
+    claims = [
+        Claim(
+            claim_id="a",
+            subject="Incident",
+            attribute="statement",
+            value="JWT TTL caused cascading retries.",
+            quote=jwt_quote,
+            chunk_id="c1",
+            doc_id="incident",
+            verified=True,
+        ),
+        Claim(
+            claim_id="b",
+            subject="Change Log",
+            attribute="statement",
+            value="Neon connection pool exhaustion, not JWT TTL.",
+            quote=neon_quote,
+            chunk_id="c2",
+            doc_id="changelog",
+            verified=True,
+        ),
+    ]
+    conflicts = candidate_conflicts(
+        claims,
+        question=(
+            "What do the documents say about root cause of payment outage? "
+            "Note contradictions."
+        ),
+    )
+    assert len(conflicts) >= 1
+    assert any(c.attribute == "root_cause" for c in conflicts)
+
+
+def test_no_causal_conflict_without_cause_question() -> None:
+    jwt_quote = (
+        "A misconfigured JWT TTL on AuthGateway caused cascading "
+        "retries into PaymentService."
+    )
+    neon_quote = (
+        "Release notes claim the outage was caused by a Neon connection "
+        "pool exhaustion, not JWT TTL."
+    )
+    claims = [
+        Claim(
+            claim_id="a",
+            subject="Incident",
+            attribute="statement",
+            value="JWT TTL caused cascading retries.",
+            quote=jwt_quote,
+            chunk_id="c1",
+            doc_id="incident",
+            verified=True,
+        ),
+        Claim(
+            claim_id="b",
+            subject="Change Log",
+            attribute="statement",
+            value="Neon connection pool exhaustion, not JWT TTL.",
+            quote=neon_quote,
+            chunk_id="c2",
+            doc_id="changelog",
+            verified=True,
+        ),
+    ]
+    assert (
+        candidate_conflicts(claims, question="Who approved the auth-gateway rollback?")
+        == []
+    )
+
+
 def test_no_temporal_conflict_without_time_question() -> None:
     claims = [
         Claim(
