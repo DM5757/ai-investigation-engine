@@ -58,6 +58,7 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Local Milestone 4 multi-hop | OSU/CSUDH **answered** with both gold titles cited (~5–9s); Lent→Ice Road Truckers premiere date **answered**; Robinson→Perdita/Sicilia **answered**; colony abstention + airport factual preserved. Failure mode before fix was claim anaphora + synthesis hedge, not missing Qdrant recall. | local investigation probes |
 | Render Milestone 4 @ `8964e79` | Smoke **7/7 PASS**: airport ~14s; OSU/CSUDH ~14s (2 gold cites); Lent premiere ~22s; Robinson/Sicilia ~11s; colony abstain; contradiction answered; unanswerable abstain. | `docs/evidence/prod_smoke_suite.json` |
 | Answer eval Milestone 5 `m5_answer_v1/v2` | Test split **62** questions on ACTIVE 55,081. Investigation: mean LLM calls **0.0**, mean latency **~0.44–0.82s**, abstention **0.5**, contradiction detection **0.5**. Baseline: always `answered` (abstention **0.0**, contradiction **0.0**), higher citation F1 from unrestricted snippet dumps. 1 Qdrant timeout in v2. | `eval/results/m5_answer_v2__*` |
+| Render Milestone 5 @ `283bfc3` | Smoke **7/7 PASS**, **0 LLM calls**/case: airport ~11s; three multi-hops ~9–11s; colony/unanswerable abstain ~3–4s; contradiction **`conflicting`** ~3s with 08:10 vs 14:00. | `docs/evidence/prod_smoke_suite.json` |
 
 ## 5. Quality fixes reflected in metrics intent
 

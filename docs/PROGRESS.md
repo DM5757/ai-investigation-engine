@@ -83,6 +83,7 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Local demo set: **0 LLM calls**, typically **0.1–1.6s** per case (was multi-second with 3–5 provider calls).
 - Answer eval `m5_answer_v2` on test split (**62** questions, ACTIVE 55081): investigation mean LLM calls **0.0**, mean latency **~0.82s**; abstention **0.5** vs baseline **0.0**; contradiction detection **0.5** vs baseline **0.0**. One Qdrant timeout recorded as error.
 - Reviewer demo catalogue: `docs/evidence/reviewer_demo_cases.md`.
+- Production @ `283bfc3`: smoke **7/7 PASS**, **0 LLM calls** each (airport ~11s; OSU/CSUDH ~11s; Lent ~11s; Robinson ~9s; colony ~3s; contradiction `conflicting` ~3s; unanswerable ~4s). CI green.
 - Tests: **180** passed (non-live). Tag `submission-2026-10-29` unchanged.
 
 ## Outstanding technical follow-ups

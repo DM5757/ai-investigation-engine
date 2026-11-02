@@ -1,8 +1,8 @@
 {
-  "created_at": "2026-10-30T07:09:53.596134+00:00",
+  "created_at": "2026-11-02T08:56:25.120908+00:00",
   "base": "https://ai-investigation-engine-scyz.onrender.com",
   "timeout_s": 330.0,
-  "pause_s": 8.0,
+  "pause_s": 3.0,
   "steps": [
     {
       "step": "/api/health",
@@ -35,7 +35,7 @@
       "body": {
         "version": "0.1.0",
         "app": "ai-investigation-engine",
-        "git_commit": "8964e791f460e66190cea28d58c490e0efd69b06"
+        "git_commit": "283bfc326aecb1c89d2b7da976bf58e31a3bdb61"
       }
     },
     {
@@ -66,15 +66,15 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 13946.8,
+      "ms": 11307.7,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "Roanoke\u2013Blacksburg Regional Airport (also known as Woodrum Field, with IATA code ROA, ICAO code KROA, and FAA LID: ROA) is a regional airport located three nautical miles (6 km) northwest of the central business district of Roanoke, a city in Roanoke County [S1].",
-      "answer_preview": "Roanoke\u2013Blacksburg Regional Airport (also known as Woodrum Field, with IATA code ROA, ICAO code KROA, and FAA LID: ROA) is a regional airport located three nautical miles (6 km) northwest of the central business district of Roanoke, a city in Roanoke County [S1].",
+      "answer": "Roanoke\u2013Blacksburg Regional Airport (IATA: ROA,\u00a0ICAO: KROA,\u00a0FAA LID: ROA) , also known as Woodrum Field, is a regional airport located three\u00a0nautical miles (6\u00a0km) northwest of the central business district of Roanoke, a city in Roanoke Coun [S1].",
+      "answer_preview": "Roanoke\u2013Blacksburg Regional Airport (IATA: ROA,\u00a0ICAO: KROA,\u00a0FAA LID: ROA) , also known as Woodrum Field, is a regional airport located three\u00a0nautical miles (6\u00a0km) northwest of the central business district of Roanoke, a city in Roanoke Coun [S1].",
       "n_citations": 1,
       "citation_titles": [
         "Roanoke\u2013Blacksburg Regional Airport"
@@ -84,10 +84,10 @@
       ],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
-      "usage_calls": 3,
-      "usage_prompt_tokens": 2051,
-      "usage_completion_tokens": 464,
-      "usage_total_tokens": 2515,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
       "abstention_reason": null,
       "trace_stages": [
         [
@@ -96,35 +96,31 @@
         ],
         [
           "plan",
-          1178.4
+          0.4
         ],
         [
           "tools_seed_search",
-          3622.7
+          3790.7
         ],
         [
-          "tools_llm_round_0",
-          1272.9
-        ],
-        [
-          "tool_record_finding",
+          "tools_llm_skipped",
           0.0
         ],
         [
           "extract",
-          2.3
+          3.9
         ],
         [
           "contradictions",
-          0.0
+          0.1
         ],
         [
           "sufficiency",
-          0.2
+          0.3
         ],
         [
           "synthesize",
-          972.7
+          0.1
         ],
         [
           "verify",
@@ -132,7 +128,7 @@
         ],
         [
           "request",
-          7050.0
+          3796.3
         ]
       ]
     },
@@ -148,15 +144,15 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 14019.9,
+      "ms": 10785.9,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "California State University, Dominguez Hills is located in Carson, California [S4], while Ohio State University is located in Columbus, Ohio [S1]. Because California is further west than Ohio, California State University, Dominguez Hills is further west.",
-      "answer_preview": "California State University, Dominguez Hills is located in Carson, California [S4], while Ohio State University is located in Columbus, Ohio [S1]. Because California is further west than Ohio, California State University, Dominguez Hills is further west.",
+      "answer": "Ohio State University: The Ohio State University, commonly referred to as Ohio State or OSU, is a large, primarily residential, public university in Columbus, Ohio. [S1] California State University, Dominguez Hills: It is located in the city of Carson, California in the South Bay region of Los Angeles County and was founded in 1960. [S2] Therefore California State University, Dominguez Hills is further west [S1, S2].",
+      "answer_preview": "Ohio State University: The Ohio State University, commonly referred to as Ohio State or OSU, is a large, primarily residential, public university in Columbus, Ohio. [S1] California State University, Dominguez Hills: It is located in the city of Carson, California in the South Bay region of Los Angeles County and was founded in 1960. [S2] Therefore California State University, Dominguez Hills is further west [S1, S2].",
       "n_citations": 2,
       "citation_titles": [
         "Ohio State University",
@@ -168,10 +164,10 @@
       ],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
-      "usage_calls": 3,
-      "usage_prompt_tokens": 7667,
-      "usage_completion_tokens": 442,
-      "usage_total_tokens": 8109,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
       "abstention_reason": null,
       "trace_stages": [
         [
@@ -180,27 +176,23 @@
         ],
         [
           "plan",
-          1046.1
+          0.1
         ],
         [
           "tools_seed_search",
-          5291.6
+          4857.9
         ],
         [
           "tools_bridge_search",
-          3587.3
+          4391.6
         ],
         [
-          "tools_llm_round_0",
-          1412.0
-        ],
-        [
-          "tool_record_finding",
+          "tools_llm_skipped",
           0.0
         ],
         [
           "extract",
-          90.9
+          197.0
         ],
         [
           "contradictions",
@@ -208,11 +200,11 @@
         ],
         [
           "sufficiency",
-          0.6
+          0.7
         ],
         [
           "synthesize",
-          793.7
+          2.7
         ],
         [
           "verify",
@@ -220,7 +212,7 @@
         ],
         [
           "request",
-          12227.0
+          9455.8
         ]
       ]
     },
@@ -236,32 +228,30 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 21660.6,
+      "ms": 10988.7,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star of the reality television series *Ice Road Truckers*, which premiered on June 17, 2007 [S1, S3].",
-      "answer_preview": "Michael Lent is best known as the co-writer of the memoirs of Hugh Rowland, a star of the reality television series *Ice Road Truckers*, which premiered on June 17, 2007 [S1, S3].",
-      "n_citations": 3,
+      "answer": "Michael Lent is a mixed media writer and producer based in Los Angeles. [S1] Ice Road Truckers (commercially abbreviated IRT) is a reality television series that premiered on History, on June 17, 2007. [S2]",
+      "answer_preview": "Michael Lent is a mixed media writer and producer based in Los Angeles. [S1] Ice Road Truckers (commercially abbreviated IRT) is a reality television series that premiered on History, on June 17, 2007. [S2]",
+      "n_citations": 2,
       "citation_titles": [
-        "Ice Road Truckers",
         "Michael Lent (writer and producer)",
-        "Michael Lent (writer and producer)"
+        "Ice Road Truckers"
       ],
       "citation_doc_ids": [
-        "b99a69b6-2bb4-43d6-84a5-692239268c9b",
         "f6ea8155-454d-4885-8b97-51fb6dec9a84",
-        "f6ea8155-454d-4885-8b97-51fb6dec9a84"
+        "b99a69b6-2bb4-43d6-84a5-692239268c9b"
       ],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
-      "usage_calls": 3,
-      "usage_prompt_tokens": 5027,
-      "usage_completion_tokens": 391,
-      "usage_total_tokens": 5418,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
       "abstention_reason": null,
       "trace_stages": [
         [
@@ -270,31 +260,27 @@
         ],
         [
           "plan",
-          877.7
+          0.1
         ],
         [
           "tools_seed_search",
-          3854.2
+          4032.6
         ],
         [
           "tools_bridge_search",
-          3298.2
+          3403.6
         ],
         [
-          "tools_llm_round_0",
-          1464.4
-        ],
-        [
-          "tool_record_finding",
+          "tools_llm_skipped",
           0.0
         ],
         [
           "extract",
-          8.6
+          92.7
         ],
         [
           "contradictions",
-          0.0
+          0.1
         ],
         [
           "sufficiency",
@@ -302,7 +288,7 @@
         ],
         [
           "synthesize",
-          10192.9
+          0.3
         ],
         [
           "verify",
@@ -310,7 +296,7 @@
         ],
         [
           "request",
-          19698.0
+          7532.0
         ]
       ]
     },
@@ -326,30 +312,30 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 10724.7,
+      "ms": 8790.2,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "Mary Robinson earned the nickname \"Perdita\" for playing the heroine Perdita in Shakespeare's *The Winter's Tale* [S3]. That character is the daughter of Leontes, the King of Sicilia [S1].",
-      "answer_preview": "Mary Robinson earned the nickname \"Perdita\" for playing the heroine Perdita in Shakespeare's *The Winter's Tale* [S3]. That character is the daughter of Leontes, the King of Sicilia [S1].",
+      "answer": "During her lifetime she was known as \"the English Sappho\". [S1] She is the daughter of Leontes, King of Sicilia, and his wife Hermione. [S2]",
+      "answer_preview": "During her lifetime she was known as \"the English Sappho\". [S1] She is the daughter of Leontes, King of Sicilia, and his wife Hermione. [S2]",
       "n_citations": 2,
       "citation_titles": [
-        "Perdita (The Winter's Tale)",
-        "Mary Robinson (poet)"
+        "Mary Robinson (poet)",
+        "Perdita (The Winter's Tale)"
       ],
       "citation_doc_ids": [
-        "449cfb70-eafe-46e0-ab9b-08ddb0d5af7d",
-        "ffbee402-5430-49de-928f-9d781644fac1"
+        "ffbee402-5430-49de-928f-9d781644fac1",
+        "449cfb70-eafe-46e0-ab9b-08ddb0d5af7d"
       ],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
-      "usage_calls": 3,
-      "usage_prompt_tokens": 7244,
-      "usage_completion_tokens": 383,
-      "usage_total_tokens": 7627,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
       "abstention_reason": null,
       "trace_stages": [
         [
@@ -358,27 +344,23 @@
         ],
         [
           "plan",
-          1011.0
+          0.1
         ],
         [
           "tools_seed_search",
-          3507.0
+          4264.3
         ],
         [
           "tools_bridge_search",
-          2599.1
+          2500.1
         ],
         [
-          "tools_llm_round_0",
-          1391.4
-        ],
-        [
-          "tool_record_finding",
+          "tools_llm_skipped",
           0.0
         ],
         [
           "extract",
-          13.7
+          300.1
         ],
         [
           "contradictions",
@@ -390,7 +372,7 @@
         ],
         [
           "synthesize",
-          740.8
+          0.3
         ],
         [
           "verify",
@@ -398,7 +380,7 @@
         ],
         [
           "request",
-          9265.9
+          7149.5
         ]
       ]
     },
@@ -413,7 +395,7 @@
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 41690.1,
+      "ms": 2868.1,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -427,10 +409,10 @@
       "citation_doc_ids": [],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
-      "usage_calls": 5,
-      "usage_prompt_tokens": 16361,
-      "usage_completion_tokens": 265,
-      "usage_total_tokens": 16626,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
       "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
       "trace_stages": [
         [
@@ -439,47 +421,19 @@
         ],
         [
           "plan",
-          29456.9
-        ],
-        [
-          "tools_seed_search",
-          2033.2
-        ],
-        [
-          "tools_llm_round_0",
-          985.3
-        ],
-        [
-          "tool_find_documents",
-          1403.4
-        ],
-        [
-          "tools_llm_round_1",
-          1009.4
-        ],
-        [
-          "tool_search_documents",
-          1991.8
-        ],
-        [
-          "tools_llm_round_2",
-          1234.4
-        ],
-        [
-          "tool_search_documents",
-          1468.9
-        ],
-        [
-          "tools_llm_round_3",
-          1808.4
-        ],
-        [
-          "tool_find_documents",
           0.1
         ],
         [
+          "tools_seed_search",
+          2523.8
+        ],
+        [
+          "tools_llm_skipped",
+          0.0
+        ],
+        [
           "extract",
-          11.9
+          3.1
         ],
         [
           "contradictions",
@@ -499,7 +453,7 @@
         ],
         [
           "request",
-          41404.6
+          2527.3
         ]
       ]
     },
@@ -516,30 +470,30 @@
         "answered"
       ],
       "http_status": 200,
-      "ms": 46357.8,
+      "ms": 3438.8,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
-      "answer_status": "answered",
+      "answer_status": "conflicting",
       "degraded": false,
-      "answer": "The documents contain a contradiction regarding the deploy time of the auth-gateway on 2024-03-12:\n\n* The Incident Report states that the auth-gateway deploy occurred at 08:10 UTC [S1].\n* The Change Log states that auth-gateway version 2.4.1 was deployed at 14:00 UTC [S2].",
-      "answer_preview": "The documents contain a contradiction regarding the deploy time of the auth-gateway on 2024-03-12:\n\n* The Incident Report states that the auth-gateway deploy occurred at 08:10 UTC [S1].\n* The Change Log states that auth-gateway version 2.4.1 was deployed at 14:00 UTC [S2].",
+      "answer": "Sources conflict:\n- deploy/deploy_time: 14:00 UTC [S1]\n- deploy/deploy_time: 08:10 UTC [S2]",
+      "answer_preview": "Sources conflict:\n- deploy/deploy_time: 14:00 UTC [S1]\n- deploy/deploy_time: 08:10 UTC [S2]",
       "n_citations": 2,
       "citation_titles": [
-        "Incident Report \u2014 Payment Outage March",
-        "Change Log March"
+        "Change Log March",
+        "Incident Report \u2014 Payment Outage March"
       ],
       "citation_doc_ids": [
-        "86fa752f-640d-4a79-8210-6481514cd144",
-        "de2106e6-6b42-4299-af93-b35c82be5532"
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144"
       ],
-      "n_conflicts": 0,
+      "n_conflicts": 1,
       "n_evidence_preview": 0,
-      "usage_calls": 4,
-      "usage_prompt_tokens": 4958,
-      "usage_completion_tokens": 725,
-      "usage_total_tokens": 5683,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
       "abstention_reason": null,
       "trace_stages": [
         [
@@ -548,43 +502,31 @@
         ],
         [
           "plan",
-          38008.7
+          0.1
         ],
         [
           "tools_seed_search",
-          2100.2
+          2017.7
         ],
         [
-          "tools_llm_round_0",
-          936.8
-        ],
-        [
-          "tool_search_documents",
-          2064.4
-        ],
-        [
-          "tools_llm_round_1",
-          1067.0
-        ],
-        [
-          "tool_record_finding",
+          "tools_llm_skipped",
           0.0
         ],
         [
           "extract",
-          3.5
+          1.3
         ],
         [
           "contradictions",
-          0.0
+          0.1
         ],
         [
           "sufficiency",
-          0.4
+          0.0
         ],
         [
           "synthesize",
-          766.6
+          0.1
         ],
         [
           "verify",
@@ -592,7 +534,7 @@
         ],
         [
           "request",
-          44948.3
+          2019.5
         ]
       ]
     },
@@ -607,7 +549,7 @@
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 11838.1,
+      "ms": 4454.0,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -621,10 +563,10 @@
       "citation_doc_ids": [],
       "n_conflicts": 0,
       "n_evidence_preview": 0,
-      "usage_calls": 5,
-      "usage_prompt_tokens": 25112,
-      "usage_completion_tokens": 223,
-      "usage_total_tokens": 25335,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
       "abstention_reason": "No verified claims could be grounded in retrieved document quotes.",
       "trace_stages": [
         [
@@ -633,47 +575,19 @@
         ],
         [
           "plan",
-          800.2
+          0.1
         ],
         [
           "tools_seed_search",
-          3218.5
+          3750.7
         ],
         [
-          "tools_llm_round_0",
-          764.5
-        ],
-        [
-          "tool_search_documents",
-          1043.2
-        ],
-        [
-          "tools_llm_round_1",
-          781.8
-        ],
-        [
-          "tool_find_documents",
-          1817.1
-        ],
-        [
-          "tools_llm_round_2",
-          821.5
-        ],
-        [
-          "tool_get_document_metadata",
-          370.2
-        ],
-        [
-          "tools_llm_round_3",
-          1229.9
-        ],
-        [
-          "tool_read_chunk_context",
-          591.6
+          "tools_llm_skipped",
+          0.0
         ],
         [
           "extract",
-          9.1
+          91.3
         ],
         [
           "contradictions",
@@ -693,12 +607,12 @@
         ],
         [
           "request",
-          11532.4
+          3842.9
         ]
       ]
     }
   ],
-  "git_commit": "8964e791f460e66190cea28d58c490e0efd69b06",
+  "git_commit": "283bfc326aecb1c89d2b7da976bf58e31a3bdb61",
   "active_documents": 55081,
   "n_pass": 7,
   "n_honest_degraded": 0,
