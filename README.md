@@ -20,7 +20,7 @@ Given a large document corpus, answer questions that may require combining multi
 | Retrieval eval | **91** scored questions; dense R@10 **0.890**; hybrid MRR **0.919** | `docs/EVALUATION_REPORT.md` |
 | Answer eval (test split) | **62** questions; adaptive token F1 **0.153** (det **0.080**); abstention **1.0**; mean LLM calls **0.37** adaptive | `eval/results/m6_test_adapt_v1__*` |
 | Reviewer demos | factual, multi-hop×3, contradiction, abstention×2 | `docs/evidence/reviewer_demo_cases.md` |
-| Deployed commit | reported by `/api/version` | Render Free |
+| Deployed commit | `a748661` (Milestone 6) | `/api/version` on Render Free |
 
 Trust measured artifacts over narrative claims. Do not claim ≥50k indexed documents unless `dataset_counts.json` reports `meets_data1_50k: true`.
 

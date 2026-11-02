@@ -30,9 +30,30 @@ Artifacts: `eval/results/m6_test_det_v1__*`, `eval/results/m6_test_adapt_v1__*`.
 3. Question-gated temporal conflicts; imperative focus phrases stripped; redacted/unnamed approver → insufficient.
 4. Multi-hop date/country spans attach first-hop claims so required supporting docs remain cited.
 
+## Production acceptance @ `a748661`
+
+Smoke suite **10/10 PASS** on https://ai-investigation-engine-scyz.onrender.com (ACTIVE 55,081):
+
+- Curated demos preserved (airport Woodrum; OSU/CSUDH; Lent June 17, 2007; Robinson Sicilia; colony abstain; deploy conflict; FraudScorer abstain) — mostly **0 LLM** / short spans.
+- Adaptive LLM path observed live: `multi_doc_payment` (1 call), `budget_isolation_2` (1 call), and unseen Hush/Jessica Lange probe (`synthesis_mode=llm`).
+- Unseen: deploy-time question → `conflicting`; rollback approver → `insufficient` (redacted).
+
+Evidence: `docs/evidence/prod_smoke_suite.json`.
+
+## Latency and cost
+
+| Mode | Mean latency (test) | Mean LLM calls | Mean tokens |
+| --- | ---: | ---: | ---: |
+| Deterministic investigation | 0.35 s | 0.00 | 0 |
+| Adaptive investigation | 2.20 s | 0.37 | 452 |
+| Baseline RAG | 0.14 s | 0.00 | 0 |
+
+Production curated demos typically **3–14 s** wall time on Render Free (cold-ish), with **0–1** LLM calls.
+
 ## Limitations
 
 - Exact match remains ~0 (Hotpot gold formatting / aliases).
 - Contradiction detection still 0.5 on the two test items (root-cause pair not always conflicting by polarity rules).
 - Baseline citation F1 stays higher because it always answers and dumps snippets (no abstention).
 - Free-tier LLM quotas still constrain adaptive polish at scale.
+- Some Hotpot items still miss the gold span when retrieval returns the wrong hop page.

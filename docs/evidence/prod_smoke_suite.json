@@ -1,8 +1,8 @@
 {
-  "created_at": "2026-11-02T08:56:25.120908+00:00",
+  "created_at": "2026-11-02T10:19:16.944317+00:00",
   "base": "https://ai-investigation-engine-scyz.onrender.com",
   "timeout_s": 330.0,
-  "pause_s": 3.0,
+  "pause_s": 2.0,
   "steps": [
     {
       "step": "/api/health",
@@ -35,7 +35,7 @@
       "body": {
         "version": "0.1.0",
         "app": "ai-investigation-engine",
-        "git_commit": "283bfc326aecb1c89d2b7da976bf58e31a3bdb61"
+        "git_commit": "a748661d8f85a0b7e8d46e745c8afda808ac0af3"
       }
     },
     {
@@ -66,15 +66,15 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 11307.7,
+      "ms": 13950.7,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "Roanoke\u2013Blacksburg Regional Airport (IATA: ROA,\u00a0ICAO: KROA,\u00a0FAA LID: ROA) , also known as Woodrum Field, is a regional airport located three\u00a0nautical miles (6\u00a0km) northwest of the central business district of Roanoke, a city in Roanoke Coun [S1].",
-      "answer_preview": "Roanoke\u2013Blacksburg Regional Airport (IATA: ROA,\u00a0ICAO: KROA,\u00a0FAA LID: ROA) , also known as Woodrum Field, is a regional airport located three\u00a0nautical miles (6\u00a0km) northwest of the central business district of Roanoke, a city in Roanoke Coun [S1].",
+      "answer": "Woodrum Field [S1].",
+      "answer_preview": "Woodrum Field [S1].",
       "n_citations": 1,
       "citation_titles": [
         "Roanoke\u2013Blacksburg Regional Airport"
@@ -100,7 +100,7 @@
         ],
         [
           "tools_seed_search",
-          3790.7
+          4199.1
         ],
         [
           "tools_llm_skipped",
@@ -108,19 +108,19 @@
         ],
         [
           "extract",
-          3.9
+          2.9
         ],
         [
           "contradictions",
-          0.1
+          0.2
         ],
         [
           "sufficiency",
-          0.3
+          0.4
         ],
         [
           "synthesize",
-          0.1
+          0.5
         ],
         [
           "verify",
@@ -128,7 +128,88 @@
         ],
         [
           "request",
-          3796.3
+          4204.1
+        ]
+      ]
+    },
+    {
+      "id": "multi_doc_payment",
+      "letter": "B",
+      "category": "multi_document",
+      "question": "Which system changes caused disruptions in payment processing in March, which services were affected, and which documents support this?",
+      "mode": "default",
+      "expected_behavior": "Requires combining synthetic incident + change-log style sources.",
+      "expect_status": [
+        "answered",
+        "partial",
+        "conflicting"
+      ],
+      "http_status": 200,
+      "ms": 5352.7,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "The March disruption was caused by an\u202fauth\u2011gateway\u202fchange, affecting the\u202fPaymentService; this is documented in the Exec Summary and the \u201cIncident Report\u202f\u2014\u202fPayment Outage March\u201d\u202f[S1][S2].",
+      "answer_preview": "The March disruption was caused by an\u202fauth\u2011gateway\u202fchange, affecting the\u202fPaymentService; this is documented in the Exec Summary and the \u201cIncident Report\u202f\u2014\u202fPayment Outage March\u201d\u202f[S1][S2].",
+      "n_citations": 2,
+      "citation_titles": [
+        "Exec Summary",
+        "Incident Report \u2014 Payment Outage March"
+      ],
+      "citation_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 1,
+      "usage_prompt_tokens": 515,
+      "usage_completion_tokens": 169,
+      "usage_total_tokens": 684,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.1
+        ],
+        [
+          "tools_seed_search",
+          2470.9
+        ],
+        [
+          "tools_llm_skipped",
+          0.0
+        ],
+        [
+          "extract",
+          0.6
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.1
+        ],
+        [
+          "synthesize",
+          1498.4
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          3970.6
         ]
       ]
     },
@@ -144,15 +225,15 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 10785.9,
+      "ms": 10800.2,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "Ohio State University: The Ohio State University, commonly referred to as Ohio State or OSU, is a large, primarily residential, public university in Columbus, Ohio. [S1] California State University, Dominguez Hills: It is located in the city of Carson, California in the South Bay region of Los Angeles County and was founded in 1960. [S2] Therefore California State University, Dominguez Hills is further west [S1, S2].",
-      "answer_preview": "Ohio State University: The Ohio State University, commonly referred to as Ohio State or OSU, is a large, primarily residential, public university in Columbus, Ohio. [S1] California State University, Dominguez Hills: It is located in the city of Carson, California in the South Bay region of Los Angeles County and was founded in 1960. [S2] Therefore California State University, Dominguez Hills is further west [S1, S2].",
+      "answer": "California State University, Dominguez Hills [S1, S2].",
+      "answer_preview": "California State University, Dominguez Hills [S1, S2].",
       "n_citations": 2,
       "citation_titles": [
         "Ohio State University",
@@ -180,11 +261,11 @@
         ],
         [
           "tools_seed_search",
-          4857.9
+          5672.9
         ],
         [
           "tools_bridge_search",
-          4391.6
+          3590.6
         ],
         [
           "tools_llm_skipped",
@@ -192,7 +273,7 @@
         ],
         [
           "extract",
-          197.0
+          197.7
         ],
         [
           "contradictions",
@@ -200,11 +281,11 @@
         ],
         [
           "sufficiency",
-          0.7
+          1.0
         ],
         [
           "synthesize",
-          2.7
+          3.7
         ],
         [
           "verify",
@@ -212,7 +293,7 @@
         ],
         [
           "request",
-          9455.8
+          9471.9
         ]
       ]
     },
@@ -228,15 +309,15 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 10988.7,
+      "ms": 9699.4,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "Michael Lent is a mixed media writer and producer based in Los Angeles. [S1] Ice Road Truckers (commercially abbreviated IRT) is a reality television series that premiered on History, on June 17, 2007. [S2]",
-      "answer_preview": "Michael Lent is a mixed media writer and producer based in Los Angeles. [S1] Ice Road Truckers (commercially abbreviated IRT) is a reality television series that premiered on History, on June 17, 2007. [S2]",
+      "answer": "June 17, 2007 [S1, S2].",
+      "answer_preview": "June 17, 2007 [S1, S2].",
       "n_citations": 2,
       "citation_titles": [
         "Michael Lent (writer and producer)",
@@ -264,11 +345,11 @@
         ],
         [
           "tools_seed_search",
-          4032.6
+          3788.4
         ],
         [
           "tools_bridge_search",
-          3403.6
+          3707.0
         ],
         [
           "tools_llm_skipped",
@@ -276,7 +357,7 @@
         ],
         [
           "extract",
-          92.7
+          95.8
         ],
         [
           "contradictions",
@@ -284,11 +365,11 @@
         ],
         [
           "sufficiency",
-          0.4
+          0.8
         ],
         [
           "synthesize",
-          0.3
+          0.7
         ],
         [
           "verify",
@@ -296,7 +377,7 @@
         ],
         [
           "request",
-          7532.0
+          7594.5
         ]
       ]
     },
@@ -312,15 +393,15 @@
         "partial"
       ],
       "http_status": 200,
-      "ms": 8790.2,
+      "ms": 8285.8,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "answered",
       "degraded": false,
-      "answer": "During her lifetime she was known as \"the English Sappho\". [S1] She is the daughter of Leontes, King of Sicilia, and his wife Hermione. [S2]",
-      "answer_preview": "During her lifetime she was known as \"the English Sappho\". [S1] She is the daughter of Leontes, King of Sicilia, and his wife Hermione. [S2]",
+      "answer": "Sicilia [S1, S2].",
+      "answer_preview": "Sicilia [S1, S2].",
       "n_citations": 2,
       "citation_titles": [
         "Mary Robinson (poet)",
@@ -348,11 +429,11 @@
         ],
         [
           "tools_seed_search",
-          4264.3
+          3558.2
         ],
         [
           "tools_bridge_search",
-          2500.1
+          2802.3
         ],
         [
           "tools_llm_skipped",
@@ -360,7 +441,7 @@
         ],
         [
           "extract",
-          300.1
+          405.3
         ],
         [
           "contradictions",
@@ -368,7 +449,7 @@
         ],
         [
           "sufficiency",
-          0.3
+          91.2
         ],
         [
           "synthesize",
@@ -380,22 +461,22 @@
         ],
         [
           "request",
-          7149.5
+          6944.4
         ]
       ]
     },
     {
-      "id": "colony_regression",
-      "letter": "regression-A",
-      "category": "insufficient_missing_entity",
-      "question": "Which evidence connects the investigation of the Roanoke colony disappearance to the key individuals involved, and what conclusions can be drawn from the available documents?",
+      "id": "unanswerable_fraudscorer",
+      "letter": "D",
+      "category": "unanswerable",
+      "question": "What was FraudScorer CPU usage during the incident?",
       "mode": "default",
-      "expected_behavior": "Roanoke Colony title absent from ACTIVE corpus; must abstain.",
+      "expected_behavior": "Evidence intentionally absent in synthetic corpus.",
       "expect_status": [
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 2868.1,
+      "ms": 3860.5,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -425,7 +506,7 @@
         ],
         [
           "tools_seed_search",
-          2523.8
+          3508.5
         ],
         [
           "tools_llm_skipped",
@@ -433,7 +514,7 @@
         ],
         [
           "extract",
-          3.1
+          92.9
         ],
         [
           "contradictions",
@@ -453,7 +534,7 @@
         ],
         [
           "request",
-          2527.3
+          3602.2
         ]
       ]
     },
@@ -470,15 +551,15 @@
         "answered"
       ],
       "http_status": 200,
-      "ms": 3438.8,
+      "ms": 3360.1,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
       "failure_reasons": [],
       "answer_status": "conflicting",
       "degraded": false,
-      "answer": "Sources conflict:\n- deploy/deploy_time: 14:00 UTC [S1]\n- deploy/deploy_time: 08:10 UTC [S2]",
-      "answer_preview": "Sources conflict:\n- deploy/deploy_time: 14:00 UTC [S1]\n- deploy/deploy_time: 08:10 UTC [S2]",
+      "answer": "Sources conflict:\n- authgateway/deploy_time: 14:00 UTC [S1]\n- authgateway/deploy_time: 08:10 UTC [S2]",
+      "answer_preview": "Sources conflict:\n- authgateway/deploy_time: 14:00 UTC [S1]\n- authgateway/deploy_time: 08:10 UTC [S2]",
       "n_citations": 2,
       "citation_titles": [
         "Change Log March",
@@ -506,7 +587,7 @@
         ],
         [
           "tools_seed_search",
-          2017.7
+          2036.5
         ],
         [
           "tools_llm_skipped",
@@ -514,11 +595,11 @@
         ],
         [
           "extract",
-          1.3
+          1.6
         ],
         [
           "contradictions",
-          0.1
+          0.4
         ],
         [
           "sufficiency",
@@ -526,7 +607,7 @@
         ],
         [
           "synthesize",
-          0.1
+          0.2
         ],
         [
           "verify",
@@ -534,22 +615,22 @@
         ],
         [
           "request",
-          2019.5
+          2039.3
         ]
       ]
     },
     {
-      "id": "unanswerable_fraudscorer",
-      "letter": "D",
-      "category": "unanswerable",
-      "question": "What was FraudScorer CPU usage during the incident?",
+      "id": "colony_regression",
+      "letter": "regression-A",
+      "category": "insufficient_missing_entity",
+      "question": "Which evidence connects the investigation of the Roanoke colony disappearance to the key individuals involved, and what conclusions can be drawn from the available documents?",
       "mode": "default",
-      "expected_behavior": "Evidence intentionally absent in synthetic corpus.",
+      "expected_behavior": "Roanoke Colony title absent from ACTIVE corpus; must abstain.",
       "expect_status": [
         "insufficient"
       ],
       "http_status": 200,
-      "ms": 4454.0,
+      "ms": 3151.6,
       "timeout_or_error": false,
       "pass": true,
       "honest_degraded": false,
@@ -579,7 +660,7 @@
         ],
         [
           "tools_seed_search",
-          3750.7
+          2865.9
         ],
         [
           "tools_llm_skipped",
@@ -587,7 +668,7 @@
         ],
         [
           "extract",
-          91.3
+          6.1
         ],
         [
           "contradictions",
@@ -607,14 +688,175 @@
         ],
         [
           "request",
-          3842.9
+          2872.6
         ]
       ]
+    },
+    {
+      "id": "budget_isolation_1",
+      "letter": "F1",
+      "category": "budget_isolation",
+      "question": "What is Roanoke\u2013Blacksburg Regional Airport, and where is it located?",
+      "mode": "default",
+      "expected_behavior": "First of two consecutive requests; budgets must reset per request.",
+      "expect_status": [
+        "answered",
+        "partial",
+        "llm_unavailable",
+        "insufficient"
+      ],
+      "http_status": 200,
+      "ms": 4626.4,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Woodrum Field [S1].",
+      "answer_preview": "Woodrum Field [S1].",
+      "n_citations": 1,
+      "citation_titles": [
+        "Roanoke\u2013Blacksburg Regional Airport"
+      ],
+      "citation_doc_ids": [
+        "b16b4334-f9a7-4ced-99a5-d5f986d8c4ac"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 0,
+      "usage_prompt_tokens": 0,
+      "usage_completion_tokens": 0,
+      "usage_total_tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.1
+        ],
+        [
+          "tools_seed_search",
+          3608.4
+        ],
+        [
+          "tools_llm_skipped",
+          0.0
+        ],
+        [
+          "extract",
+          3.1
+        ],
+        [
+          "contradictions",
+          0.1
+        ],
+        [
+          "sufficiency",
+          0.3
+        ],
+        [
+          "synthesize",
+          0.2
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          3612.8
+        ]
+      ]
+    },
+    {
+      "id": "budget_isolation_2",
+      "letter": "F2",
+      "category": "budget_isolation",
+      "question": "Where are schools in the athletic association Cardinal Hayes High School is part of located?",
+      "mode": "default",
+      "expected_behavior": "Second consecutive request. Pass isolation if this is not immediately budget-dead solely because F1 consumed a shared budget.",
+      "expect_status": [
+        "answered",
+        "partial",
+        "llm_unavailable",
+        "insufficient"
+      ],
+      "http_status": 200,
+      "ms": 6142.8,
+      "timeout_or_error": false,
+      "pass": true,
+      "honest_degraded": false,
+      "failure_reasons": [],
+      "answer_status": "answered",
+      "degraded": false,
+      "answer": "Bronx, New\u202fCity, New\u202fYork\u202fState\u202f[\u200bS1]",
+      "answer_preview": "Bronx, New\u202fCity, New\u202fYork\u202fState\u202f[\u200bS1]",
+      "n_citations": 1,
+      "citation_titles": [
+        "Cardinal Hayes High School"
+      ],
+      "citation_doc_ids": [
+        "bded95e2-8c23-42ac-aa61-890823e6a81f"
+      ],
+      "n_conflicts": 0,
+      "n_evidence_preview": 0,
+      "usage_calls": 1,
+      "usage_prompt_tokens": 462,
+      "usage_completion_tokens": 446,
+      "usage_total_tokens": 908,
+      "abstention_reason": null,
+      "trace_stages": [
+        [
+          "guard",
+          0.0
+        ],
+        [
+          "plan",
+          0.1
+        ],
+        [
+          "tools_seed_search",
+          3663.0
+        ],
+        [
+          "tools_llm_skipped",
+          0.0
+        ],
+        [
+          "extract",
+          5.0
+        ],
+        [
+          "contradictions",
+          0.0
+        ],
+        [
+          "sufficiency",
+          0.3
+        ],
+        [
+          "synthesize",
+          1429.8
+        ],
+        [
+          "verify",
+          0.0
+        ],
+        [
+          "request",
+          5098.7
+        ]
+      ],
+      "budget_isolation_ok": true
     }
   ],
-  "git_commit": "283bfc326aecb1c89d2b7da976bf58e31a3bdb61",
+  "git_commit": "a748661d8f85a0b7e8d46e745c8afda808ac0af3",
   "active_documents": 55081,
-  "n_pass": 7,
+  "n_pass": 10,
   "n_honest_degraded": 0,
   "n_fail": 0,
   "ok": true

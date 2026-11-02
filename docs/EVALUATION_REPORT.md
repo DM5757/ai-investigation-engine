@@ -60,6 +60,7 @@ Limit **12** test questions; `--pause-s 2 --stop-after-llm-unavailable 3`.
 | Answer eval Milestone 5 `m5_answer_v1/v2` | Test split **62** questions on ACTIVE 55,081. Investigation: mean LLM calls **0.0**, mean latency **~0.44–0.82s**, abstention **0.5**, contradiction detection **0.5**. Baseline: always `answered` (abstention **0.0**, contradiction **0.0**), higher citation F1 from unrestricted snippet dumps. 1 Qdrant timeout in v2. | `eval/results/m5_answer_v2__*` |
 | Render Milestone 5 @ `283bfc3` | Smoke **7/7 PASS**, **0 LLM calls**/case: airport ~11s; three multi-hops ~9–11s; colony/unanswerable abstain ~3–4s; contradiction **`conflicting`** ~3s with 08:10 vs 14:00. | `docs/evidence/prod_smoke_suite.json` |
 | Answer eval Milestone 6 (`m6_test_*`) | Same test **62** / ACTIVE 55,081. Deterministic token F1 **0.080**; adaptive **0.153** (23 LLM / 39 det); abstention **1.0**; answered-only cite F1 **0.519**. Baseline F1 0.092, abstention 0.0. M5 baseline preserved. | `eval/results/m6_test_adapt_v1__*`, `docs/evidence/m6_report.md` |
+| Render Milestone 6 @ `a748661` | Smoke **10/10 PASS** (7 curated demos + multi-doc + budget isolation). LLM path live on multi-doc/budget cases; curated multi-hops stay **0 LLM** short spans. | `docs/evidence/prod_smoke_suite.json` |
 
 ## 5. Quality fixes reflected in metrics intent
 

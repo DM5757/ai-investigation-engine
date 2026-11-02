@@ -92,7 +92,8 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Span-oriented deterministic answers + adaptive LLM when confidence &lt; 0.7; question-gated conflicts; redacted-approver abstention.
 - Held-out test (62, ACTIVE 55081): token F1 **0.031 → 0.080 (det) → 0.153 (adapt)**; abstention **0.5 → 1.0**; adaptive used **23** LLM / **39** det syntheses.
 - Evidence: `docs/evidence/m6_report.md`, `eval/results/m6_test_*`.
-- Tests: **186** passed (non-live). Tag `submission-2026-10-29` unchanged.
+- Production @ `a748661`: smoke **10/10 PASS**; adaptive LLM path confirmed on live multi-doc/unseen probes; curated demos remain green.
+- Tests: **186** passed (non-live). CI green. Tag `submission-2026-10-29` unchanged.
 
 ## Outstanding technical follow-ups
 
