@@ -1,7 +1,7 @@
 # Phase C candidate freeze record
 
-**Status:** **NOT unlocked for sealed evaluation**  
-**Date:** 2026-11-03  
+**Status:** Superseded by Phase C.1 freeze — see `docs/evidence/phase_c1_candidate_freeze.md`.  
+**Date:** 2026-11-03 (original); C.1 update same day  
 **Prod default:** `EXPERIMENTAL_PASSAGE_READER=false` (unchanged)
 
 ## Implementation pin (when this note was written)

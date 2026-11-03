@@ -7,19 +7,21 @@ or explicit callers (E0 / Phase C harness). Legacy extraction/synthesis remains.
 from __future__ import annotations
 
 import json
-import re
 from dataclasses import dataclass, field
 from typing import Any
 
 from app.errors import BudgetExceeded, LLMOutputInvalid, LLMUnavailable
 from app.investigation.citations import extract_citation_labels
 from app.investigation.injection import scan_injection
-from app.investigation.verify import verify_structured_reader_output
+from app.investigation.verify import (
+    DEFAULT_COVERAGE_THRESHOLD,
+    MultiHopPolicy,
+    PolicyName,
+    verify_structured_reader_output,
+)
 from app.llm.prompts.reader import READER_BASELINE_SYSTEM, READER_SYSTEM
 from app.llm.types import ChatMessage, ChatResult, LLMClient
 from app.schemas.evidence import Citation, UsageStats
-
-_WS_RE = re.compile(r"\s+")
 
 
 @dataclass
@@ -39,7 +41,7 @@ class ReaderSupport:
     quote: str
     quote_ok: bool = False
     label_ok: bool = False
-    role: str | None = None
+    role: str | None = None  # hop1|hop2|bridge|support
 
 
 @dataclass
@@ -59,6 +61,8 @@ class ReaderOutput:
     unsupported_reasons: list[str] = field(default_factory=list)
     evidence_chain_ok: bool = False
     contradiction: str | None = None
+    policy: str = MultiHopPolicy.STRICT.value
+    coverage: float = 0.0
     raw_model: dict[str, Any] = field(default_factory=dict)
     provider: str = ""
     model: str = ""
@@ -109,6 +113,8 @@ def verify_reader_payload(
     *,
     require_multi_hop: bool | None = None,
     min_hops: int = 2,
+    policy: MultiHopPolicy | PolicyName = MultiHopPolicy.STRICT,
+    coverage_threshold: float = DEFAULT_COVERAGE_THRESHOLD,
 ) -> ReaderOutput:
     """Deterministically verify labels, quotes, entailment, and evidence chain."""
     result = verify_structured_reader_output(
@@ -116,6 +122,8 @@ def verify_reader_payload(
         passages,
         require_multi_hop=require_multi_hop,
         min_hops=min_hops,
+        policy=policy,
+        coverage_threshold=coverage_threshold,
     )
     supports = [
         ReaderSupport(
@@ -123,6 +131,7 @@ def verify_reader_payload(
             quote=s.quote,
             quote_ok=s.quote_ok,
             label_ok=s.label_ok,
+            role=s.role,
         )
         for s in result.supporting
     ]
@@ -139,6 +148,8 @@ def verify_reader_payload(
         unsupported_reasons=result.unsupported_reasons,
         evidence_chain_ok=result.evidence_chain_ok,
         contradiction=result.contradiction,
+        policy=result.policy,
+        coverage=result.coverage,
         raw_model=result.raw_model,
     )
 
@@ -153,6 +164,8 @@ def read_passages(
     temperature: float = 0.0,
     require_multi_hop: bool | None = None,
     min_hops: int = 2,
+    policy: MultiHopPolicy | PolicyName = MultiHopPolicy.STRICT,
+    coverage_threshold: float = DEFAULT_COVERAGE_THRESHOLD,
 ) -> ReaderOutput:
     """One structured LLM reader call + deterministic verification."""
     capped = passages[:max_passages]
@@ -190,11 +203,14 @@ def read_passages(
         used,
         require_multi_hop=require_multi_hop,
         min_hops=min_hops,
+        policy=policy,
+        coverage_threshold=coverage_threshold,
     )
     out.usage = result.usage
     out.provider = result.provider
     out.model = result.model
     out.mode = "structured_reader_v2"
+    out.raw_model = data
     return out
 
 

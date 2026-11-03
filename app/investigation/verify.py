@@ -1,18 +1,32 @@
-"""Hardened answer-to-evidence verification (Phase C).
+"""Answer-to-evidence verification with STRICT / SOFT multi-hop policies (Phase C.1).
 
-Deterministic checks for labels, exact quotes, answer support, multi-hop
-chain completeness, and basic contradiction signals. Quote existence alone
-does not entail support: the claimed answer must be covered by verified quotes.
+Deterministic checks for labels, exact quotes, answer coverage, and evidence-chain
+completeness. Quote existence alone does not entail support.
 """
 
 from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from typing import Any
+from enum import StrEnum
+from typing import Any, Literal
 
 from app.investigation.citations import strip_citation_markers
 from app.schemas.evidence import Citation
+
+PolicyName = Literal["strict", "soft"]
+
+
+class MultiHopPolicy(StrEnum):
+    """How incomplete evidence chains affect final status."""
+
+    STRICT = "strict"  # incomplete chain → insufficient
+    SOFT = "soft"  # incomplete chain + quote-supported answer → partial
+
+
+# Default calibrated coverage threshold (Phase B was 0.60; Phase C hard was 0.85).
+# 0.65 recovers observed ~0.67 borderline false rejections while staying above 0.60.
+DEFAULT_COVERAGE_THRESHOLD = 0.65
 
 
 @dataclass
@@ -22,6 +36,7 @@ class SupportItem:
     quote_ok: bool = False
     label_ok: bool = False
     role: str | None = None
+
 
 _WS_RE = re.compile(r"\s+")
 _STOP = frozenset(
@@ -61,7 +76,6 @@ _STOP = frozenset(
     }
 )
 _YEAR_RE = re.compile(r"\b(?:1[5-9]\d{2}|20\d{2})\b")
-_NUM_RE = re.compile(r"\b\d+(?:\.\d+)?\b")
 
 
 def norm_ws(text: str) -> str:
@@ -87,53 +101,48 @@ def quote_in_passage(quote: str, passage_text: str) -> bool:
     return bool(q2) and q2 in p
 
 
-def answer_covered_by_quotes(answer: str | None, quotes: list[str]) -> tuple[bool, str | None]:
-    """Check that answer content is covered by verified quotes (not mere overlap).
+def answer_covered_by_quotes(
+    answer: str | None,
+    quotes: list[str],
+    *,
+    coverage_threshold: float = DEFAULT_COVERAGE_THRESHOLD,
+) -> tuple[bool, str | None, float]:
+    """Check answer content is covered by verified quotes.
 
-    Prefer exact substring containment of the citation-stripped answer in the
-    quote blob. Fall back to high content-token coverage (>=0.85) so short
-    entity answers still pass when quoted with surrounding context.
+    Returns (ok, reason_if_not, coverage). Coverage is 1.0 for substring hits.
     """
     if not answer:
-        return False, "empty_answer"
+        return False, "empty_answer", 0.0
     ans = strip_citation_markers(answer)
     ans_norm = norm_ws(ans).lower()
     if not ans_norm:
-        return False, "empty_answer"
+        return False, "empty_answer", 0.0
     blob = norm_ws(" ".join(quotes)).lower()
     if not blob:
-        return False, "no_quotes"
+        return False, "no_quotes", 0.0
     if ans_norm in blob:
-        return True, None
-    # Allow minor punctuation/case differences for short answers.
+        return True, None, 1.0
     ans_compact = re.sub(r"[^a-z0-9]+", "", ans_norm)
     blob_compact = re.sub(r"[^a-z0-9]+", "", blob)
     if ans_compact and ans_compact in blob_compact:
-        return True, None
+        return True, None, 1.0
     toks = content_tokens(ans)
     if not toks:
-        return False, "no_content_tokens"
+        return False, "no_content_tokens", 0.0
     hits = sum(1 for t in toks if t in blob)
     coverage = hits / len(toks)
-    if coverage >= 0.85:
-        return True, None
-    return False, f"answer_token_coverage={coverage:.2f}"
+    if coverage >= coverage_threshold:
+        return True, None, coverage
+    return False, f"answer_token_coverage={coverage:.2f}", coverage
 
 
 def detect_value_conflict(quotes: list[str]) -> str | None:
-    """Heuristic: conflicting years/numbers across supporting quotes.
-
-    Only flags when the same attribute-like context appears with incompatible
-    numeric values. Conservative: requires >=2 distinct years or clearly
-    incompatible singleton numbers in short quotes about dates/counts.
-    """
+    """Conservative conflicting-years signal across supporting quotes."""
     years: list[str] = []
     for q in quotes:
         years.extend(_YEAR_RE.findall(q))
     uniq_years = sorted(set(years))
     if len(uniq_years) >= 2:
-        # Different years in supporting quotes for one answer → likely conflict
-        # when both are asserted as launch/birth/founding facts.
         return f"conflicting_years:{','.join(uniq_years)}"
     return None
 
@@ -152,6 +161,8 @@ class VerificationResult:
     unsupported_reasons: list[str] = field(default_factory=list)
     evidence_chain_ok: bool = False
     contradiction: str | None = None
+    policy: str = MultiHopPolicy.STRICT.value
+    coverage: float = 0.0
     raw_model: dict[str, Any] = field(default_factory=dict)
 
 
@@ -169,8 +180,13 @@ def verify_structured_reader_output(
     *,
     require_multi_hop: bool | None = None,
     min_hops: int = 2,
+    policy: MultiHopPolicy | PolicyName = MultiHopPolicy.STRICT,
+    coverage_threshold: float = DEFAULT_COVERAGE_THRESHOLD,
 ) -> VerificationResult:
-    """Full Phase C verification of a structured reader JSON payload."""
+    """Verify structured reader JSON under STRICT or SOFT multi-hop policy."""
+    if isinstance(policy, str):
+        policy = MultiHopPolicy(policy.lower())
+
     by_label = {p.label: p for p in passages}
     answerable = bool(data.get("answerable"))
     answer = data.get("answer")
@@ -216,15 +232,15 @@ def verify_structured_reader_output(
     quotes = [s.quote for s in ok_supports]
     distinct_labels = {s.label for s in ok_supports}
 
-    # Default off for production (many retrieved distractors). Eval harness
-    # enables this for Hotpot items with >=2 gold titles present in context.
     if require_multi_hop is None:
         require_multi_hop = False
 
+    coverage = 0.0
     answer_supported = False
-    cover_reason: str | None = None
     if answerable and answer:
-        answer_supported, cover_reason = answer_covered_by_quotes(answer, quotes)
+        answer_supported, cover_reason, coverage = answer_covered_by_quotes(
+            answer, quotes, coverage_threshold=coverage_threshold
+        )
         if cover_reason:
             reasons.append(f"answer_not_entailed:{cover_reason}")
 
@@ -239,44 +255,61 @@ def verify_structured_reader_output(
         answer_supported = False
 
     evidence_chain_ok = False
-    if answerable:
+    status = "insufficient"
+    final_answer = answer
+
+    if contradiction and not answerable:
+        status = "conflicting"
+        final_answer = None
+        if not missing_info:
+            missing_info = f"Conflicting evidence detected ({contradiction})."
+    elif answerable:
         if not ok_supports:
             reasons.append("answerable_without_valid_quotes")
             answerable = False
             answer_supported = False
+            final_answer = None
+            status = "insufficient"
+            missing_info = missing_info or "No valid supporting quotes."
         elif not answer_supported:
+            # Unsupported full answer — never emit as answered/partial final.
             answerable = False
+            final_answer = None
+            status = "insufficient"
+            missing_info = (
+                missing_info or "Proposed answer not supported by verified quotes."
+            )
         elif require_multi_hop and len(distinct_labels) < min_hops:
             reasons.append(
                 f"incomplete_evidence_chain:need>={min_hops}_got={len(distinct_labels)}"
             )
-            answerable = False
-            answer_supported = False
             missing_info = (
                 missing_info
                 or "Answer requires multiple supporting passages; chain incomplete."
             )
             if not next_query:
-                next_query = "Retrieve the missing supporting document for the unanswered hop."
+                next_query = (
+                    "Retrieve the missing supporting document for the unanswered hop."
+                )
+            if policy is MultiHopPolicy.SOFT:
+                # Retain only quote-supported answer as partial — not a verified
+                # full multi-hop conclusion (evidence_chain_ok stays False).
+                status = "partial"
+                answerable = False
+                final_answer = answer
+                answer_supported = True  # partial content is quote-supported
+            else:
+                status = "insufficient"
+                answerable = False
+                answer_supported = False
+                final_answer = None
         else:
             evidence_chain_ok = True
-
-    unsupported_answer = any(
-        r.startswith("answer_not_entailed") or r == "answer_not_supported_by_quotes"
-        for r in reasons
-    )
-    if not answerable and answer and unsupported_answer:
-        missing_info = missing_info or "Proposed answer not supported by verified quotes."
-        answer = None
-
-    if contradiction and not answerable:
-        status = "conflicting"
-        if not missing_info:
-            missing_info = f"Conflicting evidence detected ({contradiction})."
-    elif answerable and answer:
-        status = "answered"
+            status = "answered"
+            final_answer = answer
     else:
         status = "insufficient"
+        final_answer = None
 
     citations = [
         Citation(
@@ -289,30 +322,45 @@ def verify_structured_reader_output(
         if s.label in by_label
     ]
 
-    # Fabricated / remapped labels always fail verify_ok.
-    verify_ok = not reasons and (
-        (answerable and answer_supported and evidence_chain_ok)
-        or (not answerable and status in {"insufficient", "conflicting"})
+    # STRICT full answer or SOFT partial with supported content can be verify_ok
+    # when labels/quotes are valid; incomplete-chain reason is expected under SOFT.
+    blocking = [
+        r
+        for r in reasons
+        if not (
+            policy is MultiHopPolicy.SOFT
+            and status == "partial"
+            and r.startswith("incomplete_evidence_chain")
+        )
+    ]
+    verify_ok = not blocking and (
+        (status == "answered" and evidence_chain_ok and bool(final_answer))
+        or (status == "partial" and answer_supported and bool(final_answer))
+        or (status in {"insufficient", "conflicting"} and final_answer is None)
     )
 
     return VerificationResult(
-        answer=answer if answerable else None,
-        answerable=bool(answerable and answer),
+        answer=final_answer,
+        answerable=bool(status == "answered" and final_answer),
         supporting=supports,
         missing_info=missing_info,
         next_query=next_query,
         status=status,
         citations=citations,
         verify_ok=verify_ok,
-        answer_supported=answer_supported and evidence_chain_ok,
+        answer_supported=bool(answer_supported and (evidence_chain_ok or status == "partial")),
         unsupported_reasons=reasons,
         evidence_chain_ok=evidence_chain_ok,
         contradiction=contradiction,
+        policy=policy.value,
+        coverage=coverage,
         raw_model=data,
     )
 
 
 __all__ = [
+    "DEFAULT_COVERAGE_THRESHOLD",
+    "MultiHopPolicy",
     "SupportItem",
     "VerificationResult",
     "answer_covered_by_quotes",

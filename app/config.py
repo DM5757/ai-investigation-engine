@@ -121,6 +121,20 @@ class Settings(BaseSettings):
     )
     reader_max_passages: int = Field(default=10, alias="READER_MAX_PASSAGES")
     reader_max_chars: int = Field(default=12_000, alias="READER_MAX_CHARS")
+    reader_multi_hop_policy: str = Field(
+        default="soft",
+        alias="READER_MULTI_HOP_POLICY",
+        description=(
+            "Phase C.1: 'strict' abstains when the evidence chain is incomplete; "
+            "'soft' returns status=partial with only quote-supported content. "
+            "Only applies when experimental_passage_reader is enabled."
+        ),
+    )
+    reader_coverage_threshold: float = Field(
+        default=0.65,
+        alias="READER_COVERAGE_THRESHOLD",
+        description="Minimum answer content-token coverage in verified quotes.",
+    )
     git_commit: str | None = Field(default=None, alias="GIT_COMMIT")
 
     admin_token: SecretStr | None = Field(default=None, alias="ADMIN_TOKEN")

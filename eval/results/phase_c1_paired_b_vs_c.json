@@ -1,0 +1,116 @@
+{
+  "pairs": {
+    "oracle": {
+      "n_common": 24,
+      "phase_b": {
+        "token_f1": 0.6666666666666666,
+        "exact_match": 0.5,
+        "answer_supported": 0.75,
+        "citation_f1": 0.8030303030303031,
+        "multi_hop_all_gold_cited": 0.4090909090909091,
+        "n_f1_ge_0.5": 17
+      },
+      "phase_c": {
+        "token_f1": 0.33888888888888885,
+        "exact_match": 0.25,
+        "answer_supported": 0.4166666666666667,
+        "citation_f1": 0.8695652173913043,
+        "multi_hop_all_gold_cited": 0.6086956521739131,
+        "status_counts": {
+          "answered": 10,
+          "conflicting": 4,
+          "insufficient": 10
+        }
+      },
+      "deltas": {
+        "token_f1": -0.3277777777777778,
+        "exact_match": -0.25,
+        "n_improved_f1": 1,
+        "n_regressed_f1": 10,
+        "n_b_ok_c_abstain_or_partial": 9,
+        "b_ok_c_abstain_ids": [
+          "phaseb_hotpot_5a75a6455542992db9473695",
+          "phaseb_hotpot_5a7ccc1e55429909bec7680e",
+          "phaseb_hotpot_5a7f21185542993067513651",
+          "phaseb_hotpot_5a81f94f554299676cceb1ac",
+          "phaseb_hotpot_5a8f155e554299458435d54c",
+          "phaseb_hotpot_5ab24f5355429970612095de",
+          "phaseb_hotpot_5abdb10f55429965af743dc9",
+          "phaseb_hotpot_5abec8e45542997ec76fd364",
+          "phaseb_hotpot_5ae7eb0f554299540e5a5694"
+        ]
+      }
+    },
+    "raw": {
+      "n_common": 22,
+      "phase_b": {
+        "token_f1": 0.586541889483066,
+        "exact_match": 0.45454545454545453,
+        "answer_supported": 0.7272727272727273,
+        "citation_f1": 0.8148148148148148,
+        "multi_hop_all_gold_cited": 0.4444444444444444,
+        "n_f1_ge_0.5": 13
+      },
+      "phase_c": {
+        "token_f1": 0.2636363636363636,
+        "exact_match": 0.18181818181818182,
+        "answer_supported": 0.3181818181818182,
+        "citation_f1": 0.8083333333333333,
+        "multi_hop_all_gold_cited": 0.45,
+        "status_counts": {
+          "answered": 7,
+          "conflicting": 3,
+          "insufficient": 12
+        }
+      },
+      "deltas": {
+        "token_f1": -0.32290552584670235,
+        "exact_match": -0.2727272727272727,
+        "n_improved_f1": 1,
+        "n_regressed_f1": 9,
+        "n_b_ok_c_abstain_or_partial": 8,
+        "b_ok_c_abstain_ids": [
+          "phaseb_hotpot_5a7a5f625542990783324f2f",
+          "phaseb_hotpot_5a7d07a455429907fabef0ae",
+          "phaseb_hotpot_5a7f21185542993067513651",
+          "phaseb_hotpot_5a8f155e554299458435d54c",
+          "phaseb_hotpot_5ab24f5355429970612095de",
+          "phaseb_hotpot_5abec8e45542997ec76fd364",
+          "phaseb_hotpot_5aded1a755429975fa854fac",
+          "phaseb_hotpot_5ae7eb0f554299540e5a5694"
+        ]
+      }
+    },
+    "legacy": {
+      "n_common": 24,
+      "phase_b": {
+        "token_f1": 0.17340198046719787,
+        "exact_match": 0.041666666666666664,
+        "answer_supported": 0.7916666666666666,
+        "citation_f1": 0.4772727272727273,
+        "multi_hop_all_gold_cited": 0.13636363636363635,
+        "n_f1_ge_0.5": 4
+      },
+      "phase_c": {
+        "token_f1": 0.16632749059219648,
+        "exact_match": 0.041666666666666664,
+        "answer_supported": 0.7916666666666666,
+        "citation_f1": 0.5075757575757576,
+        "multi_hop_all_gold_cited": 0.09090909090909091,
+        "status_counts": {
+          "answered": 19,
+          "insufficient": 2,
+          "partial": 3
+        }
+      },
+      "deltas": {
+        "token_f1": -0.007074489875001394,
+        "exact_match": 0.0,
+        "n_improved_f1": 3,
+        "n_regressed_f1": 4,
+        "n_b_ok_c_abstain_or_partial": 0,
+        "b_ok_c_abstain_ids": []
+      }
+    }
+  }
+}

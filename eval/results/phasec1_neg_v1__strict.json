@@ -1,0 +1,1998 @@
+{
+  "created_at": "2026-11-03T06:25:00.410255+00:00",
+  "run_id": "phasec1_neg_v1",
+  "policy": "strict",
+  "coverage_threshold": 0.65,
+  "prompt_id": "reader_v2_phase_c",
+  "verify_id": "verify_c1_v1",
+  "sealed_test_evaluated": false,
+  "experimental_passage_reader_default": false,
+  "summary": {
+    "n_attempted": 38,
+    "n_scored": 38,
+    "n_provider_failures": 0,
+    "token_f1_full_answered": 0.09210526315789473,
+    "exact_match_full_answered": 0.07894736842105263,
+    "raw_token_f1_overlap": 0.09210526315789473,
+    "answer_supported_rate": 0.10526315789473684,
+    "full_answered_rate": 0.10526315789473684,
+    "partial_rate": 0.0,
+    "evidence_chain_ok_rate": 0.10526315789473684,
+    "multi_hop_all_gold_cited": 0.0,
+    "citation_f1": 0.3076923076923077,
+    "false_answer_rate": 0.0,
+    "correct_abstention_rate": 1.0,
+    "contradiction_detection_rate": null,
+    "false_contradiction_rate": null,
+    "unsupported_full_answer_rate": 0.0,
+    "mean_latency_s": 0.7939583289400233,
+    "latency_p50_s": 0.8264389000833035,
+    "mean_tokens": 608.2105263157895,
+    "status_counts": {
+      "answered": 4,
+      "conflicting": 3,
+      "insufficient": 31
+    }
+  },
+  "results": [
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651::remove_gold",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": "remove_gold",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [],
+      "n_passages": 0,
+      "latency_s": 0.0,
+      "tokens": 0.0,
+      "llm_calls": 0.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651::distractors",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": "distractors",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about Colt and Case McCoy or the college team they played for.",
+      "next_query": "Colt and Case McCoy college team",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Municipal Compost Ordinance 14-B",
+        "Ceramic Glaze Safety Notes"
+      ],
+      "n_passages": 2,
+      "latency_s": 1.0634928001090884,
+      "tokens": 728.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651::swap_titles",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": "swap_titles",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Casey Burl \"Case\" McCoy (born February 12, 1990) is a former American football quarterback for the University of Texas Longhorns football team.",
+          "title": "Ferry Timetable Addendum"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Daniel \"Colt\" McCoy (born September 5, 1986) is an American football quarterback for the Washington Redskins of the National Football League (NFL).  He was drafted by the Cleveland Browns in the third round of the 2010 NFL Draft, after playing college football for the University of Texas.",
+          "title": "Library Binding Standards"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "conflicting_years:1986,1990,2010",
+      "unsupported_reasons": [
+        "conflicting_years:1986,1990,2010"
+      ],
+      "missing_info": "Conflicting evidence detected (conflicting_years:1986,1990,2010).",
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Ferry Timetable Addendum",
+        "Library Binding Standards"
+      ],
+      "n_passages": 2,
+      "latency_s": 1.0299136999528855,
+      "tokens": 895.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651::counterfactual",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": "counterfactual",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages contain no information about brothers Colt and Case McCoy or the college team they played for.",
+      "next_query": "Colt and Case McCoy college team",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Quorvail Founding Charter",
+        "Quorvail Materials Registry"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.6806101000402123,
+      "tokens": 655.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651::missing_one_hop",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": "missing_one_hop",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S1"
+      ],
+      "missing_info": "Passage S1 mentions Case McCoy played for the University of Texas Longhorns and that Colt McCoy is his brother, but it does not explicitly state that Colt McCoy also played for the University of Texas Longhorns.",
+      "next_query": "What college team did Colt McCoy play for?",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Case McCoy"
+      ],
+      "n_passages": 1,
+      "latency_s": 1.080955300014466,
+      "tokens": 746.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac::remove_gold",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": "remove_gold",
+      "gold_answer": "Brent Burns",
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [],
+      "n_passages": 0,
+      "latency_s": 0.0,
+      "tokens": 0.0,
+      "llm_calls": 0.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac::distractors",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": "distractors",
+      "gold_answer": "Brent Burns",
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about the Minnesota Wild or the 2008 IIHF World Championship rosters.",
+      "next_query": "Minnesota Wild draftee top defenceman 2008 IIHF World Championship",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Aquaculture Feed Trial Summary",
+        "Municipal Compost Ordinance 14-B"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.703452100045979,
+      "tokens": 854.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac::swap_titles",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": "swap_titles",
+      "gold_answer": "Brent Burns",
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "Brent Burns",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Canadian Brent Burns was named top defenceman",
+          "title": "Aquaculture Feed Trial Summary"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S2"
+      ],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Aquaculture Feed Trial Summary",
+        "Municipal Compost Ordinance 14-B"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.9909926999825984,
+      "tokens": 985.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac::counterfactual",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": "counterfactual",
+      "gold_answer": "Brent Burns",
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about Minnesota Wild draftees or the 2008 IIHF World Championship rosters.",
+      "next_query": "2008 IIHF World Championship top defenceman Minnesota Wild draftee",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Quorvail Founding Charter",
+        "Quorvail Materials Registry"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.7934667998924851,
+      "tokens": 687.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac::missing_one_hop",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": "missing_one_hop",
+      "gold_answer": "Brent Burns",
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Canadian Brent Burns was named top defenceman",
+          "title": "2008 IIHF World Championship rosters"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The passages identify Brent Burns as the top defenceman in the 2008 IIHF World Championship, but do not state whether he was drafted by the Minnesota Wild.",
+      "next_query": "Did the Minnesota Wild draft Brent Burns?",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "2008 IIHF World Championship rosters"
+      ],
+      "n_passages": 1,
+      "latency_s": 1.8266917997971177,
+      "tokens": 838.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54::remove_gold",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": "remove_gold",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [],
+      "n_passages": 0,
+      "latency_s": 0.0,
+      "tokens": 0.0,
+      "llm_calls": 0.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54::distractors",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": "distractors",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain information about Eddie Jemison, the television series he is known for, or its developer.",
+      "next_query": "American television series Eddie Jemison developer",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Aquaculture Feed Trial Summary",
+        "Municipal Compost Ordinance 14-B"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.7540382998995483,
+      "tokens": 712.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54::swap_titles",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": "swap_titles",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "Rob Thomas and Diane Ruggiero-Wright",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "He is known for his roles in the \"Ocean's Eleven\" trilogy and the television series \"Hung\" and IZombie.",
+          "title": "Municipal Compost Ordinance 14-B"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "iZombie (stylized as iZOMBiE) is an American television series developed by Rob Thomas and Diane Ruggiero-Wright for The CW.",
+          "title": "Aquaculture Feed Trial Summary"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Municipal Compost Ordinance 14-B",
+        "Aquaculture Feed Trial Summary"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.8696610999759287,
+      "tokens": 842.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.5,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54::counterfactual",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": "counterfactual",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about Eddie Jemison, his television series, or its developer.",
+      "next_query": "Eddie Jemison American television series developer",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Zenthara Founding Charter",
+        "Zenthara Materials Registry"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.6746975998394191,
+      "tokens": 656.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54::missing_one_hop",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": "missing_one_hop",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "He is known for his roles in the \"Ocean's Eleven\" trilogy and the television series \"Hung\" and IZombie.",
+          "title": "Eddie Jemison"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The passages mention the television series Eddie Jemison is known for (\"Hung\" and \"IZombie\"), but do not state who developed them.",
+      "next_query": "Who developed the television series Hung and IZombie",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Eddie Jemison"
+      ],
+      "n_passages": 1,
+      "latency_s": 0.8539459998719394,
+      "tokens": 706.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695::remove_gold",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": "remove_gold",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [],
+      "n_passages": 0,
+      "latency_s": 0.0,
+      "tokens": 0.0,
+      "llm_calls": 0.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695::distractors",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": "distractors",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain information about Ira Bruce Nadel or any biographies he wrote.",
+      "next_query": "Ira Bruce Nadel author biography American author",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Alpine Trail Maintenance Handbook",
+        "Aquaculture Feed Trial Summary"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.701145299943164,
+      "tokens": 770.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695::swap_titles",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": "swap_titles",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "biographies of Leonard Cohen and Leon Uris",
+          "title": "Aquaculture Feed Trial Summary"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Leon Marcus Uris (August 3, 1924 \u2013 June 21, 2003) was an American author",
+          "title": "Municipal Compost Ordinance 14-B"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "conflicting_years:1924,2003",
+      "unsupported_reasons": [
+        "conflicting_years:1924,2003"
+      ],
+      "missing_info": "Conflicting evidence detected (conflicting_years:1924,2003).",
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Aquaculture Feed Trial Summary",
+        "Municipal Compost Ordinance 14-B"
+      ],
+      "n_passages": 2,
+      "latency_s": 1.401298400014639,
+      "tokens": 883.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695::counterfactual",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": "counterfactual",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages contain no information about Ira Bruce Nadel or the American author whose biography he wrote.",
+      "next_query": "Ira Bruce Nadel biography American author",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Meldune Founding Charter",
+        "Meldune Materials Registry"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.9201652000192553,
+      "tokens": 668.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695::missing_one_hop",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": "missing_one_hop",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "biographies of Leonard Cohen and Leon Uris",
+          "title": "Ira Nadel"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "policy": "strict",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Ira Nadel"
+      ],
+      "n_passages": 1,
+      "latency_s": 0.7460260998923331,
+      "tokens": 735.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab24f5355429970612095de::remove_gold",
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "control_id": "remove_gold",
+      "gold_answer": "Buddy",
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [],
+      "n_passages": 0,
+      "latency_s": 0.0,
+      "tokens": 0.0,
+      "llm_calls": 0.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab24f5355429970612095de::distractors",
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "control_id": "distractors",
+      "gold_answer": "Buddy",
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about children's books written by Hillary Rodham Clinton or the name of a dog in such a book.",
+      "next_query": "children's book written by Hillary Rodham Clinton dog name",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Library Binding Standards",
+        "Ceramic Glaze Safety Notes"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.8289340001065284,
+      "tokens": 742.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab24f5355429970612095de::swap_titles",
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "control_id": "swap_titles",
+      "gold_answer": "Buddy",
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "Buddy",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Dear Socks, Dear Buddy: Kids' Letters to the First Pets is a 1998 children's book written by First Lady of the United States Hillary Rodham Clinton.  It concerns the two pets that lived in the White House during the Clinton administration, Socks the cat and Buddy the dog.",
+          "title": "Ceramic Glaze Safety Notes"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Ceramic Glaze Safety Notes",
+        "Aquaculture Feed Trial Summary"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.9107036001514643,
+      "tokens": 813.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab24f5355429970612095de::counterfactual",
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "control_id": "counterfactual",
+      "gold_answer": "Buddy",
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages contain no information about Hillary Rodham Clinton, children's books, or a dog named in such a book.",
+      "next_query": "Hillary Rodham Clinton children's book dog name Bill Clinton President",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Zenthara Founding Charter",
+        "Zenthara Materials Registry"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.8264389000833035,
+      "tokens": 690.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab24f5355429970612095de::missing_one_hop",
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "control_id": "missing_one_hop",
+      "gold_answer": "Buddy",
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "It concerns the two pets that lived in the White House during the Clinton administration, Socks the cat and Buddy the dog.",
+          "title": "Dear Socks, Dear Buddy"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "policy": "strict",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Dear Socks, Dear Buddy"
+      ],
+      "n_passages": 1,
+      "latency_s": 0.745527199935168,
+      "tokens": 698.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb::remove_gold",
+      "question_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+      "control_id": "remove_gold",
+      "gold_answer": "Logan International Airport",
+      "gold_doc_titles": [
+        "American Airlines Shuttle",
+        "Logan International Airport"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [],
+      "n_passages": 0,
+      "latency_s": 0.0,
+      "tokens": 0.0,
+      "llm_calls": 0.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb::distractors",
+      "question_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+      "control_id": "distractors",
+      "gold_answer": "Logan International Airport",
+      "gold_doc_titles": [
+        "American Airlines Shuttle",
+        "Logan International Airport"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about airports, American Airlines Shuttle, or airports in the New England region.",
+      "next_query": "largest airport in New England region American Airlines Shuttle",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Aquaculture Feed Trial Summary",
+        "Ceramic Glaze Safety Notes"
+      ],
+      "n_passages": 2,
+      "latency_s": 1.0849437001161277,
+      "tokens": 835.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb::swap_titles",
+      "question_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+      "control_id": "swap_titles",
+      "gold_answer": "Logan International Airport",
+      "gold_doc_titles": [
+        "American Airlines Shuttle",
+        "Logan International Airport"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "Logan International Airport",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "It serves Logan International Airport in Boston",
+          "title": "Library Binding Standards"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S2"
+      ],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Library Binding Standards",
+        "Municipal Compost Ordinance 14-B"
+      ],
+      "n_passages": 2,
+      "latency_s": 1.2387117999605834,
+      "tokens": 962.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb::counterfactual",
+      "question_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+      "control_id": "counterfactual",
+      "gold_answer": "Logan International Airport",
+      "gold_doc_titles": [
+        "American Airlines Shuttle",
+        "Logan International Airport"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain information about airports, American Airlines Shuttle, or airports in the New England region.",
+      "next_query": "What airport serviced by American Airlines Shuttle is the largest airport in New England?",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Zenthara Founding Charter",
+        "Zenthara Materials Registry"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.7654564001131803,
+      "tokens": 680.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb::missing_one_hop",
+      "question_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+      "control_id": "missing_one_hop",
+      "gold_answer": "Logan International Airport",
+      "gold_doc_titles": [
+        "American Airlines Shuttle",
+        "Logan International Airport"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "It serves Logan International Airport in Boston, LaGuardia Airport in New York City, and Ronald Reagan Washington National Airport in Washington, D.C.",
+          "title": "American Airlines Shuttle"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The passages mention Logan International Airport, LaGuardia Airport, and Ronald Reagan Washington National Airport, but do not state which of these is the largest airport in the New England region and 17th busiest in the U.S.",
+      "next_query": "Logan International Airport ranking New England largest 17th busiest U.S.",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "American Airlines Shuttle"
+      ],
+      "n_passages": 1,
+      "latency_s": 1.0071163000538945,
+      "tokens": 748.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5abec8e45542997ec76fd364::remove_gold",
+      "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+      "control_id": "remove_gold",
+      "gold_answer": "the Troubles",
+      "gold_doc_titles": [
+        "Mark Fulton (loyalist)",
+        "Billy Wright (loyalist)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [],
+      "n_passages": 0,
+      "latency_s": 0.0,
+      "tokens": 0.0,
+      "llm_calls": 0.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5abec8e45542997ec76fd364::distractors",
+      "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+      "control_id": "distractors",
+      "gold_answer": "the Troubles",
+      "gold_doc_titles": [
+        "Mark Fulton (loyalist)",
+        "Billy Wright (loyalist)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about Mark Fulton, the Loyalist Volunteer Force, or the assassination of the person whose death led to his command.",
+      "next_query": "Mark Fulton Loyalist Volunteer Force assassination leader",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Ferry Timetable Addendum",
+        "Municipal Compost Ordinance 14-B"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.9304754000622779,
+      "tokens": 804.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5abec8e45542997ec76fd364::swap_titles",
+      "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+      "control_id": "swap_titles",
+      "gold_answer": "the Troubles",
+      "gold_doc_titles": [
+        "Mark Fulton (loyalist)",
+        "Billy Wright (loyalist)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Mark \"Swinger\" Fulton (c. 1961 \u2013 10 June 2002) was a Northern Irish loyalist.  He was the leader of the Loyalist Volunteer Force (LVF), having taken over its command following the assassination of Billy Wright",
+          "title": "Municipal Compost Ordinance 14-B"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "William Stephen \"Billy\" Wright (7 July 1960 \u2013 27 December 1997) was a prominent Ulster loyalist during the ethno-nationalist conflict in Northern Ireland known as the Troubles.",
+          "title": "Aquaculture Feed Trial Summary"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "conflicting_years:1960,1961,1997,2002",
+      "unsupported_reasons": [
+        "conflicting_years:1960,1961,1997,2002"
+      ],
+      "missing_info": "Conflicting evidence detected (conflicting_years:1960,1961,1997,2002).",
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Municipal Compost Ordinance 14-B",
+        "Aquaculture Feed Trial Summary"
+      ],
+      "n_passages": 2,
+      "latency_s": 1.2255139998160303,
+      "tokens": 981.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5abec8e45542997ec76fd364::counterfactual",
+      "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+      "control_id": "counterfactual",
+      "gold_answer": "the Troubles",
+      "gold_doc_titles": [
+        "Mark Fulton (loyalist)",
+        "Billy Wright (loyalist)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain information about Mark Fulton, the Loyalist Volunteer Force, or the assassination mentioned in the question.",
+      "next_query": "Mark Fulton Loyalist Volunteer Force assassination",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Quorvail Founding Charter",
+        "Quorvail Materials Registry"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.7265361999161541,
+      "tokens": 672.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5abec8e45542997ec76fd364::missing_one_hop",
+      "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+      "control_id": "missing_one_hop",
+      "gold_answer": "the Troubles",
+      "gold_doc_titles": [
+        "Mark Fulton (loyalist)",
+        "Billy Wright (loyalist)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "He was the leader of the Loyalist Volunteer Force (LVF), having taken over its command following the assassination of Billy Wright in the Maze Prison in 1997 by members of the Irish National Liberation Army (INLA).",
+          "title": "Mark Fulton (loyalist)"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passage mentions the assassination of Billy Wright and the Loyalist Volunteer Force, but does not explicitly name the specific conflict Billy Wright was involved in.",
+      "next_query": "What conflict was Billy Wright involved in?",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Mark Fulton (loyalist)"
+      ],
+      "n_passages": 1,
+      "latency_s": 0.8046461001504213,
+      "tokens": 765.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a::remove_gold",
+      "question_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a",
+      "control_id": "remove_gold",
+      "gold_answer": "Lee County, Mississippi",
+      "gold_doc_titles": [
+        "Trace State Park",
+        "Tupelo, Mississippi"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [],
+      "n_passages": 0,
+      "latency_s": 0.0,
+      "tokens": 0.0,
+      "llm_calls": 0.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a::counterfactual",
+      "question_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a",
+      "control_id": "counterfactual",
+      "gold_answer": "Lee County, Mississippi",
+      "gold_doc_titles": [
+        "Trace State Park",
+        "Tupelo, Mississippi"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The passages do not mention the city located 7 miles east of Trace State Park, nor the county of which it is the seat.",
+      "next_query": "city 7 miles east of Trace State Park county",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Quorvail Founding Charter",
+        "Quorvail Materials Registry"
+      ],
+      "n_passages": 2,
+      "latency_s": 2.529986900044605,
+      "tokens": 672.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a::missing_one_hop",
+      "question_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a",
+      "control_id": "missing_one_hop",
+      "gold_answer": "Lee County, Mississippi",
+      "gold_doc_titles": [
+        "Trace State Park",
+        "Tupelo, Mississippi"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The passages identify that Trace State Park is 7 miles east of Pontotoc, but they do not state what county that city is the seat of.",
+      "next_query": "What county is Pontotoc, Mississippi the seat of?",
+      "policy": "strict",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Trace State Park"
+      ],
+      "n_passages": 1,
+      "latency_s": 1.454872699920088,
+      "tokens": 690.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "appropriate_status": 1.0
+      }
+    }
+  ]
+}

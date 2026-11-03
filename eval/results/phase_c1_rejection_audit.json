@@ -1,0 +1,409 @@
+{
+  "configs": {
+    "oracle": {
+      "n_cases": 9,
+      "category_counts": {
+        "other": 2,
+        "answer_not_entailed_low_coverage": 2,
+        "quote_mismatch": 4,
+        "overly_restrictive_coverage_threshold": 1,
+        "missing_citation_despite_claim": 1,
+        "missing_required_hop_or_cite": 3
+      },
+      "n_likely_verification_mistake": 3,
+      "n_likely_model_or_chain_gap": 5,
+      "cases": [
+        {
+          "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+          "gold": "Leon Marcus Uris",
+          "b_pred": "Leon Uris",
+          "c_pred": "",
+          "b_f1": 0.8,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "conflicting",
+          "reasons": [
+            "conflicting_years:1924,2003"
+          ],
+          "categories": [
+            "other"
+          ],
+          "likely_verification_mistake": false,
+          "likely_model_or_chain_gap": false,
+          "missing_info": "Conflicting evidence detected (conflicting_years:1924,2003).",
+          "n_passages": 2,
+          "n_citations": 2
+        },
+        {
+          "question_id": "phaseb_hotpot_5a7ccc1e55429909bec7680e",
+          "gold": "44",
+          "b_pred": "44",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "quote_mismatch:S2",
+            "answer_not_entailed:answer_token_coverage=0.00"
+          ],
+          "categories": [
+            "answer_not_entailed_low_coverage",
+            "quote_mismatch"
+          ],
+          "likely_verification_mistake": true,
+          "likely_model_or_chain_gap": true,
+          "missing_info": "Proposed answer not supported by verified quotes.",
+          "n_passages": 2,
+          "n_citations": 1
+        },
+        {
+          "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+          "gold": "University of Texas Longhorns",
+          "b_pred": "University of Texas Longhorns",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "quote_mismatch:S1",
+            "answer_not_entailed:answer_token_coverage=0.67"
+          ],
+          "categories": [
+            "overly_restrictive_coverage_threshold",
+            "quote_mismatch"
+          ],
+          "likely_verification_mistake": true,
+          "likely_model_or_chain_gap": false,
+          "missing_info": "Proposed answer not supported by verified quotes.",
+          "n_passages": 2,
+          "n_citations": 1
+        },
+        {
+          "question_id": "phaseb_hotpot_5a81f94f554299676cceb1ac",
+          "gold": "band",
+          "b_pred": "rock band",
+          "c_pred": "",
+          "b_f1": 0.6666666666666666,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "quote_mismatch:S1",
+            "quote_mismatch:S2",
+            "answer_not_entailed:no_quotes",
+            "answerable_without_valid_quotes"
+          ],
+          "categories": [
+            "quote_mismatch",
+            "missing_citation_despite_claim"
+          ],
+          "likely_verification_mistake": false,
+          "likely_model_or_chain_gap": false,
+          "missing_info": "Proposed answer not supported by verified quotes.",
+          "n_passages": 2,
+          "n_citations": 0
+        },
+        {
+          "question_id": "phaseb_hotpot_5a8f155e554299458435d54c",
+          "gold": "21 years and 154 days",
+          "b_pred": "21 years and 154 days",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "quote_mismatch:S1",
+            "incomplete_evidence_chain:need>=2_got=1"
+          ],
+          "categories": [
+            "missing_required_hop_or_cite",
+            "quote_mismatch"
+          ],
+          "likely_verification_mistake": true,
+          "likely_model_or_chain_gap": true,
+          "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+          "n_passages": 2,
+          "n_citations": 1
+        },
+        {
+          "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+          "gold": "Buddy",
+          "b_pred": "Buddy",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "incomplete_evidence_chain:need>=2_got=1"
+          ],
+          "categories": [
+            "missing_required_hop_or_cite"
+          ],
+          "likely_verification_mistake": false,
+          "likely_model_or_chain_gap": true,
+          "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+          "n_passages": 2,
+          "n_citations": 1
+        },
+        {
+          "question_id": "phaseb_hotpot_5abdb10f55429965af743dc9",
+          "gold": "Eric Bloom",
+          "b_pred": "Eric Bloom",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "answer_not_entailed:answer_token_coverage=0.00"
+          ],
+          "categories": [
+            "answer_not_entailed_low_coverage"
+          ],
+          "likely_verification_mistake": false,
+          "likely_model_or_chain_gap": true,
+          "missing_info": "Proposed answer not supported by verified quotes.",
+          "n_passages": 2,
+          "n_citations": 1
+        },
+        {
+          "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+          "gold": "the Troubles",
+          "b_pred": "the Troubles",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "conflicting",
+          "reasons": [
+            "conflicting_years:1960,1997"
+          ],
+          "categories": [
+            "other"
+          ],
+          "likely_verification_mistake": false,
+          "likely_model_or_chain_gap": false,
+          "missing_info": "Conflicting evidence detected (conflicting_years:1960,1997).",
+          "n_passages": 2,
+          "n_citations": 2
+        },
+        {
+          "question_id": "phaseb_hotpot_5ae7eb0f554299540e5a5694",
+          "gold": "Superteam",
+          "b_pred": "Superteam",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "incomplete_evidence_chain:need>=2_got=1"
+          ],
+          "categories": [
+            "missing_required_hop_or_cite"
+          ],
+          "likely_verification_mistake": false,
+          "likely_model_or_chain_gap": true,
+          "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+          "n_passages": 2,
+          "n_citations": 1
+        }
+      ]
+    },
+    "raw": {
+      "n_cases": 8,
+      "category_counts": {
+        "other": 2,
+        "missing_required_hop_or_cite": 5,
+        "quote_mismatch": 4,
+        "missing_citation_despite_claim": 1
+      },
+      "n_likely_verification_mistake": 3,
+      "n_likely_model_or_chain_gap": 5,
+      "cases": [
+        {
+          "question_id": "phaseb_hotpot_5a7a5f625542990783324f2f",
+          "gold": "Lee Mark Ranaldo",
+          "b_pred": "Lee Ranaldo",
+          "c_pred": "",
+          "b_f1": 0.8,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "conflicting",
+          "reasons": [
+            "conflicting_years:1956,1978"
+          ],
+          "categories": [
+            "other"
+          ],
+          "likely_verification_mistake": false,
+          "likely_model_or_chain_gap": false,
+          "missing_info": "Conflicting evidence detected (conflicting_years:1956,1978).",
+          "n_passages": 10,
+          "n_citations": 2
+        },
+        {
+          "question_id": "phaseb_hotpot_5a7d07a455429907fabef0ae",
+          "gold": "Juventus Football Club",
+          "b_pred": "Juventus",
+          "c_pred": "",
+          "b_f1": 0.5,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "quote_mismatch:S2",
+            "incomplete_evidence_chain:need>=2_got=1"
+          ],
+          "categories": [
+            "missing_required_hop_or_cite",
+            "quote_mismatch"
+          ],
+          "likely_verification_mistake": false,
+          "likely_model_or_chain_gap": true,
+          "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+          "n_passages": 10,
+          "n_citations": 1
+        },
+        {
+          "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+          "gold": "University of Texas Longhorns",
+          "b_pred": "University of Texas Longhorns",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "quote_mismatch:S1",
+            "quote_mismatch:S2",
+            "answer_not_entailed:no_quotes",
+            "answerable_without_valid_quotes"
+          ],
+          "categories": [
+            "quote_mismatch",
+            "missing_citation_despite_claim"
+          ],
+          "likely_verification_mistake": true,
+          "likely_model_or_chain_gap": false,
+          "missing_info": "Proposed answer not supported by verified quotes.",
+          "n_passages": 10,
+          "n_citations": 0
+        },
+        {
+          "question_id": "phaseb_hotpot_5a8f155e554299458435d54c",
+          "gold": "21 years and 154 days",
+          "b_pred": "21 years and 154 days",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "quote_mismatch:S1",
+            "incomplete_evidence_chain:need>=2_got=1"
+          ],
+          "categories": [
+            "missing_required_hop_or_cite",
+            "quote_mismatch"
+          ],
+          "likely_verification_mistake": true,
+          "likely_model_or_chain_gap": true,
+          "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+          "n_passages": 10,
+          "n_citations": 1
+        },
+        {
+          "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+          "gold": "Buddy",
+          "b_pred": "Buddy",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "incomplete_evidence_chain:need>=2_got=1"
+          ],
+          "categories": [
+            "missing_required_hop_or_cite"
+          ],
+          "likely_verification_mistake": false,
+          "likely_model_or_chain_gap": true,
+          "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+          "n_passages": 10,
+          "n_citations": 2
+        },
+        {
+          "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+          "gold": "the Troubles",
+          "b_pred": "the Troubles",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "conflicting",
+          "reasons": [
+            "conflicting_years:1960,1997"
+          ],
+          "categories": [
+            "other"
+          ],
+          "likely_verification_mistake": false,
+          "likely_model_or_chain_gap": false,
+          "missing_info": "Conflicting evidence detected (conflicting_years:1960,1997).",
+          "n_passages": 10,
+          "n_citations": 2
+        },
+        {
+          "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+          "gold": "Brent Burns",
+          "b_pred": "Brent Burns",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "quote_mismatch:S4",
+            "incomplete_evidence_chain:need>=2_got=1"
+          ],
+          "categories": [
+            "missing_required_hop_or_cite",
+            "quote_mismatch"
+          ],
+          "likely_verification_mistake": true,
+          "likely_model_or_chain_gap": true,
+          "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+          "n_passages": 10,
+          "n_citations": 1
+        },
+        {
+          "question_id": "phaseb_hotpot_5ae7eb0f554299540e5a5694",
+          "gold": "Superteam",
+          "b_pred": "Superteam",
+          "c_pred": "",
+          "b_f1": 1.0,
+          "c_f1": 0.0,
+          "b_status": "answered",
+          "c_status": "insufficient",
+          "reasons": [
+            "incomplete_evidence_chain:need>=2_got=1"
+          ],
+          "categories": [
+            "missing_required_hop_or_cite"
+          ],
+          "likely_verification_mistake": false,
+          "likely_model_or_chain_gap": true,
+          "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+          "n_passages": 10,
+          "n_citations": 1
+        }
+      ]
+    }
+  }
+}

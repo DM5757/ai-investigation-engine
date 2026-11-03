@@ -135,9 +135,16 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Multi-hop all-gold cited ≈0.45–0.62 (up from ≈0.29–0.33) with lower F1 under strict chains.
 - Sealed test still locked; prod flag false. Evidence: `docs/evidence/phase_c_reader_grounding.md`.
 
+## Phase C.1 — verification calibration / freeze (2026-11-03)
+
+- Paired B↔C: oracle n=24 F1 0.667→0.339; multi-hop 0.41→0.61.
+- F1 drop: incomplete-chain STRICT clears + 0.85 coverage false rejects (calibrated to 0.65).
+- SOFT vs STRICT: same unsupported-full=0; SOFT adds honest `partial` coverage.
+- **Frozen candidate: SOFT + coverage 0.65** (`phase_c1_candidate_freeze.md`). Sealed still locked; flag false.
+
 ## Outstanding technical follow-ups
 
-1. Lock strict-vs-soft multi-hop policy; then one sealed unlock + canary behind flag.
+1. One sealed unlock under frozen SOFT candidate + canary behind flag.
 2. Optional TPM-aware backoff under adaptive load.
 3. Answer-eval on frozen `heldout_v1` / `phase_b_bench_v1` sealed only after config lock (no tuning).
 4. Decide whether prod should keep `hybrid_rerank` given lower R@10 vs RRF.

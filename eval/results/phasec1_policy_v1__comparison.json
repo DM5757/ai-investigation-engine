@@ -1,0 +1,70 @@
+{
+  "created_at": "2026-11-03T06:21:50.860736+00:00",
+  "run_id": "phasec1_policy_v1",
+  "coverage_threshold": 0.65,
+  "summaries": [
+    {
+      "policy": "strict",
+      "summary": {
+        "n_attempted": 18,
+        "n_scored": 18,
+        "n_provider_failures": 0,
+        "token_f1_full_answered": 0.3407407407407408,
+        "exact_match_full_answered": 0.2222222222222222,
+        "raw_token_f1_overlap": 0.3407407407407408,
+        "answer_supported_rate": 0.4444444444444444,
+        "full_answered_rate": 0.4444444444444444,
+        "partial_rate": 0.0,
+        "evidence_chain_ok_rate": 0.4444444444444444,
+        "multi_hop_all_gold_cited": 0.6111111111111112,
+        "citation_f1": 0.8703703703703703,
+        "false_answer_rate": null,
+        "correct_abstention_rate": null,
+        "contradiction_detection_rate": null,
+        "false_contradiction_rate": null,
+        "unsupported_full_answer_rate": 0.0,
+        "mean_latency_s": 0.9415810944176175,
+        "latency_p50_s": 0.9244802999310195,
+        "mean_tokens": 894.0,
+        "status_counts": {
+          "answered": 8,
+          "conflicting": 3,
+          "insufficient": 7
+        }
+      }
+    },
+    {
+      "policy": "soft",
+      "summary": {
+        "n_attempted": 18,
+        "n_scored": 18,
+        "n_provider_failures": 0,
+        "token_f1_full_answered": 0.3407407407407408,
+        "exact_match_full_answered": 0.2222222222222222,
+        "raw_token_f1_overlap": 0.5351851851851852,
+        "answer_supported_rate": 0.6666666666666666,
+        "full_answered_rate": 0.4444444444444444,
+        "partial_rate": 0.2222222222222222,
+        "evidence_chain_ok_rate": 0.4444444444444444,
+        "multi_hop_all_gold_cited": 0.6111111111111112,
+        "citation_f1": 0.8703703703703703,
+        "false_answer_rate": null,
+        "correct_abstention_rate": null,
+        "contradiction_detection_rate": null,
+        "false_contradiction_rate": null,
+        "unsupported_full_answer_rate": 0.0,
+        "mean_latency_s": 0.9415810944176175,
+        "latency_p50_s": 0.9244802999310195,
+        "mean_tokens": 894.0,
+        "status_counts": {
+          "answered": 8,
+          "conflicting": 3,
+          "insufficient": 3,
+          "partial": 4
+        }
+      }
+    }
+  ],
+  "sealed_test_evaluated": false,
+  "note": "STRICT vs SOFT applied offline to the same raw_model outputs. Full EM/F1 credited only for status=answered with complete chain."
+}

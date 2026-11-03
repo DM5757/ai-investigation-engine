@@ -670,6 +670,12 @@ class InvestigationEngine:
                     llm=self.llm,
                     max_passages=self.settings.reader_max_passages,
                     max_chars=self.settings.reader_max_chars,
+                    policy=str(
+                        getattr(self.settings, "reader_multi_hop_policy", "soft")
+                    ),
+                    coverage_threshold=float(
+                        getattr(self.settings, "reader_coverage_threshold", 0.65)
+                    ),
                 )
             except LLMUnavailable as exc:
                 bag["outputs_summary"] = f"provider_fail:{self._sanitize_fail(exc)}"

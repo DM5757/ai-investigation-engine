@@ -1,0 +1,1183 @@
+{
+  "created_at": "2026-11-03T06:21:50.859776+00:00",
+  "run_id": "phasec1_policy_v1",
+  "policy": "soft",
+  "coverage_threshold": 0.65,
+  "prompt_id": "reader_v2_phase_c",
+  "verify_id": "verify_c1_v1",
+  "sealed_test_evaluated": false,
+  "experimental_passage_reader_default": false,
+  "summary": {
+    "n_attempted": 18,
+    "n_scored": 18,
+    "n_provider_failures": 0,
+    "token_f1_full_answered": 0.3407407407407408,
+    "exact_match_full_answered": 0.2222222222222222,
+    "raw_token_f1_overlap": 0.5351851851851852,
+    "answer_supported_rate": 0.6666666666666666,
+    "full_answered_rate": 0.4444444444444444,
+    "partial_rate": 0.2222222222222222,
+    "evidence_chain_ok_rate": 0.4444444444444444,
+    "multi_hop_all_gold_cited": 0.6111111111111112,
+    "citation_f1": 0.8703703703703703,
+    "false_answer_rate": null,
+    "correct_abstention_rate": null,
+    "contradiction_detection_rate": null,
+    "false_contradiction_rate": null,
+    "unsupported_full_answer_rate": 0.0,
+    "mean_latency_s": 0.9415810944176175,
+    "latency_p50_s": 0.9244802999310195,
+    "mean_tokens": 894.0,
+    "status_counts": {
+      "answered": 8,
+      "conflicting": 3,
+      "insufficient": 3,
+      "partial": 4
+    }
+  },
+  "results": [
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": null,
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "University of Texas Longhorns",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "former American football quarterback for the University of Texas Longhorns football team",
+          "title": "Case McCoy"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "playing college football for the University of Texas",
+          "title": "Colt McCoy"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "n_passages": 2,
+      "latency_s": 1.157587100053206,
+      "tokens": 951.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": null,
+      "gold_answer": "Brent Burns",
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "partial",
+      "answer_text": "Brent Burns",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Canadian Brent Burns was named top defenceman",
+          "title": "2008 IIHF World Championship rosters"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S2",
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.780280499951914,
+      "tokens": 1049.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": null,
+      "gold_answer": "Rob Thomas",
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "Rob Thomas and Diane Ruggiero-Wright",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "He is known for his roles in the \"Ocean's Eleven\" trilogy and the television series \"Hung\" and IZombie.",
+          "title": "Eddie Jemison"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "iZombie (stylized as iZOMBiE) is an American television series developed by Rob Thomas and Diane Ruggiero-Wright for The CW.",
+          "title": "IZombie (TV series)"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "n_passages": 2,
+      "latency_s": 1.2082877999637276,
+      "tokens": 838.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.5,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": null,
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "biographies of Leonard Cohen and Leon Uris",
+          "title": "Ira Nadel"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Leon Marcus Uris (August 3, 1924 – June 21, 2003) was an American author",
+          "title": "Leon Uris"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "conflicting_years:1924,2003",
+      "unsupported_reasons": [
+        "conflicting_years:1924,2003"
+      ],
+      "missing_info": "Conflicting evidence detected (conflicting_years:1924,2003).",
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "n_passages": 2,
+      "latency_s": 1.071813500020653,
+      "tokens": 882.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "control_id": null,
+      "gold_answer": "Buddy",
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "partial",
+      "answer_text": "Buddy",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Dear Socks, Dear Buddy: Kids' Letters to the First Pets is a 1998 children's book written by First Lady of the United States Hillary Rodham Clinton.  It concerns the two pets that lived in the White House during the Clinton administration, Socks the cat and Buddy the dog.",
+          "title": "Dear Socks, Dear Buddy"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.9244802999310195,
+      "tokens": 811.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+      "question_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+      "control_id": null,
+      "gold_answer": "Logan International Airport",
+      "gold_doc_titles": [
+        "American Airlines Shuttle",
+        "Logan International Airport"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "Logan International Airport",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "It serves Logan International Airport in Boston",
+          "title": "American Airlines Shuttle"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "It is the largest airport in the New England region and 17th-busiest airport in the United States",
+          "title": "Logan International Airport"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "American Airlines Shuttle",
+        "Logan International Airport"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.8842358000110835,
+      "tokens": 926.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+      "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+      "control_id": null,
+      "gold_answer": "the Troubles",
+      "gold_doc_titles": [
+        "Mark Fulton (loyalist)",
+        "Billy Wright (loyalist)"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "He was the leader of the Loyalist Volunteer Force (LVF), having taken over its command following the assassination of Billy Wright in the Maze Prison in 1997 by members of the Irish National Liberation Army (INLA).",
+          "title": "Mark Fulton (loyalist)"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "William Stephen \"Billy\" Wright (7 July 1960 – 27 December 1997) was a prominent Ulster loyalist during the ethno-nationalist conflict in Northern Ireland known as the Troubles.",
+          "title": "Billy Wright (loyalist)"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "conflicting_years:1960,1997",
+      "unsupported_reasons": [
+        "conflicting_years:1960,1997"
+      ],
+      "missing_info": "Conflicting evidence detected (conflicting_years:1960,1997).",
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Mark Fulton (loyalist)",
+        "Billy Wright (loyalist)"
+      ],
+      "n_passages": 2,
+      "latency_s": 1.038234799867496,
+      "tokens": 971.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a",
+      "question_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a",
+      "control_id": null,
+      "gold_answer": "Lee County, Mississippi",
+      "gold_doc_titles": [
+        "Trace State Park",
+        "Tupelo, Mississippi"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "Lee County",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Trace State Park (formerly Old Natchez Trace Park) is a public recreation area located off Mississippi Highway 6, approximately 7 mi east of Pontotoc and 7 mi west of Tupelo in the U.S. state of Mississippi.",
+          "title": "Trace State Park"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Tupelo is the county seat and the largest city of Lee County, Mississippi.",
+          "title": "Tupelo, Mississippi"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Trace State Park",
+        "Tupelo, Mississippi"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.9017182998359203,
+      "tokens": 896.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.8,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5adf85e05542993344016cba",
+      "question_id": "phaseb_hotpot_5adf85e05542993344016cba",
+      "control_id": null,
+      "gold_answer": "Championship",
+      "gold_doc_titles": [
+        "John Moncur",
+        "Ipswich Town F.C."
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "While at White Hart Lane he went on loan to Doncaster Rovers, Cambridge United, Portsmouth, Brentford and Ipswich Town.",
+          "title": "John Moncur"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S2",
+        "answer_not_entailed:answer_token_coverage=0.00"
+      ],
+      "missing_info": "Proposed answer not supported by verified quotes.",
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 0.0,
+      "passage_titles": [
+        "John Moncur",
+        "Ipswich Town F.C."
+      ],
+      "n_passages": 2,
+      "latency_s": 0.9373711999505758,
+      "tokens": 821.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab443415542991751b4d711",
+      "question_id": "phaseb_hotpot_5ab443415542991751b4d711",
+      "control_id": null,
+      "gold_answer": "no",
+      "gold_doc_titles": [
+        "Tangled",
+        "The Princess and the Frog"
+      ],
+      "question_type": "multi_doc",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Tangled is a 2010 American 3D computer-animated musical fantasy-comedy film",
+          "title": "Tangled"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The passages state that Tangled is a 3D computer-animated musical film, but S2 does not specify whether The Princess and the Frog is 3D computer-animated (it only states it is an animated musical film).",
+      "next_query": "Is The Princess and the Frog a 3D computer-animated film?",
+      "policy": "soft",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Tangled",
+        "The Princess and the Frog"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.9508952999021858,
+      "tokens": 1043.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5abb1fd95542996cc5e49fb6",
+      "question_id": "phaseb_hotpot_5abb1fd95542996cc5e49fb6",
+      "control_id": null,
+      "gold_answer": "Edinburgh",
+      "gold_doc_titles": [
+        "Mogens Palle",
+        "Ken Buchanan"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "Edinburgh",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "He also brought to Denmark boxing stars like Carlos Monzon, Larry Holmes, Emile Griffith, Ken Buchanan and John Conteh.",
+          "title": "Mogens Palle"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Ken Buchanan MBE (born 28 June 1945) is a British retired professional boxer and the former Undisputed World Lightweight Champion from Edinburgh.",
+          "title": "Ken Buchanan"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Mogens Palle",
+        "Ken Buchanan"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.9015859002247453,
+      "tokens": 907.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5abdb10f55429965af743dc9",
+      "question_id": "phaseb_hotpot_5abdb10f55429965af743dc9",
+      "control_id": null,
+      "gold_answer": "Eric Bloom",
+      "gold_doc_titles": [
+        "Eric Bloom",
+        "Otep Shamaya"
+      ],
+      "question_type": "multi_doc",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Much of his lyrical content relates to his lifelong interest in science fiction.",
+          "title": "Eric Bloom"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "answer_not_entailed:answer_token_coverage=0.00"
+      ],
+      "missing_info": "Proposed answer not supported by verified quotes.",
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 0.0,
+      "passage_titles": [
+        "Eric Bloom",
+        "Otep Shamaya"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.9929024998564273,
+      "tokens": 708.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a8f155e554299458435d54c",
+      "question_id": "phaseb_hotpot_5a8f155e554299458435d54c",
+      "control_id": null,
+      "gold_answer": "21 years and 154 days",
+      "gold_doc_titles": [
+        "Kellock–Taschereau Commission",
+        "William Lyon Mackenzie King"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "partial",
+      "answer_text": "21 years and 154 days",
+      "citations": [
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "A Liberal with 21 years and 154 days in office, he was the longest-serving prime minister in Canadian history.",
+          "title": "William Lyon Mackenzie King"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S1",
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Kellock–Taschereau Commission",
+        "William Lyon Mackenzie King"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.8786121001467109,
+      "tokens": 1029.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7ccc1e55429909bec7680e",
+      "question_id": "phaseb_hotpot_5a7ccc1e55429909bec7680e",
+      "control_id": null,
+      "gold_answer": "44",
+      "gold_doc_titles": [
+        "Cindy Williams (journalist)",
+        "WCSH"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "UHF channel 44",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Cindy Williams (born 1963) is an award-winning news anchor with WCSH 6 in Portland, Maine.",
+          "title": "Cindy Williams (journalist)"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "WCSH is the NBC-affiliated television station for southern Maine as well as eastern and northern New Hampshire in the United States.  Licensed to Portland, it broadcasts a high definition digital signal on UHF channel 44",
+          "title": "WCSH"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Cindy Williams (journalist)",
+        "WCSH"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.9588732998818159,
+      "tokens": 843.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.5,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7a5f625542990783324f2f",
+      "question_id": "phaseb_hotpot_5a7a5f625542990783324f2f",
+      "control_id": null,
+      "gold_answer": "Lee Mark Ranaldo",
+      "gold_doc_titles": [
+        "Lee Ranaldo",
+        "Lauren Laverne"
+      ],
+      "question_type": "multi_doc",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Lee Mark Ranaldo (born February 3, 1956)",
+          "title": "Lee Ranaldo"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Lauren Cecilia Fisher (née Gofton, 28 April 1978)",
+          "title": "Lauren Laverne"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "conflicting_years:1956,1978",
+      "unsupported_reasons": [
+        "conflicting_years:1956,1978"
+      ],
+      "missing_info": "Conflicting evidence detected (conflicting_years:1956,1978).",
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Lee Ranaldo",
+        "Lauren Laverne"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.8810182998422533,
+      "tokens": 838.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a72fbcc5542994cef4bc415",
+      "question_id": "phaseb_hotpot_5a72fbcc5542994cef4bc415",
+      "control_id": null,
+      "gold_answer": "Hot Rod",
+      "gold_doc_titles": [
+        "Watercolor Artist",
+        "Hot Rod (magazine)"
+      ],
+      "question_type": "multi_doc",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "Hot Rod",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Watercolor Artist, formerly Watercolor Magic, is an American bi-monthly magazine",
+          "title": "Watercolor Artist"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Hot Rod is a monthly American car magazine",
+          "title": "Hot Rod (magazine)"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "Watercolor Artist",
+        "Hot Rod (magazine)"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.8767017999198288,
+      "tokens": 735.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5add44c25542997545bbbd0a",
+      "question_id": "phaseb_hotpot_5add44c25542997545bbbd0a",
+      "control_id": null,
+      "gold_answer": "Rajmund Roman Thierry Polański",
+      "gold_doc_titles": [
+        "A Therapy",
+        "Roman Polanski"
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "answered",
+      "answer_text": "Roman Polanski",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "The short was written and directed by Roman Polanski",
+          "title": "A Therapy"
+        },
+        {
+          "label": "S2",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "Rajmund Roman Thierry Polański (born 18 August 1933) is a French-Polish film director, producer, writer, and actor.  Polanski was born in Paris",
+          "title": "Roman Polanski"
+        }
+      ],
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "A Therapy",
+        "Roman Polanski"
+      ],
+      "n_passages": 2,
+      "latency_s": 0.7915293001569808,
+      "tokens": 841.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.3333333333333333,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.3333333333333333,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7d07a455429907fabef0ae",
+      "question_id": "phaseb_hotpot_5a7d07a455429907fabef0ae",
+      "control_id": null,
+      "gold_answer": "Juventus Football Club",
+      "gold_doc_titles": [
+        "József Viola",
+        "Juventus F.C."
+      ],
+      "question_type": "multi_hop",
+      "origin": "hotpot_original",
+      "negative_control": null,
+      "status": "partial",
+      "answer_text": "Juventus",
+      "citations": [
+        {
+          "label": "S1",
+          "doc_id": "",
+          "chunk_id": "",
+          "quote": "He is most prominent for his time in Italy and his association with clubs such as Juventus.",
+          "title": "József Viola"
+        }
+      ],
+      "verify_ok": false,
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S2",
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "policy": "soft",
+      "coverage": 1.0,
+      "passage_titles": [
+        "József Viola",
+        "Juventus F.C."
+      ],
+      "n_passages": 2,
+      "latency_s": 0.8123319000005722,
+      "tokens": 1003.0,
+      "llm_calls": 1.0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.5,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0
+      }
+    }
+  ]
+}
