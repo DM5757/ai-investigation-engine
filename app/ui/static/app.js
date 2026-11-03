@@ -372,16 +372,34 @@ async function ask() {
     });
     const elapsed = performance.now() - wallStart;
     setStatusBadge(data.status || "insufficient");
-    setText($("answer-text"), data.answer || data.abstention_reason || "(no answer)");
-    if (data.missing_information) {
+    const answerBody =
+      data.answer ||
+      data.abstention_reason ||
+      data.missing_information ||
+      "(no answer text returned)";
+    setText($("answer-text"), answerBody);
+    const miss =
+      data.missing_information ||
+      (data.status === "insufficient" || data.status === "partial"
+        ? data.abstention_reason
+        : null);
+    if (miss && miss !== data.answer) {
       missing.hidden = false;
-      setText(missing, data.missing_information);
+      setText(missing, miss);
     }
     if (data.status === "llm_unavailable") {
       errBanner.hidden = false;
       setText(
         errBanner,
-        "LLM path unavailable (quota, timeout, or provider error). Evidence may still appear below; no invented fill-in.",
+        "Language-model path unavailable (quota, rate limit, or timeout). The system did not invent an answer. Try again later or use a sample that can stay deterministic.",
+      );
+    }
+    if (data.status === "conflicting") {
+      missing.hidden = false;
+      setText(
+        missing,
+        miss ||
+          "Independent sources disagree. Review the Conflicts panel for opposing quotes.",
       );
     }
     const sources = data.sources || [];
@@ -723,6 +741,22 @@ async function refreshHealth() {
     if (version.git_commit) {
       setText($("header-sha"), String(version.git_commit).slice(0, 7));
     }
+    if ($("header-reader")) {
+      const mode = version.effective_reader_mode || "legacy";
+      setText(
+        $("header-reader"),
+        mode === "experimental_passage_reader" ? "experimental" : "legacy",
+      );
+    }
+    cards.append(
+      metricCard(
+        "Reader",
+        version.effective_reader_mode || "legacy",
+        version.experimental_passage_reader
+          ? `bridge=${version.reader_max_bridge_rounds}`
+          : "production default",
+      ),
+    );
   } catch (err) {
     setText($("health-panel"), humanError(err));
   }
@@ -739,6 +773,13 @@ async function bootstrapHeader() {
     }
     if (version && version.git_commit) {
       setText($("header-sha"), String(version.git_commit).slice(0, 7));
+    }
+    if (version && $("header-reader")) {
+      const mode = version.effective_reader_mode || "legacy";
+      setText(
+        $("header-reader"),
+        mode === "experimental_passage_reader" ? "experimental" : "legacy",
+      );
     }
   } catch {
     /* header is best-effort */

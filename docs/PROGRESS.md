@@ -150,9 +150,14 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - **Sealed not run** (Groq daily quota + Gemini RPM). Prod flag remains **false**. Freeze: `final_candidate_freeze.md`. Report: `final_engineering_push_report.md`.
 - Tag `submission-2026-10-29` unchanged.
 
-## Outstanding technical follow-ups
+## Final delivery (2026-11-03)
 
-1. One sealed unlock (`eval/run_sealed_final.py`) when LLM quota allows, then canary behind flag.
-2. Improve raw multi-hop completeness (bridge quality / second-hop retrieval).
-3. Optional TPM-aware backoff under adaptive load.
-4. Legacy prod default may keep `hybrid_rerank` until reader canary; reader path prefers RRF.
+- Sealed `sealed_final_v1` closed as **incomplete/inconclusive** (quota); bookkeeping repaired (38 genuine / 2 failed).
+- UI polished for reviewer demo; `/api/version` exposes reader mode; experimental reader stays **off**.
+- Public README/evaluation docs distinguish production vs experimental vs incomplete sealed.
+- Research cycle ended — no further optimization milestones planned in-tree.
+
+## Outstanding (optional, not blocking delivery)
+
+1. Future sealed unlock only if free-tier quota allows a complete run — not required for this delivery.
+2. Multi-hop completeness remains an open research quality item behind the disabled flag.

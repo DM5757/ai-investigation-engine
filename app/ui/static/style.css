@@ -1,25 +1,25 @@
 :root {
-  --bg: #f3f0e8;
-  --fg: #1a1a17;
-  --muted: #5a564c;
-  --line: #d2ccc0;
-  --card: #fffcf6;
-  --accent: #1f5c4a;
-  --accent-soft: #e5f2ec;
-  --accent-fg: #f4fff9;
-  --answered: #1b6b3c;
-  --partial: #8a6a12;
-  --conflicting: #8b2e1c;
-  --insufficient: #52486a;
-  --llm_unavailable: #3a4a5c;
-  --idle: #6a655c;
-  --running: #2a5f8f;
-  --danger: #7a1f1f;
-  --danger-bg: #f8e8e6;
+  --bg: #eef2f4;
+  --fg: #152028;
+  --muted: #5a6772;
+  --line: #cfd8de;
+  --card: #ffffff;
+  --accent: #0f5c63;
+  --accent-soft: #e3f1f2;
+  --accent-fg: #f4fbfb;
+  --answered: #1a6b45;
+  --partial: #8a6412;
+  --conflicting: #9a2f22;
+  --insufficient: #4a5568;
+  --llm_unavailable: #3d4f63;
+  --idle: #64727d;
+  --running: #1f5f8f;
+  --danger: #8a2424;
+  --danger-bg: #f7e9e8;
   --font: "IBM Plex Sans", "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", "Cascadia Code", Consolas, monospace;
-  --radius: 6px;
-  --shadow: 0 1px 0 rgba(26, 26, 23, 0.04);
+  --radius: 8px;
+  --shadow: 0 1px 2px rgba(21, 32, 40, 0.06);
 }
 
 * { box-sizing: border-box; }
@@ -31,10 +31,10 @@ body {
   font-family: var(--font);
   color: var(--fg);
   background:
-    radial-gradient(ellipse at 0% 0%, #e8e1d0 0%, transparent 45%),
-    linear-gradient(180deg, #f7f4ec, var(--bg));
+    radial-gradient(ellipse at 100% -10%, #d7e8ea 0%, transparent 42%),
+    linear-gradient(180deg, #f5f8fa, var(--bg));
   min-height: 100vh;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .skip-link {
@@ -117,7 +117,8 @@ body {
   gap: 0.35rem;
   padding: 0.65rem 1.5rem;
   border-bottom: 1px solid var(--line);
-  background: rgba(255, 252, 246, 0.65);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(6px);
 }
 
 .tab {
@@ -213,6 +214,49 @@ main {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--muted);
+}
+
+.guide {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+}
+
+.guide summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.guide-steps {
+  margin: 0.65rem 0 0.15rem;
+  padding-left: 1.2rem;
+  color: var(--fg);
+  font-size: 0.92rem;
+}
+
+.guide-steps li { margin: 0.35rem 0; }
+
+.side-sub {
+  margin: 1rem 0 0.45rem !important;
+  font-size: 0.95rem;
+}
+
+.side-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.side-list li { margin: 0.3rem 0; }
+
+.answer-box:empty::before {
+  content: "Run an investigation to see a grounded answer here.";
+  color: var(--muted);
+  font-style: italic;
 }
 
 .samples {

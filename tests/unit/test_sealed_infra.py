@@ -177,6 +177,30 @@ def test_daily_budget_rolls_calendar_day(monkeypatch: pytest.MonkeyPatch) -> Non
     assert b.can_afford(requests=1)
 
 
+def test_infra_failure_result_detects_llm_unavailable() -> None:
+    from eval.sealed_infra import is_infra_failure_result
+
+    assert is_infra_failure_result(
+        {
+            "status": "llm_unavailable",
+            "llm_calls": 0,
+            "tokens": 0,
+            "abstention_reason": "groq:daily_quota; gemini:rate_limit_rpm",
+        }
+    )
+    assert not is_infra_failure_result(
+        {"status": "answered", "llm_calls": 1, "tokens": 100}
+    )
+    assert not is_infra_failure_result(
+        {
+            "status": "insufficient",
+            "llm_calls": 0,
+            "tokens": 0,
+            "abstention_reason": "No verified claims could be grounded.",
+        }
+    )
+
+
 def test_frozen_candidate_spec_matches_freeze_knobs() -> None:
     assert FROZEN_CANDIDATE.multi_hop_policy == "soft"
     assert FROZEN_CANDIDATE.coverage_threshold == 0.65

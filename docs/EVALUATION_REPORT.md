@@ -1,8 +1,17 @@
 # Evaluation Report
 
 **Project:** Applied AI Investigation Engine  
-**Updated:** 2026-11-02 (Phase A eval integrity)  
+**Updated:** 2026-11-03 (final delivery)  
 **Corpus:** ACTIVE **55,081** / Qdrant **56,890** (`meets_data1_50k: true`). Ingestion complete; earlier pre-50k runs remain historical only.
+
+## Status of experimental sealed unlock (2026-11-03)
+
+`sealed_final_v1` was **interrupted** by free-tier Groq/Gemini quotas and is **incomplete / inconclusive**.
+
+- Candidate: 38 genuine completions retained; 2 `llm_unavailable` slots reclassified to failed; 260 pending.
+- Legacy: 37 completed (including valid deterministic zero-LLM paths); remaining pending.
+- **Do not cite sealed results as final accuracy.** Details: `docs/evidence/sealed_final_v1_status.md`.
+- Production continues on the **legacy** reader (`EXPERIMENTAL_PASSAGE_READER=false`).
 
 ## 0. Phase A — evaluation integrity (2026-11-02)
 

@@ -443,6 +443,24 @@ def is_provider_failure(error: str) -> bool:
     )
 
 
+def is_infra_failure_result(result: dict[str, Any] | None) -> bool:
+    """True when an investigation result is not a valid model completion."""
+    if not result:
+        return True
+    status = str(result.get("status") or "").lower()
+    if status in {"llm_unavailable", "error", "provider_error"}:
+        return True
+    reason = str(result.get("abstention_reason") or result.get("error") or "").lower()
+    if status == "insufficient" and is_provider_failure(reason):
+        return True
+    # Quota/rate exhaustion surfaced without a successful reader call.
+    return (
+        is_provider_failure(reason)
+        and int(result.get("llm_calls") or 0) == 0
+        and ("provider" in reason or "quota" in reason or "rate_limit" in reason)
+    )
+
+
 def load_sealed_question_ids(manifest_path: Path, sealed_path: Path) -> list[str]:
     """Load sealed IDs from manifest when present; else IDs only from sealed file.
 

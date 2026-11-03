@@ -52,6 +52,7 @@ from eval.sealed_infra import (  # noqa: E402
     cache_validity_key,
     config_fingerprint,
     has_valid_comparison_results,
+    is_infra_failure_result,
     is_provider_failure,
     load_sealed_question_ids,
     load_sealed_questions_by_id,
@@ -422,6 +423,7 @@ def main() -> None:
                 continue
 
             gold_docs = _resolve_gold_doc_ids(q, title_to, path_to, ext_to)
+            result: dict[str, Any] = {}
             try:
                 if hasattr(llm, "budget"):
                     llm.budget.reset()
@@ -438,33 +440,66 @@ def main() -> None:
                 )
                 cached = _read_result_cache(q_fp)
                 if cached and cached.get("result"):
-                    result = dict(cached["result"])
-                    result["cache_hit"] = True
-                else:
+                    # Never treat infra-failure cache as a successful completion.
+                    if is_infra_failure_result(cached.get("result")):
+                        cached = None
+                    else:
+                        result = dict(cached["result"])
+                        result["cache_hit"] = True
+                if cached is None or not cached.get("result"):
                     raw = _run_investigation(
                         engine, str(q["question"]), gold_doc_ids=gold_docs
                     )
                     result = _result_from_investigation(raw)
                     result["cache_hit"] = False
-                    _write_result_cache(
-                        q_fp,
-                        {
-                            "question_id": qid,
-                            "config_id": cfg_id,
-                            "model_id": model_id,
-                            "config_fingerprint": expected_fp,
-                            "prompt_sha256": p_sha,
-                            "verify_id": VERIFY_ID,
-                            "result": result,
-                        },
+                    if not is_infra_failure_result(result):
+                        _write_result_cache(
+                            q_fp,
+                            {
+                                "question_id": qid,
+                                "config_id": cfg_id,
+                                "model_id": model_id,
+                                "config_fingerprint": expected_fp,
+                                "prompt_sha256": p_sha,
+                                "verify_id": VERIFY_ID,
+                                "result": result,
+                            },
+                        )
+
+                if is_infra_failure_result(result):
+                    err = str(
+                        result.get("abstention_reason")
+                        or result.get("status")
+                        or "llm_unavailable"
                     )
-                result["answer"] = _score(q, result)
-                calls = int(result.get("llm_calls") or 0)
-                tokens = int(result.get("tokens") or 0)
-                ck.budget.record(requests=max(1, calls), tokens=tokens)
-                mark_completed(ck.slots, qid, result)
-                ck.consecutive_provider_failures = 0
-                session_done += 1
+                    mark_failed(ck.slots, qid, err)
+                    print(f"  INFRA_FAIL {qid}: {err[:160]}", flush=True)
+                    if is_provider_failure(err):
+                        ck.consecutive_provider_failures += 1
+                        time.sleep(max(0.0, args.provider_backoff_s))
+                        if (
+                            ck.consecutive_provider_failures
+                            >= args.stop_after_llm_unavailable
+                        ):
+                            ck.paused = True
+                            ck.pause_reason = "provider_failures"
+                            _write_checkpoint(ck_path, ck)
+                            print(
+                                f"PROVIDER pause {cfg_id} after "
+                                f"{ck.consecutive_provider_failures} failures",
+                                flush=True,
+                            )
+                            break
+                    else:
+                        ck.consecutive_provider_failures = 0
+                else:
+                    result["answer"] = _score(q, result)
+                    calls = int(result.get("llm_calls") or 0)
+                    tokens = int(result.get("tokens") or 0)
+                    ck.budget.record(requests=max(1, calls), tokens=tokens)
+                    mark_completed(ck.slots, qid, result)
+                    ck.consecutive_provider_failures = 0
+                    session_done += 1
             except Exception as exc:  # noqa: BLE001
                 err = str(exc)
                 mark_failed(ck.slots, qid, err)

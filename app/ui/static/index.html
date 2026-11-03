@@ -15,12 +15,12 @@
 
   <header class="top">
     <div class="brand-block">
-      <p class="eyebrow">Applied AI · Evidence-grounded RAG</p>
+      <p class="eyebrow">Evidence-grounded multi-document investigation</p>
       <h1>AI Investigation Engine</h1>
       <p class="tagline">
-        Ask questions over a large indexed corpus. Answers stay tied to retrieved
-        quotes, surface conflicts when sources disagree, and abstain when evidence
-        is insufficient.
+        Retrieve, verify, and cite real passages from a 55k-document corpus.
+        The system combines sources when needed, flags contradictions, and
+        abstains when evidence is missing — it does not invent answers.
       </p>
     </div>
     <dl class="header-meta" aria-label="Live deployment signals">
@@ -31,6 +31,10 @@
       <div>
         <dt>Deploy</dt>
         <dd id="header-sha" class="mono">…</dd>
+      </div>
+      <div>
+        <dt>Reader</dt>
+        <dd id="header-reader">legacy</dd>
       </div>
     </dl>
   </header>
@@ -47,11 +51,23 @@
     <section id="panel-ask" class="panel active" role="tabpanel">
       <div class="ask-layout">
         <div class="ask-primary">
+          <details class="guide" open>
+            <summary>How to use this demo (about 1 minute)</summary>
+            <ol class="guide-steps">
+              <li>Pick a <strong>sample investigation</strong> below, or type your own question.</li>
+              <li>Click <strong>Run investigation</strong> (or press Ctrl/Cmd+Enter). The request hits the live API.</li>
+              <li>Read the <strong>status</strong> and answer, then open citations to inspect supporting quotes.</li>
+              <li>Check <strong>Conflicts</strong> when sources disagree, and <strong>Investigation steps</strong> for multi-hop stages.</li>
+              <li>If evidence is thin, expect <span class="pill insufficient">insufficient</span> — that is intentional abstention, not a crash.</li>
+            </ol>
+          </details>
+
           <div class="samples" aria-label="Verified sample investigations">
             <p class="section-label">Sample investigations</p>
             <p class="hint">
-              One-click examples from production-verified cases. Each run hits the
-              live API — answers are not hardcoded in the browser.
+              Production-verified cases. Selecting a chip fills the question; click
+              <em>Run investigation</em> to execute against the live backend.
+              Answers are never hardcoded in the browser.
             </p>
             <div id="sample-chips" class="sample-chips"></div>
           </div>
@@ -68,7 +84,7 @@
             <div class="field">
               <label for="mode">Retrieval mode</label>
               <select id="mode" aria-describedby="mode-hint">
-                <option value="hybrid_rerank" selected>hybrid_rerank (default)</option>
+                <option value="hybrid_rerank" selected>hybrid_rerank (production default)</option>
                 <option value="hybrid_rrf">hybrid_rrf</option>
                 <option value="hybrid_weighted">hybrid_weighted</option>
                 <option value="dense">dense</option>
@@ -77,7 +93,7 @@
             </div>
             <button type="button" id="ask-btn" class="primary">Run investigation</button>
           </div>
-          <p id="mode-hint" class="hint">Hybrid modes combine dense vectors with BM25 sparse search.</p>
+          <p id="mode-hint" class="hint">Hybrid modes combine dense vectors with custom BM25 sparse search. Default matches production.</p>
 
           <div id="progress" class="progress" hidden>
             <div class="progress-row">
@@ -122,15 +138,22 @@
         <aside class="ask-side" aria-label="How to read results">
           <h2>Status meanings</h2>
           <ul class="legend">
-            <li><span class="pill answered">answered</span> Evidence supports a concise claim.</li>
+            <li><span class="pill answered">answered</span> Cited evidence supports the claim.</li>
             <li><span class="pill partial">partial</span> Related evidence found; answer may be incomplete.</li>
-            <li><span class="pill conflicting">conflicting</span> Independent sources disagree on the same fact.</li>
-            <li><span class="pill insufficient">insufficient</span> Evidence does not support a reliable answer.</li>
-            <li><span class="pill llm_unavailable">llm_unavailable</span> Provider quota/timeout; no invented fill-in.</li>
+            <li><span class="pill conflicting">conflicting</span> Sources disagree on the same fact.</li>
+            <li><span class="pill insufficient">insufficient</span> Not enough grounded evidence — system abstains.</li>
+            <li><span class="pill llm_unavailable">llm_unavailable</span> Provider quota/timeout — no invented fill-in.</li>
+          </ul>
+          <h2 class="side-sub">What to inspect</h2>
+          <ul class="side-list">
+            <li>Citation chips → jump to source quotes</li>
+            <li>Conflicts → opposing values with quotes</li>
+            <li>Investigation steps → retrieval / verify stages</li>
           </ul>
           <p class="hint">
-            Sample success does not imply every query succeeds. Held-out token F1
-            on 62 test questions is still modest — see Evaluation.
+            Sample success is not overall accuracy. Held-out adaptive token F1
+            (cite-stripped) is about <strong>0.22</strong> on 62 test questions —
+            see Evaluation.
           </p>
         </aside>
       </div>
