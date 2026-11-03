@@ -1,0 +1,991 @@
+{
+  "created_at": "2026-11-03T03:49:36.123277+00:00",
+  "run_id": "e0_pilot_v1",
+  "config_id": "e0_llm_baseline",
+  "split": "dev",
+  "retrieval_mode": "hybrid_rrf",
+  "k": 10,
+  "corpus": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "model_settings": {
+    "groq_model": "openai/gpt-oss-120b",
+    "gemini_model": "gemini-3.5-flash-lite",
+    "temperature": 0.0,
+    "prompt_id": "reader_v1"
+  },
+  "note": "Development split only. Sealed test not evaluated. Scoring uses citation-stripped EM/F1.",
+  "summary": {
+    "n_attempted": 12,
+    "n_scored": 12,
+    "n_provider_failures": 0,
+    "token_f1": 0.21675686513921807,
+    "exact_match": 0.0,
+    "token_f1_ci": {
+      "mean": 0.21675686513921807,
+      "low": 0.125,
+      "high": 0.33083638583638586,
+      "n": 12
+    },
+    "exact_match_ci": {
+      "mean": 0.0,
+      "low": 0.0,
+      "high": 0.0,
+      "n": 12
+    },
+    "answer_supported_rate": 0.0,
+    "citation_f1": 0.3055555555555555,
+    "correct_abstention_rate": null,
+    "false_answer_on_unanswerable": null,
+    "mean_latency_s": 10.759426641675722,
+    "latency_p50_s": 10.490231200004928,
+    "latency_p95_s": 12.532489100005478,
+    "mean_llm_calls": 1.0,
+    "mean_tokens": 1642.0,
+    "status_counts": {
+      "answered": 12
+    }
+  },
+  "results": [
+    {
+      "question_id": "phaseb_hotpot_5ae495695542996836b02cdf",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Liechtenstein",
+      "gold_doc_ids": [
+        "6b768a9c-a953-4ab4-b4d8-42ca75b33890",
+        "73d28431-f558-48d1-ab9a-1cccbbb3a896"
+      ],
+      "gold_doc_titles": [
+        "Swiss immigration referendum, February 2014",
+        "Switzerland–European Union relations"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The immigration referendum in February 2014 was held in Switzerland [​S2]. The only non‑EU microstate that borders Switzerland is Liechtenstein [​S3].",
+      "citations": [
+        {
+          "doc_id": "6b768a9c-a953-4ab4-b4d8-42ca75b33890",
+          "chunk_id": "5397ff83-c446-45e0-a5b5-e73a2ab58486",
+          "label": "S2",
+          "quote": ""
+        },
+        {
+          "doc_id": "73d28431-f558-48d1-ab9a-1cccbbb3a896",
+          "chunk_id": "e8162e54-c310-4b8e-a78c-2f0a0d497476",
+          "label": "S3",
+          "quote": ""
+        }
+      ],
+      "latency_s": 12.19760410010349,
+      "llm_calls": 1,
+      "tokens": 1840,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 1.0,
+      "retrieved_doc_ids": [
+        "9c3baa8f-e723-481d-94fb-32a1ef317924",
+        "6b768a9c-a953-4ab4-b4d8-42ca75b33890",
+        "73d28431-f558-48d1-ab9a-1cccbbb3a896",
+        "e737b5a0-be13-4c4c-84e7-79cb0fcdc02a",
+        "6ca7ed27-a72c-478c-8f9e-61ccf30e52d9",
+        "947ee722-a269-463f-ad2d-4fba7a81afc1",
+        "cb2735b9-a389-4a95-b7df-6913e1e9c1a4",
+        "900aad4a-b9f1-428a-abfe-4f5a32256fa6",
+        "40161837-6661-42d9-bb6d-c48ad97b361c",
+        "c20281dd-5bf0-404a-9a2f-44decefe571a"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "European Union (Referendum) Act 2016 (Gibraltar)",
+        "Swiss immigration referendum, February 2014",
+        "Switzerland–European Union relations",
+        "European Union (Referendum) Bill 2013",
+        "Albania",
+        "Strasbourg",
+        "1995 enlargement of the European Union",
+        "Treaty of Accession 1994",
+        "Ukraine",
+        "Moyen-Congo constitutional referendum, 1958"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.09523809523809523,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 1.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a9088725542995651fb5183",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "who contributed most to class spirit and morale",
+      "gold_doc_ids": [
+        "f199abfe-6490-4105-8637-7ae9847bf781",
+        "b2e066d3-1f46-412e-9776-b097217f130f"
+      ],
+      "gold_doc_titles": [
+        "Onizuka Prop Wash Award",
+        "Ellison Onizuka"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The Onizuka Prop Wash Award is an honor given at the United States Air Force Test Pilot School to the student who most contributes to class spirit and morale. The recipient is chosen by fellow classmates, and the award is named for TPS graduate Ellison Onizuka, who died in the Space Shuttle Challenger disaster【S1】.",
+      "citations": [],
+      "latency_s": 10.224068999988958,
+      "llm_calls": 1,
+      "tokens": 1510,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "f199abfe-6490-4105-8637-7ae9847bf781",
+        "9fbab52e-2387-4466-8c94-42834e9896ee",
+        "e34ee9b6-b81f-45f3-9114-74b2fa117d4f",
+        "f7220ab7-d50c-4b7a-a49c-9b95256695f9",
+        "2305a098-001a-4e4a-b56e-d972a09ad302",
+        "9faba400-b219-4451-8895-f4d65ef841e4",
+        "b2e066d3-1f46-412e-9776-b097217f130f",
+        "f903e538-dd8e-4f3d-a4d5-82b166f9a14d",
+        "51a22cbb-983f-4868-99fd-6b9d602cc794",
+        "c33a4201-9db5-4a94-b3aa-b5dbbe84a133"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Onizuka Prop Wash Award",
+        "Neuromancer",
+        "Washlet",
+        "Wash West",
+        "Okey Bakassi",
+        "A Bathing Ape",
+        "Ellison Onizuka",
+        "Soap Opera Digest Awards",
+        "Bill Martin Jr.",
+        "BAPE"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.22222222222222224,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae0f6545542997b2ef7d0b2",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "1919",
+      "gold_doc_ids": [
+        "fe75d454-002a-4c62-a985-a1d712b2739e",
+        "3a0e843f-075f-4824-9889-18b733faf0c1"
+      ],
+      "gold_doc_titles": [
+        "William Davis Ticknor, Sr.",
+        "Commercial Solvents Corporation"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The American chemical and biotechnology company (Commercial Solvents Corporation) was created in **1919**【S2】.",
+      "citations": [],
+      "latency_s": 9.01506329991389,
+      "llm_calls": 1,
+      "tokens": 1503,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "fe75d454-002a-4c62-a985-a1d712b2739e",
+        "3a0e843f-075f-4824-9889-18b733faf0c1",
+        "b52077bf-6ff9-4954-9a52-4d7d4fec58d1",
+        "2a8ccf6c-360e-41a1-950c-f32b14311588",
+        "2309bb16-2b9e-4695-b634-2e89c17578e0",
+        "ebaeae28-d272-4678-81d2-e66b8dfa458a",
+        "3124c7e2-72e5-4463-a3c0-fab22390df2c",
+        "7a35d6c6-42d2-4478-a111-f91667e6a8e1",
+        "ada8c99e-2c01-49e4-a84e-b61813b2f755",
+        "91e43ca0-7f73-469d-b1db-b1574f4edb65"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "William Davis Ticknor, Sr.",
+        "Commercial Solvents Corporation",
+        "Walter V. Shipley",
+        "Icos",
+        "Benjamin Franklin Fairless",
+        "John F. Milligan",
+        "Jerry York (businessman)",
+        "Donald J. Hall Jr.",
+        "The Billion-Dollar Molecule",
+        "American Cable and Radio Corporation"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.13333333333333333,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a882d9a5542997e5c09a599",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Francis",
+      "gold_doc_ids": [
+        "04e74d61-f747-4575-b044-50b4f5e39ce7",
+        "4d576c55-47b4-49a9-b46d-3f795bb66014"
+      ],
+      "gold_doc_titles": [
+        "I Love Melvin",
+        "Donald O'Connor"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The talking mule is named **Francis**【S2】.",
+      "citations": [],
+      "latency_s": 8.287395699997433,
+      "llm_calls": 1,
+      "tokens": 1303,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "04e74d61-f747-4575-b044-50b4f5e39ce7",
+        "4d576c55-47b4-49a9-b46d-3f795bb66014",
+        "99609bd9-25a1-499d-a400-1bbc1dce5baf",
+        "002c08ea-eeeb-4252-a480-5844a8ae7898",
+        "83c01fc6-1c44-4006-a401-d680ad24c76e",
+        "120fab06-8a94-4c41-b021-4a829b7b176f",
+        "3175f27a-47bc-4010-938c-3caf7ecfd1f6",
+        "c5f2b93f-43a7-4928-8d9c-faed41b622d7",
+        "309c9f70-3e9a-4e1e-a359-437db00c3026",
+        "3d8fcfb3-f330-4caf-8211-d5fc66d43eda"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "I Love Melvin",
+        "Donald O'Connor",
+        "Gene Kelly",
+        "Julianne Hough",
+        "Elvis Presley",
+        "Francis (film)",
+        "George Raft",
+        "Richard Keith (actor)",
+        "Staying Alive (1983 film)",
+        "DeForest Kelley"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.25,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5abff9905542997d64295980",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Egremont",
+      "gold_doc_ids": [
+        "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+        "ff31dc26-0f37-440e-912e-5bcbd9902c28"
+      ],
+      "gold_doc_titles": [
+        "Egremont Castle",
+        "Egremont, Cumbria"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Egremont Castle is situated in the town of **Egremont**, which is a market town, civil parish and is split into two electoral wards (North and South) within the Borough of Copeland, Cumbria, England. [S1][S3]",
+      "citations": [
+        {
+          "doc_id": "ff31dc26-0f37-440e-912e-5bcbd9902c28",
+          "chunk_id": "780e5e21-ec74-4073-9dcd-8dec0eff87e6",
+          "label": "S1",
+          "quote": ""
+        },
+        {
+          "doc_id": "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+          "chunk_id": "eb45c479-2a43-4163-9c9f-a8bb582406d9",
+          "label": "S3",
+          "quote": ""
+        }
+      ],
+      "latency_s": 10.024189300020225,
+      "llm_calls": 1,
+      "tokens": 1623,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 1.0,
+      "retrieved_doc_ids": [
+        "ff31dc26-0f37-440e-912e-5bcbd9902c28",
+        "f329f779-89cd-43a9-b1b0-5be88c3ba36c",
+        "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+        "094d8b45-cd59-4a1e-99ce-440f61abc0d0",
+        "6bd1072b-ab01-44a6-bb0d-21f90db9abe2",
+        "c6af8621-898c-46f8-8133-6af66da00990",
+        "a77bf725-7b94-46a0-ac59-f0d0af0f3bc4",
+        "62d4bc61-dfc4-4a90-9f67-881784dd5dcb",
+        "1fc1dccb-3f6c-4d22-86e4-f0066e4815c0",
+        "33963c1d-c98c-4d46-b9c3-2d7f28c16d7f"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Egremont, Cumbria",
+        "Listed buildings in Egremont, Cumbria",
+        "Egremont Castle",
+        "Axminster",
+        "Borrowdale",
+        "Kendal",
+        "Alston, Cumbria",
+        "Alston Moor",
+        "Barnoldswick",
+        "Castle Ashby"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.05882352941176471,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 1.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a8c62f5554299585d9e367b",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Edward Longshanks and the Hammer of the Scots",
+      "gold_doc_ids": [
+        "080928df-197f-4c95-af9e-0a1073ae8ea2",
+        "9f1f98c0-74b9-488d-a3e8-0fe62bdb78c7"
+      ],
+      "gold_doc_titles": [
+        "Year Books",
+        "Edward I of England"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The king was also called **Edward Longshanks** and **the Hammer of the Scots** (Latin “Malleus Scotorum”)【S4】.",
+      "citations": [],
+      "latency_s": 11.18329120008275,
+      "llm_calls": 1,
+      "tokens": 1711,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "080928df-197f-4c95-af9e-0a1073ae8ea2",
+        "2d797ef3-3db1-46f8-896c-77806149e947",
+        "f2de0efc-3deb-41d5-9f96-6ebd358c565e",
+        "9f1f98c0-74b9-488d-a3e8-0fe62bdb78c7",
+        "84467b85-256e-4f64-978f-1a824f114a2e",
+        "e35be5ed-3c95-47bc-ae8c-e60f478039d8",
+        "bf1c2f25-6557-4d85-8627-9cd6389ccc45",
+        "76f0a141-0434-4c8e-963c-e9ad07199199",
+        "f8347d8d-58a0-4a0b-afca-e2f297c50a26",
+        "c39e9d2e-9fb0-4c26-bae0-d2a8a8937967"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Year Books",
+        "Aggabodhi III of Anuradhapura",
+        "Unhanagara Hatthadatha of Anuradhapura",
+        "Edward I of England",
+        "Tempore",
+        "Edward II of England",
+        "Mittasena of Anuradhapura",
+        "Stephen, King of England",
+        "George I of Great Britain",
+        "Amazasp I of Iberia"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.6399999999999999,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ab955ff5542996be2020487",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "This Is Spinal Tap",
+      "gold_doc_ids": [
+        "2f6a8780-7047-41a3-9840-2503cc6d2fce",
+        "69b70e86-de5c-4520-9732-92756218d907"
+      ],
+      "gold_doc_titles": [
+        "Fred Willard",
+        "Christopher Guest"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The mockumentary film is **“This Is Spinal Tap.”**【S1】【S2】",
+      "citations": [],
+      "latency_s": 12.532489100005478,
+      "llm_calls": 1,
+      "tokens": 1854,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "2f6a8780-7047-41a3-9840-2503cc6d2fce",
+        "32786093-6105-42ab-957e-144c4456dd31",
+        "69b70e86-de5c-4520-9732-92756218d907",
+        "b9e630db-a247-492b-b38c-cc30f839e9d6",
+        "57e4c879-5502-4d68-8611-cc7a21752fd7",
+        "fe097a1d-8ac2-4415-b4a8-72e8d49272f5",
+        "ebacedb1-34f1-4332-98f5-d959bd0de016",
+        "1cf95fb7-fb7a-4be0-9d51-2272a152bce8",
+        "b95bf257-56fc-46ea-b4eb-e3597ec38009",
+        "e41cbcb8-b714-4a40-bd1b-d3892598fd5d"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Fred Willard",
+        "This Is Spinal Tap",
+        "Christopher Guest",
+        "When Harry Met Sally...",
+        "David Jablin",
+        "Being Charlie",
+        "Ice Cream Man (film)",
+        "Idiocracy",
+        "Catherine O'Hara",
+        "What Would Jesus Buy?"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5714285714285715,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a8aad0d5542992d82986f55",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "science fiction drama",
+      "gold_doc_ids": [
+        "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+        "aafcfd3e-2395-480d-982a-fa2c84ab85d0"
+      ],
+      "gold_doc_titles": [
+        "Storyville (album)",
+        "Until the End of the World"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The provided passages tell us that “Breakin’ the Rules” was used in Wim Wenders’ 1991 film *Until the End of the World* [S1], but none of the passages give information about the genre of that film. Therefore, I cannot determine the genre from the available evidence.",
+      "citations": [
+        {
+          "doc_id": "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+          "chunk_id": "234be043-a940-4603-b5dc-b7f162ae6e70",
+          "label": "S1",
+          "quote": ""
+        }
+      ],
+      "latency_s": 10.104552500066347,
+      "llm_calls": 1,
+      "tokens": 1578,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 1.0,
+      "retrieved_doc_ids": [
+        "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+        "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+        "71a11c9d-16e4-4c26-a964-372fb9ccb9b3",
+        "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+        "b145d704-f7da-47a8-9a19-81c9dae436ed",
+        "2b42d368-52bd-4016-ad4b-d7f287badf32",
+        "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+        "af604139-f952-453b-8ea1-884c9b8d9a15",
+        "44270115-08b6-40ac-bae0-88df956623cf",
+        "d63afab0-e629-4e18-acac-34652cfdec9b"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Storyville (album)",
+        "Breakin'... There's No Stopping Us",
+        "Beauty and the Beast (1991 soundtrack)",
+        "Hudson Hawk",
+        "Billy Bathgate (film)",
+        "Rappin'",
+        "Breaking the Rules (film)",
+        "Danny Comden",
+        "Doc Hollywood",
+        "Breakin' My Heart (Pretty Brown Eyes)"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 1.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae7eb0f554299540e5a5694",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "Superteam",
+      "gold_doc_ids": [
+        "57f43810-943a-452e-bc3f-a8d5f4044127",
+        "efc41f82-f03b-4881-ac22-6d86477d2209"
+      ],
+      "gold_doc_titles": [
+        "2016–17 Golden State Warriors season",
+        "Stephen Curry"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The Warriors were hailed as a **“Superteam”** by the media and fans【S1】.",
+      "citations": [],
+      "latency_s": 12.782821999979205,
+      "llm_calls": 1,
+      "tokens": 1848,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "57f43810-943a-452e-bc3f-a8d5f4044127",
+        "df1d6585-660b-4408-8879-ef757e6e0249",
+        "efc41f82-f03b-4881-ac22-6d86477d2209",
+        "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+        "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+        "7acf8d36-db3c-4c63-af07-012af36c3971",
+        "d6273843-2f1b-43f4-8d7f-40f59aac09d9",
+        "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+        "d632040f-6e0e-4768-b539-03cada08100e",
+        "2d899d79-783a-40a8-9845-7e4a22042ab7"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "2016–17 Golden State Warriors season",
+        "List of career achievements by Stephen Curry",
+        "Stephen Curry",
+        "Kevin Durant",
+        "Klay Thompson",
+        "Splash Brothers",
+        "Cavaliers–Warriors rivalry",
+        "Andre Iguodala",
+        "2015 NBA Finals",
+        "2015–16 NBA season"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.14285714285714288,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ab1d94c554299706120958a",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Dante Bonfim Costa Santos (born 18 October 1983)",
+      "gold_doc_ids": [
+        "b9c58baf-6d3f-4f8f-81a4-18a3426d143f",
+        "874addf7-6b72-41a6-8421-9241b8eb8e75"
+      ],
+      "gold_doc_titles": [
+        "2012–13 FC Bayern Munich season",
+        "Dante (footballer)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The provided passages do not contain any player who was born on 18 October 1983 and who signed for Bayern Munich. Therefore, I cannot answer the question based on the given information.",
+      "citations": [],
+      "latency_s": 10.490231200004928,
+      "llm_calls": 1,
+      "tokens": 1639,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "0c12f60a-9ad6-4b96-b221-7ecbbb4ce435",
+        "ae69ec94-8072-4227-bb8e-48dced1c692a",
+        "ae9b16b6-e8d4-4b69-88d7-c41125ed29ee",
+        "c3fc3bde-c752-4476-9158-fd88bae740c7",
+        "1927f0f5-8fc8-4e34-82b3-ee0fe728b57c",
+        "9e05bc99-1880-43d1-adb5-8085b174db28",
+        "b9c58baf-6d3f-4f8f-81a4-18a3426d143f",
+        "59e8587d-767d-48a2-991d-1be47df8299e",
+        "17b10cb7-0684-45e0-ab1d-042da838a322",
+        "f0f50f69-2cfa-416a-b7bd-b454315012bf"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.14285714285714285,
+        "all_gold_at_k": 0.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Franck Ribéry",
+        "Javi Martínez",
+        "2017–18 FC Bayern Munich season",
+        "Mario Gómez",
+        "1988–89 FC Bayern Munich season",
+        "Robert Lewandowski",
+        "2012–13 FC Bayern Munich season",
+        "Zvjezdan Misimović",
+        "1984–85 FC Bayern Munich season",
+        "Mesut Özil"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.2,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae3166e55429928c42395e2",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Yarra Park",
+      "gold_doc_ids": [
+        "8e7b434e-573b-4699-ad03-10020ad8788b",
+        "7e7508b1-9135-409b-8b52-9a9f9d4b9c19"
+      ],
+      "gold_doc_titles": [
+        "1975 VFL Grand Final",
+        "Melbourne Cricket Ground"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The 1975 VFL Grand Final was played at the Melbourne Cricket Ground, which is situated in **Yarra Park**, part of the Melbourne Sports and Entertainment Precinct in Melbourne [​S1][​S3].",
+      "citations": [
+        {
+          "doc_id": "8e7b434e-573b-4699-ad03-10020ad8788b",
+          "chunk_id": "caa46cfc-cdae-4c3d-8614-83d0ca9b33f6",
+          "label": "S1",
+          "quote": ""
+        },
+        {
+          "doc_id": "7e7508b1-9135-409b-8b52-9a9f9d4b9c19",
+          "chunk_id": "494ba9a2-a7ca-4df6-837d-14bb6db40561",
+          "label": "S3",
+          "quote": ""
+        }
+      ],
+      "latency_s": 10.355604899930768,
+      "llm_calls": 1,
+      "tokens": 1674,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 1.0,
+      "retrieved_doc_ids": [
+        "8e7b434e-573b-4699-ad03-10020ad8788b",
+        "feb3e940-a8e4-4c00-9cc0-995814783481",
+        "7e7508b1-9135-409b-8b52-9a9f9d4b9c19",
+        "ceb9d03c-d94e-41f9-8bf3-5c725cce9394",
+        "14d0b0f4-9733-440b-af17-dc135f632c47",
+        "bfc60bdc-8a94-4101-ac54-a38c2eddc715",
+        "64f51d89-5ce3-4eda-9a39-0ec7668f06cb",
+        "c8c07955-5231-4a22-8774-a3ac0a4d8ebe",
+        "ca8854bf-a91c-4425-a029-91cccc328921",
+        "3ee76308-bb2c-42e4-a30f-27388a2de7c6"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "1975 VFL Grand Final",
+        "1935 VFL Grand Final",
+        "Melbourne Cricket Ground",
+        "1907 VFL Grand Final",
+        "1945 VFL Grand Final",
+        "1909 VFL Grand Final",
+        "1914 VFL Grand Final",
+        "1996 AFL Grand Final",
+        "Collingwood Football Club",
+        "2001 IAAF Grand Prix Final"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.13333333333333333,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 1.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ac1a5055542991316484b86",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "thirty-nine",
+      "gold_doc_ids": [
+        "6b92d0b0-63da-464b-84e2-4c0ebd4690b8",
+        "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030"
+      ],
+      "gold_doc_titles": [
+        "James Davidson (Kentucky)",
+        "Harpe brothers"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "James Davidson reported the Harpe brothers, who are credited with killing **thirty‑nine people** (they may have killed as many as fifty)【S1】【S2】.",
+      "citations": [],
+      "latency_s": 11.915807400015183,
+      "llm_calls": 1,
+      "tokens": 1621,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "baseline_unverified"
+      ],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "6b92d0b0-63da-464b-84e2-4c0ebd4690b8",
+        "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030",
+        "e7c31203-5287-4360-8a3d-28b1e252b910",
+        "b172ddf4-2dc5-4862-a625-cbc8069a6ad2",
+        "88ce329a-a121-44c0-b5d6-dc7f6fbf57a5",
+        "bc813d39-48f1-4a72-bc60-f187cbf73a40",
+        "8a54ec62-3ff2-4589-9836-25c39dffcd98",
+        "fc5e60ee-d46c-43a2-964d-012a82827cc4",
+        "c675ca24-03e9-41b3-b2ce-7735ec40395b",
+        "2fb6e684-a5f8-42b5-9c80-8aa3dcf36b8c"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "llm_baseline",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "James Davidson (Kentucky)",
+        "Harpe brothers",
+        "Robert Charles Browne",
+        "Patrick Kearney",
+        "Texarkana Moonlight Murders",
+        "Steve Wright (serial killer)",
+        "Charles Cullen",
+        "Paul Avery",
+        "Raymond Fernandez and Martha Beck",
+        "Mary Ann Cotton"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.15384615384615385,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,723 @@
+{
+  "created_at": "2026-11-03T03:42:49.195206+00:00",
+  "run_id": "e0_pilot_v1",
+  "config_id": "e0_oracle",
+  "split": "dev",
+  "retrieval_mode": "hybrid_rrf",
+  "k": 10,
+  "corpus": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "model_settings": {
+    "groq_model": "openai/gpt-oss-120b",
+    "gemini_model": "gemini-3.5-flash-lite",
+    "temperature": 0.0,
+    "prompt_id": "reader_v1"
+  },
+  "note": "Development split only. Sealed test not evaluated. Scoring uses citation-stripped EM/F1.",
+  "summary": {
+    "n_attempted": 12,
+    "n_scored": 12,
+    "n_provider_failures": 0,
+    "token_f1": 0.7688920012449424,
+    "exact_match": 0.5833333333333334,
+    "token_f1_ci": {
+      "mean": 0.7688920012449424,
+      "low": 0.5540771864301276,
+      "high": 0.9484126984126985,
+      "n": 12
+    },
+    "exact_match_ci": {
+      "mean": 0.5833333333333334,
+      "low": 0.3333333333333333,
+      "high": 0.8333333333333334,
+      "n": 12
+    },
+    "answer_supported_rate": 0.9166666666666666,
+    "citation_f1": 0.0,
+    "correct_abstention_rate": null,
+    "false_answer_on_unanswerable": null,
+    "mean_latency_s": 0.8734915250291427,
+    "latency_p50_s": 0.9022767000133172,
+    "latency_p95_s": 1.1988445000024512,
+    "mean_llm_calls": 1.0,
+    "mean_tokens": 860.8333333333334,
+    "status_counts": {
+      "answered": 11,
+      "insufficient": 1
+    }
+  },
+  "results": [
+    {
+      "question_id": "phaseb_hotpot_5ae495695542996836b02cdf",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Liechtenstein",
+      "gold_doc_ids": [
+        "6b768a9c-a953-4ab4-b4d8-42ca75b33890",
+        "73d28431-f558-48d1-ab9a-1cccbbb3a896"
+      ],
+      "gold_doc_titles": [
+        "Swiss immigration referendum, February 2014",
+        "Switzerland–European Union relations"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Liechtenstein",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "All but one (the microstate Liechtenstein) of Switzerland's neighbouring countries are EU member states."
+        }
+      ],
+      "latency_s": 1.272279000026174,
+      "llm_calls": 1,
+      "tokens": 823,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Swiss immigration referendum, February 2014",
+        "Switzerland–European Union relations"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a9088725542995651fb5183",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "who contributed most to class spirit and morale",
+      "gold_doc_ids": [
+        "f199abfe-6490-4105-8637-7ae9847bf781",
+        "b2e066d3-1f46-412e-9776-b097217f130f"
+      ],
+      "gold_doc_titles": [
+        "Onizuka Prop Wash Award",
+        "Ellison Onizuka"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "An award at the United States Air Force Test Pilot School that recognizes the student who contributed most to class spirit and morale, selected by fellow students and named in memory of Ellison Onizuka.",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "The Onizuka Prop Wash Award recognizes the student at the United States Air Force Test Pilot School (USAF TPS) who contributed most to class spirit and morale."
+        }
+      ],
+      "latency_s": 1.0093997999792919,
+      "llm_calls": 1,
+      "tokens": 916,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Onizuka Prop Wash Award",
+        "Ellison Onizuka"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.38095238095238093,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae0f6545542997b2ef7d0b2",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "1919",
+      "gold_doc_ids": [
+        "fe75d454-002a-4c62-a985-a1d712b2739e",
+        "3a0e843f-075f-4824-9889-18b733faf0c1"
+      ],
+      "gold_doc_titles": [
+        "William Davis Ticknor, Sr.",
+        "Commercial Solvents Corporation"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "1919",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "created in 1919"
+        }
+      ],
+      "latency_s": 0.7520838000345975,
+      "llm_calls": 1,
+      "tokens": 631,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "William Davis Ticknor, Sr.",
+        "Commercial Solvents Corporation"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a882d9a5542997e5c09a599",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Francis",
+      "gold_doc_ids": [
+        "04e74d61-f747-4575-b044-50b4f5e39ce7",
+        "4d576c55-47b4-49a9-b46d-3f795bb66014"
+      ],
+      "gold_doc_titles": [
+        "I Love Melvin",
+        "Donald O'Connor"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Francis",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "Francis the Talking Mule"
+        }
+      ],
+      "latency_s": 0.5675897999899462,
+      "llm_calls": 1,
+      "tokens": 602,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "I Love Melvin",
+        "Donald O'Connor"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5abff9905542997d64295980",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Egremont",
+      "gold_doc_ids": [
+        "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+        "ff31dc26-0f37-440e-912e-5bcbd9902c28"
+      ],
+      "gold_doc_titles": [
+        "Egremont Castle",
+        "Egremont, Cumbria"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Egremont",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "Egremont Castle is located in the town of Egremont, Cumbria."
+        },
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "Egremont is a market town, civil parish and two electoral wards (North and South) in the Borough of Copeland in Cumbria, England"
+        }
+      ],
+      "latency_s": 0.6859019000548869,
+      "llm_calls": 1,
+      "tokens": 794,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Egremont Castle",
+        "Egremont, Cumbria"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a8c62f5554299585d9e367b",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Edward Longshanks and the Hammer of the Scots",
+      "gold_doc_ids": [
+        "080928df-197f-4c95-af9e-0a1073ae8ea2",
+        "9f1f98c0-74b9-488d-a3e8-0fe62bdb78c7"
+      ],
+      "gold_doc_titles": [
+        "Year Books",
+        "Edward I of England"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Edward Longshanks; the Hammer of the Scots (Malleus Scotorum)",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "also known as Edward Longshanks and the Hammer of the Scots (Latin: \"Malleus Scotorum\" )"
+        }
+      ],
+      "latency_s": 0.9156097000231966,
+      "llm_calls": 1,
+      "tokens": 980,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Year Books",
+        "Edward I of England"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.823529411764706,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ab955ff5542996be2020487",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "This Is Spinal Tap",
+      "gold_doc_ids": [
+        "2f6a8780-7047-41a3-9840-2503cc6d2fce",
+        "69b70e86-de5c-4520-9732-92756218d907"
+      ],
+      "gold_doc_titles": [
+        "Fred Willard",
+        "Christopher Guest"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 1.1988445000024512,
+      "llm_calls": 1,
+      "tokens": 1174,
+      "verify_ok": true,
+      "answer_supported": false,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Fred Willard",
+        "Christopher Guest"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a8aad0d5542992d82986f55",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "science fiction drama",
+      "gold_doc_ids": [
+        "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+        "aafcfd3e-2395-480d-982a-fa2c84ab85d0"
+      ],
+      "gold_doc_titles": [
+        "Storyville (album)",
+        "Until the End of the World"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "science fiction drama",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "science fiction drama film"
+        }
+      ],
+      "latency_s": 0.9512716000899673,
+      "llm_calls": 1,
+      "tokens": 829,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Storyville (album)",
+        "Until the End of the World"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae7eb0f554299540e5a5694",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "Superteam",
+      "gold_doc_ids": [
+        "57f43810-943a-452e-bc3f-a8d5f4044127",
+        "efc41f82-f03b-4881-ac22-6d86477d2209"
+      ],
+      "gold_doc_titles": [
+        "2016–17 Golden State Warriors season",
+        "Stephen Curry"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Superteam",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "hailed as a \"Superteam\""
+        }
+      ],
+      "latency_s": 0.8953470999840647,
+      "llm_calls": 1,
+      "tokens": 1025,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "2016–17 Golden State Warriors season",
+        "Stephen Curry"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ab1d94c554299706120958a",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Dante Bonfim Costa Santos (born 18 October 1983)",
+      "gold_doc_ids": [
+        "b9c58baf-6d3f-4f8f-81a4-18a3426d143f",
+        "874addf7-6b72-41a6-8421-9241b8eb8e75"
+      ],
+      "gold_doc_titles": [
+        "2012–13 FC Bayern Munich season",
+        "Dante (footballer)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Dante",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "Bayern signed Xherdan Shaqiri, Dante, Claudio Pizarro, Mitchell Weiser, Tom Starke and Mario Mandžukić"
+        },
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "Dante Bonfim Costa Santos (born 18 October 1983)"
+        }
+      ],
+      "latency_s": 0.9022767000133172,
+      "llm_calls": 1,
+      "tokens": 876,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "2012–13 FC Bayern Munich season",
+        "Dante (footballer)"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.2222222222222222,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae3166e55429928c42395e2",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Yarra Park",
+      "gold_doc_ids": [
+        "8e7b434e-573b-4699-ad03-10020ad8788b",
+        "7e7508b1-9135-409b-8b52-9a9f9d4b9c19"
+      ],
+      "gold_doc_titles": [
+        "1975 VFL Grand Final",
+        "Melbourne Cricket Ground"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Yarra Park",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "located in Yarra Park, Melbourne, Victoria"
+        }
+      ],
+      "latency_s": 0.5546784000471234,
+      "llm_calls": 1,
+      "tokens": 860,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "1975 VFL Grand Final",
+        "Melbourne Cricket Ground"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ac1a5055542991316484b86",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "thirty-nine",
+      "gold_doc_ids": [
+        "6b92d0b0-63da-464b-84e2-4c0ebd4690b8",
+        "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030"
+      ],
+      "gold_doc_titles": [
+        "James Davidson (Kentucky)",
+        "Harpe brothers"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "thirty-nine people",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "The Harpe Brothers are credited with having killed thirty-nine people"
+        }
+      ],
+      "latency_s": 0.7766160001046956,
+      "llm_calls": 1,
+      "tokens": 820,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "James Davidson (Kentucky)",
+        "Harpe brothers"
+      ],
+      "shuffled_passages": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    }
+  ]
+}

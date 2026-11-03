@@ -1,0 +1,5353 @@
+{
+  "created_at": "2026-11-03T03:47:08.966863+00:00",
+  "run_id": "e0_pilot_v1",
+  "config_id": "e0_legacy",
+  "split": "dev",
+  "retrieval_mode": "hybrid_rrf",
+  "k": 10,
+  "corpus": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "model_settings": {
+    "groq_model": "openai/gpt-oss-120b",
+    "gemini_model": "gemini-3.5-flash-lite",
+    "temperature": 0.0,
+    "prompt_id": "reader_v1"
+  },
+  "note": "Development split only. Sealed test not evaluated. Scoring uses citation-stripped EM/F1.",
+  "summary": {
+    "n_attempted": 12,
+    "n_scored": 12,
+    "n_provider_failures": 0,
+    "token_f1": 0.19051383399209487,
+    "exact_match": 0.0,
+    "token_f1_ci": {
+      "mean": 0.19051383399209487,
+      "low": 0.04292929292929293,
+      "high": 0.3540404040404041,
+      "n": 12
+    },
+    "exact_match_ci": {
+      "mean": 0.0,
+      "low": 0.0,
+      "high": 0.0,
+      "n": 12
+    },
+    "answer_supported_rate": 0.9166666666666666,
+    "citation_f1": 0.4444444444444444,
+    "correct_abstention_rate": null,
+    "false_answer_on_unanswerable": null,
+    "mean_latency_s": 7.3926263083218755,
+    "latency_p50_s": 10.191984000033699,
+    "latency_p95_s": 13.859604500001296,
+    "mean_llm_calls": 0.75,
+    "mean_tokens": 1167.8333333333333,
+    "status_counts": {
+      "answered": 11,
+      "partial": 1
+    }
+  },
+  "results": [
+    {
+      "question_id": "phaseb_hotpot_5ae495695542996836b02cdf",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Liechtenstein",
+      "gold_doc_ids": [
+        "6b768a9c-a953-4ab4-b4d8-42ca75b33890",
+        "73d28431-f558-48d1-ab9a-1cccbbb3a896"
+      ],
+      "gold_doc_titles": [
+        "Swiss immigration referendum, February 2014",
+        "Switzerland–European Union relations"
+      ],
+      "cache_hit": false,
+      "status": "partial",
+      "answer_text": "European Union Referendum Act [S1].",
+      "citations": [
+        {
+          "doc_id": "9c3baa8f-e723-481d-94fb-32a1ef317924",
+          "chunk_id": "a789c237-9b45-437a-9e3b-a3e9a1db1571",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 7.105948499985971,
+      "llm_calls": 1,
+      "tokens": 1415,
+      "abstention_reason": "Evidence partially overlaps the question but does not clearly cover the primary named subject or requested fact.",
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "9c3baa8f-e723-481d-94fb-32a1ef317924",
+        "6b768a9c-a953-4ab4-b4d8-42ca75b33890",
+        "73d28431-f558-48d1-ab9a-1cccbbb3a896",
+        "e737b5a0-be13-4c4c-84e7-79cb0fcdc02a",
+        "6ca7ed27-a72c-478c-8f9e-61ccf30e52d9",
+        "947ee722-a269-463f-ad2d-4fba7a81afc1",
+        "cb2735b9-a389-4a95-b7df-6913e1e9c1a4",
+        "900aad4a-b9f1-428a-abfe-4f5a32256fa6"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "9c3baa8f-e723-481d-94fb-32a1ef317924",
+              "6b768a9c-a953-4ab4-b4d8-42ca75b33890",
+              "73d28431-f558-48d1-ab9a-1cccbbb3a896",
+              "e737b5a0-be13-4c4c-84e7-79cb0fcdc02a",
+              "6ca7ed27-a72c-478c-8f9e-61ccf30e52d9",
+              "947ee722-a269-463f-ad2d-4fba7a81afc1",
+              "cb2735b9-a389-4a95-b7df-6913e1e9c1a4",
+              "900aad4a-b9f1-428a-abfe-4f5a32256fa6"
+            ],
+            "titles": [
+              "European Union (Referendum) Act 2016 (Gibraltar)",
+              "Swiss immigration referendum, February 2014",
+              "Switzerland–European Union relations",
+              "European Union (Referendum) Bill 2013",
+              "Albania",
+              "Strasbourg",
+              "1995 enlargement of the European Union",
+              "Treaty of Accession 1994"
+            ],
+            "n_docs": 8,
+            "n_items": 8,
+            "note": "seed_queries=1"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "9c3baa8f-e723-481d-94fb-32a1ef317924",
+              "6b768a9c-a953-4ab4-b4d8-42ca75b33890",
+              "73d28431-f558-48d1-ab9a-1cccbbb3a896",
+              "e737b5a0-be13-4c4c-84e7-79cb0fcdc02a",
+              "6ca7ed27-a72c-478c-8f9e-61ccf30e52d9",
+              "947ee722-a269-463f-ad2d-4fba7a81afc1",
+              "cb2735b9-a389-4a95-b7df-6913e1e9c1a4",
+              "900aad4a-b9f1-428a-abfe-4f5a32256fa6"
+            ],
+            "titles": [
+              "European Union (Referendum) Act 2016 (Gibraltar)",
+              "Swiss immigration referendum, February 2014",
+              "Switzerland–European Union relations",
+              "European Union (Referendum) Bill 2013",
+              "Albania",
+              "Strasbourg",
+              "1995 enlargement of the European Union",
+              "Treaty of Accession 1994"
+            ],
+            "n_docs": 8,
+            "n_items": 8,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "9c3baa8f-e723-481d-94fb-32a1ef317924",
+              "73d28431-f558-48d1-ab9a-1cccbbb3a896",
+              "e737b5a0-be13-4c4c-84e7-79cb0fcdc02a",
+              "6ca7ed27-a72c-478c-8f9e-61ccf30e52d9",
+              "947ee722-a269-463f-ad2d-4fba7a81afc1",
+              "cb2735b9-a389-4a95-b7df-6913e1e9c1a4",
+              "900aad4a-b9f1-428a-abfe-4f5a32256fa6"
+            ],
+            "titles": [
+              "European Union (Referendum) Act 2016 (Gibraltar)",
+              "Switzerland–European Union relations",
+              "European Union (Referendum) Bill 2013",
+              "Albania",
+              "Strasbourg",
+              "1995 enlargement of the European Union",
+              "Treaty of Accession 1994"
+            ],
+            "n_docs": 7,
+            "n_items": 23,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "9c3baa8f-e723-481d-94fb-32a1ef317924",
+              "73d28431-f558-48d1-ab9a-1cccbbb3a896",
+              "e737b5a0-be13-4c4c-84e7-79cb0fcdc02a",
+              "cb2735b9-a389-4a95-b7df-6913e1e9c1a4",
+              "900aad4a-b9f1-428a-abfe-4f5a32256fa6"
+            ],
+            "titles": [
+              "European Union (Referendum) Act 2016 (Gibraltar)",
+              "Switzerland–European Union relations",
+              "European Union (Referendum) Bill 2013",
+              "1995 enlargement of the European Union",
+              "Treaty of Accession 1994"
+            ],
+            "n_docs": 5,
+            "n_items": 8,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "cb2735b9-a389-4a95-b7df-6913e1e9c1a4",
+              "9c3baa8f-e723-481d-94fb-32a1ef317924",
+              "73d28431-f558-48d1-ab9a-1cccbbb3a896",
+              "e737b5a0-be13-4c4c-84e7-79cb0fcdc02a",
+              "900aad4a-b9f1-428a-abfe-4f5a32256fa6"
+            ],
+            "titles": [
+              "1995 enlargement of the European Union",
+              "European Union (Referendum) Act 2016 (Gibraltar)",
+              "Switzerland–European Union relations",
+              "European Union (Referendum) Bill 2013",
+              "Treaty of Accession 1994"
+            ],
+            "n_docs": 5,
+            "n_items": 8,
+            "note": "status=partial"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "cb2735b9-a389-4a95-b7df-6913e1e9c1a4",
+              "9c3baa8f-e723-481d-94fb-32a1ef317924",
+              "73d28431-f558-48d1-ab9a-1cccbbb3a896",
+              "e737b5a0-be13-4c4c-84e7-79cb0fcdc02a",
+              "900aad4a-b9f1-428a-abfe-4f5a32256fa6"
+            ],
+            "titles": [
+              "1995 enlargement of the European Union",
+              "European Union (Referendum) Act 2016 (Gibraltar)",
+              "Switzerland–European Union relations",
+              "European Union (Referendum) Bill 2013",
+              "Treaty of Accession 1994"
+            ],
+            "n_docs": 5,
+            "n_items": 8,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "9c3baa8f-e723-481d-94fb-32a1ef317924"
+            ],
+            "titles": [],
+            "n_docs": 1,
+            "n_items": 1,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 8,
+          "n_items": 8,
+          "note": "seed_queries=1",
+          "titles": [
+            "European Union (Referendum) Act 2016 (Gibraltar)",
+            "Swiss immigration referendum, February 2014",
+            "Switzerland–European Union relations",
+            "European Union (Referendum) Bill 2013",
+            "Albania",
+            "Strasbourg",
+            "1995 enlargement of the European Union",
+            "Treaty of Accession 1994"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 8,
+          "n_items": 8,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "European Union (Referendum) Act 2016 (Gibraltar)",
+            "Swiss immigration referendum, February 2014",
+            "Switzerland–European Union relations",
+            "European Union (Referendum) Bill 2013",
+            "Albania",
+            "Strasbourg",
+            "1995 enlargement of the European Union",
+            "Treaty of Accession 1994"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 7,
+          "n_items": 23,
+          "note": "verified_raw",
+          "titles": [
+            "European Union (Referendum) Act 2016 (Gibraltar)",
+            "Switzerland–European Union relations",
+            "European Union (Referendum) Bill 2013",
+            "Albania",
+            "Strasbourg",
+            "1995 enlargement of the European Union",
+            "Treaty of Accession 1994"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 5,
+          "n_items": 8,
+          "note": "min_support=0.55",
+          "titles": [
+            "European Union (Referendum) Act 2016 (Gibraltar)",
+            "Switzerland–European Union relations",
+            "European Union (Referendum) Bill 2013",
+            "1995 enlargement of the European Union",
+            "Treaty of Accession 1994"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 5,
+          "n_items": 8,
+          "note": "status=partial",
+          "titles": [
+            "1995 enlargement of the European Union",
+            "European Union (Referendum) Act 2016 (Gibraltar)",
+            "Switzerland–European Union relations",
+            "European Union (Referendum) Bill 2013",
+            "Treaty of Accession 1994"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 5,
+          "n_items": 8,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "1995 enlargement of the European Union",
+            "European Union (Referendum) Act 2016 (Gibraltar)",
+            "Switzerland–European Union relations",
+            "European Union (Referendum) Bill 2013",
+            "Treaty of Accession 1994"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a9088725542995651fb5183",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "who contributed most to class spirit and morale",
+      "gold_doc_ids": [
+        "f199abfe-6490-4105-8637-7ae9847bf781",
+        "b2e066d3-1f46-412e-9776-b097217f130f"
+      ],
+      "gold_doc_titles": [
+        "Onizuka Prop Wash Award",
+        "Ellison Onizuka"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The Onizuka Prop Wash Award, named for TPS graduate Ellison Onizuka who died in the 1986 Challenger disaster, honors the United States Air Force Test Pilot School student who contributes most to class spirit and morale【S1】【S2】.",
+      "citations": [
+        {
+          "doc_id": "f199abfe-6490-4105-8637-7ae9847bf781",
+          "chunk_id": "763847cb-9501-4e92-bc18-3ed61e4e04d0",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 4.331614000024274,
+      "llm_calls": 1,
+      "tokens": 683,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "f199abfe-6490-4105-8637-7ae9847bf781",
+        "9fbab52e-2387-4466-8c94-42834e9896ee",
+        "e34ee9b6-b81f-45f3-9114-74b2fa117d4f",
+        "9faba400-b219-4451-8895-f4d65ef841e4",
+        "f7220ab7-d50c-4b7a-a49c-9b95256695f9",
+        "c33a4201-9db5-4a94-b3aa-b5dbbe84a133",
+        "b2e066d3-1f46-412e-9776-b097217f130f",
+        "91fd6a31-0035-4bbd-b56d-a7784c4ce97e",
+        "2305a098-001a-4e4a-b56e-d972a09ad302",
+        "f903e538-dd8e-4f3d-a4d5-82b166f9a14d"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "f199abfe-6490-4105-8637-7ae9847bf781",
+              "9fbab52e-2387-4466-8c94-42834e9896ee",
+              "e34ee9b6-b81f-45f3-9114-74b2fa117d4f",
+              "9faba400-b219-4451-8895-f4d65ef841e4",
+              "f7220ab7-d50c-4b7a-a49c-9b95256695f9",
+              "c33a4201-9db5-4a94-b3aa-b5dbbe84a133",
+              "b2e066d3-1f46-412e-9776-b097217f130f",
+              "91fd6a31-0035-4bbd-b56d-a7784c4ce97e",
+              "2305a098-001a-4e4a-b56e-d972a09ad302",
+              "f903e538-dd8e-4f3d-a4d5-82b166f9a14d"
+            ],
+            "titles": [
+              "Onizuka Prop Wash Award",
+              "Neuromancer",
+              "Washlet",
+              "A Bathing Ape",
+              "Wash West",
+              "BAPE",
+              "Ellison Onizuka",
+              "River Welland",
+              "Okey Bakassi",
+              "Soap Opera Digest Awards"
+            ],
+            "n_docs": 10,
+            "n_items": 16,
+            "note": "seed_queries=2"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "f199abfe-6490-4105-8637-7ae9847bf781",
+              "9fbab52e-2387-4466-8c94-42834e9896ee",
+              "e34ee9b6-b81f-45f3-9114-74b2fa117d4f",
+              "9faba400-b219-4451-8895-f4d65ef841e4",
+              "f7220ab7-d50c-4b7a-a49c-9b95256695f9",
+              "c33a4201-9db5-4a94-b3aa-b5dbbe84a133",
+              "b2e066d3-1f46-412e-9776-b097217f130f",
+              "91fd6a31-0035-4bbd-b56d-a7784c4ce97e",
+              "2305a098-001a-4e4a-b56e-d972a09ad302",
+              "f903e538-dd8e-4f3d-a4d5-82b166f9a14d"
+            ],
+            "titles": [
+              "Onizuka Prop Wash Award",
+              "Neuromancer",
+              "Washlet",
+              "A Bathing Ape",
+              "Wash West",
+              "BAPE",
+              "Ellison Onizuka",
+              "River Welland",
+              "Okey Bakassi",
+              "Soap Opera Digest Awards"
+            ],
+            "n_docs": 10,
+            "n_items": 16,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "f199abfe-6490-4105-8637-7ae9847bf781",
+              "9fbab52e-2387-4466-8c94-42834e9896ee",
+              "e34ee9b6-b81f-45f3-9114-74b2fa117d4f",
+              "9faba400-b219-4451-8895-f4d65ef841e4",
+              "f7220ab7-d50c-4b7a-a49c-9b95256695f9",
+              "c33a4201-9db5-4a94-b3aa-b5dbbe84a133",
+              "b2e066d3-1f46-412e-9776-b097217f130f",
+              "91fd6a31-0035-4bbd-b56d-a7784c4ce97e",
+              "2305a098-001a-4e4a-b56e-d972a09ad302",
+              "f903e538-dd8e-4f3d-a4d5-82b166f9a14d"
+            ],
+            "titles": [
+              "Onizuka Prop Wash Award",
+              "Neuromancer",
+              "Washlet",
+              "A Bathing Ape",
+              "Wash West",
+              "BAPE",
+              "Ellison Onizuka",
+              "River Welland",
+              "Okey Bakassi",
+              "Soap Opera Digest Awards"
+            ],
+            "n_docs": 10,
+            "n_items": 30,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "f199abfe-6490-4105-8637-7ae9847bf781"
+            ],
+            "titles": [
+              "Onizuka Prop Wash Award"
+            ],
+            "n_docs": 1,
+            "n_items": 2,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "f199abfe-6490-4105-8637-7ae9847bf781"
+            ],
+            "titles": [
+              "Onizuka Prop Wash Award"
+            ],
+            "n_docs": 1,
+            "n_items": 2,
+            "note": "status=answered"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "f199abfe-6490-4105-8637-7ae9847bf781"
+            ],
+            "titles": [
+              "Onizuka Prop Wash Award"
+            ],
+            "n_docs": 1,
+            "n_items": 2,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "f199abfe-6490-4105-8637-7ae9847bf781"
+            ],
+            "titles": [],
+            "n_docs": 1,
+            "n_items": 1,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 10,
+          "n_items": 16,
+          "note": "seed_queries=2",
+          "titles": [
+            "Onizuka Prop Wash Award",
+            "Neuromancer",
+            "Washlet",
+            "A Bathing Ape",
+            "Wash West",
+            "BAPE",
+            "Ellison Onizuka",
+            "River Welland",
+            "Okey Bakassi",
+            "Soap Opera Digest Awards"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 10,
+          "n_items": 16,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "Onizuka Prop Wash Award",
+            "Neuromancer",
+            "Washlet",
+            "A Bathing Ape",
+            "Wash West",
+            "BAPE",
+            "Ellison Onizuka",
+            "River Welland",
+            "Okey Bakassi",
+            "Soap Opera Digest Awards"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 10,
+          "n_items": 30,
+          "note": "verified_raw",
+          "titles": [
+            "Onizuka Prop Wash Award",
+            "Neuromancer",
+            "Washlet",
+            "A Bathing Ape",
+            "Wash West",
+            "BAPE",
+            "Ellison Onizuka",
+            "River Welland",
+            "Okey Bakassi",
+            "Soap Opera Digest Awards"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 1,
+          "n_items": 2,
+          "note": "min_support=0.55",
+          "titles": [
+            "Onizuka Prop Wash Award"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 1,
+          "n_items": 2,
+          "note": "status=answered",
+          "titles": [
+            "Onizuka Prop Wash Award"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 1,
+          "n_items": 2,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "Onizuka Prop Wash Award"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.30434782608695654,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae0f6545542997b2ef7d0b2",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "1919",
+      "gold_doc_ids": [
+        "fe75d454-002a-4c62-a985-a1d712b2739e",
+        "3a0e843f-075f-4824-9889-18b733faf0c1"
+      ],
+      "gold_doc_titles": [
+        "William Davis Ticknor, Sr.",
+        "Commercial Solvents Corporation"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The provided claims do not include the year the company was created.",
+      "citations": [
+        {
+          "doc_id": "e1c7a52f-c9a5-40a4-bd67-186e57852f66",
+          "chunk_id": "a9f0dc27-a834-4a3c-a6ac-2888a00a872b",
+          "label": "S1"
+        },
+        {
+          "doc_id": "b52077bf-6ff9-4954-9a52-4d7d4fec58d1",
+          "chunk_id": "6bb5ef59-23d8-40a5-96cc-16cc4c3d3446",
+          "label": "S2"
+        },
+        {
+          "doc_id": "2a8ccf6c-360e-41a1-950c-f32b14311588",
+          "chunk_id": "e280bf89-a88f-4a97-ab3f-3035ed83be2c",
+          "label": "S3"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 10.191984000033699,
+      "llm_calls": 1,
+      "tokens": 2005,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "fe75d454-002a-4c62-a985-a1d712b2739e",
+        "2801dc62-5b7b-49dc-a11e-c402f019e2c3",
+        "262e005d-a068-45b2-81e6-8647c3b3a1d3",
+        "504fb904-a6b5-4c17-84d9-4b2f8c80c4be",
+        "75b2e907-b491-4361-868a-300bff69dc59",
+        "0e2e1a5d-3b31-400c-928f-58e28a2be11e",
+        "e1c7a52f-c9a5-40a4-bd67-186e57852f66",
+        "13e28d8e-a328-45d7-a36f-9fd293525541",
+        "3a0e843f-075f-4824-9889-18b733faf0c1",
+        "b52077bf-6ff9-4954-9a52-4d7d4fec58d1",
+        "2a8ccf6c-360e-41a1-950c-f32b14311588",
+        "2309bb16-2b9e-4695-b634-2e89c17578e0",
+        "ebaeae28-d272-4678-81d2-e66b8dfa458a",
+        "3124c7e2-72e5-4463-a3c0-fab22390df2c",
+        "7a35d6c6-42d2-4478-a111-f91667e6a8e1"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "fe75d454-002a-4c62-a985-a1d712b2739e",
+              "2801dc62-5b7b-49dc-a11e-c402f019e2c3",
+              "262e005d-a068-45b2-81e6-8647c3b3a1d3",
+              "504fb904-a6b5-4c17-84d9-4b2f8c80c4be",
+              "75b2e907-b491-4361-868a-300bff69dc59",
+              "0e2e1a5d-3b31-400c-928f-58e28a2be11e",
+              "e1c7a52f-c9a5-40a4-bd67-186e57852f66",
+              "13e28d8e-a328-45d7-a36f-9fd293525541",
+              "3a0e843f-075f-4824-9889-18b733faf0c1",
+              "b52077bf-6ff9-4954-9a52-4d7d4fec58d1",
+              "2a8ccf6c-360e-41a1-950c-f32b14311588",
+              "2309bb16-2b9e-4695-b634-2e89c17578e0",
+              "ebaeae28-d272-4678-81d2-e66b8dfa458a",
+              "3124c7e2-72e5-4463-a3c0-fab22390df2c",
+              "7a35d6c6-42d2-4478-a111-f91667e6a8e1"
+            ],
+            "titles": [
+              "William Davis Ticknor, Sr.",
+              "William J. Young (coach)",
+              "William Davies (screenwriter)",
+              "Linwood Holton",
+              "The Dictator (1915 film)",
+              "Albert Smith Medal",
+              "William Boyce Thompson",
+              "William A. White",
+              "Commercial Solvents Corporation",
+              "Walter V. Shipley",
+              "Icos",
+              "Benjamin Franklin Fairless",
+              "John F. Milligan",
+              "Jerry York (businessman)",
+              "Donald J. Hall Jr."
+            ],
+            "n_docs": 15,
+            "n_items": 16,
+            "note": "seed_queries=2"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "fe75d454-002a-4c62-a985-a1d712b2739e",
+              "2801dc62-5b7b-49dc-a11e-c402f019e2c3",
+              "262e005d-a068-45b2-81e6-8647c3b3a1d3",
+              "504fb904-a6b5-4c17-84d9-4b2f8c80c4be",
+              "75b2e907-b491-4361-868a-300bff69dc59",
+              "0e2e1a5d-3b31-400c-928f-58e28a2be11e",
+              "e1c7a52f-c9a5-40a4-bd67-186e57852f66",
+              "13e28d8e-a328-45d7-a36f-9fd293525541",
+              "3a0e843f-075f-4824-9889-18b733faf0c1",
+              "b52077bf-6ff9-4954-9a52-4d7d4fec58d1",
+              "2a8ccf6c-360e-41a1-950c-f32b14311588",
+              "2309bb16-2b9e-4695-b634-2e89c17578e0",
+              "ebaeae28-d272-4678-81d2-e66b8dfa458a",
+              "3124c7e2-72e5-4463-a3c0-fab22390df2c",
+              "7a35d6c6-42d2-4478-a111-f91667e6a8e1"
+            ],
+            "titles": [
+              "William Davis Ticknor, Sr.",
+              "William J. Young (coach)",
+              "William Davies (screenwriter)",
+              "Linwood Holton",
+              "The Dictator (1915 film)",
+              "Albert Smith Medal",
+              "William Boyce Thompson",
+              "William A. White",
+              "Commercial Solvents Corporation",
+              "Walter V. Shipley",
+              "Icos",
+              "Benjamin Franklin Fairless",
+              "John F. Milligan",
+              "Jerry York (businessman)",
+              "Donald J. Hall Jr."
+            ],
+            "n_docs": 15,
+            "n_items": 16,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "fe75d454-002a-4c62-a985-a1d712b2739e",
+              "2801dc62-5b7b-49dc-a11e-c402f019e2c3",
+              "262e005d-a068-45b2-81e6-8647c3b3a1d3",
+              "504fb904-a6b5-4c17-84d9-4b2f8c80c4be",
+              "75b2e907-b491-4361-868a-300bff69dc59",
+              "0e2e1a5d-3b31-400c-928f-58e28a2be11e",
+              "e1c7a52f-c9a5-40a4-bd67-186e57852f66",
+              "13e28d8e-a328-45d7-a36f-9fd293525541",
+              "3a0e843f-075f-4824-9889-18b733faf0c1",
+              "b52077bf-6ff9-4954-9a52-4d7d4fec58d1",
+              "2a8ccf6c-360e-41a1-950c-f32b14311588",
+              "2309bb16-2b9e-4695-b634-2e89c17578e0",
+              "ebaeae28-d272-4678-81d2-e66b8dfa458a",
+              "3124c7e2-72e5-4463-a3c0-fab22390df2c",
+              "7a35d6c6-42d2-4478-a111-f91667e6a8e1"
+            ],
+            "titles": [
+              "William Davis Ticknor, Sr.",
+              "William J. Young (coach)",
+              "William Davies (screenwriter)",
+              "Linwood Holton",
+              "The Dictator (1915 film)",
+              "Albert Smith Medal",
+              "William Boyce Thompson",
+              "William A. White",
+              "Commercial Solvents Corporation",
+              "Walter V. Shipley",
+              "Icos",
+              "Benjamin Franklin Fairless",
+              "John F. Milligan",
+              "Jerry York (businessman)",
+              "Donald J. Hall Jr."
+            ],
+            "n_docs": 15,
+            "n_items": 49,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "fe75d454-002a-4c62-a985-a1d712b2739e",
+              "75b2e907-b491-4361-868a-300bff69dc59",
+              "e1c7a52f-c9a5-40a4-bd67-186e57852f66",
+              "b52077bf-6ff9-4954-9a52-4d7d4fec58d1",
+              "2a8ccf6c-360e-41a1-950c-f32b14311588",
+              "2309bb16-2b9e-4695-b634-2e89c17578e0",
+              "ebaeae28-d272-4678-81d2-e66b8dfa458a",
+              "3124c7e2-72e5-4463-a3c0-fab22390df2c",
+              "7a35d6c6-42d2-4478-a111-f91667e6a8e1"
+            ],
+            "titles": [
+              "William Davis Ticknor, Sr.",
+              "The Dictator (1915 film)",
+              "William Boyce Thompson",
+              "Walter V. Shipley",
+              "Icos",
+              "Benjamin Franklin Fairless",
+              "John F. Milligan",
+              "Jerry York (businessman)",
+              "Donald J. Hall Jr."
+            ],
+            "n_docs": 9,
+            "n_items": 21,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "e1c7a52f-c9a5-40a4-bd67-186e57852f66",
+              "b52077bf-6ff9-4954-9a52-4d7d4fec58d1",
+              "2a8ccf6c-360e-41a1-950c-f32b14311588",
+              "2309bb16-2b9e-4695-b634-2e89c17578e0",
+              "ebaeae28-d272-4678-81d2-e66b8dfa458a",
+              "3124c7e2-72e5-4463-a3c0-fab22390df2c",
+              "fe75d454-002a-4c62-a985-a1d712b2739e",
+              "75b2e907-b491-4361-868a-300bff69dc59"
+            ],
+            "titles": [
+              "William Boyce Thompson",
+              "Walter V. Shipley",
+              "Icos",
+              "Benjamin Franklin Fairless",
+              "John F. Milligan",
+              "Jerry York (businessman)",
+              "William Davis Ticknor, Sr.",
+              "The Dictator (1915 film)"
+            ],
+            "n_docs": 8,
+            "n_items": 12,
+            "note": "status=answered"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "e1c7a52f-c9a5-40a4-bd67-186e57852f66",
+              "b52077bf-6ff9-4954-9a52-4d7d4fec58d1",
+              "2a8ccf6c-360e-41a1-950c-f32b14311588",
+              "2309bb16-2b9e-4695-b634-2e89c17578e0",
+              "ebaeae28-d272-4678-81d2-e66b8dfa458a",
+              "3124c7e2-72e5-4463-a3c0-fab22390df2c",
+              "fe75d454-002a-4c62-a985-a1d712b2739e",
+              "75b2e907-b491-4361-868a-300bff69dc59"
+            ],
+            "titles": [
+              "William Boyce Thompson",
+              "Walter V. Shipley",
+              "Icos",
+              "Benjamin Franklin Fairless",
+              "John F. Milligan",
+              "Jerry York (businessman)",
+              "William Davis Ticknor, Sr.",
+              "The Dictator (1915 film)"
+            ],
+            "n_docs": 8,
+            "n_items": 12,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "e1c7a52f-c9a5-40a4-bd67-186e57852f66",
+              "b52077bf-6ff9-4954-9a52-4d7d4fec58d1",
+              "2a8ccf6c-360e-41a1-950c-f32b14311588"
+            ],
+            "titles": [],
+            "n_docs": 3,
+            "n_items": 3,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 15,
+          "n_items": 16,
+          "note": "seed_queries=2",
+          "titles": [
+            "William Davis Ticknor, Sr.",
+            "William J. Young (coach)",
+            "William Davies (screenwriter)",
+            "Linwood Holton",
+            "The Dictator (1915 film)",
+            "Albert Smith Medal",
+            "William Boyce Thompson",
+            "William A. White",
+            "Commercial Solvents Corporation",
+            "Walter V. Shipley",
+            "Icos",
+            "Benjamin Franklin Fairless",
+            "John F. Milligan",
+            "Jerry York (businessman)",
+            "Donald J. Hall Jr."
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 15,
+          "n_items": 16,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "William Davis Ticknor, Sr.",
+            "William J. Young (coach)",
+            "William Davies (screenwriter)",
+            "Linwood Holton",
+            "The Dictator (1915 film)",
+            "Albert Smith Medal",
+            "William Boyce Thompson",
+            "William A. White",
+            "Commercial Solvents Corporation",
+            "Walter V. Shipley",
+            "Icos",
+            "Benjamin Franklin Fairless",
+            "John F. Milligan",
+            "Jerry York (businessman)",
+            "Donald J. Hall Jr."
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 15,
+          "n_items": 49,
+          "note": "verified_raw",
+          "titles": [
+            "William Davis Ticknor, Sr.",
+            "William J. Young (coach)",
+            "William Davies (screenwriter)",
+            "Linwood Holton",
+            "The Dictator (1915 film)",
+            "Albert Smith Medal",
+            "William Boyce Thompson",
+            "William A. White",
+            "Commercial Solvents Corporation",
+            "Walter V. Shipley",
+            "Icos",
+            "Benjamin Franklin Fairless",
+            "John F. Milligan",
+            "Jerry York (businessman)",
+            "Donald J. Hall Jr."
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 9,
+          "n_items": 21,
+          "note": "min_support=0.55",
+          "titles": [
+            "William Davis Ticknor, Sr.",
+            "The Dictator (1915 film)",
+            "William Boyce Thompson",
+            "Walter V. Shipley",
+            "Icos",
+            "Benjamin Franklin Fairless",
+            "John F. Milligan",
+            "Jerry York (businessman)",
+            "Donald J. Hall Jr."
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 8,
+          "n_items": 12,
+          "note": "status=answered",
+          "titles": [
+            "William Boyce Thompson",
+            "Walter V. Shipley",
+            "Icos",
+            "Benjamin Franklin Fairless",
+            "John F. Milligan",
+            "Jerry York (businessman)",
+            "William Davis Ticknor, Sr.",
+            "The Dictator (1915 film)"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 8,
+          "n_items": 12,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "William Boyce Thompson",
+            "Walter V. Shipley",
+            "Icos",
+            "Benjamin Franklin Fairless",
+            "John F. Milligan",
+            "Jerry York (businessman)",
+            "William Davis Ticknor, Sr.",
+            "The Dictator (1915 film)"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 3,
+          "n_items": 3,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a882d9a5542997e5c09a599",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Francis",
+      "gold_doc_ids": [
+        "04e74d61-f747-4575-b044-50b4f5e39ce7",
+        "4d576c55-47b4-49a9-b46d-3f795bb66014"
+      ],
+      "gold_doc_titles": [
+        "I Love Melvin",
+        "Donald O'Connor"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Don Weis [S1].",
+      "citations": [
+        {
+          "doc_id": "04e74d61-f747-4575-b044-50b4f5e39ce7",
+          "chunk_id": "2527448b-63dc-47ba-b591-adec7c13e2b9",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.36090599989984185,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "04e74d61-f747-4575-b044-50b4f5e39ce7",
+        "a0e8a0a4-a0d0-42ae-9095-d168e4d6faf0",
+        "faf309ef-1739-49cb-a048-8abc4b0884aa",
+        "f4a0d961-4a15-4cdb-beeb-1526dfe12bf8",
+        "2c8846b9-3983-4759-838f-3cbf8588fbdf",
+        "d648b3c7-033e-48d6-8e5d-3347957d6c2b",
+        "ff12b9c3-c909-460b-b0c0-72590dfe7e9d",
+        "dcdd209e-221c-427d-9228-e75edf550b50",
+        "4d576c55-47b4-49a9-b46d-3f795bb66014",
+        "99609bd9-25a1-499d-a400-1bbc1dce5baf",
+        "002c08ea-eeeb-4252-a480-5844a8ae7898",
+        "83c01fc6-1c44-4006-a401-d680ad24c76e",
+        "120fab06-8a94-4c41-b021-4a829b7b176f",
+        "3175f27a-47bc-4010-938c-3caf7ecfd1f6",
+        "c5f2b93f-43a7-4928-8d9c-faed41b622d7"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "04e74d61-f747-4575-b044-50b4f5e39ce7",
+              "a0e8a0a4-a0d0-42ae-9095-d168e4d6faf0",
+              "faf309ef-1739-49cb-a048-8abc4b0884aa",
+              "f4a0d961-4a15-4cdb-beeb-1526dfe12bf8",
+              "2c8846b9-3983-4759-838f-3cbf8588fbdf",
+              "d648b3c7-033e-48d6-8e5d-3347957d6c2b",
+              "ff12b9c3-c909-460b-b0c0-72590dfe7e9d",
+              "dcdd209e-221c-427d-9228-e75edf550b50",
+              "4d576c55-47b4-49a9-b46d-3f795bb66014",
+              "99609bd9-25a1-499d-a400-1bbc1dce5baf",
+              "002c08ea-eeeb-4252-a480-5844a8ae7898",
+              "83c01fc6-1c44-4006-a401-d680ad24c76e",
+              "120fab06-8a94-4c41-b021-4a829b7b176f",
+              "3175f27a-47bc-4010-938c-3caf7ecfd1f6",
+              "c5f2b93f-43a7-4928-8d9c-faed41b622d7"
+            ],
+            "titles": [
+              "I Love Melvin",
+              "Melvins",
+              "Howard Fast",
+              "Kurt Cobain",
+              "Skin Yard",
+              "List of The Saddle Club characters",
+              "Ed Melvin",
+              "Suicide of Kurt Cobain",
+              "Donald O'Connor",
+              "Gene Kelly",
+              "Julianne Hough",
+              "Elvis Presley",
+              "Francis (film)",
+              "George Raft",
+              "Richard Keith (actor)"
+            ],
+            "n_docs": 15,
+            "n_items": 16,
+            "note": "seed_queries=2"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "04e74d61-f747-4575-b044-50b4f5e39ce7",
+              "a0e8a0a4-a0d0-42ae-9095-d168e4d6faf0",
+              "faf309ef-1739-49cb-a048-8abc4b0884aa",
+              "f4a0d961-4a15-4cdb-beeb-1526dfe12bf8",
+              "2c8846b9-3983-4759-838f-3cbf8588fbdf",
+              "d648b3c7-033e-48d6-8e5d-3347957d6c2b",
+              "ff12b9c3-c909-460b-b0c0-72590dfe7e9d",
+              "dcdd209e-221c-427d-9228-e75edf550b50",
+              "4d576c55-47b4-49a9-b46d-3f795bb66014",
+              "99609bd9-25a1-499d-a400-1bbc1dce5baf",
+              "002c08ea-eeeb-4252-a480-5844a8ae7898",
+              "83c01fc6-1c44-4006-a401-d680ad24c76e",
+              "120fab06-8a94-4c41-b021-4a829b7b176f",
+              "3175f27a-47bc-4010-938c-3caf7ecfd1f6",
+              "c5f2b93f-43a7-4928-8d9c-faed41b622d7"
+            ],
+            "titles": [
+              "I Love Melvin",
+              "Melvins",
+              "Howard Fast",
+              "Kurt Cobain",
+              "Skin Yard",
+              "List of The Saddle Club characters",
+              "Ed Melvin",
+              "Suicide of Kurt Cobain",
+              "Donald O'Connor",
+              "Gene Kelly",
+              "Julianne Hough",
+              "Elvis Presley",
+              "Francis (film)",
+              "George Raft",
+              "Richard Keith (actor)"
+            ],
+            "n_docs": 15,
+            "n_items": 16,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "04e74d61-f747-4575-b044-50b4f5e39ce7",
+              "a0e8a0a4-a0d0-42ae-9095-d168e4d6faf0",
+              "faf309ef-1739-49cb-a048-8abc4b0884aa",
+              "f4a0d961-4a15-4cdb-beeb-1526dfe12bf8",
+              "2c8846b9-3983-4759-838f-3cbf8588fbdf",
+              "d648b3c7-033e-48d6-8e5d-3347957d6c2b",
+              "ff12b9c3-c909-460b-b0c0-72590dfe7e9d",
+              "dcdd209e-221c-427d-9228-e75edf550b50",
+              "4d576c55-47b4-49a9-b46d-3f795bb66014",
+              "99609bd9-25a1-499d-a400-1bbc1dce5baf",
+              "002c08ea-eeeb-4252-a480-5844a8ae7898",
+              "83c01fc6-1c44-4006-a401-d680ad24c76e",
+              "120fab06-8a94-4c41-b021-4a829b7b176f",
+              "3175f27a-47bc-4010-938c-3caf7ecfd1f6",
+              "c5f2b93f-43a7-4928-8d9c-faed41b622d7"
+            ],
+            "titles": [
+              "I Love Melvin",
+              "Melvins",
+              "Howard Fast",
+              "Kurt Cobain",
+              "Skin Yard",
+              "List of The Saddle Club characters",
+              "Ed Melvin",
+              "Suicide of Kurt Cobain",
+              "Donald O'Connor",
+              "Gene Kelly",
+              "Julianne Hough",
+              "Elvis Presley",
+              "Francis (film)",
+              "George Raft",
+              "Richard Keith (actor)"
+            ],
+            "n_docs": 15,
+            "n_items": 32,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "04e74d61-f747-4575-b044-50b4f5e39ce7",
+              "a0e8a0a4-a0d0-42ae-9095-d168e4d6faf0",
+              "faf309ef-1739-49cb-a048-8abc4b0884aa",
+              "f4a0d961-4a15-4cdb-beeb-1526dfe12bf8",
+              "2c8846b9-3983-4759-838f-3cbf8588fbdf",
+              "ff12b9c3-c909-460b-b0c0-72590dfe7e9d",
+              "120fab06-8a94-4c41-b021-4a829b7b176f",
+              "c5f2b93f-43a7-4928-8d9c-faed41b622d7"
+            ],
+            "titles": [
+              "I Love Melvin",
+              "Melvins",
+              "Howard Fast",
+              "Kurt Cobain",
+              "Skin Yard",
+              "Ed Melvin",
+              "Francis (film)",
+              "Richard Keith (actor)"
+            ],
+            "n_docs": 8,
+            "n_items": 8,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "c5f2b93f-43a7-4928-8d9c-faed41b622d7",
+              "04e74d61-f747-4575-b044-50b4f5e39ce7",
+              "a0e8a0a4-a0d0-42ae-9095-d168e4d6faf0",
+              "faf309ef-1739-49cb-a048-8abc4b0884aa",
+              "f4a0d961-4a15-4cdb-beeb-1526dfe12bf8",
+              "2c8846b9-3983-4759-838f-3cbf8588fbdf",
+              "ff12b9c3-c909-460b-b0c0-72590dfe7e9d",
+              "120fab06-8a94-4c41-b021-4a829b7b176f"
+            ],
+            "titles": [
+              "Richard Keith (actor)",
+              "I Love Melvin",
+              "Melvins",
+              "Howard Fast",
+              "Kurt Cobain",
+              "Skin Yard",
+              "Ed Melvin",
+              "Francis (film)"
+            ],
+            "n_docs": 8,
+            "n_items": 8,
+            "note": "status=answered"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "c5f2b93f-43a7-4928-8d9c-faed41b622d7",
+              "04e74d61-f747-4575-b044-50b4f5e39ce7",
+              "a0e8a0a4-a0d0-42ae-9095-d168e4d6faf0",
+              "faf309ef-1739-49cb-a048-8abc4b0884aa",
+              "f4a0d961-4a15-4cdb-beeb-1526dfe12bf8",
+              "2c8846b9-3983-4759-838f-3cbf8588fbdf",
+              "ff12b9c3-c909-460b-b0c0-72590dfe7e9d",
+              "120fab06-8a94-4c41-b021-4a829b7b176f"
+            ],
+            "titles": [
+              "Richard Keith (actor)",
+              "I Love Melvin",
+              "Melvins",
+              "Howard Fast",
+              "Kurt Cobain",
+              "Skin Yard",
+              "Ed Melvin",
+              "Francis (film)"
+            ],
+            "n_docs": 8,
+            "n_items": 8,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "04e74d61-f747-4575-b044-50b4f5e39ce7"
+            ],
+            "titles": [],
+            "n_docs": 1,
+            "n_items": 1,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 15,
+          "n_items": 16,
+          "note": "seed_queries=2",
+          "titles": [
+            "I Love Melvin",
+            "Melvins",
+            "Howard Fast",
+            "Kurt Cobain",
+            "Skin Yard",
+            "List of The Saddle Club characters",
+            "Ed Melvin",
+            "Suicide of Kurt Cobain",
+            "Donald O'Connor",
+            "Gene Kelly",
+            "Julianne Hough",
+            "Elvis Presley",
+            "Francis (film)",
+            "George Raft",
+            "Richard Keith (actor)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 15,
+          "n_items": 16,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "I Love Melvin",
+            "Melvins",
+            "Howard Fast",
+            "Kurt Cobain",
+            "Skin Yard",
+            "List of The Saddle Club characters",
+            "Ed Melvin",
+            "Suicide of Kurt Cobain",
+            "Donald O'Connor",
+            "Gene Kelly",
+            "Julianne Hough",
+            "Elvis Presley",
+            "Francis (film)",
+            "George Raft",
+            "Richard Keith (actor)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 15,
+          "n_items": 32,
+          "note": "verified_raw",
+          "titles": [
+            "I Love Melvin",
+            "Melvins",
+            "Howard Fast",
+            "Kurt Cobain",
+            "Skin Yard",
+            "List of The Saddle Club characters",
+            "Ed Melvin",
+            "Suicide of Kurt Cobain",
+            "Donald O'Connor",
+            "Gene Kelly",
+            "Julianne Hough",
+            "Elvis Presley",
+            "Francis (film)",
+            "George Raft",
+            "Richard Keith (actor)"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 8,
+          "n_items": 8,
+          "note": "min_support=0.55",
+          "titles": [
+            "I Love Melvin",
+            "Melvins",
+            "Howard Fast",
+            "Kurt Cobain",
+            "Skin Yard",
+            "Ed Melvin",
+            "Francis (film)",
+            "Richard Keith (actor)"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 8,
+          "n_items": 8,
+          "note": "status=answered",
+          "titles": [
+            "Richard Keith (actor)",
+            "I Love Melvin",
+            "Melvins",
+            "Howard Fast",
+            "Kurt Cobain",
+            "Skin Yard",
+            "Ed Melvin",
+            "Francis (film)"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 8,
+          "n_items": 8,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "Richard Keith (actor)",
+            "I Love Melvin",
+            "Melvins",
+            "Howard Fast",
+            "Kurt Cobain",
+            "Skin Yard",
+            "Ed Melvin",
+            "Francis (film)"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5abff9905542997d64295980",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Egremont",
+      "gold_doc_ids": [
+        "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+        "ff31dc26-0f37-440e-912e-5bcbd9902c28"
+      ],
+      "gold_doc_titles": [
+        "Egremont Castle",
+        "Egremont, Cumbria"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "the town of Egremont, Cumbria [S1].",
+      "citations": [
+        {
+          "doc_id": "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+          "chunk_id": "eb45c479-2a43-4163-9c9f-a8bb582406d9",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.4011676999507472,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+        "f329f779-89cd-43a9-b1b0-5be88c3ba36c",
+        "ff31dc26-0f37-440e-912e-5bcbd9902c28",
+        "4486e952-2d8f-4bc3-84fe-c16d1bd057c5",
+        "95c6be7b-0105-4418-a0e9-599bc3715080",
+        "4149d562-e694-42c4-959a-5e397bab33ee",
+        "36d02d82-22b2-4efb-876a-c4f1cec1d59e",
+        "314483eb-ad80-405d-a075-cc6daa850afd",
+        "094d8b45-cd59-4a1e-99ce-440f61abc0d0",
+        "6bd1072b-ab01-44a6-bb0d-21f90db9abe2",
+        "c6af8621-898c-46f8-8133-6af66da00990",
+        "a77bf725-7b94-46a0-ac59-f0d0af0f3bc4",
+        "62d4bc61-dfc4-4a90-9f67-881784dd5dcb",
+        "4a54a6da-789a-41dd-982b-8e4612602df8",
+        "d954c75c-3fc0-405a-bc87-ed2bfbf9cde7",
+        "18b66848-ced7-490c-8f14-052fd0d75f80",
+        "f77c0144-efec-4132-9712-1b88850c4368",
+        "ae872765-b53e-412f-9fd9-8124b6afe425",
+        "ce1660d9-8828-453f-b42b-394c2d9325a2",
+        "fff98b0f-45f0-4b57-86fd-43a69c35dd0e",
+        "aa81f21a-c4fa-43d6-8e5d-bd74473f0af6",
+        "7cb379a3-86a6-4a7e-a990-cfd63a4cdcab",
+        "5f383c48-034c-4764-b335-57ec0eb57eb0",
+        "f6a67c63-777e-44c5-8e39-baf9a2ce8517",
+        "1cff02b6-c5c4-4c1e-bfc3-b0e45f82ac35",
+        "3f928d23-4157-4066-9529-df101d055517",
+        "271cce82-4bf3-4cc3-8d55-933d816a8119"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+              "f329f779-89cd-43a9-b1b0-5be88c3ba36c",
+              "ff31dc26-0f37-440e-912e-5bcbd9902c28",
+              "4486e952-2d8f-4bc3-84fe-c16d1bd057c5",
+              "95c6be7b-0105-4418-a0e9-599bc3715080",
+              "4149d562-e694-42c4-959a-5e397bab33ee",
+              "36d02d82-22b2-4efb-876a-c4f1cec1d59e",
+              "314483eb-ad80-405d-a075-cc6daa850afd",
+              "094d8b45-cd59-4a1e-99ce-440f61abc0d0",
+              "6bd1072b-ab01-44a6-bb0d-21f90db9abe2",
+              "c6af8621-898c-46f8-8133-6af66da00990",
+              "a77bf725-7b94-46a0-ac59-f0d0af0f3bc4",
+              "62d4bc61-dfc4-4a90-9f67-881784dd5dcb"
+            ],
+            "titles": [
+              "Egremont Castle",
+              "Listed buildings in Egremont, Cumbria",
+              "Egremont, Cumbria",
+              "Kinnaird Castle, Brechin",
+              "Pittulie Castle",
+              "Dilsberg Castle",
+              "Tom Pickering",
+              "Hayashi Castle",
+              "Axminster",
+              "Borrowdale",
+              "Kendal",
+              "Alston, Cumbria",
+              "Alston Moor"
+            ],
+            "n_docs": 13,
+            "n_items": 16,
+            "note": "seed_queries=2"
+          },
+          {
+            "stage": "bridge_retrieval",
+            "doc_ids": [
+              "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+              "f329f779-89cd-43a9-b1b0-5be88c3ba36c",
+              "ff31dc26-0f37-440e-912e-5bcbd9902c28",
+              "4486e952-2d8f-4bc3-84fe-c16d1bd057c5",
+              "95c6be7b-0105-4418-a0e9-599bc3715080",
+              "4149d562-e694-42c4-959a-5e397bab33ee",
+              "36d02d82-22b2-4efb-876a-c4f1cec1d59e",
+              "314483eb-ad80-405d-a075-cc6daa850afd",
+              "094d8b45-cd59-4a1e-99ce-440f61abc0d0",
+              "6bd1072b-ab01-44a6-bb0d-21f90db9abe2",
+              "c6af8621-898c-46f8-8133-6af66da00990",
+              "a77bf725-7b94-46a0-ac59-f0d0af0f3bc4",
+              "62d4bc61-dfc4-4a90-9f67-881784dd5dcb",
+              "4a54a6da-789a-41dd-982b-8e4612602df8",
+              "d954c75c-3fc0-405a-bc87-ed2bfbf9cde7",
+              "18b66848-ced7-490c-8f14-052fd0d75f80",
+              "f77c0144-efec-4132-9712-1b88850c4368",
+              "ae872765-b53e-412f-9fd9-8124b6afe425",
+              "ce1660d9-8828-453f-b42b-394c2d9325a2",
+              "fff98b0f-45f0-4b57-86fd-43a69c35dd0e",
+              "aa81f21a-c4fa-43d6-8e5d-bd74473f0af6",
+              "7cb379a3-86a6-4a7e-a990-cfd63a4cdcab",
+              "5f383c48-034c-4764-b335-57ec0eb57eb0",
+              "f6a67c63-777e-44c5-8e39-baf9a2ce8517",
+              "1cff02b6-c5c4-4c1e-bfc3-b0e45f82ac35",
+              "3f928d23-4157-4066-9529-df101d055517",
+              "271cce82-4bf3-4cc3-8d55-933d816a8119"
+            ],
+            "titles": [
+              "Egremont Castle",
+              "Listed buildings in Egremont, Cumbria",
+              "Egremont, Cumbria",
+              "Kinnaird Castle, Brechin",
+              "Pittulie Castle",
+              "Dilsberg Castle",
+              "Tom Pickering",
+              "Hayashi Castle",
+              "Axminster",
+              "Borrowdale",
+              "Kendal",
+              "Alston, Cumbria",
+              "Alston Moor",
+              "Shōji Satō (artist)",
+              "Satoyoshi syndrome",
+              "Takuma Sato",
+              "Hiromi Satō",
+              "Shikoku (dog)",
+              "Akira (given name)",
+              "Battle of Yao (Japan)",
+              "Blue Spring (manga)",
+              "B'z",
+              "Nakama, Fukuoka",
+              "Epic Day",
+              "Matsari",
+              "The Warped Ones",
+              "Ryukyukoku Matsuri Daiko Hawaii"
+            ],
+            "n_docs": 27,
+            "n_items": 32,
+            "note": "bridges=['Satoyamabe', 'Matsumoto']"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+              "f329f779-89cd-43a9-b1b0-5be88c3ba36c",
+              "ff31dc26-0f37-440e-912e-5bcbd9902c28",
+              "4486e952-2d8f-4bc3-84fe-c16d1bd057c5",
+              "95c6be7b-0105-4418-a0e9-599bc3715080",
+              "4149d562-e694-42c4-959a-5e397bab33ee",
+              "36d02d82-22b2-4efb-876a-c4f1cec1d59e",
+              "314483eb-ad80-405d-a075-cc6daa850afd",
+              "094d8b45-cd59-4a1e-99ce-440f61abc0d0",
+              "6bd1072b-ab01-44a6-bb0d-21f90db9abe2",
+              "c6af8621-898c-46f8-8133-6af66da00990",
+              "a77bf725-7b94-46a0-ac59-f0d0af0f3bc4",
+              "62d4bc61-dfc4-4a90-9f67-881784dd5dcb",
+              "4a54a6da-789a-41dd-982b-8e4612602df8",
+              "d954c75c-3fc0-405a-bc87-ed2bfbf9cde7",
+              "18b66848-ced7-490c-8f14-052fd0d75f80",
+              "f77c0144-efec-4132-9712-1b88850c4368",
+              "ae872765-b53e-412f-9fd9-8124b6afe425",
+              "ce1660d9-8828-453f-b42b-394c2d9325a2",
+              "fff98b0f-45f0-4b57-86fd-43a69c35dd0e",
+              "aa81f21a-c4fa-43d6-8e5d-bd74473f0af6",
+              "7cb379a3-86a6-4a7e-a990-cfd63a4cdcab",
+              "5f383c48-034c-4764-b335-57ec0eb57eb0",
+              "f6a67c63-777e-44c5-8e39-baf9a2ce8517",
+              "1cff02b6-c5c4-4c1e-bfc3-b0e45f82ac35",
+              "3f928d23-4157-4066-9529-df101d055517",
+              "271cce82-4bf3-4cc3-8d55-933d816a8119"
+            ],
+            "titles": [
+              "Egremont Castle",
+              "Listed buildings in Egremont, Cumbria",
+              "Egremont, Cumbria",
+              "Kinnaird Castle, Brechin",
+              "Pittulie Castle",
+              "Dilsberg Castle",
+              "Tom Pickering",
+              "Hayashi Castle",
+              "Axminster",
+              "Borrowdale",
+              "Kendal",
+              "Alston, Cumbria",
+              "Alston Moor",
+              "Shōji Satō (artist)",
+              "Satoyoshi syndrome",
+              "Takuma Sato",
+              "Hiromi Satō",
+              "Shikoku (dog)",
+              "Akira (given name)",
+              "Battle of Yao (Japan)",
+              "Blue Spring (manga)",
+              "B'z",
+              "Nakama, Fukuoka",
+              "Epic Day",
+              "Matsari",
+              "The Warped Ones",
+              "Ryukyukoku Matsuri Daiko Hawaii"
+            ],
+            "n_docs": 27,
+            "n_items": 32,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+              "f329f779-89cd-43a9-b1b0-5be88c3ba36c",
+              "ff31dc26-0f37-440e-912e-5bcbd9902c28",
+              "4486e952-2d8f-4bc3-84fe-c16d1bd057c5",
+              "95c6be7b-0105-4418-a0e9-599bc3715080",
+              "4149d562-e694-42c4-959a-5e397bab33ee",
+              "36d02d82-22b2-4efb-876a-c4f1cec1d59e",
+              "314483eb-ad80-405d-a075-cc6daa850afd",
+              "094d8b45-cd59-4a1e-99ce-440f61abc0d0",
+              "6bd1072b-ab01-44a6-bb0d-21f90db9abe2",
+              "c6af8621-898c-46f8-8133-6af66da00990",
+              "a77bf725-7b94-46a0-ac59-f0d0af0f3bc4",
+              "62d4bc61-dfc4-4a90-9f67-881784dd5dcb",
+              "d954c75c-3fc0-405a-bc87-ed2bfbf9cde7",
+              "18b66848-ced7-490c-8f14-052fd0d75f80",
+              "f77c0144-efec-4132-9712-1b88850c4368",
+              "ae872765-b53e-412f-9fd9-8124b6afe425",
+              "ce1660d9-8828-453f-b42b-394c2d9325a2",
+              "fff98b0f-45f0-4b57-86fd-43a69c35dd0e",
+              "aa81f21a-c4fa-43d6-8e5d-bd74473f0af6",
+              "7cb379a3-86a6-4a7e-a990-cfd63a4cdcab",
+              "5f383c48-034c-4764-b335-57ec0eb57eb0",
+              "f6a67c63-777e-44c5-8e39-baf9a2ce8517",
+              "1cff02b6-c5c4-4c1e-bfc3-b0e45f82ac35",
+              "3f928d23-4157-4066-9529-df101d055517",
+              "271cce82-4bf3-4cc3-8d55-933d816a8119"
+            ],
+            "titles": [
+              "Egremont Castle",
+              "Listed buildings in Egremont, Cumbria",
+              "Egremont, Cumbria",
+              "Kinnaird Castle, Brechin",
+              "Pittulie Castle",
+              "Dilsberg Castle",
+              "Tom Pickering",
+              "Hayashi Castle",
+              "Axminster",
+              "Borrowdale",
+              "Kendal",
+              "Alston, Cumbria",
+              "Alston Moor",
+              "Satoyoshi syndrome",
+              "Takuma Sato",
+              "Hiromi Satō",
+              "Shikoku (dog)",
+              "Akira (given name)",
+              "Battle of Yao (Japan)",
+              "Blue Spring (manga)",
+              "B'z",
+              "Nakama, Fukuoka",
+              "Epic Day",
+              "Matsari",
+              "The Warped Ones",
+              "Ryukyukoku Matsuri Daiko Hawaii"
+            ],
+            "n_docs": 26,
+            "n_items": 73,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+              "f329f779-89cd-43a9-b1b0-5be88c3ba36c",
+              "36d02d82-22b2-4efb-876a-c4f1cec1d59e",
+              "094d8b45-cd59-4a1e-99ce-440f61abc0d0"
+            ],
+            "titles": [
+              "Egremont Castle",
+              "Listed buildings in Egremont, Cumbria",
+              "Tom Pickering",
+              "Axminster"
+            ],
+            "n_docs": 4,
+            "n_items": 6,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+              "f329f779-89cd-43a9-b1b0-5be88c3ba36c",
+              "36d02d82-22b2-4efb-876a-c4f1cec1d59e",
+              "094d8b45-cd59-4a1e-99ce-440f61abc0d0"
+            ],
+            "titles": [
+              "Egremont Castle",
+              "Listed buildings in Egremont, Cumbria",
+              "Tom Pickering",
+              "Axminster"
+            ],
+            "n_docs": 4,
+            "n_items": 6,
+            "note": "status=answered"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "f98497fa-f0fe-4dcc-9eef-688db369d5be",
+              "f329f779-89cd-43a9-b1b0-5be88c3ba36c",
+              "36d02d82-22b2-4efb-876a-c4f1cec1d59e",
+              "094d8b45-cd59-4a1e-99ce-440f61abc0d0"
+            ],
+            "titles": [
+              "Egremont Castle",
+              "Listed buildings in Egremont, Cumbria",
+              "Tom Pickering",
+              "Axminster"
+            ],
+            "n_docs": 4,
+            "n_items": 6,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "f98497fa-f0fe-4dcc-9eef-688db369d5be"
+            ],
+            "titles": [],
+            "n_docs": 1,
+            "n_items": 1,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 13,
+          "n_items": 16,
+          "note": "seed_queries=2",
+          "titles": [
+            "Egremont Castle",
+            "Listed buildings in Egremont, Cumbria",
+            "Egremont, Cumbria",
+            "Kinnaird Castle, Brechin",
+            "Pittulie Castle",
+            "Dilsberg Castle",
+            "Tom Pickering",
+            "Hayashi Castle",
+            "Axminster",
+            "Borrowdale",
+            "Kendal",
+            "Alston, Cumbria",
+            "Alston Moor"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "bridge_retrieval",
+          "n_docs": 27,
+          "n_items": 32,
+          "note": "bridges=['Satoyamabe', 'Matsumoto']",
+          "titles": [
+            "Egremont Castle",
+            "Listed buildings in Egremont, Cumbria",
+            "Egremont, Cumbria",
+            "Kinnaird Castle, Brechin",
+            "Pittulie Castle",
+            "Dilsberg Castle",
+            "Tom Pickering",
+            "Hayashi Castle",
+            "Axminster",
+            "Borrowdale",
+            "Kendal",
+            "Alston, Cumbria",
+            "Alston Moor",
+            "Shōji Satō (artist)",
+            "Satoyoshi syndrome",
+            "Takuma Sato",
+            "Hiromi Satō",
+            "Shikoku (dog)",
+            "Akira (given name)",
+            "Battle of Yao (Japan)",
+            "Blue Spring (manga)",
+            "B'z",
+            "Nakama, Fukuoka",
+            "Epic Day",
+            "Matsari",
+            "The Warped Ones",
+            "Ryukyukoku Matsuri Daiko Hawaii"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 27,
+          "n_items": 32,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "Egremont Castle",
+            "Listed buildings in Egremont, Cumbria",
+            "Egremont, Cumbria",
+            "Kinnaird Castle, Brechin",
+            "Pittulie Castle",
+            "Dilsberg Castle",
+            "Tom Pickering",
+            "Hayashi Castle",
+            "Axminster",
+            "Borrowdale",
+            "Kendal",
+            "Alston, Cumbria",
+            "Alston Moor",
+            "Shōji Satō (artist)",
+            "Satoyoshi syndrome",
+            "Takuma Sato",
+            "Hiromi Satō",
+            "Shikoku (dog)",
+            "Akira (given name)",
+            "Battle of Yao (Japan)",
+            "Blue Spring (manga)",
+            "B'z",
+            "Nakama, Fukuoka",
+            "Epic Day",
+            "Matsari",
+            "The Warped Ones",
+            "Ryukyukoku Matsuri Daiko Hawaii"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 26,
+          "n_items": 73,
+          "note": "verified_raw",
+          "titles": [
+            "Egremont Castle",
+            "Listed buildings in Egremont, Cumbria",
+            "Egremont, Cumbria",
+            "Kinnaird Castle, Brechin",
+            "Pittulie Castle",
+            "Dilsberg Castle",
+            "Tom Pickering",
+            "Hayashi Castle",
+            "Axminster",
+            "Borrowdale",
+            "Kendal",
+            "Alston, Cumbria",
+            "Alston Moor",
+            "Satoyoshi syndrome",
+            "Takuma Sato",
+            "Hiromi Satō",
+            "Shikoku (dog)",
+            "Akira (given name)",
+            "Battle of Yao (Japan)",
+            "Blue Spring (manga)",
+            "B'z",
+            "Nakama, Fukuoka",
+            "Epic Day",
+            "Matsari",
+            "The Warped Ones",
+            "Ryukyukoku Matsuri Daiko Hawaii"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 4,
+          "n_items": 6,
+          "note": "min_support=0.55",
+          "titles": [
+            "Egremont Castle",
+            "Listed buildings in Egremont, Cumbria",
+            "Tom Pickering",
+            "Axminster"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 4,
+          "n_items": 6,
+          "note": "status=answered",
+          "titles": [
+            "Egremont Castle",
+            "Listed buildings in Egremont, Cumbria",
+            "Tom Pickering",
+            "Axminster"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 4,
+          "n_items": 6,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "Egremont Castle",
+            "Listed buildings in Egremont, Cumbria",
+            "Tom Pickering",
+            "Axminster"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.33333333333333337,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a8c62f5554299585d9e367b",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Edward Longshanks and the Hammer of the Scots",
+      "gold_doc_ids": [
+        "080928df-197f-4c95-af9e-0a1073ae8ea2",
+        "9f1f98c0-74b9-488d-a3e8-0fe62bdb78c7"
+      ],
+      "gold_doc_titles": [
+        "Year Books",
+        "Edward I of England"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The provided claims do not contain information about the king or his other names.",
+      "citations": [
+        {
+          "doc_id": "080928df-197f-4c95-af9e-0a1073ae8ea2",
+          "chunk_id": "370af7f2-1f9b-477e-88fb-e93d6b662a13",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 1.0637851000064984,
+      "llm_calls": 1,
+      "tokens": 815,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "080928df-197f-4c95-af9e-0a1073ae8ea2",
+        "2d797ef3-3db1-46f8-896c-77806149e947",
+        "f2de0efc-3deb-41d5-9f96-6ebd358c565e",
+        "9f1f98c0-74b9-488d-a3e8-0fe62bdb78c7",
+        "84467b85-256e-4f64-978f-1a824f114a2e",
+        "e35be5ed-3c95-47bc-ae8c-e60f478039d8",
+        "bf1c2f25-6557-4d85-8627-9cd6389ccc45",
+        "76f0a141-0434-4c8e-963c-e9ad07199199"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "080928df-197f-4c95-af9e-0a1073ae8ea2",
+              "2d797ef3-3db1-46f8-896c-77806149e947",
+              "f2de0efc-3deb-41d5-9f96-6ebd358c565e",
+              "9f1f98c0-74b9-488d-a3e8-0fe62bdb78c7",
+              "84467b85-256e-4f64-978f-1a824f114a2e",
+              "e35be5ed-3c95-47bc-ae8c-e60f478039d8",
+              "bf1c2f25-6557-4d85-8627-9cd6389ccc45",
+              "76f0a141-0434-4c8e-963c-e9ad07199199"
+            ],
+            "titles": [
+              "Year Books",
+              "Aggabodhi III of Anuradhapura",
+              "Unhanagara Hatthadatha of Anuradhapura",
+              "Edward I of England",
+              "Tempore",
+              "Edward II of England",
+              "Mittasena of Anuradhapura",
+              "Stephen, King of England"
+            ],
+            "n_docs": 8,
+            "n_items": 8,
+            "note": "seed_queries=1"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "080928df-197f-4c95-af9e-0a1073ae8ea2",
+              "2d797ef3-3db1-46f8-896c-77806149e947",
+              "f2de0efc-3deb-41d5-9f96-6ebd358c565e",
+              "9f1f98c0-74b9-488d-a3e8-0fe62bdb78c7",
+              "84467b85-256e-4f64-978f-1a824f114a2e",
+              "e35be5ed-3c95-47bc-ae8c-e60f478039d8",
+              "bf1c2f25-6557-4d85-8627-9cd6389ccc45",
+              "76f0a141-0434-4c8e-963c-e9ad07199199"
+            ],
+            "titles": [
+              "Year Books",
+              "Aggabodhi III of Anuradhapura",
+              "Unhanagara Hatthadatha of Anuradhapura",
+              "Edward I of England",
+              "Tempore",
+              "Edward II of England",
+              "Mittasena of Anuradhapura",
+              "Stephen, King of England"
+            ],
+            "n_docs": 8,
+            "n_items": 8,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "080928df-197f-4c95-af9e-0a1073ae8ea2",
+              "2d797ef3-3db1-46f8-896c-77806149e947",
+              "f2de0efc-3deb-41d5-9f96-6ebd358c565e",
+              "9f1f98c0-74b9-488d-a3e8-0fe62bdb78c7",
+              "84467b85-256e-4f64-978f-1a824f114a2e",
+              "e35be5ed-3c95-47bc-ae8c-e60f478039d8",
+              "bf1c2f25-6557-4d85-8627-9cd6389ccc45",
+              "76f0a141-0434-4c8e-963c-e9ad07199199"
+            ],
+            "titles": [
+              "Year Books",
+              "Aggabodhi III of Anuradhapura",
+              "Unhanagara Hatthadatha of Anuradhapura",
+              "Edward I of England",
+              "Tempore",
+              "Edward II of England",
+              "Mittasena of Anuradhapura",
+              "Stephen, King of England"
+            ],
+            "n_docs": 8,
+            "n_items": 24,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "080928df-197f-4c95-af9e-0a1073ae8ea2"
+            ],
+            "titles": [
+              "Year Books"
+            ],
+            "n_docs": 1,
+            "n_items": 2,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "080928df-197f-4c95-af9e-0a1073ae8ea2"
+            ],
+            "titles": [
+              "Year Books"
+            ],
+            "n_docs": 1,
+            "n_items": 2,
+            "note": "status=answered"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "080928df-197f-4c95-af9e-0a1073ae8ea2"
+            ],
+            "titles": [
+              "Year Books"
+            ],
+            "n_docs": 1,
+            "n_items": 2,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "080928df-197f-4c95-af9e-0a1073ae8ea2"
+            ],
+            "titles": [],
+            "n_docs": 1,
+            "n_items": 1,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 8,
+          "n_items": 8,
+          "note": "seed_queries=1",
+          "titles": [
+            "Year Books",
+            "Aggabodhi III of Anuradhapura",
+            "Unhanagara Hatthadatha of Anuradhapura",
+            "Edward I of England",
+            "Tempore",
+            "Edward II of England",
+            "Mittasena of Anuradhapura",
+            "Stephen, King of England"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 8,
+          "n_items": 8,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "Year Books",
+            "Aggabodhi III of Anuradhapura",
+            "Unhanagara Hatthadatha of Anuradhapura",
+            "Edward I of England",
+            "Tempore",
+            "Edward II of England",
+            "Mittasena of Anuradhapura",
+            "Stephen, King of England"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 8,
+          "n_items": 24,
+          "note": "verified_raw",
+          "titles": [
+            "Year Books",
+            "Aggabodhi III of Anuradhapura",
+            "Unhanagara Hatthadatha of Anuradhapura",
+            "Edward I of England",
+            "Tempore",
+            "Edward II of England",
+            "Mittasena of Anuradhapura",
+            "Stephen, King of England"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 1,
+          "n_items": 2,
+          "note": "min_support=0.55",
+          "titles": [
+            "Year Books"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 1,
+          "n_items": 2,
+          "note": "status=answered",
+          "titles": [
+            "Year Books"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 1,
+          "n_items": 2,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "Year Books"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.18181818181818182,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ab955ff5542996be2020487",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "This Is Spinal Tap",
+      "gold_doc_ids": [
+        "2f6a8780-7047-41a3-9840-2503cc6d2fce",
+        "69b70e86-de5c-4520-9732-92756218d907"
+      ],
+      "gold_doc_titles": [
+        "Fred Willard",
+        "Christopher Guest"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Waiting for Guffman [S4]",
+      "citations": [
+        {
+          "doc_id": "7169f6ae-8e8d-4643-a353-c992e66162c9",
+          "chunk_id": "dba75c2d-fe59-4d96-b88b-81880ac8a2b0",
+          "label": "S4"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 10.8126471999567,
+      "llm_calls": 1,
+      "tokens": 1406,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "2f6a8780-7047-41a3-9840-2503cc6d2fce",
+        "32786093-6105-42ab-957e-144c4456dd31",
+        "69b70e86-de5c-4520-9732-92756218d907",
+        "7169f6ae-8e8d-4643-a353-c992e66162c9",
+        "0c4832a7-132a-4628-960d-f31ddd7ef599",
+        "78c56514-e584-45f1-9e67-f30bbebec897",
+        "3c25934c-b2f6-4f9e-a843-4cea9e4b82d0",
+        "75369cf4-cf06-4095-b051-f51a3c465160",
+        "b9e630db-a247-492b-b38c-cc30f839e9d6",
+        "57e4c879-5502-4d68-8611-cc7a21752fd7",
+        "fe097a1d-8ac2-4415-b4a8-72e8d49272f5",
+        "ebacedb1-34f1-4332-98f5-d959bd0de016",
+        "1cf95fb7-fb7a-4be0-9d51-2272a152bce8",
+        "3958f3e5-d8ff-4582-8775-df47df429ca2",
+        "50f52afc-1e96-41ab-b979-b2804a1217b8",
+        "6916159e-73b1-46e5-8db4-5485cc9b06db",
+        "1f0b2f03-05df-49e1-9f11-aea85a5c9c05",
+        "c494565c-ca31-44ec-a0ab-9912fcb305ba",
+        "db9824a9-bd2c-4d8f-b4a8-0054201d4f6f",
+        "efce7c1f-f533-4179-90dd-af81923b9f5d",
+        "242635bd-a993-4edb-8597-9e2995727fce",
+        "f364df2a-e181-453c-a242-fbabe61fcaa7",
+        "74a3bc45-6414-4d36-8011-70294ebc9f83",
+        "6f3e60bf-9547-469f-b3c0-c5e69960b482",
+        "63d27444-f995-4d87-ae9d-52af074a12df",
+        "041546c9-3d5b-4983-a9b7-a2fd195525e8"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "2f6a8780-7047-41a3-9840-2503cc6d2fce",
+              "32786093-6105-42ab-957e-144c4456dd31",
+              "69b70e86-de5c-4520-9732-92756218d907",
+              "7169f6ae-8e8d-4643-a353-c992e66162c9",
+              "0c4832a7-132a-4628-960d-f31ddd7ef599",
+              "78c56514-e584-45f1-9e67-f30bbebec897",
+              "3c25934c-b2f6-4f9e-a843-4cea9e4b82d0",
+              "75369cf4-cf06-4095-b051-f51a3c465160",
+              "b9e630db-a247-492b-b38c-cc30f839e9d6",
+              "57e4c879-5502-4d68-8611-cc7a21752fd7",
+              "fe097a1d-8ac2-4415-b4a8-72e8d49272f5",
+              "ebacedb1-34f1-4332-98f5-d959bd0de016",
+              "1cf95fb7-fb7a-4be0-9d51-2272a152bce8"
+            ],
+            "titles": [
+              "Fred Willard",
+              "This Is Spinal Tap",
+              "Christopher Guest",
+              "Eugene Levy",
+              "Fast and Loose (TV series)",
+              "Christopher Lloyd",
+              "Where Is Fred?",
+              "Beyond Vaudeville",
+              "When Harry Met Sally...",
+              "David Jablin",
+              "Being Charlie",
+              "Ice Cream Man (film)",
+              "Idiocracy"
+            ],
+            "n_docs": 13,
+            "n_items": 16,
+            "note": "seed_queries=2"
+          },
+          {
+            "stage": "bridge_retrieval",
+            "doc_ids": [
+              "2f6a8780-7047-41a3-9840-2503cc6d2fce",
+              "32786093-6105-42ab-957e-144c4456dd31",
+              "69b70e86-de5c-4520-9732-92756218d907",
+              "7169f6ae-8e8d-4643-a353-c992e66162c9",
+              "0c4832a7-132a-4628-960d-f31ddd7ef599",
+              "78c56514-e584-45f1-9e67-f30bbebec897",
+              "3c25934c-b2f6-4f9e-a843-4cea9e4b82d0",
+              "75369cf4-cf06-4095-b051-f51a3c465160",
+              "b9e630db-a247-492b-b38c-cc30f839e9d6",
+              "57e4c879-5502-4d68-8611-cc7a21752fd7",
+              "fe097a1d-8ac2-4415-b4a8-72e8d49272f5",
+              "ebacedb1-34f1-4332-98f5-d959bd0de016",
+              "1cf95fb7-fb7a-4be0-9d51-2272a152bce8",
+              "3958f3e5-d8ff-4582-8775-df47df429ca2",
+              "50f52afc-1e96-41ab-b979-b2804a1217b8",
+              "6916159e-73b1-46e5-8db4-5485cc9b06db",
+              "1f0b2f03-05df-49e1-9f11-aea85a5c9c05",
+              "c494565c-ca31-44ec-a0ab-9912fcb305ba",
+              "db9824a9-bd2c-4d8f-b4a8-0054201d4f6f",
+              "efce7c1f-f533-4179-90dd-af81923b9f5d",
+              "242635bd-a993-4edb-8597-9e2995727fce",
+              "f364df2a-e181-453c-a242-fbabe61fcaa7",
+              "74a3bc45-6414-4d36-8011-70294ebc9f83",
+              "6f3e60bf-9547-469f-b3c0-c5e69960b482",
+              "63d27444-f995-4d87-ae9d-52af074a12df",
+              "041546c9-3d5b-4983-a9b7-a2fd195525e8"
+            ],
+            "titles": [
+              "Fred Willard",
+              "This Is Spinal Tap",
+              "Christopher Guest",
+              "Eugene Levy",
+              "Fast and Loose (TV series)",
+              "Christopher Lloyd",
+              "Where Is Fred?",
+              "Beyond Vaudeville",
+              "When Harry Met Sally...",
+              "David Jablin",
+              "Being Charlie",
+              "Ice Cream Man (film)",
+              "Idiocracy",
+              "The Middle (TV series)",
+              "Raymond (community), Wisconsin",
+              "Little Things (short story)",
+              "Raymond S. Persi",
+              "Monty Can't Buy Me Love",
+              "Beginners (short story collection)",
+              "Raymond Langston",
+              "Bruno Kirby",
+              "Howard Hesseman",
+              "Chester Drescher",
+              "Goin' South",
+              "Paul Newman",
+              "Mike Nichols"
+            ],
+            "n_docs": 26,
+            "n_items": 32,
+            "note": "bridges=['Everybody Loves Raymond', 'Actors Paul Shaffer, Fred Willard, Fran Drescher, Bruno Kirby, Howard Hesseman, Ed Begley, Jr']"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "2f6a8780-7047-41a3-9840-2503cc6d2fce",
+              "32786093-6105-42ab-957e-144c4456dd31",
+              "69b70e86-de5c-4520-9732-92756218d907",
+              "7169f6ae-8e8d-4643-a353-c992e66162c9",
+              "0c4832a7-132a-4628-960d-f31ddd7ef599",
+              "78c56514-e584-45f1-9e67-f30bbebec897",
+              "3c25934c-b2f6-4f9e-a843-4cea9e4b82d0",
+              "75369cf4-cf06-4095-b051-f51a3c465160",
+              "b9e630db-a247-492b-b38c-cc30f839e9d6",
+              "57e4c879-5502-4d68-8611-cc7a21752fd7",
+              "fe097a1d-8ac2-4415-b4a8-72e8d49272f5",
+              "ebacedb1-34f1-4332-98f5-d959bd0de016",
+              "1cf95fb7-fb7a-4be0-9d51-2272a152bce8",
+              "3958f3e5-d8ff-4582-8775-df47df429ca2",
+              "50f52afc-1e96-41ab-b979-b2804a1217b8",
+              "6916159e-73b1-46e5-8db4-5485cc9b06db",
+              "1f0b2f03-05df-49e1-9f11-aea85a5c9c05",
+              "c494565c-ca31-44ec-a0ab-9912fcb305ba",
+              "db9824a9-bd2c-4d8f-b4a8-0054201d4f6f",
+              "efce7c1f-f533-4179-90dd-af81923b9f5d",
+              "242635bd-a993-4edb-8597-9e2995727fce",
+              "f364df2a-e181-453c-a242-fbabe61fcaa7",
+              "74a3bc45-6414-4d36-8011-70294ebc9f83",
+              "6f3e60bf-9547-469f-b3c0-c5e69960b482",
+              "63d27444-f995-4d87-ae9d-52af074a12df",
+              "041546c9-3d5b-4983-a9b7-a2fd195525e8"
+            ],
+            "titles": [
+              "Fred Willard",
+              "This Is Spinal Tap",
+              "Christopher Guest",
+              "Eugene Levy",
+              "Fast and Loose (TV series)",
+              "Christopher Lloyd",
+              "Where Is Fred?",
+              "Beyond Vaudeville",
+              "When Harry Met Sally...",
+              "David Jablin",
+              "Being Charlie",
+              "Ice Cream Man (film)",
+              "Idiocracy",
+              "The Middle (TV series)",
+              "Raymond (community), Wisconsin",
+              "Little Things (short story)",
+              "Raymond S. Persi",
+              "Monty Can't Buy Me Love",
+              "Beginners (short story collection)",
+              "Raymond Langston",
+              "Bruno Kirby",
+              "Howard Hesseman",
+              "Chester Drescher",
+              "Goin' South",
+              "Paul Newman",
+              "Mike Nichols"
+            ],
+            "n_docs": 26,
+            "n_items": 32,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "2f6a8780-7047-41a3-9840-2503cc6d2fce",
+              "32786093-6105-42ab-957e-144c4456dd31",
+              "69b70e86-de5c-4520-9732-92756218d907",
+              "7169f6ae-8e8d-4643-a353-c992e66162c9",
+              "0c4832a7-132a-4628-960d-f31ddd7ef599",
+              "78c56514-e584-45f1-9e67-f30bbebec897",
+              "3c25934c-b2f6-4f9e-a843-4cea9e4b82d0",
+              "75369cf4-cf06-4095-b051-f51a3c465160",
+              "b9e630db-a247-492b-b38c-cc30f839e9d6",
+              "57e4c879-5502-4d68-8611-cc7a21752fd7",
+              "fe097a1d-8ac2-4415-b4a8-72e8d49272f5",
+              "ebacedb1-34f1-4332-98f5-d959bd0de016",
+              "1cf95fb7-fb7a-4be0-9d51-2272a152bce8",
+              "3958f3e5-d8ff-4582-8775-df47df429ca2",
+              "50f52afc-1e96-41ab-b979-b2804a1217b8",
+              "6916159e-73b1-46e5-8db4-5485cc9b06db",
+              "1f0b2f03-05df-49e1-9f11-aea85a5c9c05",
+              "c494565c-ca31-44ec-a0ab-9912fcb305ba",
+              "db9824a9-bd2c-4d8f-b4a8-0054201d4f6f",
+              "efce7c1f-f533-4179-90dd-af81923b9f5d",
+              "242635bd-a993-4edb-8597-9e2995727fce",
+              "f364df2a-e181-453c-a242-fbabe61fcaa7",
+              "74a3bc45-6414-4d36-8011-70294ebc9f83",
+              "6f3e60bf-9547-469f-b3c0-c5e69960b482",
+              "63d27444-f995-4d87-ae9d-52af074a12df",
+              "041546c9-3d5b-4983-a9b7-a2fd195525e8"
+            ],
+            "titles": [
+              "Fred Willard",
+              "This Is Spinal Tap",
+              "Christopher Guest",
+              "Eugene Levy",
+              "Fast and Loose (TV series)",
+              "Christopher Lloyd",
+              "Where Is Fred?",
+              "Beyond Vaudeville",
+              "When Harry Met Sally...",
+              "David Jablin",
+              "Being Charlie",
+              "Ice Cream Man (film)",
+              "Idiocracy",
+              "The Middle (TV series)",
+              "Raymond (community), Wisconsin",
+              "Little Things (short story)",
+              "Raymond S. Persi",
+              "Monty Can't Buy Me Love",
+              "Beginners (short story collection)",
+              "Raymond Langston",
+              "Bruno Kirby",
+              "Howard Hesseman",
+              "Chester Drescher",
+              "Goin' South",
+              "Paul Newman",
+              "Mike Nichols"
+            ],
+            "n_docs": 26,
+            "n_items": 66,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "69b70e86-de5c-4520-9732-92756218d907",
+              "7169f6ae-8e8d-4643-a353-c992e66162c9",
+              "78c56514-e584-45f1-9e67-f30bbebec897",
+              "6f3e60bf-9547-469f-b3c0-c5e69960b482"
+            ],
+            "titles": [
+              "Christopher Guest",
+              "Eugene Levy",
+              "Christopher Lloyd",
+              "Goin' South"
+            ],
+            "n_docs": 4,
+            "n_items": 5,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "69b70e86-de5c-4520-9732-92756218d907",
+              "78c56514-e584-45f1-9e67-f30bbebec897",
+              "6f3e60bf-9547-469f-b3c0-c5e69960b482",
+              "7169f6ae-8e8d-4643-a353-c992e66162c9"
+            ],
+            "titles": [
+              "Christopher Guest",
+              "Christopher Lloyd",
+              "Goin' South",
+              "Eugene Levy"
+            ],
+            "n_docs": 4,
+            "n_items": 5,
+            "note": "status=answered"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "69b70e86-de5c-4520-9732-92756218d907",
+              "78c56514-e584-45f1-9e67-f30bbebec897",
+              "6f3e60bf-9547-469f-b3c0-c5e69960b482",
+              "7169f6ae-8e8d-4643-a353-c992e66162c9"
+            ],
+            "titles": [
+              "Christopher Guest",
+              "Christopher Lloyd",
+              "Goin' South",
+              "Eugene Levy"
+            ],
+            "n_docs": 4,
+            "n_items": 5,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "7169f6ae-8e8d-4643-a353-c992e66162c9"
+            ],
+            "titles": [],
+            "n_docs": 1,
+            "n_items": 1,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 13,
+          "n_items": 16,
+          "note": "seed_queries=2",
+          "titles": [
+            "Fred Willard",
+            "This Is Spinal Tap",
+            "Christopher Guest",
+            "Eugene Levy",
+            "Fast and Loose (TV series)",
+            "Christopher Lloyd",
+            "Where Is Fred?",
+            "Beyond Vaudeville",
+            "When Harry Met Sally...",
+            "David Jablin",
+            "Being Charlie",
+            "Ice Cream Man (film)",
+            "Idiocracy"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "bridge_retrieval",
+          "n_docs": 26,
+          "n_items": 32,
+          "note": "bridges=['Everybody Loves Raymond', 'Actors Paul Shaffer, Fred Willard, Fran Drescher, Bruno Kirby, Howard Hesseman, Ed Begley, Jr']",
+          "titles": [
+            "Fred Willard",
+            "This Is Spinal Tap",
+            "Christopher Guest",
+            "Eugene Levy",
+            "Fast and Loose (TV series)",
+            "Christopher Lloyd",
+            "Where Is Fred?",
+            "Beyond Vaudeville",
+            "When Harry Met Sally...",
+            "David Jablin",
+            "Being Charlie",
+            "Ice Cream Man (film)",
+            "Idiocracy",
+            "The Middle (TV series)",
+            "Raymond (community), Wisconsin",
+            "Little Things (short story)",
+            "Raymond S. Persi",
+            "Monty Can't Buy Me Love",
+            "Beginners (short story collection)",
+            "Raymond Langston",
+            "Bruno Kirby",
+            "Howard Hesseman",
+            "Chester Drescher",
+            "Goin' South",
+            "Paul Newman",
+            "Mike Nichols"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 26,
+          "n_items": 32,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "Fred Willard",
+            "This Is Spinal Tap",
+            "Christopher Guest",
+            "Eugene Levy",
+            "Fast and Loose (TV series)",
+            "Christopher Lloyd",
+            "Where Is Fred?",
+            "Beyond Vaudeville",
+            "When Harry Met Sally...",
+            "David Jablin",
+            "Being Charlie",
+            "Ice Cream Man (film)",
+            "Idiocracy",
+            "The Middle (TV series)",
+            "Raymond (community), Wisconsin",
+            "Little Things (short story)",
+            "Raymond S. Persi",
+            "Monty Can't Buy Me Love",
+            "Beginners (short story collection)",
+            "Raymond Langston",
+            "Bruno Kirby",
+            "Howard Hesseman",
+            "Chester Drescher",
+            "Goin' South",
+            "Paul Newman",
+            "Mike Nichols"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 26,
+          "n_items": 66,
+          "note": "verified_raw",
+          "titles": [
+            "Fred Willard",
+            "This Is Spinal Tap",
+            "Christopher Guest",
+            "Eugene Levy",
+            "Fast and Loose (TV series)",
+            "Christopher Lloyd",
+            "Where Is Fred?",
+            "Beyond Vaudeville",
+            "When Harry Met Sally...",
+            "David Jablin",
+            "Being Charlie",
+            "Ice Cream Man (film)",
+            "Idiocracy",
+            "The Middle (TV series)",
+            "Raymond (community), Wisconsin",
+            "Little Things (short story)",
+            "Raymond S. Persi",
+            "Monty Can't Buy Me Love",
+            "Beginners (short story collection)",
+            "Raymond Langston",
+            "Bruno Kirby",
+            "Howard Hesseman",
+            "Chester Drescher",
+            "Goin' South",
+            "Paul Newman",
+            "Mike Nichols"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 4,
+          "n_items": 5,
+          "note": "min_support=0.55",
+          "titles": [
+            "Christopher Guest",
+            "Eugene Levy",
+            "Christopher Lloyd",
+            "Goin' South"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 4,
+          "n_items": 5,
+          "note": "status=answered",
+          "titles": [
+            "Christopher Guest",
+            "Christopher Lloyd",
+            "Goin' South",
+            "Eugene Levy"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 4,
+          "n_items": 5,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "Christopher Guest",
+            "Christopher Lloyd",
+            "Goin' South",
+            "Eugene Levy"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a8aad0d5542992d82986f55",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "science fiction drama",
+      "gold_doc_ids": [
+        "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+        "aafcfd3e-2395-480d-982a-fa2c84ab85d0"
+      ],
+      "gold_doc_titles": [
+        "Storyville (album)",
+        "Until the End of the World"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The 1991 film is “Until the End of the World” [S2]; its genre is not specified in the provided claims.",
+      "citations": [
+        {
+          "doc_id": "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+          "chunk_id": "234be043-a940-4603-b5dc-b7f162ae6e70",
+          "label": "S2"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 13.859604500001296,
+      "llm_calls": 1,
+      "tokens": 1959,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+        "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+        "71a11c9d-16e4-4c26-a964-372fb9ccb9b3",
+        "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+        "b145d704-f7da-47a8-9a19-81c9dae436ed",
+        "2b42d368-52bd-4016-ad4b-d7f287badf32",
+        "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+        "af604139-f952-453b-8ea1-884c9b8d9a15"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+              "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+              "71a11c9d-16e4-4c26-a964-372fb9ccb9b3",
+              "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+              "b145d704-f7da-47a8-9a19-81c9dae436ed",
+              "2b42d368-52bd-4016-ad4b-d7f287badf32",
+              "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+              "af604139-f952-453b-8ea1-884c9b8d9a15"
+            ],
+            "titles": [
+              "Storyville (album)",
+              "Breakin'... There's No Stopping Us",
+              "Beauty and the Beast (1991 soundtrack)",
+              "Hudson Hawk",
+              "Billy Bathgate (film)",
+              "Rappin'",
+              "Breaking the Rules (film)",
+              "Danny Comden"
+            ],
+            "n_docs": 8,
+            "n_items": 8,
+            "note": "seed_queries=1"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+              "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+              "71a11c9d-16e4-4c26-a964-372fb9ccb9b3",
+              "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+              "b145d704-f7da-47a8-9a19-81c9dae436ed",
+              "2b42d368-52bd-4016-ad4b-d7f287badf32",
+              "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+              "af604139-f952-453b-8ea1-884c9b8d9a15"
+            ],
+            "titles": [
+              "Storyville (album)",
+              "Breakin'... There's No Stopping Us",
+              "Beauty and the Beast (1991 soundtrack)",
+              "Hudson Hawk",
+              "Billy Bathgate (film)",
+              "Rappin'",
+              "Breaking the Rules (film)",
+              "Danny Comden"
+            ],
+            "n_docs": 8,
+            "n_items": 8,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+              "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+              "71a11c9d-16e4-4c26-a964-372fb9ccb9b3",
+              "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+              "b145d704-f7da-47a8-9a19-81c9dae436ed",
+              "2b42d368-52bd-4016-ad4b-d7f287badf32",
+              "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+              "af604139-f952-453b-8ea1-884c9b8d9a15"
+            ],
+            "titles": [
+              "Storyville (album)",
+              "Breakin'... There's No Stopping Us",
+              "Beauty and the Beast (1991 soundtrack)",
+              "Hudson Hawk",
+              "Billy Bathgate (film)",
+              "Rappin'",
+              "Breaking the Rules (film)",
+              "Danny Comden"
+            ],
+            "n_docs": 8,
+            "n_items": 27,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+              "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+              "71a11c9d-16e4-4c26-a964-372fb9ccb9b3",
+              "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+              "2b42d368-52bd-4016-ad4b-d7f287badf32",
+              "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+              "af604139-f952-453b-8ea1-884c9b8d9a15"
+            ],
+            "titles": [
+              "Storyville (album)",
+              "Breakin'... There's No Stopping Us",
+              "Beauty and the Beast (1991 soundtrack)",
+              "Hudson Hawk",
+              "Rappin'",
+              "Breaking the Rules (film)",
+              "Danny Comden"
+            ],
+            "n_docs": 7,
+            "n_items": 12,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+              "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+              "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+              "71a11c9d-16e4-4c26-a964-372fb9ccb9b3",
+              "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+              "2b42d368-52bd-4016-ad4b-d7f287badf32",
+              "af604139-f952-453b-8ea1-884c9b8d9a15"
+            ],
+            "titles": [
+              "Breaking the Rules (film)",
+              "Storyville (album)",
+              "Breakin'... There's No Stopping Us",
+              "Beauty and the Beast (1991 soundtrack)",
+              "Hudson Hawk",
+              "Rappin'",
+              "Danny Comden"
+            ],
+            "n_docs": 7,
+            "n_items": 12,
+            "note": "status=answered"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+              "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+              "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+              "71a11c9d-16e4-4c26-a964-372fb9ccb9b3",
+              "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+              "2b42d368-52bd-4016-ad4b-d7f287badf32",
+              "af604139-f952-453b-8ea1-884c9b8d9a15"
+            ],
+            "titles": [
+              "Breaking the Rules (film)",
+              "Storyville (album)",
+              "Breakin'... There's No Stopping Us",
+              "Beauty and the Beast (1991 soundtrack)",
+              "Hudson Hawk",
+              "Rappin'",
+              "Danny Comden"
+            ],
+            "n_docs": 7,
+            "n_items": 12,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "da8a1f84-6d51-493a-9b19-bf95fdbcf480"
+            ],
+            "titles": [],
+            "n_docs": 1,
+            "n_items": 1,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 8,
+          "n_items": 8,
+          "note": "seed_queries=1",
+          "titles": [
+            "Storyville (album)",
+            "Breakin'... There's No Stopping Us",
+            "Beauty and the Beast (1991 soundtrack)",
+            "Hudson Hawk",
+            "Billy Bathgate (film)",
+            "Rappin'",
+            "Breaking the Rules (film)",
+            "Danny Comden"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 8,
+          "n_items": 8,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "Storyville (album)",
+            "Breakin'... There's No Stopping Us",
+            "Beauty and the Beast (1991 soundtrack)",
+            "Hudson Hawk",
+            "Billy Bathgate (film)",
+            "Rappin'",
+            "Breaking the Rules (film)",
+            "Danny Comden"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 8,
+          "n_items": 27,
+          "note": "verified_raw",
+          "titles": [
+            "Storyville (album)",
+            "Breakin'... There's No Stopping Us",
+            "Beauty and the Beast (1991 soundtrack)",
+            "Hudson Hawk",
+            "Billy Bathgate (film)",
+            "Rappin'",
+            "Breaking the Rules (film)",
+            "Danny Comden"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 7,
+          "n_items": 12,
+          "note": "min_support=0.55",
+          "titles": [
+            "Storyville (album)",
+            "Breakin'... There's No Stopping Us",
+            "Beauty and the Beast (1991 soundtrack)",
+            "Hudson Hawk",
+            "Rappin'",
+            "Breaking the Rules (film)",
+            "Danny Comden"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 7,
+          "n_items": 12,
+          "note": "status=answered",
+          "titles": [
+            "Breaking the Rules (film)",
+            "Storyville (album)",
+            "Breakin'... There's No Stopping Us",
+            "Beauty and the Beast (1991 soundtrack)",
+            "Hudson Hawk",
+            "Rappin'",
+            "Danny Comden"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 7,
+          "n_items": 12,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "Breaking the Rules (film)",
+            "Storyville (album)",
+            "Breakin'... There's No Stopping Us",
+            "Beauty and the Beast (1991 soundtrack)",
+            "Hudson Hawk",
+            "Rappin'",
+            "Danny Comden"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae7eb0f554299540e5a5694",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "Superteam",
+      "gold_doc_ids": [
+        "57f43810-943a-452e-bc3f-a8d5f4044127",
+        "efc41f82-f03b-4881-ac22-6d86477d2209"
+      ],
+      "gold_doc_titles": [
+        "2016–17 Golden State Warriors season",
+        "Stephen Curry"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Stephen Curry is the American professional basketball player for the Golden State Warriors [S7].",
+      "citations": [
+        {
+          "doc_id": "efc41f82-f03b-4881-ac22-6d86477d2209",
+          "chunk_id": "46083b96-bd7d-42f8-9000-8be211e5a8f7",
+          "label": "S7"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 12.492517700069584,
+      "llm_calls": 1,
+      "tokens": 2181,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_bridge_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "1e776d68-d513-41a1-8549-2f6ffa8d0202",
+        "af7f6df0-ba53-4c83-abe7-624b7f8fc53b",
+        "618d2756-db46-4ec4-b43b-0ab4e13e7af3",
+        "b4155cde-4479-4f92-ae88-ab1a21e482dd",
+        "067bfee5-796f-443b-8f89-abfee0eff947",
+        "80a4854a-97ca-4249-893a-3998993ed0cd",
+        "c62c65ff-8431-4384-91ed-1195c55b44bc",
+        "f393818e-62b4-41b9-8e35-6e56630367b0",
+        "57f43810-943a-452e-bc3f-a8d5f4044127",
+        "df1d6585-660b-4408-8879-ef757e6e0249",
+        "efc41f82-f03b-4881-ac22-6d86477d2209",
+        "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+        "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+        "7acf8d36-db3c-4c63-af07-012af36c3971",
+        "d6273843-2f1b-43f4-8d7f-40f59aac09d9",
+        "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+        "71cafdf0-51cb-42d8-a076-7ebae499049e",
+        "d0238f65-8ce0-48df-a6f2-7111d1bf5eb6",
+        "608f26ef-daf5-4329-a76f-33bbf0d3e176",
+        "e502fb71-5808-42f6-bafb-917f4224e92e",
+        "043dafad-d876-490e-b9ad-57b08ff5b925",
+        "714141b9-ab89-4ecd-8a0c-ae0eff46ebeb",
+        "e1594457-1f9f-4265-b35b-b4d2a90e9db9",
+        "2fa7f2ec-ba20-46e8-9393-cc223321be98",
+        "97d34255-3557-4f7b-bb7e-ba794429d140",
+        "d632040f-6e0e-4768-b539-03cada08100e",
+        "5220b473-d751-4e74-ac02-69cac9163ff6"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "1e776d68-d513-41a1-8549-2f6ffa8d0202",
+              "af7f6df0-ba53-4c83-abe7-624b7f8fc53b",
+              "618d2756-db46-4ec4-b43b-0ab4e13e7af3",
+              "b4155cde-4479-4f92-ae88-ab1a21e482dd",
+              "067bfee5-796f-443b-8f89-abfee0eff947",
+              "80a4854a-97ca-4249-893a-3998993ed0cd",
+              "c62c65ff-8431-4384-91ed-1195c55b44bc",
+              "f393818e-62b4-41b9-8e35-6e56630367b0",
+              "57f43810-943a-452e-bc3f-a8d5f4044127",
+              "df1d6585-660b-4408-8879-ef757e6e0249",
+              "efc41f82-f03b-4881-ac22-6d86477d2209",
+              "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+              "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+              "7acf8d36-db3c-4c63-af07-012af36c3971",
+              "d6273843-2f1b-43f4-8d7f-40f59aac09d9",
+              "3d453f2f-9191-45f5-a7bd-3ec420363aa1"
+            ],
+            "titles": [
+              "List of French NBA players",
+              "Mike Dunleavy Sr.",
+              "1977 NBA draft",
+              "Lusia Harris",
+              "NBA G League",
+              "NBA Rookie of the Year Award",
+              "List of Philadelphia 76ers head coaches",
+              "Peter John Ramos",
+              "2016–17 Golden State Warriors season",
+              "List of career achievements by Stephen Curry",
+              "Stephen Curry",
+              "Kevin Durant",
+              "Klay Thompson",
+              "Splash Brothers",
+              "Cavaliers–Warriors rivalry",
+              "Andre Iguodala"
+            ],
+            "n_docs": 16,
+            "n_items": 16,
+            "note": "seed_queries=2"
+          },
+          {
+            "stage": "bridge_retrieval",
+            "doc_ids": [
+              "1e776d68-d513-41a1-8549-2f6ffa8d0202",
+              "af7f6df0-ba53-4c83-abe7-624b7f8fc53b",
+              "618d2756-db46-4ec4-b43b-0ab4e13e7af3",
+              "b4155cde-4479-4f92-ae88-ab1a21e482dd",
+              "067bfee5-796f-443b-8f89-abfee0eff947",
+              "80a4854a-97ca-4249-893a-3998993ed0cd",
+              "c62c65ff-8431-4384-91ed-1195c55b44bc",
+              "f393818e-62b4-41b9-8e35-6e56630367b0",
+              "57f43810-943a-452e-bc3f-a8d5f4044127",
+              "df1d6585-660b-4408-8879-ef757e6e0249",
+              "efc41f82-f03b-4881-ac22-6d86477d2209",
+              "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+              "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+              "7acf8d36-db3c-4c63-af07-012af36c3971",
+              "d6273843-2f1b-43f4-8d7f-40f59aac09d9",
+              "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+              "71cafdf0-51cb-42d8-a076-7ebae499049e",
+              "d0238f65-8ce0-48df-a6f2-7111d1bf5eb6",
+              "608f26ef-daf5-4329-a76f-33bbf0d3e176",
+              "e502fb71-5808-42f6-bafb-917f4224e92e",
+              "043dafad-d876-490e-b9ad-57b08ff5b925",
+              "714141b9-ab89-4ecd-8a0c-ae0eff46ebeb",
+              "e1594457-1f9f-4265-b35b-b4d2a90e9db9",
+              "2fa7f2ec-ba20-46e8-9393-cc223321be98",
+              "97d34255-3557-4f7b-bb7e-ba794429d140",
+              "d632040f-6e0e-4768-b539-03cada08100e",
+              "5220b473-d751-4e74-ac02-69cac9163ff6"
+            ],
+            "titles": [
+              "List of French NBA players",
+              "Mike Dunleavy Sr.",
+              "1977 NBA draft",
+              "Lusia Harris",
+              "NBA G League",
+              "NBA Rookie of the Year Award",
+              "List of Philadelphia 76ers head coaches",
+              "Peter John Ramos",
+              "2016–17 Golden State Warriors season",
+              "List of career achievements by Stephen Curry",
+              "Stephen Curry",
+              "Kevin Durant",
+              "Klay Thompson",
+              "Splash Brothers",
+              "Cavaliers–Warriors rivalry",
+              "Andre Iguodala",
+              "2010–11 NBA Development League season",
+              "List of NBA G League yearly standings",
+              "NBA Development League All-Star Game",
+              "2011–12 NBA Development League season",
+              "2016–17 NBA Development League season",
+              "2016 NBA Summer League",
+              "2017 NBA Summer League",
+              "1967 NBA Finals",
+              "Willie Green",
+              "2015 NBA Finals",
+              "Jaguar warrior"
+            ],
+            "n_docs": 27,
+            "n_items": 32,
+            "note": "bridges=['National Basketball Development League', 'Philadelphia Warriors']"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "1e776d68-d513-41a1-8549-2f6ffa8d0202",
+              "af7f6df0-ba53-4c83-abe7-624b7f8fc53b",
+              "618d2756-db46-4ec4-b43b-0ab4e13e7af3",
+              "b4155cde-4479-4f92-ae88-ab1a21e482dd",
+              "067bfee5-796f-443b-8f89-abfee0eff947",
+              "80a4854a-97ca-4249-893a-3998993ed0cd",
+              "c62c65ff-8431-4384-91ed-1195c55b44bc",
+              "f393818e-62b4-41b9-8e35-6e56630367b0",
+              "57f43810-943a-452e-bc3f-a8d5f4044127",
+              "df1d6585-660b-4408-8879-ef757e6e0249",
+              "efc41f82-f03b-4881-ac22-6d86477d2209",
+              "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+              "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+              "7acf8d36-db3c-4c63-af07-012af36c3971",
+              "d6273843-2f1b-43f4-8d7f-40f59aac09d9",
+              "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+              "71cafdf0-51cb-42d8-a076-7ebae499049e",
+              "d0238f65-8ce0-48df-a6f2-7111d1bf5eb6",
+              "608f26ef-daf5-4329-a76f-33bbf0d3e176",
+              "e502fb71-5808-42f6-bafb-917f4224e92e",
+              "043dafad-d876-490e-b9ad-57b08ff5b925",
+              "714141b9-ab89-4ecd-8a0c-ae0eff46ebeb",
+              "e1594457-1f9f-4265-b35b-b4d2a90e9db9",
+              "2fa7f2ec-ba20-46e8-9393-cc223321be98",
+              "97d34255-3557-4f7b-bb7e-ba794429d140",
+              "d632040f-6e0e-4768-b539-03cada08100e",
+              "5220b473-d751-4e74-ac02-69cac9163ff6"
+            ],
+            "titles": [
+              "List of French NBA players",
+              "Mike Dunleavy Sr.",
+              "1977 NBA draft",
+              "Lusia Harris",
+              "NBA G League",
+              "NBA Rookie of the Year Award",
+              "List of Philadelphia 76ers head coaches",
+              "Peter John Ramos",
+              "2016–17 Golden State Warriors season",
+              "List of career achievements by Stephen Curry",
+              "Stephen Curry",
+              "Kevin Durant",
+              "Klay Thompson",
+              "Splash Brothers",
+              "Cavaliers–Warriors rivalry",
+              "Andre Iguodala",
+              "2010–11 NBA Development League season",
+              "List of NBA G League yearly standings",
+              "NBA Development League All-Star Game",
+              "2011–12 NBA Development League season",
+              "2016–17 NBA Development League season",
+              "2016 NBA Summer League",
+              "2017 NBA Summer League",
+              "1967 NBA Finals",
+              "Willie Green",
+              "2015 NBA Finals",
+              "Jaguar warrior"
+            ],
+            "n_docs": 27,
+            "n_items": 32,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "1e776d68-d513-41a1-8549-2f6ffa8d0202",
+              "af7f6df0-ba53-4c83-abe7-624b7f8fc53b",
+              "618d2756-db46-4ec4-b43b-0ab4e13e7af3",
+              "b4155cde-4479-4f92-ae88-ab1a21e482dd",
+              "067bfee5-796f-443b-8f89-abfee0eff947",
+              "80a4854a-97ca-4249-893a-3998993ed0cd",
+              "c62c65ff-8431-4384-91ed-1195c55b44bc",
+              "f393818e-62b4-41b9-8e35-6e56630367b0",
+              "57f43810-943a-452e-bc3f-a8d5f4044127",
+              "df1d6585-660b-4408-8879-ef757e6e0249",
+              "efc41f82-f03b-4881-ac22-6d86477d2209",
+              "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+              "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+              "7acf8d36-db3c-4c63-af07-012af36c3971",
+              "d6273843-2f1b-43f4-8d7f-40f59aac09d9",
+              "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+              "71cafdf0-51cb-42d8-a076-7ebae499049e",
+              "d0238f65-8ce0-48df-a6f2-7111d1bf5eb6",
+              "608f26ef-daf5-4329-a76f-33bbf0d3e176",
+              "e502fb71-5808-42f6-bafb-917f4224e92e",
+              "043dafad-d876-490e-b9ad-57b08ff5b925",
+              "714141b9-ab89-4ecd-8a0c-ae0eff46ebeb",
+              "e1594457-1f9f-4265-b35b-b4d2a90e9db9",
+              "2fa7f2ec-ba20-46e8-9393-cc223321be98",
+              "97d34255-3557-4f7b-bb7e-ba794429d140",
+              "d632040f-6e0e-4768-b539-03cada08100e",
+              "5220b473-d751-4e74-ac02-69cac9163ff6"
+            ],
+            "titles": [
+              "List of French NBA players",
+              "Mike Dunleavy Sr.",
+              "1977 NBA draft",
+              "Lusia Harris",
+              "NBA G League",
+              "NBA Rookie of the Year Award",
+              "List of Philadelphia 76ers head coaches",
+              "Peter John Ramos",
+              "2016–17 Golden State Warriors season",
+              "List of career achievements by Stephen Curry",
+              "Stephen Curry",
+              "Kevin Durant",
+              "Klay Thompson",
+              "Splash Brothers",
+              "Cavaliers–Warriors rivalry",
+              "Andre Iguodala",
+              "2010–11 NBA Development League season",
+              "List of NBA G League yearly standings",
+              "NBA Development League All-Star Game",
+              "2011–12 NBA Development League season",
+              "2016–17 NBA Development League season",
+              "2016 NBA Summer League",
+              "2017 NBA Summer League",
+              "1967 NBA Finals",
+              "Willie Green",
+              "2015 NBA Finals",
+              "Jaguar warrior"
+            ],
+            "n_docs": 27,
+            "n_items": 74,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "1e776d68-d513-41a1-8549-2f6ffa8d0202",
+              "af7f6df0-ba53-4c83-abe7-624b7f8fc53b",
+              "b4155cde-4479-4f92-ae88-ab1a21e482dd",
+              "c62c65ff-8431-4384-91ed-1195c55b44bc",
+              "f393818e-62b4-41b9-8e35-6e56630367b0",
+              "57f43810-943a-452e-bc3f-a8d5f4044127",
+              "df1d6585-660b-4408-8879-ef757e6e0249",
+              "efc41f82-f03b-4881-ac22-6d86477d2209",
+              "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+              "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+              "71cafdf0-51cb-42d8-a076-7ebae499049e",
+              "608f26ef-daf5-4329-a76f-33bbf0d3e176",
+              "5220b473-d751-4e74-ac02-69cac9163ff6"
+            ],
+            "titles": [
+              "List of French NBA players",
+              "Mike Dunleavy Sr.",
+              "Lusia Harris",
+              "List of Philadelphia 76ers head coaches",
+              "Peter John Ramos",
+              "2016–17 Golden State Warriors season",
+              "List of career achievements by Stephen Curry",
+              "Stephen Curry",
+              "Klay Thompson",
+              "Andre Iguodala",
+              "2010–11 NBA Development League season",
+              "NBA Development League All-Star Game",
+              "Jaguar warrior"
+            ],
+            "n_docs": 13,
+            "n_items": 26,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "1e776d68-d513-41a1-8549-2f6ffa8d0202",
+              "b4155cde-4479-4f92-ae88-ab1a21e482dd",
+              "c62c65ff-8431-4384-91ed-1195c55b44bc",
+              "f393818e-62b4-41b9-8e35-6e56630367b0",
+              "57f43810-943a-452e-bc3f-a8d5f4044127",
+              "df1d6585-660b-4408-8879-ef757e6e0249",
+              "efc41f82-f03b-4881-ac22-6d86477d2209",
+              "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+              "608f26ef-daf5-4329-a76f-33bbf0d3e176",
+              "af7f6df0-ba53-4c83-abe7-624b7f8fc53b",
+              "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+              "71cafdf0-51cb-42d8-a076-7ebae499049e",
+              "5220b473-d751-4e74-ac02-69cac9163ff6"
+            ],
+            "titles": [
+              "List of French NBA players",
+              "Lusia Harris",
+              "List of Philadelphia 76ers head coaches",
+              "Peter John Ramos",
+              "2016–17 Golden State Warriors season",
+              "List of career achievements by Stephen Curry",
+              "Stephen Curry",
+              "Klay Thompson",
+              "NBA Development League All-Star Game",
+              "Mike Dunleavy Sr.",
+              "Andre Iguodala",
+              "2010–11 NBA Development League season",
+              "Jaguar warrior"
+            ],
+            "n_docs": 13,
+            "n_items": 13,
+            "note": "status=answered"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "1e776d68-d513-41a1-8549-2f6ffa8d0202",
+              "b4155cde-4479-4f92-ae88-ab1a21e482dd",
+              "c62c65ff-8431-4384-91ed-1195c55b44bc",
+              "f393818e-62b4-41b9-8e35-6e56630367b0",
+              "57f43810-943a-452e-bc3f-a8d5f4044127",
+              "df1d6585-660b-4408-8879-ef757e6e0249",
+              "efc41f82-f03b-4881-ac22-6d86477d2209",
+              "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+              "608f26ef-daf5-4329-a76f-33bbf0d3e176",
+              "af7f6df0-ba53-4c83-abe7-624b7f8fc53b",
+              "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+              "71cafdf0-51cb-42d8-a076-7ebae499049e",
+              "5220b473-d751-4e74-ac02-69cac9163ff6"
+            ],
+            "titles": [
+              "List of French NBA players",
+              "Lusia Harris",
+              "List of Philadelphia 76ers head coaches",
+              "Peter John Ramos",
+              "2016–17 Golden State Warriors season",
+              "List of career achievements by Stephen Curry",
+              "Stephen Curry",
+              "Klay Thompson",
+              "NBA Development League All-Star Game",
+              "Mike Dunleavy Sr.",
+              "Andre Iguodala",
+              "2010–11 NBA Development League season",
+              "Jaguar warrior"
+            ],
+            "n_docs": 13,
+            "n_items": 13,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "efc41f82-f03b-4881-ac22-6d86477d2209"
+            ],
+            "titles": [],
+            "n_docs": 1,
+            "n_items": 1,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 16,
+          "n_items": 16,
+          "note": "seed_queries=2",
+          "titles": [
+            "List of French NBA players",
+            "Mike Dunleavy Sr.",
+            "1977 NBA draft",
+            "Lusia Harris",
+            "NBA G League",
+            "NBA Rookie of the Year Award",
+            "List of Philadelphia 76ers head coaches",
+            "Peter John Ramos",
+            "2016–17 Golden State Warriors season",
+            "List of career achievements by Stephen Curry",
+            "Stephen Curry",
+            "Kevin Durant",
+            "Klay Thompson",
+            "Splash Brothers",
+            "Cavaliers–Warriors rivalry",
+            "Andre Iguodala"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "bridge_retrieval",
+          "n_docs": 27,
+          "n_items": 32,
+          "note": "bridges=['National Basketball Development League', 'Philadelphia Warriors']",
+          "titles": [
+            "List of French NBA players",
+            "Mike Dunleavy Sr.",
+            "1977 NBA draft",
+            "Lusia Harris",
+            "NBA G League",
+            "NBA Rookie of the Year Award",
+            "List of Philadelphia 76ers head coaches",
+            "Peter John Ramos",
+            "2016–17 Golden State Warriors season",
+            "List of career achievements by Stephen Curry",
+            "Stephen Curry",
+            "Kevin Durant",
+            "Klay Thompson",
+            "Splash Brothers",
+            "Cavaliers–Warriors rivalry",
+            "Andre Iguodala",
+            "2010–11 NBA Development League season",
+            "List of NBA G League yearly standings",
+            "NBA Development League All-Star Game",
+            "2011–12 NBA Development League season",
+            "2016–17 NBA Development League season",
+            "2016 NBA Summer League",
+            "2017 NBA Summer League",
+            "1967 NBA Finals",
+            "Willie Green",
+            "2015 NBA Finals",
+            "Jaguar warrior"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 27,
+          "n_items": 32,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "List of French NBA players",
+            "Mike Dunleavy Sr.",
+            "1977 NBA draft",
+            "Lusia Harris",
+            "NBA G League",
+            "NBA Rookie of the Year Award",
+            "List of Philadelphia 76ers head coaches",
+            "Peter John Ramos",
+            "2016–17 Golden State Warriors season",
+            "List of career achievements by Stephen Curry",
+            "Stephen Curry",
+            "Kevin Durant",
+            "Klay Thompson",
+            "Splash Brothers",
+            "Cavaliers–Warriors rivalry",
+            "Andre Iguodala",
+            "2010–11 NBA Development League season",
+            "List of NBA G League yearly standings",
+            "NBA Development League All-Star Game",
+            "2011–12 NBA Development League season",
+            "2016–17 NBA Development League season",
+            "2016 NBA Summer League",
+            "2017 NBA Summer League",
+            "1967 NBA Finals",
+            "Willie Green",
+            "2015 NBA Finals",
+            "Jaguar warrior"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 27,
+          "n_items": 74,
+          "note": "verified_raw",
+          "titles": [
+            "List of French NBA players",
+            "Mike Dunleavy Sr.",
+            "1977 NBA draft",
+            "Lusia Harris",
+            "NBA G League",
+            "NBA Rookie of the Year Award",
+            "List of Philadelphia 76ers head coaches",
+            "Peter John Ramos",
+            "2016–17 Golden State Warriors season",
+            "List of career achievements by Stephen Curry",
+            "Stephen Curry",
+            "Kevin Durant",
+            "Klay Thompson",
+            "Splash Brothers",
+            "Cavaliers–Warriors rivalry",
+            "Andre Iguodala",
+            "2010–11 NBA Development League season",
+            "List of NBA G League yearly standings",
+            "NBA Development League All-Star Game",
+            "2011–12 NBA Development League season",
+            "2016–17 NBA Development League season",
+            "2016 NBA Summer League",
+            "2017 NBA Summer League",
+            "1967 NBA Finals",
+            "Willie Green",
+            "2015 NBA Finals",
+            "Jaguar warrior"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 13,
+          "n_items": 26,
+          "note": "min_support=0.55",
+          "titles": [
+            "List of French NBA players",
+            "Mike Dunleavy Sr.",
+            "Lusia Harris",
+            "List of Philadelphia 76ers head coaches",
+            "Peter John Ramos",
+            "2016–17 Golden State Warriors season",
+            "List of career achievements by Stephen Curry",
+            "Stephen Curry",
+            "Klay Thompson",
+            "Andre Iguodala",
+            "2010–11 NBA Development League season",
+            "NBA Development League All-Star Game",
+            "Jaguar warrior"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 13,
+          "n_items": 13,
+          "note": "status=answered",
+          "titles": [
+            "List of French NBA players",
+            "Lusia Harris",
+            "List of Philadelphia 76ers head coaches",
+            "Peter John Ramos",
+            "2016–17 Golden State Warriors season",
+            "List of career achievements by Stephen Curry",
+            "Stephen Curry",
+            "Klay Thompson",
+            "NBA Development League All-Star Game",
+            "Mike Dunleavy Sr.",
+            "Andre Iguodala",
+            "2010–11 NBA Development League season",
+            "Jaguar warrior"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 13,
+          "n_items": 13,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "List of French NBA players",
+            "Lusia Harris",
+            "List of Philadelphia 76ers head coaches",
+            "Peter John Ramos",
+            "2016–17 Golden State Warriors season",
+            "List of career achievements by Stephen Curry",
+            "Stephen Curry",
+            "Klay Thompson",
+            "NBA Development League All-Star Game",
+            "Mike Dunleavy Sr.",
+            "Andre Iguodala",
+            "2010–11 NBA Development League season",
+            "Jaguar warrior"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ab1d94c554299706120958a",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Dante Bonfim Costa Santos (born 18 October 1983)",
+      "gold_doc_ids": [
+        "b9c58baf-6d3f-4f8f-81a4-18a3426d143f",
+        "874addf7-6b72-41a6-8421-9241b8eb8e75"
+      ],
+      "gold_doc_titles": [
+        "2012–13 FC Bayern Munich season",
+        "Dante (footballer)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "FC Bayern Munich II [S1].",
+      "citations": [
+        {
+          "doc_id": "470c60cc-474a-41e1-9abc-788d922db9b1",
+          "chunk_id": "4bbf3cd3-6b0e-4141-89ab-29ddcf42f12d",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 15.855275599984452,
+      "llm_calls": 1,
+      "tokens": 2296,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "470c60cc-474a-41e1-9abc-788d922db9b1",
+        "ae9b16b6-e8d4-4b69-88d7-c41125ed29ee",
+        "bb43bc5e-59a9-46af-9f79-4ada6045680e",
+        "90ad92ad-dd33-4dbb-804e-49d3d71c025c",
+        "17b10cb7-0684-45e0-ab1d-042da838a322",
+        "b9c58baf-6d3f-4f8f-81a4-18a3426d143f",
+        "2649b4dd-2f56-4e8f-92b6-b5893afb4aa5",
+        "ae69ec94-8072-4227-bb8e-48dced1c692a",
+        "0c12f60a-9ad6-4b96-b221-7ecbbb4ce435",
+        "c3fc3bde-c752-4476-9158-fd88bae740c7",
+        "1927f0f5-8fc8-4e34-82b3-ee0fe728b57c",
+        "9e05bc99-1880-43d1-adb5-8085b174db28",
+        "59e8587d-767d-48a2-991d-1be47df8299e"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "470c60cc-474a-41e1-9abc-788d922db9b1",
+              "ae9b16b6-e8d4-4b69-88d7-c41125ed29ee",
+              "bb43bc5e-59a9-46af-9f79-4ada6045680e",
+              "90ad92ad-dd33-4dbb-804e-49d3d71c025c",
+              "17b10cb7-0684-45e0-ab1d-042da838a322",
+              "b9c58baf-6d3f-4f8f-81a4-18a3426d143f",
+              "2649b4dd-2f56-4e8f-92b6-b5893afb4aa5",
+              "ae69ec94-8072-4227-bb8e-48dced1c692a",
+              "0c12f60a-9ad6-4b96-b221-7ecbbb4ce435",
+              "c3fc3bde-c752-4476-9158-fd88bae740c7",
+              "1927f0f5-8fc8-4e34-82b3-ee0fe728b57c",
+              "9e05bc99-1880-43d1-adb5-8085b174db28",
+              "59e8587d-767d-48a2-991d-1be47df8299e"
+            ],
+            "titles": [
+              "FC Bayern Munich II",
+              "2017–18 FC Bayern Munich season",
+              "2016–17 FC Bayern Munich season",
+              "1987–88 FC Bayern Munich season",
+              "1984–85 FC Bayern Munich season",
+              "2012–13 FC Bayern Munich season",
+              "2012–13 DFB-Pokal",
+              "Javi Martínez",
+              "Franck Ribéry",
+              "Mario Gómez",
+              "1988–89 FC Bayern Munich season",
+              "Robert Lewandowski",
+              "Zvjezdan Misimović"
+            ],
+            "n_docs": 13,
+            "n_items": 16,
+            "note": "seed_queries=2"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "470c60cc-474a-41e1-9abc-788d922db9b1",
+              "ae9b16b6-e8d4-4b69-88d7-c41125ed29ee",
+              "bb43bc5e-59a9-46af-9f79-4ada6045680e",
+              "90ad92ad-dd33-4dbb-804e-49d3d71c025c",
+              "17b10cb7-0684-45e0-ab1d-042da838a322",
+              "b9c58baf-6d3f-4f8f-81a4-18a3426d143f",
+              "2649b4dd-2f56-4e8f-92b6-b5893afb4aa5",
+              "ae69ec94-8072-4227-bb8e-48dced1c692a",
+              "0c12f60a-9ad6-4b96-b221-7ecbbb4ce435",
+              "c3fc3bde-c752-4476-9158-fd88bae740c7",
+              "1927f0f5-8fc8-4e34-82b3-ee0fe728b57c",
+              "9e05bc99-1880-43d1-adb5-8085b174db28",
+              "59e8587d-767d-48a2-991d-1be47df8299e"
+            ],
+            "titles": [
+              "FC Bayern Munich II",
+              "2017–18 FC Bayern Munich season",
+              "2016–17 FC Bayern Munich season",
+              "1987–88 FC Bayern Munich season",
+              "1984–85 FC Bayern Munich season",
+              "2012–13 FC Bayern Munich season",
+              "2012–13 DFB-Pokal",
+              "Javi Martínez",
+              "Franck Ribéry",
+              "Mario Gómez",
+              "1988–89 FC Bayern Munich season",
+              "Robert Lewandowski",
+              "Zvjezdan Misimović"
+            ],
+            "n_docs": 13,
+            "n_items": 16,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "470c60cc-474a-41e1-9abc-788d922db9b1",
+              "ae9b16b6-e8d4-4b69-88d7-c41125ed29ee",
+              "bb43bc5e-59a9-46af-9f79-4ada6045680e",
+              "90ad92ad-dd33-4dbb-804e-49d3d71c025c",
+              "17b10cb7-0684-45e0-ab1d-042da838a322",
+              "b9c58baf-6d3f-4f8f-81a4-18a3426d143f",
+              "2649b4dd-2f56-4e8f-92b6-b5893afb4aa5",
+              "ae69ec94-8072-4227-bb8e-48dced1c692a",
+              "0c12f60a-9ad6-4b96-b221-7ecbbb4ce435",
+              "c3fc3bde-c752-4476-9158-fd88bae740c7",
+              "1927f0f5-8fc8-4e34-82b3-ee0fe728b57c",
+              "9e05bc99-1880-43d1-adb5-8085b174db28",
+              "59e8587d-767d-48a2-991d-1be47df8299e"
+            ],
+            "titles": [
+              "FC Bayern Munich II",
+              "2017–18 FC Bayern Munich season",
+              "2016–17 FC Bayern Munich season",
+              "1987–88 FC Bayern Munich season",
+              "1984–85 FC Bayern Munich season",
+              "2012–13 FC Bayern Munich season",
+              "2012–13 DFB-Pokal",
+              "Javi Martínez",
+              "Franck Ribéry",
+              "Mario Gómez",
+              "1988–89 FC Bayern Munich season",
+              "Robert Lewandowski",
+              "Zvjezdan Misimović"
+            ],
+            "n_docs": 13,
+            "n_items": 43,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "470c60cc-474a-41e1-9abc-788d922db9b1",
+              "ae9b16b6-e8d4-4b69-88d7-c41125ed29ee",
+              "bb43bc5e-59a9-46af-9f79-4ada6045680e",
+              "90ad92ad-dd33-4dbb-804e-49d3d71c025c",
+              "17b10cb7-0684-45e0-ab1d-042da838a322",
+              "b9c58baf-6d3f-4f8f-81a4-18a3426d143f",
+              "1927f0f5-8fc8-4e34-82b3-ee0fe728b57c"
+            ],
+            "titles": [
+              "FC Bayern Munich II",
+              "2017–18 FC Bayern Munich season",
+              "2016–17 FC Bayern Munich season",
+              "1987–88 FC Bayern Munich season",
+              "1984–85 FC Bayern Munich season",
+              "2012–13 FC Bayern Munich season",
+              "1988–89 FC Bayern Munich season"
+            ],
+            "n_docs": 7,
+            "n_items": 21,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "470c60cc-474a-41e1-9abc-788d922db9b1",
+              "ae9b16b6-e8d4-4b69-88d7-c41125ed29ee",
+              "bb43bc5e-59a9-46af-9f79-4ada6045680e",
+              "90ad92ad-dd33-4dbb-804e-49d3d71c025c",
+              "17b10cb7-0684-45e0-ab1d-042da838a322"
+            ],
+            "titles": [
+              "FC Bayern Munich II",
+              "2017–18 FC Bayern Munich season",
+              "2016–17 FC Bayern Munich season",
+              "1987–88 FC Bayern Munich season",
+              "1984–85 FC Bayern Munich season"
+            ],
+            "n_docs": 5,
+            "n_items": 12,
+            "note": "status=answered"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "470c60cc-474a-41e1-9abc-788d922db9b1",
+              "ae9b16b6-e8d4-4b69-88d7-c41125ed29ee",
+              "bb43bc5e-59a9-46af-9f79-4ada6045680e",
+              "90ad92ad-dd33-4dbb-804e-49d3d71c025c",
+              "17b10cb7-0684-45e0-ab1d-042da838a322"
+            ],
+            "titles": [
+              "FC Bayern Munich II",
+              "2017–18 FC Bayern Munich season",
+              "2016–17 FC Bayern Munich season",
+              "1987–88 FC Bayern Munich season",
+              "1984–85 FC Bayern Munich season"
+            ],
+            "n_docs": 5,
+            "n_items": 12,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "470c60cc-474a-41e1-9abc-788d922db9b1"
+            ],
+            "titles": [],
+            "n_docs": 1,
+            "n_items": 1,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 13,
+          "n_items": 16,
+          "note": "seed_queries=2",
+          "titles": [
+            "FC Bayern Munich II",
+            "2017–18 FC Bayern Munich season",
+            "2016–17 FC Bayern Munich season",
+            "1987–88 FC Bayern Munich season",
+            "1984–85 FC Bayern Munich season",
+            "2012–13 FC Bayern Munich season",
+            "2012–13 DFB-Pokal",
+            "Javi Martínez",
+            "Franck Ribéry",
+            "Mario Gómez",
+            "1988–89 FC Bayern Munich season",
+            "Robert Lewandowski",
+            "Zvjezdan Misimović"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 13,
+          "n_items": 16,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "FC Bayern Munich II",
+            "2017–18 FC Bayern Munich season",
+            "2016–17 FC Bayern Munich season",
+            "1987–88 FC Bayern Munich season",
+            "1984–85 FC Bayern Munich season",
+            "2012–13 FC Bayern Munich season",
+            "2012–13 DFB-Pokal",
+            "Javi Martínez",
+            "Franck Ribéry",
+            "Mario Gómez",
+            "1988–89 FC Bayern Munich season",
+            "Robert Lewandowski",
+            "Zvjezdan Misimović"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 13,
+          "n_items": 43,
+          "note": "verified_raw",
+          "titles": [
+            "FC Bayern Munich II",
+            "2017–18 FC Bayern Munich season",
+            "2016–17 FC Bayern Munich season",
+            "1987–88 FC Bayern Munich season",
+            "1984–85 FC Bayern Munich season",
+            "2012–13 FC Bayern Munich season",
+            "2012–13 DFB-Pokal",
+            "Javi Martínez",
+            "Franck Ribéry",
+            "Mario Gómez",
+            "1988–89 FC Bayern Munich season",
+            "Robert Lewandowski",
+            "Zvjezdan Misimović"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 7,
+          "n_items": 21,
+          "note": "min_support=0.55",
+          "titles": [
+            "FC Bayern Munich II",
+            "2017–18 FC Bayern Munich season",
+            "2016–17 FC Bayern Munich season",
+            "1987–88 FC Bayern Munich season",
+            "1984–85 FC Bayern Munich season",
+            "2012–13 FC Bayern Munich season",
+            "1988–89 FC Bayern Munich season"
+          ],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 5,
+          "n_items": 12,
+          "note": "status=answered",
+          "titles": [
+            "FC Bayern Munich II",
+            "2017–18 FC Bayern Munich season",
+            "2016–17 FC Bayern Munich season",
+            "1987–88 FC Bayern Munich season",
+            "1984–85 FC Bayern Munich season"
+          ],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 5,
+          "n_items": 12,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "FC Bayern Munich II",
+            "2017–18 FC Bayern Munich season",
+            "2016–17 FC Bayern Munich season",
+            "1987–88 FC Bayern Munich season",
+            "1984–85 FC Bayern Munich season"
+          ],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 0,
+          "recall": 0.0,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae3166e55429928c42395e2",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Yarra Park",
+      "gold_doc_ids": [
+        "8e7b434e-573b-4699-ad03-10020ad8788b",
+        "7e7508b1-9135-409b-8b52-9a9f9d4b9c19"
+      ],
+      "gold_doc_titles": [
+        "1975 VFL Grand Final",
+        "Melbourne Cricket Ground"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Yarra Park, Melbourne, Victoria [S1].",
+      "citations": [
+        {
+          "doc_id": "7e7508b1-9135-409b-8b52-9a9f9d4b9c19",
+          "chunk_id": "494ba9a2-a7ca-4df6-837d-14bb6db40561",
+          "label": "S1"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 0.28871709993109107,
+      "llm_calls": 0,
+      "tokens": 0,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "8e7b434e-573b-4699-ad03-10020ad8788b",
+        "feb3e940-a8e4-4c00-9cc0-995814783481",
+        "7e7508b1-9135-409b-8b52-9a9f9d4b9c19",
+        "ceb9d03c-d94e-41f9-8bf3-5c725cce9394",
+        "14d0b0f4-9733-440b-af17-dc135f632c47",
+        "bfc60bdc-8a94-4101-ac54-a38c2eddc715",
+        "64f51d89-5ce3-4eda-9a39-0ec7668f06cb",
+        "c8c07955-5231-4a22-8774-a3ac0a4d8ebe"
+      ],
+      "synthesis_modes": [
+        "deterministic"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "8e7b434e-573b-4699-ad03-10020ad8788b",
+              "feb3e940-a8e4-4c00-9cc0-995814783481",
+              "7e7508b1-9135-409b-8b52-9a9f9d4b9c19",
+              "ceb9d03c-d94e-41f9-8bf3-5c725cce9394",
+              "14d0b0f4-9733-440b-af17-dc135f632c47",
+              "bfc60bdc-8a94-4101-ac54-a38c2eddc715",
+              "64f51d89-5ce3-4eda-9a39-0ec7668f06cb",
+              "c8c07955-5231-4a22-8774-a3ac0a4d8ebe"
+            ],
+            "titles": [
+              "1975 VFL Grand Final",
+              "1935 VFL Grand Final",
+              "Melbourne Cricket Ground",
+              "1907 VFL Grand Final",
+              "1945 VFL Grand Final",
+              "1909 VFL Grand Final",
+              "1914 VFL Grand Final",
+              "1996 AFL Grand Final"
+            ],
+            "n_docs": 8,
+            "n_items": 8,
+            "note": "seed_queries=1"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "8e7b434e-573b-4699-ad03-10020ad8788b",
+              "feb3e940-a8e4-4c00-9cc0-995814783481",
+              "7e7508b1-9135-409b-8b52-9a9f9d4b9c19",
+              "ceb9d03c-d94e-41f9-8bf3-5c725cce9394",
+              "14d0b0f4-9733-440b-af17-dc135f632c47",
+              "bfc60bdc-8a94-4101-ac54-a38c2eddc715",
+              "64f51d89-5ce3-4eda-9a39-0ec7668f06cb",
+              "c8c07955-5231-4a22-8774-a3ac0a4d8ebe"
+            ],
+            "titles": [
+              "1975 VFL Grand Final",
+              "1935 VFL Grand Final",
+              "Melbourne Cricket Ground",
+              "1907 VFL Grand Final",
+              "1945 VFL Grand Final",
+              "1909 VFL Grand Final",
+              "1914 VFL Grand Final",
+              "1996 AFL Grand Final"
+            ],
+            "n_docs": 8,
+            "n_items": 8,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "8e7b434e-573b-4699-ad03-10020ad8788b",
+              "feb3e940-a8e4-4c00-9cc0-995814783481",
+              "7e7508b1-9135-409b-8b52-9a9f9d4b9c19",
+              "ceb9d03c-d94e-41f9-8bf3-5c725cce9394",
+              "14d0b0f4-9733-440b-af17-dc135f632c47",
+              "bfc60bdc-8a94-4101-ac54-a38c2eddc715",
+              "64f51d89-5ce3-4eda-9a39-0ec7668f06cb",
+              "c8c07955-5231-4a22-8774-a3ac0a4d8ebe"
+            ],
+            "titles": [
+              "1975 VFL Grand Final",
+              "1935 VFL Grand Final",
+              "Melbourne Cricket Ground",
+              "1907 VFL Grand Final",
+              "1945 VFL Grand Final",
+              "1909 VFL Grand Final",
+              "1914 VFL Grand Final",
+              "1996 AFL Grand Final"
+            ],
+            "n_docs": 8,
+            "n_items": 22,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "8e7b434e-573b-4699-ad03-10020ad8788b",
+              "feb3e940-a8e4-4c00-9cc0-995814783481",
+              "7e7508b1-9135-409b-8b52-9a9f9d4b9c19",
+              "ceb9d03c-d94e-41f9-8bf3-5c725cce9394",
+              "14d0b0f4-9733-440b-af17-dc135f632c47",
+              "bfc60bdc-8a94-4101-ac54-a38c2eddc715",
+              "64f51d89-5ce3-4eda-9a39-0ec7668f06cb"
+            ],
+            "titles": [
+              "1975 VFL Grand Final",
+              "1935 VFL Grand Final",
+              "Melbourne Cricket Ground",
+              "1907 VFL Grand Final",
+              "1945 VFL Grand Final",
+              "1909 VFL Grand Final",
+              "1914 VFL Grand Final"
+            ],
+            "n_docs": 7,
+            "n_items": 18,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "7e7508b1-9135-409b-8b52-9a9f9d4b9c19",
+              "8e7b434e-573b-4699-ad03-10020ad8788b",
+              "feb3e940-a8e4-4c00-9cc0-995814783481",
+              "ceb9d03c-d94e-41f9-8bf3-5c725cce9394",
+              "14d0b0f4-9733-440b-af17-dc135f632c47",
+              "bfc60bdc-8a94-4101-ac54-a38c2eddc715",
+              "64f51d89-5ce3-4eda-9a39-0ec7668f06cb"
+            ],
+            "titles": [
+              "Melbourne Cricket Ground",
+              "1975 VFL Grand Final",
+              "1935 VFL Grand Final",
+              "1907 VFL Grand Final",
+              "1945 VFL Grand Final",
+              "1909 VFL Grand Final",
+              "1914 VFL Grand Final"
+            ],
+            "n_docs": 7,
+            "n_items": 12,
+            "note": "status=answered"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "7e7508b1-9135-409b-8b52-9a9f9d4b9c19",
+              "8e7b434e-573b-4699-ad03-10020ad8788b",
+              "feb3e940-a8e4-4c00-9cc0-995814783481",
+              "ceb9d03c-d94e-41f9-8bf3-5c725cce9394",
+              "14d0b0f4-9733-440b-af17-dc135f632c47",
+              "bfc60bdc-8a94-4101-ac54-a38c2eddc715",
+              "64f51d89-5ce3-4eda-9a39-0ec7668f06cb"
+            ],
+            "titles": [
+              "Melbourne Cricket Ground",
+              "1975 VFL Grand Final",
+              "1935 VFL Grand Final",
+              "1907 VFL Grand Final",
+              "1945 VFL Grand Final",
+              "1909 VFL Grand Final",
+              "1914 VFL Grand Final"
+            ],
+            "n_docs": 7,
+            "n_items": 12,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "7e7508b1-9135-409b-8b52-9a9f9d4b9c19"
+            ],
+            "titles": [],
+            "n_docs": 1,
+            "n_items": 1,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 8,
+          "n_items": 8,
+          "note": "seed_queries=1",
+          "titles": [
+            "1975 VFL Grand Final",
+            "1935 VFL Grand Final",
+            "Melbourne Cricket Ground",
+            "1907 VFL Grand Final",
+            "1945 VFL Grand Final",
+            "1909 VFL Grand Final",
+            "1914 VFL Grand Final",
+            "1996 AFL Grand Final"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 8,
+          "n_items": 8,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "1975 VFL Grand Final",
+            "1935 VFL Grand Final",
+            "Melbourne Cricket Ground",
+            "1907 VFL Grand Final",
+            "1945 VFL Grand Final",
+            "1909 VFL Grand Final",
+            "1914 VFL Grand Final",
+            "1996 AFL Grand Final"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 8,
+          "n_items": 22,
+          "note": "verified_raw",
+          "titles": [
+            "1975 VFL Grand Final",
+            "1935 VFL Grand Final",
+            "Melbourne Cricket Ground",
+            "1907 VFL Grand Final",
+            "1945 VFL Grand Final",
+            "1909 VFL Grand Final",
+            "1914 VFL Grand Final",
+            "1996 AFL Grand Final"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 7,
+          "n_items": 18,
+          "note": "min_support=0.55",
+          "titles": [
+            "1975 VFL Grand Final",
+            "1935 VFL Grand Final",
+            "Melbourne Cricket Ground",
+            "1907 VFL Grand Final",
+            "1945 VFL Grand Final",
+            "1909 VFL Grand Final",
+            "1914 VFL Grand Final"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 7,
+          "n_items": 12,
+          "note": "status=answered",
+          "titles": [
+            "Melbourne Cricket Ground",
+            "1975 VFL Grand Final",
+            "1935 VFL Grand Final",
+            "1907 VFL Grand Final",
+            "1945 VFL Grand Final",
+            "1909 VFL Grand Final",
+            "1914 VFL Grand Final"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 7,
+          "n_items": 12,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "Melbourne Cricket Ground",
+            "1975 VFL Grand Final",
+            "1935 VFL Grand Final",
+            "1907 VFL Grand Final",
+            "1945 VFL Grand Final",
+            "1909 VFL Grand Final",
+            "1914 VFL Grand Final"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.6666666666666666,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ac1a5055542991316484b86",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "thirty-nine",
+      "gold_doc_ids": [
+        "6b92d0b0-63da-464b-84e2-4c0ebd4690b8",
+        "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030"
+      ],
+      "gold_doc_titles": [
+        "James Davidson (Kentucky)",
+        "Harpe brothers"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Thirty‑nine people [S9]",
+      "citations": [
+        {
+          "doc_id": "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030",
+          "chunk_id": "c41ced70-e816-4c5a-9823-a664105b55a2",
+          "label": "S9"
+        }
+      ],
+      "conflicts": 0,
+      "latency_s": 11.947348300018348,
+      "llm_calls": 1,
+      "tokens": 1254,
+      "abstention_reason": null,
+      "trace_stages": [
+        "guard",
+        "plan",
+        "tools_seed_search",
+        "tools_llm_skipped",
+        "extract",
+        "contradictions",
+        "sufficiency",
+        "synthesize",
+        "verify",
+        "request"
+      ],
+      "retrieved_doc_ids": [
+        "6b92d0b0-63da-464b-84e2-4c0ebd4690b8",
+        "47370213-dd7c-442f-80a4-fcc5d51094f9",
+        "50412fef-be87-4ecf-82ea-5fcdf67ae972",
+        "c13e3c0e-a8da-4719-bffa-a61e22decf7a",
+        "fb4a2962-95e6-4fa6-80d3-d5b5a2a71b14",
+        "02b1cadf-3389-44c9-b7d1-5070011075c5",
+        "370b1b51-64b6-40da-ad10-385f91107bd7",
+        "c824f84e-6d75-4bef-bef5-d686611637a9",
+        "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030",
+        "e7c31203-5287-4360-8a3d-28b1e252b910",
+        "b172ddf4-2dc5-4862-a625-cbc8069a6ad2",
+        "88ce329a-a121-44c0-b5d6-dc7f6fbf57a5",
+        "bc813d39-48f1-4a72-bc60-f187cbf73a40",
+        "8a54ec62-3ff2-4589-9836-25c39dffcd98",
+        "fc5e60ee-d46c-43a2-964d-012a82827cc4"
+      ],
+      "synthesis_modes": [
+        "llm"
+      ],
+      "retention": {
+        "stages": [
+          {
+            "stage": "initial_retrieval",
+            "doc_ids": [
+              "6b92d0b0-63da-464b-84e2-4c0ebd4690b8",
+              "47370213-dd7c-442f-80a4-fcc5d51094f9",
+              "50412fef-be87-4ecf-82ea-5fcdf67ae972",
+              "c13e3c0e-a8da-4719-bffa-a61e22decf7a",
+              "fb4a2962-95e6-4fa6-80d3-d5b5a2a71b14",
+              "02b1cadf-3389-44c9-b7d1-5070011075c5",
+              "370b1b51-64b6-40da-ad10-385f91107bd7",
+              "c824f84e-6d75-4bef-bef5-d686611637a9",
+              "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030",
+              "e7c31203-5287-4360-8a3d-28b1e252b910",
+              "b172ddf4-2dc5-4862-a625-cbc8069a6ad2",
+              "88ce329a-a121-44c0-b5d6-dc7f6fbf57a5",
+              "bc813d39-48f1-4a72-bc60-f187cbf73a40",
+              "8a54ec62-3ff2-4589-9836-25c39dffcd98",
+              "fc5e60ee-d46c-43a2-964d-012a82827cc4"
+            ],
+            "titles": [
+              "James Davidson (Kentucky)",
+              "Dandie Dinmont Terrier",
+              "James Fitzjames Stephen",
+              "North Davidson High School",
+              "William James (railway promoter)",
+              "Falling (Trent Harmon song)",
+              "James Spedding",
+              "Marley Davidson",
+              "Harpe brothers",
+              "Robert Charles Browne",
+              "Patrick Kearney",
+              "Texarkana Moonlight Murders",
+              "Steve Wright (serial killer)",
+              "Charles Cullen",
+              "Paul Avery"
+            ],
+            "n_docs": 15,
+            "n_items": 16,
+            "note": "seed_queries=2"
+          },
+          {
+            "stage": "evidence_pool",
+            "doc_ids": [
+              "6b92d0b0-63da-464b-84e2-4c0ebd4690b8",
+              "47370213-dd7c-442f-80a4-fcc5d51094f9",
+              "50412fef-be87-4ecf-82ea-5fcdf67ae972",
+              "c13e3c0e-a8da-4719-bffa-a61e22decf7a",
+              "fb4a2962-95e6-4fa6-80d3-d5b5a2a71b14",
+              "02b1cadf-3389-44c9-b7d1-5070011075c5",
+              "370b1b51-64b6-40da-ad10-385f91107bd7",
+              "c824f84e-6d75-4bef-bef5-d686611637a9",
+              "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030",
+              "e7c31203-5287-4360-8a3d-28b1e252b910",
+              "b172ddf4-2dc5-4862-a625-cbc8069a6ad2",
+              "88ce329a-a121-44c0-b5d6-dc7f6fbf57a5",
+              "bc813d39-48f1-4a72-bc60-f187cbf73a40",
+              "8a54ec62-3ff2-4589-9836-25c39dffcd98",
+              "fc5e60ee-d46c-43a2-964d-012a82827cc4"
+            ],
+            "titles": [
+              "James Davidson (Kentucky)",
+              "Dandie Dinmont Terrier",
+              "James Fitzjames Stephen",
+              "North Davidson High School",
+              "William James (railway promoter)",
+              "Falling (Trent Harmon song)",
+              "James Spedding",
+              "Marley Davidson",
+              "Harpe brothers",
+              "Robert Charles Browne",
+              "Patrick Kearney",
+              "Texarkana Moonlight Murders",
+              "Steve Wright (serial killer)",
+              "Charles Cullen",
+              "Paul Avery"
+            ],
+            "n_docs": 15,
+            "n_items": 16,
+            "note": "post_seed_bridge_pool"
+          },
+          {
+            "stage": "claim_extraction",
+            "doc_ids": [
+              "6b92d0b0-63da-464b-84e2-4c0ebd4690b8",
+              "47370213-dd7c-442f-80a4-fcc5d51094f9",
+              "50412fef-be87-4ecf-82ea-5fcdf67ae972",
+              "c13e3c0e-a8da-4719-bffa-a61e22decf7a",
+              "fb4a2962-95e6-4fa6-80d3-d5b5a2a71b14",
+              "02b1cadf-3389-44c9-b7d1-5070011075c5",
+              "370b1b51-64b6-40da-ad10-385f91107bd7",
+              "c824f84e-6d75-4bef-bef5-d686611637a9",
+              "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030",
+              "e7c31203-5287-4360-8a3d-28b1e252b910",
+              "b172ddf4-2dc5-4862-a625-cbc8069a6ad2",
+              "88ce329a-a121-44c0-b5d6-dc7f6fbf57a5",
+              "bc813d39-48f1-4a72-bc60-f187cbf73a40",
+              "8a54ec62-3ff2-4589-9836-25c39dffcd98",
+              "fc5e60ee-d46c-43a2-964d-012a82827cc4"
+            ],
+            "titles": [
+              "James Davidson (Kentucky)",
+              "Dandie Dinmont Terrier",
+              "James Fitzjames Stephen",
+              "North Davidson High School",
+              "William James (railway promoter)",
+              "Falling (Trent Harmon song)",
+              "James Spedding",
+              "Marley Davidson",
+              "Harpe brothers",
+              "Robert Charles Browne",
+              "Patrick Kearney",
+              "Texarkana Moonlight Murders",
+              "Steve Wright (serial killer)",
+              "Charles Cullen",
+              "Paul Avery"
+            ],
+            "n_docs": 15,
+            "n_items": 37,
+            "note": "verified_raw"
+          },
+          {
+            "stage": "claim_filtering",
+            "doc_ids": [
+              "6b92d0b0-63da-464b-84e2-4c0ebd4690b8",
+              "47370213-dd7c-442f-80a4-fcc5d51094f9",
+              "c13e3c0e-a8da-4719-bffa-a61e22decf7a",
+              "c824f84e-6d75-4bef-bef5-d686611637a9",
+              "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030",
+              "88ce329a-a121-44c0-b5d6-dc7f6fbf57a5"
+            ],
+            "titles": [
+              "James Davidson (Kentucky)",
+              "Dandie Dinmont Terrier",
+              "North Davidson High School",
+              "Marley Davidson",
+              "Harpe brothers",
+              "Texarkana Moonlight Murders"
+            ],
+            "n_docs": 6,
+            "n_items": 10,
+            "note": "min_support=0.55"
+          },
+          {
+            "stage": "sufficiency_assessment",
+            "doc_ids": [
+              "6b92d0b0-63da-464b-84e2-4c0ebd4690b8",
+              "c13e3c0e-a8da-4719-bffa-a61e22decf7a",
+              "c824f84e-6d75-4bef-bef5-d686611637a9",
+              "47370213-dd7c-442f-80a4-fcc5d51094f9",
+              "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030",
+              "88ce329a-a121-44c0-b5d6-dc7f6fbf57a5"
+            ],
+            "titles": [
+              "James Davidson (Kentucky)",
+              "North Davidson High School",
+              "Marley Davidson",
+              "Dandie Dinmont Terrier",
+              "Harpe brothers",
+              "Texarkana Moonlight Murders"
+            ],
+            "n_docs": 6,
+            "n_items": 10,
+            "note": "status=answered"
+          },
+          {
+            "stage": "final_selected_evidence",
+            "doc_ids": [
+              "6b92d0b0-63da-464b-84e2-4c0ebd4690b8",
+              "c13e3c0e-a8da-4719-bffa-a61e22decf7a",
+              "c824f84e-6d75-4bef-bef5-d686611637a9",
+              "47370213-dd7c-442f-80a4-fcc5d51094f9",
+              "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030",
+              "88ce329a-a121-44c0-b5d6-dc7f6fbf57a5"
+            ],
+            "titles": [
+              "James Davidson (Kentucky)",
+              "North Davidson High School",
+              "Marley Davidson",
+              "Dandie Dinmont Terrier",
+              "Harpe brothers",
+              "Texarkana Moonlight Murders"
+            ],
+            "n_docs": 6,
+            "n_items": 10,
+            "note": "claims_entering_synthesis"
+          },
+          {
+            "stage": "actual_citations",
+            "doc_ids": [
+              "8c08e3e9-2dc1-4a96-9e24-5ee8c7003030"
+            ],
+            "titles": [],
+            "n_docs": 1,
+            "n_items": 1,
+            "note": "ok=True; removed=[]"
+          }
+        ]
+      },
+      "retention_gold_coverage": [
+        {
+          "stage": "initial_retrieval",
+          "n_docs": 15,
+          "n_items": 16,
+          "note": "seed_queries=2",
+          "titles": [
+            "James Davidson (Kentucky)",
+            "Dandie Dinmont Terrier",
+            "James Fitzjames Stephen",
+            "North Davidson High School",
+            "William James (railway promoter)",
+            "Falling (Trent Harmon song)",
+            "James Spedding",
+            "Marley Davidson",
+            "Harpe brothers",
+            "Robert Charles Browne",
+            "Patrick Kearney",
+            "Texarkana Moonlight Murders",
+            "Steve Wright (serial killer)",
+            "Charles Cullen",
+            "Paul Avery"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "evidence_pool",
+          "n_docs": 15,
+          "n_items": 16,
+          "note": "post_seed_bridge_pool",
+          "titles": [
+            "James Davidson (Kentucky)",
+            "Dandie Dinmont Terrier",
+            "James Fitzjames Stephen",
+            "North Davidson High School",
+            "William James (railway promoter)",
+            "Falling (Trent Harmon song)",
+            "James Spedding",
+            "Marley Davidson",
+            "Harpe brothers",
+            "Robert Charles Browne",
+            "Patrick Kearney",
+            "Texarkana Moonlight Murders",
+            "Steve Wright (serial killer)",
+            "Charles Cullen",
+            "Paul Avery"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_extraction",
+          "n_docs": 15,
+          "n_items": 37,
+          "note": "verified_raw",
+          "titles": [
+            "James Davidson (Kentucky)",
+            "Dandie Dinmont Terrier",
+            "James Fitzjames Stephen",
+            "North Davidson High School",
+            "William James (railway promoter)",
+            "Falling (Trent Harmon song)",
+            "James Spedding",
+            "Marley Davidson",
+            "Harpe brothers",
+            "Robert Charles Browne",
+            "Patrick Kearney",
+            "Texarkana Moonlight Murders",
+            "Steve Wright (serial killer)",
+            "Charles Cullen",
+            "Paul Avery"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "claim_filtering",
+          "n_docs": 6,
+          "n_items": 10,
+          "note": "min_support=0.55",
+          "titles": [
+            "James Davidson (Kentucky)",
+            "Dandie Dinmont Terrier",
+            "North Davidson High School",
+            "Marley Davidson",
+            "Harpe brothers",
+            "Texarkana Moonlight Murders"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "sufficiency_assessment",
+          "n_docs": 6,
+          "n_items": 10,
+          "note": "status=answered",
+          "titles": [
+            "James Davidson (Kentucky)",
+            "North Davidson High School",
+            "Marley Davidson",
+            "Dandie Dinmont Terrier",
+            "Harpe brothers",
+            "Texarkana Moonlight Murders"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "final_selected_evidence",
+          "n_docs": 6,
+          "n_items": 10,
+          "note": "claims_entering_synthesis",
+          "titles": [
+            "James Davidson (Kentucky)",
+            "North Davidson High School",
+            "Marley Davidson",
+            "Dandie Dinmont Terrier",
+            "Harpe brothers",
+            "Texarkana Moonlight Murders"
+          ],
+          "n_gold": 2,
+          "n_present": 2,
+          "recall": 1.0,
+          "all_present": 1.0
+        },
+        {
+          "stage": "actual_citations",
+          "n_docs": 1,
+          "n_items": 1,
+          "note": "ok=True; removed=[]",
+          "titles": [],
+          "n_gold": 2,
+          "n_present": 1,
+          "recall": 0.5,
+          "all_present": 0.0
+        }
+      ],
+      "reader_mode": "legacy_investigation",
+      "verify_ok": true,
+      "answer_supported": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    }
+  ]
+}

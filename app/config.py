@@ -110,6 +110,17 @@ class Settings(BaseSettings):
             "provenance (no gold labels; no passage text in ordinary logs)."
         ),
     )
+    experimental_passage_reader: bool = Field(
+        default=False,
+        alias="EXPERIMENTAL_PASSAGE_READER",
+        description=(
+            "Phase B experimental flag. When true, after seed/bridge retrieval "
+            "use the quote-verified passage reader instead of heuristic "
+            "claim filtering + synthesis. Production default remains false."
+        ),
+    )
+    reader_max_passages: int = Field(default=10, alias="READER_MAX_PASSAGES")
+    reader_max_chars: int = Field(default=12_000, alias="READER_MAX_CHARS")
     git_commit: str | None = Field(default=None, alias="GIT_COMMIT")
 
     admin_token: SecretStr | None = Field(default=None, alias="ADMIN_TOKEN")

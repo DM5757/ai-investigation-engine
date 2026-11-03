@@ -1,0 +1,140 @@
+{
+  "n": 5,
+  "questions": [
+    {
+      "id": "phaseb_robust_unans_ablate_jwt",
+      "question": "What JWT TTL misconfiguration caused the March payment outage?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_titles": [
+        "incident_march"
+      ],
+      "gold_doc_paths": [
+        "data/synthetic/incident_march.md"
+      ],
+      "gold_external_keys": [],
+      "question_type": "unanswerable",
+      "expected_status": "insufficient",
+      "origin": "synthetic_robustness",
+      "ablate_gold_at_query": true,
+      "requires_all_gold_docs": false,
+      "split": "dev",
+      "role": "robustness_dev",
+      "frozen": false,
+      "provenance": {
+        "source": "phase_b_robustness",
+        "kind": "unanswerable_ablated",
+        "note": "Gold docs exist in corpus but MUST be excluded from query evidence.",
+        "truth_seed": 42
+      },
+      "index": 450
+    },
+    {
+      "id": "phaseb_robust_control_related_nonconflict",
+      "question": "Which services are mentioned in connection with the March payment disruption, without assuming they contradict each other?",
+      "gold_answer": "payment and auth-related services",
+      "gold_doc_titles": [
+        "incident_march",
+        "status_update",
+        "change_log"
+      ],
+      "gold_doc_paths": [
+        "data/synthetic/incident_march.md",
+        "data/synthetic/status_update.txt",
+        "data/synthetic/change_log.html"
+      ],
+      "gold_external_keys": [],
+      "question_type": "multi_doc",
+      "expected_status": "answered",
+      "origin": "synthetic_robustness",
+      "negative_control": true,
+      "requires_all_gold_docs": false,
+      "split": "dev",
+      "role": "robustness_dev",
+      "frozen": false,
+      "provenance": {
+        "source": "phase_b_robustness",
+        "kind": "similar_noncontradiction_control"
+      },
+      "index": 451
+    },
+    {
+      "id": "phaseb_robust_contra_query_overlay",
+      "question": "What date did Project Nebula launch according to the provided evidence?",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_titles": [],
+      "gold_external_keys": [],
+      "question_type": "contradiction",
+      "expected_status": "conflicting",
+      "origin": "synthetic_robustness",
+      "query_only_passages": [
+        {
+          "title": "Nebula Brief A",
+          "text": "Project Nebula launched on 12 January 2021 after board approval."
+        },
+        {
+          "title": "Nebula Brief B",
+          "text": "Project Nebula launched on 12 March 2021 following a delayed review."
+        }
+      ],
+      "requires_all_gold_docs": false,
+      "split": "dev",
+      "role": "robustness_dev",
+      "frozen": false,
+      "provenance": {
+        "source": "phase_b_robustness",
+        "kind": "contradiction_query_overlay",
+        "note": "Passages exist only in the query context; not indexed."
+      },
+      "index": 452,
+      "gold_doc_paths": []
+    },
+    {
+      "id": "phaseb_robust_unans_ablate_airport_style",
+      "question": "What was the peak concurrent session count on AuthGateway during the outage?",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_titles": [],
+      "gold_doc_paths": [],
+      "gold_external_keys": [],
+      "question_type": "unanswerable",
+      "expected_status": "insufficient",
+      "origin": "synthetic_robustness",
+      "ablate_gold_at_query": true,
+      "requires_all_gold_docs": false,
+      "split": "dev",
+      "role": "robustness_dev",
+      "frozen": false,
+      "provenance": {
+        "source": "phase_b_robustness",
+        "kind": "unanswerable_absent_metric"
+      },
+      "index": 453
+    },
+    {
+      "id": "phaseb_robust_contra_deploy",
+      "question": "When was auth-gateway deployed on 2024-03-12 according to the change log versus the incident report?",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_titles": [
+        "change_log",
+        "incident_march"
+      ],
+      "gold_doc_paths": [
+        "data/synthetic/change_log.html",
+        "data/synthetic/incident_march.md"
+      ],
+      "gold_external_keys": [],
+      "question_type": "contradiction",
+      "expected_status": "conflicting",
+      "origin": "synthetic_robustness",
+      "requires_all_gold_docs": false,
+      "split": "dev",
+      "role": "robustness_dev",
+      "frozen": false,
+      "provenance": {
+        "source": "phase_b_robustness",
+        "kind": "contradiction_planted",
+        "grounding": "08:10_vs_14:00"
+      },
+      "index": 454
+    }
+  ]
+}

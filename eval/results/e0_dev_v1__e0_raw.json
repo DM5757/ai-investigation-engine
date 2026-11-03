@@ -1,0 +1,3671 @@
+{
+  "created_at": "2026-11-03T04:03:22.095533+00:00",
+  "run_id": "e0_dev_v1",
+  "config_id": "e0_raw",
+  "split": "dev",
+  "retrieval_mode": "hybrid_rrf",
+  "k": 10,
+  "corpus": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "model_settings": {
+    "groq_model": "openai/gpt-oss-120b",
+    "gemini_model": "gemini-3.5-flash-lite",
+    "temperature": 0.0,
+    "prompt_id": "reader_v1"
+  },
+  "note": "Development split only. Sealed test not evaluated. Scoring uses citation-stripped EM/F1.",
+  "summary": {
+    "n_attempted": 45,
+    "n_scored": 45,
+    "n_provider_failures": 0,
+    "token_f1": 0.47675381263616556,
+    "exact_match": 0.37777777777777777,
+    "token_f1_ci": {
+      "mean": 0.47675381263616556,
+      "low": 0.3504575163398693,
+      "high": 0.6096296296296296,
+      "n": 45
+    },
+    "exact_match_ci": {
+      "mean": 0.37777777777777777,
+      "low": 0.24444444444444444,
+      "high": 0.5111111111111111,
+      "n": 45
+    },
+    "answer_supported_rate": 0.6222222222222222,
+    "citation_f1": 0.7314814814814814,
+    "multi_hop_all_gold_cited": 0.2777777777777778,
+    "retrieval_all_gold_at_k": 0.7906976744186046,
+    "correct_abstention_rate": 1.0,
+    "false_answer_on_unanswerable": 0.0,
+    "contradiction_detection_rate": 0.0,
+    "mean_latency_s": 10.763778651107309,
+    "latency_p50_s": 11.176242400077172,
+    "latency_p95_s": 15.793819700018503,
+    "mean_llm_calls": 1.0,
+    "mean_tokens": 1856.8222222222223,
+    "status_counts": {
+      "answered": 28,
+      "insufficient": 17
+    }
+  },
+  "results": [
+    {
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_ids": [
+        "4e558d72-c1c3-4544-9609-16ec13e097a3",
+        "2bed5f52-4939-4b37-919c-d05855e5e86c"
+      ],
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "University of Texas Longhorns",
+      "citations": [
+        {
+          "doc_id": "4e558d72-c1c3-4544-9609-16ec13e097a3",
+          "chunk_id": "dfe61c0f-cadc-4e8c-abd1-56826b08e02e",
+          "label": "S1",
+          "quote": "former American football quarterback for the University of Texas Longhorns football team",
+          "title": "Case McCoy"
+        },
+        {
+          "doc_id": "2bed5f52-4939-4b37-919c-d05855e5e86c",
+          "chunk_id": "7fac965a-22b0-4756-bc73-4bf7ae5332cb",
+          "label": "S2",
+          "quote": "after playing college football for the University of Texas",
+          "title": "Colt McCoy"
+        }
+      ],
+      "latency_s": 8.669639399973676,
+      "llm_calls": 1,
+      "tokens": 1968,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "4e558d72-c1c3-4544-9609-16ec13e097a3",
+        "2bed5f52-4939-4b37-919c-d05855e5e86c",
+        "fb044e1b-1ebd-40ac-bdbe-66cbb3892ade",
+        "c38d78db-2d80-4278-9e53-291aff173108",
+        "489698e8-3748-4633-be20-4c516d51f22e",
+        "8ea03308-63b7-462e-9fed-da09652bcedd",
+        "a7c5f901-9806-4f68-85c7-33ef67c011d8",
+        "c7b8afa2-3c96-4994-88af-1ea2dcf0b592",
+        "e331580a-35c3-4113-bee0-dfafd2138157",
+        "758cc1cf-312c-48f4-805d-1f40a8832d64"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Case McCoy",
+        "Colt McCoy",
+        "David Neill",
+        "Sherman Plunkett",
+        "North Carolina Tar Heels",
+        "San Angelo Sheep Herders",
+        "Texas Christian University",
+        "Walter Bernard",
+        "Adrian Peterson",
+        "Dallas Baptist Patriots"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Brent Burns",
+      "gold_doc_ids": [
+        "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+        "362a4fce-7cee-41de-836c-759b0e8631e6"
+      ],
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Brent Burns",
+      "citations": [
+        {
+          "doc_id": "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+          "chunk_id": "2a7958b4-288c-49a2-9da7-9897ef60bed0",
+          "label": "S1",
+          "quote": "Canadian Brent Burns was named top defenceman",
+          "title": "2008 IIHF World Championship rosters"
+        }
+      ],
+      "latency_s": 15.554124400019646,
+      "llm_calls": 1,
+      "tokens": 2320,
+      "verify_ok": false,
+      "answer_supported": true,
+      "unsupported_reasons": [
+        "quote_mismatch:S4"
+      ],
+      "invalid_citation_rate": 0.5,
+      "retrieved_doc_ids": [
+        "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+        "3ab7a349-a780-4fcf-8d00-8311eadebda2",
+        "7d602dbf-7f69-4f83-8b40-85da7aa26239",
+        "362a4fce-7cee-41de-836c-759b0e8631e6",
+        "a029425d-6892-4942-b1b3-16cba721fbd4",
+        "e912e5fa-40d0-4be2-a022-70720fb9bd53",
+        "15ffd6c5-d340-4094-88b8-f021189f4a64",
+        "ff72d035-42ea-4566-ad65-bde5bd47217f",
+        "c4aa9717-09f3-48df-862f-9a393aa70fe4",
+        "c3fb6f3a-1183-4d75-8f8b-d60376060f62"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "2008 IIHF World Championship rosters",
+        "Keith Ballard",
+        "Niklas Sundström",
+        "Brent Burns",
+        "Caroline Ouellette",
+        "2013 World Junior Ice Hockey Championships",
+        "Andrew Yogan",
+        "2016 World Junior Ice Hockey Championships",
+        "2008–09 Chicago Blackhawks season",
+        "Zdeno Chára"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_ids": [
+        "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+        "7ab5b521-8c0c-4a03-84d2-2884756605c0"
+      ],
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+          "chunk_id": "5e35bc11-8f4d-41b4-ac15-530d3364183e",
+          "label": "S2",
+          "quote": "He is known for his roles in the \"Ocean's Eleven\" trilogy and the television series \"Hung\" and IZombie.",
+          "title": "Eddie Jemison"
+        }
+      ],
+      "latency_s": 11.282906000036746,
+      "llm_calls": 1,
+      "tokens": 1893,
+      "verify_ok": true,
+      "answer_supported": false,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "353f56df-f2ef-4a87-bb3c-9f69a8efa693",
+        "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+        "4ac5917f-f22b-4369-82e9-3d058a4e3dcc",
+        "ff6fddf1-4264-4b7b-9679-3358b83e98b6",
+        "8494ffa2-2296-4425-98e7-9edf8a1b4666",
+        "2014db51-7d28-48c6-8acf-7f70588f25aa",
+        "e7c34da3-4802-4e45-a67f-8ac317d35ca6",
+        "5fea44d6-574a-4541-8133-29f7af967194",
+        "eda09ec4-b50e-417d-a2eb-16de352233ad",
+        "14ecb07e-0af9-4fb1-8434-0875c404f2cf"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "List of Chip 'n Dale Rescue Rangers episodes",
+        "Eddie Jemison",
+        "The Mickey Rooney Show",
+        "Jem (TV series)",
+        "Eddie Dew",
+        "Buck Houghton",
+        "Charmed",
+        "Taron Egerton",
+        "Dream School",
+        "The Venture Bros."
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_ids": [
+        "3428a271-a243-4032-ae07-47df99fdaae6",
+        "0adc14d0-8f14-441a-b731-270a317e140d"
+      ],
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Leon Uris",
+      "citations": [
+        {
+          "doc_id": "3428a271-a243-4032-ae07-47df99fdaae6",
+          "chunk_id": "2f98d05f-f30a-4b16-9cc3-d75ddbdbb367",
+          "label": "S1",
+          "quote": "biographies of Leonard Cohen and Leon Uris",
+          "title": "Ira Nadel"
+        }
+      ],
+      "latency_s": 11.176242400077172,
+      "llm_calls": 1,
+      "tokens": 1915,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "3428a271-a243-4032-ae07-47df99fdaae6",
+        "af5c0b81-313b-41d6-a560-d9246bab7c8c",
+        "92126d56-3787-4d54-b626-9173ac6c7885",
+        "3103f39f-c222-4bee-abbf-10328acea1f7",
+        "69470d61-c13e-4389-82ef-732ac23409c6",
+        "db648e23-23c8-4601-8b7e-c357bd2d47b1",
+        "92ffbbf1-635e-4f4b-8e0d-a993b0ba44d4",
+        "56c7fe76-92e5-4be7-b460-48ecffaea6e4",
+        "b0b0b0ce-8d0f-432d-96ee-ecfe1e82bfe1",
+        "92535855-8b52-4e57-a128-4ae6d8bb31a0"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Ira Nadel",
+        "William York Tindall",
+        "James Joyce",
+        "Samuel R. Delany",
+        "Søren Kierkegaard",
+        "Annalyn Swan",
+        "James Joyce (disambiguation)",
+        "A Skeleton Key to Finnegans Wake",
+        "Noël Riley Fitch",
+        "Ford Madox Ford"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Buddy",
+      "gold_doc_ids": [
+        "e396e67f-ded4-44f0-ba41-6282d404e898",
+        "919290c3-fed0-44a8-b55a-07bf5d513c4e"
+      ],
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Buddy",
+      "citations": [
+        {
+          "doc_id": "e396e67f-ded4-44f0-ba41-6282d404e898",
+          "chunk_id": "15be1666-9292-4d58-a83c-5564a193772a",
+          "label": "S1",
+          "quote": "Buddy the dog",
+          "title": "Dear Socks, Dear Buddy"
+        }
+      ],
+      "latency_s": 12.203603099915199,
+      "llm_calls": 1,
+      "tokens": 1676,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "e396e67f-ded4-44f0-ba41-6282d404e898",
+        "f61eed34-328c-4c55-b860-aa2cf9ffe967",
+        "5ecab45f-48eb-4da1-ab34-b508780b5171",
+        "919290c3-fed0-44a8-b55a-07bf5d513c4e",
+        "258adce6-9fad-4dc8-ab98-b21316c32c91",
+        "9c5dd4f3-870b-4c74-810c-de6d92a96028",
+        "15d7eda3-e51a-46f0-a15a-742a1728c27a",
+        "51a22cbb-983f-4868-99fd-6b9d602cc794",
+        "f28202e1-7ba8-49bd-837f-0c5c37d57a41",
+        "e1bbed12-49de-4366-ace2-e735b51403c0"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Dear Socks, Dear Buddy",
+        "Hillary Clinton",
+        "Hugh Rodham (born 1950)",
+        "Buddy (dog)",
+        "The White House Doctor",
+        "Between Hope and History",
+        "First Lady of the United States",
+        "Bill Martin Jr.",
+        "William J. Crowe",
+        "List of First Ladies of the United States"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Logan International Airport",
+      "gold_doc_ids": [
+        "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+        "b5586f6b-5758-45bf-9904-e45d12505e9d"
+      ],
+      "gold_doc_titles": [
+        "American Airlines Shuttle",
+        "Logan International Airport"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Logan International Airport",
+      "citations": [
+        {
+          "doc_id": "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+          "chunk_id": "6b42f40e-6dd0-4380-9ea4-76694cb8da70",
+          "label": "S1",
+          "quote": "It serves Logan International Airport in Boston, LaGuardia Airport in New York City, and Ronald Reagan Washington National Airport in Washington, D.C.",
+          "title": "American Airlines Shuttle"
+        },
+        {
+          "doc_id": "b5586f6b-5758-45bf-9904-e45d12505e9d",
+          "chunk_id": "d998fb50-ce21-44f7-bd2e-8ea339b369a9",
+          "label": "S2",
+          "quote": "It is the largest airport in the New England region and 17th-busiest airport in the United States, with 33.5 million total passengers in 2015.",
+          "title": "Logan International Airport"
+        }
+      ],
+      "latency_s": 12.562959100003354,
+      "llm_calls": 1,
+      "tokens": 2334,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+        "b5586f6b-5758-45bf-9904-e45d12505e9d",
+        "2b0a4069-6082-4ed8-a998-2486be0db429",
+        "764dc554-d613-4b11-9e37-faaae7f93b70",
+        "d2302129-4518-46d3-ac9d-f811e28b865b",
+        "891a39f1-c8a1-4cd0-81ad-34b18f54bb38",
+        "9f1c60bf-9035-40ef-b336-23d8e0acf995",
+        "34e84ef4-4b34-4d42-a8bf-e819f278d177",
+        "d4c0192c-3a8b-4dda-aae5-0285e81350d2",
+        "f23456fd-48c3-49af-a126-2c7170a2df17"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "American Airlines Shuttle",
+        "Logan International Airport",
+        "Air Wisconsin",
+        "Philadelphia International Airport",
+        "Greater Rochester International Airport",
+        "Athens International Airport",
+        "Eastern Air Lines Shuttle",
+        "Charlotte Douglas International Airport",
+        "PenAir",
+        "Provincetown-Boston Airlines"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "the Troubles",
+      "gold_doc_ids": [
+        "57b45e66-ddfe-4891-b527-dfd0edd23f8b",
+        "1308823a-7e5f-4e5a-9f75-df33a1d05f02"
+      ],
+      "gold_doc_titles": [
+        "Mark Fulton (loyalist)",
+        "Billy Wright (loyalist)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "the Troubles",
+      "citations": [
+        {
+          "doc_id": "1308823a-7e5f-4e5a-9f75-df33a1d05f02",
+          "chunk_id": "1fd2de5f-1d52-4ffe-a23b-e85f12d0ec18",
+          "label": "S3",
+          "quote": "the ethno-nationalist conflict in Northern Ireland known as the Troubles",
+          "title": "Billy Wright (loyalist)"
+        }
+      ],
+      "latency_s": 13.411805899930187,
+      "llm_calls": 1,
+      "tokens": 2021,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "57b45e66-ddfe-4891-b527-dfd0edd23f8b",
+        "b985753a-e975-4419-805d-3689badef7b0",
+        "1308823a-7e5f-4e5a-9f75-df33a1d05f02",
+        "c0f431f5-6c85-4c95-8263-4bd2cbebf540",
+        "41945322-a853-40e7-996c-26df7d0bd36f",
+        "986300a5-e19d-4cb4-a9d2-a2794381ca7d",
+        "834f8e81-d446-4d9d-b720-4dd56652541d",
+        "09f03eb0-c466-43c4-ae12-5b04ad0be9df",
+        "42035714-3dfb-4f5c-a211-e6e3e6281ddf",
+        "93347707-a1da-4522-b398-fca4d71c13e4"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Mark Fulton (loyalist)",
+        "William James Fulton",
+        "Billy Wright (loyalist)",
+        "Loyalist Volunteer Force",
+        "Richard Jameson (loyalist)",
+        "Noel Doherty",
+        "Andrew Robb and David McIlwaine killings",
+        "Miami Showband killings",
+        "Wesley Somerville",
+        "Robert McConnell (loyalist)"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Lee County, Mississippi",
+      "gold_doc_ids": [
+        "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+        "97118e55-ca2a-4846-a6b7-33a1c0f838b6"
+      ],
+      "gold_doc_titles": [
+        "Trace State Park",
+        "Tupelo, Mississippi"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 11.789179199957289,
+      "llm_calls": 1,
+      "tokens": 1927,
+      "verify_ok": true,
+      "answer_supported": false,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+        "23649e2b-a11c-4cb7-8f29-5ff95f8af4a6",
+        "86a7f861-757c-46a1-931c-3cfaf7846497",
+        "6f1a3ce4-9059-49a3-b74d-4527934f484e",
+        "5251a53b-f96f-4487-934a-bca2b99c3360",
+        "455e935e-413d-46a9-bbb1-27a553b75d4e",
+        "e4f2ce93-e38f-446d-9174-cc2e2f8db081",
+        "3efc0b6e-2657-4175-ba7c-f5f61d2f8024",
+        "aeb50645-9890-427c-8ac6-9ebfa136ee81",
+        "3a6ec43b-3de1-4583-89b5-926b04b1c703"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Trace State Park",
+        "Park City, Kansas",
+        "East Fork State Park",
+        "Marshall, Ohio",
+        "Granville, Ohio",
+        "Natchez Trace State Park",
+        "Tennessee",
+        "Michael A. Jackson (politician)",
+        "Morrison, Illinois",
+        "Galesburg, Illinois"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5adf85e05542993344016cba",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Championship",
+      "gold_doc_ids": [
+        "af63784b-7add-431b-b99c-b1c4a1441e94",
+        "f9cf1966-df33-4ae0-b7d0-8480f210e118"
+      ],
+      "gold_doc_titles": [
+        "John Moncur",
+        "Ipswich Town F.C."
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 12.306225800071843,
+      "llm_calls": 1,
+      "tokens": 1884,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "quote_mismatch:S2"
+      ],
+      "invalid_citation_rate": 1.0,
+      "retrieved_doc_ids": [
+        "e73f473d-5d45-44ef-97f4-3e627c15d881",
+        "af63784b-7add-431b-b99c-b1c4a1441e94",
+        "ca0ca09e-6ba4-4547-a7d0-f9549cd58c02",
+        "f9cf1966-df33-4ae0-b7d0-8480f210e118",
+        "1b7ffdda-1a07-4441-b432-0c210c5132b3",
+        "b76fbf31-b255-495e-9e00-6ac4f16d58e8",
+        "db8e3be2-bf5e-4ffc-a6f4-3bfca2c9a1ec",
+        "f4e9c85d-48af-4b6a-8f28-569ec1704e87",
+        "2c4cc8c8-3165-4187-a97b-79780a0e4a96",
+        "6c8105dd-26f3-4531-b904-b2e421ecae91"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "History of Ipswich Town F.C.",
+        "John Moncur",
+        "2000–01 Ipswich Town F.C. season",
+        "Ipswich Town F.C.",
+        "2011–12 Ipswich Town F.C. season",
+        "2006–07 Ipswich Town F.C. season",
+        "St Kilda Football Club",
+        "Luton Town F.C. league record by opponent",
+        "Romeo Zondervan",
+        "List of Arsenal F.C. records and statistics"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 1.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ab443415542991751b4d711",
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "no",
+      "gold_doc_ids": [
+        "0a9aa3ca-9a7f-4768-968d-91d3079f7a70",
+        "0877e976-f392-4259-b182-fa690ae9bc33"
+      ],
+      "gold_doc_titles": [
+        "Tangled",
+        "The Princess and the Frog"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 12.830242299940437,
+      "llm_calls": 1,
+      "tokens": 2243,
+      "verify_ok": true,
+      "answer_supported": false,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "0a9aa3ca-9a7f-4768-968d-91d3079f7a70",
+        "8561a82a-cdc5-4d29-9350-5c6241fd965c",
+        "0877e976-f392-4259-b182-fa690ae9bc33",
+        "70008cf1-e6e1-4b0b-abc7-d007915ae9ba",
+        "371e0563-cbe0-4e7e-b295-ae47b52055f1",
+        "c0be1c49-daa4-4895-9993-ab31edadcb4b",
+        "05aa7ace-c055-4566-b582-b806fe84e7bc",
+        "be079f88-1882-440b-be5a-a9ad4f521fca",
+        "4b384b03-c1f4-4983-9d50-45310a6df721",
+        "c9096f2c-7a79-404f-90b8-477ab74dd646"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Tangled",
+        "Tangled Ever After",
+        "The Princess and the Frog",
+        "Frozen (2013 film)",
+        "Tangled: The Series",
+        "Moana (2016 film)",
+        "Olaf's Frozen Adventure",
+        "Down in New Orleans (song)",
+        "Ralph Breaks the Internet: Wreck-It Ralph 2",
+        "Tangled: The Video Game"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5abb1fd95542996cc5e49fb6",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Edinburgh",
+      "gold_doc_ids": [
+        "8bb41e2d-fdc8-4cc1-bd06-f9aed1a9c103",
+        "4b612dab-612c-47e4-aa98-3dcf1554ad69"
+      ],
+      "gold_doc_titles": [
+        "Mogens Palle",
+        "Ken Buchanan"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "8bb41e2d-fdc8-4cc1-bd06-f9aed1a9c103",
+          "chunk_id": "a25d5e51-91e9-45fc-bd3d-9acf0aa2b367",
+          "label": "S1",
+          "quote": "He also brought to Denmark boxing stars like Carlos Monzon, Larry Holmes, Emile Griffith, Ken Buchanan and John Conteh.",
+          "title": "Mogens Palle"
+        }
+      ],
+      "latency_s": 11.562925299978815,
+      "llm_calls": 1,
+      "tokens": 1732,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "quote_mismatch:S3",
+        "answer_not_supported_by_quotes"
+      ],
+      "invalid_citation_rate": 0.5,
+      "retrieved_doc_ids": [
+        "8bb41e2d-fdc8-4cc1-bd06-f9aed1a9c103",
+        "7fc05dd1-2a69-483b-89dc-60c179e3cbde",
+        "4b612dab-612c-47e4-aa98-3dcf1554ad69",
+        "c41c103f-2249-4906-8c7d-0d10173eb333",
+        "e5c411c1-2630-4ef4-a74c-dcc6b83b6ec3",
+        "ce0cfaa0-9479-4c59-ac84-1344eec5afe5",
+        "406c12c5-a5b9-44a2-a093-c2d3a4fadd01",
+        "885af2c9-ceae-49d0-ad89-b6d3a47056a4",
+        "6edbb5de-bf09-4b34-bda0-b5905c1d2a1f",
+        "91f339f7-2293-4aa0-a642-540a0d2e252b"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Mogens Palle",
+        "Shane Mosley",
+        "Ken Buchanan",
+        "Caroline Wozniacki",
+        "Solly Seeman",
+        "Michael Ayers (boxer)",
+        "Sweden",
+        "Vítor Ribeiro",
+        "Josh Thomson",
+        "Justine Palframan"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5abdb10f55429965af743dc9",
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Eric Bloom",
+      "gold_doc_ids": [
+        "5e415b62-702f-406b-b249-202bf3e7248b",
+        "15fe4116-34bf-4e24-94b8-024a6b300e1d"
+      ],
+      "gold_doc_titles": [
+        "Eric Bloom",
+        "Otep Shamaya"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Eric Bloom",
+      "citations": [
+        {
+          "doc_id": "4d495086-fa0f-4a58-b54e-842fd2a9cd69",
+          "chunk_id": "4432a85a-d2a9-4643-abec-2e487123a5d4",
+          "label": "S4",
+          "quote": "The lyrics were written by Eric Bloom",
+          "title": "Black Blade (song)"
+        }
+      ],
+      "latency_s": 9.270993100013584,
+      "llm_calls": 1,
+      "tokens": 1644,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "15fe4116-34bf-4e24-94b8-024a6b300e1d",
+        "5e415b62-702f-406b-b249-202bf3e7248b",
+        "e0250de7-6980-4ed0-a982-9d3a6d011515",
+        "4d495086-fa0f-4a58-b54e-842fd2a9cd69",
+        "96fe5e65-9f32-4da7-a7a5-dba4b1ce50aa",
+        "ff7c508a-8895-47c2-84aa-c119d070a04a",
+        "96d58ab2-ff0b-49b3-aa9a-b9a739b769c7",
+        "640c1dcd-33bc-40ad-8453-b24c47054d06",
+        "a8f00026-11e5-4721-b908-8ae05c3da631",
+        "e591e1c0-8fab-4fd7-a96f-46be3c10e22d"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Otep Shamaya",
+        "Eric Bloom",
+        "Andrew Lippa",
+        "Black Blade (song)",
+        "Isabel Bloom",
+        "Humood AlKhudher",
+        "Sentinel Management Group",
+        "Mike Shinoda",
+        "Eric Aghimien",
+        "Arun Thapa"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a8f155e554299458435d54c",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "21 years and 154 days",
+      "gold_doc_ids": [
+        "28e36447-e944-4957-a050-cd863b0631b0",
+        "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7"
+      ],
+      "gold_doc_titles": [
+        "Kellock–Taschereau Commission",
+        "William Lyon Mackenzie King"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "21 years and 154 days",
+      "citations": [
+        {
+          "doc_id": "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7",
+          "chunk_id": "2dbc2ea4-d3fa-4791-842e-852e64e344b9",
+          "label": "S9",
+          "quote": "A Liberal with 21 years and 154 days in office",
+          "title": "William Lyon Mackenzie King"
+        },
+        {
+          "doc_id": "28e36447-e944-4957-a050-cd863b0631b0",
+          "chunk_id": "37f8d806-530a-4862-bff3-2dd66c9f7d63",
+          "label": "S1",
+          "quote": "appointed by Prime Minister William Lyon Mackenzie King",
+          "title": "Kellock–Taschereau Commission"
+        }
+      ],
+      "latency_s": 15.793819700018503,
+      "llm_calls": 1,
+      "tokens": 2434,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "28e36447-e944-4957-a050-cd863b0631b0",
+        "76c0a7f2-0ede-456e-87d6-8c600a7ecbd3",
+        "6ea80df9-7fb9-4400-a127-bfc5f41491b3",
+        "1dff0044-6f60-463a-9812-df44e1ee196c",
+        "a3855dc2-f48b-41cf-8679-12b34d088d7e",
+        "ee13515e-dddf-40fe-aeee-c7ef56a2f7a2",
+        "0f289e3e-880e-49ad-b8e7-c2a8862b3175",
+        "68f99e45-c55a-45fc-81aa-f7d949e207c9",
+        "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7",
+        "4124a6b0-e03a-49d5-8661-097a7e5d9596"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Kellock–Taschereau Commission",
+        "List of Prime Ministers of the United Kingdom",
+        "Mahammed Dionne",
+        "Josip Manolić",
+        "List of Prime Ministers of Somalia",
+        "Prime Minister of Northern Ireland",
+        "List of Prime Ministers of Sweden",
+        "James Callaghan",
+        "William Lyon Mackenzie King",
+        "Bouasone Bouphavanh"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a7ccc1e55429909bec7680e",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "44",
+      "gold_doc_ids": [
+        "b45f319e-08bc-41d7-a98c-7990e48c8305",
+        "5839e4df-0a06-4511-8145-ef882274ea25"
+      ],
+      "gold_doc_titles": [
+        "Cindy Williams (journalist)",
+        "WCSH"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 12.063930599950254,
+      "llm_calls": 1,
+      "tokens": 2010,
+      "verify_ok": true,
+      "answer_supported": false,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "b45f319e-08bc-41d7-a98c-7990e48c8305",
+        "88944ab8-0e8c-4761-8e95-be36cb90f523",
+        "b91993c4-ff28-471b-ae3f-deda705c8770",
+        "62ec7964-1679-4dac-b41b-ca9dfda25c7f",
+        "525c55fe-6dad-489d-984a-7cce735f1ff3",
+        "71eb82ce-afed-4dfe-8981-494e87571b60",
+        "560c5175-cbd6-4f27-a4ea-04e34e62badd",
+        "aa5983a4-3a99-4e36-af89-0efaefa416e4",
+        "dbf02003-5557-4701-b3a5-8d9ef7f60dc3",
+        "858d6ae4-c4d5-45fc-b6b1-fcc5d0a1eb31"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Cindy Williams (journalist)",
+        "K20JX-D",
+        "Rivers State Television",
+        "Radio Disney",
+        "WYPX-TV",
+        "The Stephanie Miller Show",
+        "WSIL-TV",
+        "Discovery Channel",
+        "Montel Williams",
+        "WLMO-LP"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a7a5f625542990783324f2f",
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Lee Mark Ranaldo",
+      "gold_doc_ids": [
+        "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+        "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1"
+      ],
+      "gold_doc_titles": [
+        "Lee Ranaldo",
+        "Lauren Laverne"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Lee Ranaldo",
+      "citations": [
+        {
+          "doc_id": "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+          "chunk_id": "86654355-7b38-440c-85f5-819b07361e21",
+          "label": "S2",
+          "quote": "Lee Mark Ranaldo (born February 3, 1956) is an American musician",
+          "title": "Lee Ranaldo"
+        },
+        {
+          "doc_id": "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1",
+          "chunk_id": "d2e2b7a8-28eb-44dc-a665-4751d73a4a2d",
+          "label": "S1",
+          "quote": "Lauren Cecilia Fisher (née Gofton, 28 April 1978), known professionally as Lauren Laverne",
+          "title": "Lauren Laverne"
+        }
+      ],
+      "latency_s": 10.110957600059919,
+      "llm_calls": 1,
+      "tokens": 1740,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1",
+        "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+        "ec432090-3516-4919-8c85-f9fa583a1407",
+        "51b95cc2-2994-4a4a-b47b-63762099e4ae",
+        "92c8da1b-ee51-40cb-9754-ef431147d189",
+        "d77070f4-4a04-47a1-8e8b-7c5582a8b81a",
+        "ae28f1f0-3f1a-4eee-83cc-b89008c624f4",
+        "8909de99-a5cf-4da1-bb00-4edcea10ec1d",
+        "30e56947-2e3d-4be6-82c8-de9c30e361fa",
+        "7c3a8592-7c4a-459a-9ae3-676f2a82873a"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Lauren Laverne",
+        "Lee Ranaldo",
+        "Lauren Alaina",
+        "Clouds (Lee Ranaldo album)",
+        "Ava DuVernay",
+        "The Stinky Puffs",
+        "Robert Redford",
+        "Last Night on Earth (Lee Ranaldo album)",
+        "Naomie Harris",
+        "Between the Times and the Tides"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a72fbcc5542994cef4bc415",
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Hot Rod",
+      "gold_doc_ids": [
+        "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+        "802a440d-3de1-4820-9e7d-9e454d25c6d4"
+      ],
+      "gold_doc_titles": [
+        "Watercolor Artist",
+        "Hot Rod (magazine)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Hot Rod",
+      "citations": [
+        {
+          "doc_id": "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+          "chunk_id": "4887caa4-0c85-442c-8436-d089865440e2",
+          "label": "S1",
+          "quote": "Watercolor Artist, formerly Watercolor Magic, is an American bi-monthly magazine",
+          "title": "Watercolor Artist"
+        },
+        {
+          "doc_id": "802a440d-3de1-4820-9e7d-9e454d25c6d4",
+          "chunk_id": "78eea4ea-5795-4b82-a61d-80ee0f4acbf6",
+          "label": "S2",
+          "quote": "Hot Rod is a monthly American car magazine",
+          "title": "Hot Rod (magazine)"
+        }
+      ],
+      "latency_s": 9.499356299987994,
+      "llm_calls": 1,
+      "tokens": 1705,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+        "802a440d-3de1-4820-9e7d-9e454d25c6d4",
+        "805a88a5-7bf5-408e-98f0-7449ec09cb59",
+        "e2849905-c832-49d0-afc8-b8659b7f5b8b",
+        "8904d4f9-3269-4adb-957a-bdfc2706ef12",
+        "1017c57d-ebc5-4f0e-971b-a0694dc18f5c",
+        "dfa55f9a-ffaa-4b51-bd97-aa6a83b75e28",
+        "6b09e58e-87cc-4948-ba57-64e92189b651",
+        "ad34d1f0-df57-4c96-8281-eb1ed834f34b",
+        "d7a2d9b8-a436-4061-83c5-273b62d4a0e0"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Watercolor Artist",
+        "Hot Rod (magazine)",
+        "Hot Rod Lincoln",
+        "Don O'Neill",
+        "Rat rod",
+        "Blender (magazine)",
+        "Animation Magazine",
+        "Ala Kart (custom car)",
+        "Fire!!",
+        "M Music &amp; Musicians"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5add44c25542997545bbbd0a",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Rajmund Roman Thierry Polański",
+      "gold_doc_ids": [
+        "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+        "a910d0b2-4e7d-47bf-b0cb-38c5570b4bd3"
+      ],
+      "gold_doc_titles": [
+        "A Therapy",
+        "Roman Polanski"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Roman Polanski",
+      "citations": [
+        {
+          "doc_id": "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+          "chunk_id": "24149939-8a68-478d-b396-b70d2a4c1c48",
+          "label": "S2",
+          "quote": "The short was written and directed by Roman Polanski",
+          "title": "A Therapy"
+        }
+      ],
+      "latency_s": 9.002334099961445,
+      "llm_calls": 1,
+      "tokens": 1641,
+      "verify_ok": false,
+      "answer_supported": true,
+      "unsupported_reasons": [
+        "quote_mismatch:S1"
+      ],
+      "invalid_citation_rate": 0.5,
+      "retrieved_doc_ids": [
+        "a910d0b2-4e7d-47bf-b0cb-38c5570b4bd3",
+        "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+        "fa0451fd-727b-4d0f-a0b3-cc46afda8b1d",
+        "9397de6d-6574-4d35-a877-008ab455d297",
+        "5042275e-eaeb-45c6-ad30-f4a57eb6e4d6",
+        "8608d024-1021-4d4c-80a5-ea976c946be6",
+        "8490890e-8484-4f79-ac47-66a6e12fcfa1",
+        "6272e3c2-e83b-45e8-8e95-0642d3ea26d4",
+        "349c0cde-5364-49ea-8684-6d2b7ab55846",
+        "cf792b57-f381-4b6a-af6c-8848dfa0ed86"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Roman Polanski",
+        "A Therapy",
+        "Pascal Kané",
+        "Julie Delpy",
+        "The Double Life of Veronique",
+        "Walerian Borowczyk",
+        "Alain Resnais",
+        "Michel Hazanavicius",
+        "Three Colours: White",
+        "Jean-Pierre Jeunet"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.3333333333333333,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a7d07a455429907fabef0ae",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Juventus Football Club",
+      "gold_doc_ids": [
+        "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+        "0ed4bc9f-fa15-46dc-aa82-5e08a57be0c8"
+      ],
+      "gold_doc_titles": [
+        "József Viola",
+        "Juventus F.C."
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Juventus",
+      "citations": [
+        {
+          "doc_id": "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+          "chunk_id": "650a2321-8ea0-4817-9d21-1904045e332a",
+          "label": "S1",
+          "quote": "He is most prominent for his time in Italy and his association with clubs such as Juventus.",
+          "title": "József Viola"
+        }
+      ],
+      "latency_s": 9.970129500026815,
+      "llm_calls": 1,
+      "tokens": 1774,
+      "verify_ok": false,
+      "answer_supported": true,
+      "unsupported_reasons": [
+        "quote_mismatch:S2"
+      ],
+      "invalid_citation_rate": 0.5,
+      "retrieved_doc_ids": [
+        "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+        "0ed4bc9f-fa15-46dc-aa82-5e08a57be0c8",
+        "9b316eed-b72e-4192-97b3-523848fddb8d",
+        "d8a9ff96-fb25-4596-a8d3-1521f2907370",
+        "27356472-7e83-4fd4-9642-7b0d9d5310cc",
+        "fa5f3e0c-9d7d-4f9c-bb0f-67f16f4d7398",
+        "00a39003-883a-42ae-81b0-2c26f7aed723",
+        "17d745b8-a00d-492d-8080-90e9f0e07995",
+        "75208503-9826-4bb4-956a-9d76e41f7f19",
+        "16d11cee-7bc9-4346-842f-c1809eb042ad"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "József Viola",
+        "Juventus F.C.",
+        "List of Juventus F.C. records and statistics",
+        "A.S. Roma",
+        "Edoardo Bosio",
+        "Inter Milan",
+        "History of A.S. Atletico Calcio",
+        "List of A.C. Milan records and statistics",
+        "Parma F.C. in European football",
+        "S.S.C. Napoli"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a81f94f554299676cceb1ac",
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "band",
+      "gold_doc_ids": [
+        "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+        "2e0f825a-fb35-42bf-b2d6-68e67ebd8e2e"
+      ],
+      "gold_doc_titles": [
+        "Bob Mould",
+        "Filter (band)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "rock group",
+      "citations": [
+        {
+          "doc_id": "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+          "chunk_id": "73470f05-e45b-41f5-ba80-0ec7e14ca5ac",
+          "label": "S3",
+          "quote": "alternative rock bands Hüsker Dü",
+          "title": "Bob Mould"
+        },
+        {
+          "doc_id": "2e0f825a-fb35-42bf-b2d6-68e67ebd8e2e",
+          "chunk_id": "bc392e50-2e7e-4d3f-a0e6-844bf890fa04",
+          "label": "S7",
+          "quote": "American industrial rock group",
+          "title": "Filter (band)"
+        }
+      ],
+      "latency_s": 10.520994899910875,
+      "llm_calls": 1,
+      "tokens": 1903,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "ca6389c8-0e53-475d-9f39-7ff3cc933ae3",
+        "14cc7529-081f-458b-82d2-2f640eeda712",
+        "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+        "174d5c85-f1a1-437e-a5ab-02e88fa8f6b7",
+        "fe1334e1-d8e9-4f26-9b03-7127e432ed3d",
+        "c102a3f3-d02e-4f6f-967b-43233431c245",
+        "2e0f825a-fb35-42bf-b2d6-68e67ebd8e2e",
+        "041546c9-3d5b-4983-a9b7-a2fd195525e8",
+        "f40cadf9-6eb3-474e-9c89-770b387f8522",
+        "07059f36-3697-4f0e-b3fe-d94d7e9e5f85"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Workbook (album)",
+        "Take a Picture",
+        "Bob Mould",
+        "Army of Anyone (album)",
+        "Voice of Reason (Rifle Sport album)",
+        "Dissolved organic carbon",
+        "Filter (band)",
+        "Mike Nichols",
+        "Gender role",
+        "Robert Z. Leonard"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae7eb0f554299540e5a5694",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "Superteam",
+      "gold_doc_ids": [
+        "57f43810-943a-452e-bc3f-a8d5f4044127",
+        "efc41f82-f03b-4881-ac22-6d86477d2209"
+      ],
+      "gold_doc_titles": [
+        "2016–17 Golden State Warriors season",
+        "Stephen Curry"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Superteam",
+      "citations": [
+        {
+          "doc_id": "57f43810-943a-452e-bc3f-a8d5f4044127",
+          "chunk_id": "57b880ed-89b3-472c-827c-c2650de6dd8d",
+          "label": "S1",
+          "quote": "hailed as a \"Superteam\" by the media and fans",
+          "title": "2016–17 Golden State Warriors season"
+        }
+      ],
+      "latency_s": 13.809710699948482,
+      "llm_calls": 1,
+      "tokens": 2119,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "57f43810-943a-452e-bc3f-a8d5f4044127",
+        "df1d6585-660b-4408-8879-ef757e6e0249",
+        "efc41f82-f03b-4881-ac22-6d86477d2209",
+        "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+        "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+        "7acf8d36-db3c-4c63-af07-012af36c3971",
+        "d6273843-2f1b-43f4-8d7f-40f59aac09d9",
+        "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+        "d632040f-6e0e-4768-b539-03cada08100e",
+        "2d899d79-783a-40a8-9845-7e4a22042ab7"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "2016–17 Golden State Warriors season",
+        "List of career achievements by Stephen Curry",
+        "Stephen Curry",
+        "Kevin Durant",
+        "Klay Thompson",
+        "Splash Brothers",
+        "Cavaliers–Warriors rivalry",
+        "Andre Iguodala",
+        "2015 NBA Finals",
+        "2015–16 NBA season"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a7d5e125542991319bc93b5",
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Danie Visser",
+      "gold_doc_ids": [
+        "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+        "d1ccf60a-d173-4ef1-8840-577401bffeac"
+      ],
+      "gold_doc_titles": [
+        "Li Na",
+        "Danie Visser"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+          "chunk_id": "a9cb8159-8ac3-47f3-9375-88f1f6be30df",
+          "label": "S1",
+          "quote": "born 26 February 1982",
+          "title": "Li Na"
+        },
+        {
+          "doc_id": "d1ccf60a-d173-4ef1-8840-577401bffeac",
+          "chunk_id": "dccefe6c-70ea-4077-9143-9f7986dd6e9c",
+          "label": "S4",
+          "quote": "born 26 July 1961",
+          "title": "Danie Visser"
+        }
+      ],
+      "latency_s": 1.6823419000720605,
+      "llm_calls": 1,
+      "tokens": 1783,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "answer_not_supported_by_quotes"
+      ],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+        "57d83667-4f6b-408e-9f70-897971150179",
+        "c5283f25-9206-45ca-8abe-7ea725cb031e",
+        "d1ccf60a-d173-4ef1-8840-577401bffeac",
+        "eecc6be9-7345-4eee-b299-12c5492e9494",
+        "814db146-ebae-4a6d-b49f-13f3d28d71bb",
+        "532b8ccb-7092-4cac-8ff3-ebff82318394",
+        "ad637a48-f755-408b-9418-b11dd6e2c147",
+        "ae41cbb6-bdca-4c37-87d0-8e07acfe082e",
+        "b53225d1-e7a5-466a-b3f6-e4e683a0ef46"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Li Na",
+        "Li Liping",
+        "Li Chengpeng",
+        "Danie Visser",
+        "Lene Nystrøm",
+        "1988 Volvo International – Doubles",
+        "Esom",
+        "1991 Australian Open – Men's Doubles",
+        "1990 French Open – Mixed Doubles",
+        "An Na"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5abbe1f1554299642a094ba9",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "1948",
+      "gold_doc_ids": [
+        "1598e4be-cb15-463c-9038-38d6697f44fe",
+        "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09"
+      ],
+      "gold_doc_titles": [
+        "2006 Miami Hurricanes football team",
+        "Larry Coker"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "1948",
+      "citations": [
+        {
+          "doc_id": "1598e4be-cb15-463c-9038-38d6697f44fe",
+          "chunk_id": "84b5a224-dc4a-4613-87ed-f0a99aa5410b",
+          "label": "S1",
+          "quote": "The team's head coach was Larry Coker.",
+          "title": "2006 Miami Hurricanes football team"
+        },
+        {
+          "doc_id": "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09",
+          "chunk_id": "229b96a4-e122-44bb-997e-c6d2fbdf9656",
+          "label": "S3",
+          "quote": "Larry Edward Coker (born June 23, 1948) is an American football coach",
+          "title": "Larry Coker"
+        }
+      ],
+      "latency_s": 9.881423100014217,
+      "llm_calls": 1,
+      "tokens": 2057,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "1598e4be-cb15-463c-9038-38d6697f44fe",
+        "d1093b5a-fcea-4d08-ae5b-4edc5d27d947",
+        "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09",
+        "2c6319ad-6b8c-4472-bb99-fecdc75c6223",
+        "efc884bf-c17f-42a5-a6d7-853fe68a5dad",
+        "a05a709d-17f3-4ff4-abbe-da2130634a31",
+        "789bc8c5-9d98-4bea-bbd0-36a214dc8756",
+        "ad0961ca-9e05-45f9-9c8c-1f7e9ece3466",
+        "38ff735b-390a-40fc-9e66-557bc6010ab8",
+        "5b40715c-ed3d-4826-96ce-cc38c9d59a11"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "2006 Miami Hurricanes football team",
+        "Butch Davis",
+        "Larry Coker",
+        "Chuck Martin (American football)",
+        "Peter Laviolette",
+        "Miami Heat all-time roster",
+        "Frank Martin (basketball)",
+        "2006 Alabama Crimson Tide football team",
+        "Robin Harmony",
+        "Jack Bicknell Jr."
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a7264a35542997f8278399c",
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "The Burwash Mine was a small gold property",
+      "gold_doc_ids": [
+        "8b1bcb95-eb0f-4703-9cdc-67f625d7a883",
+        "d517d3fd-e4f0-4585-b9c6-236ccddc05b3"
+      ],
+      "gold_doc_titles": [
+        "Catcha Lake",
+        "Burwash Mine"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Yes, gold was discovered at Burwash Mine in 1934",
+      "citations": [
+        {
+          "doc_id": "d517d3fd-e4f0-4585-b9c6-236ccddc05b3",
+          "chunk_id": "4e7f3d17-1a31-482b-8712-beb618af1f96",
+          "label": "S1",
+          "quote": "The Burwash Mine was a small gold property discovered in the fall of 1934 by Johnny Baker and Hugh Muir",
+          "title": "Burwash Mine"
+        }
+      ],
+      "latency_s": 11.910291700041853,
+      "llm_calls": 1,
+      "tokens": 2162,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "d517d3fd-e4f0-4585-b9c6-236ccddc05b3",
+        "f2ef8ed0-55da-429e-b796-03a2c07d3d84",
+        "8b1bcb95-eb0f-4703-9cdc-67f625d7a883",
+        "56fd5d62-3d50-43d0-ad6f-d5aba99cedde",
+        "2ccb9450-407c-4593-b4c7-6f1c43e79c91",
+        "cf212547-bf02-4614-960d-7f2f7e386c4a",
+        "cbdf098c-2d48-4e2b-b46f-643292437d09",
+        "0ef06284-5058-410c-a36e-8118fcf38d36",
+        "6438be65-b210-40fa-aa96-4abfb40c20dc",
+        "5fddd11c-4b0d-4c49-8a76-9e3e46d84c4b"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Burwash Mine",
+        "Wright-Hargreaves",
+        "Catcha Lake",
+        "Golden Fleece Mine (Colorado)",
+        "Lake Shore Mine",
+        "Homestake Mine (South Dakota)",
+        "Con Mine",
+        "Beaulieu Mine",
+        "Hidee Gold Mine",
+        "Kemess Mine"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.47058823529411764,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae45adc55429970de88d93f",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "The Stereophonics and The Fabulous Counts",
+      "gold_doc_ids": [
+        "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+        "92f3ed4c-63ce-459e-85c9-6cabefc4e30f"
+      ],
+      "gold_doc_titles": [
+        "Spyder Turner",
+        "Apollo Theater"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The Stereophonics and The Fabulous Counts",
+      "citations": [
+        {
+          "doc_id": "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+          "chunk_id": "dcf50457-5b8f-49d0-b462-d6361598079c",
+          "label": "S1",
+          "quote": "singing backup for groups called The Stereophonics and The Fabulous Counts",
+          "title": "Spyder Turner"
+        }
+      ],
+      "latency_s": 14.807981100049801,
+      "llm_calls": 1,
+      "tokens": 2051,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+        "92f3ed4c-63ce-459e-85c9-6cabefc4e30f",
+        "b41e3ec7-9adc-4a2b-a6f9-da076347de6a",
+        "46b5c6dd-cd9c-4872-a2ee-ffcdc90d256c",
+        "5aa8e55a-b8e1-4762-b77b-77d5f5460a7a",
+        "edb42b83-5bd5-4bc6-90dc-8383011564f8",
+        "2268853c-062d-4a86-8908-bc5afb318c60",
+        "29e2ee18-85e1-4aef-9473-eec7e6631ac0",
+        "342b858a-7de3-41a2-859b-d74b6d336c96",
+        "635fa2ca-275f-413a-bd70-87a41ea1f1ee"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Spyder Turner",
+        "Apollo Theater",
+        "Joe Lynn Turner",
+        "Fastbacks",
+        "Glenville, Cleveland",
+        "Radio Disney's The Next BIG Thing",
+        "Jeff Bhasker",
+        "Nandy (musician)",
+        "Backstreet Boys",
+        "Souther–Hillman–Furay Band"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ac29915554299218029dab3",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Griqualand West",
+      "gold_doc_ids": [
+        "78bc0184-ac79-4043-a800-fa3acaf80dfd",
+        "8ee4b2c6-3023-4754-9255-636a308d056e"
+      ],
+      "gold_doc_titles": [
+        "Adrian McLaren",
+        "Ryan McLaren"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Griqualand West",
+      "citations": [
+        {
+          "doc_id": "78bc0184-ac79-4043-a800-fa3acaf80dfd",
+          "chunk_id": "8c05d841-a74f-4155-9248-57e94162c406",
+          "label": "S4",
+          "quote": "Adrian Peter McLaren (born 21 April 1980 in Kimberley, Northern Cape) is a South African first class cricketer who plays for Griqualand West.",
+          "title": "Adrian McLaren"
+        }
+      ],
+      "latency_s": 8.598927599960007,
+      "llm_calls": 1,
+      "tokens": 1616,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "8ee4b2c6-3023-4754-9255-636a308d056e",
+        "c8d8b225-26be-4af9-abd0-f6d105899521",
+        "ee99369c-cfab-47c3-b41a-82e9c752aa84",
+        "78bc0184-ac79-4043-a800-fa3acaf80dfd",
+        "8f077215-7b73-4b11-a34c-a68733216e8a",
+        "967d156f-b5b9-4e80-96e4-65a0c52dcc01",
+        "0219b049-1018-4ac8-a42f-88c8b37a9439",
+        "12477a10-127f-45fb-ae3c-23477b1a1915",
+        "a4961e07-d728-43aa-bc20-682a83b0b812",
+        "151acd82-2a89-497f-940c-dfb5f9f6c816"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Ryan McLaren",
+        "Wahab Riaz",
+        "Doug Bollinger",
+        "Adrian McLaren",
+        "Peter Lawson (cricketer)",
+        "Rhyno Janse van Rensburg",
+        "Ben Stokes",
+        "Chris Roper",
+        "Angus Robson",
+        "Ravi Ratnayeke"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5abb089d5542996cc5e49f5f",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "model and yoga teacher",
+      "gold_doc_ids": [
+        "0f2f5ab7-ea9a-42c4-a04e-e75858e747c4",
+        "146e5cf0-56dd-4a67-af2b-2289a1b6e2b7"
+      ],
+      "gold_doc_titles": [
+        "Sonny Valentine",
+        "Gemma Merna"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "model and yoga teacher",
+      "citations": [
+        {
+          "doc_id": "146e5cf0-56dd-4a67-af2b-2289a1b6e2b7",
+          "chunk_id": "642c7b3b-c217-43f7-91d5-cb24aa029357",
+          "label": "S1",
+          "quote": "Gemma Anna Merna (born 6 February 1984) is a former English actress, model and yoga teacher.",
+          "title": "Gemma Merna"
+        }
+      ],
+      "latency_s": 16.133367200032808,
+      "llm_calls": 1,
+      "tokens": 2234,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "146e5cf0-56dd-4a67-af2b-2289a1b6e2b7",
+        "db9a0130-c7b2-4eed-9f8a-09c0b1c16786",
+        "74f58056-5171-4f39-9e07-5f200834fab3",
+        "c518cf63-c39e-49bb-b8d4-0b2cffd308d5",
+        "5d1e5395-0196-4fe3-9333-86a81c1ab8ca",
+        "0f2f5ab7-ea9a-42c4-a04e-e75858e747c4",
+        "f193ee2e-1aeb-4ae0-94c8-3a2754c4a9b8",
+        "0a21c94e-1618-4012-aa27-b766f34c0604",
+        "e25a0331-bd38-406d-b39d-4d24e5032eff",
+        "3230bcd1-72a0-4bbf-bcc7-045e9ae480c9"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Gemma Merna",
+        "Hollyoaks",
+        "Tom Vaughan (actor)",
+        "Carol Groves",
+        "Carmel McQueen",
+        "Sonny Valentine",
+        "Diego Salvador Martinez Hernandez De La Cruz",
+        "Mandy Richardson",
+        "Vicki Michelle",
+        "Martha Kane"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a75e05c55429976ec32bc5f",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "9,984",
+      "gold_doc_ids": [
+        "2daaf1b6-3748-4330-bacb-f186e13a79a7",
+        "f90db98c-63d4-49b9-a4e1-377f21a46f05"
+      ],
+      "gold_doc_titles": [
+        "Brown State Fishing Lake",
+        "Brown County, Kansas"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 12.217190600000322,
+      "llm_calls": 1,
+      "tokens": 2181,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "quote_mismatch:S1"
+      ],
+      "invalid_citation_rate": 1.0,
+      "retrieved_doc_ids": [
+        "2daaf1b6-3748-4330-bacb-f186e13a79a7",
+        "07bfe037-d890-4332-8257-fcfbb9f5a041",
+        "67a2aac1-cfe3-438d-8af4-81979481860a",
+        "f62d7b6f-b90e-40fe-96aa-d7f1ecb03738",
+        "aedde9f7-a9c3-45a9-ad1b-aaabd5bdc7e9",
+        "f90db98c-63d4-49b9-a4e1-377f21a46f05",
+        "f9136028-ccff-4ae7-a10c-ba526146845b",
+        "85b31736-5d57-48b0-a4e3-7b76132dc40f",
+        "c74174b7-60a5-44ef-a3e8-edcbeb703a2b",
+        "40161837-6661-42d9-bb6d-c48ad97b361c"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Brown State Fishing Lake",
+        "Hong Kong Island",
+        "Niihau",
+        "Silver Lake (Silver Lake, Florida)",
+        "India",
+        "Brown County, Kansas",
+        "Neosho State Fishing Lake",
+        "Houghton Lake (Michigan)",
+        "Sierra Leone",
+        "Ukraine"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 1.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ac0fa9e554299012d1db671",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "Primero",
+      "gold_doc_ids": [
+        "03660879-6b88-4e8b-b28b-28ba52e55a8e",
+        "a863effd-ad39-4944-9d85-d77dc4334c2e"
+      ],
+      "gold_doc_titles": [
+        "Crash (card game)",
+        "Three card brag"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Primero",
+      "citations": [
+        {
+          "doc_id": "a863effd-ad39-4944-9d85-d77dc4334c2e",
+          "chunk_id": "9832db63-5a8e-4941-8fda-cc2e26bc091e",
+          "label": "S1",
+          "quote": "Brag is a direct descendant of the Elizabethan game of Primero",
+          "title": "Three card brag"
+        },
+        {
+          "doc_id": "03660879-6b88-4e8b-b28b-28ba52e55a8e",
+          "chunk_id": "96e5012e-0686-4ac4-80b7-b354182ede97",
+          "label": "S2",
+          "quote": "Crash is a British card game extension of Nine-card Brag.",
+          "title": "Crash (card game)"
+        }
+      ],
+      "latency_s": 8.663865500013344,
+      "llm_calls": 1,
+      "tokens": 1508,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "a863effd-ad39-4944-9d85-d77dc4334c2e",
+        "03660879-6b88-4e8b-b28b-28ba52e55a8e",
+        "5f006259-0c3f-4fb8-9638-2cb7184ecc5d",
+        "662cd029-c43c-43b9-9520-306943d79153",
+        "ceec779e-6817-4b37-b02b-abfc8ea53263",
+        "8d532479-4659-4f75-bb09-a3c74475e5b5",
+        "01d904e8-6f02-4442-8e97-201a1d9462ec",
+        "379c83b2-1db4-4686-82e3-cf2274327798",
+        "fdfa7ce4-7662-463b-890a-59aaae689f44",
+        "598640c1-f81d-4de7-9048-80eddcbf16b3"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Three card brag",
+        "Crash (card game)",
+        "Gleek (card game)",
+        "Dedicated deck card game",
+        "Put (card game)",
+        "Egyptian Ratscrew",
+        "Écarté",
+        "Card game",
+        "Canfield (solitaire)",
+        "Quadrille (card game)"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a8b7cb95542995d1e6f13bb",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Dalton Gang",
+      "gold_doc_ids": [
+        "f27c6a02-0933-4816-b189-3be8d57b3bd4",
+        "9d69b7d4-81ff-4b1a-a21b-771800c21b11"
+      ],
+      "gold_doc_titles": [
+        "Daltoni",
+        "Dalton Gang"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 11.813533800072037,
+      "llm_calls": 1,
+      "tokens": 1785,
+      "verify_ok": true,
+      "answer_supported": false,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "3340e716-30ae-4dbf-9b31-55e0616fd591",
+        "3dba6b54-a969-4efc-957e-f2f806dd49b2",
+        "6f53a580-c3dd-478a-85e0-ea864a98f3e4",
+        "d20c5e05-5132-4a7c-ae18-551aac0bc749",
+        "3d249534-e788-4415-a4cf-452470863f4d",
+        "f27c6a02-0933-4816-b189-3be8d57b3bd4",
+        "31e4560f-76cd-4e3f-8c75-44a351f8289a",
+        "b89c82fc-9881-4025-b9a2-b14e75c6d8fb",
+        "2d925072-fd5d-464c-b475-7f66381c6096",
+        "7167ddf2-52d1-4e9b-9b02-6cb71274e405"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.16666666666666666,
+        "all_gold_at_k": 0.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Korni Grupa",
+        "Iskre",
+        "Sanjalice",
+        "Azra",
+        "Bele Višnje",
+        "Daltoni",
+        "Bajaga i Instruktori",
+        "Heller (band)",
+        "S Vremena Na Vreme",
+        "Confederate Railroad"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae22f5a554299234fd04420",
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "drink",
+      "gold_doc_ids": [
+        "fb721347-9b54-450e-8c87-7d0595627849",
+        "b6c86549-42c3-499b-9655-e16e351cfe75"
+      ],
+      "gold_doc_titles": [
+        "Springbokkie",
+        "Punch (drink)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Both are alcoholic drinks",
+      "citations": [
+        {
+          "doc_id": "fb721347-9b54-450e-8c87-7d0595627849",
+          "chunk_id": "85bb2c8c-70a4-418f-a1b7-527986cbdeac",
+          "label": "S4",
+          "quote": "The Springbokkie (\"little Springbok\" in the Afrikaans language), composed of creme de menthe (\"or substitutes\") and Amarula, is a cocktail shooter",
+          "title": "Springbokkie"
+        },
+        {
+          "doc_id": "b6c86549-42c3-499b-9655-e16e351cfe75",
+          "chunk_id": "975df13d-ddb0-47f4-a74a-6aa55153fdbc",
+          "label": "S1",
+          "quote": "Punch is a wide assortment of drinks, both non-alcoholic and alcoholic",
+          "title": "Punch (drink)"
+        }
+      ],
+      "latency_s": 10.51860929990653,
+      "llm_calls": 1,
+      "tokens": 1800,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "b6c86549-42c3-499b-9655-e16e351cfe75",
+        "57cd4be0-af2c-4a8d-90c4-f6665f262b96",
+        "624a355e-c0fb-4aa5-88eb-3d676c70a9d1",
+        "fb721347-9b54-450e-8c87-7d0595627849",
+        "128df021-4db0-4e23-b563-117ebd8faf66",
+        "6541cceb-3bf4-4949-99c6-ffaf8ba39fc6",
+        "42b0e683-f671-430d-98f8-bc56c2d76c5f",
+        "3c6c89eb-12a1-47ea-bee8-2ae661ee5321",
+        "88eb975e-6fa9-4d6e-88ac-392b0041ab7b",
+        "ff84904c-81d6-4e07-abb1-54084d444245"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Punch (drink)",
+        "Fish House Punch",
+        "Winter melon punch",
+        "Springbokkie",
+        "Peanut punch",
+        "Goombay Punch",
+        "Planter's Punch",
+        "Jeremy Spencer (drummer)",
+        "Spring creek",
+        "Tibouchina"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a7b42fb5542992d025e67c9",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "East Is East",
+      "gold_doc_ids": [
+        "ff3be42e-d8e1-4a56-9a6f-039f74d8f384",
+        "33460c17-38bc-444f-b4c0-5f2d2e4d1cd7"
+      ],
+      "gold_doc_titles": [
+        "Ayub Khan-Din",
+        "East Is East (1999 film)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "East Is East",
+      "citations": [
+        {
+          "doc_id": "33460c17-38bc-444f-b4c0-5f2d2e4d1cd7",
+          "chunk_id": "6e510de5-843d-4252-86d0-f58f4832adb1",
+          "label": "S2",
+          "quote": "East Is East is a 1999 British comedy-drama film written by Ayub Khan-Din and directed by Damien O'Donnell.",
+          "title": "East Is East (1999 film)"
+        }
+      ],
+      "latency_s": 31.04574860003777,
+      "llm_calls": 1,
+      "tokens": 2151,
+      "verify_ok": false,
+      "answer_supported": true,
+      "unsupported_reasons": [
+        "quote_mismatch:S1"
+      ],
+      "invalid_citation_rate": 0.5,
+      "retrieved_doc_ids": [
+        "ff3be42e-d8e1-4a56-9a6f-039f74d8f384",
+        "33460c17-38bc-444f-b4c0-5f2d2e4d1cd7",
+        "fc06a369-0878-4470-b5d6-f1b9f7847280",
+        "4e13cf5b-77e3-42a4-aa27-6bff4b32ea31",
+        "0a393c93-afbd-4ffa-887d-13d2cba4732a",
+        "1f278a94-a458-4865-8962-8f4c31bd2fd8",
+        "3132f438-9921-46e3-a1de-2b6e592f7af0",
+        "d5a3fb42-3133-4a0a-bb1d-26e60fd01119",
+        "ce83c2ff-010a-4191-912c-628b2fb480f8",
+        "2852652c-960c-4334-8371-4c7e4f0f3789"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Ayub Khan-Din",
+        "East Is East (1999 film)",
+        "The Mummy (1999 film)",
+        "Notting Hill (film)",
+        "Sleepless in Seattle",
+        "Sex and the City (film)",
+        "Eyes Wide Shut",
+        "Batman Forever",
+        "Tarzan (1999 film)",
+        "Myles O'Donnell"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5ae7a85a55429952e35ea9aa",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "Indiana",
+      "gold_doc_ids": [
+        "130ee35f-a556-4418-9e7b-383f984085ed",
+        "b15243c5-6fcc-4f6d-8702-922b95355829"
+      ],
+      "gold_doc_titles": [
+        "Franklin Community High School",
+        "Franklin Community Schools"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Franklin Community High School is part of the Franklin Community Schools district.",
+      "citations": [
+        {
+          "doc_id": "130ee35f-a556-4418-9e7b-383f984085ed",
+          "chunk_id": "7fd95016-05d6-4fd8-90fb-22e80776b955",
+          "label": "S1",
+          "quote": "It is a part of Franklin Community Schools",
+          "title": "Franklin Community High School"
+        }
+      ],
+      "latency_s": 3.0668788999319077,
+      "llm_calls": 1,
+      "tokens": 1561,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "130ee35f-a556-4418-9e7b-383f984085ed",
+        "e92a16f4-266c-47d6-971c-b20c04a372c1",
+        "b15243c5-6fcc-4f6d-8702-922b95355829",
+        "d324db4d-21b4-4fb5-9f15-5973e2f9a169",
+        "dbdb17bb-a737-4db9-b967-c85aff340251",
+        "b8af8afe-6864-4390-bdfd-d03d83c3e0b5",
+        "7e32f9c8-65a1-493b-b0bc-4d47feb12b8f",
+        "7c0bd105-fce7-44df-bd8f-7de7afe744b2",
+        "09b5d635-ee0f-4541-a432-b46e13d01b48",
+        "6ed9047a-f240-4050-a453-4ce70a7e4592"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Franklin Community High School",
+        "Franklin Academy (New York)",
+        "Franklin Community Schools",
+        "Antioch Community High School",
+        "Princeton Community High School",
+        "Lake Worth Community High School",
+        "Manchester Central High School",
+        "Naperville Central High School",
+        "Connetquot High School",
+        "Palmerton High School"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a887f5c554299206df2b2c0",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "Eric Clapton",
+      "gold_doc_ids": [
+        "ce645d19-153b-432f-90e7-98c2ae0bbe60",
+        "4e4ad688-9a3b-4a46-a0bd-2cdd261db3fd"
+      ],
+      "gold_doc_titles": [
+        "Folk, Blues and Beyond",
+        "Jimmy Page"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Eric Clapton",
+      "citations": [
+        {
+          "doc_id": "ce645d19-153b-432f-90e7-98c2ae0bbe60",
+          "chunk_id": "0e69f437-14c0-41f7-9bb4-ff93d0278dfd",
+          "label": "S1",
+          "quote": "Bert Jansch to Jimmy Page and Eric Clapton",
+          "title": "Folk, Blues and Beyond"
+        }
+      ],
+      "latency_s": 1.2230460999999195,
+      "llm_calls": 1,
+      "tokens": 1538,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "ce645d19-153b-432f-90e7-98c2ae0bbe60",
+        "73ad4f69-cbec-4fe8-bf85-a8edf8022b75",
+        "4e4ad688-9a3b-4a46-a0bd-2cdd261db3fd",
+        "96187b88-481f-4c56-89de-3641abfeac12",
+        "7853e653-5453-4517-bcd2-c200ba06dd47",
+        "3ecc09f0-4b35-4d30-a6b2-fd0503d34baa",
+        "bc6154cb-cafc-4d6d-ab35-0108561ccb17",
+        "4ebb663b-86c1-46c7-8e7f-b41af9d784b0",
+        "e1e9c620-736f-4941-8bea-605803525ead",
+        "dd32792d-a231-4a02-85b7-24c26e231f50"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Folk, Blues and Beyond",
+        "John Bonham",
+        "Jimmy Page",
+        "Bill Leader",
+        "Robert Plant",
+        "Bert Jansch (album)",
+        "Jason Bonham",
+        "Lucky Thirteen (Bert Jansch album)",
+        "Leather Launderette",
+        "The River Sessions (Bert Jansch album)"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a8aad0d5542992d82986f55",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "science fiction drama",
+      "gold_doc_ids": [
+        "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+        "aafcfd3e-2395-480d-982a-fa2c84ab85d0"
+      ],
+      "gold_doc_titles": [
+        "Storyville (album)",
+        "Until the End of the World"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+          "chunk_id": "234be043-a940-4603-b5dc-b7f162ae6e70",
+          "label": "S1",
+          "quote": "He contributed one song (\"Breakin' the Rules\") to Wim Wenders' soundtrack to his 1991 film, \"Until the End of the World\".",
+          "title": "Storyville (album)"
+        }
+      ],
+      "latency_s": 9.005391399958171,
+      "llm_calls": 1,
+      "tokens": 1987,
+      "verify_ok": true,
+      "answer_supported": false,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+        "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+        "71a11c9d-16e4-4c26-a964-372fb9ccb9b3",
+        "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+        "b145d704-f7da-47a8-9a19-81c9dae436ed",
+        "2b42d368-52bd-4016-ad4b-d7f287badf32",
+        "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+        "af604139-f952-453b-8ea1-884c9b8d9a15",
+        "44270115-08b6-40ac-bae0-88df956623cf",
+        "d63afab0-e629-4e18-acac-34652cfdec9b"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Storyville (album)",
+        "Breakin'... There's No Stopping Us",
+        "Beauty and the Beast (1991 soundtrack)",
+        "Hudson Hawk",
+        "Billy Bathgate (film)",
+        "Rappin'",
+        "Breaking the Rules (film)",
+        "Danny Comden",
+        "Doc Hollywood",
+        "Breakin' My Heart (Pretty Brown Eyes)"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5abe942155429965af743f36",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "medium",
+      "origin": "hotpot_original",
+      "gold_answer": "November 11, 2008",
+      "gold_doc_ids": [
+        "5ee2dbe5-5bf3-42a9-b8b5-46db11340e02",
+        "4cc32f3e-cec0-4894-ad09-034b4669fb69"
+      ],
+      "gold_doc_titles": [
+        "You Belong with Me",
+        "Fearless (Taylor Swift album)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "2008",
+      "citations": [
+        {
+          "doc_id": "5ee2dbe5-5bf3-42a9-b8b5-46db11340e02",
+          "chunk_id": "af8d3a5c-e5f0-4009-aa33-2c7a4ec9dc9d",
+          "label": "S1",
+          "quote": "\"Fearless\" (2008)",
+          "title": "You Belong with Me"
+        }
+      ],
+      "latency_s": 11.984272800036706,
+      "llm_calls": 1,
+      "tokens": 1715,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "5ee2dbe5-5bf3-42a9-b8b5-46db11340e02",
+        "5b929995-cfbe-4dca-9ac4-a19b4351221f",
+        "4c4f710b-19dc-4731-84da-48223acf7990",
+        "bec12613-730d-439a-9804-5ec181b315e6",
+        "6c5fe9fe-3c18-42d4-a636-041e6dd1f9c2",
+        "ba6d7c38-a1a5-465f-90a4-31f41d7f49c6",
+        "da87cc59-37b1-43f8-aaee-9efba3547e34",
+        "985ac0a9-0319-45f4-a446-631d4842e5c3",
+        "6da9a2a3-3984-41ef-b087-2af3af956f1a",
+        "7252ffdc-2c07-4fe3-87e6-b30b120ae120"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "You Belong with Me",
+        "Please Please Me",
+        "Tracey Prescott &amp; Lonesome Daddy (album)",
+        "Taylor Swift (album)",
+        "John Berry (album)",
+        "Late Registration",
+        "You Belong (album)",
+        "Ask Me Why",
+        "Why'd You Only Call Me When You're High?",
+        "1989 (Taylor Swift album)"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a89d51e554299669944a5bc",
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "Peter Philip Carey AO",
+      "gold_doc_ids": [
+        "90d4b036-a222-4617-87d1-7d9c154cf599",
+        "c09f7fa3-1754-4557-85e0-4c2b29c34ecb"
+      ],
+      "gold_doc_titles": [
+        "Peter Carey (novelist)",
+        "W. E. B. Du Bois"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "90d4b036-a222-4617-87d1-7d9c154cf599",
+          "chunk_id": "41457658-6e4a-4ed2-8fc3-db04b8c5b62e",
+          "label": "S1",
+          "quote": "Carey has won the Miles Franklin Award three times and is frequently named as Australia's next contender for the Nobel Prize in Literature",
+          "title": "Peter Carey (novelist)"
+        }
+      ],
+      "latency_s": 13.63495109998621,
+      "llm_calls": 1,
+      "tokens": 2185,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "answer_not_supported_by_quotes"
+      ],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "90d4b036-a222-4617-87d1-7d9c154cf599",
+        "c09f7fa3-1754-4557-85e0-4c2b29c34ecb",
+        "28e9af1e-32ec-4335-97d0-2a2209a82a2c",
+        "3a15bdb7-5d58-4eb2-ae55-af7fe77347d6",
+        "45babaea-7271-4ba8-9028-c2add11b8ef8",
+        "fc79677c-1614-47aa-861b-678b7ec5fef6",
+        "2b9a5f86-ffa1-4cbf-b506-0e2c7c7da310",
+        "b3183dca-55ad-4ebf-a621-7f1ea9357ba3",
+        "285fd922-dd3d-4126-9a2c-0bd4f868429b",
+        "c6e8511e-18d1-49e1-886a-40afa0c9b9f8"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Peter Carey (novelist)",
+        "W. E. B. Du Bois",
+        "David Levering Lewis",
+        "The Future of the Race",
+        "Henry Carey (writer)",
+        "The Tree of Man",
+        "The Talented Tenth",
+        "Nobel Prize in Physics",
+        "Margaret Atwood",
+        "Clinton Walker"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5aba637a55429939ce03dcbb",
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "yes",
+      "gold_doc_ids": [
+        "0295271a-26e1-41fd-a4f5-16f0cee85e06",
+        "79382370-3f42-4c58-adc8-049d7b7f1f55"
+      ],
+      "gold_doc_titles": [
+        "Brooklyn",
+        "Tower 49"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "79382370-3f42-4c58-adc8-049d7b7f1f55",
+          "chunk_id": "f8b83001-2e7d-49db-9ede-95a78901319e",
+          "label": "S1",
+          "quote": "Tower 49 is an office skyscraper in the Midtown Manhattan district of New York City.",
+          "title": "Tower 49"
+        }
+      ],
+      "latency_s": 6.619272500043735,
+      "llm_calls": 1,
+      "tokens": 1782,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "quote_mismatch:S10",
+        "answer_not_supported_by_quotes"
+      ],
+      "invalid_citation_rate": 0.5,
+      "retrieved_doc_ids": [
+        "79382370-3f42-4c58-adc8-049d7b7f1f55",
+        "2fef3360-7ed2-4b84-b69a-ae61cddf4e84",
+        "3a10b349-3ff6-4106-a162-bad71c37d16e",
+        "ff510655-3199-413f-9ac0-c79ec4a0d408",
+        "7c2a6107-b4a8-43d8-bb37-dcfc4d78a869",
+        "584a4696-51eb-4b12-92e4-829fd106eb48",
+        "c2d139a8-c31a-4425-88e7-b0ba6262ff81",
+        "10740eb8-6aea-49d8-a0a1-0bf522cf0f56",
+        "6b0fd354-f975-4fe9-a0d5-525284081136",
+        "0295271a-26e1-41fd-a4f5-16f0cee85e06"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Tower 49",
+        "Brooklyn Heights",
+        "8 Spruce Street",
+        "Carnegie Hall Tower",
+        "Bushwick, Brooklyn",
+        "Americas Tower",
+        "9 DeKalb Avenue",
+        "Crosstown Line (Brooklyn surface)",
+        "Fort Greene, Brooklyn",
+        "Brooklyn"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a75eca555429976ec32bca8",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "The Nassau Herald",
+      "gold_doc_ids": [
+        "a7747e57-feeb-463d-89b3-d4b325acd37d",
+        "b080821e-13bb-45b9-963e-9862cc4f5578"
+      ],
+      "gold_doc_titles": [
+        "Nassau Herald",
+        "Lawrence, Nassau County, New York"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Nassau Herald",
+      "citations": [
+        {
+          "doc_id": "a7747e57-feeb-463d-89b3-d4b325acd37d",
+          "chunk_id": "0effaf34-f9e0-4c1a-9a53-da28418f7737",
+          "label": "S1",
+          "quote": "The Nassau Herald is a weekly newspaper serving the Five Towns communities of Nassau County – Lawrence, Woodmere, Hewlett, Cedarhurst, Inwood and Atlantic Beach. It is part of the Long Island Herald newspaper chain",
+          "title": "Nassau Herald"
+        }
+      ],
+      "latency_s": 8.37701689999085,
+      "llm_calls": 1,
+      "tokens": 1843,
+      "verify_ok": false,
+      "answer_supported": true,
+      "unsupported_reasons": [
+        "quote_mismatch:S2"
+      ],
+      "invalid_citation_rate": 0.5,
+      "retrieved_doc_ids": [
+        "a7747e57-feeb-463d-89b3-d4b325acd37d",
+        "b080821e-13bb-45b9-963e-9862cc4f5578",
+        "7771de03-b47f-4f22-9963-f014e293fda5",
+        "07149d2e-d276-4629-8f5b-042f922e422a",
+        "50e39254-dd47-4681-8381-90bb64bc9233",
+        "7f65a49f-3234-41ae-bcdf-4d07babad42c",
+        "0624f272-a7d6-4d10-9a7a-a81b9d4ae7b9",
+        "bc90c96c-1020-44e2-9bf4-e4f127b1ee26",
+        "bdbdf579-a24f-4f75-9655-d23e5629cd97",
+        "77042b23-2a17-4e24-93fe-8500b651e8e7"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Nassau Herald",
+        "Lawrence, Nassau County, New York",
+        "Floral Park, New York",
+        "Mineola, New York",
+        "Massapequa, New York",
+        "Anton Media Group",
+        "Syosset, New York",
+        "Jericho, New York",
+        "Garden City, New York",
+        "Great Neck, New York"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a8f276055429918e830d1ab",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "hotpot_level": "easy",
+      "origin": "hotpot_original",
+      "gold_answer": "two",
+      "gold_doc_ids": [
+        "5c7c1fab-19e9-407e-85e5-b037947181dd",
+        "770ee68c-4e30-4d0c-833a-8e79f9d8ff61"
+      ],
+      "gold_doc_titles": [
+        "Council of Forty-four",
+        "Cheyenne military societies"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "two",
+      "citations": [
+        {
+          "doc_id": "5c7c1fab-19e9-407e-85e5-b037947181dd",
+          "chunk_id": "65009c18-be1a-4934-b6a2-4590db5d14ef",
+          "label": "S1",
+          "quote": "The Council of Forty-four was one of the two central institutions of traditional Cheyenne Indian tribal governance",
+          "title": "Council of Forty-four"
+        }
+      ],
+      "latency_s": 15.916759700048715,
+      "llm_calls": 1,
+      "tokens": 2116,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "5c7c1fab-19e9-407e-85e5-b037947181dd",
+        "770ee68c-4e30-4d0c-833a-8e79f9d8ff61",
+        "5dfdd76c-caf0-4bdf-8dab-2901bca25265",
+        "e891c8cf-618e-401d-a3cb-f30930f20367",
+        "a8db565b-0c4d-45d5-a849-4da720f71ce1",
+        "b256f5b3-e26c-426a-8241-5b0095b64f37",
+        "a52b90a5-2305-4eb1-acae-9773f50cfea6",
+        "dfb2ccaf-3769-42fc-92a2-e40b6945f533",
+        "87af0325-a923-47a3-a56b-c032a4b5c31d",
+        "ae19c88b-e988-4739-92a8-e2d1ff7d2ff6"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Council of Forty-four",
+        "Cheyenne military societies",
+        "Lean Bear",
+        "Northern Cheyenne Indian Reservation",
+        "Lame Deer, Montana",
+        "Chief Dull Knife College",
+        "Cheyenne",
+        "Eugene Little Coyote",
+        "Walla Walla Council (1855)",
+        "Northern Shuswap Tribal Council"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_hotpot_5a8b5b1c5542995d1e6f1387",
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "hotpot_level": "hard",
+      "origin": "hotpot_original",
+      "gold_answer": "yes",
+      "gold_doc_ids": [
+        "77bfb095-ff22-4704-af13-b92a7a15efbb",
+        "a811c0ac-344e-4b0c-9c44-ffbf7f116c04"
+      ],
+      "gold_doc_titles": [
+        "Aladdin (2019 film)",
+        "Song of the South"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "cd3ae23f-37f7-42cf-baed-a325a61533e4",
+          "chunk_id": "5d3cda7c-fbcc-46c3-a9dd-b64efb9f0790",
+          "label": "S4",
+          "quote": "both produced by The Walt Disney Company",
+          "title": "The Return of Jafar"
+        },
+        {
+          "doc_id": "a811c0ac-344e-4b0c-9c44-ffbf7f116c04",
+          "chunk_id": "a0b70e49-0893-49f9-b5f1-6ea026d87d24",
+          "label": "S6",
+          "quote": "produced by Walt Disney",
+          "title": "Song of the South"
+        }
+      ],
+      "latency_s": 12.456950700026937,
+      "llm_calls": 1,
+      "tokens": 2085,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "answer_not_supported_by_quotes"
+      ],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "09a62163-8429-4e24-a94f-45382d02ef9b",
+        "4e1d28a3-7fa0-48aa-bd0f-500aac7d0f78",
+        "77bfb095-ff22-4704-af13-b92a7a15efbb",
+        "cd3ae23f-37f7-42cf-baed-a325a61533e4",
+        "d18c9c23-0afb-4e88-b271-921fdce721d8",
+        "a811c0ac-344e-4b0c-9c44-ffbf7f116c04",
+        "2d888703-47b6-490a-bc18-138d37f18891",
+        "e09f3676-9a5d-4ec4-bb96-17816707ebb1",
+        "226ad4d9-b290-4d34-a4c9-7002886b9253",
+        "b9c98e1e-16e0-496c-80a9-b551113de0b5"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "A Whole New World",
+        "Aladdin (Indian TV series)",
+        "Aladdin (2019 film)",
+        "The Return of Jafar",
+        "Aladdin Knowledge Systems",
+        "Song of the South",
+        "O.G. Original Gangster (song)",
+        "The Lion King",
+        "The Little Mermaid (1989 film)",
+        "Little Bitty Pretty One"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "citation": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_robust_unans_ablate_jwt",
+      "question_type": "unanswerable",
+      "hotpot_type": null,
+      "hotpot_level": null,
+      "origin": "synthetic_robustness",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "gold_doc_titles": [
+        "incident_march"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 8.718451299937442,
+      "llm_calls": 1,
+      "tokens": 1217,
+      "verify_ok": true,
+      "answer_supported": false,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "9129ff0b-be04-4f79-9039-0f8c367fd283",
+        "a7d7392a-a989-40d3-9031-701a073f8bd8",
+        "df53546f-2c4d-4743-86a7-5c56f0939ebd"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "all_gold_at_k": 0.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Change Log March",
+        "Exec Summary",
+        "Architecture Overview",
+        "Postmortem Draft — March Payments",
+        "status_update",
+        "Documentary collection",
+        "runbook_snippets",
+        "Compaq Presario V6000"
+      ],
+      "ablated_gold": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer_on_unanswerable": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_robust_control_related_nonconflict",
+      "question_type": "multi_doc",
+      "hotpot_type": null,
+      "hotpot_level": null,
+      "origin": "synthetic_robustness",
+      "gold_answer": "payment and auth-related services",
+      "gold_doc_ids": [
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "de2106e6-6b42-4299-af93-b35c82be5532"
+      ],
+      "gold_doc_titles": [
+        "incident_march",
+        "status_update",
+        "change_log"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "PaymentService and AuthGateway",
+      "citations": [
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "8a4edb15-0fa4-4243-b7b8-225dae803fde",
+          "label": "S5",
+          "quote": "PaymentService timed out for six hours",
+          "title": "Incident Report — Payment Outage March"
+        },
+        {
+          "doc_id": "86fa752f-640d-4a79-8210-6481514cd144",
+          "chunk_id": "dd9e862a-dd2d-4730-b446-8ba5cb3052a3",
+          "label": "S9",
+          "quote": "AuthGateway",
+          "title": "Incident Report — Payment Outage March"
+        }
+      ],
+      "latency_s": 8.244096099981107,
+      "llm_calls": 1,
+      "tokens": 1612,
+      "verify_ok": true,
+      "answer_supported": true,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "04b1e3f7-2dae-427d-938e-811ad973dae1",
+        "79c83211-693f-41c2-a5e1-aa71c65e5920",
+        "971ed700-8145-4095-967f-75e8ca429fef",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "e85b7c06-c662-44a5-a5b7-daaac20bf393",
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "e12c24a6-4440-4f42-b3ef-e337e1e451fb",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb"
+      ],
+      "retrieval": {
+        "recall_at_k": 0.6666666666666666,
+        "mrr": 0.2,
+        "all_gold_at_k": 0.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Exec Summary",
+        "Electronic Payment Services",
+        "Connect Broadband",
+        "USA Technologies",
+        "Incident Report — Payment Outage March",
+        "Land contract",
+        "latency_metrics",
+        "Advanced Digital Broadcast",
+        "Incident Report — Payment Outage March",
+        "status_update"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.25,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_robust_contra_query_overlay",
+      "question_type": "contradiction",
+      "hotpot_type": null,
+      "hotpot_level": null,
+      "origin": "synthetic_robustness",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "Project Nebula launched on 12 January 2021",
+          "title": "Nebula Brief A"
+        },
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "Project Nebula launched on 12 March 2021",
+          "title": "Nebula Brief B"
+        }
+      ],
+      "latency_s": 0.34259609994478524,
+      "llm_calls": 1,
+      "tokens": 650,
+      "verify_ok": true,
+      "answer_supported": false,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [],
+      "retrieval": {},
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Nebula Brief A",
+        "Nebula Brief B"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "contradiction_detected": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_robust_unans_ablate_airport_style",
+      "question_type": "unanswerable",
+      "hotpot_type": null,
+      "hotpot_level": null,
+      "origin": "synthetic_robustness",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_ids": [],
+      "gold_doc_titles": [],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 4.764046199969016,
+      "llm_calls": 1,
+      "tokens": 1291,
+      "verify_ok": true,
+      "answer_supported": false,
+      "unsupported_reasons": [],
+      "invalid_citation_rate": 0.0,
+      "retrieved_doc_ids": [
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "b75b5197-7174-4c3f-9a7f-3e78a5c3a5ba",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "7e7c0264-6534-4778-9274-59e7f7d66214",
+        "8f3ee500-cd90-49fb-af2a-959df407e187",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "66758a3d-8367-4229-969d-df994a2efacc"
+      ],
+      "retrieval": {},
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Architecture Overview",
+        "Incident Report — Payment Outage March",
+        "Change Log March",
+        "Incident Report — Payment Outage March",
+        "Architecture Overview",
+        "Exec Summary",
+        "I'm Still in Love with You (Al Green album)",
+        "The London Howlin' Wolf Sessions",
+        "status_update",
+        "Lynn Hettrick"
+      ],
+      "ablated_gold": true,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer_on_unanswerable": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "question_id": "phaseb_robust_contra_deploy",
+      "question_type": "contradiction",
+      "hotpot_type": null,
+      "hotpot_level": null,
+      "origin": "synthetic_robustness",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144"
+      ],
+      "gold_doc_titles": [
+        "change_log",
+        "incident_march"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "de2106e6-6b42-4299-af93-b35c82be5532",
+          "chunk_id": "388f767c-0289-41d0-a3b8-74f0efac2278",
+          "label": "S1",
+          "quote": "Deployed auth-gateway 2.4.1 at 14:00 UTC on 2024-03-12.",
+          "title": "Change Log March"
+        }
+      ],
+      "latency_s": 9.350949699990451,
+      "llm_calls": 1,
+      "tokens": 1764,
+      "verify_ok": false,
+      "answer_supported": false,
+      "unsupported_reasons": [
+        "quote_mismatch:S2",
+        "answer_not_supported_by_quotes"
+      ],
+      "invalid_citation_rate": 0.5,
+      "retrieved_doc_ids": [
+        "de2106e6-6b42-4299-af93-b35c82be5532",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "137a5f79-3d05-4de3-926d-a9c53ebd3884",
+        "a2993b11-e38e-4fa5-9cdd-a1e67b771acb",
+        "d7776547-bc26-46db-a01c-21fda4757724",
+        "8988e599-6f5e-44be-a827-8cac40d4ab09",
+        "fcd34b37-f61e-4d03-b4b0-2450b9db7d59",
+        "86fa752f-640d-4a79-8210-6481514cd144",
+        "472f1cd6-66a5-4efd-8de0-43fd78ffc40e",
+        "1186ab56-33b3-4ea6-b319-ddc6ede5fad4"
+      ],
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "reader_mode": "structured_reader",
+      "model": "openai/gpt-oss-120b",
+      "provider": "groq",
+      "passage_titles": [
+        "Change Log March",
+        "Incident Report — Payment Outage March",
+        "Exec Summary",
+        "status_update",
+        "latency_metrics",
+        "Postmortem Draft — March Payments",
+        "James W. Hutchins",
+        "Incident Report — Payment Outage March",
+        "Incident Command Post",
+        "Constitutional process in Turkey"
+      ],
+      "ablated_gold": false,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "contradiction_detected": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    }
+  ]
+}

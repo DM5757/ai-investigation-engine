@@ -25,6 +25,10 @@ from app.investigation.question_focus import (
     extract_question_focus,
     filter_claims_for_question,
 )
+from app.investigation.reader import (
+    passages_from_retrieval_hits,
+    read_passages,
+)
 from app.investigation.retention import RetentionTracker
 from app.investigation.sufficiency import assess_sufficiency
 from app.investigation.synthesizer import synthesize_answer
@@ -203,11 +207,13 @@ class InvestigationEngine:
             )
 
         try:
-            return self._finish(
-                self._finalize(q, plan, tools, trace, usage_total),
-                trace,
-                t_request,
-            )
+            if self.settings.experimental_passage_reader:
+                response = self._finalize_with_reader(
+                    q, plan, tools, trace, usage_total
+                )
+            else:
+                response = self._finalize(q, plan, tools, trace, usage_total)
+            return self._finish(response, trace, t_request)
         except BudgetExceeded as exc:
             with trace.stage("budget", inputs_summary=str(exc)) as bag:
                 bag["outputs_summary"] = "budget_exceeded_during_finalize"
@@ -627,6 +633,101 @@ class InvestigationEngine:
             seen.add(key)
             uniq.append(claim)
         return assign_source_labels(uniq)
+
+    def _finalize_with_reader(
+        self,
+        question: str,
+        plan: Any,
+        tools: ToolExecutor,
+        trace: TraceRecorder,
+        usage_total: UsageStats,
+        *,
+        degraded: bool = False,
+    ) -> AnswerResponse:
+        """Experimental path: quote-verified passage reader over retrieved hits."""
+        retention = getattr(self, "_retention", None)
+        hits = list(tools.state.retrieved)
+        if isinstance(retention, RetentionTracker):
+            retention.record_hits("evidence_pool", hits, note="reader_path")
+        passages = passages_from_retrieval_hits(
+            hits, max_n=self.settings.reader_max_passages
+        )
+        with trace.stage("passage_reader", inputs_summary=f"n_passages={len(passages)}") as bag:
+            if self.llm is None:
+                bag["outputs_summary"] = "llm_unavailable"
+                return self._degraded(
+                    question,
+                    plan,
+                    tools,
+                    trace,
+                    usage_total,
+                    reason="Passage reader requires an LLM; none configured.",
+                )
+            try:
+                result = read_passages(
+                    question=question,
+                    passages=passages,
+                    llm=self.llm,
+                    max_passages=self.settings.reader_max_passages,
+                    max_chars=self.settings.reader_max_chars,
+                )
+            except LLMUnavailable as exc:
+                bag["outputs_summary"] = f"provider_fail:{self._sanitize_fail(exc)}"
+                return AnswerResponse(
+                    status="llm_unavailable",
+                    answer=None,
+                    plan=plan,
+                    abstention_reason=(
+                        "LLM provider unavailable for passage reader "
+                        f"({self._sanitize_fail(exc)})."
+                    ),
+                    usage=usage_total,
+                    degraded=True,
+                    trace=trace.events,
+                    retention=retention.as_dict()
+                    if isinstance(retention, RetentionTracker)
+                    else None,
+                )
+            usage_total = usage_total.add(result.usage)
+            bag["tokens"] = result.usage
+            bag["outputs_summary"] = (
+                f"status={result.status}; answerable={result.answerable}; "
+                f"verify_ok={result.verify_ok}; cites={len(result.citations)}"
+            )
+            bag["extra"] = {
+                "reader_mode": result.mode,
+                "unsupported_reasons": result.unsupported_reasons,
+                "model": result.model,
+                "provider": result.provider,
+            }
+            if isinstance(retention, RetentionTracker):
+                retention.record_citations(
+                    "actual_citations",
+                    result.citations,
+                    note=f"reader verify_ok={result.verify_ok}",
+                )
+
+        reason = result.missing_info
+        if result.status == "insufficient" and not reason:
+            reason = "Evidence did not support a verified answer."
+        return AnswerResponse(
+            status=result.status,  # type: ignore[arg-type]
+            answer=result.answer,
+            citations=result.citations,
+            claims=[],
+            conflicts=[],
+            findings=list(tools.state.findings),
+            plan=plan,
+            abstention_reason=reason
+            if result.status in ("insufficient", "llm_unavailable", "partial")
+            else None,
+            usage=usage_total,
+            degraded=degraded or not result.verify_ok,
+            trace=trace.events,
+            retention=retention.as_dict()
+            if isinstance(retention, RetentionTracker)
+            else None,
+        )
 
     def _finalize(
         self,

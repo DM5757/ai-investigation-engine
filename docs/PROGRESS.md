@@ -121,9 +121,16 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - Evidence: `docs/evidence/phase_a_eval_integrity.md`. Tag `submission-2026-10-29` unchanged. Production default mode unchanged.
 - Tests: **200** passed (non-live).
 
+## Phase B — passage reader / E0 (2026-11-03)
+
+- Built `phase_b_bench_v1` (dev 150 / sealed 300 / robustness 5); sealed **unevaluated**.
+- Experimental quote-verified reader behind `EXPERIMENTAL_PASSAGE_READER` (default off).
+- E0 on development: paired Hotpot n=40 — oracle F1 0.645 / raw 0.530 / legacy 0.116; reader justified for Phase C, prod default unchanged.
+- Evidence: `docs/evidence/phase_b_passage_reader.md`. Tag `submission-2026-10-29` unchanged.
+
 ## Outstanding technical follow-ups
 
-1. Phase B: passage-level verified LLM reader (pending review of Phase A report).
+1. Phase C: canary reader behind flag; harden multi-hop cites + contradiction status; one sealed unlock after freeze.
 2. Optional TPM-aware backoff under adaptive load.
-3. Answer-eval on frozen `heldout_v1` test only (no tuning).
+3. Answer-eval on frozen `heldout_v1` / `phase_b_bench_v1` sealed only after config lock (no tuning).
 4. Decide whether prod should keep `hybrid_rerank` given lower R@10 vs RRF.
