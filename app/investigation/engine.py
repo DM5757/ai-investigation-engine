@@ -664,15 +664,22 @@ class InvestigationEngine:
                     reason="Passage reader requires an LLM; none configured.",
                 )
             try:
+                from app.investigation.verify import MultiHopPolicy
+
+                policy_raw = str(
+                    getattr(self.settings, "reader_multi_hop_policy", "soft")
+                ).lower()
+                try:
+                    policy = MultiHopPolicy(policy_raw)
+                except ValueError:
+                    policy = MultiHopPolicy.SOFT
                 result = read_passages(
                     question=question,
                     passages=passages,
                     llm=self.llm,
                     max_passages=self.settings.reader_max_passages,
                     max_chars=self.settings.reader_max_chars,
-                    policy=str(
-                        getattr(self.settings, "reader_multi_hop_policy", "soft")
-                    ),
+                    policy=policy,
                     coverage_threshold=float(
                         getattr(self.settings, "reader_coverage_threshold", 0.65)
                     ),
