@@ -90,12 +90,22 @@ def ready(request: Request, settings: SettingsDep) -> JSONResponse:
 
 
 @router.get("/api/version")
-def version(settings: SettingsDep) -> dict[str, str]:
-    """App version plus deployed git commit when the host injects it."""
+def version(settings: SettingsDep) -> dict[str, Any]:
+    """App version, git commit, and effective reader-path settings (no secrets)."""
+    experimental = bool(settings.experimental_passage_reader)
     return {
         "version": __version__,
         "app": "ai-investigation-engine",
         "git_commit": resolve_git_commit(configured=settings.git_commit),
+        "experimental_passage_reader": experimental,
+        "effective_reader_mode": (
+            "experimental_passage_reader" if experimental else "legacy"
+        ),
+        "reader_multi_hop_policy": settings.reader_multi_hop_policy,
+        "reader_coverage_threshold": settings.reader_coverage_threshold,
+        "reader_max_bridge_rounds": settings.reader_max_bridge_rounds,
+        "reader_preferred_mode": settings.reader_preferred_mode,
+        "reader_max_passages": settings.reader_max_passages,
     }
 
 

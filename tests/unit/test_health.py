@@ -1,5 +1,7 @@
 """Health endpoint unit tests."""
 
+import json
+
 from fastapi.testclient import TestClient
 
 from app.main import create_app
@@ -16,7 +18,22 @@ def test_version() -> None:
     client = TestClient(create_app())
     response = client.get("/api/version")
     assert response.status_code == 200
-    assert "version" in response.json()
+    body = response.json()
+    assert "version" in body
+    assert body["effective_reader_mode"] in {
+        "legacy",
+        "experimental_passage_reader",
+    }
+    assert "experimental_passage_reader" in body
+    assert "reader_max_bridge_rounds" in body
+    assert "reader_preferred_mode" in body
+    assert "reader_multi_hop_policy" in body
+    assert "reader_coverage_threshold" in body
+    # Must not leak secrets.
+    dumped = json.dumps(body).lower()
+    assert "api_key" not in dumped
+    assert "password" not in dumped
+    assert "secret" not in dumped
 
 
 def test_bench_embed_disabled_by_default() -> None:
