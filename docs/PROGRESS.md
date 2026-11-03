@@ -142,9 +142,17 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - SOFT vs STRICT: same unsupported-full=0; SOFT adds honest `partial` coverage.
 - **Frozen candidate: SOFT + coverage 0.65** (`phase_c1_candidate_freeze.md`). Sealed still locked; flag false.
 
+## Final engineering push (2026-11-03)
+
+- Consolidated reader: iterative bridge on `next_query`, paraphrase + cited-passage support (`verify_final_v1`), reader-preferred `hybrid_rrf`.
+- Retrieval A/B on Hotpot n=40: rrf tied with rerank on all-gold@K (0.825); selected **hybrid_rrf**.
+- Dev match `final_dev_v1`: oracle/raw SOFT unsupported-full **0.0**; oracle multi-hop **0.684**; robustness abstention/contradiction gates pass.
+- **Sealed not run** (Groq daily quota + Gemini RPM). Prod flag remains **false**. Freeze: `final_candidate_freeze.md`. Report: `final_engineering_push_report.md`.
+- Tag `submission-2026-10-29` unchanged.
+
 ## Outstanding technical follow-ups
 
-1. One sealed unlock under frozen SOFT candidate + canary behind flag.
-2. Optional TPM-aware backoff under adaptive load.
-3. Answer-eval on frozen `heldout_v1` / `phase_b_bench_v1` sealed only after config lock (no tuning).
-4. Decide whether prod should keep `hybrid_rerank` given lower R@10 vs RRF.
+1. One sealed unlock (`eval/run_sealed_final.py`) when LLM quota allows, then canary behind flag.
+2. Improve raw multi-hop completeness (bridge quality / second-hop retrieval).
+3. Optional TPM-aware backoff under adaptive load.
+4. Legacy prod default may keep `hybrid_rerank` until reader canary; reader path prefers RRF.

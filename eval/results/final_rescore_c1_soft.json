@@ -1,0 +1,1389 @@
+{
+  "run_id": "final_rescore_c1_soft",
+  "created_at": "2026-11-03T06:42:14.514110+00:00",
+  "cache_dir": "data\\cache\\phase_c1_reader",
+  "policy": "soft",
+  "coverage_threshold": 0.65,
+  "verify_id": "verify_final_v1",
+  "n_cache_files": 57,
+  "summary_all": {
+    "n": 57,
+    "exact_match": 0.0,
+    "token_f1": 0.0,
+    "raw_token_f1": 0.6140350877192983,
+    "answer_supported": 0.38596491228070173,
+    "evidence_chain_ok": 0.21052631578947367,
+    "full_answered": 0.21052631578947367,
+    "partial": 0.17543859649122806,
+    "unsupported_full_answer": 0.0,
+    "coverage": 0.49122807017543857,
+    "status_counts": {
+      "answered": 12,
+      "conflicting": 9,
+      "insufficient": 26,
+      "partial": 10
+    }
+  },
+  "summary_with_gold": {
+    "n": 0
+  },
+  "sealed_test_evaluated": false,
+  "note": "Offline re-verify of cached raw_model; no new LLM calls. require_multi_hop inferred as len(passages)>=2 when question unknown.",
+  "results": [
+    {
+      "cache_file": "005a56d0b256caf2b556a116d68c45d83ad9f990ed6cdf2501fcc2c4ee1c4bed.json",
+      "question_id": "005a56d0b256caf2b556a116d68c45d83ad9f990ed6cdf2501fcc2c4ee1c4bed",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [
+        "answer_not_entailed:no_content_tokens"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "011aa8d461358d9c8641a36b5a198af019423ded2862edd84c7487584fa76470.json",
+      "question_id": "011aa8d461358d9c8641a36b5a198af019423ded2862edd84c7487584fa76470",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "07a6e97b37b8e880a365b094047b9f91f21335c6eb6233787fbd39394c22e7ba.json",
+      "question_id": "07a6e97b37b8e880a365b094047b9f91f21335c6eb6233787fbd39394c22e7ba",
+      "status": "partial",
+      "answer": "Logan International Airport",
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "quote_mismatch:S2",
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "0dce77439137ffdd8b145f02891a66e04de2d5dca1c8bd49479b40bbf8440a1f.json",
+      "question_id": "0dce77439137ffdd8b145f02891a66e04de2d5dca1c8bd49479b40bbf8440a1f",
+      "status": "conflicting",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "0ee6c3c8ae2a79fbd33660503524d95bcd0ac6b732841461ed0ab570068d5248.json",
+      "question_id": "0ee6c3c8ae2a79fbd33660503524d95bcd0ac6b732841461ed0ab570068d5248",
+      "status": "answered",
+      "answer": "University of Texas Longhorns",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "11d415767a8351752bf7f0cedbe9e1eb4d7b4450f7c17d2c410146ef4b23e5d5.json",
+      "question_id": "11d415767a8351752bf7f0cedbe9e1eb4d7b4450f7c17d2c410146ef4b23e5d5",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "15e84ec3c0809ff07c28fa2c39c8855a3027f2205d6b4300671c0356789fec9c.json",
+      "question_id": "15e84ec3c0809ff07c28fa2c39c8855a3027f2205d6b4300671c0356789fec9c",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "166dd3c034a179adccef4daf90583a98d8becf77c3eb32c7f7a174736547206a.json",
+      "question_id": "166dd3c034a179adccef4daf90583a98d8becf77c3eb32c7f7a174736547206a",
+      "status": "answered",
+      "answer": "Rob Thomas and Diane Ruggiero-Wright",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "16ff30e1defa44161e8e67c7bf48ad8dde5dcee652eee80dfd6d59a86feba011.json",
+      "question_id": "16ff30e1defa44161e8e67c7bf48ad8dde5dcee652eee80dfd6d59a86feba011",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "1ffe589fbd11a09316ff2ce85b3cfc2f1834687f464e8729ff42ade1a3a4ac9e.json",
+      "question_id": "1ffe589fbd11a09316ff2ce85b3cfc2f1834687f464e8729ff42ade1a3a4ac9e",
+      "status": "answered",
+      "answer": "Edinburgh",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "236d26a81b761c12229cd64a7caa3ab7f7c21152ad4835d6fd9fa6c205f07c0d.json",
+      "question_id": "236d26a81b761c12229cd64a7caa3ab7f7c21152ad4835d6fd9fa6c205f07c0d",
+      "status": "answered",
+      "answer": "Roman Polanski",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "2fe7e4f00f32eb51bd7514cbff8cf4a3e31e93a4987112dbc1f4edff506bb535.json",
+      "question_id": "2fe7e4f00f32eb51bd7514cbff8cf4a3e31e93a4987112dbc1f4edff506bb535",
+      "status": "partial",
+      "answer": "Buddy",
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "341e17e0897a5711feb36e04764fe826c26763ea1c280ca5c8ad6f7e6282bbe4.json",
+      "question_id": "341e17e0897a5711feb36e04764fe826c26763ea1c280ca5c8ad6f7e6282bbe4",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "35c685a435d861a10f4b4bef0d36345202ca79337e07baf9095fafd2f2750e9a.json",
+      "question_id": "35c685a435d861a10f4b4bef0d36345202ca79337e07baf9095fafd2f2750e9a",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "37666e8db422b238ea1ba44c85df413f4e3d24a1b6b6089f5f9fdb521731e297.json",
+      "question_id": "37666e8db422b238ea1ba44c85df413f4e3d24a1b6b6089f5f9fdb521731e297",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "37c1be88e1a42617ed32b3d5e554ab05d7d36b0691b6f239008067869da552fb.json",
+      "question_id": "37c1be88e1a42617ed32b3d5e554ab05d7d36b0691b6f239008067869da552fb",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "3c9ad4719e0c6925d911c6f96e434b4b8ce91cd3f1ee55dc6fc54c67156bbeb9.json",
+      "question_id": "3c9ad4719e0c6925d911c6f96e434b4b8ce91cd3f1ee55dc6fc54c67156bbeb9",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "471dbd2e1f34b895993120c3ad9323a87824226d4e27327f11b9f3abc412684a.json",
+      "question_id": "471dbd2e1f34b895993120c3ad9323a87824226d4e27327f11b9f3abc412684a",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "511f30bb6a94112e0bba4bdf19dcad96727554ed6349070463d51f08126aa588.json",
+      "question_id": "511f30bb6a94112e0bba4bdf19dcad96727554ed6349070463d51f08126aa588",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "534be5a33a59dc3c4d668a3d1bf8d356c15aab57db67889e10afc41182317606.json",
+      "question_id": "534be5a33a59dc3c4d668a3d1bf8d356c15aab57db67889e10afc41182317606",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "55024771abc88682417748e89c31491bbaef8842cdfb35dcd32118e08b57e324.json",
+      "question_id": "55024771abc88682417748e89c31491bbaef8842cdfb35dcd32118e08b57e324",
+      "status": "conflicting",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "57e085eb66f3318dc32a49f6cd63fa7ae3520d44baf536bde026d8c01180b662.json",
+      "question_id": "57e085eb66f3318dc32a49f6cd63fa7ae3520d44baf536bde026d8c01180b662",
+      "status": "partial",
+      "answer": "14:00 UTC",
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "64427ea708027682f5de377ac4bb27e50e6c0cfc985606d13f2cbbde81966ead.json",
+      "question_id": "64427ea708027682f5de377ac4bb27e50e6c0cfc985606d13f2cbbde81966ead",
+      "status": "partial",
+      "answer": "Brent Burns",
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "quote_mismatch:S2",
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "6499c08951b76d2468242db83fa14dd09907f3dde52a5223db2484543cc41800.json",
+      "question_id": "6499c08951b76d2468242db83fa14dd09907f3dde52a5223db2484543cc41800",
+      "status": "answered",
+      "answer": "12 January 2021",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "672a3dcd09eb082581684cacdedfdc2d9d2d019b2aa1e3dc24dd0e645d4fce10.json",
+      "question_id": "672a3dcd09eb082581684cacdedfdc2d9d2d019b2aa1e3dc24dd0e645d4fce10",
+      "status": "conflicting",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "67da9b804b861785f515dcb7f2219c8a5287e22a56e9f88ea65ab821bdd03790.json",
+      "question_id": "67da9b804b861785f515dcb7f2219c8a5287e22a56e9f88ea65ab821bdd03790",
+      "status": "partial",
+      "answer": "Buddy",
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "6db5807b49622e3f14bf01a50e29750aff5d235f1889e97cdfeb471e7a507187.json",
+      "question_id": "6db5807b49622e3f14bf01a50e29750aff5d235f1889e97cdfeb471e7a507187",
+      "status": "conflicting",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "conflicting_years:1924,2003"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "72586e1fb9c99d79f2fd74094ed7606e2f2e1341caf9a54eed5768e6b8b702f6.json",
+      "question_id": "72586e1fb9c99d79f2fd74094ed7606e2f2e1341caf9a54eed5768e6b8b702f6",
+      "status": "partial",
+      "answer": "21 years and 154 days",
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "quote_mismatch:S1",
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "783faf26e229a521bcc1db101313fee19de8c7dba8afcd4e91c7abe8fec282eb.json",
+      "question_id": "783faf26e229a521bcc1db101313fee19de8c7dba8afcd4e91c7abe8fec282eb",
+      "status": "answered",
+      "answer": "Leon Uris",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "7c06c95072cd28337803aef262075c357fe6127437930760621022bbbf7b49fe.json",
+      "question_id": "7c06c95072cd28337803aef262075c357fe6127437930760621022bbbf7b49fe",
+      "status": "answered",
+      "answer": "Rob Thomas and Diane Ruggiero-Wright",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "7d37ccef1c414ef70b322d80dc9ba0398e913a8d0f10778316d5b426c8933f5e.json",
+      "question_id": "7d37ccef1c414ef70b322d80dc9ba0398e913a8d0f10778316d5b426c8933f5e",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "8919027b39b43455e1bb211931ac3e48ada9a5dff00aaa7a22f5c26d85ca1d0a.json",
+      "question_id": "8919027b39b43455e1bb211931ac3e48ada9a5dff00aaa7a22f5c26d85ca1d0a",
+      "status": "conflicting",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "conflicting_years:1956,1978"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "8a3d309724c1c1e18eecd11ab6f0847f7a6c9507c5845fe5f806df9bb7d69590.json",
+      "question_id": "8a3d309724c1c1e18eecd11ab6f0847f7a6c9507c5845fe5f806df9bb7d69590",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "8df4cb73809f3a29bcff04c69917a1dbdc1500daf456711e93672e42ae07f1dc.json",
+      "question_id": "8df4cb73809f3a29bcff04c69917a1dbdc1500daf456711e93672e42ae07f1dc",
+      "status": "conflicting",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "conflicting_years:1960,1961,1997,2002"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "9950b2f45ff6221863f9ceb5f02739af8488fc6545620656dd0f8d385512bbc5.json",
+      "question_id": "9950b2f45ff6221863f9ceb5f02739af8488fc6545620656dd0f8d385512bbc5",
+      "status": "answered",
+      "answer": "Hot Rod",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "9a0b0b5153c052529320ced6488ae62937761891f13e2aceb8d0b4265b9f7721.json",
+      "question_id": "9a0b0b5153c052529320ced6488ae62937761891f13e2aceb8d0b4265b9f7721",
+      "status": "answered",
+      "answer": "Logan International Airport",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "9ad13499956de3c1502ee1d5f02cedcb6383310c480b1e11624b8a54776c6fa4.json",
+      "question_id": "9ad13499956de3c1502ee1d5f02cedcb6383310c480b1e11624b8a54776c6fa4",
+      "status": "partial",
+      "answer": "Brent Burns",
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "quote_mismatch:S2",
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "9e33d97d621c2f745ebb3dc5bcd9dec8eaeacd9af80ae263743d171185e14cfc.json",
+      "question_id": "9e33d97d621c2f745ebb3dc5bcd9dec8eaeacd9af80ae263743d171185e14cfc",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "a54d6b90382801cd4d52a7416b74fe0908402d0db6f5cf0c3ccbb6c0346f88cc.json",
+      "question_id": "a54d6b90382801cd4d52a7416b74fe0908402d0db6f5cf0c3ccbb6c0346f88cc",
+      "status": "conflicting",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "conflicting_years:1986,1990,2010"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "ab72a698e88b775c707b4345bade6b62391b0394e3428ec2f9335d838a215db6.json",
+      "question_id": "ab72a698e88b775c707b4345bade6b62391b0394e3428ec2f9335d838a215db6",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [
+        "quote_mismatch:S1"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "b19da26a9c472c36fb5f44384a5a8b80c09fde32fea506008a73a2662a3ba72e.json",
+      "question_id": "b19da26a9c472c36fb5f44384a5a8b80c09fde32fea506008a73a2662a3ba72e",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "ba66ca0c86f259d5c15cfa6c65458fc4f95c7774e84dcb4107f478f194136f3b.json",
+      "question_id": "ba66ca0c86f259d5c15cfa6c65458fc4f95c7774e84dcb4107f478f194136f3b",
+      "status": "partial",
+      "answer": "Helen Park",
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "bc71df40225501c186c4c06ad31150233fbcd23782badc1c3e579a1e327f4dd6.json",
+      "question_id": "bc71df40225501c186c4c06ad31150233fbcd23782badc1c3e579a1e327f4dd6",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "bf06a179cce660c56ea93e6b112a02aba1e2898d3665194979fb265de062d92e.json",
+      "question_id": "bf06a179cce660c56ea93e6b112a02aba1e2898d3665194979fb265de062d92e",
+      "status": "answered",
+      "answer": "UHF channel 44",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "c1205096ad22add9808547ac0504d62bf05594e78b9b6266f8874fb1978c9ee7.json",
+      "question_id": "c1205096ad22add9808547ac0504d62bf05594e78b9b6266f8874fb1978c9ee7",
+      "status": "conflicting",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "conflicting_years:1960,1997"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "c22fbc69ba2046fc17da94afecf14930bfbf630def2fcdff227963bb4953b1c6.json",
+      "question_id": "c22fbc69ba2046fc17da94afecf14930bfbf630def2fcdff227963bb4953b1c6",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "c2c44bc8d7c7fb315622735e340e1215e5be95f2a53570e766fbdacc7e7bf13d.json",
+      "question_id": "c2c44bc8d7c7fb315622735e340e1215e5be95f2a53570e766fbdacc7e7bf13d",
+      "status": "partial",
+      "answer": "Juventus",
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "quote_mismatch:S2",
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "c42e342bf784d977fdd6a24c7bac5e03c77fdd209171a25d780909db53adc6fb.json",
+      "question_id": "c42e342bf784d977fdd6a24c7bac5e03c77fdd209171a25d780909db53adc6fb",
+      "status": "conflicting",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "conflicting_years:1924,2003"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "cd2fef1e34043fe7ecf818808df63514b14fc9f597249a5e5e40431fc77113c3.json",
+      "question_id": "cd2fef1e34043fe7ecf818808df63514b14fc9f597249a5e5e40431fc77113c3",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "d47984d6f846eefadfa3b3418ebdcdbc10a28b4b509ba6f34a916ba91e7732b3.json",
+      "question_id": "d47984d6f846eefadfa3b3418ebdcdbc10a28b4b509ba6f34a916ba91e7732b3",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [
+        "quote_mismatch:S2",
+        "answer_not_entailed:no_content_tokens"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "d96b6edb3f50daf11fab950f9688012cdeb36e4173421e29dd31ff120e1eb856.json",
+      "question_id": "d96b6edb3f50daf11fab950f9688012cdeb36e4173421e29dd31ff120e1eb856",
+      "status": "answered",
+      "answer": "Lee County",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "eef82b920dbc1fb8e7acc79e3f1da008ad68c290dcccd98b1cfc89ea650938e9.json",
+      "question_id": "eef82b920dbc1fb8e7acc79e3f1da008ad68c290dcccd98b1cfc89ea650938e9",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "f26efa410d28aebf732318f739bc4c1b614d30541db956afba03eca812ec0316.json",
+      "question_id": "f26efa410d28aebf732318f739bc4c1b614d30541db956afba03eca812ec0316",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "f705e2f64d1c69d76ff5d01a1a05ff1fa99e6ab6df25b886c6038812b1eb4f51.json",
+      "question_id": "f705e2f64d1c69d76ff5d01a1a05ff1fa99e6ab6df25b886c6038812b1eb4f51",
+      "status": "answered",
+      "answer": "Buddy",
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "coverage": 1.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 1.0,
+        "full_answered": 1.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "fba99a279a8002d8e661cf7ac644031614b73f09aad09390bb33fbd70821ae93.json",
+      "question_id": "fba99a279a8002d8e661cf7ac644031614b73f09aad09390bb33fbd70821ae93",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "fcaac8570f18dc91796b6a988ccafcfc864edbce588ccb27e5f2e2138ccc14bf.json",
+      "question_id": "fcaac8570f18dc91796b6a988ccafcfc864edbce588ccb27e5f2e2138ccc14bf",
+      "status": "insufficient",
+      "answer": null,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "coverage": 0.0,
+      "unsupported_reasons": [],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 0.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 0.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 0.0
+      },
+      "has_gold": false
+    },
+    {
+      "cache_file": "fdf164c3c737e42793e2a643b9f25363ea3b59ce285cc4b047dba820e25ecd05.json",
+      "question_id": "fdf164c3c737e42793e2a643b9f25363ea3b59ce285cc4b047dba820e25ecd05",
+      "status": "partial",
+      "answer": "Eric Bloom",
+      "answer_supported": true,
+      "evidence_chain_ok": false,
+      "coverage": 1.0,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "scores": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 1.0,
+        "evidence_chain_ok": 0.0,
+        "full_answered": 0.0,
+        "partial": 1.0,
+        "unsupported_full_answer": 0.0,
+        "coverage": 1.0
+      },
+      "has_gold": false
+    }
+  ]
+}

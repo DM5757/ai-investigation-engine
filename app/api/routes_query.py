@@ -93,7 +93,15 @@ def query(
     settings: SettingsDep,
 ) -> QueryResponse:
     enforce_query_rate_limit(request)
-    mode: RetrievalMode = body.mode or "hybrid_rerank"
+    # Prefer hybrid_rrf for the experimental reader path unless the client
+    # explicitly sets a mode (legacy production default remains hybrid_rerank).
+    if body.mode:
+        mode: RetrievalMode = body.mode
+    elif settings.experimental_passage_reader:
+        pref = str(getattr(settings, "reader_preferred_mode", "hybrid_rrf") or "hybrid_rrf")
+        mode = pref if pref in ALLOWED_MODES else "hybrid_rrf"  # type: ignore[assignment]
+    else:
+        mode = "hybrid_rerank"
     if mode not in ALLOWED_MODES:
         raise AppError(f"invalid mode; allowed: {sorted(ALLOWED_MODES)}")
 

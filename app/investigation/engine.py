@@ -644,7 +644,12 @@ class InvestigationEngine:
         *,
         degraded: bool = False,
     ) -> AnswerResponse:
-        """Experimental path: quote-verified passage reader over retrieved hits."""
+        """Experimental path: quote-verified passage reader over retrieved hits.
+
+        When the first read returns partial/insufficient with a concrete
+        ``next_query``, optionally run up to ``reader_max_bridge_rounds``
+        extra search+read iterations and keep the best verified outcome.
+        """
         retention = getattr(self, "_retention", None)
         hits = list(tools.state.retrieved)
         if isinstance(retention, RetentionTracker):
@@ -663,16 +668,33 @@ class InvestigationEngine:
                     usage_total,
                     reason="Passage reader requires an LLM; none configured.",
                 )
-            try:
-                from app.investigation.verify import MultiHopPolicy
+            from app.investigation.verify import MultiHopPolicy
 
-                policy_raw = str(
-                    getattr(self.settings, "reader_multi_hop_policy", "soft")
-                ).lower()
-                try:
-                    policy = MultiHopPolicy(policy_raw)
-                except ValueError:
-                    policy = MultiHopPolicy.SOFT
+            policy_raw = str(
+                getattr(self.settings, "reader_multi_hop_policy", "soft")
+            ).lower()
+            try:
+                policy = MultiHopPolicy(policy_raw)
+            except ValueError:
+                policy = MultiHopPolicy.SOFT
+            cov_thr = float(
+                getattr(self.settings, "reader_coverage_threshold", 0.65)
+            )
+            max_bridge = max(
+                0, int(getattr(self.settings, "reader_max_bridge_rounds", 1))
+            )
+
+            def _rank(status: str) -> int:
+                order = {
+                    "answered": 5,
+                    "partial": 4,
+                    "conflicting": 3,
+                    "insufficient": 2,
+                    "llm_unavailable": 1,
+                }
+                return order.get(status, 0)
+
+            try:
                 result = read_passages(
                     question=question,
                     passages=passages,
@@ -680,9 +702,7 @@ class InvestigationEngine:
                     max_passages=self.settings.reader_max_passages,
                     max_chars=self.settings.reader_max_chars,
                     policy=policy,
-                    coverage_threshold=float(
-                        getattr(self.settings, "reader_coverage_threshold", 0.65)
-                    ),
+                    coverage_threshold=cov_thr,
                 )
             except LLMUnavailable as exc:
                 bag["outputs_summary"] = f"provider_fail:{self._sanitize_fail(exc)}"
@@ -702,16 +722,74 @@ class InvestigationEngine:
                     else None,
                 )
             usage_total = usage_total.add(result.usage)
+            bridge_rounds = 0
+            seen_queries: set[str] = {question.strip().lower()}
+
+            while (
+                bridge_rounds < max_bridge
+                and result.status in ("partial", "insufficient")
+                and result.next_query
+                and result.next_query.strip().lower() not in seen_queries
+            ):
+                nq = result.next_query.strip()
+                seen_queries.add(nq.lower())
+                bridge_rounds += 1
+                with trace.stage(
+                    "reader_bridge_search",
+                    inputs_summary=f"round={bridge_rounds}; q={nq[:120]}",
+                ) as bbag:
+                    try:
+                        tools.execute(
+                            "search_documents",
+                            {"query": nq, "k": self.settings.reader_max_passages},
+                        )
+                        bbag["outputs_summary"] = (
+                            f"pool_size={len(tools.state.retrieved)}"
+                        )
+                    except Exception as exc:  # noqa: BLE001 — keep best prior result
+                        bbag["outputs_summary"] = f"bridge_search_fail:{exc!s}"[:200]
+                        break
+                passages = passages_from_retrieval_hits(
+                    list(tools.state.retrieved),
+                    max_n=self.settings.reader_max_passages,
+                )
+                if isinstance(retention, RetentionTracker):
+                    retention.record_hits(
+                        "evidence_pool",
+                        list(tools.state.retrieved),
+                        note=f"reader_bridge_round={bridge_rounds}",
+                    )
+                try:
+                    nxt = read_passages(
+                        question=question,
+                        passages=passages,
+                        llm=self.llm,
+                        max_passages=self.settings.reader_max_passages,
+                        max_chars=self.settings.reader_max_chars,
+                        policy=policy,
+                        coverage_threshold=cov_thr,
+                    )
+                except LLMUnavailable:
+                    break
+                usage_total = usage_total.add(nxt.usage)
+                if _rank(nxt.status) >= _rank(result.status):
+                    result = nxt
+                if result.status == "answered":
+                    break
+
             bag["tokens"] = result.usage
             bag["outputs_summary"] = (
                 f"status={result.status}; answerable={result.answerable}; "
-                f"verify_ok={result.verify_ok}; cites={len(result.citations)}"
+                f"verify_ok={result.verify_ok}; cites={len(result.citations)}; "
+                f"bridge_rounds={bridge_rounds}"
             )
             bag["extra"] = {
                 "reader_mode": result.mode,
                 "unsupported_reasons": result.unsupported_reasons,
                 "model": result.model,
                 "provider": result.provider,
+                "bridge_rounds": bridge_rounds,
+                "next_query": result.next_query,
             }
             if isinstance(retention, RetentionTracker):
                 retention.record_citations(

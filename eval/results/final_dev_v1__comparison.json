@@ -1,0 +1,200 @@
+{
+  "run_id": "final_dev_v1",
+  "created_at": "2026-11-03T06:47:19.781127+00:00",
+  "verify_id": "verify_final_v1",
+  "retrieval_mode": "hybrid_rrf",
+  "policy": "soft",
+  "summaries": [
+    {
+      "config_id": "final_oracle_soft",
+      "summary": {
+        "n_attempted": 30,
+        "n_scored": 27,
+        "n_provider_failures": 3,
+        "n_cache_hits": 0,
+        "token_f1_full_answered": 0.3567901234567901,
+        "exact_match_full_answered": 0.25925925925925924,
+        "raw_token_f1_overlap": 0.5049382716049382,
+        "answer_supported_rate": 0.6296296296296297,
+        "full_answered_rate": 0.48148148148148145,
+        "partial_rate": 0.14814814814814814,
+        "evidence_chain_ok_rate": 0.48148148148148145,
+        "multi_hop_all_gold_cited": 0.6842105263157895,
+        "citation_f1": 0.8947368421052632,
+        "false_answer_rate": 0.0,
+        "correct_abstention_rate": 1.0,
+        "contradiction_detection_rate": 1.0,
+        "false_contradiction_rate": 0.0,
+        "unsupported_full_answer_rate": 0.0,
+        "mean_latency_s": 0.9708310777700886,
+        "latency_p50_s": 0.8675392000004649,
+        "latency_p95_s": 1.38912419998087,
+        "mean_tokens": 807.7037037037037,
+        "mean_llm_calls": 0.9629629629629629,
+        "status_counts": {
+          "answered": 13,
+          "conflicting": 4,
+          "insufficient": 6,
+          "partial": 4
+        },
+        "retrieval_recall_at_k": null,
+        "retrieval_all_gold_at_k": null
+      },
+      "acceptance": {
+        "unsupported_full_le_0_02": {
+          "pass": true,
+          "value": 0.0
+        },
+        "false_answer_le_0_05": {
+          "pass": true,
+          "value": 0.0
+        },
+        "appropriate_status_ge_0_95": {
+          "pass": true,
+          "value": 1.0
+        },
+        "multi_hop_all_gold_ge_0_50": {
+          "pass": true,
+          "value": 0.6842105263157895
+        },
+        "contradiction_recall_ge_0_80": {
+          "pass": true,
+          "value": 1.0
+        },
+        "false_contradiction_le_0_20": {
+          "pass": true,
+          "value": 0.0
+        }
+      },
+      "path": "C:\\Users\\datom\\IdeaProjects\\ai-investigation-engine\\eval\\results\\final_dev_v1__final_oracle_soft.json"
+    },
+    {
+      "config_id": "final_raw_soft",
+      "summary": {
+        "n_attempted": 30,
+        "n_scored": 27,
+        "n_provider_failures": 3,
+        "n_cache_hits": 0,
+        "token_f1_full_answered": 0.25925925925925924,
+        "exact_match_full_answered": 0.2222222222222222,
+        "raw_token_f1_overlap": 0.41851851851851857,
+        "answer_supported_rate": 0.48148148148148145,
+        "full_answered_rate": 0.2962962962962963,
+        "partial_rate": 0.18518518518518517,
+        "evidence_chain_ok_rate": 0.2962962962962963,
+        "multi_hop_all_gold_cited": 0.4,
+        "citation_f1": 0.7888888888888889,
+        "false_answer_rate": 0.0,
+        "correct_abstention_rate": 1.0,
+        "contradiction_detection_rate": 1.0,
+        "false_contradiction_rate": 0.0,
+        "unsupported_full_answer_rate": 0.0,
+        "mean_latency_s": 0.8909189111242691,
+        "latency_p50_s": 1.0751767000183463,
+        "latency_p95_s": 1.5124338001478463,
+        "mean_tokens": 1507.111111111111,
+        "mean_llm_calls": 0.9629629629629629,
+        "status_counts": {
+          "answered": 8,
+          "conflicting": 5,
+          "insufficient": 9,
+          "partial": 5
+        },
+        "retrieval_recall_at_k": 0.8823529411764706,
+        "retrieval_all_gold_at_k": 0.7647058823529411
+      },
+      "acceptance": {
+        "unsupported_full_le_0_02": {
+          "pass": true,
+          "value": 0.0
+        },
+        "false_answer_le_0_05": {
+          "pass": true,
+          "value": 0.0
+        },
+        "appropriate_status_ge_0_95": {
+          "pass": true,
+          "value": 1.0
+        },
+        "multi_hop_all_gold_ge_0_50": {
+          "pass": false,
+          "value": 0.4
+        },
+        "contradiction_recall_ge_0_80": {
+          "pass": true,
+          "value": 1.0
+        },
+        "false_contradiction_le_0_20": {
+          "pass": true,
+          "value": 0.0
+        }
+      },
+      "path": "C:\\Users\\datom\\IdeaProjects\\ai-investigation-engine\\eval\\results\\final_dev_v1__final_raw_soft.json"
+    },
+    {
+      "config_id": "final_legacy",
+      "summary": {
+        "n_attempted": 30,
+        "n_scored": 30,
+        "n_provider_failures": 0,
+        "n_cache_hits": 0,
+        "token_f1_full_answered": 0.0,
+        "exact_match_full_answered": 0.0,
+        "raw_token_f1_overlap": 0.15634920634920635,
+        "answer_supported_rate": 0.23333333333333334,
+        "full_answered_rate": 0.23333333333333334,
+        "partial_rate": 0.0,
+        "evidence_chain_ok_rate": 0.0,
+        "multi_hop_all_gold_cited": 0.0,
+        "citation_f1": 0.0,
+        "false_answer_rate": 0.5,
+        "correct_abstention_rate": 0.5,
+        "contradiction_detection_rate": 1.0,
+        "false_contradiction_rate": 0.0,
+        "unsupported_full_answer_rate": 0.23333333333333334,
+        "mean_latency_s": 2.5704406200054413,
+        "latency_p50_s": 1.5457727999892086,
+        "latency_p95_s": 5.198143700137734,
+        "mean_tokens": 2062.9333333333334,
+        "mean_llm_calls": 1.1,
+        "status_counts": {
+          "answered": 7,
+          "insufficient": 14,
+          "llm_unavailable": 9
+        },
+        "retrieval_recall_at_k": null,
+        "retrieval_all_gold_at_k": null
+      },
+      "acceptance": {
+        "unsupported_full_le_0_02": {
+          "pass": false,
+          "value": 0.23333333333333334
+        },
+        "false_answer_le_0_05": {
+          "pass": false,
+          "value": 0.5
+        },
+        "appropriate_status_ge_0_95": {
+          "pass": false,
+          "value": 0.5
+        },
+        "multi_hop_all_gold_ge_0_50": {
+          "pass": false,
+          "value": 0.0
+        },
+        "contradiction_recall_ge_0_80": {
+          "pass": true,
+          "value": 1.0
+        },
+        "false_contradiction_le_0_20": {
+          "pass": true,
+          "value": 0.0
+        }
+      },
+      "path": "C:\\Users\\datom\\IdeaProjects\\ai-investigation-engine\\eval\\results\\final_dev_v1__final_legacy.json"
+    }
+  ],
+  "sealed_test_evaluated": false,
+  "recommended": "final_raw_soft",
+  "note": "Select final_raw_soft if acceptance passes and full-answer F1 / supported rate dominate legacy without raising unsupported answers."
+}

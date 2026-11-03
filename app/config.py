@@ -135,6 +135,22 @@ class Settings(BaseSettings):
         alias="READER_COVERAGE_THRESHOLD",
         description="Minimum answer content-token coverage in verified quotes.",
     )
+    reader_max_bridge_rounds: int = Field(
+        default=1,
+        alias="READER_MAX_BRIDGE_ROUNDS",
+        description=(
+            "When the SOFT/STRICT reader returns partial/insufficient with a "
+            "next_query, run this many extra retrieval+read rounds (0 disables)."
+        ),
+    )
+    reader_preferred_mode: str = Field(
+        default="hybrid_rrf",
+        alias="READER_PREFERRED_MODE",
+        description=(
+            "Default retrieval mode when experimental_passage_reader is on and "
+            "the request does not set mode explicitly."
+        ),
+    )
     git_commit: str | None = Field(default=None, alias="GIT_COMMIT")
 
     admin_token: SecretStr | None = Field(default=None, alias="ADMIN_TOKEN")

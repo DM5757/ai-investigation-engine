@@ -1,0 +1,2815 @@
+{
+  "run_id": "final_retr_ab_v1",
+  "created_at": "2026-11-03T06:43:25.415076+00:00",
+  "k": 10,
+  "n_questions": 40,
+  "corpus": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "summaries": [
+    {
+      "mode": "dense_only",
+      "n": 40,
+      "recall_at_k": 0.85,
+      "all_gold_at_k": 0.725,
+      "mrr": 0.9291666666666666,
+      "latency_p50_s": 0.104562200140208,
+      "latency_p95_s": 0.12603410007432103
+    },
+    {
+      "mode": "hybrid_rrf",
+      "n": 40,
+      "recall_at_k": 0.9125,
+      "all_gold_at_k": 0.825,
+      "mrr": 0.9208333333333334,
+      "latency_p50_s": 0.09598510013893247,
+      "latency_p95_s": 0.1711669999640435
+    },
+    {
+      "mode": "hybrid_rerank",
+      "n": 40,
+      "recall_at_k": 0.9125,
+      "all_gold_at_k": 0.825,
+      "mrr": 0.9327777777777777,
+      "latency_p50_s": 0.163503099931404,
+      "latency_p95_s": 0.19835830014199018
+    }
+  ],
+  "recommended_mode": "hybrid_rrf",
+  "rationale": "On phase_b_bench_v1_dev (n=40), hybrid_rrf and hybrid_rerank tied on all-gold@K (0.825) and recall@K (0.9125). Prefer hybrid_rrf for lower p95 latency and Phase A heldout all-gold advantage vs rerank. dense_only lags all-gold@K (0.725).",
+  "per_mode_results": {
+    "dense_only": [
+      {
+        "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+        "gold_doc_ids": [
+          "4e558d72-c1c3-4544-9609-16ec13e097a3",
+          "2bed5f52-4939-4b37-919c-d05855e5e86c"
+        ],
+        "retrieved_doc_ids": [
+          "4e558d72-c1c3-4544-9609-16ec13e097a3",
+          "2bed5f52-4939-4b37-919c-d05855e5e86c",
+          "489698e8-3748-4633-be20-4c516d51f22e",
+          "a7c5f901-9806-4f68-85c7-33ef67c011d8",
+          "e331580a-35c3-4113-bee0-dfafd2138157",
+          "758cc1cf-312c-48f4-805d-1f40a8832d64",
+          "578fafce-0469-4120-b35f-a3103d7b8cba",
+          "74d5b336-1816-42f4-9116-fcede59e4edc",
+          "fe9f1954-46d7-49f2-b98f-5efb9380f046",
+          "795c44f9-85a3-4e82-bd65-dd6fed3ff6e7"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10957120009697974
+      },
+      {
+        "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+        "gold_doc_ids": [
+          "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+          "362a4fce-7cee-41de-836c-759b0e8631e6"
+        ],
+        "retrieved_doc_ids": [
+          "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+          "7d602dbf-7f69-4f83-8b40-85da7aa26239",
+          "362a4fce-7cee-41de-836c-759b0e8631e6",
+          "15ffd6c5-d340-4094-88b8-f021189f4a64",
+          "c4aa9717-09f3-48df-862f-9a393aa70fe4",
+          "c3fb6f3a-1183-4d75-8f8b-d60376060f62",
+          "3ab7a349-a780-4fcf-8d00-8311eadebda2",
+          "af804001-9e07-4ff2-a178-668cd8826e04",
+          "74144b25-a8b0-4bf8-8b8a-9c77ac139012",
+          "096aa619-21ce-434f-a5f5-326e3345f568"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10521470010280609
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+        "gold_doc_ids": [
+          "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+          "7ab5b521-8c0c-4a03-84d2-2884756605c0"
+        ],
+        "retrieved_doc_ids": [
+          "353f56df-f2ef-4a87-bb3c-9f69a8efa693",
+          "ff6fddf1-4264-4b7b-9679-3358b83e98b6",
+          "2014db51-7d28-48c6-8acf-7f70588f25aa",
+          "e7c34da3-4802-4e45-a67f-8ac317d35ca6",
+          "14ecb07e-0af9-4fb1-8434-0875c404f2cf",
+          "622624b2-0a6a-4b59-839a-7718683da1c7",
+          "4edc9b6f-ff55-4b6c-a691-08aed7eb4954",
+          "5293ea7c-9b0d-4d9f-8474-9370cea24b9d",
+          "023f33a4-6136-4c2f-9448-d74c23f12ec3",
+          "81d03cf9-efe7-4c54-be73-3e8cad20e731"
+        ],
+        "recall_at_k": 0.0,
+        "all_gold_at_k": 0.0,
+        "mrr": 0.0,
+        "latency_s": 0.11087749991565943
+      },
+      {
+        "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+        "gold_doc_ids": [
+          "3428a271-a243-4032-ae07-47df99fdaae6",
+          "0adc14d0-8f14-441a-b731-270a317e140d"
+        ],
+        "retrieved_doc_ids": [
+          "3428a271-a243-4032-ae07-47df99fdaae6",
+          "92126d56-3787-4d54-b626-9173ac6c7885",
+          "92ffbbf1-635e-4f4b-8e0d-a993b0ba44d4",
+          "af5c0b81-313b-41d6-a560-d9246bab7c8c",
+          "92535855-8b52-4e57-a128-4ae6d8bb31a0",
+          "5b43b53e-0ed6-4e4d-8341-fe1f43a1390d",
+          "5226a595-8292-4ca1-8c1e-c8944b258012",
+          "c01e402b-81ef-4688-b8df-886592cd72fd",
+          "e49b81fb-0f31-43aa-bfeb-aba4a31baa41",
+          "338d0f79-f047-4005-81c2-b7dbba602ebd"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.1049256999976933
+      },
+      {
+        "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+        "gold_doc_ids": [
+          "e396e67f-ded4-44f0-ba41-6282d404e898",
+          "919290c3-fed0-44a8-b55a-07bf5d513c4e"
+        ],
+        "retrieved_doc_ids": [
+          "e396e67f-ded4-44f0-ba41-6282d404e898",
+          "919290c3-fed0-44a8-b55a-07bf5d513c4e",
+          "f61eed34-328c-4c55-b860-aa2cf9ffe967",
+          "15d7eda3-e51a-46f0-a15a-742a1728c27a",
+          "5ecab45f-48eb-4da1-ab34-b508780b5171",
+          "258adce6-9fad-4dc8-ab98-b21316c32c91",
+          "40ec0bd7-1d67-4843-8ca6-9867187def6a",
+          "77257e3d-defe-4517-b908-c32b8ee28886",
+          "51a22cbb-983f-4868-99fd-6b9d602cc794",
+          "e41d573b-7d73-4469-9535-ce6d4b777ded"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.1112120000179857
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+        "gold_doc_ids": [
+          "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+          "b5586f6b-5758-45bf-9904-e45d12505e9d"
+        ],
+        "retrieved_doc_ids": [
+          "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+          "b5586f6b-5758-45bf-9904-e45d12505e9d",
+          "f23456fd-48c3-49af-a126-2c7170a2df17",
+          "7d54a479-42ae-41ff-9979-5414cdb634c3",
+          "fd0613f7-3173-497f-a301-effe65a5108f",
+          "a7a40f11-61a0-4f2e-9629-0a5541a9b1c3",
+          "b71238d9-15ab-4785-9d74-3c3ddd107e9a",
+          "2b0a4069-6082-4ed8-a998-2486be0db429",
+          "d2302129-4518-46d3-ac9d-f811e28b865b",
+          "764dc554-d613-4b11-9e37-faaae7f93b70"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.11324610002338886
+      },
+      {
+        "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+        "gold_doc_ids": [
+          "57b45e66-ddfe-4891-b527-dfd0edd23f8b",
+          "1308823a-7e5f-4e5a-9f75-df33a1d05f02"
+        ],
+        "retrieved_doc_ids": [
+          "57b45e66-ddfe-4891-b527-dfd0edd23f8b",
+          "b985753a-e975-4419-805d-3689badef7b0",
+          "1308823a-7e5f-4e5a-9f75-df33a1d05f02",
+          "c0f431f5-6c85-4c95-8263-4bd2cbebf540",
+          "986300a5-e19d-4cb4-a9d2-a2794381ca7d",
+          "41945322-a853-40e7-996c-26df7d0bd36f",
+          "09f03eb0-c466-43c4-ae12-5b04ad0be9df",
+          "f7a5a680-e93a-4c0b-a8d7-0ecb1fb3a7fd",
+          "a02a9763-7ccb-45c3-addb-c8392b6243cd",
+          "42035714-3dfb-4f5c-a211-e6e3e6281ddf"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.14850470004603267
+      },
+      {
+        "question_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a",
+        "gold_doc_ids": [
+          "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+          "97118e55-ca2a-4846-a6b7-33a1c0f838b6"
+        ],
+        "retrieved_doc_ids": [
+          "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+          "455e935e-413d-46a9-bbb1-27a553b75d4e",
+          "e4f2ce93-e38f-446d-9174-cc2e2f8db081",
+          "3efc0b6e-2657-4175-ba7c-f5f61d2f8024",
+          "76851174-7b65-4846-a0c0-65df5b3c71da",
+          "70efc9de-2935-4238-96b6-bebc2d721695",
+          "23649e2b-a11c-4cb7-8f29-5ff95f8af4a6",
+          "777ecd24-f43e-4727-a812-9494aa461b5d",
+          "c3a57b83-a2e3-4e5b-89c6-af2615d42d82",
+          "44fd6fa8-f6e1-4c5b-b0f5-4b28e8f24e77"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.13612569984979928
+      },
+      {
+        "question_id": "phaseb_hotpot_5adf85e05542993344016cba",
+        "gold_doc_ids": [
+          "af63784b-7add-431b-b99c-b1c4a1441e94",
+          "f9cf1966-df33-4ae0-b7d0-8480f210e118"
+        ],
+        "retrieved_doc_ids": [
+          "af63784b-7add-431b-b99c-b1c4a1441e94",
+          "e73f473d-5d45-44ef-97f4-3e627c15d881",
+          "f9cf1966-df33-4ae0-b7d0-8480f210e118",
+          "db8e3be2-bf5e-4ffc-a6f4-3bfca2c9a1ec",
+          "ca0ca09e-6ba4-4547-a7d0-f9549cd58c02",
+          "f4e9c85d-48af-4b6a-8f28-569ec1704e87",
+          "6c8105dd-26f3-4531-b904-b2e421ecae91",
+          "7d99bb17-a181-4c5f-8366-27534d6f4bcd",
+          "af9a1c79-e2ff-4b5f-8322-46b5d2e08caf",
+          "c5cd3e3f-f7ac-4fc2-8843-36168411f7d0"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.104562200140208
+      },
+      {
+        "question_id": "phaseb_hotpot_5ab443415542991751b4d711",
+        "gold_doc_ids": [
+          "0a9aa3ca-9a7f-4768-968d-91d3079f7a70",
+          "0877e976-f392-4259-b182-fa690ae9bc33"
+        ],
+        "retrieved_doc_ids": [
+          "0a9aa3ca-9a7f-4768-968d-91d3079f7a70",
+          "0877e976-f392-4259-b182-fa690ae9bc33",
+          "70008cf1-e6e1-4b0b-abc7-d007915ae9ba",
+          "371e0563-cbe0-4e7e-b295-ae47b52055f1",
+          "8561a82a-cdc5-4d29-9350-5c6241fd965c",
+          "c9096f2c-7a79-404f-90b8-477ab74dd646",
+          "58c9f531-8cfa-4c16-a447-c0c5ec6043a3",
+          "c0be1c49-daa4-4895-9993-ab31edadcb4b",
+          "5a49f360-b564-4828-a93c-133374290c3e",
+          "eb7be468-8476-466d-b3b2-675d8489b6c7"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.12603410007432103
+      },
+      {
+        "question_id": "phaseb_hotpot_5abb1fd95542996cc5e49fb6",
+        "gold_doc_ids": [
+          "8bb41e2d-fdc8-4cc1-bd06-f9aed1a9c103",
+          "4b612dab-612c-47e4-aa98-3dcf1554ad69"
+        ],
+        "retrieved_doc_ids": [
+          "8bb41e2d-fdc8-4cc1-bd06-f9aed1a9c103",
+          "c41c103f-2249-4906-8c7d-0d10173eb333",
+          "7fc05dd1-2a69-483b-89dc-60c179e3cbde",
+          "406c12c5-a5b9-44a2-a093-c2d3a4fadd01",
+          "91f339f7-2293-4aa0-a642-540a0d2e252b",
+          "a90ad565-8ce3-472d-8aa3-17e1648dff57",
+          "1f48f953-39f3-472e-a9a0-658b04da32b4",
+          "d1ccf60a-d173-4ef1-8840-577401bffeac",
+          "f85dacb9-0f82-4b8f-993e-f34310f976d7",
+          "8e7ad8fb-265d-498a-80e4-271f24a0e729"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.0974093999247998
+      },
+      {
+        "question_id": "phaseb_hotpot_5abdb10f55429965af743dc9",
+        "gold_doc_ids": [
+          "5e415b62-702f-406b-b249-202bf3e7248b",
+          "15fe4116-34bf-4e24-94b8-024a6b300e1d"
+        ],
+        "retrieved_doc_ids": [
+          "15fe4116-34bf-4e24-94b8-024a6b300e1d",
+          "5e415b62-702f-406b-b249-202bf3e7248b",
+          "ff7c508a-8895-47c2-84aa-c119d070a04a",
+          "640c1dcd-33bc-40ad-8453-b24c47054d06",
+          "a8f00026-11e5-4721-b908-8ae05c3da631",
+          "e591e1c0-8fab-4fd7-a96f-46be3c10e22d",
+          "e0250de7-6980-4ed0-a982-9d3a6d011515",
+          "69960a4d-22ca-4728-bcf1-3c459224aa58",
+          "30b4d1ad-1ee9-4883-94c2-f16def649b00",
+          "fdecadeb-ffd4-4211-a5bb-3a2ba8637646"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10201989999040961
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8f155e554299458435d54c",
+        "gold_doc_ids": [
+          "28e36447-e944-4957-a050-cd863b0631b0",
+          "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7"
+        ],
+        "retrieved_doc_ids": [
+          "28e36447-e944-4957-a050-cd863b0631b0",
+          "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7",
+          "3749e43a-3397-4ce7-8d1d-6259366b1906",
+          "4318ee81-a07d-41b0-be6e-0733ad1d6bb2",
+          "c559569a-f1a2-472c-a8b0-8277d116f9f9",
+          "76c0a7f2-0ede-456e-87d6-8c600a7ecbd3",
+          "68f99e45-c55a-45fc-81aa-f7d949e207c9",
+          "0f289e3e-880e-49ad-b8e7-c2a8862b3175",
+          "fcdedd60-a73b-4e7e-8841-395468f86cd5",
+          "1dff0044-6f60-463a-9812-df44e1ee196c"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.0988839000929147
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7ccc1e55429909bec7680e",
+        "gold_doc_ids": [
+          "b45f319e-08bc-41d7-a98c-7990e48c8305",
+          "5839e4df-0a06-4511-8145-ef882274ea25"
+        ],
+        "retrieved_doc_ids": [
+          "b45f319e-08bc-41d7-a98c-7990e48c8305",
+          "62ec7964-1679-4dac-b41b-ca9dfda25c7f",
+          "71eb82ce-afed-4dfe-8981-494e87571b60",
+          "aa5983a4-3a99-4e36-af89-0efaefa416e4",
+          "dbf02003-5557-4701-b3a5-8d9ef7f60dc3",
+          "cfe19539-472c-4b0d-b4d6-9a7e4cab42b9",
+          "1b62689b-2f88-45f7-bf25-34c9b68fffb2",
+          "c2ded277-5516-43a0-a101-373ca703a2a0",
+          "8c5516a8-43d9-4323-9242-0d83bec47dd9",
+          "dff7f540-6d4f-4121-ae09-7ffdb7ab0231"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.09782049991190434
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7a5f625542990783324f2f",
+        "gold_doc_ids": [
+          "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+          "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1"
+        ],
+        "retrieved_doc_ids": [
+          "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1",
+          "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+          "92c8da1b-ee51-40cb-9754-ef431147d189",
+          "ec432090-3516-4919-8c85-f9fa583a1407",
+          "ae28f1f0-3f1a-4eee-83cc-b89008c624f4",
+          "30e56947-2e3d-4be6-82c8-de9c30e361fa",
+          "a60f9297-814c-4c7d-86d6-a3af0fa5b390",
+          "13d00cf0-d23a-4abf-ae60-220bd2195c4e",
+          "16b874f9-719a-4282-8c5b-9db9897ba754",
+          "1165e364-fc81-4e5d-9b1a-aaa7a0639773"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.0940837999805808
+      },
+      {
+        "question_id": "phaseb_hotpot_5a72fbcc5542994cef4bc415",
+        "gold_doc_ids": [
+          "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+          "802a440d-3de1-4820-9e7d-9e454d25c6d4"
+        ],
+        "retrieved_doc_ids": [
+          "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+          "802a440d-3de1-4820-9e7d-9e454d25c6d4",
+          "1017c57d-ebc5-4f0e-971b-a0694dc18f5c",
+          "dfa55f9a-ffaa-4b51-bd97-aa6a83b75e28",
+          "ad34d1f0-df57-4c96-8281-eb1ed834f34b",
+          "d7a2d9b8-a436-4061-83c5-273b62d4a0e0",
+          "3f62f586-f732-4561-a1c1-0b379c2fcc91",
+          "e2849905-c832-49d0-afc8-b8659b7f5b8b",
+          "6bd65587-d2c2-445f-8c32-b1bbc948d6b5",
+          "21b37fcf-8807-48e0-ab54-10351268dbac"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.11147790006361902
+      },
+      {
+        "question_id": "phaseb_hotpot_5add44c25542997545bbbd0a",
+        "gold_doc_ids": [
+          "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+          "a910d0b2-4e7d-47bf-b0cb-38c5570b4bd3"
+        ],
+        "retrieved_doc_ids": [
+          "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+          "8490890e-8484-4f79-ac47-66a6e12fcfa1",
+          "6272e3c2-e83b-45e8-8e95-0642d3ea26d4",
+          "cf792b57-f381-4b6a-af6c-8848dfa0ed86",
+          "a910d0b2-4e7d-47bf-b0cb-38c5570b4bd3",
+          "487d064a-e136-4e30-9579-663caea24bab",
+          "934d3f83-6c1a-4fc1-9d53-2788975fe6ac",
+          "6aea3d1f-86ea-45f5-943c-2ffbcc863f35",
+          "4091c4a2-9569-4c11-bf4c-9b593aabeef7",
+          "9397de6d-6574-4d35-a877-008ab455d297"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09261390008032322
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7d07a455429907fabef0ae",
+        "gold_doc_ids": [
+          "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+          "0ed4bc9f-fa15-46dc-aa82-5e08a57be0c8"
+        ],
+        "retrieved_doc_ids": [
+          "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+          "0ed4bc9f-fa15-46dc-aa82-5e08a57be0c8",
+          "fa5f3e0c-9d7d-4f9c-bb0f-67f16f4d7398",
+          "d8a9ff96-fb25-4596-a8d3-1521f2907370",
+          "75208503-9826-4bb4-956a-9d76e41f7f19",
+          "9b316eed-b72e-4192-97b3-523848fddb8d",
+          "17d745b8-a00d-492d-8080-90e9f0e07995",
+          "bea8cfd4-0e5b-4d66-ab65-2e9a78d052fa",
+          "02d21365-fb4b-4f7a-b357-78753e70aee8",
+          "16d11cee-7bc9-4346-842f-c1809eb042ad"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10572260012850165
+      },
+      {
+        "question_id": "phaseb_hotpot_5a81f94f554299676cceb1ac",
+        "gold_doc_ids": [
+          "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+          "2e0f825a-fb35-42bf-b2d6-68e67ebd8e2e"
+        ],
+        "retrieved_doc_ids": [
+          "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+          "ca6389c8-0e53-475d-9f39-7ff3cc933ae3",
+          "2e0f825a-fb35-42bf-b2d6-68e67ebd8e2e",
+          "041546c9-3d5b-4983-a9b7-a2fd195525e8",
+          "07059f36-3697-4f0e-b3fe-d94d7e9e5f85",
+          "c5057f37-d7ad-4e70-beaf-6a0b097c5731",
+          "447ca2c8-140e-4a9a-8481-a4fb6bd14aa5",
+          "806828b9-4548-47eb-9df6-1cd057b4456f",
+          "14cc7529-081f-458b-82d2-2f640eeda712",
+          "c7198573-2470-4af5-80ca-105140962ea3"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09481910010799766
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae7eb0f554299540e5a5694",
+        "gold_doc_ids": [
+          "57f43810-943a-452e-bc3f-a8d5f4044127",
+          "efc41f82-f03b-4881-ac22-6d86477d2209"
+        ],
+        "retrieved_doc_ids": [
+          "57f43810-943a-452e-bc3f-a8d5f4044127",
+          "efc41f82-f03b-4881-ac22-6d86477d2209",
+          "df1d6585-660b-4408-8879-ef757e6e0249",
+          "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+          "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+          "d6273843-2f1b-43f4-8d7f-40f59aac09d9",
+          "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+          "d632040f-6e0e-4768-b539-03cada08100e",
+          "7acf8d36-db3c-4c63-af07-012af36c3971",
+          "1c626342-65af-4406-90ae-dae2c0d323a1"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.11294310004450381
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7d5e125542991319bc93b5",
+        "gold_doc_ids": [
+          "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+          "d1ccf60a-d173-4ef1-8840-577401bffeac"
+        ],
+        "retrieved_doc_ids": [
+          "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+          "eecc6be9-7345-4eee-b299-12c5492e9494",
+          "532b8ccb-7092-4cac-8ff3-ebff82318394",
+          "b53225d1-e7a5-466a-b3f6-e4e683a0ef46",
+          "248c3d97-2dba-4618-af95-8a0a3891bdba",
+          "971ed143-7d92-4a99-93a6-b864aebb5a6a",
+          "57d83667-4f6b-408e-9f70-897971150179",
+          "e68ab30f-c7ed-4601-a250-5996fdb9d7d5",
+          "18e07891-2eec-43f1-82f8-fc5d343a83d2",
+          "74cee3c7-7523-4629-8a3d-f1209fdb1f7e"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.09509270009584725
+      },
+      {
+        "question_id": "phaseb_hotpot_5abbe1f1554299642a094ba9",
+        "gold_doc_ids": [
+          "1598e4be-cb15-463c-9038-38d6697f44fe",
+          "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09"
+        ],
+        "retrieved_doc_ids": [
+          "1598e4be-cb15-463c-9038-38d6697f44fe",
+          "ad0961ca-9e05-45f9-9c8c-1f7e9ece3466",
+          "5b40715c-ed3d-4826-96ce-cc38c9d59a11",
+          "d1093b5a-fcea-4d08-ae5b-4edc5d27d947",
+          "55b10ebe-85da-403d-aefe-79bc989ec1a7",
+          "57f90302-89b9-4f1a-9861-d54e1955d313",
+          "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09",
+          "e68d0385-d11a-47c3-a9f5-4671cdab1523",
+          "02c67c7d-722f-4217-8dd6-959ca6211f64",
+          "2c6319ad-6b8c-4472-bb99-fecdc75c6223"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10230959998443723
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7264a35542997f8278399c",
+        "gold_doc_ids": [
+          "8b1bcb95-eb0f-4703-9cdc-67f625d7a883",
+          "d517d3fd-e4f0-4585-b9c6-236ccddc05b3"
+        ],
+        "retrieved_doc_ids": [
+          "d517d3fd-e4f0-4585-b9c6-236ccddc05b3",
+          "f2ef8ed0-55da-429e-b796-03a2c07d3d84",
+          "56fd5d62-3d50-43d0-ad6f-d5aba99cedde",
+          "cf212547-bf02-4614-960d-7f2f7e386c4a",
+          "8b1bcb95-eb0f-4703-9cdc-67f625d7a883",
+          "cbdf098c-2d48-4e2b-b46f-643292437d09",
+          "67bb49e4-c8bb-48be-8ee4-f3dcf0d3820a",
+          "5bd8be10-670e-43c0-ae37-d30ba2336fd3",
+          "2ccb9450-407c-4593-b4c7-6f1c43e79c91",
+          "0ef06284-5058-410c-a36e-8118fcf38d36"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09523340011946857
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae45adc55429970de88d93f",
+        "gold_doc_ids": [
+          "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+          "92f3ed4c-63ce-459e-85c9-6cabefc4e30f"
+        ],
+        "retrieved_doc_ids": [
+          "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+          "b41e3ec7-9adc-4a2b-a6f9-da076347de6a",
+          "46b5c6dd-cd9c-4872-a2ee-ffcdc90d256c",
+          "2268853c-062d-4a86-8908-bc5afb318c60",
+          "342b858a-7de3-41a2-859b-d74b6d336c96",
+          "635fa2ca-275f-413a-bd70-87a41ea1f1ee",
+          "d3cf8c5d-7eec-4bee-8958-4f4b7d463de0",
+          "155ce81f-e1b7-4055-8608-e04a927c8bba",
+          "3030ddba-ae41-4dc3-ad3b-d5b87c85f659",
+          "2d27efac-9602-464c-9e15-50336675f4e2"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.10019919998012483
+      },
+      {
+        "question_id": "phaseb_hotpot_5ac29915554299218029dab3",
+        "gold_doc_ids": [
+          "78bc0184-ac79-4043-a800-fa3acaf80dfd",
+          "8ee4b2c6-3023-4754-9255-636a308d056e"
+        ],
+        "retrieved_doc_ids": [
+          "8ee4b2c6-3023-4754-9255-636a308d056e",
+          "c8d8b225-26be-4af9-abd0-f6d105899521",
+          "78bc0184-ac79-4043-a800-fa3acaf80dfd",
+          "a4961e07-d728-43aa-bc20-682a83b0b812",
+          "ee99369c-cfab-47c3-b41a-82e9c752aa84",
+          "1ba32f66-a12d-4b78-ae48-f8075382e3f1",
+          "3d1d3afc-b330-4f86-b4c9-52d599f6cc52",
+          "776be426-af73-4674-8236-dd9a9f069abb",
+          "8f077215-7b73-4b11-a34c-a68733216e8a",
+          "f3d0de7c-7043-4e17-8247-aaeeb7334340"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10400549997575581
+      },
+      {
+        "question_id": "phaseb_hotpot_5abb089d5542996cc5e49f5f",
+        "gold_doc_ids": [
+          "0f2f5ab7-ea9a-42c4-a04e-e75858e747c4",
+          "146e5cf0-56dd-4a67-af2b-2289a1b6e2b7"
+        ],
+        "retrieved_doc_ids": [
+          "146e5cf0-56dd-4a67-af2b-2289a1b6e2b7",
+          "db9a0130-c7b2-4eed-9f8a-09c0b1c16786",
+          "74f58056-5171-4f39-9e07-5f200834fab3",
+          "c518cf63-c39e-49bb-b8d4-0b2cffd308d5",
+          "5d1e5395-0196-4fe3-9333-86a81c1ab8ca",
+          "e25a0331-bd38-406d-b39d-4d24e5032eff",
+          "8a2c08e3-9e9f-4208-be3b-0faa3ba2c3c7",
+          "1933c29c-a505-4dc4-8cb9-0362e93fb1ed",
+          "f193ee2e-1aeb-4ae0-94c8-3a2754c4a9b8",
+          "0a21c94e-1618-4012-aa27-b766f34c0604"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.09785709995776415
+      },
+      {
+        "question_id": "phaseb_hotpot_5a75e05c55429976ec32bc5f",
+        "gold_doc_ids": [
+          "2daaf1b6-3748-4330-bacb-f186e13a79a7",
+          "f90db98c-63d4-49b9-a4e1-377f21a46f05"
+        ],
+        "retrieved_doc_ids": [
+          "2daaf1b6-3748-4330-bacb-f186e13a79a7",
+          "aedde9f7-a9c3-45a9-ad1b-aaabd5bdc7e9",
+          "f90db98c-63d4-49b9-a4e1-377f21a46f05",
+          "c74174b7-60a5-44ef-a3e8-edcbeb703a2b",
+          "40161837-6661-42d9-bb6d-c48ad97b361c",
+          "f4a5c152-897b-453c-9095-022b0bf2f27d",
+          "2000a5e7-3e33-42af-960b-3b6f34e8ce87",
+          "535cfcb2-4f42-44c5-b6c8-d3de8f1a7045",
+          "6ca7ed27-a72c-478c-8f9e-61ccf30e52d9",
+          "33c6e16a-ddd0-4ba5-b9b3-d3658ee476e4"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10212870012037456
+      },
+      {
+        "question_id": "phaseb_hotpot_5ac0fa9e554299012d1db671",
+        "gold_doc_ids": [
+          "03660879-6b88-4e8b-b28b-28ba52e55a8e",
+          "a863effd-ad39-4944-9d85-d77dc4334c2e"
+        ],
+        "retrieved_doc_ids": [
+          "a863effd-ad39-4944-9d85-d77dc4334c2e",
+          "03660879-6b88-4e8b-b28b-28ba52e55a8e",
+          "662cd029-c43c-43b9-9520-306943d79153",
+          "5f006259-0c3f-4fb8-9638-2cb7184ecc5d",
+          "fdfa7ce4-7662-463b-890a-59aaae689f44",
+          "ceec779e-6817-4b37-b02b-abfc8ea53263",
+          "7f56fb6f-d7b4-433b-810a-c14f3658f5db",
+          "c381686a-56e4-4847-929e-c877bd0f8fad",
+          "379c83b2-1db4-4686-82e3-cf2274327798",
+          "fc365504-700c-4303-a290-7b753a300b46"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.11035900004208088
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8b7cb95542995d1e6f13bb",
+        "gold_doc_ids": [
+          "f27c6a02-0933-4816-b189-3be8d57b3bd4",
+          "9d69b7d4-81ff-4b1a-a21b-771800c21b11"
+        ],
+        "retrieved_doc_ids": [
+          "3340e716-30ae-4dbf-9b31-55e0616fd591",
+          "3dba6b54-a969-4efc-957e-f2f806dd49b2",
+          "f27c6a02-0933-4816-b189-3be8d57b3bd4",
+          "3d249534-e788-4415-a4cf-452470863f4d",
+          "d20c5e05-5132-4a7c-ae18-551aac0bc749",
+          "6f53a580-c3dd-478a-85e0-ea864a98f3e4",
+          "b89c82fc-9881-4025-b9a2-b14e75c6d8fb",
+          "31e4560f-76cd-4e3f-8c75-44a351f8289a",
+          "2e00bb21-fdb4-4039-8c82-78dab0fe09fe",
+          "b9db9cae-a457-49b7-a674-66d92a76b18b"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 0.3333333333333333,
+        "latency_s": 0.11179450014606118
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae22f5a554299234fd04420",
+        "gold_doc_ids": [
+          "fb721347-9b54-450e-8c87-7d0595627849",
+          "b6c86549-42c3-499b-9655-e16e351cfe75"
+        ],
+        "retrieved_doc_ids": [
+          "128df021-4db0-4e23-b563-117ebd8faf66",
+          "624a355e-c0fb-4aa5-88eb-3d676c70a9d1",
+          "b6c86549-42c3-499b-9655-e16e351cfe75",
+          "fb721347-9b54-450e-8c87-7d0595627849",
+          "57cd4be0-af2c-4a8d-90c4-f6665f262b96",
+          "88eb975e-6fa9-4d6e-88ac-392b0041ab7b",
+          "ff84904c-81d6-4e07-abb1-54084d444245",
+          "42b0e683-f671-430d-98f8-bc56c2d76c5f",
+          "5b056c3d-0340-4106-9d39-1d6e04d5d6a6",
+          "5398b5e4-d7f4-4f9d-8200-076fa54fba60"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "latency_s": 0.10025359992869198
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7b42fb5542992d025e67c9",
+        "gold_doc_ids": [
+          "ff3be42e-d8e1-4a56-9a6f-039f74d8f384",
+          "33460c17-38bc-444f-b4c0-5f2d2e4d1cd7"
+        ],
+        "retrieved_doc_ids": [
+          "4e13cf5b-77e3-42a4-aa27-6bff4b32ea31",
+          "ff3be42e-d8e1-4a56-9a6f-039f74d8f384",
+          "1f278a94-a458-4865-8962-8f4c31bd2fd8",
+          "3132f438-9921-46e3-a1de-2b6e592f7af0",
+          "fc06a369-0878-4470-b5d6-f1b9f7847280",
+          "33460c17-38bc-444f-b4c0-5f2d2e4d1cd7",
+          "c7c85b9b-1031-4597-89c4-9438d7b99c25",
+          "5b56e579-fbef-4f93-805d-f08efde00f09",
+          "db6411ce-6faa-4071-bd40-433403904daa",
+          "fac4e3c9-90d6-4db1-b619-322c86134693"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 0.5,
+        "latency_s": 0.10545699996873736
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae7a85a55429952e35ea9aa",
+        "gold_doc_ids": [
+          "130ee35f-a556-4418-9e7b-383f984085ed",
+          "b15243c5-6fcc-4f6d-8702-922b95355829"
+        ],
+        "retrieved_doc_ids": [
+          "130ee35f-a556-4418-9e7b-383f984085ed",
+          "b15243c5-6fcc-4f6d-8702-922b95355829",
+          "e92a16f4-266c-47d6-971c-b20c04a372c1",
+          "6ed9047a-f240-4050-a453-4ce70a7e4592",
+          "f8267b56-f813-4409-9299-02cb5a61a634",
+          "3af88c5d-216a-47d7-b4d6-b6b44e629e62",
+          "c58f5056-f81a-429d-b940-95057da0b0c7",
+          "b8af8afe-6864-4390-bdfd-d03d83c3e0b5",
+          "d4b68bd7-7163-447b-9925-fb9c1b6a3541",
+          "d324db4d-21b4-4fb5-9f15-5973e2f9a169"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09263479989022017
+      },
+      {
+        "question_id": "phaseb_hotpot_5a887f5c554299206df2b2c0",
+        "gold_doc_ids": [
+          "ce645d19-153b-432f-90e7-98c2ae0bbe60",
+          "4e4ad688-9a3b-4a46-a0bd-2cdd261db3fd"
+        ],
+        "retrieved_doc_ids": [
+          "ce645d19-153b-432f-90e7-98c2ae0bbe60",
+          "73ad4f69-cbec-4fe8-bf85-a8edf8022b75",
+          "4e4ad688-9a3b-4a46-a0bd-2cdd261db3fd",
+          "7853e653-5453-4517-bcd2-c200ba06dd47",
+          "012f5dde-6f6a-43ce-bd81-53768846427d",
+          "5c6d4984-00a3-4007-b334-6321ef5ada4c",
+          "466a2534-1d79-4426-a50f-5998f1c47502",
+          "d18b9d15-b721-42ec-8308-ebbfbacc9fb9",
+          "bc6154cb-cafc-4d6d-ab35-0108561ccb17",
+          "96187b88-481f-4c56-89de-3641abfeac12"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.1094955001026392
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8aad0d5542992d82986f55",
+        "gold_doc_ids": [
+          "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+          "aafcfd3e-2395-480d-982a-fa2c84ab85d0"
+        ],
+        "retrieved_doc_ids": [
+          "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+          "b145d704-f7da-47a8-9a19-81c9dae436ed",
+          "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+          "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+          "44270115-08b6-40ac-bae0-88df956623cf",
+          "194cba99-c317-41ee-9cef-1b11aa344039",
+          "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+          "a96e79c7-ba00-4ac7-bb98-c4a1b21c1d42",
+          "43a6c7d3-b97c-4a97-a9cd-9492579b421d",
+          "04fc0f0b-e2f7-487e-9bba-2afc4a249d1e"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.10778079996816814
+      },
+      {
+        "question_id": "phaseb_hotpot_5abe942155429965af743f36",
+        "gold_doc_ids": [
+          "5ee2dbe5-5bf3-42a9-b8b5-46db11340e02",
+          "4cc32f3e-cec0-4894-ad09-034b4669fb69"
+        ],
+        "retrieved_doc_ids": [
+          "5ee2dbe5-5bf3-42a9-b8b5-46db11340e02",
+          "bec12613-730d-439a-9804-5ec181b315e6",
+          "ba6d7c38-a1a5-465f-90a4-31f41d7f49c6",
+          "da87cc59-37b1-43f8-aaee-9efba3547e34",
+          "7252ffdc-2c07-4fe3-87e6-b30b120ae120",
+          "13a48ff7-0265-4fd1-91aa-a4d7b7b0879b",
+          "e8d4661f-0138-4eb5-8e6a-3ca4924db61b",
+          "7cf5f0db-0aed-4712-9bd7-ebd290dcc2fd",
+          "4ff6ce8f-1185-493b-b070-bf691b676e87",
+          "b7705d4f-a427-41c9-81b9-8231a1fda9a1"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.0974945998750627
+      },
+      {
+        "question_id": "phaseb_hotpot_5a89d51e554299669944a5bc",
+        "gold_doc_ids": [
+          "90d4b036-a222-4617-87d1-7d9c154cf599",
+          "c09f7fa3-1754-4557-85e0-4c2b29c34ecb"
+        ],
+        "retrieved_doc_ids": [
+          "90d4b036-a222-4617-87d1-7d9c154cf599",
+          "c09f7fa3-1754-4557-85e0-4c2b29c34ecb",
+          "45babaea-7271-4ba8-9028-c2add11b8ef8",
+          "fc79677c-1614-47aa-861b-678b7ec5fef6",
+          "285fd922-dd3d-4126-9a2c-0bd4f868429b",
+          "c6e8511e-18d1-49e1-886a-40afa0c9b9f8",
+          "c01e402b-81ef-4688-b8df-886592cd72fd",
+          "28e9af1e-32ec-4335-97d0-2a2209a82a2c",
+          "b07df6ad-cebd-436c-8df6-fb82bbccbacf",
+          "ed0aecad-0722-4834-a680-86e8ee8ed66a"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.11816760012879968
+      },
+      {
+        "question_id": "phaseb_hotpot_5aba637a55429939ce03dcbb",
+        "gold_doc_ids": [
+          "0295271a-26e1-41fd-a4f5-16f0cee85e06",
+          "79382370-3f42-4c58-adc8-049d7b7f1f55"
+        ],
+        "retrieved_doc_ids": [
+          "79382370-3f42-4c58-adc8-049d7b7f1f55",
+          "2fef3360-7ed2-4b84-b69a-ae61cddf4e84",
+          "0295271a-26e1-41fd-a4f5-16f0cee85e06",
+          "584a4696-51eb-4b12-92e4-829fd106eb48",
+          "ff510655-3199-413f-9ac0-c79ec4a0d408",
+          "3a10b349-3ff6-4106-a162-bad71c37d16e",
+          "6a0d5aed-ec51-4baf-a71c-ae5a7f3120e2",
+          "57b02927-91b9-42eb-ae4c-8c365db6c49b",
+          "276c4978-ac1a-4e29-856f-ef822c6d9551",
+          "c2d139a8-c31a-4425-88e7-b0ba6262ff81"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.11166310007683933
+      },
+      {
+        "question_id": "phaseb_hotpot_5a75eca555429976ec32bca8",
+        "gold_doc_ids": [
+          "a7747e57-feeb-463d-89b3-d4b325acd37d",
+          "b080821e-13bb-45b9-963e-9862cc4f5578"
+        ],
+        "retrieved_doc_ids": [
+          "a7747e57-feeb-463d-89b3-d4b325acd37d",
+          "b080821e-13bb-45b9-963e-9862cc4f5578",
+          "7771de03-b47f-4f22-9963-f014e293fda5",
+          "50e39254-dd47-4681-8381-90bb64bc9233",
+          "07149d2e-d276-4629-8f5b-042f922e422a",
+          "0624f272-a7d6-4d10-9a7a-a81b9d4ae7b9",
+          "25a92ec5-206d-401a-b21f-a999e15329ef",
+          "bc90c96c-1020-44e2-9bf4-e4f127b1ee26",
+          "7f65a49f-3234-41ae-bcdf-4d07babad42c",
+          "1e68b826-7c4f-44fc-85aa-c52867e15d33"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09508179989643395
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8f276055429918e830d1ab",
+        "gold_doc_ids": [
+          "5c7c1fab-19e9-407e-85e5-b037947181dd",
+          "770ee68c-4e30-4d0c-833a-8e79f9d8ff61"
+        ],
+        "retrieved_doc_ids": [
+          "5c7c1fab-19e9-407e-85e5-b037947181dd",
+          "770ee68c-4e30-4d0c-833a-8e79f9d8ff61",
+          "5dfdd76c-caf0-4bdf-8dab-2901bca25265",
+          "a52b90a5-2305-4eb1-acae-9773f50cfea6",
+          "e891c8cf-618e-401d-a3cb-f30930f20367",
+          "3068a822-016f-4e17-890a-34e8be2c92c5",
+          "a8db565b-0c4d-45d5-a849-4da720f71ce1",
+          "b256f5b3-e26c-426a-8241-5b0095b64f37",
+          "0c616501-b5e5-4841-9288-d4c53ca7d6ac",
+          "bfb37db6-4559-4da6-a561-9b24a98dae15"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10004689986817539
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8b5b1c5542995d1e6f1387",
+        "gold_doc_ids": [
+          "77bfb095-ff22-4704-af13-b92a7a15efbb",
+          "a811c0ac-344e-4b0c-9c44-ffbf7f116c04"
+        ],
+        "retrieved_doc_ids": [
+          "a811c0ac-344e-4b0c-9c44-ffbf7f116c04",
+          "77bfb095-ff22-4704-af13-b92a7a15efbb",
+          "09a62163-8429-4e24-a94f-45382d02ef9b",
+          "e09f3676-9a5d-4ec4-bb96-17816707ebb1",
+          "226ad4d9-b290-4d34-a4c9-7002886b9253",
+          "4e1d28a3-7fa0-48aa-bd0f-500aac7d0f78",
+          "db78c37a-64ec-4adf-9fed-3336d2c2bc0c",
+          "3a6096cf-e8fa-4566-9fe7-189c89378ca8",
+          "8172a587-7e77-4f2a-b7ba-18ea4bf1062a",
+          "80a4eb24-e679-4b47-8c40-a2451e26ad5d"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.1015425999648869
+      }
+    ],
+    "hybrid_rrf": [
+      {
+        "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+        "gold_doc_ids": [
+          "4e558d72-c1c3-4544-9609-16ec13e097a3",
+          "2bed5f52-4939-4b37-919c-d05855e5e86c"
+        ],
+        "retrieved_doc_ids": [
+          "4e558d72-c1c3-4544-9609-16ec13e097a3",
+          "2bed5f52-4939-4b37-919c-d05855e5e86c",
+          "fb044e1b-1ebd-40ac-bdbe-66cbb3892ade",
+          "c38d78db-2d80-4278-9e53-291aff173108",
+          "489698e8-3748-4633-be20-4c516d51f22e",
+          "8ea03308-63b7-462e-9fed-da09652bcedd",
+          "a7c5f901-9806-4f68-85c7-33ef67c011d8",
+          "c7b8afa2-3c96-4994-88af-1ea2dcf0b592",
+          "e331580a-35c3-4113-bee0-dfafd2138157",
+          "758cc1cf-312c-48f4-805d-1f40a8832d64"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.24936320004053414
+      },
+      {
+        "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+        "gold_doc_ids": [
+          "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+          "362a4fce-7cee-41de-836c-759b0e8631e6"
+        ],
+        "retrieved_doc_ids": [
+          "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+          "3ab7a349-a780-4fcf-8d00-8311eadebda2",
+          "7d602dbf-7f69-4f83-8b40-85da7aa26239",
+          "362a4fce-7cee-41de-836c-759b0e8631e6",
+          "a029425d-6892-4942-b1b3-16cba721fbd4",
+          "e912e5fa-40d0-4be2-a022-70720fb9bd53",
+          "15ffd6c5-d340-4094-88b8-f021189f4a64",
+          "ff72d035-42ea-4566-ad65-bde5bd47217f",
+          "c4aa9717-09f3-48df-862f-9a393aa70fe4",
+          "c3fb6f3a-1183-4d75-8f8b-d60376060f62"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09101030020974576
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+        "gold_doc_ids": [
+          "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+          "7ab5b521-8c0c-4a03-84d2-2884756605c0"
+        ],
+        "retrieved_doc_ids": [
+          "353f56df-f2ef-4a87-bb3c-9f69a8efa693",
+          "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+          "4ac5917f-f22b-4369-82e9-3d058a4e3dcc",
+          "ff6fddf1-4264-4b7b-9679-3358b83e98b6",
+          "8494ffa2-2296-4425-98e7-9edf8a1b4666",
+          "2014db51-7d28-48c6-8acf-7f70588f25aa",
+          "e7c34da3-4802-4e45-a67f-8ac317d35ca6",
+          "5fea44d6-574a-4541-8133-29f7af967194",
+          "eda09ec4-b50e-417d-a2eb-16de352233ad",
+          "14ecb07e-0af9-4fb1-8434-0875c404f2cf"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 0.5,
+        "latency_s": 0.09307529986836016
+      },
+      {
+        "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+        "gold_doc_ids": [
+          "3428a271-a243-4032-ae07-47df99fdaae6",
+          "0adc14d0-8f14-441a-b731-270a317e140d"
+        ],
+        "retrieved_doc_ids": [
+          "3428a271-a243-4032-ae07-47df99fdaae6",
+          "af5c0b81-313b-41d6-a560-d9246bab7c8c",
+          "92126d56-3787-4d54-b626-9173ac6c7885",
+          "3103f39f-c222-4bee-abbf-10328acea1f7",
+          "69470d61-c13e-4389-82ef-732ac23409c6",
+          "db648e23-23c8-4601-8b7e-c357bd2d47b1",
+          "92ffbbf1-635e-4f4b-8e0d-a993b0ba44d4",
+          "56c7fe76-92e5-4be7-b460-48ecffaea6e4",
+          "b0b0b0ce-8d0f-432d-96ee-ecfe1e82bfe1",
+          "92535855-8b52-4e57-a128-4ae6d8bb31a0"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.0907567001413554
+      },
+      {
+        "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+        "gold_doc_ids": [
+          "e396e67f-ded4-44f0-ba41-6282d404e898",
+          "919290c3-fed0-44a8-b55a-07bf5d513c4e"
+        ],
+        "retrieved_doc_ids": [
+          "e396e67f-ded4-44f0-ba41-6282d404e898",
+          "f61eed34-328c-4c55-b860-aa2cf9ffe967",
+          "5ecab45f-48eb-4da1-ab34-b508780b5171",
+          "919290c3-fed0-44a8-b55a-07bf5d513c4e",
+          "258adce6-9fad-4dc8-ab98-b21316c32c91",
+          "9c5dd4f3-870b-4c74-810c-de6d92a96028",
+          "15d7eda3-e51a-46f0-a15a-742a1728c27a",
+          "51a22cbb-983f-4868-99fd-6b9d602cc794",
+          "f28202e1-7ba8-49bd-837f-0c5c37d57a41",
+          "e1bbed12-49de-4366-ace2-e735b51403c0"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09082840010523796
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+        "gold_doc_ids": [
+          "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+          "b5586f6b-5758-45bf-9904-e45d12505e9d"
+        ],
+        "retrieved_doc_ids": [
+          "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+          "b5586f6b-5758-45bf-9904-e45d12505e9d",
+          "2b0a4069-6082-4ed8-a998-2486be0db429",
+          "764dc554-d613-4b11-9e37-faaae7f93b70",
+          "d2302129-4518-46d3-ac9d-f811e28b865b",
+          "891a39f1-c8a1-4cd0-81ad-34b18f54bb38",
+          "9f1c60bf-9035-40ef-b336-23d8e0acf995",
+          "34e84ef4-4b34-4d42-a8bf-e819f278d177",
+          "d4c0192c-3a8b-4dda-aae5-0285e81350d2",
+          "f23456fd-48c3-49af-a126-2c7170a2df17"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09458070015534759
+      },
+      {
+        "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+        "gold_doc_ids": [
+          "57b45e66-ddfe-4891-b527-dfd0edd23f8b",
+          "1308823a-7e5f-4e5a-9f75-df33a1d05f02"
+        ],
+        "retrieved_doc_ids": [
+          "57b45e66-ddfe-4891-b527-dfd0edd23f8b",
+          "b985753a-e975-4419-805d-3689badef7b0",
+          "1308823a-7e5f-4e5a-9f75-df33a1d05f02",
+          "c0f431f5-6c85-4c95-8263-4bd2cbebf540",
+          "41945322-a853-40e7-996c-26df7d0bd36f",
+          "986300a5-e19d-4cb4-a9d2-a2794381ca7d",
+          "834f8e81-d446-4d9d-b720-4dd56652541d",
+          "09f03eb0-c466-43c4-ae12-5b04ad0be9df",
+          "42035714-3dfb-4f5c-a211-e6e3e6281ddf",
+          "93347707-a1da-4522-b398-fca4d71c13e4"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.1711669999640435
+      },
+      {
+        "question_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a",
+        "gold_doc_ids": [
+          "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+          "97118e55-ca2a-4846-a6b7-33a1c0f838b6"
+        ],
+        "retrieved_doc_ids": [
+          "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+          "23649e2b-a11c-4cb7-8f29-5ff95f8af4a6",
+          "86a7f861-757c-46a1-931c-3cfaf7846497",
+          "6f1a3ce4-9059-49a3-b74d-4527934f484e",
+          "5251a53b-f96f-4487-934a-bca2b99c3360",
+          "455e935e-413d-46a9-bbb1-27a553b75d4e",
+          "e4f2ce93-e38f-446d-9174-cc2e2f8db081",
+          "3efc0b6e-2657-4175-ba7c-f5f61d2f8024",
+          "aeb50645-9890-427c-8ac6-9ebfa136ee81",
+          "3a6ec43b-3de1-4583-89b5-926b04b1c703"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.17390240007080138
+      },
+      {
+        "question_id": "phaseb_hotpot_5adf85e05542993344016cba",
+        "gold_doc_ids": [
+          "af63784b-7add-431b-b99c-b1c4a1441e94",
+          "f9cf1966-df33-4ae0-b7d0-8480f210e118"
+        ],
+        "retrieved_doc_ids": [
+          "e73f473d-5d45-44ef-97f4-3e627c15d881",
+          "af63784b-7add-431b-b99c-b1c4a1441e94",
+          "ca0ca09e-6ba4-4547-a7d0-f9549cd58c02",
+          "f9cf1966-df33-4ae0-b7d0-8480f210e118",
+          "1b7ffdda-1a07-4441-b432-0c210c5132b3",
+          "b76fbf31-b255-495e-9e00-6ac4f16d58e8",
+          "db8e3be2-bf5e-4ffc-a6f4-3bfca2c9a1ec",
+          "f4e9c85d-48af-4b6a-8f28-569ec1704e87",
+          "2c4cc8c8-3165-4187-a97b-79780a0e4a96",
+          "6c8105dd-26f3-4531-b904-b2e421ecae91"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 0.5,
+        "latency_s": 0.09507829998619854
+      },
+      {
+        "question_id": "phaseb_hotpot_5ab443415542991751b4d711",
+        "gold_doc_ids": [
+          "0a9aa3ca-9a7f-4768-968d-91d3079f7a70",
+          "0877e976-f392-4259-b182-fa690ae9bc33"
+        ],
+        "retrieved_doc_ids": [
+          "0a9aa3ca-9a7f-4768-968d-91d3079f7a70",
+          "8561a82a-cdc5-4d29-9350-5c6241fd965c",
+          "0877e976-f392-4259-b182-fa690ae9bc33",
+          "70008cf1-e6e1-4b0b-abc7-d007915ae9ba",
+          "371e0563-cbe0-4e7e-b295-ae47b52055f1",
+          "c0be1c49-daa4-4895-9993-ab31edadcb4b",
+          "05aa7ace-c055-4566-b582-b806fe84e7bc",
+          "be079f88-1882-440b-be5a-a9ad4f521fca",
+          "4b384b03-c1f4-4983-9d50-45310a6df721",
+          "c9096f2c-7a79-404f-90b8-477ab74dd646"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10499060014262795
+      },
+      {
+        "question_id": "phaseb_hotpot_5abb1fd95542996cc5e49fb6",
+        "gold_doc_ids": [
+          "8bb41e2d-fdc8-4cc1-bd06-f9aed1a9c103",
+          "4b612dab-612c-47e4-aa98-3dcf1554ad69"
+        ],
+        "retrieved_doc_ids": [
+          "8bb41e2d-fdc8-4cc1-bd06-f9aed1a9c103",
+          "7fc05dd1-2a69-483b-89dc-60c179e3cbde",
+          "4b612dab-612c-47e4-aa98-3dcf1554ad69",
+          "c41c103f-2249-4906-8c7d-0d10173eb333",
+          "e5c411c1-2630-4ef4-a74c-dcc6b83b6ec3",
+          "ce0cfaa0-9479-4c59-ac84-1344eec5afe5",
+          "406c12c5-a5b9-44a2-a093-c2d3a4fadd01",
+          "885af2c9-ceae-49d0-ad89-b6d3a47056a4",
+          "6edbb5de-bf09-4b34-bda0-b5905c1d2a1f",
+          "91f339f7-2293-4aa0-a642-540a0d2e252b"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09573669987730682
+      },
+      {
+        "question_id": "phaseb_hotpot_5abdb10f55429965af743dc9",
+        "gold_doc_ids": [
+          "5e415b62-702f-406b-b249-202bf3e7248b",
+          "15fe4116-34bf-4e24-94b8-024a6b300e1d"
+        ],
+        "retrieved_doc_ids": [
+          "15fe4116-34bf-4e24-94b8-024a6b300e1d",
+          "5e415b62-702f-406b-b249-202bf3e7248b",
+          "e0250de7-6980-4ed0-a982-9d3a6d011515",
+          "4d495086-fa0f-4a58-b54e-842fd2a9cd69",
+          "96fe5e65-9f32-4da7-a7a5-dba4b1ce50aa",
+          "ff7c508a-8895-47c2-84aa-c119d070a04a",
+          "96d58ab2-ff0b-49b3-aa9a-b9a739b769c7",
+          "640c1dcd-33bc-40ad-8453-b24c47054d06",
+          "a8f00026-11e5-4721-b908-8ae05c3da631",
+          "e591e1c0-8fab-4fd7-a96f-46be3c10e22d"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09177409997209907
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8f155e554299458435d54c",
+        "gold_doc_ids": [
+          "28e36447-e944-4957-a050-cd863b0631b0",
+          "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7"
+        ],
+        "retrieved_doc_ids": [
+          "28e36447-e944-4957-a050-cd863b0631b0",
+          "76c0a7f2-0ede-456e-87d6-8c600a7ecbd3",
+          "6ea80df9-7fb9-4400-a127-bfc5f41491b3",
+          "1dff0044-6f60-463a-9812-df44e1ee196c",
+          "a3855dc2-f48b-41cf-8679-12b34d088d7e",
+          "ee13515e-dddf-40fe-aeee-c7ef56a2f7a2",
+          "0f289e3e-880e-49ad-b8e7-c2a8862b3175",
+          "68f99e45-c55a-45fc-81aa-f7d949e207c9",
+          "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7",
+          "4124a6b0-e03a-49d5-8661-097a7e5d9596"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10786390001885593
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7ccc1e55429909bec7680e",
+        "gold_doc_ids": [
+          "b45f319e-08bc-41d7-a98c-7990e48c8305",
+          "5839e4df-0a06-4511-8145-ef882274ea25"
+        ],
+        "retrieved_doc_ids": [
+          "b45f319e-08bc-41d7-a98c-7990e48c8305",
+          "88944ab8-0e8c-4761-8e95-be36cb90f523",
+          "b91993c4-ff28-471b-ae3f-deda705c8770",
+          "62ec7964-1679-4dac-b41b-ca9dfda25c7f",
+          "525c55fe-6dad-489d-984a-7cce735f1ff3",
+          "71eb82ce-afed-4dfe-8981-494e87571b60",
+          "560c5175-cbd6-4f27-a4ea-04e34e62badd",
+          "aa5983a4-3a99-4e36-af89-0efaefa416e4",
+          "dbf02003-5557-4701-b3a5-8d9ef7f60dc3",
+          "858d6ae4-c4d5-45fc-b6b1-fcc5d0a1eb31"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.097257100045681
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7a5f625542990783324f2f",
+        "gold_doc_ids": [
+          "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+          "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1"
+        ],
+        "retrieved_doc_ids": [
+          "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1",
+          "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+          "ec432090-3516-4919-8c85-f9fa583a1407",
+          "51b95cc2-2994-4a4a-b47b-63762099e4ae",
+          "92c8da1b-ee51-40cb-9754-ef431147d189",
+          "d77070f4-4a04-47a1-8e8b-7c5582a8b81a",
+          "ae28f1f0-3f1a-4eee-83cc-b89008c624f4",
+          "8909de99-a5cf-4da1-bb00-4edcea10ec1d",
+          "30e56947-2e3d-4be6-82c8-de9c30e361fa",
+          "7c3a8592-7c4a-459a-9ae3-676f2a82873a"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09557810006663203
+      },
+      {
+        "question_id": "phaseb_hotpot_5a72fbcc5542994cef4bc415",
+        "gold_doc_ids": [
+          "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+          "802a440d-3de1-4820-9e7d-9e454d25c6d4"
+        ],
+        "retrieved_doc_ids": [
+          "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+          "802a440d-3de1-4820-9e7d-9e454d25c6d4",
+          "805a88a5-7bf5-408e-98f0-7449ec09cb59",
+          "e2849905-c832-49d0-afc8-b8659b7f5b8b",
+          "8904d4f9-3269-4adb-957a-bdfc2706ef12",
+          "1017c57d-ebc5-4f0e-971b-a0694dc18f5c",
+          "dfa55f9a-ffaa-4b51-bd97-aa6a83b75e28",
+          "6b09e58e-87cc-4948-ba57-64e92189b651",
+          "ad34d1f0-df57-4c96-8281-eb1ed834f34b",
+          "d7a2d9b8-a436-4061-83c5-273b62d4a0e0"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10091109992936254
+      },
+      {
+        "question_id": "phaseb_hotpot_5add44c25542997545bbbd0a",
+        "gold_doc_ids": [
+          "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+          "a910d0b2-4e7d-47bf-b0cb-38c5570b4bd3"
+        ],
+        "retrieved_doc_ids": [
+          "a910d0b2-4e7d-47bf-b0cb-38c5570b4bd3",
+          "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+          "fa0451fd-727b-4d0f-a0b3-cc46afda8b1d",
+          "9397de6d-6574-4d35-a877-008ab455d297",
+          "5042275e-eaeb-45c6-ad30-f4a57eb6e4d6",
+          "8608d024-1021-4d4c-80a5-ea976c946be6",
+          "8490890e-8484-4f79-ac47-66a6e12fcfa1",
+          "6272e3c2-e83b-45e8-8e95-0642d3ea26d4",
+          "349c0cde-5364-49ea-8684-6d2b7ab55846",
+          "cf792b57-f381-4b6a-af6c-8848dfa0ed86"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09056259994395077
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7d07a455429907fabef0ae",
+        "gold_doc_ids": [
+          "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+          "0ed4bc9f-fa15-46dc-aa82-5e08a57be0c8"
+        ],
+        "retrieved_doc_ids": [
+          "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+          "0ed4bc9f-fa15-46dc-aa82-5e08a57be0c8",
+          "9b316eed-b72e-4192-97b3-523848fddb8d",
+          "d8a9ff96-fb25-4596-a8d3-1521f2907370",
+          "27356472-7e83-4fd4-9642-7b0d9d5310cc",
+          "fa5f3e0c-9d7d-4f9c-bb0f-67f16f4d7398",
+          "00a39003-883a-42ae-81b0-2c26f7aed723",
+          "17d745b8-a00d-492d-8080-90e9f0e07995",
+          "75208503-9826-4bb4-956a-9d76e41f7f19",
+          "16d11cee-7bc9-4346-842f-c1809eb042ad"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.11040460015647113
+      },
+      {
+        "question_id": "phaseb_hotpot_5a81f94f554299676cceb1ac",
+        "gold_doc_ids": [
+          "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+          "2e0f825a-fb35-42bf-b2d6-68e67ebd8e2e"
+        ],
+        "retrieved_doc_ids": [
+          "ca6389c8-0e53-475d-9f39-7ff3cc933ae3",
+          "14cc7529-081f-458b-82d2-2f640eeda712",
+          "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+          "174d5c85-f1a1-437e-a5ab-02e88fa8f6b7",
+          "fe1334e1-d8e9-4f26-9b03-7127e432ed3d",
+          "c102a3f3-d02e-4f6f-967b-43233431c245",
+          "2e0f825a-fb35-42bf-b2d6-68e67ebd8e2e",
+          "041546c9-3d5b-4983-a9b7-a2fd195525e8",
+          "f40cadf9-6eb3-474e-9c89-770b387f8522",
+          "07059f36-3697-4f0e-b3fe-d94d7e9e5f85"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "latency_s": 0.09023649990558624
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae7eb0f554299540e5a5694",
+        "gold_doc_ids": [
+          "57f43810-943a-452e-bc3f-a8d5f4044127",
+          "efc41f82-f03b-4881-ac22-6d86477d2209"
+        ],
+        "retrieved_doc_ids": [
+          "57f43810-943a-452e-bc3f-a8d5f4044127",
+          "df1d6585-660b-4408-8879-ef757e6e0249",
+          "efc41f82-f03b-4881-ac22-6d86477d2209",
+          "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+          "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+          "7acf8d36-db3c-4c63-af07-012af36c3971",
+          "d6273843-2f1b-43f4-8d7f-40f59aac09d9",
+          "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+          "d632040f-6e0e-4768-b539-03cada08100e",
+          "2d899d79-783a-40a8-9845-7e4a22042ab7"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09031979995779693
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7d5e125542991319bc93b5",
+        "gold_doc_ids": [
+          "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+          "d1ccf60a-d173-4ef1-8840-577401bffeac"
+        ],
+        "retrieved_doc_ids": [
+          "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+          "57d83667-4f6b-408e-9f70-897971150179",
+          "c5283f25-9206-45ca-8abe-7ea725cb031e",
+          "d1ccf60a-d173-4ef1-8840-577401bffeac",
+          "eecc6be9-7345-4eee-b299-12c5492e9494",
+          "814db146-ebae-4a6d-b49f-13f3d28d71bb",
+          "532b8ccb-7092-4cac-8ff3-ebff82318394",
+          "ad637a48-f755-408b-9418-b11dd6e2c147",
+          "ae41cbb6-bdca-4c37-87d0-8e07acfe082e",
+          "b53225d1-e7a5-466a-b3f6-e4e683a0ef46"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.08925529988482594
+      },
+      {
+        "question_id": "phaseb_hotpot_5abbe1f1554299642a094ba9",
+        "gold_doc_ids": [
+          "1598e4be-cb15-463c-9038-38d6697f44fe",
+          "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09"
+        ],
+        "retrieved_doc_ids": [
+          "1598e4be-cb15-463c-9038-38d6697f44fe",
+          "d1093b5a-fcea-4d08-ae5b-4edc5d27d947",
+          "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09",
+          "2c6319ad-6b8c-4472-bb99-fecdc75c6223",
+          "efc884bf-c17f-42a5-a6d7-853fe68a5dad",
+          "a05a709d-17f3-4ff4-abbe-da2130634a31",
+          "789bc8c5-9d98-4bea-bbd0-36a214dc8756",
+          "ad0961ca-9e05-45f9-9c8c-1f7e9ece3466",
+          "38ff735b-390a-40fc-9e66-557bc6010ab8",
+          "5b40715c-ed3d-4826-96ce-cc38c9d59a11"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09806830016896129
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7264a35542997f8278399c",
+        "gold_doc_ids": [
+          "8b1bcb95-eb0f-4703-9cdc-67f625d7a883",
+          "d517d3fd-e4f0-4585-b9c6-236ccddc05b3"
+        ],
+        "retrieved_doc_ids": [
+          "d517d3fd-e4f0-4585-b9c6-236ccddc05b3",
+          "f2ef8ed0-55da-429e-b796-03a2c07d3d84",
+          "8b1bcb95-eb0f-4703-9cdc-67f625d7a883",
+          "56fd5d62-3d50-43d0-ad6f-d5aba99cedde",
+          "2ccb9450-407c-4593-b4c7-6f1c43e79c91",
+          "cf212547-bf02-4614-960d-7f2f7e386c4a",
+          "cbdf098c-2d48-4e2b-b46f-643292437d09",
+          "0ef06284-5058-410c-a36e-8118fcf38d36",
+          "6438be65-b210-40fa-aa96-4abfb40c20dc",
+          "5fddd11c-4b0d-4c49-8a76-9e3e46d84c4b"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.11442940006963909
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae45adc55429970de88d93f",
+        "gold_doc_ids": [
+          "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+          "92f3ed4c-63ce-459e-85c9-6cabefc4e30f"
+        ],
+        "retrieved_doc_ids": [
+          "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+          "92f3ed4c-63ce-459e-85c9-6cabefc4e30f",
+          "b41e3ec7-9adc-4a2b-a6f9-da076347de6a",
+          "46b5c6dd-cd9c-4872-a2ee-ffcdc90d256c",
+          "5aa8e55a-b8e1-4762-b77b-77d5f5460a7a",
+          "edb42b83-5bd5-4bc6-90dc-8383011564f8",
+          "2268853c-062d-4a86-8908-bc5afb318c60",
+          "29e2ee18-85e1-4aef-9473-eec7e6631ac0",
+          "342b858a-7de3-41a2-859b-d74b6d336c96",
+          "635fa2ca-275f-413a-bd70-87a41ea1f1ee"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.08838890003971756
+      },
+      {
+        "question_id": "phaseb_hotpot_5ac29915554299218029dab3",
+        "gold_doc_ids": [
+          "78bc0184-ac79-4043-a800-fa3acaf80dfd",
+          "8ee4b2c6-3023-4754-9255-636a308d056e"
+        ],
+        "retrieved_doc_ids": [
+          "8ee4b2c6-3023-4754-9255-636a308d056e",
+          "c8d8b225-26be-4af9-abd0-f6d105899521",
+          "ee99369c-cfab-47c3-b41a-82e9c752aa84",
+          "78bc0184-ac79-4043-a800-fa3acaf80dfd",
+          "8f077215-7b73-4b11-a34c-a68733216e8a",
+          "967d156f-b5b9-4e80-96e4-65a0c52dcc01",
+          "0219b049-1018-4ac8-a42f-88c8b37a9439",
+          "12477a10-127f-45fb-ae3c-23477b1a1915",
+          "a4961e07-d728-43aa-bc20-682a83b0b812",
+          "151acd82-2a89-497f-940c-dfb5f9f6c816"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.0861426000483334
+      },
+      {
+        "question_id": "phaseb_hotpot_5abb089d5542996cc5e49f5f",
+        "gold_doc_ids": [
+          "0f2f5ab7-ea9a-42c4-a04e-e75858e747c4",
+          "146e5cf0-56dd-4a67-af2b-2289a1b6e2b7"
+        ],
+        "retrieved_doc_ids": [
+          "146e5cf0-56dd-4a67-af2b-2289a1b6e2b7",
+          "db9a0130-c7b2-4eed-9f8a-09c0b1c16786",
+          "74f58056-5171-4f39-9e07-5f200834fab3",
+          "c518cf63-c39e-49bb-b8d4-0b2cffd308d5",
+          "5d1e5395-0196-4fe3-9333-86a81c1ab8ca",
+          "0f2f5ab7-ea9a-42c4-a04e-e75858e747c4",
+          "f193ee2e-1aeb-4ae0-94c8-3a2754c4a9b8",
+          "0a21c94e-1618-4012-aa27-b766f34c0604",
+          "e25a0331-bd38-406d-b39d-4d24e5032eff",
+          "3230bcd1-72a0-4bbf-bcc7-045e9ae480c9"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10562930000014603
+      },
+      {
+        "question_id": "phaseb_hotpot_5a75e05c55429976ec32bc5f",
+        "gold_doc_ids": [
+          "2daaf1b6-3748-4330-bacb-f186e13a79a7",
+          "f90db98c-63d4-49b9-a4e1-377f21a46f05"
+        ],
+        "retrieved_doc_ids": [
+          "2daaf1b6-3748-4330-bacb-f186e13a79a7",
+          "07bfe037-d890-4332-8257-fcfbb9f5a041",
+          "67a2aac1-cfe3-438d-8af4-81979481860a",
+          "f62d7b6f-b90e-40fe-96aa-d7f1ecb03738",
+          "aedde9f7-a9c3-45a9-ad1b-aaabd5bdc7e9",
+          "f90db98c-63d4-49b9-a4e1-377f21a46f05",
+          "f9136028-ccff-4ae7-a10c-ba526146845b",
+          "85b31736-5d57-48b0-a4e3-7b76132dc40f",
+          "c74174b7-60a5-44ef-a3e8-edcbeb703a2b",
+          "40161837-6661-42d9-bb6d-c48ad97b361c"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09468630002811551
+      },
+      {
+        "question_id": "phaseb_hotpot_5ac0fa9e554299012d1db671",
+        "gold_doc_ids": [
+          "03660879-6b88-4e8b-b28b-28ba52e55a8e",
+          "a863effd-ad39-4944-9d85-d77dc4334c2e"
+        ],
+        "retrieved_doc_ids": [
+          "a863effd-ad39-4944-9d85-d77dc4334c2e",
+          "03660879-6b88-4e8b-b28b-28ba52e55a8e",
+          "5f006259-0c3f-4fb8-9638-2cb7184ecc5d",
+          "662cd029-c43c-43b9-9520-306943d79153",
+          "ceec779e-6817-4b37-b02b-abfc8ea53263",
+          "8d532479-4659-4f75-bb09-a3c74475e5b5",
+          "01d904e8-6f02-4442-8e97-201a1d9462ec",
+          "379c83b2-1db4-4686-82e3-cf2274327798",
+          "fdfa7ce4-7662-463b-890a-59aaae689f44",
+          "598640c1-f81d-4de7-9048-80eddcbf16b3"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09887849981896579
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8b7cb95542995d1e6f13bb",
+        "gold_doc_ids": [
+          "f27c6a02-0933-4816-b189-3be8d57b3bd4",
+          "9d69b7d4-81ff-4b1a-a21b-771800c21b11"
+        ],
+        "retrieved_doc_ids": [
+          "3340e716-30ae-4dbf-9b31-55e0616fd591",
+          "3dba6b54-a969-4efc-957e-f2f806dd49b2",
+          "6f53a580-c3dd-478a-85e0-ea864a98f3e4",
+          "d20c5e05-5132-4a7c-ae18-551aac0bc749",
+          "3d249534-e788-4415-a4cf-452470863f4d",
+          "f27c6a02-0933-4816-b189-3be8d57b3bd4",
+          "31e4560f-76cd-4e3f-8c75-44a351f8289a",
+          "b89c82fc-9881-4025-b9a2-b14e75c6d8fb",
+          "2d925072-fd5d-464c-b475-7f66381c6096",
+          "7167ddf2-52d1-4e9b-9b02-6cb71274e405"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 0.16666666666666666,
+        "latency_s": 0.10514250001870096
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae22f5a554299234fd04420",
+        "gold_doc_ids": [
+          "fb721347-9b54-450e-8c87-7d0595627849",
+          "b6c86549-42c3-499b-9655-e16e351cfe75"
+        ],
+        "retrieved_doc_ids": [
+          "b6c86549-42c3-499b-9655-e16e351cfe75",
+          "57cd4be0-af2c-4a8d-90c4-f6665f262b96",
+          "624a355e-c0fb-4aa5-88eb-3d676c70a9d1",
+          "fb721347-9b54-450e-8c87-7d0595627849",
+          "128df021-4db0-4e23-b563-117ebd8faf66",
+          "6541cceb-3bf4-4949-99c6-ffaf8ba39fc6",
+          "42b0e683-f671-430d-98f8-bc56c2d76c5f",
+          "3c6c89eb-12a1-47ea-bee8-2ae661ee5321",
+          "88eb975e-6fa9-4d6e-88ac-392b0041ab7b",
+          "ff84904c-81d6-4e07-abb1-54084d444245"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09598510013893247
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7b42fb5542992d025e67c9",
+        "gold_doc_ids": [
+          "ff3be42e-d8e1-4a56-9a6f-039f74d8f384",
+          "33460c17-38bc-444f-b4c0-5f2d2e4d1cd7"
+        ],
+        "retrieved_doc_ids": [
+          "ff3be42e-d8e1-4a56-9a6f-039f74d8f384",
+          "33460c17-38bc-444f-b4c0-5f2d2e4d1cd7",
+          "fc06a369-0878-4470-b5d6-f1b9f7847280",
+          "4e13cf5b-77e3-42a4-aa27-6bff4b32ea31",
+          "0a393c93-afbd-4ffa-887d-13d2cba4732a",
+          "1f278a94-a458-4865-8962-8f4c31bd2fd8",
+          "3132f438-9921-46e3-a1de-2b6e592f7af0",
+          "d5a3fb42-3133-4a0a-bb1d-26e60fd01119",
+          "ce83c2ff-010a-4191-912c-628b2fb480f8",
+          "2852652c-960c-4334-8371-4c7e4f0f3789"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.11148039996623993
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae7a85a55429952e35ea9aa",
+        "gold_doc_ids": [
+          "130ee35f-a556-4418-9e7b-383f984085ed",
+          "b15243c5-6fcc-4f6d-8702-922b95355829"
+        ],
+        "retrieved_doc_ids": [
+          "130ee35f-a556-4418-9e7b-383f984085ed",
+          "e92a16f4-266c-47d6-971c-b20c04a372c1",
+          "b15243c5-6fcc-4f6d-8702-922b95355829",
+          "d324db4d-21b4-4fb5-9f15-5973e2f9a169",
+          "dbdb17bb-a737-4db9-b967-c85aff340251",
+          "b8af8afe-6864-4390-bdfd-d03d83c3e0b5",
+          "7e32f9c8-65a1-493b-b0bc-4d47feb12b8f",
+          "7c0bd105-fce7-44df-bd8f-7de7afe744b2",
+          "09b5d635-ee0f-4541-a432-b46e13d01b48",
+          "6ed9047a-f240-4050-a453-4ce70a7e4592"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09172760020010173
+      },
+      {
+        "question_id": "phaseb_hotpot_5a887f5c554299206df2b2c0",
+        "gold_doc_ids": [
+          "ce645d19-153b-432f-90e7-98c2ae0bbe60",
+          "4e4ad688-9a3b-4a46-a0bd-2cdd261db3fd"
+        ],
+        "retrieved_doc_ids": [
+          "ce645d19-153b-432f-90e7-98c2ae0bbe60",
+          "73ad4f69-cbec-4fe8-bf85-a8edf8022b75",
+          "4e4ad688-9a3b-4a46-a0bd-2cdd261db3fd",
+          "96187b88-481f-4c56-89de-3641abfeac12",
+          "7853e653-5453-4517-bcd2-c200ba06dd47",
+          "3ecc09f0-4b35-4d30-a6b2-fd0503d34baa",
+          "bc6154cb-cafc-4d6d-ab35-0108561ccb17",
+          "4ebb663b-86c1-46c7-8e7f-b41af9d784b0",
+          "e1e9c620-736f-4941-8bea-605803525ead",
+          "dd32792d-a231-4a02-85b7-24c26e231f50"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.13743819994851947
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8aad0d5542992d82986f55",
+        "gold_doc_ids": [
+          "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+          "aafcfd3e-2395-480d-982a-fa2c84ab85d0"
+        ],
+        "retrieved_doc_ids": [
+          "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+          "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+          "71a11c9d-16e4-4c26-a964-372fb9ccb9b3",
+          "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+          "b145d704-f7da-47a8-9a19-81c9dae436ed",
+          "2b42d368-52bd-4016-ad4b-d7f287badf32",
+          "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+          "af604139-f952-453b-8ea1-884c9b8d9a15",
+          "44270115-08b6-40ac-bae0-88df956623cf",
+          "d63afab0-e629-4e18-acac-34652cfdec9b"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.09557079989463091
+      },
+      {
+        "question_id": "phaseb_hotpot_5abe942155429965af743f36",
+        "gold_doc_ids": [
+          "5ee2dbe5-5bf3-42a9-b8b5-46db11340e02",
+          "4cc32f3e-cec0-4894-ad09-034b4669fb69"
+        ],
+        "retrieved_doc_ids": [
+          "5ee2dbe5-5bf3-42a9-b8b5-46db11340e02",
+          "5b929995-cfbe-4dca-9ac4-a19b4351221f",
+          "4c4f710b-19dc-4731-84da-48223acf7990",
+          "bec12613-730d-439a-9804-5ec181b315e6",
+          "6c5fe9fe-3c18-42d4-a636-041e6dd1f9c2",
+          "ba6d7c38-a1a5-465f-90a4-31f41d7f49c6",
+          "da87cc59-37b1-43f8-aaee-9efba3547e34",
+          "985ac0a9-0319-45f4-a446-631d4842e5c3",
+          "6da9a2a3-3984-41ef-b087-2af3af956f1a",
+          "7252ffdc-2c07-4fe3-87e6-b30b120ae120"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.09599699988029897
+      },
+      {
+        "question_id": "phaseb_hotpot_5a89d51e554299669944a5bc",
+        "gold_doc_ids": [
+          "90d4b036-a222-4617-87d1-7d9c154cf599",
+          "c09f7fa3-1754-4557-85e0-4c2b29c34ecb"
+        ],
+        "retrieved_doc_ids": [
+          "90d4b036-a222-4617-87d1-7d9c154cf599",
+          "c09f7fa3-1754-4557-85e0-4c2b29c34ecb",
+          "28e9af1e-32ec-4335-97d0-2a2209a82a2c",
+          "3a15bdb7-5d58-4eb2-ae55-af7fe77347d6",
+          "45babaea-7271-4ba8-9028-c2add11b8ef8",
+          "fc79677c-1614-47aa-861b-678b7ec5fef6",
+          "2b9a5f86-ffa1-4cbf-b506-0e2c7c7da310",
+          "b3183dca-55ad-4ebf-a621-7f1ea9357ba3",
+          "285fd922-dd3d-4126-9a2c-0bd4f868429b",
+          "c6e8511e-18d1-49e1-886a-40afa0c9b9f8"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10426559997722507
+      },
+      {
+        "question_id": "phaseb_hotpot_5aba637a55429939ce03dcbb",
+        "gold_doc_ids": [
+          "0295271a-26e1-41fd-a4f5-16f0cee85e06",
+          "79382370-3f42-4c58-adc8-049d7b7f1f55"
+        ],
+        "retrieved_doc_ids": [
+          "79382370-3f42-4c58-adc8-049d7b7f1f55",
+          "2fef3360-7ed2-4b84-b69a-ae61cddf4e84",
+          "3a10b349-3ff6-4106-a162-bad71c37d16e",
+          "ff510655-3199-413f-9ac0-c79ec4a0d408",
+          "7c2a6107-b4a8-43d8-bb37-dcfc4d78a869",
+          "584a4696-51eb-4b12-92e4-829fd106eb48",
+          "c2d139a8-c31a-4425-88e7-b0ba6262ff81",
+          "10740eb8-6aea-49d8-a0a1-0bf522cf0f56",
+          "6b0fd354-f975-4fe9-a0d5-525284081136",
+          "0295271a-26e1-41fd-a4f5-16f0cee85e06"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10499090002849698
+      },
+      {
+        "question_id": "phaseb_hotpot_5a75eca555429976ec32bca8",
+        "gold_doc_ids": [
+          "a7747e57-feeb-463d-89b3-d4b325acd37d",
+          "b080821e-13bb-45b9-963e-9862cc4f5578"
+        ],
+        "retrieved_doc_ids": [
+          "a7747e57-feeb-463d-89b3-d4b325acd37d",
+          "b080821e-13bb-45b9-963e-9862cc4f5578",
+          "7771de03-b47f-4f22-9963-f014e293fda5",
+          "07149d2e-d276-4629-8f5b-042f922e422a",
+          "50e39254-dd47-4681-8381-90bb64bc9233",
+          "7f65a49f-3234-41ae-bcdf-4d07babad42c",
+          "0624f272-a7d6-4d10-9a7a-a81b9d4ae7b9",
+          "bc90c96c-1020-44e2-9bf4-e4f127b1ee26",
+          "bdbdf579-a24f-4f75-9655-d23e5629cd97",
+          "77042b23-2a17-4e24-93fe-8500b651e8e7"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.09192829998210073
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8f276055429918e830d1ab",
+        "gold_doc_ids": [
+          "5c7c1fab-19e9-407e-85e5-b037947181dd",
+          "770ee68c-4e30-4d0c-833a-8e79f9d8ff61"
+        ],
+        "retrieved_doc_ids": [
+          "5c7c1fab-19e9-407e-85e5-b037947181dd",
+          "770ee68c-4e30-4d0c-833a-8e79f9d8ff61",
+          "5dfdd76c-caf0-4bdf-8dab-2901bca25265",
+          "e891c8cf-618e-401d-a3cb-f30930f20367",
+          "a8db565b-0c4d-45d5-a849-4da720f71ce1",
+          "b256f5b3-e26c-426a-8241-5b0095b64f37",
+          "a52b90a5-2305-4eb1-acae-9773f50cfea6",
+          "dfb2ccaf-3769-42fc-92a2-e40b6945f533",
+          "87af0325-a923-47a3-a56b-c032a4b5c31d",
+          "ae19c88b-e988-4739-92a8-e2d1ff7d2ff6"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.10491610015742481
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8b5b1c5542995d1e6f1387",
+        "gold_doc_ids": [
+          "77bfb095-ff22-4704-af13-b92a7a15efbb",
+          "a811c0ac-344e-4b0c-9c44-ffbf7f116c04"
+        ],
+        "retrieved_doc_ids": [
+          "09a62163-8429-4e24-a94f-45382d02ef9b",
+          "4e1d28a3-7fa0-48aa-bd0f-500aac7d0f78",
+          "77bfb095-ff22-4704-af13-b92a7a15efbb",
+          "cd3ae23f-37f7-42cf-baed-a325a61533e4",
+          "d18c9c23-0afb-4e88-b271-921fdce721d8",
+          "a811c0ac-344e-4b0c-9c44-ffbf7f116c04",
+          "2d888703-47b6-490a-bc18-138d37f18891",
+          "e09f3676-9a5d-4ec4-bb96-17816707ebb1",
+          "226ad4d9-b290-4d34-a4c9-7002886b9253",
+          "b9c98e1e-16e0-496c-80a9-b551113de0b5"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "latency_s": 0.08738970011472702
+      }
+    ],
+    "hybrid_rerank": [
+      {
+        "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+        "gold_doc_ids": [
+          "4e558d72-c1c3-4544-9609-16ec13e097a3",
+          "2bed5f52-4939-4b37-919c-d05855e5e86c"
+        ],
+        "retrieved_doc_ids": [
+          "4e558d72-c1c3-4544-9609-16ec13e097a3",
+          "2bed5f52-4939-4b37-919c-d05855e5e86c",
+          "c38d78db-2d80-4278-9e53-291aff173108",
+          "f0a7bbe8-ee32-4bf6-8ea1-59f8549b21c3",
+          "65b62021-15ec-4d34-949b-8ba162ccd86b",
+          "17a45e50-314c-4384-a5c8-8dc7102ffb6d",
+          "8ea03308-63b7-462e-9fed-da09652bcedd",
+          "fb044e1b-1ebd-40ac-bdbe-66cbb3892ade",
+          "e240f45f-6ddd-41e3-a2b7-33cfa6f40533",
+          "758cc1cf-312c-48f4-805d-1f40a8832d64"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.15387709997594357
+      },
+      {
+        "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+        "gold_doc_ids": [
+          "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+          "362a4fce-7cee-41de-836c-759b0e8631e6"
+        ],
+        "retrieved_doc_ids": [
+          "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+          "3ab7a349-a780-4fcf-8d00-8311eadebda2",
+          "e912e5fa-40d0-4be2-a022-70720fb9bd53",
+          "a029425d-6892-4942-b1b3-16cba721fbd4",
+          "a16e2226-d376-40c9-8eea-e5d46e06a3e3",
+          "18f79720-ff08-4a51-a2cc-953fdd980ef9",
+          "ff72d035-42ea-4566-ad65-bde5bd47217f",
+          "ad64dc83-40eb-4117-98f5-ef19a6a6d515",
+          "4db9c732-832a-4655-9cc0-54c06521bb1b",
+          "835b5ff8-82fd-42c1-973f-aa7b11322256"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.19835830014199018
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+        "gold_doc_ids": [
+          "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+          "7ab5b521-8c0c-4a03-84d2-2884756605c0"
+        ],
+        "retrieved_doc_ids": [
+          "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+          "ff6fddf1-4264-4b7b-9679-3358b83e98b6",
+          "353f56df-f2ef-4a87-bb3c-9f69a8efa693",
+          "e7c34da3-4802-4e45-a67f-8ac317d35ca6",
+          "2014db51-7d28-48c6-8acf-7f70588f25aa",
+          "023f33a4-6136-4c2f-9448-d74c23f12ec3",
+          "622624b2-0a6a-4b59-839a-7718683da1c7",
+          "5293ea7c-9b0d-4d9f-8474-9370cea24b9d",
+          "4edc9b6f-ff55-4b6c-a691-08aed7eb4954",
+          "14ecb07e-0af9-4fb1-8434-0875c404f2cf"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.16869989992119372
+      },
+      {
+        "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+        "gold_doc_ids": [
+          "3428a271-a243-4032-ae07-47df99fdaae6",
+          "0adc14d0-8f14-441a-b731-270a317e140d"
+        ],
+        "retrieved_doc_ids": [
+          "3428a271-a243-4032-ae07-47df99fdaae6",
+          "af5c0b81-313b-41d6-a560-d9246bab7c8c",
+          "92126d56-3787-4d54-b626-9173ac6c7885",
+          "56c7fe76-92e5-4be7-b460-48ecffaea6e4",
+          "92ffbbf1-635e-4f4b-8e0d-a993b0ba44d4",
+          "d00b4f43-868a-4dc8-a19e-f99dbf1422b9",
+          "d408d9a0-72c8-4767-a02a-35ca41415947",
+          "bb4ecde6-b486-4693-8e7c-ec0c3d891a7b",
+          "4b1613a9-a5a4-409e-9910-192d3abb9675",
+          "db648e23-23c8-4601-8b7e-c357bd2d47b1"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.17546419985592365
+      },
+      {
+        "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+        "gold_doc_ids": [
+          "e396e67f-ded4-44f0-ba41-6282d404e898",
+          "919290c3-fed0-44a8-b55a-07bf5d513c4e"
+        ],
+        "retrieved_doc_ids": [
+          "e396e67f-ded4-44f0-ba41-6282d404e898",
+          "f61eed34-328c-4c55-b860-aa2cf9ffe967",
+          "258adce6-9fad-4dc8-ab98-b21316c32c91",
+          "919290c3-fed0-44a8-b55a-07bf5d513c4e",
+          "40ec0bd7-1d67-4843-8ca6-9867187def6a",
+          "5ecab45f-48eb-4da1-ab34-b508780b5171",
+          "15d7eda3-e51a-46f0-a15a-742a1728c27a",
+          "17a5d894-291b-47de-9b6e-798d8a571f1b",
+          "8ffda412-403a-4846-b351-29f6eebd6eac",
+          "e1bbed12-49de-4366-ace2-e735b51403c0"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.1511063000652939
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+        "gold_doc_ids": [
+          "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+          "b5586f6b-5758-45bf-9904-e45d12505e9d"
+        ],
+        "retrieved_doc_ids": [
+          "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+          "b5586f6b-5758-45bf-9904-e45d12505e9d",
+          "2b0a4069-6082-4ed8-a998-2486be0db429",
+          "764dc554-d613-4b11-9e37-faaae7f93b70",
+          "d4c0192c-3a8b-4dda-aae5-0285e81350d2",
+          "f23456fd-48c3-49af-a126-2c7170a2df17",
+          "b4948ab6-6ce5-4e7e-bc3c-81b5db2d5628",
+          "d42b0051-9f17-4c86-931e-3af2357d06d6",
+          "9f1c60bf-9035-40ef-b336-23d8e0acf995",
+          "34e84ef4-4b34-4d42-a8bf-e819f278d177"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.2428526000585407
+      },
+      {
+        "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+        "gold_doc_ids": [
+          "57b45e66-ddfe-4891-b527-dfd0edd23f8b",
+          "1308823a-7e5f-4e5a-9f75-df33a1d05f02"
+        ],
+        "retrieved_doc_ids": [
+          "57b45e66-ddfe-4891-b527-dfd0edd23f8b",
+          "c0f431f5-6c85-4c95-8263-4bd2cbebf540",
+          "b985753a-e975-4419-805d-3689badef7b0",
+          "1308823a-7e5f-4e5a-9f75-df33a1d05f02",
+          "41945322-a853-40e7-996c-26df7d0bd36f",
+          "30bf2483-41dc-4815-a103-57c4b228b1ab",
+          "42035714-3dfb-4f5c-a211-e6e3e6281ddf",
+          "e21e1670-43a6-47c1-8ccf-32e082f80aba",
+          "ea4a604c-0a6d-47c2-bd02-28f78d67fd3a",
+          "93347707-a1da-4522-b398-fca4d71c13e4"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.26465220004320145
+      },
+      {
+        "question_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a",
+        "gold_doc_ids": [
+          "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+          "97118e55-ca2a-4846-a6b7-33a1c0f838b6"
+        ],
+        "retrieved_doc_ids": [
+          "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+          "6f1a3ce4-9059-49a3-b74d-4527934f484e",
+          "455e935e-413d-46a9-bbb1-27a553b75d4e",
+          "23649e2b-a11c-4cb7-8f29-5ff95f8af4a6",
+          "86a7f861-757c-46a1-931c-3cfaf7846497",
+          "5251a53b-f96f-4487-934a-bca2b99c3360",
+          "382cf07b-45fe-4195-bf31-051438645cd9",
+          "35076643-f604-46c3-8996-e1e92fbd839c",
+          "3efc0b6e-2657-4175-ba7c-f5f61d2f8024",
+          "53f0ed4a-77aa-47f0-a2b2-b4b0f245ba9e"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.17213950003497303
+      },
+      {
+        "question_id": "phaseb_hotpot_5adf85e05542993344016cba",
+        "gold_doc_ids": [
+          "af63784b-7add-431b-b99c-b1c4a1441e94",
+          "f9cf1966-df33-4ae0-b7d0-8480f210e118"
+        ],
+        "retrieved_doc_ids": [
+          "af63784b-7add-431b-b99c-b1c4a1441e94",
+          "e73f473d-5d45-44ef-97f4-3e627c15d881",
+          "b76fbf31-b255-495e-9e00-6ac4f16d58e8",
+          "ca0ca09e-6ba4-4547-a7d0-f9549cd58c02",
+          "f9cf1966-df33-4ae0-b7d0-8480f210e118",
+          "1b7ffdda-1a07-4441-b432-0c210c5132b3",
+          "2c4cc8c8-3165-4187-a97b-79780a0e4a96",
+          "a0c6ef0e-7f54-4efb-802a-00636979863b",
+          "b70f6ac6-109e-4698-bbce-aed5513775c2",
+          "04528e50-f0cd-418f-86d3-8437036479ea"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.18752470007166266
+      },
+      {
+        "question_id": "phaseb_hotpot_5ab443415542991751b4d711",
+        "gold_doc_ids": [
+          "0a9aa3ca-9a7f-4768-968d-91d3079f7a70",
+          "0877e976-f392-4259-b182-fa690ae9bc33"
+        ],
+        "retrieved_doc_ids": [
+          "0a9aa3ca-9a7f-4768-968d-91d3079f7a70",
+          "8561a82a-cdc5-4d29-9350-5c6241fd965c",
+          "0877e976-f392-4259-b182-fa690ae9bc33",
+          "70008cf1-e6e1-4b0b-abc7-d007915ae9ba",
+          "371e0563-cbe0-4e7e-b295-ae47b52055f1",
+          "c0be1c49-daa4-4895-9993-ab31edadcb4b",
+          "5a49f360-b564-4828-a93c-133374290c3e",
+          "be079f88-1882-440b-be5a-a9ad4f521fca",
+          "05aa7ace-c055-4566-b582-b806fe84e7bc",
+          "30424151-5a95-4250-a674-3a4425bfe194"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.18318960000760853
+      },
+      {
+        "question_id": "phaseb_hotpot_5abb1fd95542996cc5e49fb6",
+        "gold_doc_ids": [
+          "8bb41e2d-fdc8-4cc1-bd06-f9aed1a9c103",
+          "4b612dab-612c-47e4-aa98-3dcf1554ad69"
+        ],
+        "retrieved_doc_ids": [
+          "8bb41e2d-fdc8-4cc1-bd06-f9aed1a9c103",
+          "e5c411c1-2630-4ef4-a74c-dcc6b83b6ec3",
+          "40ce1cbf-00f4-4a24-854d-32ead998008b",
+          "ce0cfaa0-9479-4c59-ac84-1344eec5afe5",
+          "6edbb5de-bf09-4b34-bda0-b5905c1d2a1f",
+          "90c05529-73f4-494c-83cf-70598e1da3a1",
+          "f6aaba0c-435b-4187-9a05-79ed93f0319b",
+          "7fc05dd1-2a69-483b-89dc-60c179e3cbde",
+          "4b612dab-612c-47e4-aa98-3dcf1554ad69",
+          "49078bdc-765c-4b05-b4b2-8c9c6fb2edb6"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.14193150005303323
+      },
+      {
+        "question_id": "phaseb_hotpot_5abdb10f55429965af743dc9",
+        "gold_doc_ids": [
+          "5e415b62-702f-406b-b249-202bf3e7248b",
+          "15fe4116-34bf-4e24-94b8-024a6b300e1d"
+        ],
+        "retrieved_doc_ids": [
+          "15fe4116-34bf-4e24-94b8-024a6b300e1d",
+          "5e415b62-702f-406b-b249-202bf3e7248b",
+          "104a7fd7-566d-4663-8253-612eae345275",
+          "96d58ab2-ff0b-49b3-aa9a-b9a739b769c7",
+          "f3e6e8d7-8cde-47b5-94dc-366dac8227e8",
+          "96fe5e65-9f32-4da7-a7a5-dba4b1ce50aa",
+          "4d495086-fa0f-4a58-b54e-842fd2a9cd69",
+          "44864737-3316-4cfb-a71d-b857029133a3",
+          "23a70e68-373b-42e6-9462-b57aaf0896b6",
+          "c282016a-924f-4e3c-a4da-4346fd757849"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.14111020020209253
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8f155e554299458435d54c",
+        "gold_doc_ids": [
+          "28e36447-e944-4957-a050-cd863b0631b0",
+          "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7"
+        ],
+        "retrieved_doc_ids": [
+          "28e36447-e944-4957-a050-cd863b0631b0",
+          "76c0a7f2-0ede-456e-87d6-8c600a7ecbd3",
+          "4124a6b0-e03a-49d5-8661-097a7e5d9596",
+          "68f99e45-c55a-45fc-81aa-f7d949e207c9",
+          "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7",
+          "a3855dc2-f48b-41cf-8679-12b34d088d7e",
+          "0f289e3e-880e-49ad-b8e7-c2a8862b3175",
+          "ee13515e-dddf-40fe-aeee-c7ef56a2f7a2",
+          "3749e43a-3397-4ce7-8d1d-6259366b1906",
+          "c10e07a3-5aba-4cca-8175-0fa0a134c314"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.17359100002795458
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7ccc1e55429909bec7680e",
+        "gold_doc_ids": [
+          "b45f319e-08bc-41d7-a98c-7990e48c8305",
+          "5839e4df-0a06-4511-8145-ef882274ea25"
+        ],
+        "retrieved_doc_ids": [
+          "b45f319e-08bc-41d7-a98c-7990e48c8305",
+          "88944ab8-0e8c-4761-8e95-be36cb90f523",
+          "b91993c4-ff28-471b-ae3f-deda705c8770",
+          "525c55fe-6dad-489d-984a-7cce735f1ff3",
+          "560c5175-cbd6-4f27-a4ea-04e34e62badd",
+          "858d6ae4-c4d5-45fc-b6b1-fcc5d0a1eb31",
+          "95560435-7324-4898-9a5d-d97f0d6e5df7",
+          "6c093a97-c6c6-4691-90d7-998b9cdd3d7e",
+          "5839e4df-0a06-4511-8145-ef882274ea25",
+          "63b55961-91a4-45fc-b47a-b6530e429f0f"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.16909070010297
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7a5f625542990783324f2f",
+        "gold_doc_ids": [
+          "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+          "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1"
+        ],
+        "retrieved_doc_ids": [
+          "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1",
+          "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+          "51b95cc2-2994-4a4a-b47b-63762099e4ae",
+          "8909de99-a5cf-4da1-bb00-4edcea10ec1d",
+          "d77070f4-4a04-47a1-8e8b-7c5582a8b81a",
+          "7c3a8592-7c4a-459a-9ae3-676f2a82873a",
+          "8f1a8c1f-04a7-40d8-8fc5-da58b3e2c3fd",
+          "ec432090-3516-4919-8c85-f9fa583a1407",
+          "1bd3ef92-9dd0-4859-b491-025640d2a2e6",
+          "0fc5df7c-ca98-439d-9152-9d9a40a7f1a8"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.19423489994369447
+      },
+      {
+        "question_id": "phaseb_hotpot_5a72fbcc5542994cef4bc415",
+        "gold_doc_ids": [
+          "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+          "802a440d-3de1-4820-9e7d-9e454d25c6d4"
+        ],
+        "retrieved_doc_ids": [
+          "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+          "802a440d-3de1-4820-9e7d-9e454d25c6d4",
+          "e1d02b9c-e0de-4d03-b5dd-ebeecd70092b",
+          "805a88a5-7bf5-408e-98f0-7449ec09cb59",
+          "efe57009-7b43-4b19-b676-79f5bd7be407",
+          "6b09e58e-87cc-4948-ba57-64e92189b651",
+          "8904d4f9-3269-4adb-957a-bdfc2706ef12",
+          "a226de9a-b869-4fb5-be0c-30408087a36a",
+          "17f8e688-bc02-48f6-94b7-77d271284c79",
+          "282c5f56-9bc7-415b-9bca-d53a60f508ed"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.15474700019694865
+      },
+      {
+        "question_id": "phaseb_hotpot_5add44c25542997545bbbd0a",
+        "gold_doc_ids": [
+          "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+          "a910d0b2-4e7d-47bf-b0cb-38c5570b4bd3"
+        ],
+        "retrieved_doc_ids": [
+          "a910d0b2-4e7d-47bf-b0cb-38c5570b4bd3",
+          "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+          "8608d024-1021-4d4c-80a5-ea976c946be6",
+          "349c0cde-5364-49ea-8684-6d2b7ab55846",
+          "8490890e-8484-4f79-ac47-66a6e12fcfa1",
+          "fa0451fd-727b-4d0f-a0b3-cc46afda8b1d",
+          "5042275e-eaeb-45c6-ad30-f4a57eb6e4d6",
+          "9397de6d-6574-4d35-a877-008ab455d297",
+          "96a676e1-849f-4b19-ab1f-b0d52bf224c5",
+          "3f21ee03-a185-4f4c-b881-b9e50220632f"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.15257469983771443
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7d07a455429907fabef0ae",
+        "gold_doc_ids": [
+          "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+          "0ed4bc9f-fa15-46dc-aa82-5e08a57be0c8"
+        ],
+        "retrieved_doc_ids": [
+          "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+          "9b316eed-b72e-4192-97b3-523848fddb8d",
+          "0ed4bc9f-fa15-46dc-aa82-5e08a57be0c8",
+          "27356472-7e83-4fd4-9642-7b0d9d5310cc",
+          "d8a9ff96-fb25-4596-a8d3-1521f2907370",
+          "e00a180c-128c-464b-b766-9c31e3126408",
+          "75208503-9826-4bb4-956a-9d76e41f7f19",
+          "bea8cfd4-0e5b-4d66-ab65-2e9a78d052fa",
+          "fa5f3e0c-9d7d-4f9c-bb0f-67f16f4d7398",
+          "90d0b23e-0ba9-49a1-8b5a-74b49e3389c0"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.15427469997666776
+      },
+      {
+        "question_id": "phaseb_hotpot_5a81f94f554299676cceb1ac",
+        "gold_doc_ids": [
+          "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+          "2e0f825a-fb35-42bf-b2d6-68e67ebd8e2e"
+        ],
+        "retrieved_doc_ids": [
+          "ca6389c8-0e53-475d-9f39-7ff3cc933ae3",
+          "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+          "fe1334e1-d8e9-4f26-9b03-7127e432ed3d",
+          "c102a3f3-d02e-4f6f-967b-43233431c245",
+          "2e0f825a-fb35-42bf-b2d6-68e67ebd8e2e",
+          "69d011fa-3baa-4b47-beb4-57c1442317dd",
+          "f40cadf9-6eb3-474e-9c89-770b387f8522",
+          "14cc7529-081f-458b-82d2-2f640eeda712",
+          "174d5c85-f1a1-437e-a5ab-02e88fa8f6b7",
+          "4a859223-612e-43ea-8a95-af472df63437"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 0.5,
+        "latency_s": 0.14895200007595122
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae7eb0f554299540e5a5694",
+        "gold_doc_ids": [
+          "57f43810-943a-452e-bc3f-a8d5f4044127",
+          "efc41f82-f03b-4881-ac22-6d86477d2209"
+        ],
+        "retrieved_doc_ids": [
+          "57f43810-943a-452e-bc3f-a8d5f4044127",
+          "efc41f82-f03b-4881-ac22-6d86477d2209",
+          "df1d6585-660b-4408-8879-ef757e6e0249",
+          "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+          "d6273843-2f1b-43f4-8d7f-40f59aac09d9",
+          "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+          "7acf8d36-db3c-4c63-af07-012af36c3971",
+          "ac9285ae-bcd6-4f5c-ace6-3328857c57ab",
+          "1c626342-65af-4406-90ae-dae2c0d323a1",
+          "d6364af2-a262-491a-844d-ce0d422c1c67"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.16806809999980032
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7d5e125542991319bc93b5",
+        "gold_doc_ids": [
+          "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+          "d1ccf60a-d173-4ef1-8840-577401bffeac"
+        ],
+        "retrieved_doc_ids": [
+          "d1ccf60a-d173-4ef1-8840-577401bffeac",
+          "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+          "814db146-ebae-4a6d-b49f-13f3d28d71bb",
+          "ad637a48-f755-408b-9418-b11dd6e2c147",
+          "ae41cbb6-bdca-4c37-87d0-8e07acfe082e",
+          "b53225d1-e7a5-466a-b3f6-e4e683a0ef46",
+          "81c4ec0d-208d-4047-a8d3-1c1cedf38408",
+          "f1fb0ec7-bf96-4995-a8ed-eeb1cff7b768",
+          "d2ba5330-887b-44d9-a3a3-fc18f169eb2f",
+          "4d19ab36-f1a7-4901-91c0-9da2002ebcb6"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.1529673000331968
+      },
+      {
+        "question_id": "phaseb_hotpot_5abbe1f1554299642a094ba9",
+        "gold_doc_ids": [
+          "1598e4be-cb15-463c-9038-38d6697f44fe",
+          "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09"
+        ],
+        "retrieved_doc_ids": [
+          "1598e4be-cb15-463c-9038-38d6697f44fe",
+          "d1093b5a-fcea-4d08-ae5b-4edc5d27d947",
+          "38ff735b-390a-40fc-9e66-557bc6010ab8",
+          "67599b36-efef-4383-9b59-3d8e81cde38c",
+          "34a59596-4640-4077-832d-00945ca68618",
+          "bc47ac1c-0969-47c9-9a17-aff67bd5c61b",
+          "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09",
+          "894e5dab-af2b-4d7f-b110-3b33bbbfdd2b",
+          "2c6319ad-6b8c-4472-bb99-fecdc75c6223",
+          "ad0961ca-9e05-45f9-9c8c-1f7e9ece3466"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.15762139996513724
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7264a35542997f8278399c",
+        "gold_doc_ids": [
+          "8b1bcb95-eb0f-4703-9cdc-67f625d7a883",
+          "d517d3fd-e4f0-4585-b9c6-236ccddc05b3"
+        ],
+        "retrieved_doc_ids": [
+          "d517d3fd-e4f0-4585-b9c6-236ccddc05b3",
+          "8b1bcb95-eb0f-4703-9cdc-67f625d7a883",
+          "56fd5d62-3d50-43d0-ad6f-d5aba99cedde",
+          "2ccb9450-407c-4593-b4c7-6f1c43e79c91",
+          "1b475bb0-d4aa-42e2-867c-450eceac0a36",
+          "f2ef8ed0-55da-429e-b796-03a2c07d3d84",
+          "5fddd11c-4b0d-4c49-8a76-9e3e46d84c4b",
+          "6438be65-b210-40fa-aa96-4abfb40c20dc",
+          "5bd8be10-670e-43c0-ae37-d30ba2336fd3",
+          "f6356547-ae2a-4d14-8b88-6645297c4ba1"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.14651260012760758
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae45adc55429970de88d93f",
+        "gold_doc_ids": [
+          "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+          "92f3ed4c-63ce-459e-85c9-6cabefc4e30f"
+        ],
+        "retrieved_doc_ids": [
+          "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+          "92f3ed4c-63ce-459e-85c9-6cabefc4e30f",
+          "d95bcc5a-69f0-49fd-ab0e-00b52de60065",
+          "b41e3ec7-9adc-4a2b-a6f9-da076347de6a",
+          "5aa8e55a-b8e1-4762-b77b-77d5f5460a7a",
+          "e05bc21b-d876-4dc5-9adb-32a241ba9030",
+          "2b4a30bc-c60d-4b0a-b69e-c43849668fee",
+          "edb42b83-5bd5-4bc6-90dc-8383011564f8",
+          "e7e71e68-d961-4c8c-8732-4e02ac3c55af",
+          "76cabec4-2a12-407c-b25f-9430ef3766c8"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.16238739993423223
+      },
+      {
+        "question_id": "phaseb_hotpot_5ac29915554299218029dab3",
+        "gold_doc_ids": [
+          "78bc0184-ac79-4043-a800-fa3acaf80dfd",
+          "8ee4b2c6-3023-4754-9255-636a308d056e"
+        ],
+        "retrieved_doc_ids": [
+          "8ee4b2c6-3023-4754-9255-636a308d056e",
+          "ee99369c-cfab-47c3-b41a-82e9c752aa84",
+          "c8d8b225-26be-4af9-abd0-f6d105899521",
+          "967d156f-b5b9-4e80-96e4-65a0c52dcc01",
+          "78bc0184-ac79-4043-a800-fa3acaf80dfd",
+          "0219b049-1018-4ac8-a42f-88c8b37a9439",
+          "8f077215-7b73-4b11-a34c-a68733216e8a",
+          "5e36f07e-ddbb-4fba-bd80-fd1eeb98dab4",
+          "0b36cdce-1713-44fa-8316-841969d7bcb0",
+          "5c1e0444-0256-4ad6-a82e-c04fd5120af0"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.15989600005559623
+      },
+      {
+        "question_id": "phaseb_hotpot_5abb089d5542996cc5e49f5f",
+        "gold_doc_ids": [
+          "0f2f5ab7-ea9a-42c4-a04e-e75858e747c4",
+          "146e5cf0-56dd-4a67-af2b-2289a1b6e2b7"
+        ],
+        "retrieved_doc_ids": [
+          "db9a0130-c7b2-4eed-9f8a-09c0b1c16786",
+          "146e5cf0-56dd-4a67-af2b-2289a1b6e2b7",
+          "5d1e5395-0196-4fe3-9333-86a81c1ab8ca",
+          "74f58056-5171-4f39-9e07-5f200834fab3",
+          "f193ee2e-1aeb-4ae0-94c8-3a2754c4a9b8",
+          "c518cf63-c39e-49bb-b8d4-0b2cffd308d5",
+          "0f2f5ab7-ea9a-42c4-a04e-e75858e747c4",
+          "0a21c94e-1618-4012-aa27-b766f34c0604",
+          "3230bcd1-72a0-4bbf-bcc7-045e9ae480c9",
+          "0c8ed8ce-cc31-4411-b450-756ff7648d39"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 0.5,
+        "latency_s": 0.19262699992395937
+      },
+      {
+        "question_id": "phaseb_hotpot_5a75e05c55429976ec32bc5f",
+        "gold_doc_ids": [
+          "2daaf1b6-3748-4330-bacb-f186e13a79a7",
+          "f90db98c-63d4-49b9-a4e1-377f21a46f05"
+        ],
+        "retrieved_doc_ids": [
+          "2daaf1b6-3748-4330-bacb-f186e13a79a7",
+          "f62d7b6f-b90e-40fe-96aa-d7f1ecb03738",
+          "f9136028-ccff-4ae7-a10c-ba526146845b",
+          "85b31736-5d57-48b0-a4e3-7b76132dc40f",
+          "2fb470a7-551d-4d90-901c-8cd203077a18",
+          "bc05a985-423a-462c-b346-6544655a3f6d",
+          "ab288d83-04a8-4139-9db4-85043ee6eb23",
+          "e172bb76-d0d4-48c8-aa21-e45fad845d17",
+          "31c7f0ed-761c-4288-a654-5c1d6ae0d40e",
+          "f90db98c-63d4-49b9-a4e1-377f21a46f05"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.1818062998354435
+      },
+      {
+        "question_id": "phaseb_hotpot_5ac0fa9e554299012d1db671",
+        "gold_doc_ids": [
+          "03660879-6b88-4e8b-b28b-28ba52e55a8e",
+          "a863effd-ad39-4944-9d85-d77dc4334c2e"
+        ],
+        "retrieved_doc_ids": [
+          "a863effd-ad39-4944-9d85-d77dc4334c2e",
+          "03660879-6b88-4e8b-b28b-28ba52e55a8e",
+          "5f006259-0c3f-4fb8-9638-2cb7184ecc5d",
+          "662cd029-c43c-43b9-9520-306943d79153",
+          "ceec779e-6817-4b37-b02b-abfc8ea53263",
+          "8d532479-4659-4f75-bb09-a3c74475e5b5",
+          "c381686a-56e4-4847-929e-c877bd0f8fad",
+          "18aeba8f-ab8c-4f96-a09a-3992a3358d06",
+          "818d0f78-9fca-4c5b-ae1c-2eb193838403",
+          "fc365504-700c-4303-a290-7b753a300b46"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.17223290004767478
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8b7cb95542995d1e6f13bb",
+        "gold_doc_ids": [
+          "f27c6a02-0933-4816-b189-3be8d57b3bd4",
+          "9d69b7d4-81ff-4b1a-a21b-771800c21b11"
+        ],
+        "retrieved_doc_ids": [
+          "3340e716-30ae-4dbf-9b31-55e0616fd591",
+          "3dba6b54-a969-4efc-957e-f2f806dd49b2",
+          "d20c5e05-5132-4a7c-ae18-551aac0bc749",
+          "31e4560f-76cd-4e3f-8c75-44a351f8289a",
+          "2e00bb21-fdb4-4039-8c82-78dab0fe09fe",
+          "bd46a397-d905-4c17-aa81-7ed4d548301b",
+          "b89c82fc-9881-4025-b9a2-b14e75c6d8fb",
+          "25eb78d0-11be-4a0d-a34c-2ca4c60f98b6",
+          "f27c6a02-0933-4816-b189-3be8d57b3bd4",
+          "bebfe5f2-44d3-4b26-9814-f48f1b6f366b"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 0.1111111111111111,
+        "latency_s": 0.15962280007079244
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae22f5a554299234fd04420",
+        "gold_doc_ids": [
+          "fb721347-9b54-450e-8c87-7d0595627849",
+          "b6c86549-42c3-499b-9655-e16e351cfe75"
+        ],
+        "retrieved_doc_ids": [
+          "b6c86549-42c3-499b-9655-e16e351cfe75",
+          "fb721347-9b54-450e-8c87-7d0595627849",
+          "57cd4be0-af2c-4a8d-90c4-f6665f262b96",
+          "128df021-4db0-4e23-b563-117ebd8faf66",
+          "624a355e-c0fb-4aa5-88eb-3d676c70a9d1",
+          "42b0e683-f671-430d-98f8-bc56c2d76c5f",
+          "6541cceb-3bf4-4949-99c6-ffaf8ba39fc6",
+          "c147b5c3-7a18-4d6e-a394-a4e02f69a3fe",
+          "ec499f0d-8976-418c-b7d2-5dfd816c4107",
+          "76c1a429-e627-484e-bc63-4a98dc7c2324"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.16219829977490008
+      },
+      {
+        "question_id": "phaseb_hotpot_5a7b42fb5542992d025e67c9",
+        "gold_doc_ids": [
+          "ff3be42e-d8e1-4a56-9a6f-039f74d8f384",
+          "33460c17-38bc-444f-b4c0-5f2d2e4d1cd7"
+        ],
+        "retrieved_doc_ids": [
+          "33460c17-38bc-444f-b4c0-5f2d2e4d1cd7",
+          "ff3be42e-d8e1-4a56-9a6f-039f74d8f384",
+          "fc06a369-0878-4470-b5d6-f1b9f7847280",
+          "4e13cf5b-77e3-42a4-aa27-6bff4b32ea31",
+          "c7c85b9b-1031-4597-89c4-9438d7b99c25",
+          "1f278a94-a458-4865-8962-8f4c31bd2fd8",
+          "0a393c93-afbd-4ffa-887d-13d2cba4732a",
+          "3132f438-9921-46e3-a1de-2b6e592f7af0",
+          "d5a3fb42-3133-4a0a-bb1d-26e60fd01119",
+          "ce83c2ff-010a-4191-912c-628b2fb480f8"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.16828629979863763
+      },
+      {
+        "question_id": "phaseb_hotpot_5ae7a85a55429952e35ea9aa",
+        "gold_doc_ids": [
+          "130ee35f-a556-4418-9e7b-383f984085ed",
+          "b15243c5-6fcc-4f6d-8702-922b95355829"
+        ],
+        "retrieved_doc_ids": [
+          "130ee35f-a556-4418-9e7b-383f984085ed",
+          "b15243c5-6fcc-4f6d-8702-922b95355829",
+          "e92a16f4-266c-47d6-971c-b20c04a372c1",
+          "fc770a4c-6854-43bf-95d3-96ed09935889",
+          "b8af8afe-6864-4390-bdfd-d03d83c3e0b5",
+          "dbdb17bb-a737-4db9-b967-c85aff340251",
+          "d324db4d-21b4-4fb5-9f15-5973e2f9a169",
+          "1130875b-b452-4377-a358-604234c8fec7",
+          "9011bd34-e410-449e-b2b5-d68a678cad0a",
+          "8f3aae9c-38e9-41f9-a4d7-09388a11bfcb"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.13233450008556247
+      },
+      {
+        "question_id": "phaseb_hotpot_5a887f5c554299206df2b2c0",
+        "gold_doc_ids": [
+          "ce645d19-153b-432f-90e7-98c2ae0bbe60",
+          "4e4ad688-9a3b-4a46-a0bd-2cdd261db3fd"
+        ],
+        "retrieved_doc_ids": [
+          "ce645d19-153b-432f-90e7-98c2ae0bbe60",
+          "3ecc09f0-4b35-4d30-a6b2-fd0503d34baa",
+          "96187b88-481f-4c56-89de-3641abfeac12",
+          "73ad4f69-cbec-4fe8-bf85-a8edf8022b75",
+          "dd32792d-a231-4a02-85b7-24c26e231f50",
+          "4e4ad688-9a3b-4a46-a0bd-2cdd261db3fd",
+          "4ebb663b-86c1-46c7-8e7f-b41af9d784b0",
+          "e1e9c620-736f-4941-8bea-605803525ead",
+          "4cb1651f-908c-4dc9-8317-728a1ff3acf1",
+          "06629d48-5c51-4b2e-a048-f326dcbc0062"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.14742819988168776
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8aad0d5542992d82986f55",
+        "gold_doc_ids": [
+          "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+          "aafcfd3e-2395-480d-982a-fa2c84ab85d0"
+        ],
+        "retrieved_doc_ids": [
+          "da8a1f84-6d51-493a-9b19-bf95fdbcf480",
+          "26949dc9-3763-4d8b-ad31-9f6ac040e284",
+          "d87e6475-c567-49b4-a6a5-b024bdfeba55",
+          "45aea511-4bf8-4f26-b1b7-9c4c52c3bbdf",
+          "71a11c9d-16e4-4c26-a964-372fb9ccb9b3",
+          "44270115-08b6-40ac-bae0-88df956623cf",
+          "b145d704-f7da-47a8-9a19-81c9dae436ed",
+          "d63afab0-e629-4e18-acac-34652cfdec9b",
+          "14a2b0c0-8f61-4485-b37f-b4963b6b94a9",
+          "3240795e-2f6d-4791-b12b-7d1679245656"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.15417260001413524
+      },
+      {
+        "question_id": "phaseb_hotpot_5abe942155429965af743f36",
+        "gold_doc_ids": [
+          "5ee2dbe5-5bf3-42a9-b8b5-46db11340e02",
+          "4cc32f3e-cec0-4894-ad09-034b4669fb69"
+        ],
+        "retrieved_doc_ids": [
+          "5ee2dbe5-5bf3-42a9-b8b5-46db11340e02",
+          "4c4f710b-19dc-4731-84da-48223acf7990",
+          "da87cc59-37b1-43f8-aaee-9efba3547e34",
+          "aad25c77-e41c-4acb-bb1d-1ffc13282480",
+          "6c5fe9fe-3c18-42d4-a636-041e6dd1f9c2",
+          "6da9a2a3-3984-41ef-b087-2af3af956f1a",
+          "985ac0a9-0319-45f4-a446-631d4842e5c3",
+          "c2f69ccd-cbcf-4bfe-8812-8d3b9a4d46a8",
+          "129bf291-ca7a-4c8a-8e3d-41f7e1056212",
+          "8d85d0c4-af1f-4aad-958a-0719b1d8dbc1"
+        ],
+        "recall_at_k": 0.5,
+        "all_gold_at_k": 0.0,
+        "mrr": 1.0,
+        "latency_s": 0.17046079994179308
+      },
+      {
+        "question_id": "phaseb_hotpot_5a89d51e554299669944a5bc",
+        "gold_doc_ids": [
+          "90d4b036-a222-4617-87d1-7d9c154cf599",
+          "c09f7fa3-1754-4557-85e0-4c2b29c34ecb"
+        ],
+        "retrieved_doc_ids": [
+          "90d4b036-a222-4617-87d1-7d9c154cf599",
+          "c09f7fa3-1754-4557-85e0-4c2b29c34ecb",
+          "b583a034-2695-486d-a7f4-4494d0c80df5",
+          "3a15bdb7-5d58-4eb2-ae55-af7fe77347d6",
+          "fc79677c-1614-47aa-861b-678b7ec5fef6",
+          "5a0a806b-3b49-4ce9-a2fc-b4a03d50be7f",
+          "6262381c-3f26-4e02-8e1e-e9ebe74678bb",
+          "410e1093-b9b9-4712-893e-31beac0ce50b",
+          "28e9af1e-32ec-4335-97d0-2a2209a82a2c",
+          "c01e402b-81ef-4688-b8df-886592cd72fd"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.19402040005661547
+      },
+      {
+        "question_id": "phaseb_hotpot_5aba637a55429939ce03dcbb",
+        "gold_doc_ids": [
+          "0295271a-26e1-41fd-a4f5-16f0cee85e06",
+          "79382370-3f42-4c58-adc8-049d7b7f1f55"
+        ],
+        "retrieved_doc_ids": [
+          "79382370-3f42-4c58-adc8-049d7b7f1f55",
+          "2fef3360-7ed2-4b84-b69a-ae61cddf4e84",
+          "0295271a-26e1-41fd-a4f5-16f0cee85e06",
+          "7c2a6107-b4a8-43d8-bb37-dcfc4d78a869",
+          "6f56b897-95ce-43f3-9467-ec189d9d5fb3",
+          "6b0fd354-f975-4fe9-a0d5-525284081136",
+          "ff510655-3199-413f-9ac0-c79ec4a0d408",
+          "2b538dbb-5d5e-49d4-a902-203d6a7f1863",
+          "3a10b349-3ff6-4106-a162-bad71c37d16e",
+          "10740eb8-6aea-49d8-a0a1-0bf522cf0f56"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.13723160000517964
+      },
+      {
+        "question_id": "phaseb_hotpot_5a75eca555429976ec32bca8",
+        "gold_doc_ids": [
+          "a7747e57-feeb-463d-89b3-d4b325acd37d",
+          "b080821e-13bb-45b9-963e-9862cc4f5578"
+        ],
+        "retrieved_doc_ids": [
+          "a7747e57-feeb-463d-89b3-d4b325acd37d",
+          "b080821e-13bb-45b9-963e-9862cc4f5578",
+          "7771de03-b47f-4f22-9963-f014e293fda5",
+          "7f65a49f-3234-41ae-bcdf-4d07babad42c",
+          "bc90c96c-1020-44e2-9bf4-e4f127b1ee26",
+          "07149d2e-d276-4629-8f5b-042f922e422a",
+          "01e814c4-1130-4b78-ae8e-131d05e62f72",
+          "50e39254-dd47-4681-8381-90bb64bc9233",
+          "ee9815a8-8b5b-46b8-90be-b4a6f464c4f2",
+          "cb3f5afb-6729-4102-84f5-706b03685de0"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.14326589996926486
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8f276055429918e830d1ab",
+        "gold_doc_ids": [
+          "5c7c1fab-19e9-407e-85e5-b037947181dd",
+          "770ee68c-4e30-4d0c-833a-8e79f9d8ff61"
+        ],
+        "retrieved_doc_ids": [
+          "5c7c1fab-19e9-407e-85e5-b037947181dd",
+          "770ee68c-4e30-4d0c-833a-8e79f9d8ff61",
+          "e891c8cf-618e-401d-a3cb-f30930f20367",
+          "5dfdd76c-caf0-4bdf-8dab-2901bca25265",
+          "ae19c88b-e988-4739-92a8-e2d1ff7d2ff6",
+          "dfb2ccaf-3769-42fc-92a2-e40b6945f533",
+          "a52b90a5-2305-4eb1-acae-9773f50cfea6",
+          "3e364375-06cc-4fc6-840f-936a919bd495",
+          "b256f5b3-e26c-426a-8241-5b0095b64f37",
+          "54b1c1fe-c470-4ea4-8119-347c8a84405d"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 1.0,
+        "latency_s": 0.163503099931404
+      },
+      {
+        "question_id": "phaseb_hotpot_5a8b5b1c5542995d1e6f1387",
+        "gold_doc_ids": [
+          "77bfb095-ff22-4704-af13-b92a7a15efbb",
+          "a811c0ac-344e-4b0c-9c44-ffbf7f116c04"
+        ],
+        "retrieved_doc_ids": [
+          "4e1d28a3-7fa0-48aa-bd0f-500aac7d0f78",
+          "09a62163-8429-4e24-a94f-45382d02ef9b",
+          "d18c9c23-0afb-4e88-b271-921fdce721d8",
+          "2d888703-47b6-490a-bc18-138d37f18891",
+          "77bfb095-ff22-4704-af13-b92a7a15efbb",
+          "a811c0ac-344e-4b0c-9c44-ffbf7f116c04",
+          "48e4f298-7ece-4722-b145-09759fabe11d",
+          "cd3ae23f-37f7-42cf-baed-a325a61533e4",
+          "c1725679-9492-4555-9959-79228fe8b21b",
+          "b9c98e1e-16e0-496c-80a9-b551113de0b5"
+        ],
+        "recall_at_k": 1.0,
+        "all_gold_at_k": 1.0,
+        "mrr": 0.2,
+        "latency_s": 0.17915800004266202
+      }
+    ]
+  },
+  "sealed_test_evaluated": false
+}

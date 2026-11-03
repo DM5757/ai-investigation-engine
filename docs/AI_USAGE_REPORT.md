@@ -2,7 +2,7 @@
 
 **Project:** Applied AI Investigation Engine  
 **Repository:** https://github.com/DM5757/ai-investigation-engine  
-**Report date:** 2026-10-29 (updated 2026-11-02)
+**Report date:** 2026-10-29 (updated 2026-11-03)
 
 ## Disclosure
 
@@ -24,4 +24,4 @@ AI was also used heavily for debugging—including the Psycopg 3 / Neon dialect 
 
 ## Integrity
 
-Evaluation metrics and ingestion counts are taken from recorded artifacts under `docs/evidence/` and `eval/results/`, not from unverified estimates. As of the 2026-10-30 measurement, ACTIVE documents are **55,081** with `meets_data1_50k: true` (`docs/evidence/dataset_counts.json`). Known limitations—especially investigation answer evaluation constrained by free-tier LLM rate limits, and Render Free latency—are disclosed in `docs/EVALUATION_REPORT.md` and `docs/PROGRESS.md`. Fabricated scores, inflated corpus claims, or undisclosed paid infrastructure would violate the assignment. AI assistance does not replace accountability for what is published.
+Evaluation metrics and ingestion counts are taken from recorded artifacts under `docs/evidence/` and `eval/results/`, not from unverified estimates. As of the 2026-10-30 measurement, ACTIVE documents are **55,081** with `meets_data1_50k: true` (`docs/evidence/dataset_counts.json`). Known limitations—especially investigation answer evaluation constrained by free-tier LLM rate limits, and Render Free latency—are disclosed in `docs/EVALUATION_REPORT.md` and `docs/PROGRESS.md`. The 2026-11-03 final engineering push used Cursor Agent for reader consolidation, retrieval A/B, development evaluation, and freeze documentation; sealed evaluation was **not** run because provider quotas were exhausted, and production promotion was withheld accordingly (`docs/evidence/final_engineering_push_report.md`). Fabricated scores, inflated corpus claims, or undisclosed paid infrastructure would violate the assignment. AI assistance does not replace accountability for what is published.

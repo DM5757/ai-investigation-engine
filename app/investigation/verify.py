@@ -101,39 +101,82 @@ def quote_in_passage(quote: str, passage_text: str) -> bool:
     return bool(q2) and q2 in p
 
 
+def _normalize_answer_variants(answer: str) -> list[str]:
+    """Light paraphrase variants (no LLM): drop initials / parentheticals."""
+    base = strip_citation_markers(answer)
+    variants = [base]
+    # Remove parenthetical clauses: "Foo (bar)" -> "Foo"
+    no_paren = re.sub(r"\([^)]*\)", " ", base)
+    variants.append(no_paren)
+    # Drop single-letter tokens (middle initials): "Hugh M Rowland" -> "Hugh Rowland"
+    no_init = re.sub(r"\b[A-Za-z]\b\.?", " ", base)
+    variants.append(no_init)
+    variants.append(re.sub(r"\b[A-Za-z]\b\.?", " ", no_paren))
+    out: list[str] = []
+    seen: set[str] = set()
+    for v in variants:
+        n = norm_ws(v)
+        if n and n.lower() not in seen:
+            seen.add(n.lower())
+            out.append(n)
+    return out
+
+
 def answer_covered_by_quotes(
     answer: str | None,
     quotes: list[str],
     *,
     coverage_threshold: float = DEFAULT_COVERAGE_THRESHOLD,
+    cited_passage_texts: list[str] | None = None,
 ) -> tuple[bool, str | None, float]:
-    """Check answer content is covered by verified quotes.
+    """Check answer content is covered by verified quotes (and optionally passages).
+
+    Primary: quotes. Secondary (only if ≥1 valid quote exists): full text of the
+    *cited* passages, so valid paraphrases are not rejected when the quote is a
+    supporting span that does not literally repeat the short answer string.
 
     Returns (ok, reason_if_not, coverage). Coverage is 1.0 for substring hits.
     """
     if not answer:
         return False, "empty_answer", 0.0
-    ans = strip_citation_markers(answer)
-    ans_norm = norm_ws(ans).lower()
-    if not ans_norm:
+    variants = _normalize_answer_variants(answer)
+    if not variants:
         return False, "empty_answer", 0.0
-    blob = norm_ws(" ".join(quotes)).lower()
-    if not blob:
-        return False, "no_quotes", 0.0
-    if ans_norm in blob:
-        return True, None, 1.0
-    ans_compact = re.sub(r"[^a-z0-9]+", "", ans_norm)
-    blob_compact = re.sub(r"[^a-z0-9]+", "", blob)
-    if ans_compact and ans_compact in blob_compact:
-        return True, None, 1.0
-    toks = content_tokens(ans)
-    if not toks:
-        return False, "no_content_tokens", 0.0
-    hits = sum(1 for t in toks if t in blob)
-    coverage = hits / len(toks)
-    if coverage >= coverage_threshold:
-        return True, None, coverage
-    return False, f"answer_token_coverage={coverage:.2f}", coverage
+
+    def _cover(blob_src: list[str]) -> tuple[bool, float]:
+        blob = norm_ws(" ".join(blob_src)).lower()
+        if not blob:
+            return False, 0.0
+        blob_compact = re.sub(r"[^a-z0-9]+", "", blob)
+        best = 0.0
+        for ans in variants:
+            ans_norm = ans.lower()
+            if ans_norm in blob:
+                return True, 1.0
+            ans_compact = re.sub(r"[^a-z0-9]+", "", ans_norm)
+            if ans_compact and ans_compact in blob_compact:
+                return True, 1.0
+            toks = content_tokens(ans)
+            if not toks:
+                continue
+            hits = sum(1 for t in toks if t in blob)
+            best = max(best, hits / len(toks))
+            if best >= coverage_threshold:
+                return True, best
+        return False, best
+
+    ok, cov = _cover(quotes)
+    if ok:
+        return True, None, cov
+    # Secondary: cited passage bodies (requires quotes already present).
+    if cited_passage_texts and quotes:
+        ok2, cov2 = _cover(cited_passage_texts)
+        if ok2:
+            return True, None, max(cov, cov2)
+        cov = max(cov, cov2)
+    if cov <= 0:
+        return False, "no_quotes" if not quotes else "no_content_tokens", 0.0
+    return False, f"answer_token_coverage={cov:.2f}", cov
 
 
 def detect_value_conflict(quotes: list[str]) -> str | None:
@@ -238,8 +281,16 @@ def verify_structured_reader_output(
     coverage = 0.0
     answer_supported = False
     if answerable and answer:
+        cited_texts = [
+            by_label[s.label].text
+            for s in ok_supports
+            if s.label in by_label and getattr(by_label[s.label], "text", None)
+        ]
         answer_supported, cover_reason, coverage = answer_covered_by_quotes(
-            answer, quotes, coverage_threshold=coverage_threshold
+            answer,
+            quotes,
+            coverage_threshold=coverage_threshold,
+            cited_passage_texts=cited_texts,
         )
         if cover_reason:
             reasons.append(f"answer_not_entailed:{cover_reason}")

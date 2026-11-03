@@ -286,6 +286,64 @@ def test_experimental_policy_default_soft_in_settings() -> None:
     assert s.experimental_passage_reader is False
     assert s.reader_multi_hop_policy == "soft"
     assert abs(s.reader_coverage_threshold - 0.65) < 1e-9
+    assert s.reader_max_bridge_rounds == 1
+    assert s.reader_preferred_mode == "hybrid_rrf"
+
+
+def test_paraphrase_answer_supported_via_cited_passage() -> None:
+    """Paraphrased short answer accepted when present in the cited passage."""
+    data = {
+        "answer": "Hugh Rowland",
+        "answerable": True,
+        "supporting": [
+            {
+                "label": "S2",
+                "quote": "Michael Lent is best known as the co-writer",
+                "role": "support",
+            }
+        ],
+        "missing_info": None,
+        "next_query": None,
+        "conflict_kind": "none",
+    }
+    out = verify_reader_payload(data, _passages(), require_multi_hop=False)
+    assert out.status == "answered"
+    assert out.answer_supported
+    assert out.coverage >= 0.65
+
+
+def test_passage_support_requires_valid_quote() -> None:
+    data = {
+        "answer": "Hugh Rowland",
+        "answerable": True,
+        "supporting": [
+            {"label": "S2", "quote": "this quote is not in the passage", "role": "support"}
+        ],
+        "missing_info": None,
+        "next_query": None,
+        "conflict_kind": "none",
+    }
+    out = verify_reader_payload(data, _passages(), require_multi_hop=False)
+    assert out.status == "insufficient"
+    assert not out.answer_supported
+
+
+def test_middle_initial_variant_coverage() -> None:
+    data = {
+        "answer": "Hugh M Rowland",
+        "answerable": True,
+        "supporting": [
+            {"label": "S2", "quote": "memoirs of Hugh Rowland", "role": "support"}
+        ],
+        "missing_info": None,
+        "next_query": None,
+        "conflict_kind": "none",
+    }
+    out = verify_reader_payload(
+        data, _passages(), require_multi_hop=False, coverage_threshold=0.65
+    )
+    assert out.status == "answered"
+    assert out.answer_supported
 
 
 def test_negative_control_builders() -> None:

@@ -27,7 +27,11 @@ class QueryRequest(BaseModel):
     question: str = Field(..., min_length=1, max_length=4000)
     mode: RetrievalModeName | None = Field(
         default=None,
-        description="Optional retrieval mode override (default hybrid_rerank).",
+        description=(
+            "Optional retrieval mode override. Default hybrid_rerank for the "
+            "legacy path; when EXPERIMENTAL_PASSAGE_READER is enabled and mode "
+            "is omitted, server uses READER_PREFERRED_MODE (hybrid_rrf)."
+        ),
     )
 
 
