@@ -1,0 +1,2728 @@
+{
+  "created_at": "2026-11-03T06:04:40.480130+00:00",
+  "run_id": "phasec_ab_v1",
+  "config_id": "c_raw",
+  "split": "dev",
+  "sealed_test_evaluated": false,
+  "retrieval_mode": "hybrid_rrf",
+  "k": 10,
+  "corpus": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "model_settings": {
+    "groq_model": "openai/gpt-oss-120b",
+    "gemini_model": "gemini-3.5-flash-lite",
+    "temperature": 0.0,
+    "prompt_id": "reader_v2_phase_c"
+  },
+  "experimental_passage_reader_default": false,
+  "summary": {
+    "n_attempted": 34,
+    "n_scored": 32,
+    "n_provider_failures": 2,
+    "token_f1": 0.275,
+    "exact_match": 0.21875,
+    "token_f1_ci": {
+      "mean": 0.275,
+      "low": 0.12916666666666668,
+      "high": 0.42083333333333334,
+      "n": 32
+    },
+    "exact_match_ci": {
+      "mean": 0.21875,
+      "low": 0.09375,
+      "high": 0.375,
+      "n": 32
+    },
+    "answer_supported_rate": 0.3125,
+    "false_answer_rate": 0.0,
+    "correct_abstention_rate": 1.0,
+    "contradiction_detection_rate": 1.0,
+    "false_contradiction_rate": 0.0,
+    "citation_f1": 0.8083333333333333,
+    "multi_hop_all_gold_cited": 0.45,
+    "mean_latency_s": 1.2124036062741652,
+    "latency_p50_s": 1.0876640998758376,
+    "latency_p95_s": 1.9650397000368685,
+    "mean_llm_calls": 0.96875,
+    "mean_tokens": 1596.5625,
+    "status_counts": {
+      "answered": 10,
+      "conflicting": 6,
+      "insufficient": 16
+    }
+  },
+  "by_control": null,
+  "results": [
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_ids": [
+        "4e558d72-c1c3-4544-9609-16ec13e097a3",
+        "2bed5f52-4939-4b37-919c-d05855e5e86c"
+      ],
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 1.3986257000360638,
+      "llm_calls": 1,
+      "tokens": 2085,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S1",
+        "quote_mismatch:S2",
+        "answer_not_entailed:no_quotes",
+        "answerable_without_valid_quotes"
+      ],
+      "missing_info": "Proposed answer not supported by verified quotes.",
+      "next_query": null,
+      "invalid_citation_rate": 1.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Case McCoy",
+        "Colt McCoy",
+        "David Neill",
+        "Sherman Plunkett",
+        "North Carolina Tar Heels",
+        "San Angelo Sheep Herders",
+        "Texas Christian University",
+        "Walter Bernard",
+        "Adrian Peterson",
+        "Dallas Baptist Patriots"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "4e558d72-c1c3-4544-9609-16ec13e097a3",
+        "2bed5f52-4939-4b37-919c-d05855e5e86c",
+        "fb044e1b-1ebd-40ac-bdbe-66cbb3892ade",
+        "c38d78db-2d80-4278-9e53-291aff173108",
+        "489698e8-3748-4633-be20-4c516d51f22e",
+        "8ea03308-63b7-462e-9fed-da09652bcedd",
+        "a7c5f901-9806-4f68-85c7-33ef67c011d8",
+        "c7b8afa2-3c96-4994-88af-1ea2dcf0b592",
+        "e331580a-35c3-4113-bee0-dfafd2138157",
+        "758cc1cf-312c-48f4-805d-1f40a8832d64"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "invalid_citation_rate": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Brent Burns",
+      "gold_doc_ids": [
+        "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+        "362a4fce-7cee-41de-836c-759b0e8631e6"
+      ],
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+          "chunk_id": "2a7958b4-288c-49a2-9da7-9897ef60bed0",
+          "label": "S1",
+          "quote": "Canadian Brent Burns was named top defenceman",
+          "title": "2008 IIHF World Championship rosters"
+        }
+      ],
+      "latency_s": 1.1088984000962228,
+      "llm_calls": 1,
+      "tokens": 2438,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S4",
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "invalid_citation_rate": 0.5,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "2008 IIHF World Championship rosters",
+        "Keith Ballard",
+        "Niklas Sundström",
+        "Brent Burns",
+        "Caroline Ouellette",
+        "2013 World Junior Ice Hockey Championships",
+        "Andrew Yogan",
+        "2016 World Junior Ice Hockey Championships",
+        "2008–09 Chicago Blackhawks season",
+        "Zdeno Chára"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+        "3ab7a349-a780-4fcf-8d00-8311eadebda2",
+        "7d602dbf-7f69-4f83-8b40-85da7aa26239",
+        "362a4fce-7cee-41de-836c-759b0e8631e6",
+        "a029425d-6892-4942-b1b3-16cba721fbd4",
+        "e912e5fa-40d0-4be2-a022-70720fb9bd53",
+        "15ffd6c5-d340-4094-88b8-f021189f4a64",
+        "ff72d035-42ea-4566-ad65-bde5bd47217f",
+        "c4aa9717-09f3-48df-862f-9a393aa70fe4",
+        "c3fb6f3a-1183-4d75-8f8b-d60376060f62"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_ids": [
+        "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+        "7ab5b521-8c0c-4a03-84d2-2884756605c0"
+      ],
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+          "chunk_id": "5e35bc11-8f4d-41b4-ac15-530d3364183e",
+          "label": "S2",
+          "quote": "He is known for his roles in the \"Ocean's Eleven\" trilogy and the television series \"Hung\" and IZombie.",
+          "title": "Eddie Jemison"
+        }
+      ],
+      "latency_s": 1.063580100191757,
+      "llm_calls": 1,
+      "tokens": 1932,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The passages state that Eddie Jemison is known for his roles in the television series \"Hung\" and \"IZombie\" (S2), but they do not provide information about who developed these television series.",
+      "next_query": "Who developed the television series Hung and IZombie?",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "List of Chip 'n Dale Rescue Rangers episodes",
+        "Eddie Jemison",
+        "The Mickey Rooney Show",
+        "Jem (TV series)",
+        "Eddie Dew",
+        "Buck Houghton",
+        "Charmed",
+        "Taron Egerton",
+        "Dream School",
+        "The Venture Bros."
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 0.5,
+        "all_gold_at_k": 0.0
+      },
+      "retrieved_doc_ids": [
+        "353f56df-f2ef-4a87-bb3c-9f69a8efa693",
+        "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+        "4ac5917f-f22b-4369-82e9-3d058a4e3dcc",
+        "ff6fddf1-4264-4b7b-9679-3358b83e98b6",
+        "8494ffa2-2296-4425-98e7-9edf8a1b4666",
+        "2014db51-7d28-48c6-8acf-7f70588f25aa",
+        "e7c34da3-4802-4e45-a67f-8ac317d35ca6",
+        "5fea44d6-574a-4541-8133-29f7af967194",
+        "eda09ec4-b50e-417d-a2eb-16de352233ad",
+        "14ecb07e-0af9-4fb1-8434-0875c404f2cf"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_ids": [
+        "3428a271-a243-4032-ae07-47df99fdaae6",
+        "0adc14d0-8f14-441a-b731-270a317e140d"
+      ],
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Leon Uris",
+      "citations": [
+        {
+          "doc_id": "3428a271-a243-4032-ae07-47df99fdaae6",
+          "chunk_id": "2f98d05f-f30a-4b16-9cc3-d75ddbdbb367",
+          "label": "S1",
+          "quote": "biographies of Leonard Cohen and Leon Uris",
+          "title": "Ira Nadel"
+        }
+      ],
+      "latency_s": 0.9710634998045862,
+      "llm_calls": 1,
+      "tokens": 1940,
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Ira Nadel",
+        "William York Tindall",
+        "James Joyce",
+        "Samuel R. Delany",
+        "Søren Kierkegaard",
+        "Annalyn Swan",
+        "James Joyce (disambiguation)",
+        "A Skeleton Key to Finnegans Wake",
+        "Noël Riley Fitch",
+        "Ford Madox Ford"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0
+      },
+      "retrieved_doc_ids": [
+        "3428a271-a243-4032-ae07-47df99fdaae6",
+        "af5c0b81-313b-41d6-a560-d9246bab7c8c",
+        "92126d56-3787-4d54-b626-9173ac6c7885",
+        "3103f39f-c222-4bee-abbf-10328acea1f7",
+        "69470d61-c13e-4389-82ef-732ac23409c6",
+        "db648e23-23c8-4601-8b7e-c357bd2d47b1",
+        "92ffbbf1-635e-4f4b-8e0d-a993b0ba44d4",
+        "56c7fe76-92e5-4be7-b460-48ecffaea6e4",
+        "b0b0b0ce-8d0f-432d-96ee-ecfe1e82bfe1",
+        "92535855-8b52-4e57-a128-4ae6d8bb31a0"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.8,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.8,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Buddy",
+      "gold_doc_ids": [
+        "e396e67f-ded4-44f0-ba41-6282d404e898",
+        "919290c3-fed0-44a8-b55a-07bf5d513c4e"
+      ],
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "e396e67f-ded4-44f0-ba41-6282d404e898",
+          "chunk_id": "15be1666-9292-4d58-a83c-5564a193772a",
+          "label": "S1",
+          "quote": "Dear Socks, Dear Buddy: Kids' Letters to the First Pets is a 1998 children's book written by First Lady of the United States Hillary Rodham Clinton.",
+          "title": "Dear Socks, Dear Buddy"
+        },
+        {
+          "doc_id": "e396e67f-ded4-44f0-ba41-6282d404e898",
+          "chunk_id": "15be1666-9292-4d58-a83c-5564a193772a",
+          "label": "S1",
+          "quote": "It concerns the two pets that lived in the White House during the Clinton administration, Socks the cat and Buddy the dog.",
+          "title": "Dear Socks, Dear Buddy"
+        }
+      ],
+      "latency_s": 1.0876640998758376,
+      "llm_calls": 1,
+      "tokens": 1866,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Dear Socks, Dear Buddy",
+        "Hillary Clinton",
+        "Hugh Rodham (born 1950)",
+        "Buddy (dog)",
+        "The White House Doctor",
+        "Between Hope and History",
+        "First Lady of the United States",
+        "Bill Martin Jr.",
+        "William J. Crowe",
+        "List of First Ladies of the United States"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "e396e67f-ded4-44f0-ba41-6282d404e898",
+        "f61eed34-328c-4c55-b860-aa2cf9ffe967",
+        "5ecab45f-48eb-4da1-ab34-b508780b5171",
+        "919290c3-fed0-44a8-b55a-07bf5d513c4e",
+        "258adce6-9fad-4dc8-ab98-b21316c32c91",
+        "9c5dd4f3-870b-4c74-810c-de6d92a96028",
+        "15d7eda3-e51a-46f0-a15a-742a1728c27a",
+        "51a22cbb-983f-4868-99fd-6b9d602cc794",
+        "f28202e1-7ba8-49bd-837f-0c5c37d57a41",
+        "e1bbed12-49de-4366-ace2-e735b51403c0"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+      "question_id": "phaseb_hotpot_5ae4f2c75542993aec5ec0fb",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Logan International Airport",
+      "gold_doc_ids": [
+        "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+        "b5586f6b-5758-45bf-9904-e45d12505e9d"
+      ],
+      "gold_doc_titles": [
+        "American Airlines Shuttle",
+        "Logan International Airport"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Logan International Airport",
+      "citations": [
+        {
+          "doc_id": "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+          "chunk_id": "6b42f40e-6dd0-4380-9ea4-76694cb8da70",
+          "label": "S1",
+          "quote": "It serves Logan International Airport in Boston, LaGuardia Airport in New York City, and Ronald Reagan Washington National Airport in Washington, D.C.",
+          "title": "American Airlines Shuttle"
+        },
+        {
+          "doc_id": "b5586f6b-5758-45bf-9904-e45d12505e9d",
+          "chunk_id": "d998fb50-ce21-44f7-bd2e-8ea339b369a9",
+          "label": "S2",
+          "quote": "It is the largest airport in the New England region and 17th-busiest airport in the United States, with 33.5 million total passengers in 2015.",
+          "title": "Logan International Airport"
+        }
+      ],
+      "latency_s": 1.1974504999816418,
+      "llm_calls": 1,
+      "tokens": 2337,
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "American Airlines Shuttle",
+        "Logan International Airport",
+        "Air Wisconsin",
+        "Philadelphia International Airport",
+        "Greater Rochester International Airport",
+        "Athens International Airport",
+        "Eastern Air Lines Shuttle",
+        "Charlotte Douglas International Airport",
+        "PenAir",
+        "Provincetown-Boston Airlines"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "a3ddaf33-61f2-4cf2-abc3-b8a8fb3ff925",
+        "b5586f6b-5758-45bf-9904-e45d12505e9d",
+        "2b0a4069-6082-4ed8-a998-2486be0db429",
+        "764dc554-d613-4b11-9e37-faaae7f93b70",
+        "d2302129-4518-46d3-ac9d-f811e28b865b",
+        "891a39f1-c8a1-4cd0-81ad-34b18f54bb38",
+        "9f1c60bf-9035-40ef-b336-23d8e0acf995",
+        "34e84ef4-4b34-4d42-a8bf-e819f278d177",
+        "d4c0192c-3a8b-4dda-aae5-0285e81350d2",
+        "f23456fd-48c3-49af-a126-2c7170a2df17"
+      ],
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+      "question_id": "phaseb_hotpot_5abec8e45542997ec76fd364",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "the Troubles",
+      "gold_doc_ids": [
+        "57b45e66-ddfe-4891-b527-dfd0edd23f8b",
+        "1308823a-7e5f-4e5a-9f75-df33a1d05f02"
+      ],
+      "gold_doc_titles": [
+        "Mark Fulton (loyalist)",
+        "Billy Wright (loyalist)"
+      ],
+      "cache_hit": false,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "57b45e66-ddfe-4891-b527-dfd0edd23f8b",
+          "chunk_id": "ff69b1be-85b3-42bb-8593-65120ab1cd33",
+          "label": "S1",
+          "quote": "He was the leader of the Loyalist Volunteer Force (LVF), having taken over its command following the assassination of Billy Wright in the Maze Prison in 1997",
+          "title": "Mark Fulton (loyalist)"
+        },
+        {
+          "doc_id": "1308823a-7e5f-4e5a-9f75-df33a1d05f02",
+          "chunk_id": "1fd2de5f-1d52-4ffe-a23b-e85f12d0ec18",
+          "label": "S3",
+          "quote": "William Stephen \"Billy\" Wright (7 July 1960 – 27 December 1997) was a prominent Ulster loyalist during the ethno-nationalist conflict in Northern Ireland known as the Troubles.",
+          "title": "Billy Wright (loyalist)"
+        }
+      ],
+      "latency_s": 5.961670299991965,
+      "llm_calls": 1,
+      "tokens": 2119,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "conflicting_years:1960,1997",
+      "unsupported_reasons": [
+        "conflicting_years:1960,1997"
+      ],
+      "missing_info": "Conflicting evidence detected (conflicting_years:1960,1997).",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Mark Fulton (loyalist)",
+        "William James Fulton",
+        "Billy Wright (loyalist)",
+        "Loyalist Volunteer Force",
+        "Richard Jameson (loyalist)",
+        "Noel Doherty",
+        "Andrew Robb and David McIlwaine killings",
+        "Miami Showband killings",
+        "Wesley Somerville",
+        "Robert McConnell (loyalist)"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "57b45e66-ddfe-4891-b527-dfd0edd23f8b",
+        "b985753a-e975-4419-805d-3689badef7b0",
+        "1308823a-7e5f-4e5a-9f75-df33a1d05f02",
+        "c0f431f5-6c85-4c95-8263-4bd2cbebf540",
+        "41945322-a853-40e7-996c-26df7d0bd36f",
+        "986300a5-e19d-4cb4-a9d2-a2794381ca7d",
+        "834f8e81-d446-4d9d-b720-4dd56652541d",
+        "09f03eb0-c466-43c4-ae12-5b04ad0be9df",
+        "42035714-3dfb-4f5c-a211-e6e3e6281ddf",
+        "93347707-a1da-4522-b398-fca4d71c13e4"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a",
+      "question_id": "phaseb_hotpot_5a89a13c55429946c8d6e97a",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Lee County, Mississippi",
+      "gold_doc_ids": [
+        "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+        "97118e55-ca2a-4846-a6b7-33a1c0f838b6"
+      ],
+      "gold_doc_titles": [
+        "Trace State Park",
+        "Tupelo, Mississippi"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+          "chunk_id": "bac68d1e-98b7-4d80-a62c-554d738821a8",
+          "label": "S1",
+          "quote": "Trace State Park (formerly Old Natchez Trace Park) is a public recreation area located off Mississippi Highway 6, approximately 7 mi east of Pontotoc and 7 mi west of Tupelo in the U.S. state of Mississippi.",
+          "title": "Trace State Park"
+        },
+        {
+          "doc_id": "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+          "chunk_id": "bac68d1e-98b7-4d80-a62c-554d738821a8",
+          "label": "S1",
+          "quote": "Pontotoc",
+          "title": "Trace State Park"
+        }
+      ],
+      "latency_s": 1.9650397000368685,
+      "llm_calls": 1,
+      "tokens": 1792,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "answer_not_entailed:answer_token_coverage=0.50"
+      ],
+      "missing_info": "Proposed answer not supported by verified quotes.",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Trace State Park",
+        "Park City, Kansas",
+        "East Fork State Park",
+        "Marshall, Ohio",
+        "Granville, Ohio",
+        "Natchez Trace State Park",
+        "Tennessee",
+        "Michael A. Jackson (politician)",
+        "Morrison, Illinois",
+        "Galesburg, Illinois"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0
+      },
+      "retrieved_doc_ids": [
+        "8ac163b8-c60a-4b12-827b-4aac15f68d1a",
+        "23649e2b-a11c-4cb7-8f29-5ff95f8af4a6",
+        "86a7f861-757c-46a1-931c-3cfaf7846497",
+        "6f1a3ce4-9059-49a3-b74d-4527934f484e",
+        "5251a53b-f96f-4487-934a-bca2b99c3360",
+        "455e935e-413d-46a9-bbb1-27a553b75d4e",
+        "e4f2ce93-e38f-446d-9174-cc2e2f8db081",
+        "3efc0b6e-2657-4175-ba7c-f5f61d2f8024",
+        "aeb50645-9890-427c-8ac6-9ebfa136ee81",
+        "3a6ec43b-3de1-4583-89b5-926b04b1c703"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5adf85e05542993344016cba",
+      "question_id": "phaseb_hotpot_5adf85e05542993344016cba",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Championship",
+      "gold_doc_ids": [
+        "af63784b-7add-431b-b99c-b1c4a1441e94",
+        "f9cf1966-df33-4ae0-b7d0-8480f210e118"
+      ],
+      "gold_doc_titles": [
+        "John Moncur",
+        "Ipswich Town F.C."
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "af63784b-7add-431b-b99c-b1c4a1441e94",
+          "chunk_id": "c42989ff-b593-458f-84fd-8b63a795fbb0",
+          "label": "S2",
+          "quote": "While at White Hart Lane he went on loan to Doncaster Rovers, Cambridge United, Portsmouth, Brentford and Ipswich Town.",
+          "title": "John Moncur"
+        }
+      ],
+      "latency_s": 1.0654847000259906,
+      "llm_calls": 1,
+      "tokens": 1886,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The passages mention that John Moncur went on loan to Ipswich Town, but do not specify what football league Ipswich Town belonged to during his time there.",
+      "next_query": "What league did Ipswich Town play in when John Moncur was on loan there?",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "History of Ipswich Town F.C.",
+        "John Moncur",
+        "2000–01 Ipswich Town F.C. season",
+        "Ipswich Town F.C.",
+        "2011–12 Ipswich Town F.C. season",
+        "2006–07 Ipswich Town F.C. season",
+        "St Kilda Football Club",
+        "Luton Town F.C. league record by opponent",
+        "Romeo Zondervan",
+        "List of Arsenal F.C. records and statistics"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.5,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "e73f473d-5d45-44ef-97f4-3e627c15d881",
+        "af63784b-7add-431b-b99c-b1c4a1441e94",
+        "ca0ca09e-6ba4-4547-a7d0-f9549cd58c02",
+        "f9cf1966-df33-4ae0-b7d0-8480f210e118",
+        "1b7ffdda-1a07-4441-b432-0c210c5132b3",
+        "b76fbf31-b255-495e-9e00-6ac4f16d58e8",
+        "db8e3be2-bf5e-4ffc-a6f4-3bfca2c9a1ec",
+        "f4e9c85d-48af-4b6a-8f28-569ec1704e87",
+        "2c4cc8c8-3165-4187-a97b-79780a0e4a96",
+        "6c8105dd-26f3-4531-b904-b2e421ecae91"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab443415542991751b4d711",
+      "question_id": "phaseb_hotpot_5ab443415542991751b4d711",
+      "control_id": null,
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "origin": "hotpot_original",
+      "gold_answer": "no",
+      "gold_doc_ids": [
+        "0a9aa3ca-9a7f-4768-968d-91d3079f7a70",
+        "0877e976-f392-4259-b182-fa690ae9bc33"
+      ],
+      "gold_doc_titles": [
+        "Tangled",
+        "The Princess and the Frog"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "0a9aa3ca-9a7f-4768-968d-91d3079f7a70",
+          "chunk_id": "3ca4d2cb-a805-4402-b4c3-5734455672bb",
+          "label": "S1",
+          "quote": "Tangled is a 2010 American 3D computer-animated musical fantasy-comedy film",
+          "title": "Tangled"
+        },
+        {
+          "doc_id": "0877e976-f392-4259-b182-fa690ae9bc33",
+          "chunk_id": "2c6c6140-801d-42c7-898e-81d331919e79",
+          "label": "S3",
+          "quote": "The Princess and the Frog is a 2009 American animated musical film",
+          "title": "The Princess and the Frog"
+        }
+      ],
+      "latency_s": 1.9282518001273274,
+      "llm_calls": 1,
+      "tokens": 2082,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "Passage S3 states that The Princess and the Frog is an 'animated musical film', but does not specify whether it is 3D computer-animated.",
+      "next_query": "Is The Princess and the Frog 3D computer-animated?",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Tangled",
+        "Tangled Ever After",
+        "The Princess and the Frog",
+        "Frozen (2013 film)",
+        "Tangled: The Series",
+        "Moana (2016 film)",
+        "Olaf's Frozen Adventure",
+        "Down in New Orleans (song)",
+        "Ralph Breaks the Internet: Wreck-It Ralph 2",
+        "Tangled: The Video Game"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "0a9aa3ca-9a7f-4768-968d-91d3079f7a70",
+        "8561a82a-cdc5-4d29-9350-5c6241fd965c",
+        "0877e976-f392-4259-b182-fa690ae9bc33",
+        "70008cf1-e6e1-4b0b-abc7-d007915ae9ba",
+        "371e0563-cbe0-4e7e-b295-ae47b52055f1",
+        "c0be1c49-daa4-4895-9993-ab31edadcb4b",
+        "05aa7ace-c055-4566-b582-b806fe84e7bc",
+        "be079f88-1882-440b-be5a-a9ad4f521fca",
+        "4b384b03-c1f4-4983-9d50-45310a6df721",
+        "c9096f2c-7a79-404f-90b8-477ab74dd646"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5abb1fd95542996cc5e49fb6",
+      "question_id": "phaseb_hotpot_5abb1fd95542996cc5e49fb6",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Edinburgh",
+      "gold_doc_ids": [
+        "8bb41e2d-fdc8-4cc1-bd06-f9aed1a9c103",
+        "4b612dab-612c-47e4-aa98-3dcf1554ad69"
+      ],
+      "gold_doc_titles": [
+        "Mogens Palle",
+        "Ken Buchanan"
+      ],
+      "error": "gemini:rate_limit_rpm"
+    },
+    {
+      "row_id": "phaseb_hotpot_5abdb10f55429965af743dc9",
+      "question_id": "phaseb_hotpot_5abdb10f55429965af743dc9",
+      "control_id": null,
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "origin": "hotpot_original",
+      "gold_answer": "Eric Bloom",
+      "gold_doc_ids": [
+        "5e415b62-702f-406b-b249-202bf3e7248b",
+        "15fe4116-34bf-4e24-94b8-024a6b300e1d"
+      ],
+      "gold_doc_titles": [
+        "Eric Bloom",
+        "Otep Shamaya"
+      ],
+      "error": "gemini:rate_limit_rpm"
+    },
+    {
+      "row_id": "phaseb_hotpot_5a8f155e554299458435d54c",
+      "question_id": "phaseb_hotpot_5a8f155e554299458435d54c",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "21 years and 154 days",
+      "gold_doc_ids": [
+        "28e36447-e944-4957-a050-cd863b0631b0",
+        "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7"
+      ],
+      "gold_doc_titles": [
+        "Kellock–Taschereau Commission",
+        "William Lyon Mackenzie King"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7",
+          "chunk_id": "2dbc2ea4-d3fa-4791-842e-852e64e344b9",
+          "label": "S9",
+          "quote": "A Liberal with 21 years and 154 days in office, he was the longest-serving prime minister in Canadian history.",
+          "title": "William Lyon Mackenzie King"
+        }
+      ],
+      "latency_s": 1.5888111998792738,
+      "llm_calls": 1,
+      "tokens": 2489,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S1",
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "invalid_citation_rate": 0.5,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Kellock–Taschereau Commission",
+        "List of Prime Ministers of the United Kingdom",
+        "Mahammed Dionne",
+        "Josip Manolić",
+        "List of Prime Ministers of Somalia",
+        "Prime Minister of Northern Ireland",
+        "List of Prime Ministers of Sweden",
+        "James Callaghan",
+        "William Lyon Mackenzie King",
+        "Bouasone Bouphavanh"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "28e36447-e944-4957-a050-cd863b0631b0",
+        "76c0a7f2-0ede-456e-87d6-8c600a7ecbd3",
+        "6ea80df9-7fb9-4400-a127-bfc5f41491b3",
+        "1dff0044-6f60-463a-9812-df44e1ee196c",
+        "a3855dc2-f48b-41cf-8679-12b34d088d7e",
+        "ee13515e-dddf-40fe-aeee-c7ef56a2f7a2",
+        "0f289e3e-880e-49ad-b8e7-c2a8862b3175",
+        "68f99e45-c55a-45fc-81aa-f7d949e207c9",
+        "8bb6d1f0-d3b0-4920-b2e4-1edb9c8170a7",
+        "4124a6b0-e03a-49d5-8661-097a7e5d9596"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7ccc1e55429909bec7680e",
+      "question_id": "phaseb_hotpot_5a7ccc1e55429909bec7680e",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "44",
+      "gold_doc_ids": [
+        "b45f319e-08bc-41d7-a98c-7990e48c8305",
+        "5839e4df-0a06-4511-8145-ef882274ea25"
+      ],
+      "gold_doc_titles": [
+        "Cindy Williams (journalist)",
+        "WCSH"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 0.999848400009796,
+      "llm_calls": 1,
+      "tokens": 2079,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The passages mention Cindy Williams (a journalist with WCSH 6), but do not state the UHF channel on which WCSH or Cindy Williams is broadcast.",
+      "next_query": "WCSH UHF channel",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Cindy Williams (journalist)",
+        "K20JX-D",
+        "Rivers State Television",
+        "Radio Disney",
+        "WYPX-TV",
+        "The Stephanie Miller Show",
+        "WSIL-TV",
+        "Discovery Channel",
+        "Montel Williams",
+        "WLMO-LP"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "all_gold_at_k": 0.0
+      },
+      "retrieved_doc_ids": [
+        "b45f319e-08bc-41d7-a98c-7990e48c8305",
+        "88944ab8-0e8c-4761-8e95-be36cb90f523",
+        "b91993c4-ff28-471b-ae3f-deda705c8770",
+        "62ec7964-1679-4dac-b41b-ca9dfda25c7f",
+        "525c55fe-6dad-489d-984a-7cce735f1ff3",
+        "71eb82ce-afed-4dfe-8981-494e87571b60",
+        "560c5175-cbd6-4f27-a4ea-04e34e62badd",
+        "aa5983a4-3a99-4e36-af89-0efaefa416e4",
+        "dbf02003-5557-4701-b3a5-8d9ef7f60dc3",
+        "858d6ae4-c4d5-45fc-b6b1-fcc5d0a1eb31"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7a5f625542990783324f2f",
+      "question_id": "phaseb_hotpot_5a7a5f625542990783324f2f",
+      "control_id": null,
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "origin": "hotpot_original",
+      "gold_answer": "Lee Mark Ranaldo",
+      "gold_doc_ids": [
+        "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+        "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1"
+      ],
+      "gold_doc_titles": [
+        "Lee Ranaldo",
+        "Lauren Laverne"
+      ],
+      "cache_hit": false,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+          "chunk_id": "86654355-7b38-440c-85f5-819b07361e21",
+          "label": "S2",
+          "quote": "Lee Mark Ranaldo (born February 3, 1956)",
+          "title": "Lee Ranaldo"
+        },
+        {
+          "doc_id": "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1",
+          "chunk_id": "d2e2b7a8-28eb-44dc-a665-4751d73a4a2d",
+          "label": "S1",
+          "quote": "Lauren Cecilia Fisher (née Gofton, 28 April 1978)",
+          "title": "Lauren Laverne"
+        }
+      ],
+      "latency_s": 1.146576400147751,
+      "llm_calls": 1,
+      "tokens": 1855,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "conflicting_years:1956,1978",
+      "unsupported_reasons": [
+        "conflicting_years:1956,1978"
+      ],
+      "missing_info": "Conflicting evidence detected (conflicting_years:1956,1978).",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Lauren Laverne",
+        "Lee Ranaldo",
+        "Lauren Alaina",
+        "Clouds (Lee Ranaldo album)",
+        "Ava DuVernay",
+        "The Stinky Puffs",
+        "Robert Redford",
+        "Last Night on Earth (Lee Ranaldo album)",
+        "Naomie Harris",
+        "Between the Times and the Tides"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "f9588abd-8a7b-4710-97ff-7f9ebf4ccea1",
+        "9c3c5a31-43ef-489a-8f02-55bb3a664b4b",
+        "ec432090-3516-4919-8c85-f9fa583a1407",
+        "51b95cc2-2994-4a4a-b47b-63762099e4ae",
+        "92c8da1b-ee51-40cb-9754-ef431147d189",
+        "d77070f4-4a04-47a1-8e8b-7c5582a8b81a",
+        "ae28f1f0-3f1a-4eee-83cc-b89008c624f4",
+        "8909de99-a5cf-4da1-bb00-4edcea10ec1d",
+        "30e56947-2e3d-4be6-82c8-de9c30e361fa",
+        "7c3a8592-7c4a-459a-9ae3-676f2a82873a"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a72fbcc5542994cef4bc415",
+      "question_id": "phaseb_hotpot_5a72fbcc5542994cef4bc415",
+      "control_id": null,
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "origin": "hotpot_original",
+      "gold_answer": "Hot Rod",
+      "gold_doc_ids": [
+        "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+        "802a440d-3de1-4820-9e7d-9e454d25c6d4"
+      ],
+      "gold_doc_titles": [
+        "Watercolor Artist",
+        "Hot Rod (magazine)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Hot Rod",
+      "citations": [
+        {
+          "doc_id": "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+          "chunk_id": "4887caa4-0c85-442c-8436-d089865440e2",
+          "label": "S1",
+          "quote": "Watercolor Artist, formerly Watercolor Magic, is an American bi-monthly magazine",
+          "title": "Watercolor Artist"
+        },
+        {
+          "doc_id": "802a440d-3de1-4820-9e7d-9e454d25c6d4",
+          "chunk_id": "78eea4ea-5795-4b82-a61d-80ee0f4acbf6",
+          "label": "S2",
+          "quote": "Hot Rod is a monthly American car magazine",
+          "title": "Hot Rod (magazine)"
+        }
+      ],
+      "latency_s": 0.885743600083515,
+      "llm_calls": 1,
+      "tokens": 1813,
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Watercolor Artist",
+        "Hot Rod (magazine)",
+        "Hot Rod Lincoln",
+        "Don O'Neill",
+        "Rat rod",
+        "Blender (magazine)",
+        "Animation Magazine",
+        "Ala Kart (custom car)",
+        "Fire!!",
+        "M Music &amp; Musicians"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "37f2b94b-bfc4-4001-a71a-eea3b3094ec5",
+        "802a440d-3de1-4820-9e7d-9e454d25c6d4",
+        "805a88a5-7bf5-408e-98f0-7449ec09cb59",
+        "e2849905-c832-49d0-afc8-b8659b7f5b8b",
+        "8904d4f9-3269-4adb-957a-bdfc2706ef12",
+        "1017c57d-ebc5-4f0e-971b-a0694dc18f5c",
+        "dfa55f9a-ffaa-4b51-bd97-aa6a83b75e28",
+        "6b09e58e-87cc-4948-ba57-64e92189b651",
+        "ad34d1f0-df57-4c96-8281-eb1ed834f34b",
+        "d7a2d9b8-a436-4061-83c5-273b62d4a0e0"
+      ],
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5add44c25542997545bbbd0a",
+      "question_id": "phaseb_hotpot_5add44c25542997545bbbd0a",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Rajmund Roman Thierry Polański",
+      "gold_doc_ids": [
+        "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+        "a910d0b2-4e7d-47bf-b0cb-38c5570b4bd3"
+      ],
+      "gold_doc_titles": [
+        "A Therapy",
+        "Roman Polanski"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Roman Polanski",
+      "citations": [
+        {
+          "doc_id": "a910d0b2-4e7d-47bf-b0cb-38c5570b4bd3",
+          "chunk_id": "98b735a1-585d-457b-a5be-ea9c9a77dce9",
+          "label": "S1",
+          "quote": "Rajmund Roman Thierry Polański (born 18 August 1933) is a French-Polish film director, producer, writer, and actor. Polanski was born in Paris",
+          "title": "Roman Polanski"
+        },
+        {
+          "doc_id": "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+          "chunk_id": "24149939-8a68-478d-b396-b70d2a4c1c48",
+          "label": "S2",
+          "quote": "The short was written and directed by Roman Polanski",
+          "title": "A Therapy"
+        }
+      ],
+      "latency_s": 1.1064021999482065,
+      "llm_calls": 1,
+      "tokens": 1786,
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Roman Polanski",
+        "A Therapy",
+        "Pascal Kané",
+        "Julie Delpy",
+        "The Double Life of Veronique",
+        "Walerian Borowczyk",
+        "Alain Resnais",
+        "Michel Hazanavicius",
+        "Three Colours: White",
+        "Jean-Pierre Jeunet"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "a910d0b2-4e7d-47bf-b0cb-38c5570b4bd3",
+        "e41611a5-c1ca-4288-9bdd-8f7b62f6c44b",
+        "fa0451fd-727b-4d0f-a0b3-cc46afda8b1d",
+        "9397de6d-6574-4d35-a877-008ab455d297",
+        "5042275e-eaeb-45c6-ad30-f4a57eb6e4d6",
+        "8608d024-1021-4d4c-80a5-ea976c946be6",
+        "8490890e-8484-4f79-ac47-66a6e12fcfa1",
+        "6272e3c2-e83b-45e8-8e95-0642d3ea26d4",
+        "349c0cde-5364-49ea-8684-6d2b7ab55846",
+        "cf792b57-f381-4b6a-af6c-8848dfa0ed86"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.3333333333333333,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.3333333333333333,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7d07a455429907fabef0ae",
+      "question_id": "phaseb_hotpot_5a7d07a455429907fabef0ae",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Juventus Football Club",
+      "gold_doc_ids": [
+        "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+        "0ed4bc9f-fa15-46dc-aa82-5e08a57be0c8"
+      ],
+      "gold_doc_titles": [
+        "József Viola",
+        "Juventus F.C."
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+          "chunk_id": "650a2321-8ea0-4817-9d21-1904045e332a",
+          "label": "S1",
+          "quote": "He is most prominent for his time in Italy and his association with clubs such as Juventus.",
+          "title": "József Viola"
+        }
+      ],
+      "latency_s": 1.130103399977088,
+      "llm_calls": 1,
+      "tokens": 1903,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S2",
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "invalid_citation_rate": 0.5,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "József Viola",
+        "Juventus F.C.",
+        "List of Juventus F.C. records and statistics",
+        "A.S. Roma",
+        "Edoardo Bosio",
+        "Inter Milan",
+        "History of A.S. Atletico Calcio",
+        "List of A.C. Milan records and statistics",
+        "Parma F.C. in European football",
+        "S.S.C. Napoli"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "6f6819ba-2ed9-4e86-b8cd-eef80462784c",
+        "0ed4bc9f-fa15-46dc-aa82-5e08a57be0c8",
+        "9b316eed-b72e-4192-97b3-523848fddb8d",
+        "d8a9ff96-fb25-4596-a8d3-1521f2907370",
+        "27356472-7e83-4fd4-9642-7b0d9d5310cc",
+        "fa5f3e0c-9d7d-4f9c-bb0f-67f16f4d7398",
+        "00a39003-883a-42ae-81b0-2c26f7aed723",
+        "17d745b8-a00d-492d-8080-90e9f0e07995",
+        "75208503-9826-4bb4-956a-9d76e41f7f19",
+        "16d11cee-7bc9-4346-842f-c1809eb042ad"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a81f94f554299676cceb1ac",
+      "question_id": "phaseb_hotpot_5a81f94f554299676cceb1ac",
+      "control_id": null,
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "origin": "hotpot_original",
+      "gold_answer": "band",
+      "gold_doc_ids": [
+        "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+        "2e0f825a-fb35-42bf-b2d6-68e67ebd8e2e"
+      ],
+      "gold_doc_titles": [
+        "Bob Mould",
+        "Filter (band)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "rock band",
+      "citations": [
+        {
+          "doc_id": "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+          "chunk_id": "73470f05-e45b-41f5-ba80-0ec7e14ca5ac",
+          "label": "S3",
+          "quote": "Robert Arthur Mould (born October 16, 1960) is an American musician, principally known for his work as guitarist, vocalist and songwriter for alternative rock bands Hüsker Dü in the 1980s and Sugar in the 1990s.",
+          "title": "Bob Mould"
+        },
+        {
+          "doc_id": "14cc7529-081f-458b-82d2-2f640eeda712",
+          "chunk_id": "3a4b47da-70ca-4f68-be6b-85eced8b4afc",
+          "label": "S2",
+          "quote": "\"Take a Picture\" is a song by American industrial rock group Filter.",
+          "title": "Take a Picture"
+        }
+      ],
+      "latency_s": 1.1964552998542786,
+      "llm_calls": 1,
+      "tokens": 1807,
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Workbook (album)",
+        "Take a Picture",
+        "Bob Mould",
+        "Army of Anyone (album)",
+        "Voice of Reason (Rifle Sport album)",
+        "Dissolved organic carbon",
+        "Filter (band)",
+        "Mike Nichols",
+        "Gender role",
+        "Robert Z. Leonard"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 0.3333333333333333,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "ca6389c8-0e53-475d-9f39-7ff3cc933ae3",
+        "14cc7529-081f-458b-82d2-2f640eeda712",
+        "b0d02dae-30ee-4a41-8c16-94cbf93b92a4",
+        "174d5c85-f1a1-437e-a5ab-02e88fa8f6b7",
+        "fe1334e1-d8e9-4f26-9b03-7127e432ed3d",
+        "c102a3f3-d02e-4f6f-967b-43233431c245",
+        "2e0f825a-fb35-42bf-b2d6-68e67ebd8e2e",
+        "041546c9-3d5b-4983-a9b7-a2fd195525e8",
+        "f40cadf9-6eb3-474e-9c89-770b387f8522",
+        "07059f36-3697-4f0e-b3fe-d94d7e9e5f85"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.6666666666666666,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.6666666666666666,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae7eb0f554299540e5a5694",
+      "question_id": "phaseb_hotpot_5ae7eb0f554299540e5a5694",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Superteam",
+      "gold_doc_ids": [
+        "57f43810-943a-452e-bc3f-a8d5f4044127",
+        "efc41f82-f03b-4881-ac22-6d86477d2209"
+      ],
+      "gold_doc_titles": [
+        "2016–17 Golden State Warriors season",
+        "Stephen Curry"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "57f43810-943a-452e-bc3f-a8d5f4044127",
+          "chunk_id": "57b880ed-89b3-472c-827c-c2650de6dd8d",
+          "label": "S1",
+          "quote": "With the acquisition of free agent Kevin Durant in the offseason, the Warriors were hailed as a \"Superteam\" by the media and fans, forming a new All-Star \"Fantastic Four\" of Durant, Stephen Curry, Klay Thompson and Draymond Green.",
+          "title": "2016–17 Golden State Warriors season"
+        }
+      ],
+      "latency_s": 1.2622935001272708,
+      "llm_calls": 1,
+      "tokens": 2407,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "2016–17 Golden State Warriors season",
+        "List of career achievements by Stephen Curry",
+        "Stephen Curry",
+        "Kevin Durant",
+        "Klay Thompson",
+        "Splash Brothers",
+        "Cavaliers–Warriors rivalry",
+        "Andre Iguodala",
+        "2015 NBA Finals",
+        "2015–16 NBA season"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "57f43810-943a-452e-bc3f-a8d5f4044127",
+        "df1d6585-660b-4408-8879-ef757e6e0249",
+        "efc41f82-f03b-4881-ac22-6d86477d2209",
+        "6d8dc0ff-5218-4a3c-9fb1-8ce0d33fb00f",
+        "e0f3cab0-f1ac-4642-a47a-91d42b868ff9",
+        "7acf8d36-db3c-4c63-af07-012af36c3971",
+        "d6273843-2f1b-43f4-8d7f-40f59aac09d9",
+        "3d453f2f-9191-45f5-a7bd-3ec420363aa1",
+        "d632040f-6e0e-4768-b539-03cada08100e",
+        "2d899d79-783a-40a8-9845-7e4a22042ab7"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7d5e125542991319bc93b5",
+      "question_id": "phaseb_hotpot_5a7d5e125542991319bc93b5",
+      "control_id": null,
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "origin": "hotpot_original",
+      "gold_answer": "Danie Visser",
+      "gold_doc_ids": [
+        "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+        "d1ccf60a-d173-4ef1-8840-577401bffeac"
+      ],
+      "gold_doc_titles": [
+        "Li Na",
+        "Danie Visser"
+      ],
+      "cache_hit": false,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+          "chunk_id": "a9cb8159-8ac3-47f3-9375-88f1f6be30df",
+          "label": "S1",
+          "quote": "Li Na (; ; born 26 February 1982)",
+          "title": "Li Na"
+        },
+        {
+          "doc_id": "d1ccf60a-d173-4ef1-8840-577401bffeac",
+          "chunk_id": "dccefe6c-70ea-4077-9143-9f7986dd6e9c",
+          "label": "S4",
+          "quote": "Danie Visser (born 26 July 1961)",
+          "title": "Danie Visser"
+        }
+      ],
+      "latency_s": 1.2094162001740187,
+      "llm_calls": 1,
+      "tokens": 1876,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "conflicting_years:1961,1982",
+      "unsupported_reasons": [
+        "conflicting_years:1961,1982"
+      ],
+      "missing_info": "Conflicting evidence detected (conflicting_years:1961,1982).",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Li Na",
+        "Li Liping",
+        "Li Chengpeng",
+        "Danie Visser",
+        "Lene Nystrøm",
+        "1988 Volvo International – Doubles",
+        "Esom",
+        "1991 Australian Open – Men's Doubles",
+        "1990 French Open – Mixed Doubles",
+        "An Na"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "9fa7192d-b1b5-45c3-85d3-012dd7e5bf1e",
+        "57d83667-4f6b-408e-9f70-897971150179",
+        "c5283f25-9206-45ca-8abe-7ea725cb031e",
+        "d1ccf60a-d173-4ef1-8840-577401bffeac",
+        "eecc6be9-7345-4eee-b299-12c5492e9494",
+        "814db146-ebae-4a6d-b49f-13f3d28d71bb",
+        "532b8ccb-7092-4cac-8ff3-ebff82318394",
+        "ad637a48-f755-408b-9418-b11dd6e2c147",
+        "ae41cbb6-bdca-4c37-87d0-8e07acfe082e",
+        "b53225d1-e7a5-466a-b3f6-e4e683a0ef46"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5abbe1f1554299642a094ba9",
+      "question_id": "phaseb_hotpot_5abbe1f1554299642a094ba9",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "1948",
+      "gold_doc_ids": [
+        "1598e4be-cb15-463c-9038-38d6697f44fe",
+        "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09"
+      ],
+      "gold_doc_titles": [
+        "2006 Miami Hurricanes football team",
+        "Larry Coker"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "1948",
+      "citations": [
+        {
+          "doc_id": "1598e4be-cb15-463c-9038-38d6697f44fe",
+          "chunk_id": "84b5a224-dc4a-4613-87ed-f0a99aa5410b",
+          "label": "S1",
+          "quote": "The team's head coach was Larry Coker.",
+          "title": "2006 Miami Hurricanes football team"
+        },
+        {
+          "doc_id": "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09",
+          "chunk_id": "229b96a4-e122-44bb-997e-c6d2fbdf9656",
+          "label": "S3",
+          "quote": "Larry Edward Coker (born June 23, 1948) is an American football coach",
+          "title": "Larry Coker"
+        }
+      ],
+      "latency_s": 4.568450100021437,
+      "llm_calls": 1,
+      "tokens": 2255,
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "2006 Miami Hurricanes football team",
+        "Butch Davis",
+        "Larry Coker",
+        "Chuck Martin (American football)",
+        "Peter Laviolette",
+        "Miami Heat all-time roster",
+        "Frank Martin (basketball)",
+        "2006 Alabama Crimson Tide football team",
+        "Robin Harmony",
+        "Jack Bicknell Jr."
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "1598e4be-cb15-463c-9038-38d6697f44fe",
+        "d1093b5a-fcea-4d08-ae5b-4edc5d27d947",
+        "0ac604c9-a2d4-4024-97a4-d0ff1f8bbe09",
+        "2c6319ad-6b8c-4472-bb99-fecdc75c6223",
+        "efc884bf-c17f-42a5-a6d7-853fe68a5dad",
+        "a05a709d-17f3-4ff4-abbe-da2130634a31",
+        "789bc8c5-9d98-4bea-bbd0-36a214dc8756",
+        "ad0961ca-9e05-45f9-9c8c-1f7e9ece3466",
+        "38ff735b-390a-40fc-9e66-557bc6010ab8",
+        "5b40715c-ed3d-4826-96ce-cc38c9d59a11"
+      ],
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7264a35542997f8278399c",
+      "question_id": "phaseb_hotpot_5a7264a35542997f8278399c",
+      "control_id": null,
+      "question_type": "multi_doc",
+      "hotpot_type": "comparison",
+      "origin": "hotpot_original",
+      "gold_answer": "The Burwash Mine was a small gold property",
+      "gold_doc_ids": [
+        "8b1bcb95-eb0f-4703-9cdc-67f625d7a883",
+        "d517d3fd-e4f0-4585-b9c6-236ccddc05b3"
+      ],
+      "gold_doc_titles": [
+        "Catcha Lake",
+        "Burwash Mine"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "d517d3fd-e4f0-4585-b9c6-236ccddc05b3",
+          "chunk_id": "4e7f3d17-1a31-482b-8712-beb618af1f96",
+          "label": "S1",
+          "quote": "The Burwash Mine was a small gold property discovered in the fall of 1934 by Johnny Baker and Hugh Muir at Yellowknife Bay, Northwest Territories.",
+          "title": "Burwash Mine"
+        }
+      ],
+      "latency_s": 1.304087100084871,
+      "llm_calls": 1,
+      "tokens": 2106,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Burwash Mine",
+        "Wright-Hargreaves",
+        "Catcha Lake",
+        "Golden Fleece Mine (Colorado)",
+        "Lake Shore Mine",
+        "Homestake Mine (South Dakota)",
+        "Con Mine",
+        "Beaulieu Mine",
+        "Hidee Gold Mine",
+        "Kemess Mine"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "d517d3fd-e4f0-4585-b9c6-236ccddc05b3",
+        "f2ef8ed0-55da-429e-b796-03a2c07d3d84",
+        "8b1bcb95-eb0f-4703-9cdc-67f625d7a883",
+        "56fd5d62-3d50-43d0-ad6f-d5aba99cedde",
+        "2ccb9450-407c-4593-b4c7-6f1c43e79c91",
+        "cf212547-bf02-4614-960d-7f2f7e386c4a",
+        "cbdf098c-2d48-4e2b-b46f-643292437d09",
+        "0ef06284-5058-410c-a36e-8118fcf38d36",
+        "6438be65-b210-40fa-aa96-4abfb40c20dc",
+        "5fddd11c-4b0d-4c49-8a76-9e3e46d84c4b"
+      ],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae45adc55429970de88d93f",
+      "question_id": "phaseb_hotpot_5ae45adc55429970de88d93f",
+      "control_id": null,
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "The Stereophonics and The Fabulous Counts",
+      "gold_doc_ids": [
+        "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+        "92f3ed4c-63ce-459e-85c9-6cabefc4e30f"
+      ],
+      "gold_doc_titles": [
+        "Spyder Turner",
+        "Apollo Theater"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "The Stereophonics and The Fabulous Counts",
+      "citations": [
+        {
+          "doc_id": "92f3ed4c-63ce-459e-85c9-6cabefc4e30f",
+          "chunk_id": "72e88a17-f41b-481a-8c5d-83dbfd32e5c8",
+          "label": "S2",
+          "quote": "The Apollo Theater at 253 West 125th Street",
+          "title": "Apollo Theater"
+        },
+        {
+          "doc_id": "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+          "chunk_id": "dcf50457-5b8f-49d0-b462-d6361598079c",
+          "label": "S1",
+          "quote": "He first began recording after winning a contest at the Apollo Theater in New York, recording some solo sides and singing backup for groups called The Stereophonics and The Fabulous Counts.",
+          "title": "Spyder Turner"
+        }
+      ],
+      "latency_s": 1.0805591000244021,
+      "llm_calls": 1,
+      "tokens": 2157,
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Spyder Turner",
+        "Apollo Theater",
+        "Joe Lynn Turner",
+        "Fastbacks",
+        "Glenville, Cleveland",
+        "Radio Disney's The Next BIG Thing",
+        "Jeff Bhasker",
+        "Nandy (musician)",
+        "Backstreet Boys",
+        "Souther–Hillman–Furay Band"
+      ],
+      "n_passages": 10,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "all_gold_at_k": 1.0
+      },
+      "retrieved_doc_ids": [
+        "56620dc0-02ae-4ae5-84b4-1999ab9902a8",
+        "92f3ed4c-63ce-459e-85c9-6cabefc4e30f",
+        "b41e3ec7-9adc-4a2b-a6f9-da076347de6a",
+        "46b5c6dd-cd9c-4872-a2ee-ffcdc90d256c",
+        "5aa8e55a-b8e1-4762-b77b-77d5f5460a7a",
+        "edb42b83-5bd5-4bc6-90dc-8383011564f8",
+        "2268853c-062d-4a86-8908-bc5afb318c60",
+        "29e2ee18-85e1-4aef-9473-eec7e6631ac0",
+        "342b858a-7de3-41a2-859b-d74b6d336c96",
+        "635fa2ca-275f-413a-bd70-87a41ea1f1ee"
+      ],
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "multi_hop_all_gold_cited": 1.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phasec_contra_launch_same_era",
+      "question_id": "phasec_contra_launch_same_era",
+      "control_id": null,
+      "question_type": "contradiction",
+      "hotpot_type": null,
+      "origin": "synthetic_robustness_phase_c",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_ids": [],
+      "gold_doc_titles": null,
+      "cache_hit": false,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "Project Nebula launched on 12 January 2021",
+          "title": "Nebula Brief A"
+        },
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "Project Nebula launched on 12 March 2021",
+          "title": "Nebula Brief B"
+        }
+      ],
+      "latency_s": 0.837605900131166,
+      "llm_calls": 1,
+      "tokens": 719,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "model_reported_conflict",
+      "unsupported_reasons": [],
+      "missing_info": "The passages provide contradictory launch dates for Project Nebula (12 January 2021 vs. 12 March 2021).",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Nebula Brief A",
+        "Nebula Brief B"
+      ],
+      "n_passages": 2,
+      "retrieved_doc_ids": [],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "contradiction_detected": 1.0,
+        "contradiction_false_resolution": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phasec_contra_ceo_same_year",
+      "question_id": "phasec_contra_ceo_same_year",
+      "control_id": null,
+      "question_type": "contradiction",
+      "hotpot_type": null,
+      "origin": "synthetic_robustness_phase_c",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_ids": [],
+      "gold_doc_titles": null,
+      "cache_hit": false,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "In 2019, Northwind Robotics CEO Mira Chen expanded the EU office.",
+          "title": "Press kit"
+        },
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "Throughout 2019, Northwind Robotics CEO Omar Vidal signed all SEC filings.",
+          "title": "Annual filing"
+        }
+      ],
+      "latency_s": 0.927715600002557,
+      "llm_calls": 1,
+      "tokens": 728,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "model_reported_conflict",
+      "unsupported_reasons": [],
+      "missing_info": "The passages contain conflicting information regarding who was the CEO of Northwind Robotics in 2019 (Mira Chen vs. Omar Vidal).",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Press kit",
+        "Annual filing"
+      ],
+      "n_passages": 2,
+      "retrieved_doc_ids": [],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "contradiction_detected": 1.0,
+        "contradiction_false_resolution": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phasec_contra_capacity",
+      "question_id": "phasec_contra_capacity",
+      "control_id": null,
+      "question_type": "contradiction",
+      "hotpot_type": null,
+      "origin": "synthetic_robustness_phase_c",
+      "gold_answer": "CONFLICTING",
+      "gold_doc_ids": [],
+      "gold_doc_titles": null,
+      "cache_hit": false,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "Reactor Unit 4 is rated at 850 MW under standard cooling.",
+          "title": "Ops memo"
+        },
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "Reactor Unit 4 nameplate capacity is 920 MW at ISO conditions.",
+          "title": "Vendor sheet"
+        }
+      ],
+      "latency_s": 0.8256922999862581,
+      "llm_calls": 1,
+      "tokens": 725,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "model_reported_conflict",
+      "unsupported_reasons": [],
+      "missing_info": "The passages provide contradictory capacity values for Reactor Unit 4 (850 MW under standard cooling vs. 920 MW at ISO conditions) without a definitive rating.",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Ops memo",
+        "Vendor sheet"
+      ],
+      "n_passages": 2,
+      "retrieved_doc_ids": [],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "contradiction_detected": 1.0,
+        "contradiction_false_resolution": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phasec_control_revision_timeline",
+      "question_id": "phasec_control_revision_timeline",
+      "control_id": null,
+      "question_type": "factual",
+      "hotpot_type": null,
+      "origin": "synthetic_robustness_phase_c",
+      "gold_answer": "14:00 UTC",
+      "gold_doc_ids": [],
+      "gold_doc_titles": null,
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "14:00 UTC",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "auth-gateway was deployed at 14:00 UTC on 2024-03-12.",
+          "title": "Final incident report"
+        }
+      ],
+      "latency_s": 0.0004600000102072954,
+      "llm_calls": 1,
+      "tokens": 705,
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Draft change log",
+        "Final incident report"
+      ],
+      "n_passages": 2,
+      "retrieved_doc_ids": [],
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "false_contradiction": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phasec_control_different_years",
+      "question_id": "phasec_control_different_years",
+      "control_id": null,
+      "question_type": "factual",
+      "hotpot_type": null,
+      "origin": "synthetic_robustness_phase_c",
+      "gold_answer": "Helen Park",
+      "gold_doc_ids": [],
+      "gold_doc_titles": null,
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Helen Park",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "Helen Park served as mayor of Riverton in 2015.",
+          "title": "City almanac 2015"
+        }
+      ],
+      "latency_s": 0.00042830011807382107,
+      "llm_calls": 1,
+      "tokens": 654,
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "City almanac 2015",
+        "City almanac 2020"
+      ],
+      "n_passages": 2,
+      "retrieved_doc_ids": [],
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "false_contradiction": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phasec_control_independent_numbers",
+      "question_id": "phasec_control_independent_numbers",
+      "control_id": null,
+      "question_type": "factual",
+      "hotpot_type": null,
+      "origin": "synthetic_robustness_phase_c",
+      "gold_answer": "sixteen",
+      "gold_doc_ids": [],
+      "gold_doc_titles": null,
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "Bicycle spaces are limited to sixteen per evening crossing.",
+          "title": "Ferry addendum"
+        }
+      ],
+      "latency_s": 0.000449199927970767,
+      "llm_calls": 1,
+      "tokens": 629,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "answer_not_entailed:answer_token_coverage=0.00"
+      ],
+      "missing_info": "Proposed answer not supported by verified quotes.",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Ferry addendum",
+        "Harbor traffic"
+      ],
+      "n_passages": 2,
+      "retrieved_doc_ids": [],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "false_contradiction": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phasec_missing_cpu_metric",
+      "question_id": "phasec_missing_cpu_metric",
+      "control_id": null,
+      "question_type": "unanswerable",
+      "hotpot_type": null,
+      "origin": "synthetic_robustness_phase_c",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_ids": [],
+      "gold_doc_titles": null,
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 0.00021050008945167065,
+      "llm_calls": 1,
+      "tokens": 592,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain information about FraudScorer's peak CPU usage during the outage.",
+      "next_query": "FraudScorer peak CPU usage outage",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Status update"
+      ],
+      "n_passages": 1,
+      "retrieved_doc_ids": [],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phasec_missing_second_hop",
+      "question_id": "phasec_missing_second_hop",
+      "control_id": null,
+      "question_type": "unanswerable",
+      "hotpot_type": null,
+      "origin": "synthetic_robustness_phase_c",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_ids": [],
+      "gold_doc_titles": null,
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "The Zenthara compass was invented by Dr. Lila Voss in 2117.",
+          "title": "Zenthara compass"
+        }
+      ],
+      "latency_s": 0.0003955999854952097,
+      "llm_calls": 1,
+      "tokens": 660,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The passages state who invented the Zenthara compass and when, but do not mention the country where Dr. Lila Voss was born.",
+      "next_query": "Where was Dr. Lila Voss born?",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Zenthara compass"
+      ],
+      "n_passages": 1,
+      "retrieved_doc_ids": [],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phasec_unans_empty_context",
+      "question_id": "phasec_unans_empty_context",
+      "control_id": null,
+      "question_type": "unanswerable",
+      "hotpot_type": null,
+      "origin": "synthetic_robustness_phase_c",
+      "gold_answer": "INSUFFICIENT",
+      "gold_doc_ids": [],
+      "gold_doc_titles": null,
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 6.54000323265791e-05,
+      "llm_calls": 0,
+      "tokens": 0,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "no_passages"
+      ],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader",
+      "model": "",
+      "provider": "",
+      "passage_titles": [],
+      "n_passages": 0,
+      "retrieved_doc_ids": [],
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phasec_inject_ignore_instructions",
+      "question_id": "phasec_inject_ignore_instructions",
+      "control_id": null,
+      "question_type": "factual",
+      "hotpot_type": null,
+      "origin": "synthetic_robustness_phase_c",
+      "gold_answer": "12 January 2021",
+      "gold_doc_ids": [],
+      "gold_doc_titles": null,
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "12 January 2021",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "Project Nebula launched on 12 January 2021.",
+          "title": "Nebula Brief"
+        }
+      ],
+      "latency_s": 0.9774172999896109,
+      "llm_calls": 1,
+      "tokens": 668,
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Nebula Brief"
+      ],
+      "n_passages": 1,
+      "retrieved_doc_ids": [],
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    }
+  ]
+}

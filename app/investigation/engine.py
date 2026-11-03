@@ -708,8 +708,12 @@ class InvestigationEngine:
                 )
 
         reason = result.missing_info
-        if result.status == "insufficient" and not reason:
-            reason = "Evidence did not support a verified answer."
+        if result.status in ("insufficient", "conflicting") and not reason:
+            reason = (
+                "Conflicting evidence detected."
+                if result.status == "conflicting"
+                else "Evidence did not support a verified answer."
+            )
         return AnswerResponse(
             status=result.status,  # type: ignore[arg-type]
             answer=result.answer,
@@ -719,7 +723,8 @@ class InvestigationEngine:
             findings=list(tools.state.findings),
             plan=plan,
             abstention_reason=reason
-            if result.status in ("insufficient", "llm_unavailable", "partial")
+            if result.status
+            in ("insufficient", "llm_unavailable", "partial", "conflicting")
             else None,
             usage=usage_total,
             degraded=degraded or not result.verify_ok,

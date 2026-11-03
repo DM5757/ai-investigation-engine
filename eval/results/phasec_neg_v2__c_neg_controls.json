@@ -1,0 +1,1524 @@
+{
+  "created_at": "2026-11-03T06:10:45.253843+00:00",
+  "run_id": "phasec_neg_v2",
+  "config_id": "c_neg_controls",
+  "split": "dev",
+  "sealed_test_evaluated": false,
+  "retrieval_mode": "hybrid_rrf",
+  "k": 10,
+  "corpus": {
+    "active_documents": 55081,
+    "non_deleted_documents": 55081,
+    "chunk_rows": 56900,
+    "by_status": {
+      "ACTIVE": 55081,
+      "DELETED": 5
+    }
+  },
+  "model_settings": {
+    "groq_model": "openai/gpt-oss-120b",
+    "gemini_model": "gemini-3.5-flash-lite",
+    "temperature": 0.0,
+    "prompt_id": "reader_v2_phase_c"
+  },
+  "experimental_passage_reader_default": false,
+  "summary": {
+    "n_attempted": 24,
+    "n_scored": 21,
+    "n_provider_failures": 3,
+    "token_f1": 0.07142857142857142,
+    "exact_match": 0.047619047619047616,
+    "token_f1_ci": {
+      "mean": 0.07142857142857142,
+      "low": 0.0,
+      "high": 0.19047619047619047,
+      "n": 21
+    },
+    "exact_match_ci": {
+      "mean": 0.047619047619047616,
+      "low": 0.0,
+      "high": 0.14285714285714285,
+      "n": 21
+    },
+    "answer_supported_rate": 0.09523809523809523,
+    "false_answer_rate": 0.0,
+    "correct_abstention_rate": 1.0,
+    "contradiction_detection_rate": null,
+    "false_contradiction_rate": null,
+    "citation_f1": 0.2857142857142857,
+    "multi_hop_all_gold_cited": 0.0,
+    "mean_latency_s": 0.7823278618909951,
+    "latency_p50_s": 0.843400799902156,
+    "latency_p95_s": 1.2911624000407755,
+    "mean_llm_calls": 0.7619047619047619,
+    "mean_tokens": 585.4761904761905,
+    "status_counts": {
+      "answered": 2,
+      "conflicting": 2,
+      "insufficient": 17
+    }
+  },
+  "by_control": {
+    "remove_gold": {
+      "n_attempted": 5,
+      "n_scored": 5,
+      "n_provider_failures": 0,
+      "token_f1": 0.0,
+      "exact_match": 0.0,
+      "token_f1_ci": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "n": 5
+      },
+      "exact_match_ci": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "n": 5
+      },
+      "answer_supported_rate": 0.0,
+      "false_answer_rate": 0.0,
+      "correct_abstention_rate": 1.0,
+      "contradiction_detection_rate": null,
+      "false_contradiction_rate": null,
+      "citation_f1": null,
+      "multi_hop_all_gold_cited": null,
+      "mean_latency_s": 3.901999443769455e-05,
+      "latency_p50_s": 3.900006413459778e-05,
+      "latency_p95_s": 4.2499974370002747e-05,
+      "mean_llm_calls": 0.0,
+      "mean_tokens": 0.0,
+      "status_counts": {
+        "insufficient": 5
+      }
+    },
+    "distractors": {
+      "n_attempted": 5,
+      "n_scored": 4,
+      "n_provider_failures": 1,
+      "token_f1": 0.0,
+      "exact_match": 0.0,
+      "token_f1_ci": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "n": 4
+      },
+      "exact_match_ci": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "n": 4
+      },
+      "answer_supported_rate": 0.0,
+      "false_answer_rate": 0.0,
+      "correct_abstention_rate": 1.0,
+      "contradiction_detection_rate": null,
+      "false_contradiction_rate": null,
+      "citation_f1": null,
+      "multi_hop_all_gold_cited": null,
+      "mean_latency_s": 0.9089989000349306,
+      "latency_p50_s": 0.8820440000854433,
+      "latency_p95_s": 0.8820440000854433,
+      "mean_llm_calls": 1.0,
+      "mean_tokens": 765.5,
+      "status_counts": {
+        "insufficient": 4
+      }
+    },
+    "swap_titles": {
+      "n_attempted": 5,
+      "n_scored": 4,
+      "n_provider_failures": 1,
+      "token_f1": 0.375,
+      "exact_match": 0.25,
+      "token_f1_ci": {
+        "mean": 0.375,
+        "low": 0.0,
+        "high": 0.75,
+        "n": 4
+      },
+      "exact_match_ci": {
+        "mean": 0.25,
+        "low": 0.0,
+        "high": 0.75,
+        "n": 4
+      },
+      "answer_supported_rate": 0.5,
+      "false_answer_rate": null,
+      "correct_abstention_rate": null,
+      "contradiction_detection_rate": null,
+      "false_contradiction_rate": null,
+      "citation_f1": 0.0,
+      "multi_hop_all_gold_cited": 0.0,
+      "mean_latency_s": 1.3651133748935536,
+      "latency_p50_s": 1.2182701998390257,
+      "latency_p95_s": 1.2182701998390257,
+      "mean_llm_calls": 1.0,
+      "mean_tokens": 896.0,
+      "status_counts": {
+        "answered": 2,
+        "conflicting": 2
+      }
+    },
+    "counterfactual": {
+      "n_attempted": 5,
+      "n_scored": 4,
+      "n_provider_failures": 1,
+      "token_f1": 0.0,
+      "exact_match": 0.0,
+      "token_f1_ci": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "n": 4
+      },
+      "exact_match_ci": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "n": 4
+      },
+      "answer_supported_rate": 0.0,
+      "false_answer_rate": 0.0,
+      "correct_abstention_rate": 1.0,
+      "contradiction_detection_rate": null,
+      "false_contradiction_rate": null,
+      "citation_f1": null,
+      "multi_hop_all_gold_cited": null,
+      "mean_latency_s": 0.9787494249176234,
+      "latency_p50_s": 1.0559082999825478,
+      "latency_p95_s": 1.0559082999825478,
+      "mean_llm_calls": 1.0,
+      "mean_tokens": 667.75,
+      "status_counts": {
+        "insufficient": 4
+      }
+    },
+    "missing_one_hop": {
+      "n_attempted": 4,
+      "n_scored": 4,
+      "n_provider_failures": 0,
+      "token_f1": 0.0,
+      "exact_match": 0.0,
+      "token_f1_ci": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "n": 4
+      },
+      "exact_match_ci": {
+        "mean": 0.0,
+        "low": 0.0,
+        "high": 0.0,
+        "n": 4
+      },
+      "answer_supported_rate": 0.0,
+      "false_answer_rate": 0.0,
+      "correct_abstention_rate": 1.0,
+      "contradiction_detection_rate": null,
+      "false_contradiction_rate": null,
+      "citation_f1": 0.6666666666666666,
+      "multi_hop_all_gold_cited": 0.0,
+      "mean_latency_s": 0.8543108000885695,
+      "latency_p50_s": 0.8709293000865728,
+      "latency_p95_s": 0.8709293000865728,
+      "mean_llm_calls": 1.0,
+      "mean_tokens": 744.5,
+      "status_counts": {
+        "insufficient": 4
+      }
+    }
+  },
+  "results": [
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651::remove_gold",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": "remove_gold",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_ids": [
+        "4e558d72-c1c3-4544-9609-16ec13e097a3",
+        "2bed5f52-4939-4b37-919c-d05855e5e86c"
+      ],
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 3.3400021493434906e-05,
+      "llm_calls": 0,
+      "tokens": 0,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "no_passages"
+      ],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader",
+      "model": "",
+      "provider": "",
+      "passage_titles": [],
+      "n_passages": 0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651::distractors",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": "distractors",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_ids": [
+        "4e558d72-c1c3-4544-9609-16ec13e097a3",
+        "2bed5f52-4939-4b37-919c-d05855e5e86c"
+      ],
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 1.2911624000407755,
+      "llm_calls": 1,
+      "tokens": 729,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about brothers Colt and Case McCoy or the college team they played for.",
+      "next_query": "Colt and Case McCoy college team",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Municipal Compost Ordinance 14-B",
+        "Ceramic Glaze Safety Notes"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651::swap_titles",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": "swap_titles",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_ids": [
+        "4e558d72-c1c3-4544-9609-16ec13e097a3",
+        "2bed5f52-4939-4b37-919c-d05855e5e86c"
+      ],
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "cache_hit": false,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "Casey Burl \"Case\" McCoy (born February 12, 1990) is a former American football quarterback for the University of Texas Longhorns football team.",
+          "title": "Ferry Timetable Addendum"
+        },
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "Daniel \"Colt\" McCoy (born September 5, 1986) is an American football quarterback for the Washington Redskins of the National Football League (NFL).  He was drafted by the Cleveland Browns in the third round of the 2010 NFL Draft, after playing college football for the University of Texas.",
+          "title": "Library Binding Standards"
+        }
+      ],
+      "latency_s": 1.2182701998390257,
+      "llm_calls": 1,
+      "tokens": 895,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "conflicting_years:1986,1990,2010",
+      "unsupported_reasons": [
+        "conflicting_years:1986,1990,2010"
+      ],
+      "missing_info": "Conflicting evidence detected (conflicting_years:1986,1990,2010).",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Ferry Timetable Addendum",
+        "Library Binding Standards"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mode": "title"
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651::counterfactual",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": "counterfactual",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_ids": [
+        "4e558d72-c1c3-4544-9609-16ec13e097a3",
+        "2bed5f52-4939-4b37-919c-d05855e5e86c"
+      ],
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 0.9863068999256939,
+      "llm_calls": 1,
+      "tokens": 655,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages contain no information about brothers Colt and Case McCoy or the college team they played for.",
+      "next_query": "Colt and Case McCoy college team",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Quorvail Founding Charter",
+        "Quorvail Materials Registry"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a7f21185542993067513651::missing_one_hop",
+      "question_id": "phaseb_hotpot_5a7f21185542993067513651",
+      "control_id": "missing_one_hop",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "University of Texas Longhorns",
+      "gold_doc_ids": [
+        "4e558d72-c1c3-4544-9609-16ec13e097a3",
+        "2bed5f52-4939-4b37-919c-d05855e5e86c"
+      ],
+      "gold_doc_titles": [
+        "Case McCoy",
+        "Colt McCoy"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 0.8709293000865728,
+      "llm_calls": 1,
+      "tokens": 741,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S1"
+      ],
+      "missing_info": "Passage S1 mentions Case McCoy played for the University of Texas Longhorns and that Colt McCoy is his brother, but it does not explicitly state what college team Colt McCoy played for.",
+      "next_query": "What college team did Colt McCoy play for?",
+      "invalid_citation_rate": 1.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Case McCoy"
+      ],
+      "n_passages": 1,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 1.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac::remove_gold",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": "remove_gold",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Brent Burns",
+      "gold_doc_ids": [
+        "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+        "362a4fce-7cee-41de-836c-759b0e8631e6"
+      ],
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 4.369998350739479e-05,
+      "llm_calls": 0,
+      "tokens": 0,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "no_passages"
+      ],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader",
+      "model": "",
+      "provider": "",
+      "passage_titles": [],
+      "n_passages": 0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac::distractors",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": "distractors",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Brent Burns",
+      "gold_doc_ids": [
+        "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+        "362a4fce-7cee-41de-836c-759b0e8631e6"
+      ],
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 0.6884812999051064,
+      "llm_calls": 1,
+      "tokens": 854,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about the Minnesota Wild or the 2008 IIHF World Championship rosters.",
+      "next_query": "Minnesota Wild draftee 2008 IIHF World Championship top defenceman",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Aquaculture Feed Trial Summary",
+        "Municipal Compost Ordinance 14-B"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac::swap_titles",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": "swap_titles",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Brent Burns",
+      "gold_doc_ids": [
+        "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+        "362a4fce-7cee-41de-836c-759b0e8631e6"
+      ],
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Brent Burns",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "Canadian Brent Burns was named top defenceman",
+          "title": "Aquaculture Feed Trial Summary"
+        }
+      ],
+      "latency_s": 2.415557699976489,
+      "llm_calls": 1,
+      "tokens": 964,
+      "verify_ok": false,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "quote_mismatch:S2"
+      ],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.5,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Aquaculture Feed Trial Summary",
+        "Municipal Compost Ordinance 14-B"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 1.0,
+        "token_f1": 1.0,
+        "raw_exact_match": 1.0,
+        "raw_token_f1": 1.0,
+        "answer_supported": 1.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mode": "title"
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.5
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac::counterfactual",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": "counterfactual",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Brent Burns",
+      "gold_doc_ids": [
+        "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+        "362a4fce-7cee-41de-836c-759b0e8631e6"
+      ],
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 1.129424899816513,
+      "llm_calls": 1,
+      "tokens": 688,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about Minnesota Wild draftees or the 2008 IIHF World Championship rosters.",
+      "next_query": "Minnesota Wild draftee 2008 IIHF World Championship top defenceman",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Quorvail Founding Charter",
+        "Quorvail Materials Registry"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5aded1a755429975fa854fac::missing_one_hop",
+      "question_id": "phaseb_hotpot_5aded1a755429975fa854fac",
+      "control_id": "missing_one_hop",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Brent Burns",
+      "gold_doc_ids": [
+        "0e9cc460-c9a9-4013-8fe6-d0a2077a8099",
+        "362a4fce-7cee-41de-836c-759b0e8631e6"
+      ],
+      "gold_doc_titles": [
+        "2008 IIHF World Championship rosters",
+        "Brent Burns"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "Canadian Brent Burns was named top defenceman",
+          "title": "2008 IIHF World Championship rosters"
+        }
+      ],
+      "latency_s": 0.6704814000986516,
+      "llm_calls": 1,
+      "tokens": 796,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "2008 IIHF World Championship rosters"
+      ],
+      "n_passages": 1,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "mode": "title"
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54::remove_gold",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": "remove_gold",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_ids": [
+        "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+        "7ab5b521-8c0c-4a03-84d2-2884756605c0"
+      ],
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 3.900006413459778e-05,
+      "llm_calls": 0,
+      "tokens": 0,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "no_passages"
+      ],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader",
+      "model": "",
+      "provider": "",
+      "passage_titles": [],
+      "n_passages": 0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54::distractors",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": "distractors",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_ids": [
+        "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+        "7ab5b521-8c0c-4a03-84d2-2884756605c0"
+      ],
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 0.774307900108397,
+      "llm_calls": 1,
+      "tokens": 709,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about Eddie Jemison, his roles, or television series development.",
+      "next_query": "Eddie Jemison television series creator developer",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Aquaculture Feed Trial Summary",
+        "Municipal Compost Ordinance 14-B"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54::swap_titles",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": "swap_titles",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_ids": [
+        "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+        "7ab5b521-8c0c-4a03-84d2-2884756605c0"
+      ],
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "cache_hit": false,
+      "status": "answered",
+      "answer_text": "Rob Thomas and Diane Ruggiero-Wright",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "He is known for his roles in the \"Ocean's Eleven\" trilogy and the television series \"Hung\" and IZombie.",
+          "title": "Municipal Compost Ordinance 14-B"
+        },
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "iZombie (stylized as iZOMBiE) is an American television series developed by Rob Thomas and Diane Ruggiero-Wright for The CW.",
+          "title": "Aquaculture Feed Trial Summary"
+        }
+      ],
+      "latency_s": 0.9832247998565435,
+      "llm_calls": 1,
+      "tokens": 842,
+      "verify_ok": true,
+      "answer_supported": true,
+      "evidence_chain_ok": true,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": null,
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Municipal Compost Ordinance 14-B",
+        "Aquaculture Feed Trial Summary"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.5,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.5,
+        "answer_supported": 1.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 1.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mode": "title"
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54::counterfactual",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": "counterfactual",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_ids": [
+        "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+        "7ab5b521-8c0c-4a03-84d2-2884756605c0"
+      ],
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 0.7433575999457389,
+      "llm_calls": 1,
+      "tokens": 657,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about Eddie Jemison, his roles, or any American television series.",
+      "next_query": "Eddie Jemison television series creator developer",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Zenthara Founding Charter",
+        "Zenthara Materials Registry"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ae5c601554299546bf82f54::missing_one_hop",
+      "question_id": "phaseb_hotpot_5ae5c601554299546bf82f54",
+      "control_id": "missing_one_hop",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Rob Thomas",
+      "gold_doc_ids": [
+        "a85a1fcb-f377-4afb-9c1d-048e9a037d71",
+        "7ab5b521-8c0c-4a03-84d2-2884756605c0"
+      ],
+      "gold_doc_titles": [
+        "Eddie Jemison",
+        "IZombie (TV series)"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "He is known for his roles in the \"Ocean's Eleven\" trilogy and the television series \"Hung\" and IZombie.",
+          "title": "Eddie Jemison"
+        }
+      ],
+      "latency_s": 1.1036541999783367,
+      "llm_calls": 1,
+      "tokens": 706,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The passages mention the television series Eddie Jemison is known for (\"Hung\" and \"IZombie\"), but do not state who developed them.",
+      "next_query": "Who developed the television series Hung and IZombie",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Eddie Jemison"
+      ],
+      "n_passages": 1,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "mode": "title"
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695::remove_gold",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": "remove_gold",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_ids": [
+        "3428a271-a243-4032-ae07-47df99fdaae6",
+        "0adc14d0-8f14-441a-b731-270a317e140d"
+      ],
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 4.2499974370002747e-05,
+      "llm_calls": 0,
+      "tokens": 0,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "no_passages"
+      ],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader",
+      "model": "",
+      "provider": "",
+      "passage_titles": [],
+      "n_passages": 0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695::distractors",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": "distractors",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_ids": [
+        "3428a271-a243-4032-ae07-47df99fdaae6",
+        "0adc14d0-8f14-441a-b731-270a317e140d"
+      ],
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 0.8820440000854433,
+      "llm_calls": 1,
+      "tokens": 770,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain information about Ira Bruce Nadel or any biographies he wrote.",
+      "next_query": "Ira Bruce Nadel author biography American author",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Alpine Trail Maintenance Handbook",
+        "Aquaculture Feed Trial Summary"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695::swap_titles",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": "swap_titles",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_ids": [
+        "3428a271-a243-4032-ae07-47df99fdaae6",
+        "0adc14d0-8f14-441a-b731-270a317e140d"
+      ],
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "cache_hit": false,
+      "status": "conflicting",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "biographies of Leonard Cohen and Leon Uris",
+          "title": "Aquaculture Feed Trial Summary"
+        },
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S2",
+          "quote": "Leon Marcus Uris (August 3, 1924 – June 21, 2003) was an American author",
+          "title": "Municipal Compost Ordinance 14-B"
+        }
+      ],
+      "latency_s": 0.843400799902156,
+      "llm_calls": 1,
+      "tokens": 883,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": "conflicting_years:1924,2003",
+      "unsupported_reasons": [
+        "conflicting_years:1924,2003"
+      ],
+      "missing_info": "Conflicting evidence detected (conflicting_years:1924,2003).",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Aquaculture Feed Trial Summary",
+        "Municipal Compost Ordinance 14-B"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "citation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "mode": "title"
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695::counterfactual",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": "counterfactual",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_ids": [
+        "3428a271-a243-4032-ae07-47df99fdaae6",
+        "0adc14d0-8f14-441a-b731-270a317e140d"
+      ],
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 1.0559082999825478,
+      "llm_calls": 1,
+      "tokens": 671,
+      "verify_ok": true,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [],
+      "missing_info": "The provided passages do not contain any information about Ira Bruce Nadel or the American author he wrote a biography of.",
+      "next_query": "Ira Bruce Nadel biography American author",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Meldune Founding Charter",
+        "Meldune Materials Registry"
+      ],
+      "n_passages": 2,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 1.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5a75a6455542992db9473695::missing_one_hop",
+      "question_id": "phaseb_hotpot_5a75a6455542992db9473695",
+      "control_id": "missing_one_hop",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Leon Marcus Uris",
+      "gold_doc_ids": [
+        "3428a271-a243-4032-ae07-47df99fdaae6",
+        "0adc14d0-8f14-441a-b731-270a317e140d"
+      ],
+      "gold_doc_titles": [
+        "Ira Nadel",
+        "Leon Uris"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [
+        {
+          "doc_id": "",
+          "chunk_id": "",
+          "label": "S1",
+          "quote": "biographies of Leonard Cohen and Leon Uris",
+          "title": "Ira Nadel"
+        }
+      ],
+      "latency_s": 0.772178300190717,
+      "llm_calls": 1,
+      "tokens": 735,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "incomplete_evidence_chain:need>=2_got=1"
+      ],
+      "missing_info": "Answer requires multiple supporting passages; chain incomplete.",
+      "next_query": "Retrieve the missing supporting document for the unanswered hop.",
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader_v2",
+      "model": "gemini-3.5-flash-lite",
+      "provider": "gemini",
+      "passage_titles": [
+        "Ira Nadel"
+      ],
+      "n_passages": 1,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "citation": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "mode": "title"
+        },
+        "multi_hop_all_gold_cited": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab24f5355429970612095de::remove_gold",
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "control_id": "remove_gold",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Buddy",
+      "gold_doc_ids": [
+        "e396e67f-ded4-44f0-ba41-6282d404e898",
+        "919290c3-fed0-44a8-b55a-07bf5d513c4e"
+      ],
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "cache_hit": false,
+      "status": "insufficient",
+      "answer_text": "",
+      "citations": [],
+      "latency_s": 3.6499928683042526e-05,
+      "llm_calls": 0,
+      "tokens": 0,
+      "verify_ok": false,
+      "answer_supported": false,
+      "evidence_chain_ok": false,
+      "contradiction": null,
+      "unsupported_reasons": [
+        "no_passages"
+      ],
+      "missing_info": "No passages provided.",
+      "next_query": null,
+      "invalid_citation_rate": 0.0,
+      "reader_mode": "structured_reader",
+      "model": "",
+      "provider": "",
+      "passage_titles": [],
+      "n_passages": 0,
+      "answer": {
+        "exact_match": 0.0,
+        "token_f1": 0.0,
+        "raw_exact_match": 0.0,
+        "raw_token_f1": 0.0,
+        "answer_supported": 0.0,
+        "verify_ok": 0.0,
+        "evidence_chain_ok": 0.0,
+        "unsupported_answer": 0.0,
+        "correct_abstention": 1.0,
+        "false_answer": 0.0,
+        "invalid_citation_rate": 0.0
+      }
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab24f5355429970612095de::distractors",
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "control_id": "distractors",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Buddy",
+      "gold_doc_ids": [
+        "e396e67f-ded4-44f0-ba41-6282d404e898",
+        "919290c3-fed0-44a8-b55a-07bf5d513c4e"
+      ],
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "error": "gemini:rate_limit_rpm"
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab24f5355429970612095de::swap_titles",
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "control_id": "swap_titles",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Buddy",
+      "gold_doc_ids": [
+        "e396e67f-ded4-44f0-ba41-6282d404e898",
+        "919290c3-fed0-44a8-b55a-07bf5d513c4e"
+      ],
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "error": "gemini:rate_limit_rpm"
+    },
+    {
+      "row_id": "phaseb_hotpot_5ab24f5355429970612095de::counterfactual",
+      "question_id": "phaseb_hotpot_5ab24f5355429970612095de",
+      "control_id": "counterfactual",
+      "question_type": "multi_hop",
+      "hotpot_type": "bridge",
+      "origin": "hotpot_original",
+      "gold_answer": "Buddy",
+      "gold_doc_ids": [
+        "e396e67f-ded4-44f0-ba41-6282d404e898",
+        "919290c3-fed0-44a8-b55a-07bf5d513c4e"
+      ],
+      "gold_doc_titles": [
+        "Dear Socks, Dear Buddy",
+        "Buddy (dog)"
+      ],
+      "error": "gemini:rate_limit_rpm"
+    }
+  ]
+}

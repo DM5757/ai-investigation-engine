@@ -1,0 +1,136 @@
+{
+  "created_at": "2026-11-03T06:06:19.455710+00:00",
+  "run_id": "phasec_ab_v1",
+  "split": "dev",
+  "sealed_test_evaluated": false,
+  "summaries": [
+    {
+      "config_id": "c_oracle",
+      "retrieval_mode": "hybrid_rrf",
+      "k": 10,
+      "prompt_id": "reader_v2_phase_c",
+      "summary": {
+        "n_attempted": 34,
+        "n_scored": 31,
+        "n_provider_failures": 3,
+        "token_f1": 0.35913978494623655,
+        "exact_match": 0.2903225806451613,
+        "token_f1_ci": {
+          "mean": 0.35913978494623655,
+          "low": 0.21935483870967742,
+          "high": 0.5172043010752688,
+          "n": 31
+        },
+        "exact_match_ci": {
+          "mean": 0.2903225806451613,
+          "low": 0.12903225806451613,
+          "high": 0.45161290322580644,
+          "n": 31
+        },
+        "answer_supported_rate": 0.41935483870967744,
+        "false_answer_rate": 0.0,
+        "correct_abstention_rate": 1.0,
+        "contradiction_detection_rate": null,
+        "false_contradiction_rate": 0.0,
+        "citation_f1": 0.8695652173913043,
+        "multi_hop_all_gold_cited": 0.6086956521739131,
+        "mean_latency_s": 1.0224263903444573,
+        "latency_p50_s": 0.8389763999730349,
+        "latency_p95_s": 1.9904004998970777,
+        "mean_llm_calls": 0.967741935483871,
+        "mean_tokens": 821.1290322580645,
+        "status_counts": {
+          "answered": 13,
+          "conflicting": 4,
+          "insufficient": 14
+        }
+      }
+    },
+    {
+      "config_id": "c_raw",
+      "retrieval_mode": "hybrid_rrf",
+      "k": 10,
+      "prompt_id": "reader_v2_phase_c",
+      "summary": {
+        "n_attempted": 34,
+        "n_scored": 32,
+        "n_provider_failures": 2,
+        "token_f1": 0.275,
+        "exact_match": 0.21875,
+        "token_f1_ci": {
+          "mean": 0.275,
+          "low": 0.12916666666666668,
+          "high": 0.42083333333333334,
+          "n": 32
+        },
+        "exact_match_ci": {
+          "mean": 0.21875,
+          "low": 0.09375,
+          "high": 0.375,
+          "n": 32
+        },
+        "answer_supported_rate": 0.3125,
+        "false_answer_rate": 0.0,
+        "correct_abstention_rate": 1.0,
+        "contradiction_detection_rate": 1.0,
+        "false_contradiction_rate": 0.0,
+        "citation_f1": 0.8083333333333333,
+        "multi_hop_all_gold_cited": 0.45,
+        "mean_latency_s": 1.2124036062741652,
+        "latency_p50_s": 1.0876640998758376,
+        "latency_p95_s": 1.9650397000368685,
+        "mean_llm_calls": 0.96875,
+        "mean_tokens": 1596.5625,
+        "status_counts": {
+          "answered": 10,
+          "conflicting": 6,
+          "insufficient": 16
+        }
+      }
+    },
+    {
+      "config_id": "c_legacy",
+      "retrieval_mode": "hybrid_rrf",
+      "k": 10,
+      "prompt_id": "reader_v2_phase_c",
+      "summary": {
+        "n_attempted": 34,
+        "n_scored": 34,
+        "n_provider_failures": 0,
+        "token_f1": 0.11740764041802104,
+        "exact_match": 0.029411764705882353,
+        "token_f1_ci": {
+          "mean": 0.11740764041802104,
+          "low": 0.05056097305232253,
+          "high": 0.1979186326937192,
+          "n": 34
+        },
+        "exact_match_ci": {
+          "mean": 0.029411764705882353,
+          "low": 0.0,
+          "high": 0.08823529411764706,
+          "n": 34
+        },
+        "answer_supported_rate": 0.6470588235294118,
+        "false_answer_rate": 0.3333333333333333,
+        "correct_abstention_rate": 0.6666666666666666,
+        "contradiction_detection_rate": 0.0,
+        "false_contradiction_rate": 0.3333333333333333,
+        "citation_f1": 0.5075757575757576,
+        "multi_hop_all_gold_cited": 0.09090909090909091,
+        "mean_latency_s": 1.404405323541997,
+        "latency_p50_s": 1.0660545001737773,
+        "latency_p95_s": 3.7373091999907047,
+        "mean_llm_calls": 0.7352941176470589,
+        "mean_tokens": 777.5882352941177,
+        "status_counts": {
+          "answered": 22,
+          "conflicting": 1,
+          "insufficient": 7,
+          "partial": 4
+        }
+      }
+    }
+  ],
+  "phase_b_baseline_ref": "eval/results/e0_dev_v1__comparison.json"
+}

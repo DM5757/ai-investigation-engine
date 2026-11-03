@@ -128,9 +128,16 @@ Normalize `postgresql://` → `postgresql+psycopg://`.
 - E0 on development: paired Hotpot n=40 — oracle F1 0.645 / raw 0.530 / legacy 0.116; reader justified for Phase C, prod default unchanged.
 - Evidence: `docs/evidence/phase_b_passage_reader.md`. Tag `submission-2026-10-29` unchanged.
 
+## Phase C — grounding / multi-hop / controls (2026-11-03)
+
+- Root cause: Phase B shuffle only remapped gold texts (content never removed).
+- Hardened verify + `reader_v2`; negative controls abstain on remove/distractor/counterfactual.
+- Multi-hop all-gold cited ≈0.45–0.62 (up from ≈0.29–0.33) with lower F1 under strict chains.
+- Sealed test still locked; prod flag false. Evidence: `docs/evidence/phase_c_reader_grounding.md`.
+
 ## Outstanding technical follow-ups
 
-1. Phase C: canary reader behind flag; harden multi-hop cites + contradiction status; one sealed unlock after freeze.
+1. Lock strict-vs-soft multi-hop policy; then one sealed unlock + canary behind flag.
 2. Optional TPM-aware backoff under adaptive load.
 3. Answer-eval on frozen `heldout_v1` / `phase_b_bench_v1` sealed only after config lock (no tuning).
 4. Decide whether prod should keep `hybrid_rerank` given lower R@10 vs RRF.

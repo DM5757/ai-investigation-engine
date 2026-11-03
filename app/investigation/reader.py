@@ -1,7 +1,7 @@
-"""Experimental quote-verified passage-level LLM reader (Phase B).
+"""Experimental quote-verified passage-level LLM reader (Phase B/C).
 
 Not the production default. Enabled only via Settings.experimental_passage_reader
-or explicit callers (E0 harness). Legacy extraction/synthesis remains untouched.
+or explicit callers (E0 / Phase C harness). Legacy extraction/synthesis remains.
 """
 
 from __future__ import annotations
@@ -12,8 +12,9 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from app.errors import BudgetExceeded, LLMOutputInvalid, LLMUnavailable
-from app.investigation.citations import extract_citation_labels, strip_citation_markers
+from app.investigation.citations import extract_citation_labels
 from app.investigation.injection import scan_injection
+from app.investigation.verify import verify_structured_reader_output
 from app.llm.prompts.reader import READER_BASELINE_SYSTEM, READER_SYSTEM
 from app.llm.types import ChatMessage, ChatResult, LLMClient
 from app.schemas.evidence import Citation, UsageStats
@@ -38,6 +39,7 @@ class ReaderSupport:
     quote: str
     quote_ok: bool = False
     label_ok: bool = False
+    role: str | None = None
 
 
 @dataclass
@@ -55,48 +57,12 @@ class ReaderOutput:
     verify_ok: bool = False
     answer_supported: bool = False
     unsupported_reasons: list[str] = field(default_factory=list)
+    evidence_chain_ok: bool = False
+    contradiction: str | None = None
     raw_model: dict[str, Any] = field(default_factory=dict)
     provider: str = ""
     model: str = ""
     mode: str = "structured_reader"
-
-
-def _norm_ws(text: str) -> str:
-    return _WS_RE.sub(" ", text).strip()
-
-
-def _quote_in_passage(quote: str, passage_text: str) -> bool:
-    if not quote or not passage_text:
-        return False
-    q = _norm_ws(quote)
-    p = _norm_ws(passage_text)
-    if q and q in p:
-        return True
-    # Allow minor quote truncation markers
-    q2 = q.rstrip("….").strip()
-    return bool(q2) and q2 in p
-
-
-def _answer_supported_by_quotes(answer: str | None, quotes: list[str]) -> bool:
-    """Require substantial overlap between answer tokens and supporting quotes."""
-    if not answer:
-        return False
-    ans = strip_citation_markers(answer)
-    ans_norm = _norm_ws(ans).lower()
-    if not ans_norm:
-        return False
-    blob = _norm_ws(" ".join(quotes)).lower()
-    if not blob:
-        return False
-    if ans_norm in blob:
-        return True
-    # Token overlap (stopword-light)
-    stop = {"the", "a", "an", "of", "in", "on", "and", "or", "to", "for", "is", "was"}
-    toks = [t for t in re.findall(r"[a-z0-9]+", ans_norm) if t not in stop]
-    if not toks:
-        return False
-    hits = sum(1 for t in toks if t in blob)
-    return (hits / len(toks)) >= 0.6
 
 
 def format_passages_for_prompt(
@@ -127,7 +93,6 @@ def _parse_reader_json(raw: str) -> dict[str, Any]:
     try:
         data = json.loads(text)
     except json.JSONDecodeError:
-        # Extract first JSON object if model wrapped it
         start = text.find("{")
         end = text.rfind("}")
         if start < 0 or end <= start:
@@ -141,98 +106,40 @@ def _parse_reader_json(raw: str) -> dict[str, Any]:
 def verify_reader_payload(
     data: dict[str, Any],
     passages: list[ReaderPassage],
+    *,
+    require_multi_hop: bool | None = None,
+    min_hops: int = 2,
 ) -> ReaderOutput:
-    """Deterministically verify labels, exact quotes, and answer support."""
-    by_label = {p.label: p for p in passages}
-    answerable = bool(data.get("answerable"))
-    answer = data.get("answer")
-    if answer is not None:
-        answer = str(answer).strip() or None
-    missing = data.get("missing_info")
-    missing_info = str(missing).strip() if missing else None
-    next_q = data.get("next_query")
-    next_query = str(next_q).strip() if next_q else None
-
-    reasons: list[str] = []
-    supports: list[ReaderSupport] = []
-    raw_support = data.get("supporting") or []
-    if not isinstance(raw_support, list):
-        raw_support = []
-        reasons.append("supporting_not_list")
-
-    for item in raw_support:
-        if not isinstance(item, dict):
-            reasons.append("supporting_item_not_object")
-            continue
-        label = str(item.get("label") or "").strip().upper()
-        if not label.startswith("S"):
-            # Normalize s1 -> S1
-            m = re.match(r"[Ss](\d+)$", label)
-            label = f"S{m.group(1)}" if m else label
-        quote = str(item.get("quote") or "").strip()
-        label_ok = label in by_label
-        quote_ok = bool(label_ok and _quote_in_passage(quote, by_label[label].text))
-        if not label_ok:
-            reasons.append(f"invalid_label:{label}")
-        elif not quote_ok:
-            reasons.append(f"quote_mismatch:{label}")
-        supports.append(
-            ReaderSupport(label=label, quote=quote, label_ok=label_ok, quote_ok=quote_ok)
-        )
-
-    ok_supports = [s for s in supports if s.label_ok and s.quote_ok]
-    quotes = [s.quote for s in ok_supports]
-    answer_supported = _answer_supported_by_quotes(answer, quotes) if answerable else False
-
-    if answerable and not ok_supports:
-        reasons.append("answerable_without_valid_quotes")
-        answerable = False
-    if answerable and answer and not answer_supported:
-        reasons.append("answer_not_supported_by_quotes")
-        answerable = False
-        answer_supported = False
-    if (
-        not answerable
-        and answer
-        and "answer_not_supported_by_quotes" in reasons
-    ):
-        missing_info = missing_info or "Proposed answer not supported by verified quotes."
-        answer = None
-
-    citations = [
-        Citation(
-            label=s.label,
-            chunk_id=by_label[s.label].chunk_id or "",
-            doc_id=by_label[s.label].doc_id or "",
-            quote=s.quote,
-        )
-        for s in ok_supports
-        if s.label in by_label
-    ]
-
-    if answerable and answer:
-        status = "answered"
-    elif ok_supports and answer:
-        status = "partial"
-    else:
-        status = "insufficient"
-
-    verify_ok = not reasons and (
-        (answerable and answer_supported and bool(ok_supports))
-        or (not answerable)
+    """Deterministically verify labels, quotes, entailment, and evidence chain."""
+    result = verify_structured_reader_output(
+        data,
+        passages,
+        require_multi_hop=require_multi_hop,
+        min_hops=min_hops,
     )
+    supports = [
+        ReaderSupport(
+            label=s.label,
+            quote=s.quote,
+            quote_ok=s.quote_ok,
+            label_ok=s.label_ok,
+        )
+        for s in result.supporting
+    ]
     return ReaderOutput(
-        answer=answer,
-        answerable=answerable and bool(answer),
+        answer=result.answer,
+        answerable=result.answerable,
         supporting=supports,
-        missing_info=missing_info,
-        next_query=next_query,
-        status=status,
-        citations=citations,
-        verify_ok=verify_ok,
-        answer_supported=answer_supported,
-        unsupported_reasons=reasons,
-        raw_model=data,
+        missing_info=result.missing_info,
+        next_query=result.next_query,
+        status=result.status,
+        citations=result.citations,
+        verify_ok=result.verify_ok,
+        answer_supported=result.answer_supported,
+        unsupported_reasons=result.unsupported_reasons,
+        evidence_chain_ok=result.evidence_chain_ok,
+        contradiction=result.contradiction,
+        raw_model=result.raw_model,
     )
 
 
@@ -244,6 +151,8 @@ def read_passages(
     max_passages: int = 10,
     max_chars: int = 12_000,
     temperature: float = 0.0,
+    require_multi_hop: bool | None = None,
+    min_hops: int = 2,
 ) -> ReaderOutput:
     """One structured LLM reader call + deterministic verification."""
     capped = passages[:max_passages]
@@ -276,11 +185,16 @@ def read_passages(
         raise
 
     data = _parse_reader_json(result.content or "")
-    out = verify_reader_payload(data, used)
+    out = verify_reader_payload(
+        data,
+        used,
+        require_multi_hop=require_multi_hop,
+        min_hops=min_hops,
+    )
     out.usage = result.usage
     out.provider = result.provider
     out.model = result.model
-    out.mode = "structured_reader"
+    out.mode = "structured_reader_v2"
     return out
 
 
